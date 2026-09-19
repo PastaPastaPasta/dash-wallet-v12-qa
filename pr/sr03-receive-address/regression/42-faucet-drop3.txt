@@ -1,0 +1,1 @@
+faucet drop3 txid 07433800d7bf2a762eff7cb587c12704a84573523bf94dceac9d2698eee871d3 -> yRsjBRMdNHFuKqqBmR5eUgDbS9Rk573ZGZ (new wallet on candidate, key #0)

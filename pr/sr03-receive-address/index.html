@@ -1,0 +1,507 @@
+<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>PR validation: sr03-receive-address</title><style>body{font-family:system-ui,-apple-system,sans-serif;max-width:1400px;margin:0 auto;padding:16px 24px;line-height:1.45;background:#fff;color:#111}
+table{border-collapse:collapse;font-size:13px;margin:12px 0}th,td{border:1px solid #ddd;padding:4px 8px;vertical-align:top;text-align:left}th{background:#f3f6fa;position:sticky;top:0}
+tr:nth-child(even){background:#fafbfc}code{background:#f4f4f4;padding:1px 4px;border-radius:3px;font-size:12px}pre{background:#f4f4f4;padding:10px;overflow:auto}
+h1{border-bottom:3px solid #008de4}h2{border-bottom:1px solid #ccc;margin-top:40px}a{color:#008de4}a.ev{background:#e8f4fd;padding:0 3px;border-radius:3px;font-family:ui-monospace,monospace;font-size:12px}
+nav.top{background:#012060;color:#fff;padding:8px 24px;margin:-16px -24px 16px;position:sticky;top:0;z-index:5}nav.top a{color:#fff;margin-right:18px;text-decoration:none}nav.top a:hover{text-decoration:underline}
+.S1{color:#b00020;font-weight:bold}.S2{color:#c75000;font-weight:bold}.toc{background:#f8f9fb;border:1px solid #e3e6ea;padding:8px 16px;font-size:13px;columns:2}.toc ul{margin:2px 0;padding-left:16px}
+#lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:50;align-items:center;justify-content:center;flex-direction:column}#lb.on{display:flex}#lb img{max-width:96vw;max-height:88vh;border:2px solid #fff;box-shadow:0 0 30px #000}#lb .cap{color:#eee;font:13px ui-monospace,monospace;margin-top:8px}#lb .cap a{color:#8cf}#lb .x{position:absolute;top:10px;right:18px;color:#fff;font-size:30px;cursor:pointer}#lb .nv{position:absolute;top:50%;color:#fff;font-size:44px;cursor:pointer;padding:0 16px;user-select:none}#lb .pv{left:0}#lb .nx{right:0}a.img img{cursor:zoom-in}
+sup.more a{margin:0 2px;font-size:10px}
+thead.sortable th.asc::after{content:' \\25B2';font-size:9px}thead.sortable th.desc::after{content:' \\25BC';font-size:9px}
+tr[data-sev=S1] td:nth-child(2){background:#fde7e9}tr[data-sev=S2] td:nth-child(2){background:#fff1e0}
+a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:target{background:#fff3b0;outline:2px solid #f5b400}
+.note{background:#fff8e1;border-left:4px solid #f5b400;padding:8px 12px;margin:12px 0}
+</style><nav class=top><a href="../../index.html">Home</a><a href="../../DEFECT-LEDGER.html">Defect register</a><a href="../index.html">Fix-validation reports</a></nav><h1>Fix-validation QA — SR-03 / SR-04 (D-003, D-119): receive address served from the SDK pool</h1>
+<h2>1. Header</h2>
+<table>
+<thead>
+<tr>
+<th>item</th>
+<th>value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Emulator</td>
+<td><code>emulator-5560</code> (AVD <code>dw-qa4</code>, Android 15 / API 35, arm64) — booted for this session; no other serial touched</td>
+</tr>
+<tr>
+<td>Base APK</td>
+<td><code>apks/base-12000014-5f8c0a8ef.apk</code> — versionCode <strong>12000014</strong>, versionName <code>12.0.0-upgrade</code>, git <code>5f8c0a8ef</code> (md5 <code>0bdcddf6…</code>, byte-identical to <code>fix-12.0.0-testnet3-release-signed.apk</code>)</td>
+</tr>
+<tr>
+<td>Candidate APK</td>
+<td><code>apks/sr03-0aa28b1d5.apk</code> — versionCode <strong>12000014</strong>, versionName <code>12.0.0-upgrade</code>, git <code>0aa28b1d5</code> (md5 <code>9146272c…</code>)</td>
+</tr>
+<tr>
+<td>Master APK (regression a)</td>
+<td><code>apks/master-11.9.0-testnet3-release-signed.apk</code> — versionCode <strong>11090002</strong></td>
+</tr>
+<tr>
+<td>Fix worktree</td>
+<td><code>/Users/dcg/workspace/dash-wallet-qa/pr/sr03-receive-address</code> @ <code>0aa28b1d5</code> (1 commit on <code>5f8c0a8ef</code>)</td>
+</tr>
+<tr>
+<td>Seeds</td>
+<td>QA throwaway <code>swamp dad rent tower dumb cart dust vocal often today chimney amazing</code> (restored on base and on candidate); two throwaway wallets created on device for regressions (a) and (b). Reference read-only seed NOT used.</td>
+</tr>
+<tr>
+<td>Faucet</td>
+<td>3 drops used: <code>aee399e9…</code> → <code>ySu3d1Vc…</code>, <code>349ba6ee…</code> → <code>yfyy4WKx…</code>, <code>07433800…</code> → <code>yRsjBRMd…</code></td>
+</tr>
+<tr>
+<td>Session</td>
+<td>2026-09-19 16:26 → 17:35 local (device log timestamps are UTC+5, e.g. 16:44 local = 21:44 in <code>wallet.log</code>)</td>
+</tr>
+</tbody>
+</table>
+<h2>2. Verdict</h2>
+<p><strong>FIXED — with one new, narrower defect</strong> (see D-NEW-1, S3): on the steady state the candidate serves a
+pristine, engine-unused address from the SDK pool on every consumer (Receive tab, home/lock-screen quick-Receive,
+Specify amount, after a receive, after a process restart), and all 16 new unit tests pass. But during the SDK's
+<strong>first chain scan</strong> after a restore <em>or</em> after the master→candidate upgrade, the pool exists with <strong>zero <code>isUsed</code>
+markers</strong>, the resolver treats it as authoritative, and the Receive screen shows external key <strong>#0</strong> — the
+same already-used address SR-03 is about. The window was ~3 min (restore) and ~9 min (upgrade) here, and on the
+upgrade path it is a <strong>regression against the base build</strong>, where dashj's own "used" markers answered correctly.</p>
+<h2>3. BEFORE (base APK 12000014, same seed, <code>phase=SYNCED</code>, cutover <code>CUT_OVER</code>)</h2>
+<table>
+<thead>
+<tr>
+<th>step</th>
+<th>observed</th>
+<th>evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Restore + sync to 100 %</td>
+<td><code>cutover state DUAL_RUNNING -&gt; CUT_OVER (fresh-wallet setup (restore/new))</code> at 21:30:24</td>
+<td><a class=ev href="before/20-cutover.txt">before/20-cutover.txt</a>, <a class=ev href="before/09-synced.webp">before/09-synced.png</a></td>
+</tr>
+<tr>
+<td>Receive tab</td>
+<td><strong><code>yRjAzoyfZ7DpzLFmVGiLispLjUaYKRnL52</code></strong> = external <strong>#0</strong>, <code>"txApperances":10</code>, <code>totalReceived 3.00998554</code></td>
+<td><a class=ev href="before/10-payments-receive.webp">before/10-payments-receive.png</a>, <a class=ev href="before/11-insight-receive-tab.txt">before/11-insight-receive-tab.txt</a></td>
+</tr>
+<tr>
+<td>Home quick-Receive</td>
+<td>identical <code>yRjAzoyf…</code> (#0)</td>
+<td><a class=ev href="before/17-quick-receive.webp">before/17-quick-receive.png</a></td>
+</tr>
+<tr>
+<td>Specify Amount</td>
+<td><strong><code>ygUWAkqbnKURkJ1mMEEh5FPKAfQmMdSUH9</code></strong> = <strong>#1</strong>, <code>"txApperances":2</code> — also used</td>
+<td><a class=ev href="before/13-specify-amount-addr.webp">before/13-specify-amount-addr.png</a>, <a class=ev href="before/14-insight-chain.txt">before/14-insight-chain.txt</a></td>
+</tr>
+<tr>
+<td>Resolver log lines</td>
+<td><code>grep -c 'receive address' wallet.log</code> = <strong>0</strong> (class absent on base)</td>
+<td><a class=ev href="before/18-resolver-loglines-count.txt">before/18-resolver-loglines-count.txt</a>, <a class=ev href="before/logs/files/log/wallet.log">before/logs/files/log/wallet.log</a></td>
+</tr>
+</tbody>
+</table>
+<p>Pristine indices at the time: #3, #5, #6, #7, #8+ all <code>txApperances:0</code> (<a class=ev href="before/14-insight-chain.txt">before/14-insight-chain.txt</a>).</p>
+<h2>4. AFTER (candidate APK, fresh install, same seed, synced)</h2>
+<table>
+<thead>
+<tr>
+<th>step</th>
+<th>observed</th>
+<th>evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. Receive tab</td>
+<td><strong><code>ySu3d1VcumES35pzwPHWNuTPFZE4AghPNj</code></strong> = <strong>#3</strong>, <code>"txApperances":0</code></td>
+<td><a class=ev href="after/03-receive-tab.webp">after/03-receive-tab.png</a>, <a class=ev href="after/04-insight-receive-tab.txt">after/04-insight-receive-tab.txt</a></td>
+</tr>
+<tr>
+<td></td>
+<td>log: <code>SdkReceiveAddressResolver - receive address (current): SDK pool index 3 ySu3d1Vc… (35 rows, 4 used)</code></td>
+<td><a class=ev href="after/08-resolver-loglines.txt">after/08-resolver-loglines.txt</a></td>
+</tr>
+<tr>
+<td>2. Home quick-Receive</td>
+<td>same <code>ySu3d1Vc…</code> (#3); second <code>(current)</code> line, index 3</td>
+<td><a class=ev href="after/05-quick-receive.webp">after/05-quick-receive.png</a></td>
+</tr>
+<tr>
+<td>3. Specify amount ×5</td>
+<td><strong>#3, #5, #6, #7, #8</strong> — distinct, ascending, <strong>used #4 skipped</strong>, all <code>txApperances:0</code>; <code>(fresh)</code> lines index 3→5→6→7→8 while <code>(current)</code> stays 3</td>
+<td><a class=ev href="after/06-specify-amount-addresses.txt">after/06-specify-amount-addresses.txt</a>, <code>after/06-specamt-{1..5}.png</code>, <a class=ev href="after/07-insight-specify-amount.txt">after/07-insight-specify-amount.txt</a></td>
+</tr>
+<tr>
+<td>4. Faucet 1 tDASH → #3</td>
+<td>balance 2.923964 → 3.923964; on reopening Receive: <strong><code>ybr74Sjmmc4vUwAEwLdJkMQC8NpZy6pWp1</code></strong> = <strong>#5</strong>, <code>txApperances:0</code>; log <code>index 5 ybr74Sjm… (35 rows, 5 used)</code></td>
+<td><a class=ev href="after/09-faucet-txid.txt">after/09-faucet-txid.txt</a>, <a class=ev href="after/13-home-after-receive.webp">after/13-home-after-receive.png</a>, <a class=ev href="after/14-receive-after-funding-reopened.webp">after/14-receive-after-funding-reopened.png</a>, <a class=ev href="after/15-insight-index5.txt">after/15-insight-index5.txt</a>, <a class=ev href="after/after-receive-rotation.mp4">after/after-receive-rotation.mp4</a></td>
+</tr>
+<tr>
+<td>5. <code>force-stop</code> + relaunch</td>
+<td>Receive still <strong>#5</strong> <code>ybr74Sjm…</code>, <code>txApperances:0</code>; the funded <strong>#3 never reappears</strong></td>
+<td><a class=ev href="after/16-receive-after-relaunch.webp">after/16-receive-after-relaunch.png</a>, <a class=ev href="after/08-resolver-loglines.txt">after/08-resolver-loglines.txt</a></td>
+</tr>
+</tbody>
+</table>
+<p>Caveat on step 4: the <em>open</em> Receive screen does not refresh in place — the address only advances when the
+screen is reopened (<a class=ev href="after/11-receive-still-index3.webp">after/11-receive-still-index3.png</a> shows #3 still on screen 7 min after the coin landed).
+Same on the base build; pre-existing, cosmetic (S4).</p>
+<h3>Address table (every address this session showed)</h3>
+<table>
+<thead>
+<tr>
+<th>build</th>
+<th>screen</th>
+<th>address</th>
+<th>ext index</th>
+<th>txApperances at the time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>base</td>
+<td>Receive tab</td>
+<td>yRjAzoyfZ7DpzLFmVGiLispLjUaYKRnL52</td>
+<td>0</td>
+<td>10</td>
+</tr>
+<tr>
+<td>base</td>
+<td>home quick-Receive</td>
+<td>yRjAzoyfZ7DpzLFmVGiLispLjUaYKRnL52</td>
+<td>0</td>
+<td>10</td>
+</tr>
+<tr>
+<td>base</td>
+<td>Specify Amount</td>
+<td>ygUWAkqbnKURkJ1mMEEh5FPKAfQmMdSUH9</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr>
+<td>cand</td>
+<td>Receive tab</td>
+<td>ySu3d1VcumES35pzwPHWNuTPFZE4AghPNj</td>
+<td>3</td>
+<td>0</td>
+</tr>
+<tr>
+<td>cand</td>
+<td>home quick-Receive</td>
+<td>ySu3d1VcumES35pzwPHWNuTPFZE4AghPNj</td>
+<td>3</td>
+<td>0</td>
+</tr>
+<tr>
+<td>cand</td>
+<td>Specify Amount #1</td>
+<td>ySu3d1VcumES35pzwPHWNuTPFZE4AghPNj</td>
+<td>3</td>
+<td>0</td>
+</tr>
+<tr>
+<td>cand</td>
+<td>Specify Amount #2</td>
+<td>ybr74Sjmmc4vUwAEwLdJkMQC8NpZy6pWp1</td>
+<td>5</td>
+<td>0</td>
+</tr>
+<tr>
+<td>cand</td>
+<td>Specify Amount #3</td>
+<td>yRNSttnwVWfxk7XgSoSCCknKHDgUJKEGxL</td>
+<td>6</td>
+<td>0</td>
+</tr>
+<tr>
+<td>cand</td>
+<td>Specify Amount #4</td>
+<td>yToWQgMbSd8Zci8shQac9H1vhy78rGJrVU</td>
+<td>7</td>
+<td>0</td>
+</tr>
+<tr>
+<td>cand</td>
+<td>Specify Amount #5</td>
+<td>ycQukzCQujw6Fpq5AH3wjbzkVLwsxCwkD3</td>
+<td>8</td>
+<td>0</td>
+</tr>
+<tr>
+<td>cand</td>
+<td>Receive tab after funding #3</td>
+<td>ybr74Sjmmc4vUwAEwLdJkMQC8NpZy6pWp1</td>
+<td>5</td>
+<td>0</td>
+</tr>
+<tr>
+<td>cand</td>
+<td>Receive after relaunch / rotation / lowmem / offline</td>
+<td>ybr74Sjmmc4vUwAEwLdJkMQC8NpZy6pWp1</td>
+<td>5</td>
+<td>0</td>
+</tr>
+<tr>
+<td>cand (mid-replay)</td>
+<td>Receive tab</td>
+<td><strong>yRjAzoyfZ7DpzLFmVGiLispLjUaYKRnL52</strong></td>
+<td><strong>0</strong></td>
+<td><strong>12</strong> ← D-NEW-1 (<a class=ev href="adversarial/17-insight-index0-final.txt">adversarial/17-insight-index0-final.txt</a>)</td>
+</tr>
+<tr>
+<td>master</td>
+<td>Receive (new wallet)</td>
+<td>yfyy4WKxs9GjGL7u5U9NftraYYCLgRNtxF</td>
+<td>0</td>
+<td>0 → 1 after faucet</td>
+</tr>
+<tr>
+<td>master</td>
+<td>Receive after its receive</td>
+<td>ya5S49h1StUy24HLXRSFeRDQKootiUfWv6</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>cand (upgraded)</td>
+<td>Receive, 21 s after cutover</td>
+<td><strong>yfyy4WKxs9GjGL7u5U9NftraYYCLgRNtxF</strong></td>
+<td><strong>0</strong></td>
+<td><strong>1</strong> ← D-NEW-1</td>
+</tr>
+<tr>
+<td>cand (upgraded)</td>
+<td>Receive, +9 min</td>
+<td>ya5S49h1StUy24HLXRSFeRDQKootiUfWv6</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>cand (new wallet)</td>
+<td>Receive</td>
+<td>yRsjBRMdNHFuKqqBmR5eUgDbS9Rk573ZGZ</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>cand (new wallet)</td>
+<td>Receive after its receive</td>
+<td>yN51mmApYUpSKJo7pAYuJyC8v48ECo4evv</td>
+<td>1</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<h2>5. Regression checks</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>check</th>
+<th>verdict</th>
+<th>detail</th>
+<th>evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a</td>
+<td>S7 E8 — new wallet on MASTER 11.9.0, funded, <code>reinstall</code> candidate on top</td>
+<td><strong>PASS (with transient failure)</strong></td>
+<td>master: #0 <code>yfyy4WKx…</code> funded 1 tDASH → master rotated to #1 <code>ya5S49h1…</code>. Upgrade: <code>cutover state DUAL_RUNNING -&gt; CUT_OVER (upgraded-wallet launch)</code> 22:13:40; <strong>22:14:01 <code>receive address (current): SDK pool index 0 yfyy4WKx… (30 rows, 0 used)</code></strong> — the funded address was shown; <strong>22:22:56 <code>index 1 ya5S49h1… (31 rows, 1 used)</code></strong> — correct. So it does rotate after the cutover, but only once the SDK scan marks the pool.</td>
+<td><a class=ev href="regression/24-master-receive.webp">regression/24-master-receive.png</a>, <a class=ev href="regression/29-master-receive-after.webp">regression/29-master-receive-after.png</a>, <a class=ev href="regression/31-upgrade-precutover-receive.webp">regression/31-upgrade-precutover-receive.png</a>, <a class=ev href="regression/37-upgrade-receive-index1.webp">regression/37-upgrade-receive-index1.png</a>, <a class=ev href="regression/38-upgrade-resolver-log.txt">regression/38-upgrade-resolver-log.txt</a>, <a class=ev href="regression/34-sdk-pool-upgrade.txt">regression/34-sdk-pool-upgrade.txt</a></td>
+</tr>
+<tr>
+<td>b</td>
+<td>brand-new wallet on candidate</td>
+<td><strong>PASS</strong></td>
+<td>Receive = <code>yRsjBRMd…</code> <code>SDK pool index 0 (30 rows, 0 used)</code>; after the faucet receive → <code>yN51mmAp…</code> <code>SDK pool index 1 (31 rows, 1 used)</code> within ~2 min</td>
+<td><a class=ev href="regression/41-new-wallet-receive.webp">regression/41-new-wallet-receive.png</a>, <a class=ev href="regression/43-new-wallet-index1.webp">regression/43-new-wallet-index1.png</a>, <a class=ev href="regression/42-faucet-drop3.txt">regression/42-faucet-drop3.txt</a></td>
+</tr>
+<tr>
+<td>c</td>
+<td>send still works; change ≠ shown receive address</td>
+<td><strong>PASS</strong></td>
+<td>sent 0.01 to <code>yRjAzoy…</code>, tx <code>f854eace8aa08bc4648f2adc63acac40b1f9abbfed7dabb1f52544d42d8733a3</code>, InstantLocked, visible on insight. vin <code>ySu3d1Vc…</code>; vout <code>yRjAzoy…</code> 0.01 + change <strong><code>yc4dR7NSaPe33FF3UHsmw6HXSZH741R2Dt</code></strong> (internal chain) ≠ the shown receive address <code>ybr74Sjm…</code></td>
+<td><a class=ev href="regression/08-send-tx-vin-vout.txt">regression/08-send-tx-vin-vout.txt</a>, <a class=ev href="regression/06-send-confirm2.webp">regression/06-send-confirm2.png</a>, <a class=ev href="regression/07-send-result.webp">regression/07-send-result.png</a>, <a class=ev href="regression/regression-send.mp4">regression/regression-send.mp4</a></td>
+</tr>
+<tr>
+<td>d</td>
+<td>pre-cutover / dashj diagnostic toggle</td>
+<td><strong>PARTIAL</strong></td>
+<td>The "dashj sync (diagnostic)" switch could not be flipped from uiautomator (Compose switch, no accessible node; no pref written after taps at both the row and the right edge). The L1 shadow dashj engine was already running (<code>L1ShadowSyncService - L1Shadow phase=SYNCED 100.0%</code>, L1 tx events for the send) and the resolver kept answering from the SDK pool. A genuinely pre-cutover state could not be produced: both restore and upgrade commit <code>CUT_OVER</code> within seconds.</td>
+<td><a class=ev href="regression/09-tools.webp">regression/09-tools.png</a>, <a class=ev href="regression/11-dashj-after-tap.webp">regression/11-dashj-after-tap.png</a>, <a class=ev href="regression/logs-upgrade/files/log/wallet.log">regression/logs-upgrade/files/log/wallet.log</a></td>
+</tr>
+<tr>
+<td>—</td>
+<td>crashes / process death</td>
+<td><strong>PASS</strong></td>
+<td><code>dumpsys activity exit-info</code>: only <code>reason=16 (PACKAGE UPDATED)</code>. No <code>FATAL EXCEPTION</code>, no <code>ANR in</code>, no StrictMode trace naming the resolver or <code>*ReceiveAddress*</code>. The 14 <code>Exception</code> lines in wallet.log are <code>Dapi client … tcp connect error</code> from my deliberate airplane-mode step.</td>
+<td><a class=ev href="final-exitinfo.txt">final-exitinfo.txt</a>, <a class=ev href="adversarial/16-anr-strictmode.txt">adversarial/16-anr-strictmode.txt</a>, <a class=ev href="logs-final/files/log/wallet.log">logs-final/files/log/wallet.log</a></td>
+</tr>
+</tbody>
+</table>
+<h2>6. Adversarial</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>variation</th>
+<th>verdict</th>
+<th>observed</th>
+<th>evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Quick Receive from the lock screen ~2 s after <code>am start</code> (before bind)</td>
+<td>PASS</td>
+<td>answered from the SDK pool immediately: <code>receive address (current): SDK pool index 5 ybr74Sjm… (35 rows, 5 used)</code>. No <code>SDK store unavailable</code> fallback was ever logged in the whole session.</td>
+<td><a class=ev href="adversarial/02-quickreceive-early.webp">adversarial/02-quickreceive-early.png</a></td>
+</tr>
+<tr>
+<td>2</td>
+<td>rotate to landscape and back on the Receive tab</td>
+<td>PASS</td>
+<td>address unchanged (#5) in both orientations</td>
+<td><a class=ev href="adversarial/03-rotated-landscape.webp">adversarial/03-rotated-landscape.png</a>, <a class=ev href="adversarial/04-rotated-back.webp">adversarial/04-rotated-back.png</a></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Specify amount 5× in a row</td>
+<td>PASS</td>
+<td>#3,#5,#6,#7,#8 — distinct, unused, ascending, used #4 skipped</td>
+<td><a class=ev href="after/06-specify-amount-addresses.txt">after/06-specify-amount-addresses.txt</a></td>
+</tr>
+<tr>
+<td>4</td>
+<td>kill + relaunch, then Specify amount again</td>
+<td>PASS (documented)</td>
+<td>#5 and #6 re-issued because the issued set is process-scoped; both still unused → acceptable, matches the kdoc</td>
+<td><a class=ev href="adversarial/05-specamt-after-relaunch.txt">adversarial/05-specamt-after-relaunch.txt</a></td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>open Receive while the first replay is running</strong></td>
+<td><strong>FAIL → D-NEW-1</strong></td>
+<td>fresh restore of the same seed: <code>22:30:41 … SDK pool index 0 yRjAzoyf… (30 rows, 0 used)</code> and the Receive tab displayed <code>yRjAzoyfZ7DpzLFmVGiLispLjUaYKRnL52</code> (<code>txApperances:12</code>) for ~3 min after cutover, then converged to <code>index 5 … (35 rows, 5 used)</code></td>
+<td><a class=ev href="adversarial/11-midsync-receive.webp">adversarial/11-midsync-receive.png</a>, <a class=ev href="adversarial/11-midsync-receive.txt">adversarial/11-midsync-receive.txt</a>, <a class=ev href="adversarial/12-midsync-convergence.txt">adversarial/12-midsync-convergence.txt</a></td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>am send-trim-memory RUNNING_CRITICAL</code></td>
+<td>PASS</td>
+<td>address stable at #5, no crash</td>
+<td><a class=ev href="adversarial/14-lowmem-receive.webp">adversarial/14-lowmem-receive.png</a></td>
+</tr>
+<tr>
+<td>7</td>
+<td>wifi + data off (offline)</td>
+<td>PASS</td>
+<td>address stable at #5 from the local pool; no dashj fallback</td>
+<td><a class=ev href="adversarial/15-offline-receive.webp">adversarial/15-offline-receive.png</a></td>
+</tr>
+</tbody>
+</table>
+<h2>7. Unit tests</h2>
+<p><code>./gradlew --no-daemon :wallet:test_testNet3DebugUnitTest --tests '…SdkReceiveAddressResolverTest'</code> →
+<strong>BUILD SUCCESSFUL in 58 s, <code>tests="16" skipped="0" failures="0" errors="0"</code></strong>.
+<a class=ev href="unit-tests.txt">unit-tests.txt</a>, <code>unit-test-results.xml</code>, <a class=ev href="unit-test-names.txt">unit-test-names.txt</a>.</p>
+<h2>8. New defects</h2>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>sev</th>
+<th>title</th>
+<th>repro</th>
+<th>evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>D-NEW-1</strong></td>
+<td><strong>S3 (privacy; S2 on the upgrade path, where it is a regression vs the base build)</strong></td>
+<td>During the SDK's first chain scan the address pool exists with <strong>0 <code>isUsed</code> markers</strong>, the resolver treats it as authoritative and hands out external key <strong>#0</strong> — the exact already-used address SR-03 is about. The code's fallback only fires when the store is <em>unavailable</em> or has <em>no rows</em>; a fully-populated but not-yet-scanned pool passes the check.</td>
+<td>(i) fresh install candidate → restore the seed → open Receive during the replay: <code>yRjAzoyf…</code> (#0, 12 appearances) for ~3 min; (ii) master wallet funded on #0 → <code>reinstall</code> candidate → open Receive right after <code>CUT_OVER (upgraded-wallet launch)</code>: the funded <code>yfyy4WKx…</code> (#0) is shown for ~9 min, where the base build correctly showed #1 from dashj's markers.</td>
+<td><a class=ev href="adversarial/11-midsync-receive.webp">adversarial/11-midsync-receive.png</a>, <a class=ev href="adversarial/12-midsync-convergence.txt">adversarial/12-midsync-convergence.txt</a>, <a class=ev href="regression/31-upgrade-precutover-receive.webp">regression/31-upgrade-precutover-receive.png</a>, <a class=ev href="regression/38-upgrade-resolver-log.txt">regression/38-upgrade-resolver-log.txt</a></td>
+</tr>
+<tr>
+<td><strong>D-NEW-2</strong></td>
+<td><strong>S3 (SR-04 gap, code review — not exercised on device)</strong></td>
+<td><code>SweepWalletFragment.handleSweep()</code> calls <code>application.getWallet().freshReceiveAddress()</code> — the <strong>dashj <code>Wallet</code> object</strong>, not <code>WalletApplication.freshReceiveAddress()</code> — so it bypasses the resolver entirely and the swept funds still land on dashj's key #0. The resolver's own kdoc claims "the sweep's background handler" is one of the callers routed through it; that claim is wrong.</td>
+<td><code>wallet/src/de/schildbach/wallet/ui/payments/SweepWalletFragment.java:621</code>; <code>WalletApplication.getWallet()</code> returns the dashj <code>Wallet</code> (<code>WalletApplication.java:1161</code>). Could not be exercised: sweep is camera-QR only on this emulator (same block as SRD's SR-04).</td>
+<td>source</td>
+</tr>
+<tr>
+<td>D-NEW-3</td>
+<td>S4</td>
+<td>The open Receive screen does not refresh in place when a payment lands on the shown address; it only advances on reopen. Present on the base build too (pre-existing).</td>
+<td>keep the Receive tab open while funding it</td>
+<td><a class=ev href="after/11-receive-still-index3.webp">after/11-receive-still-index3.png</a> vs <a class=ev href="after/14-receive-after-funding-reopened.webp">after/14-receive-after-funding-reopened.png</a></td>
+</tr>
+</tbody>
+</table>
+<h2>9. Review concerns about the change itself</h2>
+<ol>
+<li><strong>The "not yet scanned" state is not handled</strong> (D-NEW-1). <code>resolveReceiveAddress</code> cannot distinguish "the engine
+   scanned and found nothing used" from "the engine has not scanned yet". A cheap guard would be: if the pool has
+   rows but <code>none { it.isUsed }</code> <strong>and</strong> dashj's keychain <em>does</em> know issued/used keys (the upgrade case), prefer
+   dashj; or gate on the SDK's own scan/sync watermark rather than only on <code>cutoverCommitted()</code>. The upgrade case
+   is the one that actually regresses against the base build.</li>
+<li><strong><code>SweepWalletFragment</code> bypasses the new seam</strong> (D-NEW-2) while the kdoc says it does not. Either route it
+   through <code>application.freshReceiveAddress()</code> or correct the comment.</li>
+<li><code>WalletAddressFragment.java:193</code> also calls <code>wallet.currentReceiveAddress()</code> directly. It appears to be dead
+   code (no references outside its own generated databinding class), but it is a second bypass if ever revived.</li>
+<li><code>currentBlockingOrNull()</code> / <code>freshBlockingOrNull()</code> use <code>runBlocking(Dispatchers.IO)</code> on the caller's thread.
+   No StrictMode or ANR appeared in this session (all exercised callers are off-main as documented), but the Java
+   seam is a latent main-thread hazard for any future caller; a <code>@WorkerThread</code>/<code>check(Looper.myLooper() != mainLooper)</code>
+   assertion in debug builds would make that contract enforceable rather than documented.</li>
+<li>Behaviour matches the docs everywhere else: <code>(current)</code> is stable and ignores the issued set, <code>(fresh)</code> walks
+   above the issued floor, used indices are skipped, the issued set resets on process restart and on a new SDK
+   wallet id, and the SDK pool read never blocked or crashed under trim-memory or offline conditions.</li>
+</ol>
+<h2>10. PR evidence (best artefacts)</h2>
+<table>
+<thead>
+<tr>
+<th>role</th>
+<th>file</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BEFORE screenshot (defect)</td>
+<td><a class=ev href="before/10-payments-receive.webp">before/10-payments-receive.png</a> — Receive tab showing <code>yRjAzoyf…</code> (#0, 10 tx appearances)</td>
+</tr>
+<tr>
+<td>BEFORE proof</td>
+<td><a class=ev href="before/11-insight-receive-tab.txt">before/11-insight-receive-tab.txt</a> + <a class=ev href="before/14-insight-chain.txt">before/14-insight-chain.txt</a> — insight <code>txApperances</code> for #0…#7</td>
+</tr>
+<tr>
+<td>AFTER screenshot (fixed)</td>
+<td><a class=ev href="after/03-receive-tab.webp">after/03-receive-tab.png</a> — Receive tab showing <code>ySu3d1Vc…</code> (#3, 0 appearances)</td>
+</tr>
+<tr>
+<td>Decisive log excerpt</td>
+<td><a class=ev href="after/08-resolver-loglines.txt">after/08-resolver-loglines.txt</a> — <code>(current)</code> pinned to index 3 while <code>(fresh)</code> walks 3→5→6→7→8, <code>(35 rows, 4 used)</code> → <code>(35 rows, 5 used)</code> after the receive</td>
+</tr>
+<tr>
+<td>Video</td>
+<td><a class=ev href="after/after-receive-rotation.mp4">after/after-receive-rotation.mp4</a> — the Receive tab across the faucet receive</td>
+</tr>
+<tr>
+<td>Regression / new defect</td>
+<td><a class=ev href="regression/31-upgrade-precutover-receive.webp">regression/31-upgrade-precutover-receive.png</a> + <a class=ev href="regression/38-upgrade-resolver-log.txt">regression/38-upgrade-resolver-log.txt</a> — the upgraded wallet showing the already-funded <code>yfyy4WKx…</code> at <code>index 0 (30 rows, 0 used)</code> before converging to <code>index 1 (31 rows, 1 used)</code></td>
+</tr>
+</tbody>
+</table><div id=lb><span class=x>&times;</span><span class="nv pv">&#8249;</span><span class="nv nx">&#8250;</span><img><div class=cap></div></div>
+<script>(function(){var lb=document.getElementById('lb'),im=lb.querySelector('img'),cap=lb.querySelector('.cap'),L=[],i=0;
+function links(){return Array.prototype.slice.call(document.querySelectorAll('a[href$=".webp"],a[href$=".png"]'))}
+function show(n){L=links();if(n<0||n>=L.length)return;i=n;var a=L[i];im.src=a.href;cap.innerHTML=(a.textContent.trim()||a.href.split('/').slice(-3).join('/'))+' &nbsp;('+(i+1)+'/'+L.length+') &nbsp;<a href="'+a.href+'" target=_blank rel=noopener>open file</a>';lb.classList.add('on')}
+function hide(){lb.classList.remove('on');im.src=''}
+document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".webp"],a[href$=".png"]');if(a&&!a.closest('#lb')){e.preventDefault();show(links().indexOf(a))}});
+lb.querySelector('.x').onclick=hide;lb.querySelector('.pv').onclick=function(e){e.stopPropagation();show(i-1)};lb.querySelector('.nx').onclick=function(e){e.stopPropagation();show(i+1)};
+lb.addEventListener('click',function(e){if(e.target===lb||e.target===im)hide()});
+document.addEventListener('keydown',function(e){if(!lb.classList.contains('on'))return;if(e.key==='Escape')hide();if(e.key==='ArrowLeft')show(i-1);if(e.key==='ArrowRight')show(i+1)});})();</script></html>

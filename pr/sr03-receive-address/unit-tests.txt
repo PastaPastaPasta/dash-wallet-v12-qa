@@ -1,0 +1,497 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.9/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+
+> Configure project :wallet
+google-services.json was found
+Warning: SDK processing. This version only understands SDK XML versions up to 3 but an SDK XML file of version 4 was encountered. This can happen if you use versions of Android Studio and the command-line tools that were released at different times.
+
+> Task :integrations:maya:preBuild UP-TO-DATE
+> Task :integrations:coinbase:preBuild UP-TO-DATE
+> Task :integrations:crowdnode:preBuild UP-TO-DATE
+> Task :common:preBuild UP-TO-DATE
+> Task :features:exploredash:preBuild UP-TO-DATE
+> Task :integrations:uphold:preBuild UP-TO-DATE
+> Task :features:exploredash:preDebugBuild UP-TO-DATE
+> Task :integrations:crowdnode:preDebugBuild UP-TO-DATE
+> Task :integrations:uphold:preDebugBuild UP-TO-DATE
+> Task :integrations:coinbase:preDebugBuild UP-TO-DATE
+> Task :wallet:preBuild UP-TO-DATE
+> Task :wallet:pre_testNet3DebugBuild UP-TO-DATE
+> Task :integrations:maya:preDebugBuild UP-TO-DATE
+> Task :common:preDebugBuild UP-TO-DATE
+> Task :integrations:crowdnode:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :integrations:uphold:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :wallet:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :integrations:coinbase:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :features:exploredash:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :integrations:maya:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :common:generateDebugResValues UP-TO-DATE
+> Task :common:generateDebugResources UP-TO-DATE
+> Task :common:packageDebugResources UP-TO-DATE
+> Task :integration-android:compileJava UP-TO-DATE
+> Task :integration-android:processResources UP-TO-DATE
+> Task :integration-android:classes UP-TO-DATE
+> Task :common:parseDebugLocalResources UP-TO-DATE
+> Task :integration-android:jar UP-TO-DATE
+> Task :integrations:uphold:dataBindingMergeDependencyArtifactsDebug UP-TO-DATE
+> Task :integrations:crowdnode:dataBindingMergeDependencyArtifactsDebug UP-TO-DATE
+> Task :integrations:uphold:generateDebugResValues UP-TO-DATE
+> Task :integrations:crowdnode:generateDebugResValues UP-TO-DATE
+> Task :common:generateDebugRFile UP-TO-DATE
+> Task :common:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :integrations:uphold:generateDebugResources UP-TO-DATE
+> Task :integrations:coinbase:dataBindingMergeDependencyArtifactsDebug UP-TO-DATE
+> Task :features:exploredash:dataBindingMergeDependencyArtifactsDebug UP-TO-DATE
+> Task :integrations:crowdnode:generateDebugResources UP-TO-DATE
+> Task :integrations:maya:dataBindingMergeDependencyArtifactsDebug UP-TO-DATE
+> Task :integrations:coinbase:generateDebugResValues UP-TO-DATE
+> Task :features:exploredash:generateDebugResValues UP-TO-DATE
+> Task :integrations:maya:generateDebugResValues UP-TO-DATE
+> Task :common:dataBindingMergeDependencyArtifactsDebug UP-TO-DATE
+> Task :integrations:maya:generateDebugResources UP-TO-DATE
+> Task :integrations:coinbase:generateDebugResources UP-TO-DATE
+> Task :integrations:crowdnode:packageDebugResources UP-TO-DATE
+> Task :integrations:uphold:packageDebugResources UP-TO-DATE
+> Task :features:exploredash:generateDebugResources UP-TO-DATE
+> Task :integrations:maya:packageDebugResources UP-TO-DATE
+> Task :common:dataBindingGenBaseClassesDebug UP-TO-DATE
+> Task :common:generateDebugBuildConfig UP-TO-DATE
+> Task :integrations:crowdnode:parseDebugLocalResources UP-TO-DATE
+> Task :integrations:uphold:parseDebugLocalResources UP-TO-DATE
+> Task :integrations:coinbase:packageDebugResources UP-TO-DATE
+> Task :integrations:maya:dataBindingGenBaseClassesDebug UP-TO-DATE
+> Task :integrations:crowdnode:dataBindingGenBaseClassesDebug UP-TO-DATE
+> Task :integrations:maya:generateDebugBuildConfig UP-TO-DATE
+> Task :integrations:uphold:dataBindingGenBaseClassesDebug UP-TO-DATE
+> Task :integrations:maya:parseDebugLocalResources UP-TO-DATE
+> Task :integrations:crowdnode:generateDebugRFile UP-TO-DATE
+> Task :integrations:coinbase:dataBindingGenBaseClassesDebug UP-TO-DATE
+> Task :integrations:crowdnode:generateSafeArgsDebug UP-TO-DATE
+> Task :integrations:coinbase:parseDebugLocalResources UP-TO-DATE
+> Task :integrations:uphold:generateDebugRFile UP-TO-DATE
+> Task :integrations:coinbase:generateDebugRFile UP-TO-DATE
+> Task :integrations:maya:generateDebugRFile UP-TO-DATE
+> Task :features:exploredash:packageDebugResources UP-TO-DATE
+> Task :integrations:maya:generateSafeArgsDebug UP-TO-DATE
+> Task :integrations:uphold:javaPreCompileDebug UP-TO-DATE
+> Task :integrations:crowdnode:javaPreCompileDebug UP-TO-DATE
+> Task :integrations:uphold:writeDebugAarMetadata UP-TO-DATE
+> Task :integrations:coinbase:generateSafeArgsDebug UP-TO-DATE
+> Task :integrations:uphold:extractDeepLinksDebug UP-TO-DATE
+> Task :integrations:maya:javaPreCompileDebug UP-TO-DATE
+> Task :integrations:crowdnode:writeDebugAarMetadata UP-TO-DATE
+> Task :integrations:maya:writeDebugAarMetadata UP-TO-DATE
+> Task :integrations:coinbase:javaPreCompileDebug UP-TO-DATE
+> Task :integrations:crowdnode:extractDeepLinksDebug UP-TO-DATE
+> Task :integrations:coinbase:writeDebugAarMetadata UP-TO-DATE
+> Task :integrations:maya:extractDeepLinksDebug UP-TO-DATE
+> Task :integrations:uphold:processDebugManifest UP-TO-DATE
+> Task :integrations:coinbase:extractDeepLinksDebug UP-TO-DATE
+> Task :integrations:crowdnode:processDebugManifest UP-TO-DATE
+> Task :integrations:uphold:compileDebugLibraryResources UP-TO-DATE
+> Task :integrations:maya:processDebugManifest UP-TO-DATE
+> Task :integrations:uphold:mergeDebugShaders UP-TO-DATE
+> Task :integrations:coinbase:processDebugManifest UP-TO-DATE
+> Task :integrations:uphold:compileDebugShaders NO-SOURCE
+> Task :integrations:uphold:generateDebugAssets UP-TO-DATE
+> Task :integrations:uphold:packageDebugAssets UP-TO-DATE
+> Task :integrations:maya:compileDebugLibraryResources UP-TO-DATE
+> Task :integrations:maya:mergeDebugShaders UP-TO-DATE
+> Task :integrations:crowdnode:compileDebugLibraryResources UP-TO-DATE
+> Task :features:exploredash:dataBindingGenBaseClassesDebug UP-TO-DATE
+> Task :integrations:maya:compileDebugShaders NO-SOURCE
+> Task :integrations:crowdnode:mergeDebugShaders UP-TO-DATE
+> Task :integrations:maya:generateDebugAssets UP-TO-DATE
+> Task :integrations:coinbase:compileDebugLibraryResources UP-TO-DATE
+> Task :integrations:crowdnode:compileDebugShaders NO-SOURCE
+> Task :integrations:crowdnode:generateDebugAssets UP-TO-DATE
+> Task :features:exploredash:generateDebugBuildConfig UP-TO-DATE
+> Task :integrations:maya:packageDebugAssets UP-TO-DATE
+> Task :integrations:coinbase:mergeDebugShaders UP-TO-DATE
+> Task :integrations:crowdnode:packageDebugAssets UP-TO-DATE
+> Task :integrations:coinbase:compileDebugShaders NO-SOURCE
+> Task :integrations:coinbase:generateDebugAssets UP-TO-DATE
+> Task :features:exploredash:parseDebugLocalResources UP-TO-DATE
+> Task :integrations:coinbase:packageDebugAssets UP-TO-DATE
+> Task :features:exploredash:generateDebugRFile UP-TO-DATE
+> Task :features:exploredash:generateSafeArgsDebug UP-TO-DATE
+> Task :features:exploredash:javaPreCompileDebug UP-TO-DATE
+> Task :features:exploredash:writeDebugAarMetadata UP-TO-DATE
+> Task :features:exploredash:extractDeepLinksDebug UP-TO-DATE
+> Task :features:exploredash:processDebugManifest UP-TO-DATE
+> Task :features:exploredash:compileDebugLibraryResources UP-TO-DATE
+> Task :features:exploredash:mergeDebugShaders UP-TO-DATE
+> Task :features:exploredash:compileDebugShaders NO-SOURCE
+> Task :features:exploredash:generateDebugAssets UP-TO-DATE
+> Task :features:exploredash:packageDebugAssets UP-TO-DATE
+> Task :wallet:dataBindingMergeDependencyArtifacts_testNet3Debug UP-TO-DATE
+> Task :wallet:generate_testNet3DebugResValues UP-TO-DATE
+> Task :common:kspDebugKotlin UP-TO-DATE
+> Task :wallet:generate_testNet3DebugResources UP-TO-DATE
+> Task :wallet:injectCrashlyticsMappingFileId_testNet3Debug UP-TO-DATE
+> Task :wallet:process_testNet3DebugGoogleServices UP-TO-DATE
+> Task :common:compileDebugKotlin UP-TO-DATE
+> Task :common:javaPreCompileDebug UP-TO-DATE
+> Task :common:compileDebugJavaWithJavac UP-TO-DATE
+> Task :wallet:merge_testNet3DebugResources UP-TO-DATE
+> Task :common:transformDebugClassesWithAsm UP-TO-DATE
+> Task :common:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :common:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :wallet:dataBindingGenBaseClasses_testNet3Debug UP-TO-DATE
+> Task :common:processDebugJavaRes UP-TO-DATE
+> Task :common:createFullJarDebug UP-TO-DATE
+> Task :wallet:generateSafeArgs_testNet3Debug UP-TO-DATE
+> Task :common:compileDebugLibraryResources UP-TO-DATE
+> Task :common:writeDebugAarMetadata UP-TO-DATE
+> Task :common:extractDeepLinksDebug UP-TO-DATE
+> Task :integrations:crowdnode:kspDebugKotlin UP-TO-DATE
+> Task :common:processDebugManifest UP-TO-DATE
+> Task :integrations:uphold:kspDebugKotlin UP-TO-DATE
+> Task :wallet:generate_testNet3DebugBuildConfig
+> Task :integrations:maya:kspDebugKotlin UP-TO-DATE
+> Task :features:exploredash:kspDebugKotlin UP-TO-DATE
+> Task :integrations:uphold:compileDebugKotlin UP-TO-DATE
+> Task :integrations:uphold:compileDebugJavaWithJavac UP-TO-DATE
+> Task :integrations:crowdnode:compileDebugKotlin UP-TO-DATE
+> Task :integrations:crowdnode:compileDebugJavaWithJavac UP-TO-DATE
+> Task :integrations:coinbase:kspDebugKotlin UP-TO-DATE
+> Task :common:bundleLibRuntimeToDirDebug UP-TO-DATE
+> Task :integrations:maya:compileDebugKotlin UP-TO-DATE
+> Task :common:mergeDebugShaders UP-TO-DATE
+> Task :common:compileDebugShaders NO-SOURCE
+> Task :common:generateDebugAssets UP-TO-DATE
+> Task :common:packageDebugAssets UP-TO-DATE
+> Task :features:exploredash:compileDebugKotlin UP-TO-DATE
+> Task :integrations:uphold:transformDebugClassesWithAsm UP-TO-DATE
+> Task :wallet:check_testNet3DebugAarMetadata UP-TO-DATE
+> Task :integrations:uphold:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :integrations:crowdnode:transformDebugClassesWithAsm UP-TO-DATE
+> Task :wallet:map_testNet3DebugSourceSetPaths UP-TO-DATE
+> Task :integrations:uphold:processDebugJavaRes UP-TO-DATE
+> Task :integrations:uphold:createFullJarDebug UP-TO-DATE
+> Task :integrations:crowdnode:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :wallet:create_testNet3DebugCompatibleScreenManifests UP-TO-DATE
+> Task :wallet:extractDeepLinks_testNet3Debug UP-TO-DATE
+> Task :integrations:crowdnode:processDebugJavaRes UP-TO-DATE
+> Task :integrations:maya:compileDebugJavaWithJavac UP-TO-DATE
+> Task :integrations:crowdnode:createFullJarDebug UP-TO-DATE
+> Task :features:exploredash:compileDebugJavaWithJavac UP-TO-DATE
+> Task :integrations:uphold:bundleLibRuntimeToDirDebug UP-TO-DATE
+> Task :integrations:coinbase:compileDebugKotlin UP-TO-DATE
+> Task :integrations:crowdnode:bundleLibRuntimeToDirDebug UP-TO-DATE
+> Task :integrations:coinbase:compileDebugJavaWithJavac UP-TO-DATE
+> Task :integrations:maya:transformDebugClassesWithAsm UP-TO-DATE
+> Task :integrations:maya:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :integrations:maya:processDebugJavaRes UP-TO-DATE
+> Task :integrations:maya:createFullJarDebug UP-TO-DATE
+> Task :wallet:process_testNet3DebugMainManifest UP-TO-DATE
+> Task :features:exploredash:transformDebugClassesWithAsm UP-TO-DATE
+> Task :wallet:process_testNet3DebugManifest UP-TO-DATE
+> Task :wallet:process_testNet3DebugManifestForPackage UP-TO-DATE
+> Task :features:exploredash:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :integrations:coinbase:transformDebugClassesWithAsm UP-TO-DATE
+> Task :integrations:coinbase:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :integrations:coinbase:processDebugJavaRes UP-TO-DATE
+> Task :integrations:coinbase:createFullJarDebug UP-TO-DATE
+> Task :integrations:maya:bundleLibRuntimeToDirDebug UP-TO-DATE
+> Task :features:exploredash:processDebugJavaRes UP-TO-DATE
+> Task :features:exploredash:createFullJarDebug UP-TO-DATE
+> Task :integrations:coinbase:bundleLibRuntimeToDirDebug UP-TO-DATE
+> Task :features:exploredash:bundleLibRuntimeToDirDebug UP-TO-DATE
+> Task :wallet:process_testNet3DebugResources UP-TO-DATE
+> Task :wallet:javaPreCompile_testNet3Debug UP-TO-DATE
+> Task :wallet:merge_testNet3DebugShaders UP-TO-DATE
+> Task :wallet:compile_testNet3DebugShaders NO-SOURCE
+> Task :wallet:generate_testNet3DebugAssets UP-TO-DATE
+> Task :wallet:merge_testNet3DebugAssets UP-TO-DATE
+> Task :wallet:pre_testNet3DebugUnitTestBuild UP-TO-DATE
+> Task :wallet:package_testNet3DebugUnitTestForUnitTest UP-TO-DATE
+> Task :wallet:generate_testNet3DebugUnitTestConfig UP-TO-DATE
+> Task :wallet:javaPreCompile_testNet3DebugUnitTest UP-TO-DATE
+
+> Task :wallet:ksp_testNet3DebugKotlin
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.payments.PaymentsViewModel_HiltModules_BindsModule_Binds_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.payments.PaymentsViewModel_HiltModules_KeyModule_Provide_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.payments.SweepWalletViewModel_HiltModules_BindsModule_Binds_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.payments.SweepWalletViewModel_HiltModules_KeyModule_Provide_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.SetPinViewModel_HiltModules_BindsModule_Binds_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.SetPinViewModel_HiltModules_KeyModule_Provide_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.DecryptSeedViewModel_HiltModules_BindsModule_Binds_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.DecryptSeedViewModel_HiltModules_KeyModule_Provide_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.DashPayUserActivityViewModel_HiltModules_BindsModule_Binds_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.DashPayUserActivityViewModel_HiltModules_KeyModule_Provide_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.shielded.ShieldedReceiveViewModel_HiltModules_BindsModule_Binds_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.shielded.ShieldedReceiveViewModel_HiltModules_KeyModule_Provide_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.shielded.ShieldedTransferViewModel_HiltModules_BindsModule_Binds_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.shielded.ShieldedTransferViewModel_HiltModules_KeyModule_Provide_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.shielded.ShieldedSendViewModel_HiltModules_BindsModule_Binds_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.shielded.ShieldedSendViewModel_HiltModules_KeyModule_Provide_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.dashpay.notification.NotificationsViewModel_HiltModules_BindsModule_Binds_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.dashpay.notification.NotificationsViewModel_HiltModules_KeyModule_Provide_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.dashpay.user.DashPayUserBottomSheetViewModel_HiltModules_BindsModule_Binds_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.dashpay.user.DashPayUserBottomSheetViewModel_HiltModules_KeyModule_Provide_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.dashpay.transactions.PrivateMemoViewModel_HiltModules_BindsModule_Binds_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.dashpay.transactions.PrivateMemoViewModel_HiltModules_KeyModule_Provide_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.dashpay.CreateIdentityViewModel_HiltModules_BindsModule_Binds_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.dashpay.CreateIdentityViewModel_HiltModules_KeyModule_Provide_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.dashpay.DashPayViewModel_HiltModules_BindsModule_Binds_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.dashpay.DashPayViewModel_HiltModules_KeyModule_Provide_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.dashpay.EditProfileViewModel_HiltModules_BindsModule_Binds_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.dashpay.EditProfileViewModel_HiltModules_KeyModule_Provide_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.dashpay.NewAccountConfirmDialogViewModel_HiltModules_BindsModule_Binds_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.dashpay.NewAccountConfirmDialogViewModel_HiltModules_KeyModule_Provide_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.more.masternode_keys.MasternodeKeysViewModel_HiltModules_BindsModule_Binds_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.more.masternode_keys.MasternodeKeysViewModel_HiltModules_KeyModule_Provide_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.more.SettingsViewModel_HiltModules_BindsModule_Binds_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.more.SettingsViewModel_HiltModules_KeyModule_Provide_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.more.tools.ConfirmTopupDialogViewModel_HiltModules_BindsModule_Binds_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.more.tools.ConfirmTopupDialogViewModel_HiltModules_KeyModule_Provide_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.more.tools.ZenLedgerViewModel_HiltModules_BindsModule_Binds_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.more.tools.ZenLedgerViewModel_HiltModules_KeyModule_Provide_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.more.TransactionMetadataSettingsViewModel_HiltModules_BindsModule_Binds_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.more.TransactionMetadataSettingsViewModel_HiltModules_KeyModule_Provide_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.more.ToolsViewModel_HiltModules_BindsModule_Binds_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.more.ToolsViewModel_HiltModules_KeyModule_Provide_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.more.ContactSupportViewModel_HiltModules_BindsModule_Binds_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.more.ContactSupportViewModel_HiltModules_KeyModule_Provide_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.more.SecurityViewModel_HiltModules_BindsModule_Binds_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.more.SecurityViewModel_HiltModules_KeyModule_Provide_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.more.AboutViewModel_HiltModules_BindsModule_Binds_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.more.AboutViewModel_HiltModules_KeyModule_Provide_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.explore.ExploreEntryViewModel_HiltModules_BindsModule_Binds_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.explore.ExploreEntryViewModel_HiltModules_KeyModule_Provide_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.invite.InvitationFragmentViewModel_HiltModules_BindsModule_Binds_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.invite.InvitationFragmentViewModel_HiltModules_KeyModule_Provide_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.invite.InvitesHistoryViewModel_HiltModules_BindsModule_Binds_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.invite.InvitesHistoryViewModel_HiltModules_KeyModule_Provide_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.invite.InvitesHistoryFilterViewModel_HiltModules_BindsModule_Binds_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.invite.InvitesHistoryFilterViewModel_HiltModules_KeyModule_Provide_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.invite.InviteShieldedFundingViewModel_HiltModules_BindsModule_Binds_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.invite.InviteShieldedFundingViewModel_HiltModules_KeyModule_Provide_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.invite.CreateInviteViewModel_HiltModules_BindsModule_Binds_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.invite.CreateInviteViewModel_HiltModules_KeyModule_Provide_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.RestoreWalletFromSeedViewModel_HiltModules_BindsModule_Binds_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.RestoreWalletFromSeedViewModel_HiltModules_KeyModule_Provide_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.transactions.TransactionGroupViewModel_HiltModules_BindsModule_Binds_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.transactions.TransactionGroupViewModel_HiltModules_KeyModule_Provide_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.cutover.CutoverSyncNoticeViewModel_HiltModules_BindsModule_Binds_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.cutover.CutoverSyncNoticeViewModel_HiltModules_KeyModule_Provide_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.cutover.SdkBindPendingViewModel_HiltModules_BindsModule_Binds_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.cutover.SdkBindPendingViewModel_HiltModules_KeyModule_Provide_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.OnboardingViewModel_HiltModules_BindsModule_Binds_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.OnboardingViewModel_HiltModules_KeyModule_Provide_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.NetworkMonitorViewModel_HiltModules_BindsModule_Binds_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.NetworkMonitorViewModel_HiltModules_KeyModule_Provide_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.buy_sell.BuyAndSellViewModel_HiltModules_BindsModule_Binds_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.buy_sell.BuyAndSellViewModel_HiltModules_KeyModule_Provide_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.buy_sell.IntegrationOverviewViewModel_HiltModules_BindsModule_Binds_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.buy_sell.IntegrationOverviewViewModel_HiltModules_KeyModule_Provide_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.InviteHandlerViewModel_HiltModules_BindsModule_Binds_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.InviteHandlerViewModel_HiltModules_KeyModule_Provide_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.TransactionResultViewModel_HiltModules_BindsModule_Binds_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.TransactionResultViewModel_HiltModules_KeyModule_Provide_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.RestoreWalletFromFileViewModel_HiltModules_BindsModule_Binds_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.RestoreWalletFromFileViewModel_HiltModules_KeyModule_Provide_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.main.shortcuts.ShortcutsViewModel_HiltModules_BindsModule_Binds_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.main.shortcuts.ShortcutsViewModel_HiltModules_KeyModule_Provide_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.main.MainViewModel_HiltModules_BindsModule_Binds_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.main.MainViewModel_HiltModules_KeyModule_Provide_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.SingleActionSharedViewModel_HiltModules_BindsModule_Binds_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.SingleActionSharedViewModel_HiltModules_KeyModule_Provide_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.send.SendCoinsViewModel_HiltModules_BindsModule_Binds_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.send.SendCoinsViewModel_HiltModules_KeyModule_Provide_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.send.PaymentProtocolViewModel_HiltModules_BindsModule_Binds_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.send.PaymentProtocolViewModel_HiltModules_KeyModule_Provide_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.send.SendCoinsBaseViewModel_HiltModules_BindsModule_Binds_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.send.SendCoinsBaseViewModel_HiltModules_KeyModule_Provide_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.send.BuyCreditsViewModel_HiltModules_BindsModule_Binds_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.send.BuyCreditsViewModel_HiltModules_KeyModule_Provide_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.migration.MixedFundsMigrationViewModel_HiltModules_BindsModule_Binds_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.migration.MixedFundsMigrationViewModel_HiltModules_KeyModule_Provide_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.username.voting.VotingViewModel_HiltModules_BindsModule_Binds_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.username.voting.VotingViewModel_HiltModules_KeyModule_Provide_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.username.voting.UsernameRequestsViewModel_HiltModules_BindsModule_Binds_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.username.voting.UsernameRequestsViewModel_HiltModules_KeyModule_Provide_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.username.request.RequestUserNameViewModel_HiltModules_BindsModule_Binds_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.username.request.RequestUserNameViewModel_HiltModules_KeyModule_Provide_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.username.request.VerifyIdentityViewModel_HiltModules_BindsModule_Binds_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.username.request.VerifyIdentityViewModel_HiltModules_KeyModule_Provide_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.username.request.UsernamePaymentViewModel_HiltModules_BindsModule_Binds_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.username.request.UsernamePaymentViewModel_HiltModules_KeyModule_Provide_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.username.request.ConfirmUserNameDialogViewModel_HiltModules_BindsModule_Binds_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.username.request.ConfirmUserNameDialogViewModel_HiltModules_KeyModule_Provide_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.CheckPinViewModel_HiltModules_BindsModule_Binds_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+w: [ksp] No dependencies reported for generated source de.schildbach.wallet.ui.CheckPinViewModel_HiltModules_KeyModule_Provide_LazyMapKey.java which willprevent incremental compilation.
+Please file a bug at https://issuetracker.google.com/issues/new?component=413107.
+
+> Task :wallet:compile_testNet3DebugKotlin
+w: file:///Users/dcg/workspace/dash-wallet-qa/pr/sr03-receive-address/wallet/src/de/schildbach/wallet/di/AppModule.kt:92:58 'static fun getInstance(): UpholdClient!' is deprecated. Inject instead.
+w: file:///Users/dcg/workspace/dash-wallet-qa/pr/sr03-receive-address/wallet/src/de/schildbach/wallet/payments/SendCoinsTaskRunner.kt:373:33 'val wallet: Wallet?' is deprecated. The wallet is in here temporary and will be moved to a separate holder, limited to the the wallet module.
+w: file:///Users/dcg/workspace/dash-wallet-qa/pr/sr03-receive-address/wallet/src/de/schildbach/wallet/payments/SendCoinsTaskRunner.kt:500:37 'val wallet: Wallet?' is deprecated. The wallet is in here temporary and will be moved to a separate holder, limited to the the wallet module.
+w: file:///Users/dcg/workspace/dash-wallet-qa/pr/sr03-receive-address/wallet/src/de/schildbach/wallet/payments/SendCoinsTaskRunner.kt:595:33 'val wallet: Wallet?' is deprecated. The wallet is in here temporary and will be moved to a separate holder, limited to the the wallet module.
+w: file:///Users/dcg/workspace/dash-wallet-qa/pr/sr03-receive-address/wallet/src/de/schildbach/wallet/payments/SendCoinsTaskRunner.kt:774:33 'val wallet: Wallet?' is deprecated. The wallet is in here temporary and will be moved to a separate holder, limited to the the wallet module.
+w: file:///Users/dcg/workspace/dash-wallet-qa/pr/sr03-receive-address/wallet/src/de/schildbach/wallet/payments/SendCoinsTaskRunner.kt:811:33 'val wallet: Wallet?' is deprecated. The wallet is in here temporary and will be moved to a separate holder, limited to the the wallet module.
+w: file:///Users/dcg/workspace/dash-wallet-qa/pr/sr03-receive-address/wallet/src/de/schildbach/wallet/payments/SendCoinsTaskRunner.kt:860:33 'val wallet: Wallet?' is deprecated. The wallet is in here temporary and will be moved to a separate holder, limited to the the wallet module.
+w: file:///Users/dcg/workspace/dash-wallet-qa/pr/sr03-receive-address/wallet/src/de/schildbach/wallet/payments/SendCoinsTaskRunner.kt:1093:33 'val wallet: Wallet?' is deprecated. The wallet is in here temporary and will be moved to a separate holder, limited to the the wallet module.
+w: file:///Users/dcg/workspace/dash-wallet-qa/pr/sr03-receive-address/wallet/src/de/schildbach/wallet/payments/SendCoinsTaskRunner.kt:1146:33 'val wallet: Wallet?' is deprecated. The wallet is in here temporary and will be moved to a separate holder, limited to the the wallet module.
+w: file:///Users/dcg/workspace/dash-wallet-qa/pr/sr03-receive-address/wallet/src/de/schildbach/wallet/payments/SendCoinsTaskRunner.kt:1265:33 'val wallet: Wallet?' is deprecated. The wallet is in here temporary and will be moved to a separate holder, limited to the the wallet module.
+w: file:///Users/dcg/workspace/dash-wallet-qa/pr/sr03-receive-address/wallet/src/de/schildbach/wallet/service/platform/PlatformSyncService.kt:2765:65 'val dashAliasIdentityId: Identifier?' is deprecated. this field is no longer used.
+w: file:///Users/dcg/workspace/dash-wallet-qa/pr/sr03-receive-address/wallet/src/de/schildbach/wallet/service/platform/TopUpRepository.kt:189:60 'val wallet: Wallet?' is deprecated. The wallet is in here temporary and will be moved to a separate holder, limited to the the wallet module.
+w: file:///Users/dcg/workspace/dash-wallet-qa/pr/sr03-receive-address/wallet/src/de/schildbach/wallet/service/platform/TopUpRepository.kt:204:46 'val wallet: Wallet?' is deprecated. The wallet is in here temporary and will be moved to a separate holder, limited to the the wallet module.
+w: file:///Users/dcg/workspace/dash-wallet-qa/pr/sr03-receive-address/wallet/src/de/schildbach/wallet/service/platform/TopUpRepository.kt:220:46 'val wallet: Wallet?' is deprecated. The wallet is in here temporary and will be moved to a separate holder, limited to the the wallet module.
+w: file:///Users/dcg/workspace/dash-wallet-qa/pr/sr03-receive-address/wallet/src/de/schildbach/wallet/service/platform/TopUpRepository.kt:221:42 'val wallet: Wallet?' is deprecated. The wallet is in here temporary and will be moved to a separate holder, limited to the the wallet module.
+w: file:///Users/dcg/workspace/dash-wallet-qa/pr/sr03-receive-address/wallet/src/de/schildbach/wallet/service/platform/TopUpRepository.kt:233:46 'val wallet: Wallet?' is deprecated. The wallet is in here temporary and will be moved to a separate holder, limited to the the wallet module.
+w: file:///Users/dcg/workspace/dash-wallet-qa/pr/sr03-receive-address/wallet/src/de/schildbach/wallet/service/platform/TopUpRepository.kt:262:46 'val wallet: Wallet?' is deprecated. The wallet is in here temporary and will be moved to a separate holder, limited to the the wallet module.
+w: file:///Users/dcg/workspace/dash-wallet-qa/pr/sr03-receive-address/wallet/src/de/schildbach/wallet/service/platform/TopUpRepository.kt:387:46 'val wallet: Wallet?' is deprecated. The wallet is in here temporary and will be moved to a separate holder, limited to the the wallet module.
+w: file:///Users/dcg/workspace/dash-wallet-qa/pr/sr03-receive-address/wallet/src/de/schildbach/wallet/service/platform/TopUpRepository.kt:388:67 'val wallet: Wallet?' is deprecated. The wallet is in here temporary and will be moved to a separate holder, limited to the the wallet module.
+w: file:///Users/dcg/workspace/dash-wallet-qa/pr/sr03-receive-address/wallet/src/de/schildbach/wallet/service/platform/TopUpRepository.kt:605:46 'val wallet: Wallet?' is deprecated. The wallet is in here temporary and will be moved to a separate holder, limited to the the wallet module.
+w: file:///Users/dcg/workspace/dash-wallet-qa/pr/sr03-receive-address/wallet/src/de/schildbach/wallet/service/platform/sdk/L1ShadowSyncService.kt:1694:20 'val wallet: Wallet?' is deprecated. The wallet is in here temporary and will be moved to a separate holder, limited to the the wallet module.
+w: file:///Users/dcg/workspace/dash-wallet-qa/pr/sr03-receive-address/wallet/src/de/schildbach/wallet/service/platform/sdk/L1ShadowSyncService.kt:1699:20 'val wallet: Wallet?' is deprecated. The wallet is in here temporary and will be moved to a separate holder, limited to the the wallet module.
+w: file:///Users/dcg/workspace/dash-wallet-qa/pr/sr03-receive-address/wallet/src/de/schildbach/wallet/service/platform/sdk/L1ShadowSyncService.kt:1702:20 'val wallet: Wallet?' is deprecated. The wallet is in here temporary and will be moved to a separate holder, limited to the the wallet module.
+w: file:///Users/dcg/workspace/dash-wallet-qa/pr/sr03-receive-address/wallet/src/de/schildbach/wallet/service/platform/sdk/L1ShadowSyncService.kt:1722:20 'val wallet: Wallet?' is deprecated. The wallet is in here temporary and will be moved to a separate holder, limited to the the wallet module.
+w: file:///Users/dcg/workspace/dash-wallet-qa/pr/sr03-receive-address/wallet/src/de/schildbach/wallet/service/platform/sdk/L1ShadowSyncService.kt:1973:55 'val wallet: Wallet?' is deprecated. The wallet is in here temporary and will be moved to a separate holder, limited to the the wallet module.
+w: file:///Users/dcg/workspace/dash-wallet-qa/pr/sr03-receive-address/wallet/src/de/schildbach/wallet/ui/OnboardingActivity.kt:189:48 'val configuration: Configuration!' is deprecated. Inject Configuration instead.
+w: file:///Users/dcg/workspace/dash-wallet-qa/pr/sr03-receive-address/wallet/src/de/schildbach/wallet/ui/OnboardingActivity.kt:272:51 'fun <T : Parcelable!> getParcelableExtra(p0: String!): T?' is deprecated. Deprecated in Java.
+w: file:///Users/dcg/workspace/dash-wallet-qa/pr/sr03-receive-address/wallet/src/de/schildbach/wallet/ui/OnboardingActivity.kt:321:51 'fun <T : Parcelable!> getParcelableExtra(p0: String!): T?' is deprecated. Deprecated in Java.
+w: file:///Users/dcg/workspace/dash-wallet-qa/pr/sr03-receive-address/wallet/src/de/schildbach/wallet/ui/OnboardingActivity.kt:343:13 'fun startActivityForResult(p0: Intent, p1: Int): Unit' is deprecated. Deprecated in Java.
+w: file:///Users/dcg/workspace/dash-wallet-qa/pr/sr03-receive-address/wallet/src/de/schildbach/wallet/ui/OnboardingActivity.kt:569:9 'fun startActivityForResult(p0: Intent, p1: Int): Unit' is deprecated. Deprecated in Java.
+w: file:///Users/dcg/workspace/dash-wallet-qa/pr/sr03-receive-address/wallet/src/de/schildbach/wallet/ui/OnboardingActivity.kt:584:13 'fun startActivityForResult(p0: Intent, p1: Int): Unit' is deprecated. Deprecated in Java.
+w: file:///Users/dcg/workspace/dash-wallet-qa/pr/sr03-receive-address/wallet/src/de/schildbach/wallet/ui/OnboardingActivity.kt:607:9 'fun overridePendingTransition(p0: Int, p1: Int): Unit' is deprecated. Deprecated in Java.
+w: file:///Users/dcg/workspace/dash-wallet-qa/pr/sr03-receive-address/wallet/src/de/schildbach/wallet/ui/OnboardingActivity.kt:612:15 'fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?): Unit' is deprecated. Deprecated in Java.
+w: file:///Users/dcg/workspace/dash-wallet-qa/pr/sr03-receive-address/wallet/src/de/schildbach/wallet/ui/dashpay/utils/ImgurService.kt:44:41 'fun create(contentType: MediaType?, content: ByteArray, offset: Int = ..., byteCount: Int = ...): RequestBody' is deprecated. Moved to extension function. Put the 'content' argument first to fix Java.
+w: file:///Users/dcg/workspace/dash-wallet-qa/pr/sr03-receive-address/wallet/src/de/schildbach/wallet/ui/invite/InvitationFragment.kt:58:35 'static fun from(p0: Activity): ShareCompat.IntentBuilder' is deprecated. Deprecated in Java.
+w: file:///Users/dcg/workspace/dash-wallet-qa/pr/sr03-receive-address/wallet/src/de/schildbach/wallet/ui/more/ContactSupportViewModel.kt:119:46 'val wallet: Wallet?' is deprecated. The wallet is in here temporary and will be moved to a separate holder, limited to the the wallet module.
+
+> Task :wallet:compile_testNet3DebugJavaWithJavac
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+
+> Task :wallet:hiltAggregateDeps_testNet3Debug UP-TO-DATE
+> Task :wallet:hiltJavaCompile_testNet3Debug UP-TO-DATE
+> Task :wallet:process_testNet3DebugJavaRes UP-TO-DATE
+> Task :wallet:transform_testNet3DebugClassesWithAsm
+> Task :wallet:bundle_testNet3DebugClassesToCompileJar
+> Task :wallet:bundle_testNet3DebugClassesToRuntimeJar
+> Task :wallet:ksp_testNet3DebugUnitTestKotlin
+> Task :wallet:compile_testNet3DebugUnitTestKotlin
+> Task :wallet:compile_testNet3DebugUnitTestJavaWithJavac UP-TO-DATE
+> Task :wallet:hiltAggregateDeps_testNet3DebugUnitTest UP-TO-DATE
+> Task :wallet:hiltJavaCompile_testNet3DebugUnitTest UP-TO-DATE
+> Task :wallet:process_testNet3DebugUnitTestJavaRes UP-TO-DATE
+> Task :wallet:transform_testNet3DebugUnitTestClassesWithAsm
+> Task :wallet:test_testNet3DebugUnitTest
+
+BUILD SUCCESSFUL in 58s
+183 actionable tasks: 11 executed, 172 up-to-date
+EXIT=0

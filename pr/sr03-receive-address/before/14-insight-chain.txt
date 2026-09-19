@@ -1,0 +1,7 @@
+ygUWAkqbnKURkJ1mMEEh5FPKAfQmMdSUH9	"txApperances":2	"totalReceived":0.001	"balance":0
+ydpETkGNb856diaqJoPiUptbVVPEpx5aVW	"txApperances":2	"totalReceived":1	"balance":0
+ySu3d1VcumES35pzwPHWNuTPFZE4AghPNj	"txApperances":0	"totalReceived":0	"balance":0
+yMknkjqmb8M2gxwB1V4uDSoWVbLN2SsZq3	"txApperances":2	"totalReceived":0.95235766	"balance":0
+ybr74Sjmmc4vUwAEwLdJkMQC8NpZy6pWp1	"txApperances":0	"totalReceived":0	"balance":0
+yRNSttnwVWfxk7XgSoSCCknKHDgUJKEGxL	"txApperances":0	"totalReceived":0	"balance":0
+yToWQgMbSd8Zci8shQac9H1vhy78rGJrVU	"txApperances":0	"totalReceived":0	"balance":0

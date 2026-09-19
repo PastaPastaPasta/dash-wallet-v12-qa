@@ -1,0 +1,13 @@
+addressIndex|address|isUsed|balance|poolTypeTag|accountId
+0|yfyy4WKxs9GjGL7u5U9NftraYYCLgRNtxF|1|0|0|1
+0|yizipNPyVLAdHaPYsmE75zSioRMywB6MdV|0|0|0|2
+0|yUFsAUo8wpqkc43zTiCmohcwYVCr9V6y9S|0|0|0|3
+1|ya5S49h1StUy24HLXRSFeRDQKootiUfWv6|0|0|0|1
+1|ycKh484p8sDfNjH95MVu7ZD7nvPjga72XK|0|0|0|2
+1|yj4CHbq8HusWe4zN6b2tph6TFSG3FnYkvF|0|0|0|3
+2|yh7sufgFnAvyfNb37p2SkSGnicn2hTYXBH|0|0|0|1
+2|yaGgb7yidZFhZa7yUrcncpdTYffoGwtbr7|0|0|0|2
+2|yVx9V8YArGTEW9zEd7veGfKDuJ4c3pAwnY|0|0|0|3
+3|yVqj4wfc2fHxR15gSye2TLjfTioFquscTW|0|0|0|1
+3|yN6FBo3GVnHPgYfp3MnkXdyYbwCBSUd3EL|0|0|0|2
+3|yjMd4txQrxp2yWvNPZhu6XyCugiDysgTmB|0|0|0|3

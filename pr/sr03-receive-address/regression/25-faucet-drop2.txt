@@ -1,0 +1,1 @@
+faucet drop2 txid 349ba6ee5a49716648714f3e6221e646ec56c25a188882cb1a9484daf8e2e352 -> yfyy4WKxs9GjGL7u5U9NftraYYCLgRNtxF (master new wallet key #0)

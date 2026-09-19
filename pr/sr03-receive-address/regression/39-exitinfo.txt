@@ -1,0 +1,8 @@
+ACTIVITY MANAGER PROCESS EXIT INFO (dumpsys activity exit-info)
+Last Timestamp of Persistence Into Persistent Storage: 2026-09-19 17:00:21.097
+  package: hashengineering.darkcoin.wallet_test
+    Historical Process Exit for uid=10212
+        ApplicationExitInfo #0:
+          timestamp=2026-09-19 17:13:38.970 pid=11551 realUid=10212 packageUid=10212 definingUid=10212 user=0
+          process=hashengineering.darkcoin.wallet_test reason=16 (PACKAGE UPDATED) subreason=0 (UNKNOWN) status=0
+          importance=100 pss=0.00 rss=316MB description=stop hashengineering.darkcoin.wallet_test due to installPackageLI state=empty trace=null
