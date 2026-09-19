@@ -6,6 +6,8 @@ nav.top{background:#012060;color:#fff;padding:8px 24px;margin:-16px -24px 16px;p
 .S1{color:#b00020;font-weight:bold}.S2{color:#c75000;font-weight:bold}.toc{background:#f8f9fb;border:1px solid #e3e6ea;padding:8px 16px;font-size:13px;columns:2}.toc ul{margin:2px 0;padding-left:16px}
 #lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:50;align-items:center;justify-content:center;flex-direction:column}#lb.on{display:flex}#lb img{max-width:96vw;max-height:88vh;border:2px solid #fff;box-shadow:0 0 30px #000}#lb .cap{color:#eee;font:13px ui-monospace,monospace;margin-top:8px}#lb .cap a{color:#8cf}#lb .x{position:absolute;top:10px;right:18px;color:#fff;font-size:30px;cursor:pointer}#lb .nv{position:absolute;top:50%;color:#fff;font-size:44px;cursor:pointer;padding:0 16px;user-select:none}#lb .pv{left:0}#lb .nx{right:0}a.img img{cursor:zoom-in}
 sup.more a{margin:0 2px;font-size:10px}
+thead.sortable th.asc::after{content:' \25B2';font-size:9px}thead.sortable th.desc::after{content:' \25BC';font-size:9px}
+tr[data-sev=S1] td:nth-child(2){background:#fde7e9}tr[data-sev=S2] td:nth-child(2){background:#fff1e0}
 a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:target{background:#fff3b0;outline:2px solid #f5b400}
 .note{background:#fff8e1;border-left:4px solid #f5b400;padding:8px 12px;margin:12px 0}
 </style><nav class=top><a href="../../index.html">Home</a><a href="../../QA-REPORT.html">Full report</a><a href="../../EXEC-SUMMARY.html">Executive summary</a><a href="../../STORY-MATRIX.html">User-story matrix</a><a href="../../DEFECT-LEDGER.html">Defect register</a><a href="../index.html">Evidence gallery</a><a href="../../QA-PLAN.html">Test plan</a><a href="../../streams.html">Stream reports</a></nav><h1 id="qa-report-s4-regression-sweep-e1e7-e11-localisation-a11y-e10-static-e9-sr-05-sr-22-sr-34">QA report: S4 — regression sweep (<a class=ev href="../index.html#S4-E1">E1</a>–<a class=ev href="../index.html#S4-E7">E7</a>, <a class=ev href="../index.html#S4-E11">E11</a>), localisation + a11y (<a class=ev href="../index.html#S4-E10">E10</a>), static (E9), SR-05 / SR-22 / SR-34</h1>
@@ -309,7 +311,7 @@ Throwaway wallet: seed <code>device during battle soldier please track movie cor
 <p>Stability: zero app crashes in 3.5 h; every exit-info entry is the agent's own FORCE STOP. Memory: peak PSS 344 MB, native 178 MB, Dalvik ~24 MB over 3 h 18 m.</p>
 <h2 id="defects">Defects</h2>
 <table>
-<thead>
+<thead class=sortable>
 <tr>
 <th>ID</th>
 <th>Sev</th>
@@ -319,8 +321,7 @@ Throwaway wallet: seed <code>device during battle soldier please track movie cor
 <th>Suspected area</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr data-sev="S1" data-idx="0">
 <td>S4-D01</td>
 <td class=S1><strong>S1</strong></td>
 <td>Restore with the creation-date picker's default (today) silently loses most of the balance while the UI says "Synced"</td>
@@ -328,7 +329,7 @@ Throwaway wallet: seed <code>device during battle soldier please track movie cor
 <td><a class=ev href="../S4/SR22/01-datepicker-default.webp">SR22/01-datepicker-default.png</a>, <a class=ev href="../S4/SR22/02-date-accepted.webp">02-date-accepted.png</a>, <a class=ev href="../S4/SR22/06-netmon.webp">06-netmon.png</a> (Synced), <a class=ev href="../S4/SR22/07-final-balance.webp">07-final-balance.png</a> (<strong>21.734822</strong> vs <strong>107.08</strong>); <a class=ev href="../S4/walletlog-final/files/log/wallet.log">wallet.log</a> 08:23:56 <code>BirthHeightResolver - resolved birth time 1789794000 to SDK birth height 1401408</code>, <code>armSpvRescan: filter watermark rewind to 1401408 armed</code></td>
 <td><code>RestoreWalletFromSeedActivity.showDatePickerDialog()</code> initialises to today; nothing surfaces "history before X was never scanned"</td>
 </tr>
-<tr>
+<tr data-sev="S1" data-idx="1">
 <td>S4-D02</td>
 <td class=S1><strong>S1</strong></td>
 <td>Stale <code>wallet-wipe.pending</code> marker destroys an intact wallet at launch</td>
@@ -336,7 +337,7 @@ Throwaway wallet: seed <code>device during battle soldier please track movie cor
 <td><a class=ev href="../S4/SR05/01-before-marker.webp">SR05/01-03</a><sup class=more><a href="../S4/SR05/02-after-marker-launch.webp" title="S4/SR05/02-after-marker-launch.webp">2</a> <a href="../S4/SR05/03-after-40s.webp" title="S4/SR05/03-after-40s.webp">3</a></sup>, <a class=ev href="../S4/SR05/sr05.mp4">sr05.mp4</a>; <a class=ev href="../S4/walletlog-final/files/log/wallet.log">wallet.log</a> 08:18:10 <code>removing wallet from memory during wipe</code>; wallet + key-backup deleted</td>
 <td><code>util/WalletWipeState.kt</code>: zero-byte marker, no wallet id/timestamp/step, no confirmation; <code>complete()</code> logs "the next launch will re-run the wipe" if the marker delete fails</td>
 </tr>
-<tr>
+<tr data-sev="S2" data-idx="2">
 <td>S4-D03</td>
 <td><strong>S2</strong></td>
 <td>Lock-screen bypass via Forgot PIN</td>
@@ -344,7 +345,7 @@ Throwaway wallet: seed <code>device during battle soldier please track movie cor
 <td><a class=ev href="../S4/E2/20-bypass-01-locked.webp">E2/20-bypass-01..06</a><sup class=more><a href="../S4/E2/20-bypass-02-forgot-sheet.webp" title="S4/E2/20-bypass-02-forgot-sheet.webp">2</a> <a href="../S4/E2/20-bypass-03-recover-screen.webp" title="S4/E2/20-bypass-03-recover-screen.webp">3</a> <a href="../S4/E2/20-bypass-04-after-back.webp" title="S4/E2/20-bypass-04-after-back.webp">4</a> <a href="../S4/E2/20-bypass-05-more-accessible.webp" title="S4/E2/20-bypass-05-more-accessible.webp">5</a> <a href="../S4/E2/20-bypass-06-receive-accessible.webp" title="S4/E2/20-bypass-06-receive-accessible.webp">6</a></sup>, <a class=ev href="../S4/E2/e2-forgotpin-bypass.mp4">e2-forgotpin-bypass.mp4</a></td>
 <td><code>LockScreenActivity</code>/<code>ForgotPinActivity</code> result handling</td>
 </tr>
-<tr>
+<tr data-sev="S2" data-idx="3">
 <td>S4-D04</td>
 <td><strong>S2</strong></td>
 <td>Reset Wallet wipes without the PIN</td>
@@ -352,7 +353,7 @@ Throwaway wallet: seed <code>device during battle soldier please track movie cor
 <td><a class=ev href="../S4/E2/40-reset-wallet-dialog.webp">E2/40</a>, <code>42</code>, <code>44</code></td>
 <td><code>SecurityFragment.resetWallet()</code> has no <code>authManager.authenticate</code></td>
 </tr>
-<tr>
+<tr data-sev="S3" data-idx="4">
 <td>S4-D05</td>
 <td>S3</td>
 <td>Every invalid recovery phrase yields the same "Error"; specific messages are dead code</td>
@@ -360,7 +361,7 @@ Throwaway wallet: seed <code>device during battle soldier please track movie cor
 <td><a class=ev href="../S4/E1/16-seed-11words.webp">E1/16</a>, <code>17</code>, <code>18</code></td>
 <td><code>RestoreWalletFromSeedViewModel.isSeedValid()</code> swallows <code>MnemonicException</code></td>
 </tr>
-<tr>
+<tr data-sev="S3" data-idx="5">
 <td>S4-D06</td>
 <td>S3</td>
 <td>RTL: PIN pad and amount keypad mirrored</td>
@@ -368,7 +369,7 @@ Throwaway wallet: seed <code>device during battle soldier please track movie cor
 <td><a class=ev href="../S4/E10/ar-EG/00-lockscreen.txt">E10/ar-EG/00</a><sup class=more><a href="../S4/E10/ar-EG/00-lockscreen.webp" title="S4/E10/ar-EG/00-lockscreen.webp">2</a></sup>, <code>13</code>; <a class=ev href="../S4/E10/e10-ar.mp4">e10-ar.mp4</a></td>
 <td>Keypad layouts inherit <code>layoutDirection=locale</code></td>
 </tr>
-<tr>
+<tr data-sev="S3" data-idx="6">
 <td>S4-D07</td>
 <td>S3</td>
 <td>Font scale 1.5/2.0: More subtitles clipped; home shortcut card overflows into the banner</td>
@@ -376,7 +377,7 @@ Throwaway wallet: seed <code>device during battle soldier please track movie cor
 <td><a class=ev href="../S4/E10/fontscale-2.0/01-home.txt">E10/fontscale-2.0/01</a><sup class=more><a href="../S4/E10/fontscale-2.0/01-home.webp" title="S4/E10/fontscale-2.0/01-home.webp">2</a></sup>, <code>05</code></td>
 <td>Fixed row/pane heights</td>
 </tr>
-<tr>
+<tr data-sev="S4" data-idx="7">
 <td>S4-D08</td>
 <td>S4</td>
 <td>Entire new Shielded UI untranslated in every locale (64 <code>shielded_*</code> strings only in <code>values/strings-dashpay.xml</code>)</td>
@@ -384,7 +385,7 @@ Throwaway wallet: seed <code>device during battle soldier please track movie cor
 <td><a class=ev href="../S4/E10/ar-EG/06b-shielded.webp">E10/*/06b-shielded.png</a><sup class=more><a href="../index.html#S4-E10" title="10 files, open gallery">+9</a></sup></td>
 <td>translations not exported</td>
 </tr>
-<tr>
+<tr data-sev="S4" data-idx="8">
 <td>S4-D09</td>
 <td>S4</td>
 <td>About build number "(0)" (<code>VERSION_CODE % 100</code>)</td>
@@ -392,7 +393,7 @@ Throwaway wallet: seed <code>device during battle soldier please track movie cor
 <td><a class=ev href="../S4/E3/30-about-screen.webp">E3/30</a></td>
 <td><code>AboutFragment.kt:80-81</code></td>
 </tr>
-<tr>
+<tr data-sev="S4" data-idx="9">
 <td>S4-D10</td>
 <td>S4</td>
 <td>Hebrew split across <code>values-he</code> (211) and <code>values-iw</code> (192), both legacy stubs — <code>he-IL</code> ~89 % English</td>
@@ -400,7 +401,7 @@ Throwaway wallet: seed <code>device during battle soldier please track movie cor
 <td><a class=ev href="../S4/E10/he-IL/00-lockscreen.txt">E10/he-IL/*</a><sup class=more><a href="../index.html#S4-E10" title="12 files, open gallery">+11</a></sup></td>
 <td>resource dirs</td>
 </tr>
-<tr>
+<tr data-sev="S4" data-idx="10">
 <td>S4-D11</td>
 <td>S4</td>
 <td>ar-EG mixes Arabic + English on onboarding; Arabic-Indic and Western digits mixed in one row</td>
@@ -408,7 +409,7 @@ Throwaway wallet: seed <code>device during battle soldier please track movie cor
 <td><a class=ev href="../S4/E10/ar-EG/20-onboarding-p1.txt">E10/ar-EG/20</a><sup class=more><a href="../S4/E10/ar-EG/20-onboarding-p1.webp" title="S4/E10/ar-EG/20-onboarding-p1.webp">2</a></sup>, <code>01</code>, <code>13</code></td>
 <td><code>values-ar</code> 687/1477; mixed formatters</td>
 </tr>
-<tr>
+<tr data-sev="S4" data-idx="11">
 <td>S4-D12</td>
 <td>S4</td>
 <td>Lock-screen title near-black on the dark photo (all locales)</td>
@@ -416,7 +417,7 @@ Throwaway wallet: seed <code>device during battle soldier please track movie cor
 <td><a class=ev href="../S4/E10/en-US/00-lockscreen.webp">E10/en-US/00-lockscreen.png</a></td>
 <td><code>action_title</code> colour</td>
 </tr>
-<tr>
+<tr data-sev="S4" data-idx="12">
 <td>S4-D13</td>
 <td>S4</td>
 <td>"1 keys" — no plural handling</td>
@@ -424,7 +425,7 @@ Throwaway wallet: seed <code>device during battle soldier please track movie cor
 <td><a class=ev href="../S4/E7/13-masternode-keys-screen.webp">E7/13</a></td>
 <td>missing plurals</td>
 </tr>
-<tr>
+<tr data-sev="S4" data-idx="13">
 <td>S4-D14</td>
 <td>S4</td>
 <td>ZenLedger "Export → Allow" silent no-op</td>
@@ -432,15 +433,14 @@ Throwaway wallet: seed <code>device during battle soldier please track movie cor
 <td><a class=ev href="../S4/E7/18-zenledger.webp">E7/18-20</a><sup class=more><a href="../S4/E7/19-zenledger-export.webp" title="S4/E7/19-zenledger-export.webp">2</a> <a href="../S4/E7/20-zenledger-after-allow.webp" title="S4/E7/20-zenledger-after-allow.webp">3</a></sup></td>
 <td>no error surfaced</td>
 </tr>
-<tr>
+<tr data-sev="S4" data-idx="14">
 <td>S4-D15</td>
 <td>S4</td>
 <td>Address book opens on "SENDING ADDRESSES"</td>
 <td>Tools → Address book</td>
 <td><a class=ev href="../S4/E7/02-address-book.webp">E7/02</a></td>
 <td>initial pager position</td>
-</tr>
-</tbody>
+</tr></tbody>
 </table>
 <p>Localisation coverage over 10 in-app screens (strings still English): zh-CN 11 %, es-ES 11 %, ja-JP 12 %, ru-RU 12 %, de-DE 15 %, fil-PH 16 %, ar-EG 35 %, he-IL 89 %. RTL mirroring of layouts (toolbars, nav, chevrons) is correct.</p>
 <p>Dismissed (deliberate): strikethrough fiat on non-prod; orange logo on testnet About; empty "Your addresses" before first receive.</p>
@@ -457,4 +457,8 @@ function hide(){lb.classList.remove('on');im.src=''}
 document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".webp"],a[href$=".png"]');if(a&&!a.closest('#lb')){e.preventDefault();show(links().indexOf(a))}});
 lb.querySelector('.x').onclick=hide;lb.querySelector('.pv').onclick=function(e){e.stopPropagation();show(i-1)};lb.querySelector('.nx').onclick=function(e){e.stopPropagation();show(i+1)};
 lb.addEventListener('click',function(e){if(e.target===lb||e.target===im)hide()});
-document.addEventListener('keydown',function(e){if(!lb.classList.contains('on'))return;if(e.key==='Escape')hide();if(e.key==='ArrowLeft')show(i-1);if(e.key==='ArrowRight')show(i+1)});})();</script></html>
+document.addEventListener('keydown',function(e){if(!lb.classList.contains('on'))return;if(e.key==='Escape')hide();if(e.key==='ArrowLeft')show(i-1);if(e.key==='ArrowRight')show(i+1)});})();</script><script>(function(){document.querySelectorAll('thead.sortable').forEach(function(th){var tb=th.parentNode.querySelector('tbody');var ths=th.querySelectorAll('th');
+ths.forEach(function(h,ci){h.style.cursor='pointer';h.title='click to sort';h.addEventListener('click',function(){var rows=Array.prototype.slice.call(tb.querySelectorAll('tr'));var asc=!(h.dataset.asc==='1');ths.forEach(function(x){delete x.dataset.asc;x.classList.remove('asc','desc')});h.dataset.asc=asc?'1':'0';h.classList.add(asc?'asc':'desc');
+var rank={S1:0,S2:1,S3:2,S4:3,other:4,dup:5,info:6,env:7};
+function key(r){if(ci===1)return rank[r.dataset.sev]!==undefined?rank[r.dataset.sev]:9;if(ci===0)return +r.dataset.idx;var c=r.children[ci];return c?c.textContent.trim().toLowerCase():''}
+rows.sort(function(a,b){var ka=key(a),kb=key(b);if(ka<kb)return asc?-1:1;if(ka>kb)return asc?1:-1;return (+a.dataset.idx)-(+b.dataset.idx)});rows.forEach(function(r){tb.appendChild(r)})})})})})();</script></html>

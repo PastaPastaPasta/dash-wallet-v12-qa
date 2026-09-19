@@ -6,6 +6,8 @@ nav.top{background:#012060;color:#fff;padding:8px 24px;margin:-16px -24px 16px;p
 .S1{color:#b00020;font-weight:bold}.S2{color:#c75000;font-weight:bold}.toc{background:#f8f9fb;border:1px solid #e3e6ea;padding:8px 16px;font-size:13px;columns:2}.toc ul{margin:2px 0;padding-left:16px}
 #lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:50;align-items:center;justify-content:center;flex-direction:column}#lb.on{display:flex}#lb img{max-width:96vw;max-height:88vh;border:2px solid #fff;box-shadow:0 0 30px #000}#lb .cap{color:#eee;font:13px ui-monospace,monospace;margin-top:8px}#lb .cap a{color:#8cf}#lb .x{position:absolute;top:10px;right:18px;color:#fff;font-size:30px;cursor:pointer}#lb .nv{position:absolute;top:50%;color:#fff;font-size:44px;cursor:pointer;padding:0 16px;user-select:none}#lb .pv{left:0}#lb .nx{right:0}a.img img{cursor:zoom-in}
 sup.more a{margin:0 2px;font-size:10px}
+thead.sortable th.asc::after{content:' \25B2';font-size:9px}thead.sortable th.desc::after{content:' \25BC';font-size:9px}
+tr[data-sev=S1] td:nth-child(2){background:#fde7e9}tr[data-sev=S2] td:nth-child(2){background:#fff1e0}
 a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:target{background:#fff3b0;outline:2px solid #f5b400}
 .note{background:#fff8e1;border-left:4px solid #f5b400;padding:8px 12px;margin:12px 0}
 </style><nav class=top><a href="../../index.html">Home</a><a href="../../QA-REPORT.html">Full report</a><a href="../../EXEC-SUMMARY.html">Executive summary</a><a href="../../STORY-MATRIX.html">User-story matrix</a><a href="../../DEFECT-LEDGER.html">Defect register</a><a href="../index.html">Evidence gallery</a><a href="../../QA-PLAN.html">Test plan</a><a href="../../streams.html">Stream reports</a></nav><h1 id="qa-report-s11-p1p4-sdk-replay-on-a-real-history-wallet-under-constrained-conditions">QA report: S11 (<a class=ev href="../index.html#S11-P1">P1</a>–<a class=ev href="../index.html#S11-P4">P4</a>) — SDK replay on a real-history wallet under constrained conditions</h1>
@@ -214,7 +216,7 @@ guest was not achievable on this emulator build.</strong></p>
 <p><strong>Verdict <a class=ev href="../index.html#S11-P4">P4</a>: PASS.</strong></p>
 <h2 id="defects-found">Defects found</h2>
 <table>
-<thead>
+<thead class=sortable>
 <tr>
 <th>ID</th>
 <th>Sev</th>
@@ -224,8 +226,7 @@ guest was not achievable on this emulator build.</strong></p>
 <th>Suspected area</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr data-sev="S1" data-idx="0">
 <td><strong><a class=did href="../../DEFECT-LEDGER.html#D-041">D-041</a></strong> (confirmed, 2nd device)</td>
 <td class=S1><strong>S1</strong></td>
 <td>Grossly inflated balance after a kill during the replay; app claims to be synced</td>
@@ -233,7 +234,7 @@ guest was not achievable on this emulator build.</strong></p>
 <td><a class=ev href="../S11/P2/09-BALANCE-after-kill-INFLATED.webp">S11/P2/09-BALANCE-after-kill-INFLATED.png</a>, <a class=ev href="../S11/P2/sdk-balance-published.txt">S11/P2/sdk-balance-published.txt</a> (<code>07:19:44 SDK balance published: 233630427063 duffs … l1Synced=false</code>, <code>07:19:46 phase=SYNCED</code>), <a class=ev href="../index.html#S11-P2">S11/P2/db-inflated/</a> (<code>SUM(txos)=10708173522</code>), <a class=ev href="../S11/P2/p2-recovery.mp4">S11/P2/p2-recovery.mp4</a>, <a class=ev href="../S11/P2/exitinfo.txt">S11/P2/exitinfo.txt</a></td>
 <td>in-memory UTXO-set aggregation after a mid-replay restart (<code>CutoverUiDataService</code> / SDK bip44 bucket). New: <code>lastKnown=233630427063</code> shows the bad value is persisted</td>
 </tr>
-<tr>
+<tr data-sev="S1" data-idx="1">
 <td><strong><a class=did href="../../DEFECT-LEDGER.html#D-037">D-037</a></strong> (confirmed on the reference seed)</td>
 <td class=S1><strong>S1</strong></td>
 <td>Historical incoming transactions have no history row when the tx has no <code>txos</code> row</td>
@@ -241,23 +242,7 @@ guest was not achievable on this emulator build.</strong></p>
 <td><a class=ev href="../S11/P1/history/52-19-oct-2024-rows.webp">S11/P1/history/52-19-oct-2024-rows.png</a>, <a class=ev href="../S11/P1/db/explorer-vs-db.txt">S11/P1/db/explorer-vs-db.txt</a>, <a class=ev href="../S11/P1/db/db-counts.txt">S11/P1/db/db-counts.txt</a> (transactions 3269, txos-union 2396, display 1519, valueSatoshis&gt;0 397)</td>
 <td><code>SdkTxStoreWalker</code> / <code>TxDisplayCacheService.decideCacheRebuild</code> enumerate from <code>txos</code>, so the 873 transactions with no <code>txos</code> row are invisible; 2 of them are real receives worth 0.53848582 tDASH</td>
 </tr>
-<tr>
-<td><strong>S11-D1</strong> (new)</td>
-<td>S3</td>
-<td>Transaction-detail sheet opened during the replay never populates and mis-binds labels to values</td>
-<td>during the post-upgrade replay tap any history row: sheet titled "Sent successfully" with a success check for a 2021 tx, empty amount / "Sent from" / "Sent to"; "Network fee" shows the value <code>Sent to D</code>, "Date" shows <code>Sent to</code>; Tax Category stuck on "Loading…". Persisted 9 min (02:52→02:58). Correct after SYNCED</td>
-<td><a class=ev href="../S11/P4/11-replay-4.webp">S11/P4/11-replay-4.png</a> … <a class=ev href="../S11/P4/11-replay-12.webp">S11/P4/11-replay-12.png</a> vs <a class=ev href="../S11/P4/14-txdetail-post-sync.webp">S11/P4/14-txdetail-post-sync.png</a></td>
-<td>TransactionDetails binding while the SDK seam has no data yet</td>
-</tr>
-<tr>
-<td><a class=did href="../../DEFECT-LEDGER.html#D-001">D-001</a> (re-observed)</td>
-<td>S4</td>
-<td>Foreground auto-lock after 60 s idle broke two unattended observation windows</td>
-<td>leave the app on Home without touching</td>
-<td><a class=ev href="../S11/P1/10-sync-poll5.webp">S11/P1/10-sync-poll5.png</a></td>
-<td><code>auto_logout_minutes = 1</code></td>
-</tr>
-<tr>
+<tr data-sev="S2" data-idx="4">
 <td><a class=did href="../../DEFECT-LEDGER.html#D-002">D-002</a> (re-observed)</td>
 <td class=S2>S2</td>
 <td>Inflated partial balance under the greyed "Syncing balance" label during the replay</td>
@@ -265,7 +250,7 @@ guest was not achievable on this emulator build.</strong></p>
 <td><a class=ev href="../S11/P1/09-home-start.webp">S11/P1/09-home-start.png</a> (156.405901), <a class=ev href="../S11/P3/03-home-replay-start.webp">S11/P3/03-home-replay-start.png</a> (134.357093)</td>
 <td id="SR-10"><a href="#SR-10">SR-10</a></td>
 </tr>
-<tr>
+<tr data-sev="S2" data-idx="5">
 <td><a class=did href="../../DEFECT-LEDGER.html#D-025">D-025</a> / <a class=did href="../../DEFECT-LEDGER.html#D-035">D-035</a> (supporting data)</td>
 <td class=S2>S2</td>
 <td>SDK replay footprint is ~2.5× dashj's on the same device and does not respond to RUNNING_CRITICAL</td>
@@ -273,7 +258,22 @@ guest was not achievable on this emulator build.</strong></p>
 <td>master peak 263 MB PSS / 50 MB native vs fix peak 647 MB PSS / 495 MB native</td>
 <td>replay memory telemetry</td>
 </tr>
-</tbody>
+<tr data-sev="S3" data-idx="2">
+<td><strong>S11-D1</strong> (new)</td>
+<td>S3</td>
+<td>Transaction-detail sheet opened during the replay never populates and mis-binds labels to values</td>
+<td>during the post-upgrade replay tap any history row: sheet titled "Sent successfully" with a success check for a 2021 tx, empty amount / "Sent from" / "Sent to"; "Network fee" shows the value <code>Sent to D</code>, "Date" shows <code>Sent to</code>; Tax Category stuck on "Loading…". Persisted 9 min (02:52→02:58). Correct after SYNCED</td>
+<td><a class=ev href="../S11/P4/11-replay-4.webp">S11/P4/11-replay-4.png</a> … <a class=ev href="../S11/P4/11-replay-12.webp">S11/P4/11-replay-12.png</a> vs <a class=ev href="../S11/P4/14-txdetail-post-sync.webp">S11/P4/14-txdetail-post-sync.png</a></td>
+<td>TransactionDetails binding while the SDK seam has no data yet</td>
+</tr>
+<tr data-sev="S4" data-idx="3">
+<td><a class=did href="../../DEFECT-LEDGER.html#D-001">D-001</a> (re-observed)</td>
+<td>S4</td>
+<td>Foreground auto-lock after 60 s idle broke two unattended observation windows</td>
+<td>leave the app on Home without touching</td>
+<td><a class=ev href="../S11/P1/10-sync-poll5.webp">S11/P1/10-sync-poll5.png</a></td>
+<td><code>auto_logout_minutes = 1</code></td>
+</tr></tbody>
 </table>
 <h2 id="environment-problems-not-product-defects">Environment problems (not product defects)</h2>
 <ul>
@@ -324,4 +324,8 @@ function hide(){lb.classList.remove('on');im.src=''}
 document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".webp"],a[href$=".png"]');if(a&&!a.closest('#lb')){e.preventDefault();show(links().indexOf(a))}});
 lb.querySelector('.x').onclick=hide;lb.querySelector('.pv').onclick=function(e){e.stopPropagation();show(i-1)};lb.querySelector('.nx').onclick=function(e){e.stopPropagation();show(i+1)};
 lb.addEventListener('click',function(e){if(e.target===lb||e.target===im)hide()});
-document.addEventListener('keydown',function(e){if(!lb.classList.contains('on'))return;if(e.key==='Escape')hide();if(e.key==='ArrowLeft')show(i-1);if(e.key==='ArrowRight')show(i+1)});})();</script></html>
+document.addEventListener('keydown',function(e){if(!lb.classList.contains('on'))return;if(e.key==='Escape')hide();if(e.key==='ArrowLeft')show(i-1);if(e.key==='ArrowRight')show(i+1)});})();</script><script>(function(){document.querySelectorAll('thead.sortable').forEach(function(th){var tb=th.parentNode.querySelector('tbody');var ths=th.querySelectorAll('th');
+ths.forEach(function(h,ci){h.style.cursor='pointer';h.title='click to sort';h.addEventListener('click',function(){var rows=Array.prototype.slice.call(tb.querySelectorAll('tr'));var asc=!(h.dataset.asc==='1');ths.forEach(function(x){delete x.dataset.asc;x.classList.remove('asc','desc')});h.dataset.asc=asc?'1':'0';h.classList.add(asc?'asc':'desc');
+var rank={S1:0,S2:1,S3:2,S4:3,other:4,dup:5,info:6,env:7};
+function key(r){if(ci===1)return rank[r.dataset.sev]!==undefined?rank[r.dataset.sev]:9;if(ci===0)return +r.dataset.idx;var c=r.children[ci];return c?c.textContent.trim().toLowerCase():''}
+rows.sort(function(a,b){var ka=key(a),kb=key(b);if(ka<kb)return asc?-1:1;if(ka>kb)return asc?1:-1;return (+a.dataset.idx)-(+b.dataset.idx)});rows.forEach(function(r){tb.appendChild(r)})})})})})();</script></html>

@@ -6,6 +6,8 @@ nav.top{background:#012060;color:#fff;padding:8px 24px;margin:-16px -24px 16px;p
 .S1{color:#b00020;font-weight:bold}.S2{color:#c75000;font-weight:bold}.toc{background:#f8f9fb;border:1px solid #e3e6ea;padding:8px 16px;font-size:13px;columns:2}.toc ul{margin:2px 0;padding-left:16px}
 #lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:50;align-items:center;justify-content:center;flex-direction:column}#lb.on{display:flex}#lb img{max-width:96vw;max-height:88vh;border:2px solid #fff;box-shadow:0 0 30px #000}#lb .cap{color:#eee;font:13px ui-monospace,monospace;margin-top:8px}#lb .cap a{color:#8cf}#lb .x{position:absolute;top:10px;right:18px;color:#fff;font-size:30px;cursor:pointer}#lb .nv{position:absolute;top:50%;color:#fff;font-size:44px;cursor:pointer;padding:0 16px;user-select:none}#lb .pv{left:0}#lb .nx{right:0}a.img img{cursor:zoom-in}
 sup.more a{margin:0 2px;font-size:10px}
+thead.sortable th.asc::after{content:' \25B2';font-size:9px}thead.sortable th.desc::after{content:' \25BC';font-size:9px}
+tr[data-sev=S1] td:nth-child(2){background:#fde7e9}tr[data-sev=S2] td:nth-child(2){background:#fff1e0}
 a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:target{background:#fff3b0;outline:2px solid #f5b400}
 .note{background:#fff8e1;border-left:4px solid #f5b400;padding:8px 12px;margin:12px 0}
 </style><nav class=top><a href="../../index.html">Home</a><a href="../../QA-REPORT.html">Full report</a><a href="../../EXEC-SUMMARY.html">Executive summary</a><a href="../../STORY-MATRIX.html">User-story matrix</a><a href="../../DEFECT-LEDGER.html">Defect register</a><a href="../index.html">Evidence gallery</a><a href="../../QA-PLAN.html">Test plan</a><a href="../../streams.html">Stream reports</a></nav><h1 id="qa-report-s7-e8-b5-r1-bk1-tx1-n1-agent-opus-s7-emulator-emulator-5566-dw-qa7-2026-09-19">QA report: S7 — <a class=ev href="../index.html#S7-E8">E8</a>, <a class=ev href="../index.html#S7-B5">B5</a>, <a class=ev href="../index.html#S7-R1">R1</a>, <a class=ev href="../index.html#S7-BK1">BK1</a>, <a class=ev href="../index.html#S7-TX1">TX1</a>, <a class=ev href="../index.html#S7-N1">N1</a>   (agent: Opus S7, emulator: emulator-5566 / dw-qa7, 2026-09-19)</h1>
@@ -251,7 +253,7 @@ Collectors: <a class=ev href="../S7/mem.csv">evidence/S7/mem.csv</a> (60 s sampl
 <hr />
 <h2 id="defects-found">Defects found</h2>
 <table>
-<thead>
+<thead class=sortable>
 <tr>
 <th>ID</th>
 <th>Sev</th>
@@ -261,8 +263,7 @@ Collectors: <a class=ev href="../S7/mem.csv">evidence/S7/mem.csv</a> (60 s sampl
 <th>Suspected area</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr data-sev="S2" data-idx="0">
 <td><strong>D-10</strong></td>
 <td><strong>S2</strong></td>
 <td>After "idling detected, stopping service" tears down the L1 shadow engine, <strong>every send fails</strong> with a misleading "not fully synced" error and never recovers in place</td>
@@ -270,7 +271,7 @@ Collectors: <a class=ev href="../S7/mem.csv">evidence/S7/mem.csv</a> (60 s sampl
 <td><a class=ev href="../S7/TX1/SR29-05-problem-sending.webp">TX1/SR29-05-problem-sending.png</a>, <a class=ev href="../S7/TX1/SR29-07-retry-result.webp">TX1/SR29-07-retry-result.png</a>, <a class=ev href="../S7/TX1/SR29-08-normal-send-in-enginedown.webp">TX1/SR29-08-normal-send-in-enginedown.png</a>, <a class=ev href="../S7/TX1/SR29-09-after-bg-fg.webp">TX1/SR29-09-after-bg-fg.png</a>, <a class=ev href="../S7/E8/pre-upgrade/files/log/wallet.log">BK1/pre-reset/files/log/wallet.log</a></td>
 <td><code>BlockchainServiceImpl</code> idle teardown vs <code>L1ShadowSyncService.startIfEnabled()</code> / <code>SendCoinsTaskRunner.sendViaSdkBridged</code> (<code>SendCoinsTaskRunner.kt:451</code>, <code>:172</code>)</td>
 </tr>
-<tr>
+<tr data-sev="S3" data-idx="1">
 <td><strong>D-01 (<a class=did href="../../DEFECT-LEDGER.html#SR-28">SR-28</a>)</strong></td>
 <td>S3</td>
 <td>Send confirm sheet shows a flat 0.0001 DASH network fee, 10x-44x the fee actually charged</td>
@@ -278,7 +279,7 @@ Collectors: <a class=ev href="../S7/mem.csv">evidence/S7/mem.csv</a> (60 s sampl
 <td><a class=ev href="../S7/E8/64-fix-send-confirm.webp">E8/64-fix-send-confirm.png</a> vs <a class=ev href="../S7/E8/66-fix-selfsend-detail.webp">E8/66-fix-selfsend-detail.png</a>; <a class=ev href="../S7/TX1/SR29-03-confirm-sheet.webp">TX1/SR29-03-confirm-sheet.png</a> vs <a class=ev href="../S7/TX1/SR29-12-sendall-detail.webp">TX1/SR29-12-sendall-detail.png</a>; master baseline <a class=ev href="../S7/E8/35-master-send-confirm-sheet.webp">E8/35-master-send-confirm-sheet.png</a></td>
 <td>SDK send seam / fee estimation (<code>SdkL1SendService</code>, <code>SendCoinsViewModel.executeDryRun</code>)</td>
 </tr>
-<tr>
+<tr data-sev="S3" data-idx="2">
 <td><strong>D-01b (<a class=did href="../../DEFECT-LEDGER.html#SR-28">SR-28</a>)</strong></td>
 <td>S3</td>
 <td>Amount field silently clamps to <code>balance - 0.0001</code>; that reserve is unspendable and "Max" is inconsistent with it</td>
@@ -286,7 +287,7 @@ Collectors: <a class=ev href="../S7/mem.csv">evidence/S7/mem.csv</a> (60 s sampl
 <td><a class=ev href="../S7/TX1/SR28-02-amount-entered.webp">TX1/SR28-02-amount-entered.png</a>, <a class=ev href="../S7/TX1/SR28-03-clamped-to-balance-minus-0.0001.webp">TX1/SR28-03-clamped-to-balance-minus-0.0001.png</a>, <a class=ev href="../S7/TX1/SR29-01-max.webp">TX1/SR29-01-max.png</a></td>
 <td>enter-amount / max-button fee reserve</td>
 </tr>
-<tr>
+<tr data-sev="S3" data-idx="3">
 <td><strong>D-02 (<a class=did href="../../DEFECT-LEDGER.html#SR-03">SR-03</a>)</strong></td>
 <td>S3</td>
 <td>After reset + restore-from-seed on the fix build, Receive and "Specify Amount" hand out <strong>already-used</strong> addresses</td>
@@ -294,7 +295,7 @@ Collectors: <a class=ev href="../S7/mem.csv">evidence/S7/mem.csv</a> (60 s sampl
 <td>before <a class=ev href="../S7/BK1/12-SR03-restored-receive-before.webp">BK1/12-SR03-restored-receive-before.png</a>, <a class=ev href="../S7/BK1/13-SR03-specify-amount-restored.webp">BK1/13-SR03-specify-amount-restored.png</a>; after <a class=ev href="../S7/BK1/18-SR03-receive-after-receive.webp">BK1/18-SR03-receive-after-receive.png</a>; upgraded-wallet contrast <a class=ev href="../S7/E8/60-fix-receive-addr3.webp">E8/60-fix-receive-addr3.png</a> + <a class=ev href="../S7/TX1/SR03-01-fix-receive-after-receive.webp">TX1/SR03-01-fix-receive-after-receive.png</a> (0 appearances on insight)</td>
 <td>SDK keychain "next fresh address" pointer after restore-from-seed (matches S1/S2)</td>
 </tr>
-<tr>
+<tr data-sev="S3" data-idx="4">
 <td><strong>D-03</strong></td>
 <td>S3</td>
 <td>Send-result sheet shows the <strong>change</strong> address as the recipient and classifies an outgoing tx as "Income" (restored/SDK-native wallet)</td>
@@ -302,7 +303,7 @@ Collectors: <a class=ev href="../S7/mem.csv">evidence/S7/mem.csv</a> (60 s sampl
 <td><a class=ev href="../S7/BK1/15-SR03-send-result.webp">BK1/15-SR03-send-result.png</a>, <a class=ev href="../S7/BK1/17-state.webp">BK1/17-state.png</a></td>
 <td>post-cutover tx seam change detection / <code>TransactionResultViewBinder</code></td>
 </tr>
-<tr>
+<tr data-sev="S3" data-idx="5">
 <td><strong>D-04</strong></td>
 <td>S3</td>
 <td>Duplicate/stale receive notification after a rescan</td>
@@ -310,7 +311,7 @@ Collectors: <a class=ev href="../S7/mem.csv">evidence/S7/mem.csv</a> (60 s sampl
 <td><a class=ev href="../S7/N1/06-notification-shade.webp">N1/06-notification-shade.png</a>, <a class=ev href="../S7/N1/07-notification-expanded.webp">N1/07-notification-expanded.png</a>, <a class=ev href="../S7/E8/pre-upgrade/files/log/wallet.log">BK1/pre-reset/files/log/wallet.log</a></td>
 <td><code>CutoverUiDataService</code> SDK-discovered-receive notifier (no already-seen suppression across a rescan)</td>
 </tr>
-<tr>
+<tr data-sev="S4" data-idx="6">
 <td><strong>D-05</strong></td>
 <td>S4</td>
 <td>Tx list and tx detail disagree on the timestamp; list timestamps shift after a rescan</td>
@@ -318,7 +319,7 @@ Collectors: <a class=ev href="../S7/mem.csv">evidence/S7/mem.csv</a> (60 s sampl
 <td><a class=ev href="../S7/E8/59-fix-home-full.webp">E8/59-fix-home-full.png</a> (pre-rescan) vs <a class=ev href="../S7/TX1/06-pull-to-refresh.webp">TX1/06</a> vs <a class=ev href="../S7/TX1/07-txdetail-received.webp">TX1/07</a></td>
 <td>tx display cache vs detail time source</td>
 </tr>
-<tr>
+<tr data-sev="S4" data-idx="7">
 <td><strong>D-06</strong></td>
 <td>S4</td>
 <td><code>CutoverState.SETTLED</code> is unreachable - the state machine never crosses its own horizon</td>
@@ -326,7 +327,7 @@ Collectors: <a class=ev href="../S7/mem.csv">evidence/S7/mem.csv</a> (60 s sampl
 <td><a class=ev href="../S7/E8/post-upgrade/dashpay-datastore-strings.txt">E8/post-upgrade/dashpay-datastore-strings.txt</a>, <code>CutoverStateMachine.kt:139</code>, <code>CutoverCoordinator.kt:142,151</code></td>
 <td><code>CutoverCoordinator</code></td>
 </tr>
-<tr>
+<tr data-sev="S4" data-idx="8">
 <td><strong>D-07</strong></td>
 <td>S4</td>
 <td>Tx detail duplicates every input and output address row</td>
@@ -334,7 +335,7 @@ Collectors: <a class=ev href="../S7/mem.csv">evidence/S7/mem.csv</a> (60 s sampl
 <td><a class=ev href="../S7/TX1/13-duplicate-address-rows.webp">TX1/13-duplicate-address-rows.png</a></td>
 <td><code>TransactionResultViewBinder</code> / <code>transaction_result_address_row</code> inflation</td>
 </tr>
-<tr>
+<tr data-sev="S4" data-idx="9">
 <td><strong>D-08</strong></td>
 <td>S4</td>
 <td>Filtered tx list shows a blank area instead of the empty-state text</td>
@@ -342,15 +343,14 @@ Collectors: <a class=ev href="../S7/mem.csv">evidence/S7/mem.csv</a> (60 s sampl
 <td><a class=ev href="../S7/TX1/03-filter-sent.webp">TX1/03-filter-sent.png</a>, master baseline <a class=ev href="../S7/E8/13-master-home.webp">E8/13-master-home.png</a></td>
 <td>home tx-list empty state under filter</td>
 </tr>
-<tr>
+<tr data-sev="S4" data-idx="10">
 <td><strong>D-09 (<a class=did href="../../DEFECT-LEDGER.html#SR-29">SR-29</a>)</strong></td>
 <td>S4</td>
 <td>Send-all first attempt fails on an insufficient-funds error, then succeeds on an internal retry</td>
 <td>Fix build, post-cutover, Max -&gt; Send. <code>06:11:28 SdkL1SendService - SDK l1SendAll: floor 99998764 duffs not deliverable at fee; retrying engine-authoritatively</code> with <code>DashSdkError$PlatformWallet$CoreInsufficientFunds: available Some(99999547), required Some(99999740)</code>, then <code>06:11:29 SDK l1SendAll: broadcast 99999547 duffs ... txid 065a166e7dcdb2df96c285afd746f45e70bfe89f2fdedffec4fbe2d30e075927</code>. User-visible outcome is success; cost is a thrown exception and ~1 s extra latency. Same root cause as D-01 (0.0001 flat fee floor).</td>
 <td><a class=ev href="../S7/TX1/SR29-11-sendmax-result.webp">TX1/SR29-11-sendmax-result.png</a>, <a class=ev href="../S7/TX1/SR29-12-sendall-detail.webp">TX1/SR29-12-sendall-detail.png</a>, <a class=ev href="../S7/E8/pre-upgrade/files/log/wallet.log">BK1/pre-reset/files/log/wallet.log</a> around 06:11:28</td>
 <td><code>CoreSendAllNative.buildSignBroadcastDrain</code> / fee floor</td>
-</tr>
-</tbody>
+</tr></tbody>
 </table>
 <p>Master-build observation (not a fix-branch defect, not reproduced): on master 11.9.0 the first attempt to set Local currency to EUR showed "EUR" in Settings but the datastore still held <code>USD</code> and it reverted to USD on the next launch; a second attempt persisted correctly.</p>
 <hr />
@@ -379,4 +379,8 @@ function hide(){lb.classList.remove('on');im.src=''}
 document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".webp"],a[href$=".png"]');if(a&&!a.closest('#lb')){e.preventDefault();show(links().indexOf(a))}});
 lb.querySelector('.x').onclick=hide;lb.querySelector('.pv').onclick=function(e){e.stopPropagation();show(i-1)};lb.querySelector('.nx').onclick=function(e){e.stopPropagation();show(i+1)};
 lb.addEventListener('click',function(e){if(e.target===lb||e.target===im)hide()});
-document.addEventListener('keydown',function(e){if(!lb.classList.contains('on'))return;if(e.key==='Escape')hide();if(e.key==='ArrowLeft')show(i-1);if(e.key==='ArrowRight')show(i+1)});})();</script></html>
+document.addEventListener('keydown',function(e){if(!lb.classList.contains('on'))return;if(e.key==='Escape')hide();if(e.key==='ArrowLeft')show(i-1);if(e.key==='ArrowRight')show(i+1)});})();</script><script>(function(){document.querySelectorAll('thead.sortable').forEach(function(th){var tb=th.parentNode.querySelector('tbody');var ths=th.querySelectorAll('th');
+ths.forEach(function(h,ci){h.style.cursor='pointer';h.title='click to sort';h.addEventListener('click',function(){var rows=Array.prototype.slice.call(tb.querySelectorAll('tr'));var asc=!(h.dataset.asc==='1');ths.forEach(function(x){delete x.dataset.asc;x.classList.remove('asc','desc')});h.dataset.asc=asc?'1':'0';h.classList.add(asc?'asc':'desc');
+var rank={S1:0,S2:1,S3:2,S4:3,other:4,dup:5,info:6,env:7};
+function key(r){if(ci===1)return rank[r.dataset.sev]!==undefined?rank[r.dataset.sev]:9;if(ci===0)return +r.dataset.idx;var c=r.children[ci];return c?c.textContent.trim().toLowerCase():''}
+rows.sort(function(a,b){var ka=key(a),kb=key(b);if(ka<kb)return asc?-1:1;if(ka>kb)return asc?1:-1;return (+a.dataset.idx)-(+b.dataset.idx)});rows.forEach(function(r){tb.appendChild(r)})})})})})();</script></html>

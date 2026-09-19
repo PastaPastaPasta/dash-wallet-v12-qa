@@ -6,6 +6,8 @@ nav.top{background:#012060;color:#fff;padding:8px 24px;margin:-16px -24px 16px;p
 .S1{color:#b00020;font-weight:bold}.S2{color:#c75000;font-weight:bold}.toc{background:#f8f9fb;border:1px solid #e3e6ea;padding:8px 16px;font-size:13px;columns:2}.toc ul{margin:2px 0;padding-left:16px}
 #lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:50;align-items:center;justify-content:center;flex-direction:column}#lb.on{display:flex}#lb img{max-width:96vw;max-height:88vh;border:2px solid #fff;box-shadow:0 0 30px #000}#lb .cap{color:#eee;font:13px ui-monospace,monospace;margin-top:8px}#lb .cap a{color:#8cf}#lb .x{position:absolute;top:10px;right:18px;color:#fff;font-size:30px;cursor:pointer}#lb .nv{position:absolute;top:50%;color:#fff;font-size:44px;cursor:pointer;padding:0 16px;user-select:none}#lb .pv{left:0}#lb .nx{right:0}a.img img{cursor:zoom-in}
 sup.more a{margin:0 2px;font-size:10px}
+thead.sortable th.asc::after{content:' \25B2';font-size:9px}thead.sortable th.desc::after{content:' \25BC';font-size:9px}
+tr[data-sev=S1] td:nth-child(2){background:#fde7e9}tr[data-sev=S2] td:nth-child(2){background:#fff1e0}
 a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:target{background:#fff3b0;outline:2px solid #f5b400}
 .note{background:#fff8e1;border-left:4px solid #f5b400;padding:8px 12px;margin:12px 0}
 </style><nav class=top><a href="../../index.html">Home</a><a href="../../QA-REPORT.html">Full report</a><a href="../../EXEC-SUMMARY.html">Executive summary</a><a href="../../STORY-MATRIX.html">User-story matrix</a><a href="../../DEFECT-LEDGER.html">Defect register</a><a href="../index.html">Evidence gallery</a><a href="../../QA-PLAN.html">Test plan</a><a href="../../streams.html">Stream reports</a></nav><h1 id="qa-report-s3-a3-a3b-upgrade-master-1190-fix-1200-agent-opus-s3-emulator-emulator-5558-dw-qa3-2026-09-19">QA report: S3 — <a class=ev href="../index.html#S3-A3">A3</a> / <a class=ev href="../index.html#S3-A3b">A3b</a> (upgrade master 11.9.0 -&gt; fix 12.0.0)   (agent: Opus S3, emulator: emulator-5558 / dw-qa3, 2026-09-19)</h1>
@@ -254,7 +256,7 @@ Wallet: reference seed <code>job flower agree lyrics industry note boost finger 
 <p>The About label flip confirms <code>state.sdkOwnsL1 == true</code> post-cutover (<code>AboutFragment.kt:87-96</code>).</p>
 <h2 id="defects-found">Defects found</h2>
 <table>
-<thead>
+<thead class=sortable>
 <tr>
 <th>ID</th>
 <th>Sev</th>
@@ -264,8 +266,7 @@ Wallet: reference seed <code>job flower agree lyrics industry note boost finger 
 <th>Suspected area</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr data-sev="S1" data-idx="0">
 <td id="D-056"><a href="#D-056">D-056</a></td>
 <td class=S1><strong>S1</strong></td>
 <td>After a locked-device upgrade the SDK L1 engine never starts; replay wedged at 0% until the user force-stops the app</td>
@@ -273,7 +274,7 @@ Wallet: reference seed <code>job flower agree lyrics industry note boost finger 
 <td><a class=ev href="../S3/A3b/grep-engine-never-started.txt">S3/A3b/grep-engine-never-started.txt</a>, <a class=ev href="../S3/A3b/grep-unlock-bind.txt">grep-unlock-bind.txt</a>, <a class=ev href="../S3/A3b/15-home.webp">15-home.png</a>, <a class=ev href="../S3/A3b/grep-probe3-recovery.txt">grep-probe3-recovery.txt</a></td>
 <td><code>PlatformSyncService.kickSdkEngines</code> / <code>SdkBindRetryService.onBindEstablished</code></td>
 </tr>
-<tr>
+<tr data-sev="S3" data-idx="1">
 <td id="D-054"><a href="#D-054">D-054</a></td>
 <td>S3</td>
 <td><code>CutoverState.SETTLED</code> is unreachable — state stays <code>CUT_OVER</code> forever</td>
@@ -281,7 +282,7 @@ Wallet: reference seed <code>job flower agree lyrics industry note boost finger 
 <td><a class=ev href="../S3/A3/06-restart/dashpay-datastore-strings.txt">S3/A3/06-restart/dashpay-datastore-strings.txt</a> (<code>cutover_state</code> -&gt; <code>CUT_OVER</code>), <a class=ev href="../S3/A3/06-restart/grep-cutover-state.txt">06-restart/grep-cutover-state.txt</a> (only one transition ever logged)</td>
 <td><code>CutoverStateMachine.kt:107,139</code> / <code>CutoverCoordinator</code></td>
 </tr>
-<tr>
+<tr data-sev="S3" data-idx="2">
 <td id="D-055"><a href="#D-055">D-055</a></td>
 <td>S3</td>
 <td>SDK replay costs ~3x PSS and ~11x native heap vs dashj on the same wallet</td>
@@ -289,7 +290,7 @@ Wallet: reference seed <code>job flower agree lyrics industry note boost finger 
 <td><a class=ev href="../S3/mem.csv">S3/mem.csv</a>: master 190-224 MB PSS / 37-41 MB native vs fix peak 620-636 MB PSS / 463-493 MB native</td>
 <td>L1 shadow SPV native engine</td>
 </tr>
-<tr>
+<tr data-sev="S4" data-idx="3">
 <td id="D-057"><a href="#D-057">D-057</a></td>
 <td>S4</td>
 <td>About shows "12.0.0 <strong>(0)</strong>"</td>
@@ -297,15 +298,14 @@ Wallet: reference seed <code>job flower agree lyrics industry note boost finger 
 <td><a class=ev href="../S3/A3/07-tools-about/04-fix-about.webp">S3/A3/07-tools-about/04-fix-about.png</a></td>
 <td><code>AboutFragment.kt</code> — build number is <code>VERSION_CODE % 100</code>, and <code>12000000 % 100 == 0</code></td>
 </tr>
-<tr>
+<tr data-sev="S4" data-idx="4">
 <td id="D-058"><a href="#D-058">D-058</a></td>
 <td>S4</td>
 <td>Inactivity notification quotes a stale partial balance</td>
 <td>Upgrade with a partially-synced wallet; "You've still got Dash on this device!" said "balance of DASH 6.93208425" while the wallet holds 107.08.</td>
 <td><a class=ev href="../S3/A3b/08-shade-on-lockscreen.webp">S3/A3b/08-shade-on-lockscreen.png</a>; <code>06:26:47 BootstrapReceiver - detected balance, showing inactivity notification</code></td>
 <td><code>BootstrapReceiver</code></td>
-</tr>
-</tbody>
+</tr></tbody>
 </table>
 <h3 id="d-056-detail-the-s1">D-056 detail (the S1)</h3>
 <ol>
@@ -377,4 +377,8 @@ function hide(){lb.classList.remove('on');im.src=''}
 document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".webp"],a[href$=".png"]');if(a&&!a.closest('#lb')){e.preventDefault();show(links().indexOf(a))}});
 lb.querySelector('.x').onclick=hide;lb.querySelector('.pv').onclick=function(e){e.stopPropagation();show(i-1)};lb.querySelector('.nx').onclick=function(e){e.stopPropagation();show(i+1)};
 lb.addEventListener('click',function(e){if(e.target===lb||e.target===im)hide()});
-document.addEventListener('keydown',function(e){if(!lb.classList.contains('on'))return;if(e.key==='Escape')hide();if(e.key==='ArrowLeft')show(i-1);if(e.key==='ArrowRight')show(i+1)});})();</script></html>
+document.addEventListener('keydown',function(e){if(!lb.classList.contains('on'))return;if(e.key==='Escape')hide();if(e.key==='ArrowLeft')show(i-1);if(e.key==='ArrowRight')show(i+1)});})();</script><script>(function(){document.querySelectorAll('thead.sortable').forEach(function(th){var tb=th.parentNode.querySelector('tbody');var ths=th.querySelectorAll('th');
+ths.forEach(function(h,ci){h.style.cursor='pointer';h.title='click to sort';h.addEventListener('click',function(){var rows=Array.prototype.slice.call(tb.querySelectorAll('tr'));var asc=!(h.dataset.asc==='1');ths.forEach(function(x){delete x.dataset.asc;x.classList.remove('asc','desc')});h.dataset.asc=asc?'1':'0';h.classList.add(asc?'asc':'desc');
+var rank={S1:0,S2:1,S3:2,S4:3,other:4,dup:5,info:6,env:7};
+function key(r){if(ci===1)return rank[r.dataset.sev]!==undefined?rank[r.dataset.sev]:9;if(ci===0)return +r.dataset.idx;var c=r.children[ci];return c?c.textContent.trim().toLowerCase():''}
+rows.sort(function(a,b){var ka=key(a),kb=key(b);if(ka<kb)return asc?-1:1;if(ka>kb)return asc?1:-1;return (+a.dataset.idx)-(+b.dataset.idx)});rows.forEach(function(r){tb.appendChild(r)})})})})})();</script></html>

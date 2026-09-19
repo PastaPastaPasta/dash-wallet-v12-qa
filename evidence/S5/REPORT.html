@@ -6,6 +6,8 @@ nav.top{background:#012060;color:#fff;padding:8px 24px;margin:-16px -24px 16px;p
 .S1{color:#b00020;font-weight:bold}.S2{color:#c75000;font-weight:bold}.toc{background:#f8f9fb;border:1px solid #e3e6ea;padding:8px 16px;font-size:13px;columns:2}.toc ul{margin:2px 0;padding-left:16px}
 #lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:50;align-items:center;justify-content:center;flex-direction:column}#lb.on{display:flex}#lb img{max-width:96vw;max-height:88vh;border:2px solid #fff;box-shadow:0 0 30px #000}#lb .cap{color:#eee;font:13px ui-monospace,monospace;margin-top:8px}#lb .cap a{color:#8cf}#lb .x{position:absolute;top:10px;right:18px;color:#fff;font-size:30px;cursor:pointer}#lb .nv{position:absolute;top:50%;color:#fff;font-size:44px;cursor:pointer;padding:0 16px;user-select:none}#lb .pv{left:0}#lb .nx{right:0}a.img img{cursor:zoom-in}
 sup.more a{margin:0 2px;font-size:10px}
+thead.sortable th.asc::after{content:' \25B2';font-size:9px}thead.sortable th.desc::after{content:' \25BC';font-size:9px}
+tr[data-sev=S1] td:nth-child(2){background:#fde7e9}tr[data-sev=S2] td:nth-child(2){background:#fff1e0}
 a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:target{background:#fff3b0;outline:2px solid #f5b400}
 .note{background:#fff8e1;border-left:4px solid #f5b400;padding:8px 12px;margin:12px 0}
 </style><nav class=top><a href="../../index.html">Home</a><a href="../../QA-REPORT.html">Full report</a><a href="../../EXEC-SUMMARY.html">Executive summary</a><a href="../../STORY-MATRIX.html">User-story matrix</a><a href="../../DEFECT-LEDGER.html">Defect register</a><a href="../index.html">Evidence gallery</a><a href="../../QA-PLAN.html">Test plan</a><a href="../../streams.html">Stream reports</a></nav><h1 id="qa-report-s5-dashpay-platform-d0d7-sr-02-sr-12-agent-s5-emulator-5562-avd-dw-qa5-2026-09-19">QA report: S5 — DashPay / Platform (<a class=ev href="../index.html#S5-D0">D0</a>–<a class=ev href="../index.html#S5-D7">D7</a> + SR-02 / SR-12)   (agent: S5, emulator-5562 / AVD dw-qa5, 2026-09-19)</h1>
@@ -183,7 +185,7 @@ Inviter identity is <strong>not</strong> shown on a dedicated "you have been inv
 <p>Captured: home, contacts list, add-contact, search results, edit profile, invitations history, and the <strong>username request screen</strong> ("Benutzernamen erstellen", localized criteria). Restored to <code>en-US</code> afterwards and re-verified.</p>
 <h2 id="defects-found">Defects found</h2>
 <table>
-<thead>
+<thead class=sortable>
 <tr>
 <th>ID</th>
 <th>Sev</th>
@@ -193,16 +195,7 @@ Inviter identity is <strong>not</strong> shown on a dedicated "you have been inv
 <th>Suspected area</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td>S5-1</td>
-<td><strong>S3</strong></td>
-<td>Invite is forgotten after an app restart; the Create entry goes disabled and a re-open first errors</td>
-<td>Fresh wallet, open a <code>dashpay://invite?…</code> link (Create becomes enabled at 0 balance) → <code>am force-stop</code> → relaunch → home "Join DashPay" card's <strong>Create is <code>enabled=false</code></strong>; re-opening the link immediately shows "Invitation Error / DashPay is currently processing an invite."; a second re-open recovers (Create enabled again)</td>
-<td><a class=ev href="../S5/D2b/20-after-create2.webp">D2b/20-after-create2.png</a>, <a class=ev href="../S5/D2b/22-invitation-error-dialog.webp">D2b/22-invitation-error-dialog.png</a>, <a class=ev href="../S5/D2b/23-after-reopen.webp">D2b/23-after-reopen.png</a></td>
-<td>invite persistence / <code>InviteHandlerViewModel</code>, <code>HistoryHeaderAdapter</code> invite state</td>
-</tr>
-<tr>
+<tbody><tr data-sev="S2" data-idx="1">
 <td>S5-2</td>
 <td><strong>S2</strong></td>
 <td>App self-reports unrepaired DashPay contact-coverage debt after a seed restore</td>
@@ -210,7 +203,15 @@ Inviter identity is <strong>not</strong> shown on a dedicated "you have been inv
 <td><a class=ev href="../S5/logs/grep-watchlist-final.txt">logs/grep-watchlist-final.txt</a> (30 occurrences, 06:22:59 → 06:31:18), <a class=ev href="../S5/logs/final/files/log/wallet.log">logs/final/files/log/wallet.log</a></td>
 <td><code>SdkWalletBinder</code> contact-coverage / filter-scan watermark vs DIP-15 chain birth height. No payment was actually lost in this run (the 0.001 DASH from <code>qa1s13939</code> is visible), but the code states it does not repair the window.</td>
 </tr>
-<tr>
+<tr data-sev="S3" data-idx="0">
+<td>S5-1</td>
+<td><strong>S3</strong></td>
+<td>Invite is forgotten after an app restart; the Create entry goes disabled and a re-open first errors</td>
+<td>Fresh wallet, open a <code>dashpay://invite?…</code> link (Create becomes enabled at 0 balance) → <code>am force-stop</code> → relaunch → home "Join DashPay" card's <strong>Create is <code>enabled=false</code></strong>; re-opening the link immediately shows "Invitation Error / DashPay is currently processing an invite."; a second re-open recovers (Create enabled again)</td>
+<td><a class=ev href="../S5/D2b/20-after-create2.webp">D2b/20-after-create2.png</a>, <a class=ev href="../S5/D2b/22-invitation-error-dialog.webp">D2b/22-invitation-error-dialog.png</a>, <a class=ev href="../S5/D2b/23-after-reopen.webp">D2b/23-after-reopen.png</a></td>
+<td>invite persistence / <code>InviteHandlerViewModel</code>, <code>HistoryHeaderAdapter</code> invite state</td>
+</tr>
+<tr data-sev="S4" data-idx="2">
 <td>S5-3</td>
 <td><strong>S4</strong></td>
 <td>Home "Join DashPay" tile disappears exactly when the user becomes eligible</td>
@@ -218,7 +219,7 @@ Inviter identity is <strong>not</strong> shown on a dedicated "you have been inv
 <td><a class=ev href="../S5/D0/01-home-zero-balance.webp">D0/01-home-zero-balance.png</a> vs <a class=ev href="../S5/D0/03-home-funded.webp">D0/03-home-funded.png</a>, <a class=ev href="../S5/D0/04-home-funded-scrolled.webp">D0/04-home-funded-scrolled.png</a>, <a class=ev href="../S5/D0/05-more-tab-funded.webp">D0/05-more-tab-funded.png</a></td>
 <td>home history header / <code>join_dashpay_btn</code> visibility rule</td>
 </tr>
-<tr>
+<tr data-sev="S4" data-idx="3">
 <td>S5-4</td>
 <td><strong>S4</strong></td>
 <td>Failed username criteria do not sort to the top</td>
@@ -226,7 +227,7 @@ Inviter identity is <strong>not</strong> shown on a dedicated "you have been inv
 <td><a class=ev href="../S5/D1/11-criteria-invalid-chars-underscore.webp">D1/11-criteria-invalid-chars-underscore.png</a>, <a class=ev href="../S5/D1/12-criteria-too-long.webp">D1/12</a>, <a class=ev href="../S5/D1/14-criteria-leading-hyphen.webp">D1/14</a></td>
 <td><code>wallet/res/layout/fragment_request_username.xml:111</code> <code>requirements_stack</code> is a static LinearLayout; no reorder logic in <code>RequestUsernameFragment</code></td>
 </tr>
-<tr>
+<tr data-sev="S4" data-idx="4">
 <td>S5-5</td>
 <td><strong>S4</strong></td>
 <td>Misleading always-on "permanently-dark contact" log tail</td>
@@ -234,7 +235,7 @@ Inviter identity is <strong>not</strong> shown on a dedicated "you have been inv
 <td><a class=ev href="../S5/logs/grep-watchlist-1.txt">logs/grep-watchlist-1.txt</a></td>
 <td><code>wallet/src/de/schildbach/wallet/service/platform/sdk/SdkWalletBinder.kt:971-978</code> — the explanatory sentence is appended unconditionally in <code>logReceivalCoverageDiagnostics</code></td>
 </tr>
-<tr>
+<tr data-sev="S4" data-idx="5">
 <td>S5-6</td>
 <td><strong>S4</strong></td>
 <td>i18n: "Pending Requests (%d)" never translated</td>
@@ -242,7 +243,7 @@ Inviter identity is <strong>not</strong> shown on a dedicated "you have been inv
 <td><a class=ev href="../S5/D7/03-de-contacts.webp">D7/03-de-contacts.png</a></td>
 <td><code>contacts_pending_sent_requests_count</code> exists only in <code>wallet/res/values/strings-dashpay.xml:140</code>, no <code>values-*/</code> variant (new string on this branch)</td>
 </tr>
-<tr>
+<tr data-sev="S4" data-idx="6">
 <td>S5-7</td>
 <td><strong>S4</strong></td>
 <td>i18n typo (pre-existing): "DashPay beitreiten"</td>
@@ -250,7 +251,7 @@ Inviter identity is <strong>not</strong> shown on a dedicated "you have been inv
 <td><a class=ev href="../S5/D7/12-de-invite-card.webp">D7/12-de-invite-card.png</a></td>
 <td><code>wallet/res/values-de/strings-dashpay.xml:158</code> (<code>upgrade_to_evolution_title</code>) and <code>values-de/strings-extra.xml:31</code> (<code>shortcut_action_join_dashpay</code>) — should be "beitreten". Also <a class=ev href="../S5/D7/15-de-username-request.webp">D7/15</a>: "Der Nutzername muss <strong>eine</strong> dieser Kriterien entsprechen" → "einem".</td>
 </tr>
-<tr>
+<tr data-sev="S4" data-idx="7">
 <td>S5-8</td>
 <td><strong>S4</strong></td>
 <td>Copy typo on the identity-verification screen</td>
@@ -258,7 +259,7 @@ Inviter identity is <strong>not</strong> shown on a dedicated "you have been inv
 <td><a class=ev href="../S5/D1/24-verify-identity-screen.webp">D1/24-verify-identity-screen.png</a></td>
 <td>"…and paste the link <strong>bellow</strong>" → "below"</td>
 </tr>
-<tr>
+<tr data-sev="S4" data-idx="8">
 <td>S5-9</td>
 <td><strong>S4</strong></td>
 <td>Invitation privacy sheet's Private/Standard fee table shows identical columns</td>
@@ -266,15 +267,14 @@ Inviter identity is <strong>not</strong> shown on a dedicated "you have been inv
 <td><a class=ev href="../S5/D2/03-invite-screen.webp">D2/03-invite-screen.png</a></td>
 <td>Non-contested 0.03/0.03 and Contested 0.25/0.25 — the comparison table conveys no difference</td>
 </tr>
-<tr>
+<tr data-sev="S4" data-idx="9">
 <td>S5-10</td>
 <td><strong>S4</strong></td>
 <td>Wrong resource ids reused on the "Select Security Level" onboarding screen</td>
 <td>Create new wallet → security level screen</td>
 <td><a class=ev href="../S5/setup/02-after-create-new.webp">setup/02-after-create-new.png</a> + uiautomator dump</td>
 <td>The 24-word option's TextViews are <code>non_contested_name_title</code> / <code>non_contested_name_description</code> (copied from the username layout). Cosmetic/dev-hygiene only.</td>
-</tr>
-</tbody>
+</tr></tbody>
 </table>
 <h2 id="memory-stability">Memory / stability</h2>
 <p>From <a class=ev href="../S5/mem.csv">mem.csv</a> (81 samples, 60 s interval, whole session): <strong>peak TOTAL PSS 614,031 KB</strong>, peak native heap 453,388 KB, peak Dalvik heap 42,062 KB; last sample PSS 456,397 KB / native 292,612 KB. No LMK or OOM (<a class=ev href="../S5/logs/oom-exitinfo.txt">logs/oom-exitinfo.txt</a>, 0 matches; <code>PROCESS EXIT REASON: none recorded</code> on each relaunch). Zero <code>FATAL</code>, <code>OutOfMemoryError</code>, <code>OverlappingFileLockException</code> in either <a class=ev href="../S5/logs/final/files/log/wallet.log">wallet.log</a> pull. Exceptions seen: 6 x <code>FirebaseException</code> (stub <code>google-services.json</code>, expected), 1 x handled <code>DashSDKException</code> (the self-healed max-shield), 2 x <code>CancellationException</code>, 2 x <code>ChildCancelledException</code>.
@@ -302,4 +302,8 @@ function hide(){lb.classList.remove('on');im.src=''}
 document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".webp"],a[href$=".png"]');if(a&&!a.closest('#lb')){e.preventDefault();show(links().indexOf(a))}});
 lb.querySelector('.x').onclick=hide;lb.querySelector('.pv').onclick=function(e){e.stopPropagation();show(i-1)};lb.querySelector('.nx').onclick=function(e){e.stopPropagation();show(i+1)};
 lb.addEventListener('click',function(e){if(e.target===lb||e.target===im)hide()});
-document.addEventListener('keydown',function(e){if(!lb.classList.contains('on'))return;if(e.key==='Escape')hide();if(e.key==='ArrowLeft')show(i-1);if(e.key==='ArrowRight')show(i+1)});})();</script></html>
+document.addEventListener('keydown',function(e){if(!lb.classList.contains('on'))return;if(e.key==='Escape')hide();if(e.key==='ArrowLeft')show(i-1);if(e.key==='ArrowRight')show(i+1)});})();</script><script>(function(){document.querySelectorAll('thead.sortable').forEach(function(th){var tb=th.parentNode.querySelector('tbody');var ths=th.querySelectorAll('th');
+ths.forEach(function(h,ci){h.style.cursor='pointer';h.title='click to sort';h.addEventListener('click',function(){var rows=Array.prototype.slice.call(tb.querySelectorAll('tr'));var asc=!(h.dataset.asc==='1');ths.forEach(function(x){delete x.dataset.asc;x.classList.remove('asc','desc')});h.dataset.asc=asc?'1':'0';h.classList.add(asc?'asc':'desc');
+var rank={S1:0,S2:1,S3:2,S4:3,other:4,dup:5,info:6,env:7};
+function key(r){if(ci===1)return rank[r.dataset.sev]!==undefined?rank[r.dataset.sev]:9;if(ci===0)return +r.dataset.idx;var c=r.children[ci];return c?c.textContent.trim().toLowerCase():''}
+rows.sort(function(a,b){var ka=key(a),kb=key(b);if(ka<kb)return asc?-1:1;if(ka>kb)return asc?1:-1;return (+a.dataset.idx)-(+b.dataset.idx)});rows.forEach(function(r){tb.appendChild(r)})})})})})();</script></html>

@@ -6,13 +6,15 @@ nav.top{background:#012060;color:#fff;padding:8px 24px;margin:-16px -24px 16px;p
 .S1{color:#b00020;font-weight:bold}.S2{color:#c75000;font-weight:bold}.toc{background:#f8f9fb;border:1px solid #e3e6ea;padding:8px 16px;font-size:13px;columns:2}.toc ul{margin:2px 0;padding-left:16px}
 #lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:50;align-items:center;justify-content:center;flex-direction:column}#lb.on{display:flex}#lb img{max-width:96vw;max-height:88vh;border:2px solid #fff;box-shadow:0 0 30px #000}#lb .cap{color:#eee;font:13px ui-monospace,monospace;margin-top:8px}#lb .cap a{color:#8cf}#lb .x{position:absolute;top:10px;right:18px;color:#fff;font-size:30px;cursor:pointer}#lb .nv{position:absolute;top:50%;color:#fff;font-size:44px;cursor:pointer;padding:0 16px;user-select:none}#lb .pv{left:0}#lb .nx{right:0}a.img img{cursor:zoom-in}
 sup.more a{margin:0 2px;font-size:10px}
+thead.sortable th.asc::after{content:' \25B2';font-size:9px}thead.sortable th.desc::after{content:' \25BC';font-size:9px}
+tr[data-sev=S1] td:nth-child(2){background:#fde7e9}tr[data-sev=S2] td:nth-child(2){background:#fff1e0}
 a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:target{background:#fff3b0;outline:2px solid #f5b400}
 .note{background:#fff8e1;border-left:4px solid #f5b400;padding:8px 12px;margin:12px 0}
 </style><nav class=top><a href="../../index.html">Home</a><a href="../../QA-REPORT.html">Full report</a><a href="../../EXEC-SUMMARY.html">Executive summary</a><a href="../../STORY-MATRIX.html">User-story matrix</a><a href="../../DEFECT-LEDGER.html">Defect register</a><a href="../index.html">Evidence gallery</a><a href="../../QA-PLAN.html">Test plan</a><a href="../../streams.html">Stream reports</a></nav><h1 id="stream-sr-static-risk-review-no-devices-of-fixupgrade-memory-and-sync-616ac58ff">Stream SR — static risk review (no devices) of fix/upgrade-memory-and-sync @ 616ac58ff</h1>
 <p>Paths relative to <code>~/workspace/dash-wallet-qa/wt-fix/</code>.</p>
 <h2 id="findings-table-most-severe-first">Findings table (most severe first)</h2>
 <table>
-<thead>
+<thead class=sortable>
 <tr>
 <th>ID</th>
 <th>Sev</th>
@@ -21,316 +23,314 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <th>Ledger</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr data-sev="S1" data-idx="0">
 <td id="SR-01"><a href="#SR-01">SR-01</a></td>
 <td class=S1><strong>S1</strong></td>
 <td>Filter-stall watchdog cancels its own coroutine inside <code>stop()</code>; the SPV engine is stopped and <strong>never restarted</strong> — the 99%-forever stall becomes permanent</td>
 <td><code>wallet/src/de/schildbach/wallet/service/platform/sdk/L1ShadowSyncService.kt:2713-2723</code>, <code>:2777-2806</code>, <code>:2320-2333</code>, <code>:3396-3401</code></td>
 <td><strong>NEW — regression in HEAD commit <code>616ac58ff</code></strong></td>
 </tr>
-<tr>
+<tr data-sev="S1" data-idx="1">
 <td id="SR-02"><a href="#SR-02">SR-02</a></td>
 <td class=S1><strong>S1</strong></td>
 <td>Shielded-invite one-time spending key is discarded if the flow is cancelled after the note is funded → permanent, silent fund loss</td>
 <td><code>…/sdk/SdkShieldedInviteCreation.kt:349-419</code> (key at <code>:350</code>, spend at <code>:359</code>, persist at <code>:413</code>); caller <code>ui/more/ConfirmInviteDialogFragment.kt:147</code></td>
 <td>NEW</td>
 </tr>
-<tr>
+<tr data-sev="S1" data-idx="2">
 <td id="SR-03"><a href="#SR-03">SR-03</a></td>
 <td class=S1><strong>S1</strong></td>
 <td>Receive screen is pinned to external key <strong>#0</strong> forever — restored wallets publish their oldest, most-reused address</td>
 <td><code>ui/payments/PaymentsReceiveFragment.kt:115-118</code> → <code>ui/payments/PaymentsViewModel.kt:54-59</code> → <code>WalletApplication.java:1962-1964</code></td>
 <td><strong>root cause of <a class=did href="../../DEFECT-LEDGER.html#D-003">D-003</a></strong></td>
 </tr>
-<tr>
+<tr data-sev="S1" data-idx="3">
 <td id="SR-04"><a href="#SR-04">SR-04</a></td>
 <td class=S1><strong>S1</strong></td>
 <td><code>freshReceiveAddress()</code> equally poisoned: Topper/Coinbase deposit addresses and paper-wallet sweeps go to already-used addresses</td>
 <td><code>WalletApplication.java:1968-1970</code>; <code>ui/buy_sell/BuyAndSellViewModel.kt:271-278</code>; <code>ui/main/shortcuts/ShortcutsViewModel.kt:211-218</code>; <code>ui/payments/SweepWalletFragment.java:621</code></td>
 <td>NEW</td>
 </tr>
-<tr>
+<tr data-sev="S1" data-idx="4">
 <td id="SR-05"><a href="#SR-05">SR-05</a></td>
 <td class=S1><strong>S1</strong></td>
 <td>A stale <code>wallet-wipe.pending</code> marker destroys a healthy, funded wallet on the next cold launch, with no confirmation</td>
 <td><code>util/WalletWipeState.kt:95-99</code>; <code>WalletApplication.java:390-395</code>; <code>WalletApplicationExt.kt:105-125</code></td>
 <td>NEW</td>
 </tr>
-<tr>
+<tr data-sev="S1" data-idx="5">
 <td id="SR-06"><a href="#SR-06">SR-06</a></td>
 <td class=S1><strong>S1</strong></td>
 <td>Periodic background-sync alarm passes <code>INTERVAL_DAY</code> as its repeat interval, so the 15-min backoff is discarded and the alarm is never delivered → no dependable background sync</td>
 <td><code>WalletApplication.java:1818</code> (interval chosen <code>:1741-1746</code>; shared PendingIntent <code>:1773-1782</code>)</td>
 <td>docs §32, <strong>unfixed in code</strong></td>
 </tr>
-<tr>
+<tr data-sev="S1" data-idx="6">
 <td id="SR-07"><a href="#SR-07">SR-07</a></td>
 <td class=S1><strong>S1</strong></td>
 <td><code>fallbackToDestructiveMigration()</code> is global, not scoped to v1–11 as its comment claims → every table dropped on any downgrade from schema 22</td>
 <td><code>di/DatabaseModule.kt:56</code> (cf. <code>fallbackToDestructiveMigrationFrom</code> in <code>androidTest/…/DatabaseMigrationTest.kt:100</code>)</td>
 <td>NEW</td>
 </tr>
-<tr>
+<tr data-sev="S1" data-idx="7">
 <td id="SR-08"><a href="#SR-08">SR-08</a></td>
 <td class=S1><strong>S1</strong></td>
 <td><code>prodRelease</code> silently seeds all five <code>USE_KOTLIN_SDK_*</code> flags on first launch after upgrade — real mainnet funds onto unreviewed paths</td>
 <td><code>ui/dashpay/utils/DashPayConfig.kt:651-660</code>, <code>:374-391</code> (KDoc <code>:364-372</code>)</td>
 <td>release gate</td>
 </tr>
-<tr>
+<tr data-sev="S2" data-idx="8">
 <td id="SR-09"><a href="#SR-09">SR-09</a></td>
 <td><strong>S2</strong></td>
 <td><code>idling detected, stopping service</code> every minute forever: <code>stopSelf()</code> can't destroy a <strong>bound</strong> service but <em>latches</em> the stop — the service dies the instant the user leaves MainActivity, and <a class=did href="../../DEFECT-LEDGER.html#SR-06">SR-06</a> means nothing brings it back</td>
 <td><code>service/BlockchainServiceImpl.kt:2007-2010</code>; <code>ui/AbstractBindServiceActivity.kt:48-78</code></td>
 <td><strong>root cause of <a class=did href="../../DEFECT-LEDGER.html#D-004">D-004</a></strong></td>
 </tr>
-<tr>
+<tr data-sev="S2" data-idx="9">
 <td id="SR-10"><a href="#SR-10">SR-10</a></td>
 <td><strong>S2</strong></td>
 <td>Mid-replay "hold last known balance" is inert on a created/restored wallet (<code>lastKnown == null</code> → falls through to the live partial)</td>
 <td><code>…/sdk/CutoverUiDataService.kt:2384-2398</code>; seed <code>:2545-2547</code>; persist gate <code>:2769-2786</code></td>
 <td><strong>root cause of <a class=did href="../../DEFECT-LEDGER.html#D-002">D-002</a></strong></td>
 </tr>
-<tr>
+<tr data-sev="S2" data-idx="10">
 <td id="SR-11"><a href="#SR-11">SR-11</a></td>
 <td><strong>S2</strong></td>
 <td>Username created from the shielded pool writes <strong>no</strong> transaction-history row — a gap, not a design decision</td>
 <td><code>…/sdk/SdkShieldedUsernameCreation.kt:788-796</code>; <code>…/sdk/CutoverUiDataService.kt:375-387</code>, <code>:3230-3231</code>; orphan API <code>…/ShieldedBalanceServiceImpl.kt:1055-1062</code></td>
 <td><strong>root cause of <a class=did href="../../DEFECT-LEDGER.html#D-007">D-007</a></strong></td>
 </tr>
-<tr>
+<tr data-sev="S2" data-idx="11">
 <td id="SR-12"><a href="#SR-12">SR-12</a></td>
 <td><strong>S2</strong></td>
 <td>Shielded stall watchdog fires on healthy transfers (40 s vs a ~30 s proof) and, once fired, <strong>permanently bricks</strong> the transfer screen</td>
 <td><code>ui/shielded/ShieldedTransferExecutor.kt:293-301</code>, <code>:631-634</code>, <code>:663-670</code>; <code>ui/shielded/ShieldedTransferScreen.kt:293</code>, <code>:406-416</code>, <code>:1108-1152</code></td>
 <td>NEW</td>
 </tr>
-<tr>
+<tr data-sev="S2" data-idx="12">
 <td id="SR-13"><a href="#SR-13">SR-13</a></td>
 <td><strong>S2</strong></td>
 <td>Shielded Send spend runs in <code>viewModelScope</code>; on VM clear the outcome is lost while the JNI proof may still broadcast, and the screen resets to re-submittable</td>
 <td><code>ui/shielded/ShieldedSendViewModel.kt:160</code>, <code>:167</code>, <code>:181</code>, <code>:218-243</code></td>
 <td>NEW</td>
 </tr>
-<tr>
+<tr data-sev="S2" data-idx="13">
 <td id="SR-14"><a href="#SR-14">SR-14</a></td>
 <td><strong>S2</strong></td>
 <td>Shielded username/invite creation has <strong>no</strong> stall watchdog; a wedged FFI leaves <code>Proving</code> forever and the single-flight gate refuses all retries for the process</td>
 <td><code>…/sdk/SdkShieldedUsernameCreation.kt:769-800</code>, <code>:810-818</code>; <code>ui/shielded/ShieldedUi.kt:88-99</code></td>
 <td>NEW</td>
 </tr>
-<tr>
+<tr data-sev="S2" data-idx="14">
 <td id="SR-15"><a href="#SR-15">SR-15</a></td>
 <td><strong>S2</strong></td>
 <td>Filter-stall watchdog restart costs up to <strong>155,000 blocks</strong> of re-scan, and its 10-min threshold sits inside the window where the filter cursor legitimately doesn't move</td>
 <td><code>…/sdk/L1ShadowSyncService.kt:3480-3496</code>, <code>:2317-2323</code>, <code>:2354-2377</code>; <code>service/SyncActivityIdleDetector.kt:91-109</code></td>
 <td>NEW</td>
 </tr>
-<tr>
+<tr data-sev="S2" data-idx="15">
 <td id="SR-16"><a href="#SR-16">SR-16</a></td>
 <td><strong>S2</strong></td>
 <td>Send-all drain guard's dashj half is structurally inert post-cutover (held wallet has 0 UTXOs); the seam half has no live producer → both misses and permanent false positives</td>
 <td><code>…/sdk/SdkL1SendService.kt:1155</code>, <code>:1546</code>; <code>ui/send/SendCoinsViewModel.kt:461</code>; <code>crowdnode/utils/CrowdNodeConstants.kt:44</code></td>
 <td>NEW</td>
 </tr>
-<tr>
+<tr data-sev="S2" data-idx="16">
 <td id="SR-17"><a href="#SR-17">SR-17</a></td>
 <td><strong>S2</strong></td>
 <td><code>SeamOutputLockRegistry</code> has <strong>no release API</strong> and the guard consults a global <code>hasAnyLocks()</code> — one lock refuses every send-all wallet-wide until process restart</td>
 <td><code>…/sdk/SeamOutputLockRegistry.kt:56-73</code></td>
 <td>NEW (latent behind a disabled flag)</td>
 </tr>
-<tr>
+<tr data-sev="S2" data-idx="17">
 <td id="SR-18"><a href="#SR-18">SR-18</a></td>
 <td><strong>S2</strong></td>
 <td><code>estimateNetworkFee</code> never migrated — still calls <code>completeTx</code> on the held dashj wallet → Coinbase transfer dead-ends with a false "insufficient funds" and never prompts for auth</td>
 <td><code>payments/SendCoinsTaskRunner.kt:580-623</code> (<code>:602</code>); <code>integrations/coinbase/…/TransferDashFragment.kt:137</code></td>
 <td>NEW</td>
 </tr>
-<tr>
+<tr data-sev="S2" data-idx="18">
 <td id="SR-19"><a href="#SR-19">SR-19</a></td>
 <td><strong>S2</strong></td>
 <td>Memo and exchange rate silently dropped on every SDK-routed send; <code>onCoinsReceived</code> backstop never fires for a drain</td>
 <td><code>ui/send/SendCoinsViewModel.kt:283-284</code>; <code>payments/SendCoinsTaskRunner.kt:437</code>, <code>:1075</code>, <code>:1179</code>; <code>service/BlockchainServiceImpl.kt:665-682</code></td>
 <td>NEW</td>
 </tr>
-<tr>
+<tr data-sev="S2" data-idx="19">
 <td id="SR-20"><a href="#SR-20">SR-20</a></td>
 <td><strong>S2</strong></td>
 <td><code>WalletWipeSequence.finish()</code> calls <code>markComplete()</code> even when most of the wipe failed — every step after the first swallows its own exception</td>
 <td><code>util/WalletWipeSequence.kt:94-103</code>; <code>WalletApplicationExt.kt:111-125</code>, <code>:167-203</code>; <code>WalletApplication.java:1903-1907</code></td>
 <td>NEW</td>
 </tr>
-<tr>
+<tr data-sev="S2" data-idx="20">
 <td id="SR-21"><a href="#SR-21">SR-21</a></td>
 <td><strong>S2</strong></td>
 <td>Reset can hang on the "resetting…" spinner indefinitely (<code>wipeInProgress.first { !it }</code> with no timeout) when the service is already tearing down</td>
 <td><code>ui/OnboardingActivity.kt:408-412</code>; <code>WalletApplication.java:1834-1838</code>; <code>service/BlockchainServiceImpl.kt:2696-2700</code>, <code>:2872-2876</code>, <code>:3005</code></td>
 <td>NEW</td>
 </tr>
-<tr>
+<tr data-sev="S2" data-idx="21">
 <td id="SR-22"><a href="#SR-22">SR-22</a></td>
 <td><strong>S2</strong></td>
 <td>Restore date picker opens on <strong>today</strong>; one confirm tap sets a birth height that hides the wallet's entire history, and it is not correctable in place</td>
 <td><code>ui/RestoreWalletFromSeedActivity.kt:167-189</code>; <code>…/sdk/SdkWalletBinder.kt:80-90</code>; <code>…/sdk/BirthHeightResolver.kt:41</code>, <code>:78</code>, <code>:83-90</code>, <code>:106-122</code></td>
 <td>NEW</td>
 </tr>
-<tr>
+<tr data-sev="S2" data-idx="22">
 <td id="SR-23"><a href="#SR-23">SR-23</a></td>
 <td><strong>S2</strong></td>
 <td><code>targetSdk</code>/<code>compileSdk</code> regressed 36 → 35 in every module — Play rejects new releases targeting &lt; 36 as of 31 Aug 2026</td>
 <td><code>wallet/build.gradle:285-287</code>; <code>common/build.gradle:11-13</code>; <code>features/exploredash/build.gradle:14-16</code>; all <code>integrations/*/build.gradle</code></td>
 <td><strong>release blocker</strong></td>
 </tr>
-<tr>
+<tr data-sev="S2" data-idx="23">
 <td id="SR-24"><a href="#SR-24">SR-24</a></td>
 <td><strong>S2</strong></td>
 <td>Autosave debounce stretched to 60 s on wallets ≥ soft limit with <strong>no</strong> forced flush after a send or on background</td>
 <td><code>WalletApplication.java:954-958</code>; <code>util/WalletFileSizeGuard.kt:138-145</code></td>
 <td>NEW</td>
 </tr>
-<tr>
+<tr data-sev="S2" data-idx="24">
 <td id="SR-25"><a href="#SR-25">SR-25</a></td>
 <td><strong>S2</strong></td>
 <td>RISKY size threshold is ~26 MB (fallback heap) / ~51 MB, far below what the KDoc implies; any OOM there routes to a destructive key-backup recovery announced by a single Toast</td>
 <td><code>util/WalletFileSizeGuard.kt:98-101</code>; <code>WalletApplication.java:1279-1296</code>, <code>:1371</code>, <code>:1422-1454</code></td>
 <td>NEW</td>
 </tr>
-<tr>
+<tr data-sev="S2" data-idx="25">
 <td id="SR-26"><a href="#SR-26">SR-26</a></td>
 <td><strong>S2</strong></td>
 <td>Preserved-aside wallet copies (<code>.oversize/.oomed/.pre-seed-restore</code>) are never reclaimed</td>
 <td><code>util/WalletFileSizeGuard.kt:161-180</code>; <code>WalletApplication.java:1532-1542</code></td>
 <td>NEW</td>
 </tr>
-<tr>
+<tr data-sev="S2" data-idx="26">
 <td id="SR-27"><a href="#SR-27">SR-27</a></td>
 <td><strong>S2</strong></td>
 <td>CoinJoin mixing removed and the persisted <code>privacyMode</code> dropped with no migration — a silent privacy-posture downgrade on upgrade</td>
 <td><code>database/entity/BlockchainIdentityData.kt</code>; <code>…/sdk/CoinJoinFundsMigrationService.kt:56-62</code></td>
 <td>NEW</td>
 </tr>
-<tr>
+<tr data-sev="S3" data-idx="27">
 <td id="SR-28"><a href="#SR-28">SR-28</a></td>
 <td>S3</td>
 <td>Confirm dialog shows a flat <strong>0.0001 DASH</strong> fee (~44× real) and uses it as the affordability gate → false "insufficient funds" near the balance</td>
 <td><code>ui/send/SendCoinsViewModel.kt:482</code>, <code>:511</code>, <code>:519</code>, <code>:525</code>; <code>ui/send/SendCoinsFragment.kt:295,300-305</code>; <code>common/…/util/Constants.kt:47</code></td>
 <td>NEW</td>
 </tr>
-<tr>
+<tr data-sev="S3" data-idx="28">
 <td id="SR-29"><a href="#SR-29">SR-29</a></td>
 <td>S3</td>
 <td>Send-all fee reserve is sized at 1.5 duffs/byte but the drain builds at 2 duffs/byte → <strong>every</strong> send-max fails its first attempt and depends on a string-matched retry</td>
 <td><code>…/sdk/SdkL1SendService.kt:233-234</code>, <code>:342-348</code>, <code>:1372</code>; <code>…/sdk/CoreSendAllNative.java:120</code>, <code>:235</code></td>
 <td>NEW</td>
 </tr>
-<tr>
+<tr data-sev="S3" data-idx="29">
 <td id="SR-30"><a href="#SR-30">SR-30</a></td>
 <td>S3</td>
 <td>Shielded "Max" (send-to-address) can never succeed: no fee reserve, and the fee-adjust retry isn't wired to that screen</td>
 <td><code>ui/shielded/ShieldedSendViewModel.kt:111-114</code>, <code>:185-193</code>; <code>…/ShieldedBalanceService.kt:413-419</code>; cf. <code>…/SdkShieldedInviteCreation.kt:104-110</code>, <code>:128</code></td>
 <td>NEW</td>
 </tr>
-<tr>
+<tr data-sev="S3" data-idx="30">
 <td id="SR-31"><a href="#SR-31">SR-31</a></td>
 <td>S3</td>
 <td>Fiat-mode "Max" loses max-spend handling via a lossy round trip → "Insufficient funds" or a failed transfer after a 30 s proof</td>
 <td><code>ui/shielded/ShieldedTransferViewModel.kt:257-262</code>, <code>:293-294</code>, <code>:623-633</code>, <code>:710</code></td>
 <td>NEW</td>
 </tr>
-<tr>
+<tr data-sev="S3" data-idx="31">
 <td id="SR-32"><a href="#SR-32">SR-32</a></td>
 <td>S3</td>
 <td>Send screen "Max" has <strong>no</strong> replay hold, so it publishes the untrusted partial while the header holds last-known</td>
 <td><code>…/sdk/CutoverUiDataService.kt:2400-2413</code>; <code>ui/send/SendCoinsViewModel.kt:181-189</code></td>
 <td>extends <a class=did href="../../DEFECT-LEDGER.html#D-002">D-002</a></td>
 </tr>
-<tr>
+<tr data-sev="S3" data-idx="32">
 <td id="SR-33"><a href="#SR-33">SR-33</a></td>
 <td>S3</td>
 <td>Foreground auto-lock every ~60 s is the <strong>default</strong> <code>auto_logout_minutes = 1</code> + a timer reset only by <code>onUserInteraction</code>. <strong>Pre-existing in 11.9.0</strong></td>
 <td><code>common/…/Configuration.java:164,172</code>; <code>AutoLogout.java:35,88-108</code>; <code>ui/LockScreenActivity.kt:166-172,182-192,280,454-456</code></td>
 <td><strong>root cause of <a class=did href="../../DEFECT-LEDGER.html#D-001">D-001</a> — recommend downgrade</strong></td>
 </tr>
-<tr>
+<tr data-sev="S3" data-idx="33">
 <td id="SR-34"><a href="#SR-34">SR-34</a></td>
 <td>S3</td>
 <td>0-minute ("logout immediately") mode became live for the first time in this branch — <code>onStoppedLast()</code> was dead code before MO-995</td>
 <td><code>WalletActivityTracker.java:83-89</code>, <code>:140-178</code> (rotation guard <code>:162-164</code>)</td>
 <td>NEW aggravator to <a class=did href="../../DEFECT-LEDGER.html#D-001">D-001</a></td>
 </tr>
-<tr>
+<tr data-sev="S3" data-idx="34">
 <td id="SR-35"><a href="#SR-35">SR-35</a></td>
 <td>S3</td>
 <td>Filter-stall watchdog latches <code>EXHAUSTED</code> for the life of the process; give-up is WARN/INFO only, no user surface</td>
 <td><code>…/sdk/L1ShadowSyncService.kt:1143-1155</code>, <code>:2797-2814</code></td>
 <td>NEW</td>
 </tr>
-<tr>
+<tr data-sev="S3" data-idx="35">
 <td id="SR-36"><a href="#SR-36">SR-36</a></td>
 <td>S3</td>
 <td><code>WalletWipeSequence.begin()</code> proceeds with a destructive wipe after failing to write its own recovery marker</td>
 <td><code>util/WalletWipeSequence.kt:60-67</code>; <code>util/WalletWipeState.kt:65-76</code></td>
 <td>NEW</td>
 </tr>
-<tr>
+<tr data-sev="S3" data-idx="36">
 <td id="SR-37"><a href="#SR-37">SR-37</a></td>
 <td>S3</td>
 <td>CrowdNode account locking throws <code>IllegalStateException</code> mid-flow when the tx seam hasn't primed — after the signup tx is broadcast</td>
 <td><code>data/WalletDataAdapter.kt:191-201</code>, <code>:227</code>; <code>…/sdk/CutoverTxSeamService.kt:229</code>, <code>:233-238</code></td>
 <td>NEW (latent)</td>
 </tr>
-<tr>
+<tr data-sev="S3" data-idx="37">
 <td id="SR-38"><a href="#SR-38">SR-38</a></td>
 <td>S3</td>
 <td>Oversize / OOM wallet recovery renames the wallet file aside and depends on <code>restoreWalletFromBackup()</code>; a null result drops the user to onboarding needing their seed</td>
 <td><code>WalletApplication.java:1195-1214</code>, <code>:1279-1296</code>; <code>util/WalletFileSizeGuard.kt:63-108</code></td>
 <td>NEW</td>
 </tr>
-<tr>
+<tr data-sev="S3" data-idx="38">
 <td id="SR-39"><a href="#SR-39">SR-39</a></td>
 <td>S3</td>
 <td>Default <code>abiFilters</code> drops <code>armeabi-v7a</code>; with minSdk 29 those users silently stop receiving updates; QA never exercises the shipped x86_64 native path</td>
 <td><code>wallet/build.gradle:294-305</code></td>
 <td>NEW</td>
 </tr>
-<tr>
+<tr data-sev="S3" data-idx="39">
 <td id="SR-40"><a href="#SR-40">SR-40</a></td>
 <td>S3</td>
 <td><code>RECEIVER_NOT_EXPORTED</code> gated at API 26 instead of 33 → receiver <strong>exported</strong> on API 29–32; any app can force-finish the wallet activity</td>
 <td><code>common/…/InteractionAwareActivity.java:37-41</code></td>
 <td>pre-existing</td>
 </tr>
-<tr>
+<tr data-sev="S3" data-idx="40">
 <td id="SR-41"><a href="#SR-41">SR-41</a></td>
 <td>S3</td>
 <td>20 s wallet-load budget can strand a legitimately slow launch on the safe-mode crash-report screen</td>
 <td><code>util/WalletLoadBudget.kt:59</code>; <code>WalletApplication.java:1223-1231</code>; <code>util/StartupBreadcrumbs.kt:149</code>, <code>:311-320</code></td>
 <td>NEW ("Try again" workaround)</td>
 </tr>
-<tr>
+<tr data-sev="S4" data-idx="41">
 <td id="SR-42"><a href="#SR-42">SR-42</a></td>
 <td>S4</td>
 <td>CrowdNode/contact handlers still run on the <em>received</em> path for our own bridged sends → polluted frequent-contacts ordering</td>
 <td><code>service/BlockchainServiceImpl.kt:704</code>, <code>:713-717</code>, <code>:730</code>, <code>:777</code></td>
 <td>acknowledged NOT FIXED in <code>e4993d240</code></td>
 </tr>
-<tr>
+<tr data-sev="S4" data-idx="42">
 <td id="SR-43"><a href="#SR-43">SR-43</a></td>
 <td>S4</td>
 <td><code>compileSdk</code> moved <strong>inside</strong> <code>defaultConfig {}</code> in every module; only works via a Groovy closure-owner fallthrough</td>
 <td><code>wallet/build.gradle:285</code>; <code>features/exploredash/build.gradle:13-14</code></td>
 <td>NEW</td>
 </tr>
-<tr>
+<tr data-sev="info" data-idx="43">
 <td id="SR-44"><a href="#SR-44">SR-44</a></td>
 <td>info</td>
 <td>The cutover state machine is a constant in shipping: every install is <code>CUT_OVER</code> from first launch; <code>DUAL_RUNNING</code>/<code>READY_OBSERVED</code>/rollback are dead paths</td>
 <td><code>…/sdk/CutoverStateMachine.kt:21-45</code>, <code>:124-141</code></td>
 <td>test-planning note</td>
-</tr>
-</tbody>
+</tr></tbody>
 </table>
 <p><strong>Confirmed non-findings:</strong> migration 21→22 is byte-correct against exported schemas and all of 11→22 are registered (<code>database/AppDatabaseMigrations.kt:270-288</code>, <code>di/DatabaseModule.kt:42-54</code>); <code>Sha256Hash</code>→<code>TxId</code> entity change is schema-neutral; no SharedPreferences settings lost on upgrade; DataStore seeding off the main thread; other API-level gates correct; no exact-alarm usage.</p>
 <h2 id="detail-on-the-items-observed-by-device-streams">Detail on the items observed by device streams</h2>
@@ -564,4 +564,8 @@ function hide(){lb.classList.remove('on');im.src=''}
 document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".webp"],a[href$=".png"]');if(a&&!a.closest('#lb')){e.preventDefault();show(links().indexOf(a))}});
 lb.querySelector('.x').onclick=hide;lb.querySelector('.pv').onclick=function(e){e.stopPropagation();show(i-1)};lb.querySelector('.nx').onclick=function(e){e.stopPropagation();show(i+1)};
 lb.addEventListener('click',function(e){if(e.target===lb||e.target===im)hide()});
-document.addEventListener('keydown',function(e){if(!lb.classList.contains('on'))return;if(e.key==='Escape')hide();if(e.key==='ArrowLeft')show(i-1);if(e.key==='ArrowRight')show(i+1)});})();</script></html>
+document.addEventListener('keydown',function(e){if(!lb.classList.contains('on'))return;if(e.key==='Escape')hide();if(e.key==='ArrowLeft')show(i-1);if(e.key==='ArrowRight')show(i+1)});})();</script><script>(function(){document.querySelectorAll('thead.sortable').forEach(function(th){var tb=th.parentNode.querySelector('tbody');var ths=th.querySelectorAll('th');
+ths.forEach(function(h,ci){h.style.cursor='pointer';h.title='click to sort';h.addEventListener('click',function(){var rows=Array.prototype.slice.call(tb.querySelectorAll('tr'));var asc=!(h.dataset.asc==='1');ths.forEach(function(x){delete x.dataset.asc;x.classList.remove('asc','desc')});h.dataset.asc=asc?'1':'0';h.classList.add(asc?'asc':'desc');
+var rank={S1:0,S2:1,S3:2,S4:3,other:4,dup:5,info:6,env:7};
+function key(r){if(ci===1)return rank[r.dataset.sev]!==undefined?rank[r.dataset.sev]:9;if(ci===0)return +r.dataset.idx;var c=r.children[ci];return c?c.textContent.trim().toLowerCase():''}
+rows.sort(function(a,b){var ka=key(a),kb=key(b);if(ka<kb)return asc?-1:1;if(ka>kb)return asc?1:-1;return (+a.dataset.idx)-(+b.dataset.idx)});rows.forEach(function(r){tb.appendChild(r)})})})})})();</script></html>

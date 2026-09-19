@@ -6,6 +6,8 @@ nav.top{background:#012060;color:#fff;padding:8px 24px;margin:-16px -24px 16px;p
 .S1{color:#b00020;font-weight:bold}.S2{color:#c75000;font-weight:bold}.toc{background:#f8f9fb;border:1px solid #e3e6ea;padding:8px 16px;font-size:13px;columns:2}.toc ul{margin:2px 0;padding-left:16px}
 #lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:50;align-items:center;justify-content:center;flex-direction:column}#lb.on{display:flex}#lb img{max-width:96vw;max-height:88vh;border:2px solid #fff;box-shadow:0 0 30px #000}#lb .cap{color:#eee;font:13px ui-monospace,monospace;margin-top:8px}#lb .cap a{color:#8cf}#lb .x{position:absolute;top:10px;right:18px;color:#fff;font-size:30px;cursor:pointer}#lb .nv{position:absolute;top:50%;color:#fff;font-size:44px;cursor:pointer;padding:0 16px;user-select:none}#lb .pv{left:0}#lb .nx{right:0}a.img img{cursor:zoom-in}
 sup.more a{margin:0 2px;font-size:10px}
+thead.sortable th.asc::after{content:' \25B2';font-size:9px}thead.sortable th.desc::after{content:' \25BC';font-size:9px}
+tr[data-sev=S1] td:nth-child(2){background:#fde7e9}tr[data-sev=S2] td:nth-child(2){background:#fff1e0}
 a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:target{background:#fff3b0;outline:2px solid #f5b400}
 .note{background:#fff8e1;border-left:4px solid #f5b400;padding:8px 12px;margin:12px 0}
 </style><nav class=top><a href="../../index.html">Home</a><a href="../../QA-REPORT.html">Full report</a><a href="../../EXEC-SUMMARY.html">Executive summary</a><a href="../../STORY-MATRIX.html">User-story matrix</a><a href="../../DEFECT-LEDGER.html">Defect register</a><a href="../index.html">Evidence gallery</a><a href="../../QA-PLAN.html">Test plan</a><a href="../../streams.html">Stream reports</a></nav><h1 id="qa-report-s12-cj1-bc1-nm1-agent-s12-emulator-5558-avd-dw-qa3-2026-09-19">QA report: S12 — <a class=ev href="../index.html#S12-CJ1">CJ1</a> / <a class=ev href="../index.html#S12-BC1">BC1</a> / <a class=ev href="../index.html#S12-NM1">NM1</a>   (agent: S12, emulator-5558 / AVD dw-qa3, 2026-09-19)</h1>
@@ -277,7 +279,7 @@ Four defects below, none fund-losing.</p>
 <hr />
 <h2 id="defects-found">Defects found</h2>
 <table>
-<thead>
+<thead class=sortable>
 <tr>
 <th>ID</th>
 <th>Sev</th>
@@ -287,8 +289,7 @@ Four defects below, none fund-losing.</p>
 <th>Suspected area</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr data-sev="S1" data-idx="0">
 <td><strong><a class=did href="../../DEFECT-LEDGER.html#D-068">D-068</a></strong> (confirmed + extended)</td>
 <td class=S1><strong>S1</strong></td>
 <td>Ex-CoinJoin funds are counted but completely unspendable after the 11.9.0 -&gt; 12.0.0 upgrade, and the one UI that could rescue them is hard-suppressed</td>
@@ -296,7 +297,7 @@ Four defects below, none fund-losing.</p>
 <td><a class=ev href="../S12/CJ1/post-upgrade/12-amount-0.001.webp">S12/CJ1/post-upgrade/12,13,14*.png</a><sup class=more><a href="../S12/CJ1/post-upgrade/13-send-balance-unhidden.webp" title="S12/CJ1/post-upgrade/13-send-balance-unhidden.webp">2</a> <a href="../S12/CJ1/post-upgrade/14-send-max.webp" title="S12/CJ1/post-upgrade/14-send-max.webp">3</a></sup>, <a class=ev href="../S12/CJ1/post-upgrade/21-shield-result.webp">21-shield-result.png</a>, <a class=ev href="../S12/CJ1/post-upgrade/insufficient-funds-log.txt">insufficient-funds-log.txt</a>, <a class=ev href="../S12/CJ1/post-upgrade/shield-failure-log.txt">shield-failure-log.txt</a>, <a class=ev href="../S12/CJ1/post-upgrade/cj1-send.mp4">cj1-send.mp4</a>, <a class=ev href="../S12/CJ1/post-upgrade/cj1-shield.mp4">cj1-shield.mp4</a></td>
 <td><code>CoinJoinFundsMigrationService.kt:118/425</code> (<code>MIXED_FUNDS_PROMPT_HARD_SUPPRESSED</code>) + SDK coin selection ignoring <code>AccountType::CoinJoin</code> for spends and asset locks</td>
 </tr>
-<tr>
+<tr data-sev="S3" data-idx="1">
 <td id="D-068a"><a href="#D-068a">D-068a</a></td>
 <td>S3</td>
 <td>Send says "Balance: DASH 0.00" while the shield screen simultaneously says "From Dash Wallet 0.99997138" for the same funds, then fails at PIN — the user is invited into a transfer that provably cannot work</td>
@@ -304,23 +305,7 @@ Four defects below, none fund-losing.</p>
 <td><a class=ev href="../S12/CJ1/escape-hatches/02-shield-max.webp">CJ1/escape-hatches/02-shield-max.png</a> vs <a class=ev href="../S12/CJ1/escape-hatches/01-send-max.webp">01-send-max.png</a>, <a class=ev href="../S12/CJ1/escape-hatches/04-shield-max-result.webp">04-shield-max-result.png</a></td>
 <td>shielded transfer VM reads the total balance, not the asset-lock-selectable balance</td>
 </tr>
-<tr>
-<td id="D-068b"><a href="#D-068b">D-068b</a></td>
-<td>S4</td>
-<td>Persisted <code>coinjoin_mode=INTERMEDIATE</code> survives the upgrade in <code>files/datastore/coinjoin.preferences_pb</code>, orphaned — never read, never migrated, never cleared (confirms <a class=did href="../SR/REPORT.html#SR-27">SR-27</a>)</td>
-<td>dump the datastore before and after <code>install -r</code></td>
-<td><code>CJ1/pre-upgrade/coinjoin-datastore-master-mixing-on.bin</code> vs <code>CJ1/post-upgrade/coinjoin-datastore-fix-after.bin</code></td>
-<td>CoinJoin removal commit left <code>CoinJoinConfig</code>'s datastore behind</td>
-</tr>
-<tr>
-<td><strong><a class=did href="../../DEFECT-LEDGER.html#D-069">D-069</a></strong></td>
-<td>S4</td>
-<td>Network monitor shows "Downloading filter headers 54%" while the "Block filters" row reads 150,999 / 1,556,626 (~10%) — headline percentage and counter disagree by ~44 points</td>
-<td>Tools &gt; Network monitor during a post-restore replay</td>
-<td><a class=ev href="../S12/NM1/07-network-monitor-during-replay.webp">S12/NM1/07-network-monitor-during-replay.png</a></td>
-<td>network-monitor progress binding</td>
-</tr>
-<tr>
+<tr data-sev="S3" data-idx="4">
 <td><strong><a class=did href="../../DEFECT-LEDGER.html#D-070">D-070</a></strong></td>
 <td>S3</td>
 <td>The 60 s auto-lock fires on the Buy-Credits confirm sheet and silently cancels the top-up — no error, no "cancelled" message, user dropped back on the amount screen</td>
@@ -328,7 +313,7 @@ Four defects below, none fund-losing.</p>
 <td><a class=ev href="../S12/BC1/31-buy-progress-1.webp">S12/BC1/31-buy-progress-1.png</a>, <a class=ev href="../S12/BC1/33-after-unlock-buy.webp">33-after-unlock-buy.png</a></td>
 <td><code>AutoLogout</code> vs <code>BuyCreditsFragment</code> confirm dialog (pairs with <a class=did href="../../DEFECT-LEDGER.html#D-001">D-001</a>)</td>
 </tr>
-<tr>
+<tr data-sev="S3" data-idx="5">
 <td><strong><a class=did href="../../DEFECT-LEDGER.html#D-071">D-071</a></strong></td>
 <td>S3</td>
 <td>A top-up that hits <code>Dapi client error: no available addresses to use</code> broadcasts the asset lock anyway and tells the user "Your top-up may have gone through. Please don't try again" — funds locked on L1 with no in-UI progress until a background worker recovers it 91 s later</td>
@@ -336,7 +321,23 @@ Four defects below, none fund-losing.</p>
 <td><a class=ev href="../S12/BC1/34-topup-unconfirmed-message.webp">S12/BC1/34-topup-unconfirmed-message.png</a>; log <code>09:03:49</code> ... <code>09:05:20</code>; asset lock <code>fee3034fcb25bf0cbc2a78a8cffbc30acfc4e708aa34e5a0ae50316041cdb316</code> (type 8, 0.001 locked)</td>
 <td><code>PerformTopUpWorker</code> / <code>SdkTopUpRecoveryService</code>; recovery works, but the user-facing window is an unbounded "may have"</td>
 </tr>
-<tr>
+<tr data-sev="S4" data-idx="2">
+<td id="D-068b"><a href="#D-068b">D-068b</a></td>
+<td>S4</td>
+<td>Persisted <code>coinjoin_mode=INTERMEDIATE</code> survives the upgrade in <code>files/datastore/coinjoin.preferences_pb</code>, orphaned — never read, never migrated, never cleared (confirms <a class=did href="../SR/REPORT.html#SR-27">SR-27</a>)</td>
+<td>dump the datastore before and after <code>install -r</code></td>
+<td><code>CJ1/pre-upgrade/coinjoin-datastore-master-mixing-on.bin</code> vs <code>CJ1/post-upgrade/coinjoin-datastore-fix-after.bin</code></td>
+<td>CoinJoin removal commit left <code>CoinJoinConfig</code>'s datastore behind</td>
+</tr>
+<tr data-sev="S4" data-idx="3">
+<td><strong><a class=did href="../../DEFECT-LEDGER.html#D-069">D-069</a></strong></td>
+<td>S4</td>
+<td>Network monitor shows "Downloading filter headers 54%" while the "Block filters" row reads 150,999 / 1,556,626 (~10%) — headline percentage and counter disagree by ~44 points</td>
+<td>Tools &gt; Network monitor during a post-restore replay</td>
+<td><a class=ev href="../S12/NM1/07-network-monitor-during-replay.webp">S12/NM1/07-network-monitor-during-replay.png</a></td>
+<td>network-monitor progress binding</td>
+</tr>
+<tr data-sev="S4" data-idx="6">
 <td><strong><a class=did href="../../DEFECT-LEDGER.html#D-072">D-072</a></strong></td>
 <td>S4</td>
 <td>Tools &gt; <strong>Credits</strong> row never shows a credit balance — only the title, an info icon and a "Buy" link — even with 2.7G credits on the identity</td>
@@ -344,7 +345,7 @@ Four defects below, none fund-losing.</p>
 <td><a class=ev href="../S12/BC1/23-tools-credits.webp">S12/BC1/23-tools-credits.png</a>, <a class=ev href="../S12/BC1/50-tools-after-success.webp">50-tools-after-success.png</a></td>
 <td><code>tools_credits_title</code> row has no balance binding</td>
 </tr>
-<tr>
+<tr data-sev="S4" data-idx="7">
 <td><strong><a class=did href="../../DEFECT-LEDGER.html#D-073">D-073</a></strong></td>
 <td>S4</td>
 <td>"Current Identity Balance" on the Buy Credits screen is stale after a successful top-up (still 0.02562746 when the identity is already at 0.02654713); only a relaunch refreshes it</td>
@@ -352,15 +353,14 @@ Four defects below, none fund-losing.</p>
 <td><a class=ev href="../S12/BC1/36-buy-credits-after-success.webp">S12/BC1/36-buy-credits-after-success.png</a> vs <a class=ev href="../S12/BC1/42-buy-credits-balance-refreshed.webp">42-buy-credits-balance-refreshed.png</a></td>
 <td>Buy-credits VM does not re-read the identity balance after a credited top-up</td>
 </tr>
-<tr>
+<tr data-sev="S4" data-idx="8">
 <td id="D-074"><a href="#D-074">D-074</a></td>
 <td>S4</td>
 <td>Buy Credits amount field silently clamps below-minimum input back to 0.001 with no message</td>
 <td>Tools &gt; Credits &gt; Buy, try to type 0.0001</td>
 <td><a class=ev href="../S12/BC1/29-buy-below-min.webp">S12/BC1/29-buy-below-min.png</a></td>
 <td>same pattern as <a class=did href="../../DEFECT-LEDGER.html#D-032">D-032</a></td>
-</tr>
-</tbody>
+</tr></tbody>
 </table>
 <p><strong>Existing defects re-confirmed on this stream</strong>
 - <strong><a class=did href="../../DEFECT-LEDGER.html#D-001">D-001</a></strong> (auto-lock after 60 s) — hit repeatedly; see <a class=did href="../../DEFECT-LEDGER.html#D-070">D-070</a> for a functional consequence.
@@ -400,4 +400,8 @@ function hide(){lb.classList.remove('on');im.src=''}
 document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".webp"],a[href$=".png"]');if(a&&!a.closest('#lb')){e.preventDefault();show(links().indexOf(a))}});
 lb.querySelector('.x').onclick=hide;lb.querySelector('.pv').onclick=function(e){e.stopPropagation();show(i-1)};lb.querySelector('.nx').onclick=function(e){e.stopPropagation();show(i+1)};
 lb.addEventListener('click',function(e){if(e.target===lb||e.target===im)hide()});
-document.addEventListener('keydown',function(e){if(!lb.classList.contains('on'))return;if(e.key==='Escape')hide();if(e.key==='ArrowLeft')show(i-1);if(e.key==='ArrowRight')show(i+1)});})();</script></html>
+document.addEventListener('keydown',function(e){if(!lb.classList.contains('on'))return;if(e.key==='Escape')hide();if(e.key==='ArrowLeft')show(i-1);if(e.key==='ArrowRight')show(i+1)});})();</script><script>(function(){document.querySelectorAll('thead.sortable').forEach(function(th){var tb=th.parentNode.querySelector('tbody');var ths=th.querySelectorAll('th');
+ths.forEach(function(h,ci){h.style.cursor='pointer';h.title='click to sort';h.addEventListener('click',function(){var rows=Array.prototype.slice.call(tb.querySelectorAll('tr'));var asc=!(h.dataset.asc==='1');ths.forEach(function(x){delete x.dataset.asc;x.classList.remove('asc','desc')});h.dataset.asc=asc?'1':'0';h.classList.add(asc?'asc':'desc');
+var rank={S1:0,S2:1,S3:2,S4:3,other:4,dup:5,info:6,env:7};
+function key(r){if(ci===1)return rank[r.dataset.sev]!==undefined?rank[r.dataset.sev]:9;if(ci===0)return +r.dataset.idx;var c=r.children[ci];return c?c.textContent.trim().toLowerCase():''}
+rows.sort(function(a,b){var ka=key(a),kb=key(b);if(ka<kb)return asc?-1:1;if(ka>kb)return asc?1:-1;return (+a.dataset.idx)-(+b.dataset.idx)});rows.forEach(function(r){tb.appendChild(r)})})})})})();</script></html>
