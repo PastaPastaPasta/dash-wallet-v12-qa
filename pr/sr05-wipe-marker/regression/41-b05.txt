@@ -1,0 +1,10 @@
+killed 0.5s after confirm (b05)
+--- marker content ---
+--- ui ---
+text="Send and receive Dash via usernames"
+text="Create new wallet"
+--- files after relaunch ---
+--- log ---
+4551:21:53:19 [DefaultDispatcher-worker-8] WalletApplicationExt - databases cleared (isWalletWipe = true, failed steps = [])
+5073:21:57:01 [DefaultDispatcher-worker-10] WalletApplicationExt - databases cleared (isWalletWipe = true, failed steps = [])
+5681:22:00:26 [DefaultDispatcher-worker-15] WalletApplicationExt - databases cleared (isWalletWipe = true, failed steps = [])

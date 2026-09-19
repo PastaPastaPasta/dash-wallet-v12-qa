@@ -1,0 +1,5 @@
+633:21:17:18 [main] WalletApplication - removing wallet from memory during wipe
+1199:21:21:38 [main] WalletApplication - removing wallet from memory during wipe
+2243:21:25:10 [main] WalletWipeState - could not create the wallet-wipe marker
+2288:21:25:10 [main] WalletWipeSequence - wipe started WITHOUT a recovery marker — a process death mid-wipe will not be repaired
+2327:21:25:10 [DefaultDispatcher-worker-12] WalletWipeSequence - wipe teardown reached without a wipe having been started — destroying nothing

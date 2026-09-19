@@ -1,0 +1,3 @@
+3419:21:44:56 [DefaultDispatcher-worker-8] WalletWipeSequence - wipe destruction finished with 2 failed step(s): [wallet-file, key-backup-file] — NOT clearing the marker, so the next launch finishes the wipe instead of coming up half-wiped
+4510:21:53:18 [main] WalletApplicationExt - a previous Reset Wallet did not finish — completing it now; this launch does not load a wallet
+4551:21:53:19 [DefaultDispatcher-worker-8] WalletApplicationExt - databases cleared (isWalletWipe = true, failed steps = [])

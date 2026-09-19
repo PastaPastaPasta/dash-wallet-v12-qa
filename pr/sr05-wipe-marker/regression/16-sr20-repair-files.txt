@@ -1,0 +1,9 @@
+--- datastore ---
+total 40
+drwx------ 2 u0_a210 u0_a210 4096 2026-09-19 16:41 .
+drwxrwx--x 9 u0_a210 u0_a210 4096 2026-09-19 16:41 ..
+-rw------- 1 u0_a210 u0_a210    0 2026-09-19 16:41 coinbase.preferences_pb
+-rw------- 1 u0_a210 u0_a210  165 2026-09-19 16:41 dashpay.preferences_pb
+-rw------- 1 u0_a210 u0_a210    0 2026-09-19 16:41 exchange_rates_config.preferences_pb
+-rw------- 1 u0_a210 u0_a210    0 2026-09-19 16:41 uphold.preferences_pb
+-rw------- 1 u0_a210 u0_a210    0 2026-09-19 16:41 wallet_ui.preferences_pb

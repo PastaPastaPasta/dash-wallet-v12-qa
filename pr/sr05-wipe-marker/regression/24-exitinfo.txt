@@ -1,0 +1,12 @@
+          timestamp=2026-09-19 16:41:20.017 pid=9515 realUid=10210 packageUid=10210 definingUid=10210 user=0
+          process=hashengineering.darkcoin.wallet_test reason=10 (USER REQUESTED) subreason=21 (FORCE STOP) status=0
+          importance=100 pss=0.00 rss=424MB description=stop hashengineering.darkcoin.wallet_test due to from pid 9976 state=empty trace=null
+          timestamp=2026-09-19 16:39:31.425 pid=8925 realUid=10210 packageUid=10210 definingUid=10210 user=0
+          process=hashengineering.darkcoin.wallet_test reason=10 (USER REQUESTED) subreason=21 (FORCE STOP) status=0
+          importance=100 pss=0.00 rss=370MB description=stop hashengineering.darkcoin.wallet_test due to from pid 9494 state=empty trace=null
+          timestamp=2026-09-19 16:36:18.412 pid=8079 realUid=10210 packageUid=10210 definingUid=10210 user=0
+          process=hashengineering.darkcoin.wallet_test reason=10 (USER REQUESTED) subreason=21 (FORCE STOP) status=0
+          importance=100 pss=0.00 rss=531MB description=stop hashengineering.darkcoin.wallet_test due to from pid 8877 state=empty trace=null
+          timestamp=2026-09-19 16:34:34.304 pid=7123 realUid=10210 packageUid=10210 definingUid=10210 user=0
+          process=hashengineering.darkcoin.wallet_test reason=10 (USER REQUESTED) subreason=21 (FORCE STOP) status=0
+          importance=100 pss=0.00 rss=664MB description=stop hashengineering.darkcoin.wallet_test due to from pid 8031 state=empty trace=null

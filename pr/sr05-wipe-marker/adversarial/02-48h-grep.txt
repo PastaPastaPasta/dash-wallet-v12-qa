@@ -1,0 +1,1 @@
+4122:21:52:01 [main] WalletWipeState - the wallet-wipe marker at /data/user/0/hashengineering.darkcoin.wallet_test/files/wallet-wipe.pending is 172801261 ms old (limit 86400000 ms, started 1789681920000, versionCode 12000014) — a wipe that did not finish in a day is not going to; renaming it aside and loading the wallet

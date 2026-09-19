@@ -1,0 +1,2 @@
+923:21:34:36 [main] WalletWipeState - the wallet-wipe marker at /data/user/0/hashengineering.darkcoin.wallet_test/files/wallet-wipe.pending (0 bytes) is empty or unreadable — this is NOT an in-flight wipe; renaming it aside and leaving the wallet alone
+924:21:34:36 [main] WalletWipeState - stale wallet-wipe marker kept at /data/user/0/hashengineering.darkcoin.wallet_test/files/wallet-wipe.pending.stale.1789853676905

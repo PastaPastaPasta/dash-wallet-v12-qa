@@ -1,0 +1,18 @@
+total 4372
+drwxrwx--x  9 u0_a209 u0_a209    4096 2026-09-19 16:17 .
+drwx------ 12 u0_a209 u0_a209    4096 2026-09-19 16:17 ..
+drwx------  6 u0_a209 u0_a209    4096 2026-09-19 16:17 .com.google.firebase.crashlytics.files.v2:hashengineering.darkcoin.wallet_test
+drwx------  5 u0_a209 u0_a209    4096 2026-09-19 16:11 AFRequestCache
+-rw-------  1 u0_a209 u0_a209     114 2026-09-19 16:17 PersistedInstallation.W0RFRkFVTFRd+MTowMDAwMDAwMDAwMDA6YW5kcm9pZDowMDAwMDAwMDAwMDAwMDAx.json
+drwx------  2 u0_a209 u0_a209    4096 2026-09-19 16:17 datastore
+-rw-------  1 u0_a209 u0_a209       0 2026-09-19 16:11 generatefid.lock
+drwx------  2 u0_a209 u0_a209    4096 2026-09-19 16:17 l1_shadow_spv
+drwx------  2 u0_a209 u0_a209    4096 2026-09-19 16:11 log
+drwx------  2 u0_a209 u0_a209    4096 2026-09-19 16:17 migration_flags
+drwx------  7 u0_a209 u0_a209    4096 2026-09-19 16:17 sdk-logs
+-rw-------  1 u0_a209 u0_a209  200704 2026-09-19 16:12 shielded_tree_testnet.sqlite
+-rw-------  1 u0_a209 u0_a209   32768 2026-09-19 16:13 shielded_tree_testnet.sqlite-shm
+-rw-------  1 u0_a209 u0_a209 4120032 2026-09-19 16:12 shielded_tree_testnet.sqlite-wal
+-rw-------  1 u0_a209 u0_a209     239 2026-09-19 16:17 startup.breadcrumbs
+-rw-------  1 u0_a209 u0_a209       1 2026-09-19 16:17 startup.failures
+-rw-------  1 u0_a209 u0_a209       1 2026-09-19 16:17 startup.safemoderuns

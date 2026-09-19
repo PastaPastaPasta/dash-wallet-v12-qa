@@ -1,0 +1,3 @@
+924:21:34:36 [main] WalletWipeState - stale wallet-wipe marker kept at /data/user/0/hashengineering.darkcoin.wallet_test/files/wallet-wipe.pending.stale.1789853676905
+1314:21:36:29 [main] WalletApplicationExt - a previous Reset Wallet did not finish — completing it now; this launch does not load a wallet
+1355:21:36:30 [DefaultDispatcher-worker-9] WalletApplicationExt - databases cleared (isWalletWipe = true, failed steps = [])

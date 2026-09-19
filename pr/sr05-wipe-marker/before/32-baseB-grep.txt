@@ -1,0 +1,2 @@
+629:21:17:18 [main] WalletApplicationExt - a previous Reset Wallet did not finish — completing it now; this launch does not load a wallet
+2933:21:27:03 [main] WalletApplicationExt - a previous Reset Wallet did not finish — completing it now; this launch does not load a wallet

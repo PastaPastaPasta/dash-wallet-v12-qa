@@ -1,0 +1,42 @@
+total 4416
+dr-xr-xr-x  9 u0_a210 u0_a210    4096 2026-09-19 16:43 .
+drwx------ 12 u0_a210 u0_a210    4096 2026-09-19 16:41 ..
+drwx------  6 u0_a210 u0_a210    4096 2026-09-19 16:41 .com.google.firebase.crashlytics.files.v2:hashengineering.darkcoin.wallet_test
+drwx------  5 u0_a210 u0_a210    4096 2026-09-19 16:27 AFRequestCache
+-rw-------  1 u0_a210 u0_a210     114 2026-09-19 16:41 PersistedInstallation.W0RFRkFVTFRd+MTowMDAwMDAwMDAwMDA6YW5kcm9pZDowMDAwMDAwMDAwMDAwMDAx.json
+drwx------  2 u0_a210 u0_a210    4096 2026-09-19 16:44 datastore
+-rw-------  1 u0_a210 u0_a210       0 2026-09-19 16:27 generatefid.lock
+-rw-rw----  1 u0_a210 u0_a210   15504 2026-09-19 16:42 key-backup-protobuf-testnet
+drwx------  2 u0_a210 u0_a210    4096 2026-09-19 16:44 l1_shadow_spv
+drwx------  2 u0_a210 u0_a210    4096 2026-09-19 16:27 log
+drwx------  2 u0_a210 u0_a210    4096 2026-09-19 16:34 migration_flags
+drwx------  7 u0_a210 u0_a210    4096 2026-09-19 16:41 sdk-logs
+-rw-------  1 u0_a210 u0_a210  200704 2026-09-19 16:29 shielded_tree_testnet.sqlite
+-rw-------  1 u0_a210 u0_a210   32768 2026-09-19 16:44 shielded_tree_testnet.sqlite-shm
+-rw-------  1 u0_a210 u0_a210 4120032 2026-09-19 16:44 shielded_tree_testnet.sqlite-wal
+-rw-------  1 u0_a210 u0_a210     653 2026-09-19 16:44 startup.breadcrumbs
+-rw-------  1 u0_a210 u0_a210       1 2026-09-19 16:44 startup.failures
+-rw-------  1 u0_a210 u0_a210       1 2026-09-19 16:44 startup.safemoderuns
+-rw-------  1 u0_a210 u0_a210   15498 2026-09-19 16:43 wallet-protobuf-testnet
+--- datastore ---
+total 40
+drwx------ 2 u0_a210 u0_a210 4096 2026-09-19 16:44 .
+dr-xr-xr-x 9 u0_a210 u0_a210 4096 2026-09-19 16:43 ..
+-rw------- 1 u0_a210 u0_a210    0 2026-09-19 16:44 coinbase.preferences_pb
+-rw------- 1 u0_a210 u0_a210  165 2026-09-19 16:44 dashpay.preferences_pb
+-rw------- 1 u0_a210 u0_a210    0 2026-09-19 16:44 exchange_rates_config.preferences_pb
+-rw------- 1 u0_a210 u0_a210    0 2026-09-19 16:44 uphold.preferences_pb
+-rw------- 1 u0_a210 u0_a210    0 2026-09-19 16:44 wallet_ui.preferences_pb
+--- databases ---
+com.google.android.datatransport.events
+com.google.android.datatransport.events-journal
+dash-sdk.db
+dash-sdk.db-shm
+dash-sdk.db-wal
+dash-wallet-database
+dash-wallet-database-shm
+dash-wallet-database-wal
+explore-database
+explore-database-journal
+google_app_measurement_local.db
+google_app_measurement_local.db-journal

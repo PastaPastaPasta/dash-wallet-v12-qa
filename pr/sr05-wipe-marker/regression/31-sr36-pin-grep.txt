@@ -1,0 +1,6 @@
+3559:	at de.schildbach.wallet.security.SecurityGuard.retrievePassword(SecurityGuard.java:241)
+3578:21:45:54 [DefaultDispatcher-worker-4] DashSdkServiceImpl - bootstrapping Dash Platform SDK for network=testnet (flavor=_testNet3)
+3611:21:45:55 [main] SecurityGuard - loading security guard [healthy=true] with keys: [keystore_healthy, modern_encryption_migration_complete]
+3612:21:45:55 [main] SecurityGuard - loading security guard [healthy=true] with keys: [keystore_healthy, modern_encryption_migration_complete]
+3613:21:45:55 [main] SecurityGuard - loading security guard [healthy=true] with keys: [keystore_healthy, modern_encryption_migration_complete]
+3644:21:46:47 [main] SecurityGuard - loading security guard [healthy=true] with keys: [keystore_healthy, modern_encryption_migration_complete]

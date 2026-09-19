@@ -1,0 +1,15 @@
+total 64
+drwx------ 2 u0_a209 u0_a209 4096 2026-09-19 16:20 .
+drwxrwx--x 9 u0_a209 u0_a209 4096 2026-09-19 16:19 ..
+-rw------- 1 u0_a209 u0_a209   30 2026-09-19 16:19 coinbase.preferences_pb
+-rw------- 1 u0_a209 u0_a209  360 2026-09-19 16:20 dashpay.preferences_pb
+-rw------- 1 u0_a209 u0_a209  126 2026-09-19 16:19 exchange_rates_config.preferences_pb
+-rw------- 1 u0_a209 u0_a209  216 2026-09-19 16:19 org.dashfoundation.wallet.secrets.preferences_pb
+-rw------- 1 u0_a209 u0_a209   30 2026-09-19 16:19 uphold.preferences_pb
+-rw------- 1 u0_a209 u0_a209   59 2026-09-19 16:19 wallet_ui.preferences_pb
+3136e10bd18ae14fcae7b8a5a34b21ff  /data/data/hashengineering.darkcoin.wallet_test/files/datastore/coinbase.preferences_pb
+53a31a60cfc38852b00ec4fc8e1479de  /data/data/hashengineering.darkcoin.wallet_test/files/datastore/dashpay.preferences_pb
+ca123ea447a0d74c4b2811aa5c13484b  /data/data/hashengineering.darkcoin.wallet_test/files/datastore/exchange_rates_config.preferences_pb
+c56d0c70f19b69c8ee3d9bf7ee364b1e  /data/data/hashengineering.darkcoin.wallet_test/files/datastore/org.dashfoundation.wallet.secrets.preferences_pb
+3136e10bd18ae14fcae7b8a5a34b21ff  /data/data/hashengineering.darkcoin.wallet_test/files/datastore/uphold.preferences_pb
+dd3044f1d2c416ac972cd56e09e61a80  /data/data/hashengineering.darkcoin.wallet_test/files/datastore/wallet_ui.preferences_pb

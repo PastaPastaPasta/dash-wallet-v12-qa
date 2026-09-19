@@ -1,0 +1,8 @@
+7149:22:11:20 [main] WalletApplication - removing wallet from memory during wipe
+7180:22:11:20 [DefaultDispatcher-worker-3] WalletApplicationExt - databases cleared (isWalletWipe = true, failed steps = [])
+7977:22:16:14 [main] WalletApplication - removing wallet from memory during wipe
+8011:22:16:14 [DefaultDispatcher-worker-7] WalletApplicationExt - databases cleared (isWalletWipe = true, failed steps = [])
+7947:22:16:13 [DefaultDispatcher-worker-1] BlockchainServiceImpl - .onStartCommand(Intent { act=de.schildbach.wallet.service.wipe_wallet cmp=hashengineering.darkcoin.wallet_test/de.schildbach.wallet.service.BlockchainServiceImpl }) finished
+8439:22:19:17 [main] BlockchainServiceImpl - .onStartCommand(Intent { act=de.schildbach.wallet.service.wipe_wallet cmp=hashengineering.darkcoin.wallet_test/de.schildbach.wallet.service.BlockchainServiceImpl })
+8443:22:19:17 [DefaultDispatcher-worker-10] BlockchainServiceImpl - service start command: Intent { act=de.schildbach.wallet.service.wipe_wallet cmp=hashengineering.darkcoin.wallet_test/de.schildbach.wallet.service.BlockchainServiceImpl }
+8445:22:19:17 [DefaultDispatcher-worker-10] BlockchainServiceImpl - .onStartCommand(Intent { act=de.schildbach.wallet.service.wipe_wallet cmp=hashengineering.darkcoin.wallet_test/de.schildbach.wallet.service.BlockchainServiceImpl }) finished

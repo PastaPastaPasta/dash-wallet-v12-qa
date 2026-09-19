@@ -1,0 +1,6 @@
+3382:21:44:56 [main] WalletApplication - removing wallet from memory during wipe
+3390:21:44:56 [DefaultDispatcher-worker-14] WalletApplication - could not delete the wallet file '/data/user/0/hashengineering.darkcoin.wallet_test/files/wallet-protobuf-testnet' — the wipe did NOT destroy the wallet
+3409:21:44:56 [DefaultDispatcher-worker-14] L1ShadowSyncService - wallet-wipe SDK cleanup for wallet 3f35a20e: stopping shadow + shielded sync, removing the SDK wallet (full cascade), deleting the SPV dataDir, clearing the binder latch — NO rebind (the next wallet setup binds fresh). SDK-side state only; dashj is untouched
+3414:21:44:56 [DefaultDispatcher-worker-14] L1ShadowSyncService - wallet-wipe SDK cleanup complete for wallet 3f35a20e: the next wallet binds fresh
+3419:21:44:56 [DefaultDispatcher-worker-8] WalletWipeSequence - wipe destruction finished with 2 failed step(s): [wallet-file, key-backup-file] — NOT clearing the marker, so the next launch finishes the wipe instead of coming up half-wiped
+3432:21:44:56 [main] OnboardingActivity - degraded startup: walletFileExists=true, walletLoadDegraded=false, safeMode=false — showing the crash-report path

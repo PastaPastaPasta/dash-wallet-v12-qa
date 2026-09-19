@@ -1,0 +1,4 @@
+5681:22:00:26 [DefaultDispatcher-worker-15] WalletApplicationExt - databases cleared (isWalletWipe = true, failed steps = [])
+6287:22:03:42 [DefaultDispatcher-worker-7] WalletApplicationExt - databases cleared (isWalletWipe = true, failed steps = [])
+7180:22:11:20 [DefaultDispatcher-worker-3] WalletApplicationExt - databases cleared (isWalletWipe = true, failed steps = [])
+8011:22:16:14 [DefaultDispatcher-worker-7] WalletApplicationExt - databases cleared (isWalletWipe = true, failed steps = [])

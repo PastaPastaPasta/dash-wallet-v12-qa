@@ -1,0 +1,5 @@
+924:21:34:36 [main] WalletWipeState - stale wallet-wipe marker kept at /data/user/0/hashengineering.darkcoin.wallet_test/files/wallet-wipe.pending.stale.1789853676905
+1296:21:36:18 [main] WalletApplication - removing wallet from memory during wipe
+1319:21:36:30 [main] WalletApplication - removing wallet from memory during wipe
+1801:21:39:32 [main] WalletWipeState - the wallet-wipe marker was started on a different wallet file (marker: length=15322 modified=1789853351876; on disk: length=15322 modified=1789853916768) — refusing to destroy this wallet; renaming the marker aside and loading normally
+1805:21:39:32 [main] WalletWipeState - stale wallet-wipe marker kept at /data/user/0/hashengineering.darkcoin.wallet_test/files/wallet-wipe.pending.stale.1789853972931

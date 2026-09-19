@@ -1,0 +1,52 @@
+ACTIVITY MANAGER PROCESS EXIT INFO (dumpsys activity exit-info)
+Last Timestamp of Persistence Into Persistent Storage: 2026-09-19 16:57:44.490
+  package: hashengineering.darkcoin.wallet_test
+    Historical Process Exit for uid=10210
+        ApplicationExitInfo #0:
+          timestamp=2026-09-19 17:03:41.820 pid=14123 realUid=10210 packageUid=10210 definingUid=10210 user=0
+          process=hashengineering.darkcoin.wallet_test reason=10 (USER REQUESTED) subreason=21 (FORCE STOP) status=0
+          importance=100 pss=0.00 rss=335MB description=stop hashengineering.darkcoin.wallet_test due to from pid 14789 state=empty trace=null
+        ApplicationExitInfo #1:
+          timestamp=2026-09-19 17:00:26.632 pid=13385 realUid=10210 packageUid=10210 definingUid=10210 user=0
+          process=hashengineering.darkcoin.wallet_test reason=10 (USER REQUESTED) subreason=21 (FORCE STOP) status=0
+          importance=100 pss=0.00 rss=336MB description=stop hashengineering.darkcoin.wallet_test due to from pid 14101 state=empty trace=null
+        ApplicationExitInfo #2:
+          timestamp=2026-09-19 16:57:01.419 pid=12649 realUid=10210 packageUid=10210 definingUid=10210 user=0
+          process=hashengineering.darkcoin.wallet_test reason=10 (USER REQUESTED) subreason=21 (FORCE STOP) status=0
+          importance=100 pss=0.00 rss=370MB description=stop hashengineering.darkcoin.wallet_test due to from pid 13362 state=empty trace=null
+        ApplicationExitInfo #3:
+          timestamp=2026-09-19 16:52:58.284 pid=12512 realUid=10210 packageUid=10210 definingUid=10210 user=0
+          process=hashengineering.darkcoin.wallet_test reason=6 (ANR) subreason=0 (UNKNOWN) status=0
+          importance=100 pss=0.00 rss=0.00 description=bg anr: Process ProcessRecord{4e6bf28 12512:hashengineering.darkcoin.wallet_test/u0a210} failed to complete startup state=empty trace=/data/system/procexitstore/anr_2026-09-19-16-52-56-647.gz
+        ApplicationExitInfo #4:
+          timestamp=2026-09-19 16:52:37.996 pid=12278 realUid=10210 packageUid=10210 definingUid=10210 user=0
+          process=hashengineering.darkcoin.wallet_test reason=10 (USER REQUESTED) subreason=21 (FORCE STOP) status=0
+          importance=100 pss=0.00 rss=0.00 description=stop hashengineering.darkcoin.wallet_test due to from pid 12494 state=empty trace=null
+        ApplicationExitInfo #5:
+          timestamp=2026-09-19 16:51:48.903 pid=11475 realUid=10210 packageUid=10210 definingUid=10210 user=0
+          process=hashengineering.darkcoin.wallet_test reason=10 (USER REQUESTED) subreason=21 (FORCE STOP) status=0
+          importance=100 pss=0.00 rss=345MB description=stop hashengineering.darkcoin.wallet_test due to from pid 12257 state=empty trace=null
+        ApplicationExitInfo #6:
+          timestamp=2026-09-19 16:47:26.857 pid=11133 realUid=10210 packageUid=10210 definingUid=10210 user=0
+          process=hashengineering.darkcoin.wallet_test reason=10 (USER REQUESTED) subreason=21 (FORCE STOP) status=0
+          importance=100 pss=0.00 rss=0.00 description=stop hashengineering.darkcoin.wallet_test due to from pid 11459 state=empty trace=null
+        ApplicationExitInfo #7:
+          timestamp=2026-09-19 16:45:52.116 pid=9990 realUid=10210 packageUid=10210 definingUid=10210 user=0
+          process=hashengineering.darkcoin.wallet_test reason=10 (USER REQUESTED) subreason=21 (FORCE STOP) status=0
+          importance=100 pss=0.00 rss=369MB description=stop hashengineering.darkcoin.wallet_test due to from pid 11120 state=empty trace=null
+        ApplicationExitInfo #8:
+          timestamp=2026-09-19 16:41:20.017 pid=9515 realUid=10210 packageUid=10210 definingUid=10210 user=0
+          process=hashengineering.darkcoin.wallet_test reason=10 (USER REQUESTED) subreason=21 (FORCE STOP) status=0
+          importance=100 pss=0.00 rss=424MB description=stop hashengineering.darkcoin.wallet_test due to from pid 9976 state=empty trace=null
+        ApplicationExitInfo #9:
+          timestamp=2026-09-19 16:39:31.425 pid=8925 realUid=10210 packageUid=10210 definingUid=10210 user=0
+          process=hashengineering.darkcoin.wallet_test reason=10 (USER REQUESTED) subreason=21 (FORCE STOP) status=0
+          importance=100 pss=0.00 rss=370MB description=stop hashengineering.darkcoin.wallet_test due to from pid 9494 state=empty trace=null
+        ApplicationExitInfo #10:
+          timestamp=2026-09-19 16:36:18.412 pid=8079 realUid=10210 packageUid=10210 definingUid=10210 user=0
+          process=hashengineering.darkcoin.wallet_test reason=10 (USER REQUESTED) subreason=21 (FORCE STOP) status=0
+          importance=100 pss=0.00 rss=531MB description=stop hashengineering.darkcoin.wallet_test due to from pid 8877 state=empty trace=null
+        ApplicationExitInfo #11:
+          timestamp=2026-09-19 16:34:34.304 pid=7123 realUid=10210 packageUid=10210 definingUid=10210 user=0
+          process=hashengineering.darkcoin.wallet_test reason=10 (USER REQUESTED) subreason=21 (FORCE STOP) status=0
+          importance=100 pss=0.00 rss=664MB description=stop hashengineering.darkcoin.wallet_test due to from pid 8031 state=empty trace=null

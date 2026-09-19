@@ -1,0 +1,8 @@
+2763:21:40:57 [DefaultDispatcher-worker-14] WalletWipeSequence - wipe destruction finished with 13 failed step(s): [datastore-file:dashpay.preferences_pb, datastore-file:coinbase.preferences_pb, datastore-file:uphold.preferences_pb, datastore-file:wallet_ui.preferences_pb, datastore-file:explore.preferences_pb, datastore-file:exchange_rates_config.preferences_pb, datastore-file:org.dashfoundation.wallet.secrets.preferences_pb, wipe-listener#1, wipe-listener#4, wipe-listener#5, wipe-listener#6, wipe-listener#8, wipe-listener#9] — NOT clearing the marker, so the next launch finishes the wipe instead of coming up half-wiped
+2793:21:41:22 [main] WalletApplication - removing wallet from memory during wipe
+2817:21:41:22 [DefaultDispatcher-worker-8] WalletApplicationExt - databases cleared (isWalletWipe = true, failed steps = [])
+3342:21:44:56 [main] WalletWipeSequence - wipe started WITHOUT a recovery marker — a process death mid-wipe will not be repaired
+3381:21:44:56 [DefaultDispatcher-worker-1] WalletWipeSequence - Reset Wallet is running with NO recovery marker on disk (begin() could not write one) — destroying anyway because the user explicitly asked for it; a process death mid-wipe will NOT be repaired on the next launch
+3382:21:44:56 [main] WalletApplication - removing wallet from memory during wipe
+3418:21:44:56 [DefaultDispatcher-worker-8] WalletApplicationExt - databases cleared (isWalletWipe = true, failed steps = [])
+3419:21:44:56 [DefaultDispatcher-worker-8] WalletWipeSequence - wipe destruction finished with 2 failed step(s): [wallet-file, key-backup-file] — NOT clearing the marker, so the next launch finishes the wipe instead of coming up half-wiped

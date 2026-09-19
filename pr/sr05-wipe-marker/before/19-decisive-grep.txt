@@ -1,0 +1,5 @@
+629:21:17:18 [main] WalletApplicationExt - a previous Reset Wallet did not finish — completing it now; this launch does not load a wallet
+633:21:17:18 [main] WalletApplication - removing wallet from memory during wipe
+643:21:17:18 [main] OnboardingActivity - reset in progress — holding onboarding until the wipe finishes
+662:21:17:18 [DefaultDispatcher-worker-8] L1ShadowSyncService - wallet-wipe SDK cleanup for wallet fe172476: stopping shadow + shielded sync, removing the SDK wallet (full cascade), deleting the SPV dataDir, clearing the binder latch — NO rebind (the next wallet setup binds fresh). SDK-side state only; dashj is untouched
+667:21:17:18 [DefaultDispatcher-worker-8] L1ShadowSyncService - wallet-wipe SDK cleanup complete for wallet fe172476: the next wallet binds fresh

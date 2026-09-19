@@ -1,0 +1,3 @@
+-rw-rw----  1 u0_a210 u0_a210   15328 2026-09-19 16:37 key-backup-protobuf-testnet
+-rw-------  1 u0_a210 u0_a210   15322 2026-09-19 16:38 wallet-protobuf-testnet
+-rw-r--r--  1 u0_a210 u0_a210     220 2026-09-19 16:36 wallet-wipe.pending

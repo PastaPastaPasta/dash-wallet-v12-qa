@@ -1,0 +1,475 @@
+<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>PR validation: sr05-wipe-marker</title><style>body{font-family:system-ui,-apple-system,sans-serif;max-width:1400px;margin:0 auto;padding:16px 24px;line-height:1.45;background:#fff;color:#111}
+table{border-collapse:collapse;font-size:13px;margin:12px 0}th,td{border:1px solid #ddd;padding:4px 8px;vertical-align:top;text-align:left}th{background:#f3f6fa;position:sticky;top:0}
+tr:nth-child(even){background:#fafbfc}code{background:#f4f4f4;padding:1px 4px;border-radius:3px;font-size:12px}pre{background:#f4f4f4;padding:10px;overflow:auto}
+h1{border-bottom:3px solid #008de4}h2{border-bottom:1px solid #ccc;margin-top:40px}a{color:#008de4}a.ev{background:#e8f4fd;padding:0 3px;border-radius:3px;font-family:ui-monospace,monospace;font-size:12px}
+nav.top{background:#012060;color:#fff;padding:8px 24px;margin:-16px -24px 16px;position:sticky;top:0;z-index:5}nav.top a{color:#fff;margin-right:18px;text-decoration:none}nav.top a:hover{text-decoration:underline}
+.S1{color:#b00020;font-weight:bold}.S2{color:#c75000;font-weight:bold}.toc{background:#f8f9fb;border:1px solid #e3e6ea;padding:8px 16px;font-size:13px;columns:2}.toc ul{margin:2px 0;padding-left:16px}
+#lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:50;align-items:center;justify-content:center;flex-direction:column}#lb.on{display:flex}#lb img{max-width:96vw;max-height:88vh;border:2px solid #fff;box-shadow:0 0 30px #000}#lb .cap{color:#eee;font:13px ui-monospace,monospace;margin-top:8px}#lb .cap a{color:#8cf}#lb .x{position:absolute;top:10px;right:18px;color:#fff;font-size:30px;cursor:pointer}#lb .nv{position:absolute;top:50%;color:#fff;font-size:44px;cursor:pointer;padding:0 16px;user-select:none}#lb .pv{left:0}#lb .nx{right:0}a.img img{cursor:zoom-in}
+sup.more a{margin:0 2px;font-size:10px}
+thead.sortable th.asc::after{content:' \\25B2';font-size:9px}thead.sortable th.desc::after{content:' \\25BC';font-size:9px}
+tr[data-sev=S1] td:nth-child(2){background:#fde7e9}tr[data-sev=S2] td:nth-child(2){background:#fff1e0}
+a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:target{background:#fff3b0;outline:2px solid #f5b400}
+.note{background:#fff8e1;border-left:4px solid #f5b400;padding:8px 12px;margin:12px 0}
+</style><nav class=top><a href="../../index.html">Home</a><a href="../../DEFECT-LEDGER.html">Defect register</a><a href="../index.html">Fix-validation reports</a></nav><h1>PR fix validation — SR-05 / SR-20 / SR-36 / D-107 (wallet-wipe marker)</h1>
+<h2>Header</h2>
+<table>
+<thead>
+<tr>
+<th>item</th>
+<th>value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Emulator</td>
+<td><code>emulator-5562</code> (AVD <code>dw-qa5</code>, Android 15 / API 35, google_apis arm64, 4 GB). The serial was <strong>not running</strong> at task start; it was booted for this task on port 5562. No other serial was touched.</td>
+</tr>
+<tr>
+<td>Base APK</td>
+<td><code>apks/base-12000014-5f8c0a8ef.apk</code> — versionCode 12000014, versionName 12.0.0-upgrade, git <code>5f8c0a8ef</code> (md5 <code>0bdcddf6b1a254acf6c254bdbf6ed611</code>)</td>
+</tr>
+<tr>
+<td>Candidate APK</td>
+<td><code>apks/sr05-32c0bd0b2.apk</code> — versionCode 12000014, versionName 12.0.0-upgrade, git <code>32c0bd0b2</code> (md5 <code>b45f115150f1230ebd742bf7575be948</code>)</td>
+</tr>
+<tr>
+<td>APK switch</td>
+<td>same versionCode -&gt; <code>uninstall</code> + <code>install</code> each way (no in-place upgrade possible)</td>
+</tr>
+<tr>
+<td>Fix worktree</td>
+<td><code>~/workspace/dash-wallet-qa/pr/sr05-wipe-marker</code>, 1 commit on <code>5f8c0a8ef</code>: <code>32c0bd0b2 fix(wipe): a bare wallet-wipe marker must not be able to destroy a wallet</code></td>
+</tr>
+<tr>
+<td>Seeds (QA throwaway, testnet)</td>
+<td>funded: <code>rigid genuine settle camp unlock kingdom donor deny enlist portion virtual taxi</code>; unfunded churn wallets: <code>dress inflict sad ...</code>, <code>fluid minor diet ...</code>, <code>travel symptom there ...</code>, <code>bulb sure spray ...</code>, <code>deputy need mutual ...</code>, <code>hope caught admit ...</code></td>
+</tr>
+<tr>
+<td>Funds</td>
+<td>faucet.thepasta.org -&gt; <code>yZ1xjAn1c2aQ1jQDiLnZp4wBKvx1suKiYo</code>, 1 tDASH, txid <code>9a3b6f2983b59c13aa4a12e6c87b0b344646a38df3877c9077838313121c6e23</code> (one drop, whole session)</td>
+</tr>
+<tr>
+<td>Session</td>
+<td>2026-09-19, 16:10 – 17:25 local (app log stamps are +5h: 21:1x – 22:2x)</td>
+</tr>
+<tr>
+<td>Unit tests</td>
+<td><code>:wallet:test_testNet3DebugUnitTest --tests 'de.schildbach.wallet.util.WalletWipeSequenceTest'</code> -&gt; <strong>23 tests, 0 failures, 0 errors</strong>, BUILD SUCCESSFUL in 52 s</td>
+</tr>
+</tbody>
+</table>
+<h2>Verdict</h2>
+<p><strong>FIXED</strong> — all four sub-items behave as specified on the candidate and all four reproduce on the base APK from the same
+steps: a bare <code>wallet-wipe.pending</code> no longer destroys a funded wallet (SR-05), a genuinely interrupted wipe still
+completes (regression B), a partially failed wipe now keeps the marker and names its failed steps (SR-20), and a wipe
+whose marker cannot be written destroys anyway instead of silently no-opping (SR-36/D-107). One residual, deliberately
+accepted consequence is documented below (the SR-36 end state is a loud PARTIAL wipe that the next launch does <strong>not</strong>
+finish), plus review concerns about the identity check and file litter.</p>
+<table>
+<thead>
+<tr>
+<th>sub-item</th>
+<th>base (BEFORE)</th>
+<th>candidate (AFTER)</th>
+<th>verdict</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SR-05 (S1 data loss)</td>
+<td>bare marker -&gt; onboarding, wallet + key backup deleted, 1 tDASH gone</td>
+<td>marker renamed aside, wallet loads with 1 tDASH, files intact</td>
+<td><strong>FIXED</strong></td>
+</tr>
+<tr>
+<td>SR-05 variant (identity guard)</td>
+<td>n/a (no identity in base marker)</td>
+<td><code>started on a different wallet file</code> -&gt; new wallet untouched</td>
+<td><strong>FIXED</strong></td>
+</tr>
+<tr>
+<td>B regression (interrupted wipe)</td>
+<td>completes on next launch</td>
+<td>completes on next launch at 0.08 s / 0.2 s / 0.3 s / 0.5 s kill offsets</td>
+<td><strong>NO REGRESSION</strong></td>
+</tr>
+<tr>
+<td>SR-20 (S2 partial wipe recorded complete)</td>
+<td>marker removed, 6 datastore files byte-identical survivors, nothing logged, next wallet inherits CUT_OVER</td>
+<td>13 failed steps named, marker kept, repair launch finishes the wipe, next wallet logs its own <code>DUAL_RUNNING -&gt; CUT_OVER</code></td>
+<td><strong>FIXED</strong></td>
+</tr>
+<tr>
+<td>SR-36 / D-107 (S2 silent no-op)</td>
+<td><code>destroying nothing</code>, wallet alive and unlockable with the old PIN</td>
+<td><code>NO recovery marker on disk ... destroying anyway</code>, 2 failed steps <code>[wallet-file, key-backup-file]</code>, wallet no longer accessible</td>
+<td><strong>FIXED (partial-wipe end state, see D)</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>BEFORE — base APK <code>base-12000014-5f8c0a8ef.apk</code></h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>step</th>
+<th>observed</th>
+<th>evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A1</td>
+<td>create wallet (PIN 1234), fund 1 tDASH, note balance</td>
+<td><code>1</code> tDASH / <code>$ 58.52</code>; <code>wallet-protobuf-testnet</code> 15322 B, <code>key-backup-protobuf-testnet</code> 15328 B</td>
+<td><a class=ev href="before/14-home-funded.webp">before/14-home-funded.png</a>, <a class=ev href="before/15-files-before.txt">before/15-files-before.txt</a>, <a class=ev href="before/12-faucet-sent.webp">before/12-faucet-sent.png</a></td>
+</tr>
+<tr>
+<td>A2</td>
+<td><code>force-stop</code> + <code>touch files/wallet-wipe.pending</code> (0 B, root)</td>
+<td>marker present, 0 bytes</td>
+<td><a class=ev href="before/16-files-with-marker.txt">before/16-files-with-marker.txt</a></td>
+</tr>
+<tr>
+<td>A3</td>
+<td>launch</td>
+<td><strong>straight to onboarding</strong>, no confirmation, no PIN; <code>wallet-protobuf-testnet</code> and <code>key-backup-protobuf-testnet</code> <strong>gone</strong>, marker gone; 1 tDASH lost</td>
+<td><a class=ev href="before/17-after-launch.webp">before/17-after-launch.png</a>, <a class=ev href="before/18-files-after.txt">before/18-files-after.txt</a>, <a class=ev href="before/18b-files-full.txt">before/18b-files-full.txt</a></td>
+</tr>
+<tr>
+<td>A4</td>
+<td>wallet.log</td>
+<td><code>a previous Reset Wallet did not finish — completing it now; this launch does not load a wallet</code> / <code>removing wallet from memory during wipe</code></td>
+<td><a class=ev href="before/19-decisive-grep.txt">before/19-decisive-grep.txt</a></td>
+</tr>
+<tr>
+<td>C1</td>
+<td><code>chmod 500 files/datastore</code>, Reset Wallet -&gt; confirm</td>
+<td>wallet + key backup deleted, <strong>marker removed</strong>, onboarding</td>
+<td><a class=ev href="before/23-sr20-after-reset.webp">before/23-sr20-after-reset.png</a>, <a class=ev href="before/25-sr20-grep.txt">before/25-sr20-grep.txt</a></td>
+</tr>
+<tr>
+<td>C2</td>
+<td>datastore after</td>
+<td>all 6 preference files <strong>byte-identical</strong> (same md5 as before), incl. <code>org.dashfoundation.wallet.secrets.preferences_pb</code>; log says <code>file-deleted: []</code> with <strong>no</strong> failure reported</td>
+<td><a class=ev href="before/20-datastore-before.txt">before/20-datastore-before.txt</a>, <a class=ev href="before/24-sr20-datastore-after.txt">before/24-sr20-datastore-after.txt</a></td>
+</tr>
+<tr>
+<td>C3</td>
+<td>swallowed failures</td>
+<td>5 x <code>wallet-wipe listener failed</code>, <code>wipe cleanup: removeSdkWallet failed; continuing</code>, <code>cutover state persist failed (CUT_OVER -&gt; DUAL_RUNNING, wallet wipe); keeping CUT_OVER</code> — wipe still recorded complete</td>
+<td><a class=ev href="before/25b-sr20-wipe-lines.txt">before/25b-sr20-wipe-lines.txt</a></td>
+</tr>
+<tr>
+<td>D1</td>
+<td><code>chmod 555 files</code>, Reset Wallet -&gt; confirm</td>
+<td><code>could not create the wallet-wipe marker</code> -&gt; <code>wipe started WITHOUT a recovery marker</code> -&gt; <strong><code>wipe teardown reached without a wipe having been started — destroying nothing</code></strong></td>
+<td><a class=ev href="before/27-sr36-grep.txt">before/27-sr36-grep.txt</a></td>
+</tr>
+<tr>
+<td>D2</td>
+<td>files after</td>
+<td><code>wallet-protobuf-testnet</code> + <code>key-backup-protobuf-testnet</code> <strong>untouched</strong></td>
+<td><a class=ev href="before/26-sr36-after-reset.webp">before/26-sr36-after-reset.png</a></td>
+</tr>
+<tr>
+<td>D3</td>
+<td><code>chmod 700 files</code>, relaunch</td>
+<td>lock screen, <strong>PIN 1234 unlocks the wallet the user was told had been reset</strong> (D-107)</td>
+<td><a class=ev href="before/28-sr36-relaunch-wallet-alive.webp">before/28-sr36-relaunch-wallet-alive.png</a>, <a class=ev href="before/29-sr36-wallet-usable.webp">before/29-sr36-wallet-usable.png</a></td>
+</tr>
+<tr>
+<td>B0</td>
+<td>Reset Wallet, force-stop 0.3 s after confirm, relaunch</td>
+<td>0-byte marker present after the kill; next launch completes the wipe (<code>a previous Reset Wallet did not finish</code>), onboarding</td>
+<td><a class=ev href="before/30-baseB-marker.txt">before/30-baseB-marker.txt</a>, <a class=ev href="before/32-baseB-grep.txt">before/32-baseB-grep.txt</a>, <a class=ev href="before/31-baseB-relaunch.webp">before/31-baseB-relaunch.png</a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>AFTER — candidate APK <code>sr05-32c0bd0b2.apk</code> (fresh install, funded seed restored -&gt; same 1 tDASH)</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>step (identical to BEFORE)</th>
+<th>observed</th>
+<th>evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A1</td>
+<td>restore the funded seed, unlock</td>
+<td><code>1</code> tDASH / <code>$ 58.14</code>, files 15322 B / 15328 B</td>
+<td><a class=ev href="after/04-home-restored.webp">after/04-home-restored.png</a>, <a class=ev href="after/05-files-before.txt">after/05-files-before.txt</a></td>
+</tr>
+<tr>
+<td>A2</td>
+<td><code>force-stop</code> + <code>touch files/wallet-wipe.pending</code> (0 B, root)</td>
+<td>marker present, 0 bytes</td>
+<td><a class=ev href="after/06-files-with-marker.txt">after/06-files-with-marker.txt</a></td>
+</tr>
+<tr>
+<td>A3</td>
+<td>launch</td>
+<td><strong>lock screen -&gt; wallet loads normally</strong>, balance <code>1</code> tDASH / <code>$ 58.11</code>, history intact; wallet file + key backup <strong>intact</strong>; no <code>wallet-wipe.pending</code>; new <code>wallet-wipe.pending.stale.1789853676905</code> (0 B)</td>
+<td><a class=ev href="after/07-after-launch.webp">after/07-after-launch.png</a>, <a class=ev href="after/10-wallet-intact.webp">after/10-wallet-intact.png</a>, <a class=ev href="after/08-files-after.txt">after/08-files-after.txt</a>, <a class=ev href="after/sr05-after.mp4">after/sr05-after.mp4</a></td>
+</tr>
+<tr>
+<td>A4</td>
+<td>wallet.log (verbatim)</td>
+<td><code>the wallet-wipe marker at /data/user/0/.../files/wallet-wipe.pending (0 bytes) is empty or unreadable — this is NOT an in-flight wipe; renaming it aside and leaving the wallet alone</code> and <code>stale wallet-wipe marker kept at /data/user/0/.../files/wallet-wipe.pending.stale.1789853676905</code>. <strong>No</strong> <code>removing wallet from memory during wipe</code>, <strong>no</strong> <code>a previous Reset Wallet did not finish</code></td>
+<td><a class=ev href="after/09-decisive-grep.txt">after/09-decisive-grep.txt</a></td>
+</tr>
+<tr>
+<td>A5</td>
+<td>identity-guard variant: real 220-byte marker captured during B replanted onto a NEW wallet</td>
+<td>wallet intact, marker renamed aside; <code>the wallet-wipe marker was started on a different wallet file (marker: length=15322 modified=1789853351876; on disk: length=15322 modified=1789853916768) — refusing to destroy this wallet</code></td>
+<td><a class=ev href="after/14-variant-grep.txt">after/14-variant-grep.txt</a>, <a class=ev href="after/12-variant-wallet-intact.webp">after/12-variant-wallet-intact.png</a>, <a class=ev href="after/13-variant-files-after.txt">after/13-variant-files-after.txt</a></td>
+</tr>
+<tr>
+<td>A6</td>
+<td>marker cost on the cold-launch path</td>
+<td>breadcrumb <code>3 CONFIG_LOADED +85ms</code> -&gt; decision -&gt; <code>4 WALLET_LOAD_BEGIN +86ms</code>: ~1 ms</td>
+<td><a class=ev href="logs/cand/files/log/wallet.log">logs/cand/files/log/wallet.log</a> (21:52:44)</td>
+</tr>
+</tbody>
+</table>
+<p>Marker payload written by a real wipe (<a class=ev href="regression/real-marker-0.3s.txt">regression/real-marker-0.3s.txt</a>):</p>
+<pre><code>#Dash Wallet - Reset Wallet in progress
+#Sat Sep 19 16:36:17 CDT 2026
+walletModified=1789853351876
+format=1
+startedAt=1789853777912
+walletLength=15322
+versionCode=12000014
+token=d7bbe166-1936-4243-ac9d-e8224a96932f
+</code></pre>
+<hr />
+<h2>REGRESSION</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>check</th>
+<th>result</th>
+<th>evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>B-0.3s</td>
+<td>Reset Wallet, kill 0.3 s after confirm</td>
+<td>marker present and <strong>non-zero (220 B)</strong>, wallet file already deleted; relaunch: <code>a previous Reset Wallet did not finish</code> -&gt; <code>databases cleared (isWalletWipe = true, failed steps = [])</code>, onboarding, <strong>no</strong> <code>wallet-wipe.pending</code>, <strong>no</strong> <code>.stale.</code> file</td>
+<td><a class=ev href="regression/01-b03-files.txt">regression/01-b03-files.txt</a>, <a class=ev href="regression/04-b03-grep.txt">regression/04-b03-grep.txt</a>, <a class=ev href="regression/02-b03-relaunch.webp">regression/02-b03-relaunch.png</a>, <a class=ev href="regression/regB-03.mp4">regression/regB-03.mp4</a></td>
+</tr>
+<tr>
+<td>B-0.2s</td>
+<td>kill 0.2 s after confirm</td>
+<td>wipe had already completed inside the window; clean state, onboarding</td>
+<td><a class=ev href="regression/40-b02.txt">regression/40-b02.txt</a></td>
+</tr>
+<tr>
+<td>B-0.5s</td>
+<td>kill 0.5 s after confirm</td>
+<td>same — wipe completed, clean state</td>
+<td><a class=ev href="regression/41-b05.txt">regression/41-b05.txt</a></td>
+</tr>
+<tr>
+<td>B-0.08s</td>
+<td>kill 0.08 s after confirm (adversarial, earliest window reached)</td>
+<td>marker survives with payload; relaunch resumes and finishes (<code>failed steps = []</code>)</td>
+<td><a class=ev href="adversarial/10-b008-early-kill.txt">adversarial/10-b008-early-kill.txt</a></td>
+</tr>
+<tr>
+<td>C (SR-20)</td>
+<td><code>chmod 500 files/datastore</code>, Reset Wallet</td>
+<td><strong>marker kept</strong> (220 B) and: <code>datastore preferences cleared; ... file-FAILED: [dashpay.preferences_pb, coinbase.preferences_pb, uphold.preferences_pb, wallet_ui.preferences_pb, explore.preferences_pb, exchange_rates_config.preferences_pb, org.dashfoundation.wallet.secrets.preferences_pb]</code> and <code>wipe destruction finished with 13 failed step(s): [datastore-file:..., wipe-listener#1, #4, #5, #6, #8, #9] — NOT clearing the marker</code></td>
+<td><a class=ev href="regression/12-sr20-files.txt">regression/12-sr20-files.txt</a>, <a class=ev href="regression/13-sr20-grep.txt">regression/13-sr20-grep.txt</a></td>
+</tr>
+<tr>
+<td>C-repair</td>
+<td><code>chmod 700 files/datastore</code>, force-stop, launch</td>
+<td><code>a previous Reset Wallet did not finish</code> -&gt; wipe re-runs, <code>file-deleted: [explore.preferences_pb, org.dashfoundation.wallet.secrets.preferences_pb]</code>, <code>failed steps = []</code>, marker gone, datastore only holds freshly recreated 0-byte files, onboarding</td>
+<td><a class=ev href="regression/16-sr20-repair-files.txt">regression/16-sr20-repair-files.txt</a>, <a class=ev href="regression/17-sr20-repair-grep.txt">regression/17-sr20-repair-grep.txt</a>, <a class=ev href="regression/15-sr20-repair-launch.webp">regression/15-sr20-repair-launch.png</a></td>
+</tr>
+<tr>
+<td>C-cutover</td>
+<td>next wallet after the repair launch</td>
+<td><code>cutover state DUAL_RUNNING -&gt; CUT_OVER (fresh-wallet setup (restore/new))</code> — the new wallet runs its own cutover; no inherited CUT_OVER (base leaked it)</td>
+<td><a class=ev href="regression/18-sr20-cutover-next-wallet.txt">regression/18-sr20-cutover-next-wallet.txt</a>, <a class=ev href="regression/14-sr20-cutover-during-wipe.txt">regression/14-sr20-cutover-during-wipe.txt</a></td>
+</tr>
+<tr>
+<td>D (SR-36)</td>
+<td><code>chmod 555 files</code>, Reset Wallet</td>
+<td><code>wipe started WITHOUT a recovery marker</code>, <code>Reset Wallet is running with NO recovery marker on disk (begin() could not write one) — destroying anyway because the user explicitly asked for it</code>, <code>removing wallet from memory during wipe</code>, <code>could not delete the wallet file ... — the wipe did NOT destroy the wallet</code>, <code>wipe destruction finished with 2 failed step(s): [wallet-file, key-backup-file]</code>. <strong>No <code>destroying nothing</code>.</strong></td>
+<td><a class=ev href="regression/22-sr36-grep.txt">regression/22-sr36-grep.txt</a>, <a class=ev href="regression/sr36-cand.mp4">regression/sr36-cand.mp4</a></td>
+</tr>
+<tr>
+<td>D-end state</td>
+<td>what survives / next launch</td>
+<td>survivors: <code>wallet-protobuf-testnet</code>, <code>key-backup-protobuf-testnet</code>, <code>shielded_tree_testnet.sqlite*</code>; databases dir empty, datastore emptied, keystore secrets removed. <code>chmod 700 files</code> + relaunch does <strong>not</strong> finish the wipe (no marker was ever written) — the app shows a lock screen and the old PIN is rejected: <code>Wrong PIN! 7 attempts remaining</code></td>
+<td><a class=ev href="regression/26-sr36-survivors.txt">regression/26-sr36-survivors.txt</a>, <a class=ev href="regression/27-sr36-next-launch.webp">regression/27-sr36-next-launch.png</a>, <a class=ev href="regression/30-sr36-pin-attempt.webp">regression/30-sr36-pin-attempt.png</a>, <a class=ev href="regression/28-sr36-next-launch-files.txt">regression/28-sr36-next-launch-files.txt</a></td>
+</tr>
+<tr>
+<td>everyday path</td>
+<td>plain uninterrupted Reset Wallet -&gt; restore the same seed</td>
+<td>wipe clean (<code>failed steps = []</code>, nothing left in <code>files/</code> but the shielded tree); restore brings back <code>1</code> tDASH / <code>$ 58.06</code>; an earlier restore in the session also worked</td>
+<td><a class=ev href="regression/51-plain-reset.webp">regression/51-plain-reset.png</a>, <a class=ev href="regression/52-plain-reset-files.txt">regression/52-plain-reset-files.txt</a>, <a class=ev href="regression/54-restore-after-plain-reset.webp">regression/54-restore-after-plain-reset.png</a>, <a class=ev href="regression/plain-reset.mp4">regression/plain-reset.mp4</a>, <a class=ev href="regression/50-restore-funded.webp">regression/50-restore-funded.png</a></td>
+</tr>
+<tr>
+<td>stability</td>
+<td>crashes / ANRs</td>
+<td>crash buffer empty; <code>exit-info</code>: 11 x FORCE STOP (mine) + 1 x bg-ANR at 16:52:58 on a cold launch — the marker decision took ~1 ms, the ANR is <code>DeterministicKeyChain</code> key derivation (2.9 s + 1.8 s + 1.7 s) on a Mac running three emulators, i.e. the pre-existing slow-wallet-load area, not this change</td>
+<td><a class=ev href="logs/cand-exitinfo.txt">logs/cand-exitinfo.txt</a>, <code>logs/logcat-cand.txt</code></td>
+</tr>
+<tr>
+<td>log noise</td>
+<td>error-ish lines / line</td>
+<td>base 61 / 2991 lines (2.0 %), candidate 141 / 8448 lines (1.7 %) over a session with 4x more wipes — no new storm; the new lines are the intended ERROR reports (<code>wallet.log</code> has no level column, so <code>grep ' WARN \| ERROR '</code> is useless here)</td>
+<td><a class=ev href="logs/base/files/log/wallet.log">logs/base/files/log/wallet.log</a>, <a class=ev href="logs/cand/files/log/wallet.log">logs/cand/files/log/wallet.log</a></td>
+</tr>
+<tr>
+<td>D-109 (out of scope)</td>
+<td><code>shielded_tree_testnet.sqlite</code> after a clean wipe</td>
+<td>still survives (200704 B + <code>-shm</code>/<code>-wal</code>), <strong>unchanged</strong> from base</td>
+<td><a class=ev href="regression/52-plain-reset-files.txt">regression/52-plain-reset-files.txt</a>, <a class=ev href="regression/32-shielded-note.txt">regression/32-shielded-note.txt</a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>ADVERSARIAL (beyond the recipe)</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>variation</th>
+<th>expectation</th>
+<th>observed</th>
+<th>evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>valid payload, <code>startedAt</code> 48 h in the past, identity matching</td>
+<td>rejected as expired</td>
+<td><code>the wallet-wipe marker ... is 172801261 ms old (limit 86400000 ms, started 1789681920000, versionCode 12000014) — a wipe that did not finish in a day is not going to</code> -&gt; renamed aside, wallet intact</td>
+<td><a class=ev href="adversarial/02-48h-grep.txt">adversarial/02-48h-grep.txt</a>, <a class=ev href="adversarial/01-48h-marker.webp">adversarial/01-48h-marker.png</a></td>
+</tr>
+<tr>
+<td>2</td>
+<td>valid payload dated <strong>72 h in the future</strong> (clock moved)</td>
+<td>rejected (negative age)</td>
+<td><code>... is -259194763 ms old (limit 86400000 ms ...)</code> -&gt; renamed aside, wallet intact</td>
+<td><a class=ev href="adversarial/05-future-grep.txt">adversarial/05-future-grep.txt</a></td>
+</tr>
+<tr>
+<td>3</td>
+<td>stray <code>wallet-wipe.pending.writing</code> staging file left behind</td>
+<td>ignored</td>
+<td>ignored; wallet loads. <strong>Never cleaned up</strong> — still present after the next successful wipe</td>
+<td><a class=ev href="adversarial/04-future-files.txt">adversarial/04-future-files.txt</a>, <a class=ev href="adversarial/07-wrong-versioncode-files.txt">adversarial/07-wrong-versioncode-files.txt</a></td>
+</tr>
+<tr>
+<td>4</td>
+<td>fresh valid payload, <strong>wrong versionCode (11090002)</strong>, identity matching the wallet on disk</td>
+<td>honoured (versionCode is forensics, not a gate) and the wipe resumes</td>
+<td>resumed: <code>a previous Reset Wallet did not finish</code> -&gt; <code>failed steps = []</code>, wallet + key backup deleted, marker cleared</td>
+<td><a class=ev href="adversarial/08-wrong-versioncode-grep.txt">adversarial/08-wrong-versioncode-grep.txt</a>, <a class=ev href="adversarial/06-wrong-versioncode.webp">adversarial/06-wrong-versioncode.png</a></td>
+</tr>
+<tr>
+<td>5</td>
+<td>triple-tap the Reset confirm + <code>am send-trim-memory RUNNING_CRITICAL</code> during the wipe</td>
+<td>one clean wipe, no re-entrancy damage</td>
+<td>single wipe, <code>failed steps = []</code>, no <code>destroying nothing</code>, no leftover marker</td>
+<td><a class=ev href="adversarial/21-double-confirm-files.txt">adversarial/21-double-confirm-files.txt</a>, <a class=ev href="adversarial/22-double-confirm-grep.txt">adversarial/22-double-confirm-grep.txt</a></td>
+</tr>
+<tr>
+<td>6</td>
+<td>stray <code>de.schildbach.wallet.service.wipe_wallet</code> intent (root) at a healthy wallet, in a process that had already completed a wipe (tests the new in-process "user asked" flag)</td>
+<td>nothing destroyed</td>
+<td>service received the intent (<code>onStartCommand ... wipe_wallet</code>), wallet + key backup untouched, balance screen unchanged</td>
+<td><a class=ev href="adversarial/30-stray-wipe-files.txt">adversarial/30-stray-wipe-files.txt</a>, <a class=ev href="adversarial/31-stray-wipe-grep.txt">adversarial/31-stray-wipe-grep.txt</a>, <a class=ev href="adversarial/32-stray-wipe.webp">adversarial/32-stray-wipe.png</a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>PR evidence (best artefacts)</h2>
+<ol>
+<li><a class=ev href="before/17-after-launch.webp">before/17-after-launch.png</a> — BASE: after planting a bare 0-byte marker the funded wallet is gone, app is at onboarding.</li>
+<li><a class=ev href="before/19-decisive-grep.txt">before/19-decisive-grep.txt</a> — BASE decisive log: <code>a previous Reset Wallet did not finish ...</code> + <code>removing wallet from memory during wipe</code>.</li>
+<li><a class=ev href="after/10-wallet-intact.webp">after/10-wallet-intact.png</a> — AFTER: same steps, wallet loads with its 1 tDASH balance and history.</li>
+<li><a class=ev href="after/09-decisive-grep.txt">after/09-decisive-grep.txt</a> — AFTER decisive log: <code>... (0 bytes) is empty or unreadable — this is NOT an in-flight wipe ...</code> + <code>stale wallet-wipe marker kept at ...</code>.</li>
+<li><a class=ev href="regression/13-sr20-grep.txt">regression/13-sr20-grep.txt</a> — SR-20 fixed: <code>wipe destruction finished with 13 failed step(s): [...] — NOT clearing the marker ...</code>.</li>
+<li><a class=ev href="regression/22-sr36-grep.txt">regression/22-sr36-grep.txt</a> — SR-36/D-107 fixed: <code>Reset Wallet is running with NO recovery marker on disk ... destroying anyway ...</code> (base logged <code>destroying nothing</code>).</li>
+<li>Video <a class=ev href="after/sr05-after.mp4">after/sr05-after.mp4</a> (stale marker -&gt; wallet survives) and <a class=ev href="regression/regB-03.mp4">regression/regB-03.mp4</a> (interrupted wipe that still completes).</li>
+</ol>
+<hr />
+<h2>New findings</h2>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>sev</th>
+<th>finding</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>N-1</td>
+<td>S3</td>
+<td><strong>SR-36 end state is an unfinished, unrepairable partial wipe.</strong> With <code>filesDir</code> unwritable the wipe now correctly destroys what it can, but no marker exists, so the next launch does <strong>not</strong> finish it: <code>wallet-protobuf-testnet</code> and <code>key-backup-protobuf-testnet</code> stay on disk while the keystore secrets are gone, and the user lands on a lock screen where the old PIN is rejected (<code>Wrong PIN! 7 attempts remaining</code>). Strictly better than base (D-107: fully usable wallet after a "reset"), and the residual files are useless without the keystore keys, but the app should notice <code>walletFileExists &amp;&amp; secrets missing</code> and finish the job rather than offering an unusable PIN prompt. Evidence: <a class=ev href="regression/26-sr36-survivors.txt">regression/26-sr36-survivors.txt</a>, <a class=ev href="regression/30-sr36-pin-attempt.webp">regression/30-sr36-pin-attempt.png</a>.</td>
+</tr>
+<tr>
+<td>N-2</td>
+<td>S4</td>
+<td>In that same state the user is greeted with <strong>"Previous crash detected — would you like to send a crash report?"</strong> (<code>OnboardingActivity - degraded startup: walletFileExists=true, walletLoadDegraded=false, safeMode=false — showing the crash-report path</code>) although nothing crashed; the base never reaches this path. Evidence: <a class=ev href="regression/23-sr36-crash-dialog.webp">regression/23-sr36-crash-dialog.png</a>, <a class=ev href="regression/29-sr36-next-launch-grep.txt">regression/29-sr36-next-launch-grep.txt</a>.</td>
+</tr>
+<tr>
+<td>N-3</td>
+<td>S4</td>
+<td><strong>Retired markers are litter.</strong> <code>wallet-wipe.pending.stale.&lt;ms&gt;</code> files (kept on purpose) and a stray <code>wallet-wipe.pending.writing</code> accumulate in <code>filesDir</code> forever — nothing, including a later successful wipe or <code>cleanupFiles()</code>, removes them. Two stale files plus a <code>.writing</code> file survived a full Reset Wallet in this session. Evidence: <a class=ev href="adversarial/07-wrong-versioncode-files.txt">adversarial/07-wrong-versioncode-files.txt</a>.</td>
+</tr>
+</tbody>
+</table>
+<h2>Review concerns about the change itself</h2>
+<ol>
+<li><strong>Wallet identity is <code>length + lastModified</code>, captured in <code>begin()</code> before the wallet is detached.</strong> Autosave can rewrite
+   <code>wallet-protobuf-testnet</code> between the marker write and <code>shutdownAutosaveAndWait()</code>; if the process dies in that window,
+   the next launch sees a <em>mismatch</em> and refuses to resume (<code>started on a different wallet file</code>), leaving a half-wiped
+   wallet on disk with the keystore secrets possibly already gone — i.e. the N-1 state, reached from an ordinary crash
+   rather than fault injection. The window is small (the whole wipe is &lt; 1 s) and the direction is the safe one for
+   SR-05, but re-stat'ing the wallet file immediately <em>after</em> the detach, or accepting resumption when the on-disk file
+   is strictly newer than the recorded one, would close it.</li>
+<li><strong><code>begin()</code> keeps an existing valid marker</strong> (to preserve the interrupted wipe's provenance). If wallet A's wipe is
+   interrupted, wallet B is restored and reset within 24 h, B's wipe runs under a marker naming A's file; an interruption
+   of B's wipe then hits the mismatch path above. Worth a comment, or refreshing the recorded identity when it no longer
+   matches the wallet on disk.</li>
+<li><strong><code>wipeRequestedInThisProcess</code> is only cleared on a fully successful wipe.</strong> After a partial failure (SR-20 path) the
+   flag stays <code>true</code> for the life of the process, so any later teardown in that process would destroy without a marker.
+   Benign today (the SR-20 repair path restarts the process, and the stray-intent test destroyed nothing), but it is a
+   latent "destroy without a request" edge — clearing it after the failure report would be cheap.</li>
+<li>Minor: <code>MAX_MARKER_AGE_MS</code> silently retires a genuinely interrupted wipe after 24 h; documented and in the recoverable
+   direction, but a device left off for two days comes back with a half-wiped wallet loaded as if healthy (same class as
+   N-1). A "this wallet may be half-reset" signal would help.</li>
+</ol>
+<h2>Environment / harness notes</h2>
+<ul>
+<li><code>emulator-5562</code> did not exist at task start; booted <code>dw-qa5</code> on port 5562 (<code>emulator -avd dw-qa5 -port 5562 ...</code>).</li>
+<li><code>$APP &lt;serial&gt; launch</code> (monkey) lands on the launcher; <code>adb shell am start -n $PKG/de.schildbach.wallet.ui.OnboardingActivity</code> works (it is the resolved LAUNCHER activity).</li>
+<li><code>wallet.log</code> has no level column, so <code>grep -c ' WARN \| ERROR '</code> always returns 0; use <code>grep -icE 'failed|exception|error'</code>.</li>
+<li>PIN pad taps by fixed coordinates (btn_1 208,1836 / btn_2 540,1836 / btn_3 872,1836 / btn_4 208,1967) with 1.4 s gaps; on the lock screen use <code>tapon 'text="N"'</code>.</li>
+<li>A crafted marker pushed with <code>adb push</code> must be <code>chown</code>ed to the app uid (<code>u0_a210</code> here) or the app cannot rename it aside.</li>
+<li>Helper scripts used: <code>/tmp/mkwallet5562.sh</code> (create wallet), <code>/tmp/restore5562.sh</code> (restore the funded seed), <code>/tmp/killreset5562.sh &lt;delay&gt; &lt;tag&gt;</code> (reset + timed force-stop + relaunch report).</li>
+</ul><div id=lb><span class=x>&times;</span><span class="nv pv">&#8249;</span><span class="nv nx">&#8250;</span><img><div class=cap></div></div>
+<script>(function(){var lb=document.getElementById('lb'),im=lb.querySelector('img'),cap=lb.querySelector('.cap'),L=[],i=0;
+function links(){return Array.prototype.slice.call(document.querySelectorAll('a[href$=".webp"],a[href$=".png"]'))}
+function show(n){L=links();if(n<0||n>=L.length)return;i=n;var a=L[i];im.src=a.href;cap.innerHTML=(a.textContent.trim()||a.href.split('/').slice(-3).join('/'))+' &nbsp;('+(i+1)+'/'+L.length+') &nbsp;<a href="'+a.href+'" target=_blank rel=noopener>open file</a>';lb.classList.add('on')}
+function hide(){lb.classList.remove('on');im.src=''}
+document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".webp"],a[href$=".png"]');if(a&&!a.closest('#lb')){e.preventDefault();show(links().indexOf(a))}});
+lb.querySelector('.x').onclick=hide;lb.querySelector('.pv').onclick=function(e){e.stopPropagation();show(i-1)};lb.querySelector('.nx').onclick=function(e){e.stopPropagation();show(i+1)};
+lb.addEventListener('click',function(e){if(e.target===lb||e.target===im)hide()});
+document.addEventListener('keydown',function(e){if(!lb.classList.contains('on'))return;if(e.key==='Escape')hide();if(e.key==='ArrowLeft')show(i-1);if(e.key==='ArrowRight')show(i+1)});})();</script></html>
