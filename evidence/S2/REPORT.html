@@ -4,17 +4,19 @@ tr:nth-child(even){background:#fafbfc}code{background:#f4f4f4;padding:1px 4px;bo
 h1{border-bottom:3px solid #008de4}h2{border-bottom:1px solid #ccc;margin-top:40px}a{color:#008de4}a.ev{background:#e8f4fd;padding:0 3px;border-radius:3px;font-family:ui-monospace,monospace;font-size:12px}
 nav.top{background:#012060;color:#fff;padding:8px 24px;margin:-16px -24px 16px;position:sticky;top:0;z-index:5}nav.top a{color:#fff;margin-right:18px;text-decoration:none}nav.top a:hover{text-decoration:underline}
 .S1{color:#b00020;font-weight:bold}.S2{color:#c75000;font-weight:bold}.toc{background:#f8f9fb;border:1px solid #e3e6ea;padding:8px 16px;font-size:13px;columns:2}.toc ul{margin:2px 0;padding-left:16px}
+#lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:50;align-items:center;justify-content:center;flex-direction:column}#lb.on{display:flex}#lb img{max-width:96vw;max-height:88vh;border:2px solid #fff;box-shadow:0 0 30px #000}#lb .cap{color:#eee;font:13px ui-monospace,monospace;margin-top:8px}#lb .cap a{color:#8cf}#lb .x{position:absolute;top:10px;right:18px;color:#fff;font-size:30px;cursor:pointer}#lb .nv{position:absolute;top:50%;color:#fff;font-size:44px;cursor:pointer;padding:0 16px;user-select:none}#lb .pv{left:0}#lb .nx{right:0}a.img img{cursor:zoom-in}
+a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:target{background:#fff3b0;outline:2px solid #f5b400}
 .note{background:#fff8e1;border-left:4px solid #f5b400;padding:8px 12px;margin:12px 0}
 </style><nav class=top><a href="../../index.html">Home</a><a href="../../QA-REPORT.html">Full report</a><a href="../../EXEC-SUMMARY.html">Executive summary</a><a href="../../STORY-MATRIX.html">User-story matrix</a><a href="../../DEFECT-LEDGER.html">Defect register</a><a href="../index.html">Evidence gallery</a><a href="../../QA-PLAN.html">Test plan</a><a href="../../streams.html">Stream reports</a></nav><h1 id="qa-report-s2-a2-tier-b-b1b4-agent-opus-qa-stream-s2-emulator-5556-avd-dw-qa2-2026-09-19">QA report: S2 — A2 + Tier B (B1–B4)   (agent: Opus QA stream S2, emulator-5556 / AVD dw-qa2, 2026-09-19)</h1>
 <p>Build under test: <code>fix-12.0.0-testnet3-release-signed.apk</code>, versionCode <strong>12000000</strong>, versionName 12.0.0, minSdk 29, targetSdk 35.
-Wallet: reference seed <code>[seed phrase redacted]</code> — kept <strong>read-only</strong> all session
+Wallet: reference seed <code>job flower agree lyrics industry note boost finger buddy dog exact fat</code> — kept <strong>read-only</strong> all session
 (no send, no shield, no username; every wallet reset used "Reset wallet <strong>without saving</strong>" so nothing was written to Platform).</p>
 <blockquote>
 <p><strong>Expected-balance correction.</strong> The brief's 107.43173749 is <strong>stale</strong>. The wallet made a confirmed on-chain spend of
 0.35000227 on 2026-09-05 (block 1,547,938). On-chain truth today is <strong>107.08173522</strong> and that is the figure every
 assertion below uses. Evidence in A2.3.</p>
 </blockquote>
-<p>Times are host-local (UTC-5) unless suffixed UTC. <a class=ev href="../S2/A2/walletlog-after-sync/files/log/wallet.log">wallet.log</a> timestamps are UTC.</p>
+<p>Times are host-local (UTC-5) unless suffixed UTC. <code>wallet.log</code> timestamps are UTC.</p>
 <h2 id="summary-table">Summary table</h2>
 <table>
 <thead>
@@ -75,9 +77,9 @@ assertion below uses. Evidence in A2.3.</p>
 <td>5 × <code>RUNNING_CRITICAL</code> survived, cursor kept advancing, no LMK/ANR/crash, reached 100%</td>
 </tr>
 <tr>
-<td><strong>D-037 confirmation</strong> (orchestrator request)</td>
+<td><strong><a class=did href="../../DEFECT-LEDGER.html#D-037">D-037</a> confirmation</strong> (orchestrator request)</td>
 <td><strong>CONFIRMED</strong></td>
-<td><code>B3/</code>, <a class=ev href="../S2/A2/walletlog-after-sync/files/log/wallet.log">B2/kill3/walletlog/files/log/wallet.log</a></td>
+<td><code>B3/</code>, <a class=ev href="../S2/B2/kill3/walletlog/files/log/wallet.log">B2/kill3/walletlog/files/log/wallet.log</a></td>
 <td>App logs "display cache is missing rows"; the count it calls "SDK records" is exactly the <strong>txos union (2375)</strong>, not <code>transactions</code> (3269)</td>
 </tr>
 </tbody>
@@ -257,7 +259,7 @@ authoritative count is the DB.</p>
 <code>tpubDDDjGxYK3jDHmnNoEBjKPiqS9DNjHeaWvogRtG7JYnZXmLZJ4PJaKSvRVdPNbf9ZrbPLLDm67sKeaqiCZJoVKg5UhCHjkzQPnfKbZtNBaPd</code></p>
 <p><strong>Memory</strong> (<a class=ev href="../S2/mem.csv">mem.csv</a>, 30 s interval): peak TOTAL PSS <strong>622 MB</strong>, peak native heap <strong>481 MB</strong>, peak Dalvik <strong>50 MB</strong>,
 all at 00:20:54 during the final FILTERS stretch. Idle after 100%: PSS 468 MB / native 313 MB / Dalvik 34 MB.
-<a class=ev href="../S2/A2/walletlog-after-sync/files/log/wallet.log">wallet.log</a> peak <code>MEM pss=606MB nativeHeap=457/547MB jvm=22/576MB</code> (05:21:00). <code>ReplayMemTelemetry</code> peak
+<code>wallet.log</code> peak <code>MEM pss=606MB nativeHeap=457/547MB jvm=22/576MB</code> (05:21:00). <code>ReplayMemTelemetry</code> peak
 <code>nativeHeapAllocated=395 MB, nativeHeapSize=455 MB</code>; <code>jvmUsed</code> never exceeded 37 MB of 576 MB.
 <code>dumpsys activity exit-info</code>: <strong>empty</strong> for A2 — no LMK, no ANR, no crash; app pid 5226 survived the whole test.</p>
 <p><strong>A2 step 4 (stall probes) — not needed.</strong> No stall occurred: the cursor never sat still for 10 minutes during any
@@ -521,10 +523,10 @@ vout 0.10000000 to that address. Newest display row <code>2026-09-05 12:54:12 Se
 <tbody>
 <tr>
 <td><strong>D-S2-1</strong></td>
-<td><strong>S1</strong></td>
+<td class=S1><strong>S1</strong></td>
 <td>After any mid-replay process kill, the finished home screen shows a ~22x inflated balance and claims to be synced</td>
 <td>1. Restore the reference seed. 2. <code>am force-stop</code> the app at any point during the replay, relaunch. 3. Let it reach <code>phase=SYNCED</code>. 4. Home shows 2319.448975 / 2363.277644 instead of 107.081735, with <strong>no</strong> syncing indicator. Reproduced <strong>2/2</strong> on kill runs, <strong>0/2</strong> without kills. Workaround: force-stop + relaunch (bg/fg alone does <strong>not</strong> fix it).</td>
-<td><a class=ev href="../S2/B2/11-BALANCE-after-kills.webp">B2/11-BALANCE-after-kills.png</a>, <a class=ev href="../S2/B2/kill3/20-BALANCE-after-3-kills.webp">B2/kill3/20-BALANCE-after-3-kills.png</a>, <a class=ev href="../S2/B2/kill3/21-BALANCE-after-restart.webp">B2/kill3/21-BALANCE-after-restart.png</a>, <a class=ev href="../S2/B2/b2-restart-recovery.mp4">B2/b2-restart-recovery.mp4</a>, <a class=ev href="../S2/A2/walletlog-after-sync/files/log/wallet.log">B2/walletlog-wrong-balance/files/log/wallet.log</a>, <a class=ev href="../S2/A2/walletlog-after-sync/files/log/wallet.log">B2/kill3/walletlog/files/log/wallet.log</a></td>
+<td><a class=ev href="../S2/B2/11-BALANCE-after-kills.webp">B2/11-BALANCE-after-kills.png</a>, <a class=ev href="../S2/B2/kill3/20-BALANCE-after-3-kills.webp">B2/kill3/20-BALANCE-after-3-kills.png</a>, <a class=ev href="../S2/B2/kill3/21-BALANCE-after-restart.webp">B2/kill3/21-BALANCE-after-restart.png</a>, <a class=ev href="../S2/B2/b2-restart-recovery.mp4">B2/b2-restart-recovery.mp4</a>, <a class=ev href="../S2/B2/walletlog-wrong-balance/files/log/wallet.log">B2/walletlog-wrong-balance/files/log/wallet.log</a>, <a class=ev href="../S2/B2/kill3/walletlog/files/log/wallet.log">B2/kill3/walletlog/files/log/wallet.log</a></td>
 <td><code>CutoverUiDataService</code> / <code>L1ShadowSyncService.WalletBalanceFacts</code> — <strong>only the bip44 bucket</strong> is wrong (227,792,973,136 vs correct 2,173,382,240); <code>coinjoin</code>, <code>dashpayReceiving</code>, <code>dashpayExternal</code> and <code>txCount=3269</code> all match a good run, so spent outputs are not being retired from the in-memory bip44 UTXO set when blocks are re-processed after a restart</td>
 </tr>
 <tr>
@@ -547,7 +549,7 @@ vout 0.10000000 to that address. Newest display row <code>2026-09-05 12:54:12 Se
 <td><strong>D-S2-4</strong></td>
 <td><strong>S4</strong></td>
 <td><code>idling detected, stopping service</code> logged once per minute in the foreground while the service is in fact running</td>
-<td>Reach 100 %, leave the app foregrounded, watch <a class=ev href="../S2/A2/walletlog-after-sync/files/log/wallet.log">wallet.log</a>: the line repeats every 60 s with no <code>.onDestroy()</code>/<code>stopSelf</code>/<code>service start command</code> between.</td>
+<td>Reach 100 %, leave the app foregrounded, watch <code>wallet.log</code>: the line repeats every 60 s with no <code>.onDestroy()</code>/<code>stopSelf</code>/<code>service start command</code> between.</td>
 <td><a class=ev href="../S2/A2/walletlog-after-sync/files/log/wallet.log">A2/walletlog-after-sync/files/log/wallet.log</a> lines 4975/5114/5243/5388/5482/5626 (05:25:00-05:30:00)</td>
 <td><code>BlockchainServiceImpl</code> idle check — misleading log only; no functional impact (verified in B4)</td>
 </tr>
@@ -579,20 +581,20 @@ vout 0.10000000 to that address. Newest display row <code>2026-09-05 12:54:12 Se
 <h2 id="environment-problems-not-product-defects">Environment problems (not product defects)</h2>
 <ul>
 <li><code>qa-app.sh logcat-start</code> produced an empty file for the first ~11 minutes. Fixed by the orchestrator mid-run; the
-  pre-fix window is preserved in <code>logcat-early.txt</code> (22,565 lines from the ring buffer), the rest in <code>logcat.txt</code>.</li>
+  pre-fix window is preserved in <a class=ev href="../S2/logcat-early.txt">logcat-early.txt</a> (22,565 lines from the ring buffer), the rest in <a class=ev href="../S2/logcat.txt">logcat.txt</a>.</li>
 <li>The Recover Wallet screen is <code>FLAG_SECURE</code>; <code>screencap</code> yields an all-black frame there. uiautomator dumps captured
   instead (<a class=ev href="../S2/A2/02-restore-screen-uidump.txt">A2/02-restore-screen-uidump.txt</a>, <a class=ev href="../S2/A2/03-seed-entered-uidump.txt">A2/03-seed-entered-uidump.txt</a>).</li>
 <li><code>logcat -b crash</code> contains <code>FATAL EXCEPTION ... registerUiTestAutomationService ... already registered</code> from PIDs
   10547/11319/11343/11366/11851/12681. These are the <strong><code>uiautomator</code> helper process</strong> (my 60 s sampler colliding with my
   own dumps), not the app. Verified zero <code>FATAL</code> lines from any app PID (5226, 22930, 23456, 24825, 28170, 28706, 29214).</li>
 <li>Replay on this AVD is far faster than the plan's "~1 hour" estimate (~7-10 min), which made precise 25/50/75 % kill
-  targeting hard on the first pass — <code>synced_height_persisted</code> is written to <a class=ev href="../S2/A2/walletlog-after-sync/files/log/wallet.log">wallet.log</a> in bursts, so thresholds
+  targeting hard on the first pass — <code>synced_height_persisted</code> is written to <code>wallet.log</code> in bursts, so thresholds
   overshoot. Restore #4 used time-spaced kills instead, giving 31 % / 83 % / 99 %.</li>
 </ul>
 <h2 id="not-run-blocked">Not run / blocked</h2>
 <ul>
 <li>Nothing in the assigned scope was blocked. A2 step 4's stall-capture branch (<code>grep-log</code> + <code>mem</code> + <code>procstat</code> +
-  <code>exitinfo</code> + <a class=ev href="../S2/A2/walletlog-after-sync/files/log/wallet.log">wallet.log</a> into <code>A2/stall-&lt;time&gt;/</code>) was <strong>not triggered</strong> because no stall occurred — the cursor never
+  <code>exitinfo</code> + <code>wallet.log</code> into <code>A2/stall-&lt;time&gt;/</code>) was <strong>not triggered</strong> because no stall occurred — the cursor never
   went 10 minutes without advancing in any of the four replays.</li>
 <li>Full UI scroll to the bottom of the ~1,500-row history was not attempted (~400 swipes); 30 pages were captured and the
   row counts come from <code>tx_display_cache</code>, which is what the list renders.</li>
@@ -612,4 +614,12 @@ B3/                           torture-timeline.txt, offline-banner + final-balan
 96 screenshots, 8 videos, 93 MB total
 </code></pre>
 <p>Helper scripts written for this stream: <code>bin/s2-sampler.sh</code>, <code>bin/s2-watch.sh</code>, <code>bin/s2-killat.sh</code>,
-<code>bin/s2-kill3.sh</code>, <code>bin/s2-torture.sh</code>.</p></html>
+<code>bin/s2-kill3.sh</code>, <code>bin/s2-torture.sh</code>.</p><div id=lb><span class=x>&times;</span><span class="nv pv">&#8249;</span><span class="nv nx">&#8250;</span><img><div class=cap></div></div>
+<script>(function(){var lb=document.getElementById('lb'),im=lb.querySelector('img'),cap=lb.querySelector('.cap'),L=[],i=0;
+function links(){return Array.prototype.slice.call(document.querySelectorAll('a[href$=".webp"],a[href$=".png"]'))}
+function show(n){L=links();if(n<0||n>=L.length)return;i=n;var a=L[i];im.src=a.href;cap.innerHTML=(a.textContent.trim()||a.href.split('/').slice(-3).join('/'))+' &nbsp;('+(i+1)+'/'+L.length+') &nbsp;<a href="'+a.href+'" target=_blank rel=noopener>open file</a>';lb.classList.add('on')}
+function hide(){lb.classList.remove('on');im.src=''}
+document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".webp"],a[href$=".png"]');if(a&&!a.closest('#lb')){e.preventDefault();show(links().indexOf(a))}});
+lb.querySelector('.x').onclick=hide;lb.querySelector('.pv').onclick=function(e){e.stopPropagation();show(i-1)};lb.querySelector('.nx').onclick=function(e){e.stopPropagation();show(i+1)};
+lb.addEventListener('click',function(e){if(e.target===lb||e.target===im)hide()});
+document.addEventListener('keydown',function(e){if(!lb.classList.contains('on'))return;if(e.key==='Escape')hide();if(e.key==='ArrowLeft')show(i-1);if(e.key==='ArrowRight')show(i+1)});})();</script></html>

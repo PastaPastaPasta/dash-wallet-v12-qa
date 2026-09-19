@@ -19,7 +19,7 @@ NO REAL FUNDS. Only seeds used: (a) freshly generated throwaway, (b) public BIP3
 - Recovery phrase screen: FLAG_SECURE is honoured (screencap is black -> 07-recovery-phrase.png).
   Phrase is still readable via uiautomator (standard Android a11y behaviour, not a defect).
 - THROWAWAY fresh mainnet seed (never funded, never will be):
-  `[seed phrase redacted]`
+  `brand manage inflict tank jeans curtain flip close mind panther leader caution`
 - Onboarding dialogs after Verify: system POST_NOTIFICATIONS (Allow), app "Let Dash Wallet run in the
   background?" (Allow) then system "Let app always run in background?" (Allow).
 - Home reached 00:25:30 host. Balance `0` / `$ 0`. NO sync-progress pane rendered on the home header at all

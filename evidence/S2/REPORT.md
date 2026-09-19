@@ -1,7 +1,7 @@
 # QA report: S2 — A2 + Tier B (B1–B4)   (agent: Opus QA stream S2, emulator-5556 / AVD dw-qa2, 2026-09-19)
 
 Build under test: `fix-12.0.0-testnet3-release-signed.apk`, versionCode **12000000**, versionName 12.0.0, minSdk 29, targetSdk 35.
-Wallet: reference seed `[seed phrase redacted]` — kept **read-only** all session
+Wallet: reference seed `job flower agree lyrics industry note boost finger buddy dog exact fat` — kept **read-only** all session
 (no send, no shield, no username; every wallet reset used "Reset wallet **without saving**" so nothing was written to Platform).
 
 > **Expected-balance correction.** The brief's 107.43173749 is **stale**. The wallet made a confirmed on-chain spend of

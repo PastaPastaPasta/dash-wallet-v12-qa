@@ -4,6 +4,8 @@ tr:nth-child(even){background:#fafbfc}code{background:#f4f4f4;padding:1px 4px;bo
 h1{border-bottom:3px solid #008de4}h2{border-bottom:1px solid #ccc;margin-top:40px}a{color:#008de4}a.ev{background:#e8f4fd;padding:0 3px;border-radius:3px;font-family:ui-monospace,monospace;font-size:12px}
 nav.top{background:#012060;color:#fff;padding:8px 24px;margin:-16px -24px 16px;position:sticky;top:0;z-index:5}nav.top a{color:#fff;margin-right:18px;text-decoration:none}nav.top a:hover{text-decoration:underline}
 .S1{color:#b00020;font-weight:bold}.S2{color:#c75000;font-weight:bold}.toc{background:#f8f9fb;border:1px solid #e3e6ea;padding:8px 16px;font-size:13px;columns:2}.toc ul{margin:2px 0;padding-left:16px}
+#lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:50;align-items:center;justify-content:center;flex-direction:column}#lb.on{display:flex}#lb img{max-width:96vw;max-height:88vh;border:2px solid #fff;box-shadow:0 0 30px #000}#lb .cap{color:#eee;font:13px ui-monospace,monospace;margin-top:8px}#lb .cap a{color:#8cf}#lb .x{position:absolute;top:10px;right:18px;color:#fff;font-size:30px;cursor:pointer}#lb .nv{position:absolute;top:50%;color:#fff;font-size:44px;cursor:pointer;padding:0 16px;user-select:none}#lb .pv{left:0}#lb .nx{right:0}a.img img{cursor:zoom-in}
+a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:target{background:#fff3b0;outline:2px solid #f5b400}
 .note{background:#fff8e1;border-left:4px solid #f5b400;padding:8px 12px;margin:12px 0}
 </style><nav class=top><a href="../../index.html">Home</a><a href="../../QA-REPORT.html">Full report</a><a href="../../EXEC-SUMMARY.html">Executive summary</a><a href="../../STORY-MATRIX.html">User-story matrix</a><a href="../../DEFECT-LEDGER.html">Defect register</a><a href="../index.html">Evidence gallery</a><a href="../../QA-PLAN.html">Test plan</a><a href="../../streams.html">Stream reports</a></nav><h1 id="qa-report-s6-m1-m4-mainnet-prod-build-agent-s6-emulator-5564-dw-qa6-2026-09-19">QA report: S6 / M1-M4 - MAINNET prod build (agent: S6, emulator-5564 / dw-qa6, 2026-09-19)</h1>
 <p>Build under test: <code>$QA_APKS/fix-12.0.0-prod-release-signed.apk</code> - package <code>hashengineering.darkcoin.wallet</code>,
@@ -241,7 +243,7 @@ and Platform <code>4.0.1-SNAPSHOT</code> PASS.</p>
 </tbody>
 </table>
 <p>No LMK kill, no <code>OutOfMemoryError</code>, no <code>FATAL EXCEPTION</code> in either logcat segment
-(<a class=ev href="../S6/logcat-part1.txt">logcat-part1.txt</a>, <code>logcat.txt</code>) or in any <code>wallet.log</code> pull.</p>
+(<a class=ev href="../S6/logcat-part1.txt">logcat-part1.txt</a>, <a class=ev href="../S6/logcat.txt">logcat.txt</a>) or in any <code>wallet.log</code> pull.</p>
 <h2 id="defects-found">Defects found</h2>
 <table>
 <thead>
@@ -308,7 +310,7 @@ and Platform <code>4.0.1-SNAPSHOT</code> PASS.</p>
 <td>S4</td>
 <td><code>BlockchainServiceImpl - idling detected, stopping service</code> logged once a minute indefinitely after sync, with no matching restart</td>
 <td>Reach 100 % and leave the app idle</td>
-<td><code>grep 'idling detected'</code> -&gt; 6 occurrences (05:27:00, 05:28:00, 06:16:00, ...) in <code>M3/fix-walletlog/files/log/wallet.log</code>. Independently reported by stream S2 on testnet</td>
+<td><code>grep 'idling detected'</code> -&gt; 6 occurrences (05:27:00, 05:28:00, 06:16:00, ...) in <a class=ev href="../S6/M3/fix-walletlog/files/log/wallet.log">M3/fix-walletlog/files/log/wallet.log</a>. Independently reported by stream S2 on testnet</td>
 <td><code>BlockchainServiceImpl</code> idle/stop tick</td>
 </tr>
 </tbody>
@@ -326,7 +328,7 @@ LockState = ENTER_PIN</code> with no intervening background transition
 <li><code>adb shell input text</code> splits on spaces; seed phrases must be typed with <code>%s</code> separators.</li>
 <li>The <code>adb root</code> performed by <code>wallet-log</code>/<code>grep-log</code>/<code>pull-logs</code> restarts adbd and kills a running
   <code>adb logcat</code>. The first logcat capture died at 00:25:41 for that reason; it is preserved as
-  <a class=ev href="../S6/logcat-part1.txt">evidence/S6/logcat-part1.txt</a> and a second capture (<code>evidence/S6/logcat.txt</code>) covers 01:05 onwards.
+  <a class=ev href="../S6/logcat-part1.txt">evidence/S6/logcat-part1.txt</a> and a second capture (<a class=ev href="../S6/logcat.txt">evidence/S6/logcat.txt</a>) covers 01:05 onwards.
   <a class=ev href="../S6/mem.csv">mem.csv</a> is unaffected (it re-invokes adb per sample) and the app's own <code>wallet.log</code> is complete.</li>
 <li>Firebase is a stub: <code>FirebaseException ... API key not valid</code> and <code>Firebase cloud messaging token: Not available</code>
   are expected. Buy &amp; Sell shows the expected "Keys are missing for these services" banner.</li>
@@ -336,4 +338,12 @@ LockState = ENTER_PIN</code> with no intervening background transition
 <li>Nothing from the S6 assignment was blocked. No send, purchase, username creation or dashj-toggle action
   was attempted, per the no-funds constraint.</li>
 <li>The <code>dashj sync (diagnostic)</code> toggle was confirmed present and OFF but deliberately not switched on.</li>
-</ul></html>
+</ul><div id=lb><span class=x>&times;</span><span class="nv pv">&#8249;</span><span class="nv nx">&#8250;</span><img><div class=cap></div></div>
+<script>(function(){var lb=document.getElementById('lb'),im=lb.querySelector('img'),cap=lb.querySelector('.cap'),L=[],i=0;
+function links(){return Array.prototype.slice.call(document.querySelectorAll('a[href$=".webp"],a[href$=".png"]'))}
+function show(n){L=links();if(n<0||n>=L.length)return;i=n;var a=L[i];im.src=a.href;cap.innerHTML=(a.textContent.trim()||a.href.split('/').slice(-3).join('/'))+' &nbsp;('+(i+1)+'/'+L.length+') &nbsp;<a href="'+a.href+'" target=_blank rel=noopener>open file</a>';lb.classList.add('on')}
+function hide(){lb.classList.remove('on');im.src=''}
+document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".webp"],a[href$=".png"]');if(a&&!a.closest('#lb')){e.preventDefault();show(links().indexOf(a))}});
+lb.querySelector('.x').onclick=hide;lb.querySelector('.pv').onclick=function(e){e.stopPropagation();show(i-1)};lb.querySelector('.nx').onclick=function(e){e.stopPropagation();show(i+1)};
+lb.addEventListener('click',function(e){if(e.target===lb||e.target===im)hide()});
+document.addEventListener('keydown',function(e){if(!lb.classList.contains('on'))return;if(e.key==='Escape')hide();if(e.key==='ArrowLeft')show(i-1);if(e.key==='ArrowRight')show(i+1)});})();</script></html>

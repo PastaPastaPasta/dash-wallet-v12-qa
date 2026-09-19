@@ -1,7 +1,7 @@
 # S2 QA journal — emulator-5556 / dw-qa2
 Stream S2: A2 (clean install + restore reference seed, sync to 100%) then Tier B (B4, B2, B3, B1).
 Build under test: fix-12.0.0-testnet3-release-signed.apk (versionCode 12000000)
-Reference seed: [seed phrase redacted]  (READ-ONLY)
+Reference seed: job flower agree lyrics industry note boost finger buddy dog exact fat  (READ-ONLY)
 Expected balance: 107.43173749 tDASH
 
 ## Journal

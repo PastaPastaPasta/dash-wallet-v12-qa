@@ -2,7 +2,7 @@
 
 Builds: `apks/master-11.9.0-testnet3-release-signed.apk` (versionCode 11090002) and
 `apks/fix-12.0.0-testnet3-release-signed.apk` (versionCode 12000000).
-Wallet seed (throwaway): `[seed phrase redacted]`.
+Wallet seed (throwaway): `gospel tip talent possible practice leave vicious come swing luggage ice sand`.
 Faucet: 1 tDASH, txid `10e3b5b8dca0702ca350d5f263e5b31c84c678f63d541a5a2b0ee7c1a96cf054` (one request, as briefed).
 
 ## Summary table

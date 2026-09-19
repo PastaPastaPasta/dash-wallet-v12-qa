@@ -6,7 +6,7 @@
 ## A1 step 1 - wallet creation
 - 12-word security level chosen, PIN 1234 set (entered + confirmed).
 - RECOVERY PHRASE (throwaway testnet wallet):
-  `[seed phrase redacted]`
+  `swamp dad rent tower dumb cart dust vocal often today chimney amazing`
 - NOTE: screenshot of the recovery-phrase screen is BLACK (FLAG_SECURE) -> expected/correct security
   behaviour; the words were captured from the uiautomator dump instead
   (evidence: A1/01-onboarding/07-recovery-phrase.png is black by design, text recorded here).

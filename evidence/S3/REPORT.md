@@ -1,7 +1,7 @@
 # QA report: S3 — A3 / A3b (upgrade master 11.9.0 -> fix 12.0.0)   (agent: Opus S3, emulator: emulator-5558 / dw-qa3, 2026-09-19)
 
 Builds: `master-11.9.0-testnet3-release-signed.apk` versionCode **11090002** -> `fix-12.0.0-testnet3-release-signed.apk` versionCode **12000000** (same QA key, `adb install -r` = true in-place upgrade; `dumpsys package` confirmed 12000000 / minSdk 29).
-Wallet: reference seed `[seed phrase redacted]`, app PIN 1234. READ-ONLY — nothing sent, shielded, or registered.
+Wallet: reference seed `job flower agree lyrics industry note boost finger buddy dog exact fat`, app PIN 1234. READ-ONLY — nothing sent, shielded, or registered.
 
 ## Summary table
 

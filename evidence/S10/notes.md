@@ -1,6 +1,6 @@
 # S10 notes (exploratory/adversarial) — emulator-5554 (dw-qa1)
 Build: fix-12.0.0-testnet3-release-signed.apk versionCode 12000000
-Wallet: inherited from S1 — seed `[seed phrase redacted]`, PIN 1234, username qa1s13939
+Wallet: inherited from S1 — seed `swamp dad rent tower dumb cart dust vocal often today chimney amazing`, PIN 1234, username qa1s13939
 
 2026-09-19T01:37:42 start: logcat + memlog started
 ## 01:39 setup

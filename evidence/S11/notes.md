@@ -3,7 +3,7 @@
 Stream S11. Goal: SDK replay memory on real-history wallet under constrained conditions;
 confirm/deny D-041 (inflated balance after kill during replay) and D-037 (historical fully-spent
 txs missing from history) on the reference seed (READ-ONLY).
-Reference seed: [seed phrase redacted]
+Reference seed: job flower agree lyrics industry note boost finger buddy dog exact fat
 Expected balance 107.08173522 (per D-014; the brief constant 107.43173749 is stale).
 
 ## Journal

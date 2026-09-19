@@ -12,7 +12,7 @@ NOTE: onboarding 'Restore from file' button is DEBUG-only (OnboardingActivity.kt
 - 00:20 E1 'Restore from file' button is BuildConfig.DEBUG-only in OnboardingActivity.kt:302 -> not present in release build (BLOCKED from onboarding).
 - 00:21 E1 create new wallet: SelectSecurityLevel (12/24 words) -> back-press OK -> 12 words -> SetPin. NOTE adb `input text` does not drive the custom PIN pad; must tap btn_N.
 - 00:23 E1 skip-backup via close_button -> notification permission -> background permission -> HOME. Backup shortcut visible on home as reminder. E1/40-43.
-- 00:29 E2 wallet seed (S4 throwaway): [seed phrase redacted] ; PIN 1234
+- 00:29 E2 wallet seed (S4 throwaway): device during battle soldier please track movie core timber suit canoe stock ; PIN 1234
 - 00:33 E2 View recovery phrase requires PIN (E2/02); wrong PIN -> "Wrong PIN! 7 attempts remaining" (E2/03). Seed shown after correct PIN (E2/05).
 - 00:36 E2 Advanced Security: Security Level/Auto Logout/Logout after seekbar/Spending Confirmation/Reset to Default (E2/09). Set logout to "Immediately" -> Security Level becomes "Very High" (E2/11).
 - 00:38 E2 ROTATE TEST PASS: rotate 1 on home does NOT lock (E2/12,13,14 + e2-autolock.mp4). Background+foreground DOES relock (E2/15).

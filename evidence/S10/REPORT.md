@@ -1,7 +1,7 @@
 # QA report: S10 — exploratory / adversarial (agent: S10, emulator-5554 / dw-qa1, 2026-09-19 01:37–03:35 CDT)
 
 Build under test: `fix-12.0.0-testnet3-release-signed.apk`, versionCode **12000000**, versionName 12.0.0, minSdk 29, targetSdk 35.
-Wallet: inherited from S1 — seed `[seed phrase redacted]`, PIN 1234, username `qa1s13939`, identity `DYjxDk3kTzf2PXAK3LfGj2cWitnyLKhx1y8u3626hbMm`.
+Wallet: inherited from S1 — seed `swamp dad rent tower dumb cart dust vocal often today chimney amazing`, PIN 1234, username `qa1s13939`, identity `DYjxDk3kTzf2PXAK3LfGj2cWitnyLKhx1y8u3626hbMm`.
 Funding: ONE faucet request at 01:39 → 1 tDASH, txid `e3c010b517e3c67ca0a510c6dec2cec2c0892a96d7cbb6114be2bfbb58781ced`.
 
 Evidence root: `/Users/dcg/workspace/dash-wallet-qa/evidence/S10/`

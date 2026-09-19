@@ -3,8 +3,8 @@
 Build under test: `fix-12.0.0-testnet3-release-signed.apk`, versionCode **12000000**, versionName 12.0.0, minSdk 29 / targetSdk 35. Clean install (no upgrade path in this stream).
 
 Wallets used (throwaway testnet):
-- **Wallet A** — created fresh, seed `[seed phrase redacted]`, funded 1 tDASH from the faucet, username **`qa5s5ebkdus2c6kkt9m7t`**, identity `FGk3cH3u7pF1Nyfs5E1rU4g9bdmPWgoEn41Uj61Gu6M4`. Reset and later restored from seed.
-- **Wallet B** — created after the reset, seed `[seed phrase redacted]`, funded only by wallet A's invite, username **`qa5s5invyhjvrfb3nfy5d`**, identity `3vEUteE9Cmstx8ey249hPbxhK16PuoDDYmf7XV3DZpMQ`. Reset at the end.
+- **Wallet A** — created fresh, seed `embody slot angle twelve they easily remember disorder end coin cloud duty`, funded 1 tDASH from the faucet, username **`qa5s5ebkdus2c6kkt9m7t`**, identity `FGk3cH3u7pF1Nyfs5E1rU4g9bdmPWgoEn41Uj61Gu6M4`. Reset and later restored from seed.
+- **Wallet B** — created after the reset, seed `snap deal silk cloth correct globe theme hurt action fury spoil jungle`, funded only by wallet A's invite, username **`qa5s5invyhjvrfb3nfy5d`**, identity `3vEUteE9Cmstx8ey249hPbxhK16PuoDDYmf7XV3DZpMQ`. Reset at the end.
 
 Faucet: `qa-faucet.sh` is Cloudflare-blocked (error 1010, headless UA banned). Used the studio browser per the updated brief. 1 tDASH, txid `fab296d048314082e41283b4d612ce634e4c2723c1b0bd6ca86df61bf40595ac`, confirmed at the insight explorer.
 

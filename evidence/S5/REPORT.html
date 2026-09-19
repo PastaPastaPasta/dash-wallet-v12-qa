@@ -4,12 +4,14 @@ tr:nth-child(even){background:#fafbfc}code{background:#f4f4f4;padding:1px 4px;bo
 h1{border-bottom:3px solid #008de4}h2{border-bottom:1px solid #ccc;margin-top:40px}a{color:#008de4}a.ev{background:#e8f4fd;padding:0 3px;border-radius:3px;font-family:ui-monospace,monospace;font-size:12px}
 nav.top{background:#012060;color:#fff;padding:8px 24px;margin:-16px -24px 16px;position:sticky;top:0;z-index:5}nav.top a{color:#fff;margin-right:18px;text-decoration:none}nav.top a:hover{text-decoration:underline}
 .S1{color:#b00020;font-weight:bold}.S2{color:#c75000;font-weight:bold}.toc{background:#f8f9fb;border:1px solid #e3e6ea;padding:8px 16px;font-size:13px;columns:2}.toc ul{margin:2px 0;padding-left:16px}
+#lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:50;align-items:center;justify-content:center;flex-direction:column}#lb.on{display:flex}#lb img{max-width:96vw;max-height:88vh;border:2px solid #fff;box-shadow:0 0 30px #000}#lb .cap{color:#eee;font:13px ui-monospace,monospace;margin-top:8px}#lb .cap a{color:#8cf}#lb .x{position:absolute;top:10px;right:18px;color:#fff;font-size:30px;cursor:pointer}#lb .nv{position:absolute;top:50%;color:#fff;font-size:44px;cursor:pointer;padding:0 16px;user-select:none}#lb .pv{left:0}#lb .nx{right:0}a.img img{cursor:zoom-in}
+a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:target{background:#fff3b0;outline:2px solid #f5b400}
 .note{background:#fff8e1;border-left:4px solid #f5b400;padding:8px 12px;margin:12px 0}
 </style><nav class=top><a href="../../index.html">Home</a><a href="../../QA-REPORT.html">Full report</a><a href="../../EXEC-SUMMARY.html">Executive summary</a><a href="../../STORY-MATRIX.html">User-story matrix</a><a href="../../DEFECT-LEDGER.html">Defect register</a><a href="../index.html">Evidence gallery</a><a href="../../QA-PLAN.html">Test plan</a><a href="../../streams.html">Stream reports</a></nav><h1 id="qa-report-s5-dashpay-platform-d0d7-sr-02-sr-12-agent-s5-emulator-5562-avd-dw-qa5-2026-09-19">QA report: S5 — DashPay / Platform (D0–D7 + SR-02 / SR-12)   (agent: S5, emulator-5562 / AVD dw-qa5, 2026-09-19)</h1>
 <p>Build under test: <code>fix-12.0.0-testnet3-release-signed.apk</code>, versionCode <strong>12000000</strong>, versionName 12.0.0, minSdk 29 / targetSdk 35. Clean install (no upgrade path in this stream).</p>
 <p>Wallets used (throwaway testnet):
-- <strong>Wallet A</strong> — created fresh, seed <code>[seed phrase redacted]</code>, funded 1 tDASH from the faucet, username <strong><code>qa5s5ebkdus2c6kkt9m7t</code></strong>, identity <code>FGk3cH3u7pF1Nyfs5E1rU4g9bdmPWgoEn41Uj61Gu6M4</code>. Reset and later restored from seed.
-- <strong>Wallet B</strong> — created after the reset, seed <code>[seed phrase redacted]</code>, funded only by wallet A's invite, username <strong><code>qa5s5invyhjvrfb3nfy5d</code></strong>, identity <code>3vEUteE9Cmstx8ey249hPbxhK16PuoDDYmf7XV3DZpMQ</code>. Reset at the end.</p>
+- <strong>Wallet A</strong> — created fresh, seed <code>embody slot angle twelve they easily remember disorder end coin cloud duty</code>, funded 1 tDASH from the faucet, username <strong><code>qa5s5ebkdus2c6kkt9m7t</code></strong>, identity <code>FGk3cH3u7pF1Nyfs5E1rU4g9bdmPWgoEn41Uj61Gu6M4</code>. Reset and later restored from seed.
+- <strong>Wallet B</strong> — created after the reset, seed <code>snap deal silk cloth correct globe theme hurt action fury spoil jungle</code>, funded only by wallet A's invite, username <strong><code>qa5s5invyhjvrfb3nfy5d</code></strong>, identity <code>3vEUteE9Cmstx8ey249hPbxhK16PuoDDYmf7XV3DZpMQ</code>. Reset at the end.</p>
 <p>Faucet: <code>qa-faucet.sh</code> is Cloudflare-blocked (error 1010, headless UA banned). Used the studio browser per the updated brief. 1 tDASH, txid <code>fab296d048314082e41283b4d612ce634e4c2723c1b0bd6ca86df61bf40595ac</code>, confirmed at the insight explorer.</p>
 <h2 id="summary-table">Summary table</h2>
 <table>
@@ -89,13 +91,13 @@ nav.top{background:#012060;color:#fff;padding:8px 24px;margin:-16px -24px 16px;p
 <td>Home/contacts/add-contact/search/profile/invitations/username-request all localized. Three i18n defects (below).</td>
 </tr>
 <tr>
-<td>SR-12 shielded stall notice</td>
+<td><a class=did href="../../DEFECT-LEDGER.html#SR-12">SR-12</a> shielded stall notice</td>
 <td><strong>NOT OBSERVED</strong></td>
 <td><code>SR/22</code>, <code>SR/23</code>, <a class=ev href="../S5/logs/final/files/log/wallet.log">logs/final/files/log/wallet.log</a></td>
 <td>The 40 s stalled notice never fired in any shielded flow; the internal-transfer screen is re-usable afterwards. The specific "bricked after notice" claim stays <strong>unverified</strong> because the precondition never occurred.</td>
 </tr>
 <tr>
-<td>SR-02 invite cancel → fund loss</td>
+<td><a class=did href="../../DEFECT-LEDGER.html#SR-02">SR-02</a> invite cancel → fund loss</td>
 <td><strong>NOT REPRODUCED</strong></td>
 <td><code>SR/14</code>…<code>SR/21</code>, <a class=ev href="../S5/SR/invite2-link.txt">SR/invite2-link.txt</a></td>
 <td>After BACK-cancel the invite is recorded in Invitations History and re-shareable; the regenerated one-time spending key is byte-identical (<code>osk=46859d9b…4571</code>). No silent loss.</td>
@@ -287,8 +289,16 @@ DIP-15: <code>KeyChainGroup - Activating a new HD chain: FriendKeyChain{P2PKH, a
 </ul>
 <h2 id="not-run-blocked">Not run / blocked</h2>
 <ul>
-<li><strong>SR-12 post-notice behaviour</strong>: the 40 s shielded "stalled" notice never fired (all shielded operations finished in 15-25 s), so whether the transfer screen is bricked <em>after</em> the notice is <strong>unverified</strong>. Everything observable was healthy: the internal-transfer screen re-opens and is usable after three separate shielded spends.</li>
+<li><strong><a class=did href="../../DEFECT-LEDGER.html#SR-12">SR-12</a> post-notice behaviour</strong>: the 40 s shielded "stalled" notice never fired (all shielded operations finished in 15-25 s), so whether the transfer screen is bricked <em>after</em> the notice is <strong>unverified</strong>. Everything observable was healthy: the internal-transfer screen re-opens and is usable after three separate shielded spends.</li>
 <li><strong>D1 contested completion</strong>: deliberately cancelled before paying, per the task (no 0.25 locked for voting).</li>
 <li><strong>D6 vote screen / end times</strong>: no contested names exist on testnet right now (<code>getVotePolls</code> empty), so the per-name vote screen and end-time rendering could not be exercised.</li>
 <li><strong>Avatar "Select from Gallery" / "Take a Photo"</strong>: not exercised (emulator gallery is empty, no camera); the Public-URL path was used instead.</li>
-</ul></html>
+</ul><div id=lb><span class=x>&times;</span><span class="nv pv">&#8249;</span><span class="nv nx">&#8250;</span><img><div class=cap></div></div>
+<script>(function(){var lb=document.getElementById('lb'),im=lb.querySelector('img'),cap=lb.querySelector('.cap'),L=[],i=0;
+function links(){return Array.prototype.slice.call(document.querySelectorAll('a[href$=".webp"],a[href$=".png"]'))}
+function show(n){L=links();if(n<0||n>=L.length)return;i=n;var a=L[i];im.src=a.href;cap.innerHTML=(a.textContent.trim()||a.href.split('/').slice(-3).join('/'))+' &nbsp;('+(i+1)+'/'+L.length+') &nbsp;<a href="'+a.href+'" target=_blank rel=noopener>open file</a>';lb.classList.add('on')}
+function hide(){lb.classList.remove('on');im.src=''}
+document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".webp"],a[href$=".png"]');if(a&&!a.closest('#lb')){e.preventDefault();show(links().indexOf(a))}});
+lb.querySelector('.x').onclick=hide;lb.querySelector('.pv').onclick=function(e){e.stopPropagation();show(i-1)};lb.querySelector('.nx').onclick=function(e){e.stopPropagation();show(i+1)};
+lb.addEventListener('click',function(e){if(e.target===lb||e.target===im)hide()});
+document.addEventListener('keydown',function(e){if(!lb.classList.contains('on'))return;if(e.key==='Escape')hide();if(e.key==='ArrowLeft')show(i-1);if(e.key==='ArrowRight')show(i+1)});})();</script></html>

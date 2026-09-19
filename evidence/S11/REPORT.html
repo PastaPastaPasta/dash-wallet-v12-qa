@@ -4,13 +4,15 @@ tr:nth-child(even){background:#fafbfc}code{background:#f4f4f4;padding:1px 4px;bo
 h1{border-bottom:3px solid #008de4}h2{border-bottom:1px solid #ccc;margin-top:40px}a{color:#008de4}a.ev{background:#e8f4fd;padding:0 3px;border-radius:3px;font-family:ui-monospace,monospace;font-size:12px}
 nav.top{background:#012060;color:#fff;padding:8px 24px;margin:-16px -24px 16px;position:sticky;top:0;z-index:5}nav.top a{color:#fff;margin-right:18px;text-decoration:none}nav.top a:hover{text-decoration:underline}
 .S1{color:#b00020;font-weight:bold}.S2{color:#c75000;font-weight:bold}.toc{background:#f8f9fb;border:1px solid #e3e6ea;padding:8px 16px;font-size:13px;columns:2}.toc ul{margin:2px 0;padding-left:16px}
+#lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:50;align-items:center;justify-content:center;flex-direction:column}#lb.on{display:flex}#lb img{max-width:96vw;max-height:88vh;border:2px solid #fff;box-shadow:0 0 30px #000}#lb .cap{color:#eee;font:13px ui-monospace,monospace;margin-top:8px}#lb .cap a{color:#8cf}#lb .x{position:absolute;top:10px;right:18px;color:#fff;font-size:30px;cursor:pointer}#lb .nv{position:absolute;top:50%;color:#fff;font-size:44px;cursor:pointer;padding:0 16px;user-select:none}#lb .pv{left:0}#lb .nx{right:0}a.img img{cursor:zoom-in}
+a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:target{background:#fff3b0;outline:2px solid #f5b400}
 .note{background:#fff8e1;border-left:4px solid #f5b400;padding:8px 12px;margin:12px 0}
 </style><nav class=top><a href="../../index.html">Home</a><a href="../../QA-REPORT.html">Full report</a><a href="../../EXEC-SUMMARY.html">Executive summary</a><a href="../../STORY-MATRIX.html">User-story matrix</a><a href="../../DEFECT-LEDGER.html">Defect register</a><a href="../index.html">Evidence gallery</a><a href="../../QA-PLAN.html">Test plan</a><a href="../../streams.html">Stream reports</a></nav><h1 id="qa-report-s11-p1p4-sdk-replay-on-a-real-history-wallet-under-constrained-conditions">QA report: S11 (P1–P4) — SDK replay on a real-history wallet under constrained conditions</h1>
 <p>agent: S11 · emulator: emulator-5566 / AVD dw-qa7 · date: 2026-09-19 (01:50 – 03:01 host)
 Builds: <code>fix-12.0.0-testnet3-release-signed.apk</code> (versionCode 12000000) and
 <code>master-11.9.0-testnet3-release-signed.apk</code> (versionCode 11090002).
-Reference seed <code>[seed phrase redacted]</code>,
-READ-ONLY (nothing sent / shielded / no username). Expected balance <strong>107.08173522</strong> (per D-014).</p>
+Reference seed <code>job flower agree lyrics industry note boost finger buddy dog exact fat</code>,
+READ-ONLY (nothing sent / shielded / no username). Expected balance <strong>107.08173522</strong> (per <a class=did href="../../DEFECT-LEDGER.html#D-014">D-014</a>).</p>
 <h2 id="summary-table">Summary table</h2>
 <table>
 <thead>
@@ -29,14 +31,14 @@ READ-ONLY (nothing sent / shielded / no username). Expected balance <strong>107.
 <td>restore→100 % in 5 m 42 s (engine start→100 % 4 m 31 s), balance exact, peak 596 MB PSS / 457 MB native, exit-info empty</td>
 </tr>
 <tr>
-<td>P1 D-037 probe (history completeness)</td>
-<td><strong>FAIL — D-037 CONFIRMED</strong></td>
+<td>P1 <a class=did href="../../DEFECT-LEDGER.html#D-037">D-037</a> probe (history completeness)</td>
+<td><strong>FAIL — <a class=did href="../../DEFECT-LEDGER.html#D-037">D-037</a> CONFIRMED</strong></td>
 <td><a class=ev href="../S11/P1/history/52-19-oct-2024-rows.webp">P1/history/52-19-oct-2024-rows.png</a>, <a class=ev href="../S11/P1/db/explorer-vs-db.txt">P1/db/explorer-vs-db.txt</a></td>
 <td>2 of 399 SDK receives (0.53848582 tDASH) have no history row; both absent from the txos-union. The wallet's FIRST receive (2019-07-31) IS present, so the severe S8 form does not generalise</td>
 </tr>
 <tr>
-<td>P2 single kill during replay (D-041)</td>
-<td><strong>FAIL — D-041 CONFIRMED</strong></td>
+<td>P2 single kill during replay (<a class=did href="../../DEFECT-LEDGER.html#D-041">D-041</a>)</td>
+<td><strong>FAIL — <a class=did href="../../DEFECT-LEDGER.html#D-041">D-041</a> CONFIRMED</strong></td>
 <td><a class=ev href="../S11/P2/09-BALANCE-after-kill-INFLATED.webp">P2/09-BALANCE-after-kill-INFLATED.png</a>, <a class=ev href="../S11/P2/p2-recovery.mp4">P2/p2-recovery.mp4</a></td>
 <td>ONE force-stop mid-replay → app reports SYNCED with <strong>2336.304271 tDASH</strong> (21.82× wrong); bg/fg does not fix; force-stop+relaunch does</td>
 </tr>
@@ -82,8 +84,8 @@ READ-ONLY (nothing sent / shielded / no username). Expected balance <strong>107.
      peak Dalvik <strong>40,291 kB</strong>; idle after sync ≈ 465 MB PSS / 311 MB native
    - <code>dumpsys activity exit-info</code>: <strong>empty</strong> (no process death) → <a class=ev href="../S11/P1/exitinfo.txt">P1/exitinfo.txt</a>
    - 0 <code>starting peergroup</code>, 0 <code>filter-stall</code>, 0 <code>idling detected</code> during the replay, 0 <code>OverlappingFileLockException</code>, 0 <code>OutOfMemory</code>
-   - reproduced D-002 (header 156.405901 under "Syncing balance" early in the replay, <a class=ev href="../S11/P1/09-home-start.webp">P1/09-home-start.png</a>)
-   - reproduced D-001 (auto-lock to Enter PIN during the unattended poll, <a class=ev href="../S11/P1/10-sync-poll5.webp">P1/10-sync-poll5.png</a>).
+   - reproduced <a class=did href="../../DEFECT-LEDGER.html#D-002">D-002</a> (header 156.405901 under "Syncing balance" early in the replay, <a class=ev href="../S11/P1/09-home-start.webp">P1/09-home-start.png</a>)
+   - reproduced <a class=did href="../../DEFECT-LEDGER.html#D-001">D-001</a> (auto-lock to Enter PIN during the unattended poll, <a class=ev href="../S11/P1/10-sync-poll5.webp">P1/10-sync-poll5.png</a>).
      After that I disabled <code>auto_logout_enabled</code> in shared_prefs so the device could be observed —
      noted as a deliberate harness change in <a class=ev href="../S11/notes.md">notes.md</a>.
 5. Databases pulled as root into <code>P1/db/</code> (dash-sdk.db + -wal/-shm, dash-wallet-database + -wal/-shm).</p>
@@ -95,7 +97,7 @@ READ-ONLY (nothing sent / shielded / no username). Expected balance <strong>107.
 | <code>SELECT COUNT(*) FROM tx_display_cache</code> (dash-wallet-database) | <strong>1519</strong> |
 | <code>SELECT COUNT(*) FROM tx_display_cache WHERE valueSatoshis &gt; 0</code> | <strong>397</strong> |</p>
 <p>873 SDK transactions have <strong>no</strong> <code>txos</code> row at all, i.e. they are invisible to both the display-cache
-writer (<code>SdkTxStoreWalker</code>) and to <code>TxDisplayCacheService.decideCacheRebuild</code> — exactly D-037's root cause.
+writer (<code>SdkTxStoreWalker</code>) and to <code>TxDisplayCacheService.decideCacheRebuild</code> — exactly <a class=did href="../../DEFECT-LEDGER.html#D-037">D-037</a>'s root cause.
 Display-row titles: Sent 722, Received 391, Internal 354, Mixing Transactions 51, Upgrade Fee 1
 (so display rows &lt; transactions is expected because CoinJoin rounds group).</p>
 <p><strong>Explorer cross-check</strong> — first 20 BIP44 receive addresses <code>m/44'/1'/0'/0/i</code> (derived with
@@ -118,7 +120,7 @@ Display-row titles: Sent 722, Received 391, Internal 354, Mixing Transactions 51
 - Section "19 October, 2024" renders exactly <strong>five</strong> <code>Received +0.2</code> rows at 2:21 AM
   (<a class=ev href="../S11/P1/history/52-19-oct-2024-rows.webp">P1/history/52-19-oct-2024-rows.png</a>). The explorer has <strong>seven</strong> incoming txs in block 1123983 at
   that minute (six × 0.2 and one × 0.33848582). Two are missing from the list.</p>
-<p><strong>Verdict P1: PASS for sync/balance/memory; D-037 CONFIRMED in its display-cache form, with a much
+<p><strong>Verdict P1: PASS for sync/balance/memory; <a class=did href="../../DEFECT-LEDGER.html#D-037">D-037</a> CONFIRMED in its display-cache form, with a much
 smaller blast radius on this wallet (2 of 399 receives) than on S8's massive wallet, and the
 "earliest receives disappear" symptom does NOT reproduce here.</strong></p>
 <h3 id="p2-one-kill-during-replay-d-041-confirmdeny-no-kill-control">P2 — one kill during replay (D-041 confirm/deny) + no-kill control</h3>
@@ -148,7 +150,7 @@ smaller blast radius on this wallet (2 of 399 receives) than on S8's massive wal
    balance" path would resurface 2336.30 on a later launch.</li>
 <li><code>exit-info</code> shows only the two deliberate FORCE STOPs, no LMK/OOM (<a class=ev href="../S11/P2/exitinfo.txt">P2/exitinfo.txt</a>).</li>
 </ol>
-<p><strong>Verdict P2: FAIL — D-041 CONFIRMED on a second device, and with a SINGLE kill (S2 needed 25/50/75 %
+<p><strong>Verdict P2: FAIL — <a class=did href="../../DEFECT-LEDGER.html#D-041">D-041</a> CONFIRMED on a second device, and with a SINGLE kill (S2 needed 25/50/75 %
 torture). No-kill control = P1, which lands on the correct balance, so the kill is the trigger.</strong></p>
 <h3 id="p3-low-memory-replay">P3 — low-memory replay</h3>
 <p><strong>ENV limitation:</strong> emulator 37.1 refuses to run this AVD below 2560 MB. Both <code>hw.ramSize=1536</code> in
@@ -177,7 +179,7 @@ tmpfs ballast</strong> at <code>/dev/s11ballast</code> on top (removed afterward
 </ol>
 <p><strong>Key observation:</strong> the app's footprint does <strong>not</strong> shrink in response to RUNNING_CRITICAL — it stays
 at the same ~570–610 MB as the unconstrained run. On a real 1.5 GB phone with a 512 MB-class budget
-this is the LMK exposure already filed as D-025/D-035.</p>
+this is the LMK exposure already filed as <a class=did href="../../DEFECT-LEDGER.html#D-025">D-025</a>/<a class=did href="../../DEFECT-LEDGER.html#D-035">D-035</a>.</p>
 <p><strong>Verdict P3: PASS (survives, correct balance, no slowdown), with the ENV caveat that a true 1.5 GB
 guest was not achievable on this emulator build.</strong></p>
 <h3 id="p4-upgrade-path-master-1190-fix-1200-on-the-constrained-device">P4 — upgrade path master 11.9.0 → fix 12.0.0 on the constrained device</h3>
@@ -223,16 +225,16 @@ guest was not achievable on this emulator build.</strong></p>
 </thead>
 <tbody>
 <tr>
-<td><strong>D-041</strong> (confirmed, 2nd device)</td>
-<td><strong>S1</strong></td>
+<td><strong><a class=did href="../../DEFECT-LEDGER.html#D-041">D-041</a></strong> (confirmed, 2nd device)</td>
+<td class=S1><strong>S1</strong></td>
 <td>Grossly inflated balance after a kill during the replay; app claims to be synced</td>
 <td>clean install fix APK → restore the reference seed → <strong>one</strong> <code>am force-stop</code> while <code>phase=FILTERS</code> (here wallet cursor 1,220,999/1,556,601) → relaunch → wait for <code>phase=SYNCED</code>: header shows 2336.304271 with no "Syncing balance" label (expected 107.08173522, 21.82×). bg/fg does not fix; force-stop+relaunch does</td>
 <td><a class=ev href="../S11/P2/09-BALANCE-after-kill-INFLATED.webp">S11/P2/09-BALANCE-after-kill-INFLATED.png</a>, <a class=ev href="../S11/P2/sdk-balance-published.txt">S11/P2/sdk-balance-published.txt</a> (<code>07:19:44 SDK balance published: 233630427063 duffs … l1Synced=false</code>, <code>07:19:46 phase=SYNCED</code>), <code>S11/P2/db-inflated/</code> (<code>SUM(txos)=10708173522</code>), <a class=ev href="../S11/P2/p2-recovery.mp4">S11/P2/p2-recovery.mp4</a>, <a class=ev href="../S11/P2/exitinfo.txt">S11/P2/exitinfo.txt</a></td>
 <td>in-memory UTXO-set aggregation after a mid-replay restart (<code>CutoverUiDataService</code> / SDK bip44 bucket). New: <code>lastKnown=233630427063</code> shows the bad value is persisted</td>
 </tr>
 <tr>
-<td><strong>D-037</strong> (confirmed on the reference seed)</td>
-<td><strong>S1</strong></td>
+<td><strong><a class=did href="../../DEFECT-LEDGER.html#D-037">D-037</a></strong> (confirmed on the reference seed)</td>
+<td class=S1><strong>S1</strong></td>
 <td>Historical incoming transactions have no history row when the tx has no <code>txos</code> row</td>
 <td>restore the reference seed on the fix build, sync to 100 %, open History → "19 October, 2024": 5 <code>Received +0.2</code> rows where the explorer has 7 incoming txs in block 1123983</td>
 <td><a class=ev href="../S11/P1/history/52-19-oct-2024-rows.webp">S11/P1/history/52-19-oct-2024-rows.png</a>, <a class=ev href="../S11/P1/db/explorer-vs-db.txt">S11/P1/db/explorer-vs-db.txt</a>, <a class=ev href="../S11/P1/db/db-counts.txt">S11/P1/db/db-counts.txt</a> (transactions 3269, txos-union 2396, display 1519, valueSatoshis&gt;0 397)</td>
@@ -247,7 +249,7 @@ guest was not achievable on this emulator build.</strong></p>
 <td>TransactionDetails binding while the SDK seam has no data yet</td>
 </tr>
 <tr>
-<td>D-001 (re-observed)</td>
+<td><a class=did href="../../DEFECT-LEDGER.html#D-001">D-001</a> (re-observed)</td>
 <td>S4</td>
 <td>Foreground auto-lock after 60 s idle broke two unattended observation windows</td>
 <td>leave the app on Home without touching</td>
@@ -255,15 +257,15 @@ guest was not achievable on this emulator build.</strong></p>
 <td><code>auto_logout_minutes = 1</code></td>
 </tr>
 <tr>
-<td>D-002 (re-observed)</td>
+<td><a class=did href="../../DEFECT-LEDGER.html#D-002">D-002</a> (re-observed)</td>
 <td class=S2>S2</td>
 <td>Inflated partial balance under the greyed "Syncing balance" label during the replay</td>
 <td>restore, watch the header</td>
 <td><a class=ev href="../S11/P1/09-home-start.webp">S11/P1/09-home-start.png</a> (156.405901), <a class=ev href="../S11/P3/03-home-replay-start.webp">S11/P3/03-home-replay-start.png</a> (134.357093)</td>
-<td>SR-10</td>
+<td id="SR-10"><a href="#SR-10">SR-10</a></td>
 </tr>
 <tr>
-<td>D-025 / D-035 (supporting data)</td>
+<td><a class=did href="../../DEFECT-LEDGER.html#D-025">D-025</a> / <a class=did href="../../DEFECT-LEDGER.html#D-035">D-035</a> (supporting data)</td>
 <td class=S2>S2</td>
 <td>SDK replay footprint is ~2.5× dashj's on the same device and does not respond to RUNNING_CRITICAL</td>
 <td>compare <a class=ev href="../S11/mem-p3p4.csv">mem-p3p4.csv</a> master window (02:37–02:48) vs fix window (02:49–02:59)</td>
@@ -284,14 +286,14 @@ guest was not achievable on this emulator build.</strong></p>
   (<code>tapon 'resource-id=…:id/btn_N'</code>).</li>
 <li>ENV-4 confirmed: doing <code>adb root</code> <strong>before</strong> starting <code>logcat-start</code> keeps the pipe alive for the
   whole session (subsequent <code>adb root</code> from <code>grep-log</code> is a no-op). Both logcat captures are intact.</li>
-<li>D-001 forced a deliberate harness change after P1: <code>auto_logout_enabled=false</code> written into
+<li><a class=did href="../../DEFECT-LEDGER.html#D-001">D-001</a> forced a deliberate harness change after P1: <code>auto_logout_enabled=false</code> written into
   <code>shared_prefs/…_preferences.xml</code> with the app stopped, so the history could be scrolled.</li>
 </ul>
 <h2 id="not-run-blocked">Not run / blocked</h2>
 <ul>
 <li>The P2 kill could not be placed at exactly 50 % of the wallet cursor: the progress line is emitted
   only every 30 s and the cursor jumped 665,999 → 1,220,999 inside one window. The kill landed at
-  78.4 %; it was still a single mid-replay kill and reproduced D-041.</li>
+  78.4 %; it was still a single mid-replay kill and reproduced <a class=did href="../../DEFECT-LEDGER.html#D-041">D-041</a>.</li>
 <li>P4's "balance held during replay" was observed at one point (02:49:5x, 794.227628) only: a keep-alive
   gesture accidentally opened a tx-detail sheet (which is how S11-D1 was found) and it covered the
   header for the rest of that replay.</li>
@@ -301,16 +303,24 @@ guest was not achievable on this emulator build.</strong></p>
 <li><code>/Users/dcg/workspace/dash-wallet-qa/evidence/S11/notes.md</code> (running journal)</li>
 <li><code>/Users/dcg/workspace/dash-wallet-qa/evidence/S11/P1/</code>, <code>P2/</code>, <code>P3/</code>, <code>P4/</code></li>
 <li><code>/Users/dcg/workspace/dash-wallet-qa/evidence/S11/mem-p1p2.csv</code>, <a class=ev href="../S11/mem-p3p4.csv">mem-p3p4.csv</a></li>
-<li><code>/Users/dcg/workspace/dash-wallet-qa/evidence/S11/logcat-p1p2.txt</code>, <code>logcat-p3p4.txt</code></li>
-<li>pulled <a class=ev href="../S11/P2/logs/files/log/wallet.log">wallet.log</a>: <a class=ev href="../S11/P2/logs/files/log/wallet.log">S11/P2/logs/files/log/wallet.log</a> (P1+P2), <a class=ev href="../S11/P2/logs/files/log/wallet.log">S11/P4/logs/files/log/wallet.log</a> (P3+P4)</li>
+<li><code>/Users/dcg/workspace/dash-wallet-qa/evidence/S11/logcat-p1p2.txt</code>, <a class=ev href="../S11/logcat-p3p4.txt">logcat-p3p4.txt</a></li>
+<li>pulled <code>wallet.log</code>: <a class=ev href="../S11/P2/logs/files/log/wallet.log">S11/P2/logs/files/log/wallet.log</a> (P1+P2), <a class=ev href="../S11/P4/logs/files/log/wallet.log">S11/P4/logs/files/log/wallet.log</a> (P3+P4)</li>
 </ul>
 <h2 id="evidence-notes">Evidence notes</h2>
 <ul>
 <li><code>P1/db/</code>: all six files (<code>dash-sdk.db</code>, <code>-wal</code>, <code>-shm</code>, <code>dash-wallet-database</code>, <code>-wal</code>, <code>-shm</code>) were
   pulled with <code>adb pull</code> as root; opening them with <code>sqlite3</code> checkpointed the WALs into the main
   files, so only <code>dash-sdk.db</code> and <code>dash-wallet-database</code> remain on disk (all rows included).</li>
-<li><code>P3/logs/</code> is empty: P3's <a class=ev href="../S11/P2/logs/files/log/wallet.log">wallet.log</a> was lost when the package was uninstalled at the start of P4.
+<li><code>P3/logs/</code> is empty: P3's <code>wallet.log</code> was lost when the package was uninstalled at the start of P4.
   P3 is covered by <a class=ev href="../S11/P3/phases.txt">P3/phases.txt</a>, <a class=ev href="../S11/P3/pressure-log.txt">P3/pressure-log.txt</a>, <a class=ev href="../S11/P3/exitinfo.txt">P3/exitinfo.txt</a>, <a class=ev href="../S11/mem-p3p4.csv">mem-p3p4.csv</a> and
-  <code>logcat-p3p4.txt</code>, all captured live during the run.</li>
-<li><a class=ev href="../S11/P2/logs/files/log/wallet.log">P2/logs/files/log/wallet.log</a> covers P1+P2; <a class=ev href="../S11/P2/logs/files/log/wallet.log">P4/logs/files/log/wallet.log</a> covers P4.</li>
-</ul></html>
+  <a class=ev href="../S11/logcat-p3p4.txt">logcat-p3p4.txt</a>, all captured live during the run.</li>
+<li><a class=ev href="../S11/P2/logs/files/log/wallet.log">P2/logs/files/log/wallet.log</a> covers P1+P2; <a class=ev href="../S11/P4/logs/files/log/wallet.log">P4/logs/files/log/wallet.log</a> covers P4.</li>
+</ul><div id=lb><span class=x>&times;</span><span class="nv pv">&#8249;</span><span class="nv nx">&#8250;</span><img><div class=cap></div></div>
+<script>(function(){var lb=document.getElementById('lb'),im=lb.querySelector('img'),cap=lb.querySelector('.cap'),L=[],i=0;
+function links(){return Array.prototype.slice.call(document.querySelectorAll('a[href$=".webp"],a[href$=".png"]'))}
+function show(n){L=links();if(n<0||n>=L.length)return;i=n;var a=L[i];im.src=a.href;cap.innerHTML=(a.textContent.trim()||a.href.split('/').slice(-3).join('/'))+' &nbsp;('+(i+1)+'/'+L.length+') &nbsp;<a href="'+a.href+'" target=_blank rel=noopener>open file</a>';lb.classList.add('on')}
+function hide(){lb.classList.remove('on');im.src=''}
+document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".webp"],a[href$=".png"]');if(a&&!a.closest('#lb')){e.preventDefault();show(links().indexOf(a))}});
+lb.querySelector('.x').onclick=hide;lb.querySelector('.pv').onclick=function(e){e.stopPropagation();show(i-1)};lb.querySelector('.nx').onclick=function(e){e.stopPropagation();show(i+1)};
+lb.addEventListener('click',function(e){if(e.target===lb||e.target===im)hide()});
+document.addEventListener('keydown',function(e){if(!lb.classList.contains('on'))return;if(e.key==='Escape')hide();if(e.key==='ArrowLeft')show(i-1);if(e.key==='ArrowRight')show(i+1)});})();</script></html>

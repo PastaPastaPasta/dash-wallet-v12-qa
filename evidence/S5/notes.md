@@ -1,6 +1,6 @@
 # S5 journal — DashPay / Platform (emulator-5562, AVD dw-qa5)
 2026-09-19T00:11:24 start: logcat + memlog started (pids 70813 / 70889)
-2026-09-19T00:14:00 WALLET-A seed (throwaway testnet): [seed phrase redacted]
+2026-09-19T00:14:00 WALLET-A seed (throwaway testnet): embody slot angle twelve they easily remember disorder end coin cloud duty
 2026-09-19T00:17:29 D0 pre-funds: Welcome to Dash Pay shows "You need to have more than 0.03 Dash to create a username." and Continue is enabled=false. Evidence D0/02-join-dashpay-no-funds.png
 2026-09-19T00:17:49 S5 receive address: yUVKHm4rtD55mQLJP2bPsMU5YZwdEabi8r
 2026-09-19T00:19:01 faucet: 1 tDASH sent to yUVKHm4rtD55mQLJP2bPsMU5YZwdEabi8r txid fab296d048314082e41283b4d612ce634e4c2723c1b0bd6ca86df61bf40595ac (via studio browser; qa-faucet.sh blocked by Cloudflare 1010)
@@ -33,12 +33,12 @@ Wallet A log pulled: evidence/S5/logs/walletA/files/log/wallet.log. 0 FATAL / Ou
   Notable: 05:31:17 "DashSDKException: asset lock coin selection is short: available 100000000 duffs, required 100000229 duffs" then "ShieldedTransferExecutor - max shield auto-adjusting for L1 asset-lock fee: ... retrying once with 0.99999" -> Max-shield self-heals, user saw no error.
   "SdkBindRetryService - SDK bind established" on every launch; no bind blockers.
 D3 final state at 06:00: still "Contact Request Pending" (S1 had not accepted).
-2026-09-19T01:03:15 WALLET-B seed (throwaway): [seed phrase redacted]
+2026-09-19T01:03:15 WALLET-B seed (throwaway): snap deal silk cloth correct globe theme hurt action fury spoil jungle
 2026-09-19T01:05:13 opening invite deeplink on wallet B
 D7 German username-request screen captured (D7/15-de-username-request.png): "Benutzernamen erstellen", criteria localized.
   DEFECT(S4 i18n typo, pre-existing): "DashPay beitreiten" should be "beitreten" — wallet/res/values-de/strings-dashpay.xml:158 (upgrade_to_evolution_title) and values-de/strings-extra.xml:31 (shortcut_action_join_dashpay).
   DEFECT(S4 grammar, de): "Der Nutzername muss eine dieser Kriterien entsprechen" (should be "einem dieser Kriterien").
-D2 receiving side (wallet B, seed "[seed phrase redacted]"):
+D2 receiving side (wallet B, seed "snap deal silk cloth correct globe theme hurt action fury spoil jungle"):
   - deeplink opened via `am start -a VIEW -d '<dashpay://invite?...>'` (NOTE: qa-app.sh `deeplink` does NOT quote for the remote shell, so & splits the URL — must use adb shell with the URL single-quoted).
   - No "Loading Invite…" screen at all; wallet.log 06:05:35 InviteHandlerActivity -> validateInvitation -> isValid=true VALID within the same second (<1 s, far under the 90 s watchdog).
   - The invite is surfaced as the home "Join DashPay" header card with Create ENABLED at 0 balance; username screen correctly restricts to non-contested ("You can only create a non-contested username using this invitation", criteria 20-23 chars / numbers 2-9).

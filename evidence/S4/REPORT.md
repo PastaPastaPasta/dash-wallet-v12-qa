@@ -1,7 +1,7 @@
 # QA report: S4 — regression sweep (E1–E7, E11), localisation + a11y (E10), static (E9), SR-05 / SR-22 / SR-34
 
 Emulator `emulator-5560` (dw-qa4) · 2026-09-19 00:10–03:40 CDT · `fix-12.0.0-testnet3-release-signed.apk`, versionCode **12000000**, versionName **12.0.0**, minSdk 29 / targetSdk 35.
-Throwaway wallet: seed `[seed phrase redacted]`, PIN 1234, addr `yYZoGmJ8PptniTCjQ3ksPju6Q63PDQPfNL`, funded once with 1 tDASH (txid `aa44ef947f3cb9cf26f01bc94d144d1c96b5f3916b9219b5185b0679fd0d8482`). The reference seed was restored **read-only** for SR-22 only.
+Throwaway wallet: seed `device during battle soldier please track movie core timber suit canoe stock`, PIN 1234, addr `yYZoGmJ8PptniTCjQ3ksPju6Q63PDQPfNL`, funded once with 1 tDASH (txid `aa44ef947f3cb9cf26f01bc94d144d1c96b5f3916b9219b5185b0679fd0d8482`). The reference seed was restored **read-only** for SR-22 only.
 
 ## Summary table
 

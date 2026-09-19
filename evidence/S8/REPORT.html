@@ -4,6 +4,8 @@ tr:nth-child(even){background:#fafbfc}code{background:#f4f4f4;padding:1px 4px;bo
 h1{border-bottom:3px solid #008de4}h2{border-bottom:1px solid #ccc;margin-top:40px}a{color:#008de4}a.ev{background:#e8f4fd;padding:0 3px;border-radius:3px;font-family:ui-monospace,monospace;font-size:12px}
 nav.top{background:#012060;color:#fff;padding:8px 24px;margin:-16px -24px 16px;position:sticky;top:0;z-index:5}nav.top a{color:#fff;margin-right:18px;text-decoration:none}nav.top a:hover{text-decoration:underline}
 .S1{color:#b00020;font-weight:bold}.S2{color:#c75000;font-weight:bold}.toc{background:#f8f9fb;border:1px solid #e3e6ea;padding:8px 16px;font-size:13px;columns:2}.toc ul{margin:2px 0;padding-left:16px}
+#lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:50;align-items:center;justify-content:center;flex-direction:column}#lb.on{display:flex}#lb img{max-width:96vw;max-height:88vh;border:2px solid #fff;box-shadow:0 0 30px #000}#lb .cap{color:#eee;font:13px ui-monospace,monospace;margin-top:8px}#lb .cap a{color:#8cf}#lb .x{position:absolute;top:10px;right:18px;color:#fff;font-size:30px;cursor:pointer}#lb .nv{position:absolute;top:50%;color:#fff;font-size:44px;cursor:pointer;padding:0 16px;user-select:none}#lb .pv{left:0}#lb .nx{right:0}a.img img{cursor:zoom-in}
+a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:target{background:#fff3b0;outline:2px solid #f5b400}
 .note{background:#fff8e1;border-left:4px solid #f5b400;padding:8px 12px;margin:12px 0}
 </style><nav class=top><a href="../../index.html">Home</a><a href="../../QA-REPORT.html">Full report</a><a href="../../EXEC-SUMMARY.html">Executive summary</a><a href="../../STORY-MATRIX.html">User-story matrix</a><a href="../../DEFECT-LEDGER.html">Defect register</a><a href="../index.html">Evidence gallery</a><a href="../../QA-PLAN.html">Test plan</a><a href="../../streams.html">Stream reports</a></nav><h1 id="qa-report-s8-l1-l8-massive-wallet-stream-agent-s8-emulator-5568-avd-dw-qa8-2-gb-ram-2026-09-19">QA report: S8 / L1-L8 — massive-wallet stream (agent: S8, emulator-5568 / AVD dw-qa8, 2 GB RAM, 2026-09-19)</h1>
 <p>Build under test: <code>$QA_APKS/fix-12.0.0-testnet3-release-signed.apk</code>, versionCode <strong>12000000</strong>, versionName 12.0.0, minSdk 29 / targetSdk 35. Testnet.
@@ -25,7 +27,7 @@ Device log clock runs <strong>host + 5 h</strong> (log <code>06:09:54</code> = h
 <td>L1 Restore massive seed, clean install</td>
 <td><strong>FAIL</strong> (sync/memory PASS, history FAIL)</td>
 <td><a class=ev href="../S8/L1/logs-after-sync/files/log/wallet.log">S8/L1/logs-after-sync/files/log/wallet.log</a>, <a class=ev href="../S8/L1/txcount-compare.txt">S8/L1/txcount-compare.txt</a>, <a class=ev href="../S8/L1/missing-from-display-cache.txt">S8/L1/missing-from-display-cache.txt</a>, <a class=ev href="../S8/L1/scroll/swipe-0170.webp">S8/L1/scroll/swipe-0170.png</a>, <a class=ev href="../S8/mem.csv">S8/mem.csv</a></td>
-<td>Restore-&gt;100 % in <strong>3 m 27 s</strong>, balance exact, 0 stalls, no LMK on 2 GB — but <strong>111 of 1,601 transactions never get a UI row, including the wallet's only incoming tx</strong> (D-037/S8-D1)</td>
+<td>Restore-&gt;100 % in <strong>3 m 27 s</strong>, balance exact, 0 stalls, no LMK on 2 GB — but <strong>111 of 1,601 transactions never get a UI row, including the wallet's only incoming tx</strong> (<a class=did href="../../DEFECT-LEDGER.html#D-037">D-037</a>/S8-D1)</td>
 </tr>
 <tr>
 <td>L2 Address gap limit</td>
@@ -61,7 +63,7 @@ Device log clock runs <strong>host + 5 h</strong> (log <code>06:09:54</code> = h
 <td>L7 Send screen (never sent)</td>
 <td><strong>PASS during replay / FAIL after 100 %</strong></td>
 <td><a class=ev href="../S8/L7/05-max-during-replay.webp">S8/L7/05-max-during-replay.png</a>, <a class=ev href="../S8/L7/12-max-synced.webp">S8/L7/12-max-synced.png</a>, <a class=ev href="../S8/L7/13-max-synced-repeat.webp">S8/L7/13-max-synced-repeat.png</a></td>
-<td>SR-32 does <strong>not</strong> reproduce during replay (send screen shows 0.00 and blocks). After 100 %, <strong>Max always fills an amount larger than the balance on the same screen</strong> (S8-D3)</td>
+<td><a class=did href="../SR/REPORT.html#SR-32">SR-32</a> does <strong>not</strong> reproduce during replay (send screen shows 0.00 and blocks). After 100 %, <strong>Max always fills an amount larger than the balance on the same screen</strong> (S8-D3)</td>
 </tr>
 <tr>
 <td>L8 CSV export + Network monitor</td>
@@ -168,7 +170,7 @@ Device log clock runs <strong>host + 5 h</strong> (log <code>06:09:54</code> = h
 <td>Tx list &gt;= grow count at sync end</td>
 <td>&gt;= 1,132</td>
 <td><strong>1,021 display rows vs 1,132 engine txs</strong></td>
-<td><strong>FAIL — see D-037</strong></td>
+<td><strong>FAIL — see <a class=did href="../../DEFECT-LEDGER.html#D-037">D-037</a></strong></td>
 </tr>
 </tbody>
 </table>
@@ -179,7 +181,7 @@ Device log clock runs <strong>host + 5 h</strong> (log <code>06:09:54</code> = h
 * <code>dumpsys activity exit-info</code>: only my two deliberate force-stops (<a class=ev href="../S8/exitinfo-final.txt">S8/exitinfo-final.txt</a>). <strong>No LMK kill</strong>; logcat has no <code>lowmemorykiller</code>/<code>lmkd</code>/OOM lines for the package.</p>
 <p>Tx list scroll: 170 fling swipes to the end (<code>S8/L1/scroll/swipe-010...0170.png</code>, log <a class=ev href="../S8/L1/scroll-log.txt">S8/L1/scroll-log.txt</a>). PSS stayed 393-405 MB throughout the scroll — no growth, no jank-crash. Bottom of the list is 12:18 AM, matching the grow script's start (<code>grow-wallet.log</code> created 00:17:39).</p>
 <p>Tx details (<a class=ev href="../S8/L1/30-txdetail-1.webp">S8/L1/30-txdetail-1.png</a>, <code>31-...</code>, <a class=ev href="../S8/L1/32-txdetail-2.webp">32-txdetail-2.png</a>): title "Amount Sent", amount <code>-0.0000049</code>, "Moved from ybY4YKkUnKGxmqTiqgoFQK7LVLvmQpeuEY", "Internally moved to yaZJ2ma6aH5QeqDBKYbDg1uiprcW8KywNZ", "Network fee 0.0000049", "September 19 at 1:24 AM", "View in Block Explorer". Direction, amount and fee are all correct for a self-transfer (net debit == fee). Minor wording inconsistency: the list row says "Internal", the detail says "Amount Sent".</p>
-<p><strong>Verdict: FAIL</strong> — sync, balance, memory and stability are all good, but the transaction history is incomplete (D-037).</p>
+<p><strong>Verdict: FAIL</strong> — sync, balance, memory and stability are all good, but the transaction history is incomplete (<a class=did href="../../DEFECT-LEDGER.html#D-037">D-037</a>).</p>
 <h3 id="l2-address-gap-limit">L2 — Address gap limit</h3>
 <p>800 addresses derived from the seed with <code>bip_utils</code> (<a class=ev href="../S8/L2/addresses-800.txt">S8/L2/addresses-800.txt</a>). Explorer sum via <code>POST https://insight.testnet.networks.dash.org/insight-api/addrs/utxo</code>, 16 batches of 50 (<a class=ev href="../S8/L2/explorer-utxo-sum-final.txt">S8/L2/explorer-utxo-sum-final.txt</a>).</p>
 <p>Final, static comparison (grow script had finished: <code>done: 3000 txs</code>, <code>periodic rescan: 5204 utxos</code>):</p>
@@ -216,7 +218,7 @@ An earlier mid-test comparison matched too (01:12:42 explorer 98,754,950 vs app 
 <li>Balance stayed consistent: every unlocked sample matched the log to 6 dp, e.g. 01:25:25 UI <code>0.984223</code> vs log <code>SDK balance published: 98422250 duffs</code>.</li>
 <li>Memory trend flat: PSS 400-431 MB over the whole watch, SWAP PSS ~205 MB, no growth.</li>
 <li>0 <code>idling detected</code>, 0 <code>filter-stall</code>, 0 restarts, 0 <code>OutOfMemory</code>.</li>
-<li>Caveat (known <strong>D-001</strong>): the app auto-locked at ~01:17:13 after 60 s without touch and stayed on Enter-PIN until I unlocked at 01:22:48 (<code>S8/L3/watch-04/08/12.png</code>). Sync and balance publishing continued behind the lock screen, so nothing was lost — but half the watch was spent locked without any user action.</li>
+<li>Caveat (known <strong><a class=did href="../../DEFECT-LEDGER.html#D-001">D-001</a></strong>): the app auto-locked at ~01:17:13 after 60 s without touch and stayed on Enter-PIN until I unlocked at 01:22:48 (<code>S8/L3/watch-04/08/12.png</code>). Sync and balance publishing continued behind the lock screen, so nothing was lost — but half the watch was spent locked without any user action.</li>
 </ul>
 <p><strong>Verdict: PASS.</strong></p>
 <h3 id="l4-kill-relaunch-background-low-memory-force-stop">L4 — Kill / relaunch, background, low memory, force-stop</h3>
@@ -236,7 +238,7 @@ An earlier mid-test comparison matched too (01:12:42 explorer 98,754,950 vs app 
 06:46:44 L1ShadowSyncService - L1Shadow phase=SYNCED 100.0% ...
 06:47:28 L1ShadowSyncService - L1Shadow phase=SYNCED 100.0% ...
 </code></pre>
-<p>The stop is announced but latched, not effective (same shape as <strong>D-004 / SR-09</strong>); the engine kept syncing. PSS 434 -&gt; 423 MB. Process survived.</p>
+<p>The stop is announced but latched, not effective (same shape as <strong><a class=did href="../../DEFECT-LEDGER.html#D-004">D-004</a> / <a class=did href="../../DEFECT-LEDGER.html#SR-09">SR-09</a></strong>); the engine kept syncing. PSS 434 -&gt; 423 MB. Process survived.</p>
 <p>Force-stop + relaunch (01:47:41 -&gt; 01:47:46, video <a class=ev href="../S8/L4/L4-forcestop-relaunch.mp4">S8/L4/L4-forcestop-relaunch.mp4</a>): MainActivity in <strong>3 s</strong>, wallet load 302.6 ms, <code>MAIN_UI_SHOWN +768ms</code>, <code>SDK_L1_ENGINE_STARTED +3068ms</code>.</p>
 <p><code>dumpsys activity exit-info</code> for the whole session: exactly two entries, both <code>reason=10 (USER REQUESTED) subreason=21 (FORCE STOP)</code> — <strong>no low-memory kill on a 2 GB device across a 1,600-tx replay, a 3,000-tx replay, a 10-minute background and a critical trim.</strong></p>
 <p><strong>Verdict: PASS.</strong></p>
@@ -347,7 +349,7 @@ An earlier mid-test comparison matched too (01:12:42 explorer 98,754,950 vs app 
 <h3 id="l7-send-screen-sending-forbidden-never-confirmed">L7 — Send screen (sending FORBIDDEN, never confirmed)</h3>
 <p><strong>(a) During replay</strong> (01:08-01:10; log shows <code>SDK balance published: 98980110 duffs ... l1Synced=false rescanArmedHold=true</code>):
 Send -&gt; Send to Address -&gt; own ext-0 address -&gt; Continue. Screen showed <code>Balance: DASH 0.00 ~ $ 0.00</code>, amount <code>0</code>, and a blocking error <em>"Currently payments are not possible because the wallet is not fully synced with the network"</em>. Tapping <strong>Max</strong> did nothing (amount stayed 0), twice. <code>S8/L7/04,05,06</code>.
-=&gt; <strong>SR-32 did not reproduce</strong>: the send screen does not publish the untrusted partial; it shows 0.00 and refuses. Note for D-002/SR-10: the <em>home header</em> did show the moving partial during replay, because on a freshly restored wallet <code>persistedAsLastKnown=false lastKnown=0</code>, so there is no last-known to hold.</p>
+=&gt; <strong><a class=did href="../SR/REPORT.html#SR-32">SR-32</a> did not reproduce</strong>: the send screen does not publish the untrusted partial; it shows 0.00 and refuses. Note for <a class=did href="../../DEFECT-LEDGER.html#D-002">D-002</a>/<a class=did href="../../DEFECT-LEDGER.html#SR-10">SR-10</a>: the <em>home header</em> did show the moving partial during replay, because on a freshly restored wallet <code>persistedAsLastKnown=false lastKnown=0</code>, so there is no last-known to hold.</p>
 <p><strong>(b) After 100 %</strong> (01:48-01:50, <a class=ev href="../S8/L7/12-max-synced.webp">S8/L7/12-max-synced.png</a>, <a class=ev href="../S8/L7/13-max-synced-repeat.webp">13-max-synced-repeat.png</a>):</p>
 <table>
 <thead>
@@ -380,7 +382,7 @@ Send -&gt; Send to Address -&gt; own ext-0 address -&gt; Continue. Screen showed
 </tr>
 </tbody>
 </table>
-<p>Max is computed from an older balance snapshot minus a flat 0.0001 reserve (confirming SR-28/D-032's flat reserve), so on a wallet whose balance moves it is always stale-high — the screen offers an amount larger than the balance printed two rows above it. After the first attempt the log reports <code>executeDryRun finished (cutover-aware: SDK send-all / drain)</code> and <code>blockContinue = false, dryRunSuccessful = true</code>, i.e. the app would let the user continue with that over-balance amount. <strong>Not sent.</strong></p>
+<p>Max is computed from an older balance snapshot minus a flat 0.0001 reserve (confirming <a class=did href="../../DEFECT-LEDGER.html#SR-28">SR-28</a>/<a class=did href="../../DEFECT-LEDGER.html#D-032">D-032</a>'s flat reserve), so on a wallet whose balance moves it is always stale-high — the screen offers an amount larger than the balance printed two rows above it. After the first attempt the log reports <code>executeDryRun finished (cutover-aware: SDK send-all / drain)</code> and <code>blockContinue = false, dryRunSuccessful = true</code>, i.e. the app would let the user continue with that over-balance amount. <strong>Not sent.</strong></p>
 <h3 id="l8-csv-export-and-network-monitor">L8 — CSV export and Network monitor</h3>
 <p><strong>Network monitor</strong> (More &gt; Tools &gt; Network monitor, <a class=ev href="../S8/L8/06-network-monitor-peers.webp">S8/L8/06-network-monitor-peers.png</a>): "Synced / Connected to the Dash network", Block headers 1,556,595, Block filters 1,556,595, Masternode list height 1,556,595, ChainLock height 1,556,595, plus the expected post-cutover notice <em>"The wallet engine does not report individual peer connections. Peer and block lists come from the dashj diagnostic engine."</em> <strong>PASS.</strong></p>
 <p><strong>CSV export</strong> (More &gt; Tools &gt; CSV export &gt; Export transactions, 02:00:13, with 2,753 display rows / 2,801 SDK transactions): the share sheet offered <a class=ev href="../S8/L8/dash-wallet-transactions-2026-09-19.csv">dash-wallet-transactions-2026-09-19.csv</a>, and the file on disk is <strong>201 bytes / 1 line — the header only, zero data rows</strong> (<a class=ev href="../S8/L8/dash-wallet-transactions-2026-09-19.csv">S8/L8/dash-wallet-transactions-2026-09-19.csv</a>). The log records only <code>ExportCSVDialog - invoked chooser for exporting transaction history</code>; no warning, no error dialog. <strong>FAIL — S8-D2.</strong></p>
@@ -398,8 +400,8 @@ Send -&gt; Send to Address -&gt; own ext-0 address -&gt; Continue. Screen showed
 </thead>
 <tbody>
 <tr>
-<td><strong>S8-D1</strong> (ledger <strong>D-037</strong>)</td>
-<td><strong>S1</strong></td>
+<td><strong>S8-D1</strong> (ledger <strong><a class=did href="../../DEFECT-LEDGER.html#D-037">D-037</a></strong>)</td>
+<td class=S1><strong>S1</strong></td>
 <td>Transactions with no <code>txos</code> row never get a UI history row, and the completeness check is blind to them in exactly the same way — 111/1,601 rows missing after the first restore, 458/3,001 after the second, including the wallet's only incoming transaction</td>
 <td>1. Clean-install the fix APK. 2. Restore a wallet with a large history (800 addresses, 1,600+ self-transfers). 3. Wait for <code>L1Shadow phase=SYNCED 100%</code>. 4. <code>adb root</code>; <code>sqlite3 dash-sdk.db 'select count(*) from transactions'</code> vs <code>sqlite3 dash-wallet-database 'select count(*) from tx_display_cache'</code>. 5. Deficit is permanent (see below). 6. <code>select count(*) from tx_display_cache where valueSatoshis &gt; 0</code> -&gt; <strong>0</strong>: the history shows no receive at all.</td>
 <td><code>S8/L1/root-cause.sql</code>, <a class=ev href="../S8/L1/txcount-compare.txt">S8/L1/txcount-compare.txt</a>, <a class=ev href="../S8/L1/missing-from-display-cache.txt">S8/L1/missing-from-display-cache.txt</a> (111), <a class=ev href="../S8/L1/missing-by-height.txt">S8/L1/missing-by-height.txt</a>, <a class=ev href="../S8/L6/missing-after-second-restore.txt">S8/L6/missing-after-second-restore.txt</a> (458), <a class=ev href="../S8/L1/txdisplaycache-lines.txt">S8/L1/txdisplaycache-lines.txt</a>, <a class=ev href="../S8/L1/planner-log.txt">S8/L1/planner-log.txt</a>, <a class=ev href="../S8/L1/scroll/swipe-0170.webp">S8/L1/scroll/swipe-0170.png</a>, <a class=ev href="../S8/L6/08-txlist-bottom-no-receive.webp">S8/L6/08-txlist-bottom-no-receive.png</a></td>
@@ -419,7 +421,7 @@ Send -&gt; Send to Address -&gt; own ext-0 address -&gt; Continue. Screen showed
 <td>Send screen "Max" fills an amount <strong>larger than the balance displayed on the same screen</strong> on a wallet whose balance is changing; dry run then reports success for that over-balance amount</td>
 <td>After 100 %, Send &gt; Send to Address &gt; any address &gt; Continue &gt; reveal balance &gt; tap Max, repeatedly, while the balance moves</td>
 <td><a class=ev href="../S8/L7/12-max-synced.webp">S8/L7/12-max-synced.png</a>, <a class=ev href="../S8/L7/13-max-synced-repeat.webp">S8/L7/13-max-synced-repeat.png</a>, wallet.log 06:49:38-06:49:46</td>
-<td><code>SendCoinsViewModel</code> max/dry-run path; flat 0.0001 reserve (extends SR-28/D-032)</td>
+<td><code>SendCoinsViewModel</code> max/dry-run path; flat 0.0001 reserve (extends <a class=did href="../../DEFECT-LEDGER.html#SR-28">SR-28</a>/<a class=did href="../../DEFECT-LEDGER.html#D-032">D-032</a>)</td>
 </tr>
 <tr>
 <td><strong>S8-D4</strong></td>
@@ -496,9 +498,9 @@ TxDisplayCacheService- Sync complete (cutoverCommitted=true): SDK=1010 records |
 <p><strong>Suggested fix direction:</strong> enumerate and count from <code>transactions</code> (joined to the wallet through <code>transaction_account_involvements</code>) rather than from <code>txos</code>; at minimum make <code>currentWalletRecordCount</code> read <code>transactions</code> so <code>decideCacheRebuild</code> can actually see the gap it is supposed to close.</p>
 <h2 id="environment-problems-not-product-defects">Environment problems (not product defects)</h2>
 <ul>
-<li><strong>ENV — logcat stream dies on <code>adb root</code>.</strong> <code>qa-app.sh logcat-start</code> writes through a host-side <code>adb logcat</code> pipe; the first helper that calls <code>adb root</code> (<code>grep-log</code>, <code>wallet-log</code>, <code>files</code>, <code>prefs</code>, <code>memlog</code>) restarts adbd and silently kills it. My stream stopped at 01:07:33 (<a class=ev href="../S8/logcat-part1-0104-0107.txt">S8/logcat-part1-0104-0107.txt</a>); I restarted it as <code>S8/logcat-part2.txt</code> and covered the gap with <code>dumpsys activity exit-info</code> (clean) and the app's own <code>wallet.log</code>.</li>
+<li><strong>ENV — logcat stream dies on <code>adb root</code>.</strong> <code>qa-app.sh logcat-start</code> writes through a host-side <code>adb logcat</code> pipe; the first helper that calls <code>adb root</code> (<code>grep-log</code>, <code>wallet-log</code>, <code>files</code>, <code>prefs</code>, <code>memlog</code>) restarts adbd and silently kills it. My stream stopped at 01:07:33 (<a class=ev href="../S8/logcat-part1-0104-0107.txt">S8/logcat-part1-0104-0107.txt</a>); I restarted it as <a class=ev href="../S8/logcat-part2.txt">S8/logcat-part2.txt</a> and covered the gap with <code>dumpsys activity exit-info</code> (clean) and the app's own <code>wallet.log</code>.</li>
 <li><code>am send-trim-memory</code> on API 35 refuses to raise the trim level twice in a row (<code>Unable to set a higher trim level than current level</code>) and refuses background levels on a foreground process, so "RUNNING_CRITICAL x3" could only be delivered once.</li>
-<li><code>uiautomator dump</code> returns empty on the Enter-PIN screen (FLAG_SECURE), which also makes automated polling look like a hang. Combined with <strong>D-001</strong> (60 s foreground auto-lock) this interrupted two unattended watches; I unlocked and re-ran.</li>
+<li><code>uiautomator dump</code> returns empty on the Enter-PIN screen (FLAG_SECURE), which also makes automated polling look like a hang. Combined with <strong><a class=did href="../../DEFECT-LEDGER.html#D-001">D-001</a></strong> (60 s foreground auto-lock) this interrupted two unattended watches; I unlocked and re-ran.</li>
 <li>Firebase <code>API key not valid</code> in wallet.log — the stub <code>google-services.json</code>, expected.</li>
 <li>The <code>grow-wallet.py</code> script paused twice (01:17-01:22, 01:34) with no log output; counts were quiescent during those windows, which conveniently made the DB comparisons exact.</li>
 <li><code>monkey -p ... LAUNCHER</code> intermittently left the launcher focused instead of the app; I used <code>am start -n &lt;pkg&gt;/de.schildbach.wallet.ui.OnboardingActivity</code> for all timed launches.</li>
@@ -508,4 +510,12 @@ TxDisplayCacheService- Sync complete (cutoverCommitted=true): SDK=1010 records |
 <li>Nothing from L1-L8 was skipped. Sending from the massive wallet was deliberately never executed (forbidden); L7 stops at the amount screen.</li>
 <li>Peer-level detail in Network monitor is unavailable by design post-cutover unless the dashj diagnostic toggle is on; I did not enable it (S7 already covered B5).</li>
 <li>ZenLedger export not attempted (needs credentials that are placeholders in this environment).</li>
-</ul></html>
+</ul><div id=lb><span class=x>&times;</span><span class="nv pv">&#8249;</span><span class="nv nx">&#8250;</span><img><div class=cap></div></div>
+<script>(function(){var lb=document.getElementById('lb'),im=lb.querySelector('img'),cap=lb.querySelector('.cap'),L=[],i=0;
+function links(){return Array.prototype.slice.call(document.querySelectorAll('a[href$=".webp"],a[href$=".png"]'))}
+function show(n){L=links();if(n<0||n>=L.length)return;i=n;var a=L[i];im.src=a.href;cap.innerHTML=(a.textContent.trim()||a.href.split('/').slice(-3).join('/'))+' &nbsp;('+(i+1)+'/'+L.length+') &nbsp;<a href="'+a.href+'" target=_blank rel=noopener>open file</a>';lb.classList.add('on')}
+function hide(){lb.classList.remove('on');im.src=''}
+document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".webp"],a[href$=".png"]');if(a&&!a.closest('#lb')){e.preventDefault();show(links().indexOf(a))}});
+lb.querySelector('.x').onclick=hide;lb.querySelector('.pv').onclick=function(e){e.stopPropagation();show(i-1)};lb.querySelector('.nx').onclick=function(e){e.stopPropagation();show(i+1)};
+lb.addEventListener('click',function(e){if(e.target===lb||e.target===im)hide()});
+document.addEventListener('keydown',function(e){if(!lb.classList.contains('on'))return;if(e.key==='Escape')hide();if(e.key==='ArrowLeft')show(i-1);if(e.key==='ArrowRight')show(i+1)});})();</script></html>

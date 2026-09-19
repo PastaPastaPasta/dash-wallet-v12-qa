@@ -2,7 +2,7 @@
 
 Builds: `master-11.9.0-testnet3-release-signed.apk` (versionCode 11090002) -> in-place `adb install -r`
 `fix-12.0.0-testnet3-release-signed.apk` (versionCode 12000000, `fix/upgrade-memory-and-sync`).
-Throwaway testnet wallet, seed `[seed phrase redacted]`, PIN 1234.
+Throwaway testnet wallet, seed `air pet hole injury snack toast end share seven cute ghost squirrel`, PIN 1234.
 Collectors: `evidence/S7/mem.csv` (60 s samples 00:22-01:38), `evidence/S7/logcat.txt` (00:22-00:38 only, see Environment problems),
 `evidence/S7/notes.md`, `evidence/S7/oom-exitinfo.txt`, `evidence/S7/mem-notes.txt`.
 

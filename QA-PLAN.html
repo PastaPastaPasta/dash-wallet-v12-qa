@@ -4,8 +4,10 @@ tr:nth-child(even){background:#fafbfc}code{background:#f4f4f4;padding:1px 4px;bo
 h1{border-bottom:3px solid #008de4}h2{border-bottom:1px solid #ccc;margin-top:40px}a{color:#008de4}a.ev{background:#e8f4fd;padding:0 3px;border-radius:3px;font-family:ui-monospace,monospace;font-size:12px}
 nav.top{background:#012060;color:#fff;padding:8px 24px;margin:-16px -24px 16px;position:sticky;top:0;z-index:5}nav.top a{color:#fff;margin-right:18px;text-decoration:none}nav.top a:hover{text-decoration:underline}
 .S1{color:#b00020;font-weight:bold}.S2{color:#c75000;font-weight:bold}.toc{background:#f8f9fb;border:1px solid #e3e6ea;padding:8px 16px;font-size:13px;columns:2}.toc ul{margin:2px 0;padding-left:16px}
+#lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:50;align-items:center;justify-content:center;flex-direction:column}#lb.on{display:flex}#lb img{max-width:96vw;max-height:88vh;border:2px solid #fff;box-shadow:0 0 30px #000}#lb .cap{color:#eee;font:13px ui-monospace,monospace;margin-top:8px}#lb .cap a{color:#8cf}#lb .x{position:absolute;top:10px;right:18px;color:#fff;font-size:30px;cursor:pointer}#lb .nv{position:absolute;top:50%;color:#fff;font-size:44px;cursor:pointer;padding:0 16px;user-select:none}#lb .pv{left:0}#lb .nx{right:0}a.img img{cursor:zoom-in}
+a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:target{background:#fff3b0;outline:2px solid #f5b400}
 .note{background:#fff8e1;border-left:4px solid #f5b400;padding:8px 12px;margin:12px 0}
-</style><nav class=top><a href="index.html">Home</a><a href="QA-REPORT.html">Full report</a><a href="EXEC-SUMMARY.html">Executive summary</a><a href="STORY-MATRIX.html">User-story matrix</a><a href="DEFECT-LEDGER.html">Defect register</a><a href="evidence/index.html">Evidence gallery</a><a href="QA-PLAN.html">Test plan</a><a href="streams.html">Stream reports</a></nav><h1>QA plan</h1><div class=note>Public QA archive. Seed phrases have been redacted from text, screenshots and video; logcat dumps over 2 MB were left out (available on request). Screenshots are served as WebP. All wallets are testnet or empty-mainnet throwaways.</div><h1 id="dash-wallet-v12-qa-plan-fixupgrade-memory-and-sync">Dash Wallet v12 QA plan — <code>fix/upgrade-memory-and-sync</code></h1>
+</style><nav class=top><a href="index.html">Home</a><a href="QA-REPORT.html">Full report</a><a href="EXEC-SUMMARY.html">Executive summary</a><a href="STORY-MATRIX.html">User-story matrix</a><a href="DEFECT-LEDGER.html">Defect register</a><a href="evidence/index.html">Evidence gallery</a><a href="QA-PLAN.html">Test plan</a><a href="streams.html">Stream reports</a></nav><h1>QA plan</h1><div class=note>Public QA archive. All wallets are testnet or empty-mainnet throwaways created for this QA run, so seed phrases, addresses and full logcat/wallet logs are published verbatim. Screenshots are served as WebP; original PNGs and videos are unmodified emulator captures.</div><h1 id="dash-wallet-v12-qa-plan-fixupgrade-memory-and-sync">Dash Wallet v12 QA plan — <code>fix/upgrade-memory-and-sync</code></h1>
 <p>Written 2026-09-18. Branch head at plan time: <code>616ac58ff</code> (496 commits ahead of <code>master</code> @ <code>bde52b520</code>, which is 23 commits past the <code>v11.9.0</code> tag). Everything below runs on the <code>_testNet3</code> flavour, <code>release</code> build type, signed with a throwaway QA key.</p>
 <h2 id="0-environment-already-set-up-on-this-mac">0. Environment (already set up on this Mac)</h2>
 <table>
@@ -89,7 +91,7 @@ nav.top{background:#012060;color:#fff;padding:8px 24px;margin:-16px -24px 16px;p
 7. Wait for sync to finish. Assert: balances (transparent + shielded) and transaction list identical to step 5; username re-associated. Diff the two screenshots and the two <code>wallet.log</code> balance lines.
 8. Negative checks along the way: wrong PIN on reset, malformed seed word, back-navigation from each screen does not crash.</p>
 <p><strong>A2 — Restore the reference seed on a clean install, does sync finish (emulator dw-qa2)</strong>
-Seed: <code>[seed phrase redacted]</code>. Expected balance <strong>107.43173749</strong> tDASH.
+Seed: <code>job flower agree lyrics industry note boost finger buddy dog exact fat</code>. Expected balance <strong>107.43173749</strong> tDASH.
 1. Install fix APK, restore from seed, set PIN.
 2. Watch sync to 100% (<code>grep-log 'percentageSync|cutover state|L1 shadow SPV started|filter-stall|idling detected|restart'</code>). Sample memory every 60 s. Record: time to first block, time to 100%, number of engine restarts, any "filter cursor has sat at" watchdog lines, any "idling detected" lines, peak PSS / native heap.
 3. Assert final balance == 107.43173749 and tx list populated. Cross-check against the insight explorer for the first few receive addresses (get them from the wallet's address book / xpub).
@@ -151,4 +153,12 @@ Seed: <code>[seed phrase redacted]</code>. Expected balance <strong>107.43173749
 <li>The reference-seed balance 107.43173749 is taken from the brief; if the wallet has received funds since, the A2/A3 assertion becomes "balance ≥ 107.43173749 and equals the explorer sum".</li>
 <li>The emulator has no Google account, so Google Drive / email sending from Contact Support is verified only to the share sheet.</li>
 <li>The master baseline is <code>master @ bde52b520</code> (11.9.0, versionCode 11090002), which satisfies "11.9.0 or higher".</li>
-</ul></html>
+</ul><div id=lb><span class=x>&times;</span><span class="nv pv">&#8249;</span><span class="nv nx">&#8250;</span><img><div class=cap></div></div>
+<script>(function(){var lb=document.getElementById('lb'),im=lb.querySelector('img'),cap=lb.querySelector('.cap'),L=[],i=0;
+function links(){return Array.prototype.slice.call(document.querySelectorAll('a[href$=".webp"],a[href$=".png"]'))}
+function show(n){L=links();if(n<0||n>=L.length)return;i=n;var a=L[i];im.src=a.href;cap.innerHTML=(a.textContent.trim()||a.href.split('/').slice(-3).join('/'))+' &nbsp;('+(i+1)+'/'+L.length+') &nbsp;<a href="'+a.href+'" target=_blank rel=noopener>open file</a>';lb.classList.add('on')}
+function hide(){lb.classList.remove('on');im.src=''}
+document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".webp"],a[href$=".png"]');if(a&&!a.closest('#lb')){e.preventDefault();show(links().indexOf(a))}});
+lb.querySelector('.x').onclick=hide;lb.querySelector('.pv').onclick=function(e){e.stopPropagation();show(i-1)};lb.querySelector('.nx').onclick=function(e){e.stopPropagation();show(i+1)};
+lb.addEventListener('click',function(e){if(e.target===lb||e.target===im)hide()});
+document.addEventListener('keydown',function(e){if(!lb.classList.contains('on'))return;if(e.key==='Escape')hide();if(e.key==='ArrowLeft')show(i-1);if(e.key==='ArrowRight')show(i+1)});})();</script></html>

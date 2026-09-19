@@ -1,5 +1,5 @@
 S9 start 2026-09-19T01:29:55
-S9 wallet seed: [seed phrase redacted]
+S9 wallet seed: abstract fork speak manual talk cream seed penalty edit recipe profit evolve
 01:35 X1: wallet created (seed abstract fork speak manual talk cream seed penalty edit recipe profit evolve), PIN 1234.
   recv addr #1 yYxUzAE8SNndkcnWyt1RRXEUvbHVV12Bdk ; faucet txid afcfb69ab343b09c09d2bce10e880964279112da1a92e8622ef6ea2354daf267 (1 tDASH)
 01:48 X1 cycle 1: fg-idle 3min (3 auto-locks) + bg 3min + fg + unlock + send 0.001 self -> SEND SUCCEEDED

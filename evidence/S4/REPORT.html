@@ -4,10 +4,12 @@ tr:nth-child(even){background:#fafbfc}code{background:#f4f4f4;padding:1px 4px;bo
 h1{border-bottom:3px solid #008de4}h2{border-bottom:1px solid #ccc;margin-top:40px}a{color:#008de4}a.ev{background:#e8f4fd;padding:0 3px;border-radius:3px;font-family:ui-monospace,monospace;font-size:12px}
 nav.top{background:#012060;color:#fff;padding:8px 24px;margin:-16px -24px 16px;position:sticky;top:0;z-index:5}nav.top a{color:#fff;margin-right:18px;text-decoration:none}nav.top a:hover{text-decoration:underline}
 .S1{color:#b00020;font-weight:bold}.S2{color:#c75000;font-weight:bold}.toc{background:#f8f9fb;border:1px solid #e3e6ea;padding:8px 16px;font-size:13px;columns:2}.toc ul{margin:2px 0;padding-left:16px}
+#lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:50;align-items:center;justify-content:center;flex-direction:column}#lb.on{display:flex}#lb img{max-width:96vw;max-height:88vh;border:2px solid #fff;box-shadow:0 0 30px #000}#lb .cap{color:#eee;font:13px ui-monospace,monospace;margin-top:8px}#lb .cap a{color:#8cf}#lb .x{position:absolute;top:10px;right:18px;color:#fff;font-size:30px;cursor:pointer}#lb .nv{position:absolute;top:50%;color:#fff;font-size:44px;cursor:pointer;padding:0 16px;user-select:none}#lb .pv{left:0}#lb .nx{right:0}a.img img{cursor:zoom-in}
+a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:target{background:#fff3b0;outline:2px solid #f5b400}
 .note{background:#fff8e1;border-left:4px solid #f5b400;padding:8px 12px;margin:12px 0}
 </style><nav class=top><a href="../../index.html">Home</a><a href="../../QA-REPORT.html">Full report</a><a href="../../EXEC-SUMMARY.html">Executive summary</a><a href="../../STORY-MATRIX.html">User-story matrix</a><a href="../../DEFECT-LEDGER.html">Defect register</a><a href="../index.html">Evidence gallery</a><a href="../../QA-PLAN.html">Test plan</a><a href="../../streams.html">Stream reports</a></nav><h1 id="qa-report-s4-regression-sweep-e1e7-e11-localisation-a11y-e10-static-e9-sr-05-sr-22-sr-34">QA report: S4 — regression sweep (E1–E7, E11), localisation + a11y (E10), static (E9), SR-05 / SR-22 / SR-34</h1>
 <p>Emulator <code>emulator-5560</code> (dw-qa4) · 2026-09-19 00:10–03:40 CDT · <code>fix-12.0.0-testnet3-release-signed.apk</code>, versionCode <strong>12000000</strong>, versionName <strong>12.0.0</strong>, minSdk 29 / targetSdk 35.
-Throwaway wallet: seed <code>[seed phrase redacted]</code>, PIN 1234, addr <code>yYZoGmJ8PptniTCjQ3ksPju6Q63PDQPfNL</code>, funded once with 1 tDASH (txid <code>aa44ef947f3cb9cf26f01bc94d144d1c96b5f3916b9219b5185b0679fd0d8482</code>). The reference seed was restored <strong>read-only</strong> for SR-22 only.</p>
+Throwaway wallet: seed <code>device during battle soldier please track movie core timber suit canoe stock</code>, PIN 1234, addr <code>yYZoGmJ8PptniTCjQ3ksPju6Q63PDQPfNL</code>, funded once with 1 tDASH (txid <code>aa44ef947f3cb9cf26f01bc94d144d1c96b5f3916b9219b5185b0679fd0d8482</code>). The reference seed was restored <strong>read-only</strong> for <a class=did href="../../DEFECT-LEDGER.html#SR-22">SR-22</a> only.</p>
 <h2 id="summary-table">Summary table</h2>
 <table>
 <thead>
@@ -284,19 +286,19 @@ Throwaway wallet: seed <code>[seed phrase redacted]</code>, PIN 1234, addr <code
 <td>2077 tests, 0 failures, 0 errors, 1 skipped</td>
 </tr>
 <tr>
-<td>SR-05 stale wipe marker</td>
+<td><a class=did href="../../DEFECT-LEDGER.html#SR-05">SR-05</a> stale wipe marker</td>
 <td><strong>FAIL S1</strong></td>
 <td><code>SR05/01</code>–<code>03</code>, <a class=ev href="../S4/SR05/sr05.mp4">sr05.mp4</a></td>
 <td>Empty <code>wallet-wipe.pending</code> silently destroys a funded wallet</td>
 </tr>
 <tr>
-<td>SR-22 restore date-picker default</td>
+<td><a class=did href="../../DEFECT-LEDGER.html#SR-22">SR-22</a> restore date-picker default</td>
 <td><strong>FAIL S1</strong></td>
 <td><code>SR22/01</code>–<code>07</code></td>
 <td>Loses 85.7 of 107.4 tDASH while reporting "Synced"</td>
 </tr>
 <tr>
-<td>SR-34 auto-logout=Immediately + rotate/dark/fontscale</td>
+<td><a class=did href="../../DEFECT-LEDGER.html#SR-33">SR-34</a> auto-logout=Immediately + rotate/dark/fontscale</td>
 <td>PASS</td>
 <td><code>SR34/00</code>–<code>13</code>, <a class=ev href="../S4/SR34/sr34.mp4">sr34.mp4</a></td>
 <td>Nothing locked or force-finished</td>
@@ -319,7 +321,7 @@ Throwaway wallet: seed <code>[seed phrase redacted]</code>, PIN 1234, addr <code
 <tbody>
 <tr>
 <td>S4-D01</td>
-<td><strong>S1</strong></td>
+<td class=S1><strong>S1</strong></td>
 <td>Restore with the creation-date picker's default (today) silently loses most of the balance while the UI says "Synced"</td>
 <td>Restore → seed with older funds → "Select Creation Date" → OK without changing → Continue → PIN → wait</td>
 <td><a class=ev href="../S4/SR22/01-datepicker-default.webp">SR22/01-datepicker-default.png</a>, <a class=ev href="../S4/SR22/02-date-accepted.webp">02-date-accepted.png</a>, <a class=ev href="../S4/SR22/06-netmon.webp">06-netmon.png</a> (Synced), <a class=ev href="../S4/SR22/07-final-balance.webp">07-final-balance.png</a> (<strong>21.734822</strong> vs <strong>107.08</strong>); wallet.log 08:23:56 <code>BirthHeightResolver - resolved birth time 1789794000 to SDK birth height 1401408</code>, <code>armSpvRescan: filter watermark rewind to 1401408 armed</code></td>
@@ -327,7 +329,7 @@ Throwaway wallet: seed <code>[seed phrase redacted]</code>, PIN 1234, addr <code
 </tr>
 <tr>
 <td>S4-D02</td>
-<td><strong>S1</strong></td>
+<td class=S1><strong>S1</strong></td>
 <td>Stale <code>wallet-wipe.pending</code> marker destroys an intact wallet at launch</td>
 <td>force-stop → <code>touch …/files/wallet-wipe.pending</code> → launch</td>
 <td><code>SR05/01-03</code>, <a class=ev href="../S4/SR05/sr05.mp4">sr05.mp4</a>; wallet.log 08:18:10 <code>removing wallet from memory during wipe</code>; wallet + key-backup deleted</td>
@@ -446,4 +448,12 @@ Throwaway wallet: seed <code>[seed phrase redacted]</code>, PIN 1234, addr <code
 <h2 id="not-run-blocked">Not run / blocked</h2>
 <p>E3 tx-metadata settings + E7 Credits (identity-gated); E7 invalid-WIF text entry (QR only); E5 Coinbase fiat-option regression (needs linked account); E5 Uphold/Topper (rows disabled); E4 gift-card list; E1 "Restore from file" (DEBUG-only).</p>
 <h2 id="paths">Paths</h2>
-<p><code>/Users/dcg/workspace/dash-wallet-qa/evidence/S4/</code> (481 screenshots, 7 recordings): <code>E1/ E2/ E3/ E4/ E5/ E6/ E7/ E10/ E11/ SR05/ SR22/ SR34/</code>; logs <code>logcat-*.txt</code>, <a class=ev href="../S4/exitinfo.txt">exitinfo.txt</a>, <a class=ev href="../S4/mem.csv">mem.csv</a>, <code>walletlog-final/</code>; <a class=ev href="../S4/unit-tests.log">unit-tests.log</a>; <a class=ev href="../S4/notes.md">notes.md</a>.</p></html>
+<p><code>/Users/dcg/workspace/dash-wallet-qa/evidence/S4/</code> (481 screenshots, 7 recordings): <code>E1/ E2/ E3/ E4/ E5/ E6/ E7/ E10/ E11/ SR05/ SR22/ SR34/</code>; logs <code>logcat-*.txt</code>, <a class=ev href="../S4/exitinfo.txt">exitinfo.txt</a>, <a class=ev href="../S4/mem.csv">mem.csv</a>, <code>walletlog-final/</code>; <a class=ev href="../S4/unit-tests.log">unit-tests.log</a>; <a class=ev href="../S4/notes.md">notes.md</a>.</p><div id=lb><span class=x>&times;</span><span class="nv pv">&#8249;</span><span class="nv nx">&#8250;</span><img><div class=cap></div></div>
+<script>(function(){var lb=document.getElementById('lb'),im=lb.querySelector('img'),cap=lb.querySelector('.cap'),L=[],i=0;
+function links(){return Array.prototype.slice.call(document.querySelectorAll('a[href$=".webp"],a[href$=".png"]'))}
+function show(n){L=links();if(n<0||n>=L.length)return;i=n;var a=L[i];im.src=a.href;cap.innerHTML=(a.textContent.trim()||a.href.split('/').slice(-3).join('/'))+' &nbsp;('+(i+1)+'/'+L.length+') &nbsp;<a href="'+a.href+'" target=_blank rel=noopener>open file</a>';lb.classList.add('on')}
+function hide(){lb.classList.remove('on');im.src=''}
+document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".webp"],a[href$=".png"]');if(a&&!a.closest('#lb')){e.preventDefault();show(links().indexOf(a))}});
+lb.querySelector('.x').onclick=hide;lb.querySelector('.pv').onclick=function(e){e.stopPropagation();show(i-1)};lb.querySelector('.nx').onclick=function(e){e.stopPropagation();show(i+1)};
+lb.addEventListener('click',function(e){if(e.target===lb||e.target===im)hide()});
+document.addEventListener('keydown',function(e){if(!lb.classList.contains('on'))return;if(e.key==='Escape')hide();if(e.key==='ArrowLeft')show(i-1);if(e.key==='ArrowRight')show(i+1)});})();</script></html>

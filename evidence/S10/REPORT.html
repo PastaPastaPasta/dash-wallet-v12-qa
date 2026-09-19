@@ -4,13 +4,15 @@ tr:nth-child(even){background:#fafbfc}code{background:#f4f4f4;padding:1px 4px;bo
 h1{border-bottom:3px solid #008de4}h2{border-bottom:1px solid #ccc;margin-top:40px}a{color:#008de4}a.ev{background:#e8f4fd;padding:0 3px;border-radius:3px;font-family:ui-monospace,monospace;font-size:12px}
 nav.top{background:#012060;color:#fff;padding:8px 24px;margin:-16px -24px 16px;position:sticky;top:0;z-index:5}nav.top a{color:#fff;margin-right:18px;text-decoration:none}nav.top a:hover{text-decoration:underline}
 .S1{color:#b00020;font-weight:bold}.S2{color:#c75000;font-weight:bold}.toc{background:#f8f9fb;border:1px solid #e3e6ea;padding:8px 16px;font-size:13px;columns:2}.toc ul{margin:2px 0;padding-left:16px}
+#lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:50;align-items:center;justify-content:center;flex-direction:column}#lb.on{display:flex}#lb img{max-width:96vw;max-height:88vh;border:2px solid #fff;box-shadow:0 0 30px #000}#lb .cap{color:#eee;font:13px ui-monospace,monospace;margin-top:8px}#lb .cap a{color:#8cf}#lb .x{position:absolute;top:10px;right:18px;color:#fff;font-size:30px;cursor:pointer}#lb .nv{position:absolute;top:50%;color:#fff;font-size:44px;cursor:pointer;padding:0 16px;user-select:none}#lb .pv{left:0}#lb .nx{right:0}a.img img{cursor:zoom-in}
+a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:target{background:#fff3b0;outline:2px solid #f5b400}
 .note{background:#fff8e1;border-left:4px solid #f5b400;padding:8px 12px;margin:12px 0}
 </style><nav class=top><a href="../../index.html">Home</a><a href="../../QA-REPORT.html">Full report</a><a href="../../EXEC-SUMMARY.html">Executive summary</a><a href="../../STORY-MATRIX.html">User-story matrix</a><a href="../../DEFECT-LEDGER.html">Defect register</a><a href="../index.html">Evidence gallery</a><a href="../../QA-PLAN.html">Test plan</a><a href="../../streams.html">Stream reports</a></nav><h1 id="qa-report-s10-exploratory-adversarial-agent-s10-emulator-5554-dw-qa1-2026-09-19-01370335-cdt">QA report: S10 — exploratory / adversarial (agent: S10, emulator-5554 / dw-qa1, 2026-09-19 01:37–03:35 CDT)</h1>
 <p>Build under test: <code>fix-12.0.0-testnet3-release-signed.apk</code>, versionCode <strong>12000000</strong>, versionName 12.0.0, minSdk 29, targetSdk 35.
-Wallet: inherited from S1 — seed <code>[seed phrase redacted]</code>, PIN 1234, username <code>qa1s13939</code>, identity <code>DYjxDk3kTzf2PXAK3LfGj2cWitnyLKhx1y8u3626hbMm</code>.
+Wallet: inherited from S1 — seed <code>swamp dad rent tower dumb cart dust vocal often today chimney amazing</code>, PIN 1234, username <code>qa1s13939</code>, identity <code>DYjxDk3kTzf2PXAK3LfGj2cWitnyLKhx1y8u3626hbMm</code>.
 Funding: ONE faucet request at 01:39 → 1 tDASH, txid <code>e3c010b517e3c67ca0a510c6dec2cec2c0892a96d7cbb6114be2bfbb58781ced</code>.</p>
 <p>Evidence root: <code>/Users/dcg/workspace/dash-wallet-qa/evidence/S10/</code>
-(<a class=ev href="../S10/notes.md">notes.md</a>, <code>logcat.txt</code>, <a class=ev href="../S10/mem.csv">mem.csv</a>, <code>logs/</code>, <code>T1/</code>…<code>T9/</code>; videos <a class=ev href="../S10/T1/s10-t1a-shield-rotate.mp4">T1/s10-t1a-shield-rotate.mp4</a>, <code>T1/s10-t1-interrupts.mp4</code>, <a class=ev href="../S10/T1/s10-t1f-t2-send.mp4">T1/s10-t1f-t2-send.mp4</a>, <code>T2</code> covered by the same clip, <a class=ev href="../S10/T6/s10-t6-reset.mp4">T6/s10-t6-reset.mp4</a>, <a class=ev href="../S10/T8/s10-t8-deeplink.mp4">T8/s10-t8-deeplink.mp4</a>)</p>
+(<a class=ev href="../S10/notes.md">notes.md</a>, <a class=ev href="../S10/logcat.txt">logcat.txt</a>, <a class=ev href="../S10/mem.csv">mem.csv</a>, <code>logs/</code>, <code>T1/</code>…<code>T9/</code>; videos <a class=ev href="../S10/T1/s10-t1a-shield-rotate.mp4">T1/s10-t1a-shield-rotate.mp4</a>, <code>T1/s10-t1-interrupts.mp4</code>, <a class=ev href="../S10/T1/s10-t1f-t2-send.mp4">T1/s10-t1f-t2-send.mp4</a>, <code>T2</code> covered by the same clip, <a class=ev href="../S10/T6/s10-t6-reset.mp4">T6/s10-t6-reset.mp4</a>, <a class=ev href="../S10/T8/s10-t8-deeplink.mp4">T8/s10-t8-deeplink.mp4</a>)</p>
 <h2 id="summary-table">Summary table</h2>
 <table>
 <thead>
@@ -68,7 +70,7 @@ Funding: ONE faucet request at 01:39 → 1 tDASH, txid <code>e3c010b517e3c67ca0a
 <td>T3 amount edge cases</td>
 <td>PASS w/ defects</td>
 <td><code>T3/01..20</code></td>
-<td>0 blocked, &gt;balance blocked, 9 dp truncated; <strong>dust 1 duff accepted (S10-D4)</strong>, exact-balance silently clamped (D-032), de-DE mixed separators (S10-D5)</td>
+<td>0 blocked, &gt;balance blocked, 9 dp truncated; <strong>dust 1 duff accepted (S10-D4)</strong>, exact-balance silently clamped (<a class=did href="../../DEFECT-LEDGER.html#D-032">D-032</a>), de-DE mixed separators (S10-D5)</td>
 </tr>
 <tr>
 <td>T4 address / URI edge cases</td>
@@ -103,8 +105,8 @@ Funding: ONE faucet request at 01:39 → 1 tDASH, txid <code>e3c010b517e3c67ca0a
 <tr>
 <td>T7 5-min screen-off sync</td>
 <td>PASS</td>
-<td><a class=ev href="../S10/notes.md">notes.md</a> §T7, <code>logs/files/log/wallet.log</code></td>
-<td>Engine kept advancing 1556624→1556626, no <code>idling detected</code>, no teardown, send worked immediately after unlock (D-031 not reproduced)</td>
+<td><a class=ev href="../S10/notes.md">notes.md</a> §T7, <a class=ev href="../S10/logs/files/log/wallet.log">logs/files/log/wallet.log</a></td>
+<td>Engine kept advancing 1556624→1556626, no <code>idling detected</code>, no teardown, send worked immediately after unlock (<a class=did href="../../DEFECT-LEDGER.html#D-031">D-031</a> not reproduced)</td>
 </tr>
 <tr>
 <td>T8 deep links with app killed</td>
@@ -120,7 +122,7 @@ Funding: ONE faucet request at 01:39 → 1 tDASH, txid <code>e3c010b517e3c67ca0a
 </tr>
 </tbody>
 </table>
-<p>Zero app crashes, zero ANRs, zero LMK/OOM across the session (the single <code>FATAL EXCEPTION</code> in <code>logcat.txt</code> at 03:16:55 is the uiautomator harness, ENV-3).
+<p>Zero app crashes, zero ANRs, zero LMK/OOM across the session (the single <code>FATAL EXCEPTION</code> in <a class=ev href="../S10/logcat.txt">logcat.txt</a> at 03:16:55 is the uiautomator harness, ENV-3).
 Peak memory over 1 h 58 m: <strong>TOTAL PSS 488 MB</strong>, native heap 316 MB, Dalvik 42 MB (<a class=ev href="../S10/mem.csv">mem.csv</a>). <a class=ev href="../S10/logs/exitinfo.txt">logs/exitinfo.txt</a> shows only USER_REQUESTED force-stops/kill-backgrounds that I issued.</p>
 <h2 id="money-accounting-no-funds-lost-anywhere">Money accounting (no funds lost anywhere)</h2>
 <p>Start (01:43): transparent 1.00001225 + shielded 0.95920521 = <strong>1.95921746</strong>.
@@ -174,7 +176,7 @@ MISMATCH after restore: one transaction lost from the history (S10-D1) and the c
 <td>Reset+restore loses a transaction from the history: a type-9 asset-unlock (unshield) of <strong>+0.95235766</strong> has no display row</td>
 <td>Wallet with an unshield in history → More › Security › Reset Wallet › "Save data and reset wallet" → restore from seed → wait for SYNCED → scroll history</td>
 <td><a class=ev href="../S10/T6/06-txlist-contact-row-before.webp">T6/06-txlist-contact-row-before.png</a> (row "Unshielded + 0.952358 1:13 AM") vs <a class=ev href="../S10/T6/22-txlist-bottom-after.webp">T6/22-txlist-bottom-after.png</a> (absent). <code>dash-sdk.db transactions</code>=22, <code>tx_display_cache</code>=21; the only missing txid is <code>31546c95e66cbdc787f36a3993f8480d54dddfc594bc59cd8afd3560a4e6cde2</code> (insight: type 9, block 1556579, valueOut 0.95235766). wallet.log 08:17:30 still says "Sync complete … SDK=8 records | display=21 rows — cache is complete"</td>
-<td><code>TxDisplayCacheService</code> completeness check (D-037 family); asset-unlock (type 9) wrapping</td>
+<td><code>TxDisplayCacheService</code> completeness check (<a class=did href="../../DEFECT-LEDGER.html#D-037">D-037</a> family); asset-unlock (type 9) wrapping</td>
 </tr>
 <tr>
 <td>S10-D2</td>
@@ -302,30 +304,30 @@ MISMATCH after restore: one transaction lost from the history (S10-D1) and the c
 <td>A shield costs a flat 0.00212851 platform fee disclosed nowhere, so small shields lose a large fraction</td>
 <td>Shield exactly 0.01 and compare the shielded balance before/after</td>
 <td>0.95920521 → 0.9670767 = <strong>+0.00787149</strong> for a 0.01 shield (21 % lost); the confirm sheet shows "Total 0.01 Đ" and no fee line; the tx row shows only the 263-duff L1 fee. Reproduced identically 6 times</td>
-<td>quantified extension of D-027 / D-050; <code>ShieldedTransferExecutor</code> cost disclosure</td>
+<td>quantified extension of <a class=did href="../../DEFECT-LEDGER.html#D-027">D-027</a> / <a class=did href="../../DEFECT-LEDGER.html#D-050">D-050</a>; <code>ShieldedTransferExecutor</code> cost disclosure</td>
 </tr>
 </tbody>
 </table>
 <h2 id="re-observations-of-known-ledger-items-confirmed-again-on-device">Re-observations of known ledger items (confirmed again on device)</h2>
 <ul>
-<li><strong>D-012</strong> — "Save data and reset wallet" wiped the wallet in ~5 s with <strong>no PIN prompt at any step</strong> (<code>T6/07</code>, <code>T6/08</code>, <code>T6/09</code>, <a class=ev href="../S10/T6/s10-t6-reset.mp4">T6/s10-t6-reset.mp4</a>).</li>
-<li><strong>D-032 / SR-28</strong> — the send confirm sheet reports "Network fee 0.0001" while the resulting tx detail for the <em>same</em> transaction reports "0.00000226" — the two screens in one flow disagree by 44x (<code>T4/08</code> vs <code>T4/09</code>). Typing an amount above balance − 0.0001 is silently clamped (typed 0.93697517 → field shows 0.93688742, <code>T3/07</code>).</li>
-<li><strong>D-048</strong> — the immediately-post-send detail sheet shows Tax Category <strong>"Income"</strong> for an outgoing send (<code>T2/02</code>); reopening the same tx later shows "Expense" (<code>T5/03</code>).</li>
-<li><strong>D-030</strong> — Address book still opens on the empty "SENDING ADDRESSES" tab and offers no manual entry, only "Paste from clipboard" / "Scan address" (<code>T4/21</code>, <code>T4/22</code>).</li>
-<li><strong>D-041 mechanism</strong> — on every cold start after a send the balance stream publishes ~2x the real value for 10–20 s with <code>l1Synced=false</code>; the cause is visible in <code>WalletBalanceFacts total=192999384 confirmed=97000436 unconfirmed=95998948</code> — the spent input is still counted confirmed while its change is counted unconfirmed. Self-corrected here (06:52:35 → 06:52:54), unlike S2's persistent case.</li>
-<li><strong>D-004</strong> — <code>idling detected, stopping service</code> at 08:22:00 / 08:28:00 with no service stop in between (<a class=ev href="../S10/logs/watchlist.txt">logs/watchlist.txt</a>).</li>
-<li><strong>D-052 / D-021</strong> — the "DashPay contact coverage DEBT …" and "permanently-dark candidate" lines are still emitted about once a minute.</li>
+<li><strong><a class=did href="../../DEFECT-LEDGER.html#D-012">D-012</a></strong> — "Save data and reset wallet" wiped the wallet in ~5 s with <strong>no PIN prompt at any step</strong> (<code>T6/07</code>, <code>T6/08</code>, <code>T6/09</code>, <a class=ev href="../S10/T6/s10-t6-reset.mp4">T6/s10-t6-reset.mp4</a>).</li>
+<li><strong><a class=did href="../../DEFECT-LEDGER.html#D-032">D-032</a> / <a class=did href="../../DEFECT-LEDGER.html#SR-28">SR-28</a></strong> — the send confirm sheet reports "Network fee 0.0001" while the resulting tx detail for the <em>same</em> transaction reports "0.00000226" — the two screens in one flow disagree by 44x (<code>T4/08</code> vs <code>T4/09</code>). Typing an amount above balance − 0.0001 is silently clamped (typed 0.93697517 → field shows 0.93688742, <code>T3/07</code>).</li>
+<li><strong><a class=did href="../../DEFECT-LEDGER.html#D-048">D-048</a></strong> — the immediately-post-send detail sheet shows Tax Category <strong>"Income"</strong> for an outgoing send (<code>T2/02</code>); reopening the same tx later shows "Expense" (<code>T5/03</code>).</li>
+<li><strong><a class=did href="../../DEFECT-LEDGER.html#D-030">D-030</a></strong> — Address book still opens on the empty "SENDING ADDRESSES" tab and offers no manual entry, only "Paste from clipboard" / "Scan address" (<code>T4/21</code>, <code>T4/22</code>).</li>
+<li><strong><a class=did href="../../DEFECT-LEDGER.html#D-041">D-041</a> mechanism</strong> — on every cold start after a send the balance stream publishes ~2x the real value for 10–20 s with <code>l1Synced=false</code>; the cause is visible in <code>WalletBalanceFacts total=192999384 confirmed=97000436 unconfirmed=95998948</code> — the spent input is still counted confirmed while its change is counted unconfirmed. Self-corrected here (06:52:35 → 06:52:54), unlike S2's persistent case.</li>
+<li><strong><a class=did href="../../DEFECT-LEDGER.html#D-004">D-004</a></strong> — <code>idling detected, stopping service</code> at 08:22:00 / 08:28:00 with no service stop in between (<a class=ev href="../S10/logs/watchlist.txt">logs/watchlist.txt</a>).</li>
+<li><strong><a class=did href="../../DEFECT-LEDGER.html#D-052">D-052</a> / <a class=did href="../../DEFECT-LEDGER.html#D-021">D-021</a></strong> — the "DashPay contact coverage DEBT …" and "permanently-dark candidate" lines are still emitted about once a minute.</li>
 </ul>
 <h2 id="contra-findings-ledger-items-that-did-not-reproduce-here">Contra-findings (ledger items that did NOT reproduce here)</h2>
 <ul>
-<li><strong>D-013 does not always hold</strong>: this reset logged <code>publish txmetadata successful: TxMetadataSaveInfo(itemsSaved=16, itemsToSave=16)</code> at 08:14:06 — the metadata <em>was</em> saved. S1's <code>itemsSaved=0</code> looks situational, not universal.</li>
-<li><strong>D-031</strong> did <strong>not</strong> reproduce: after 5 min 29 s with the screen off the L1 engine was still advancing (1556624 → 1556626), there were no <code>idling detected</code> lines in that launch at all, and a send attempted immediately after unlock succeeded first try (<code>T7/03</code>).</li>
-<li><strong>SR-12</strong> (shielded stall watchdog firing at 40 s) never fired: every shield completed in 5–7 s.</li>
+<li><strong><a class=did href="../../DEFECT-LEDGER.html#D-013">D-013</a> does not always hold</strong>: this reset logged <code>publish txmetadata successful: TxMetadataSaveInfo(itemsSaved=16, itemsToSave=16)</code> at 08:14:06 — the metadata <em>was</em> saved. S1's <code>itemsSaved=0</code> looks situational, not universal.</li>
+<li><strong><a class=did href="../../DEFECT-LEDGER.html#D-031">D-031</a></strong> did <strong>not</strong> reproduce: after 5 min 29 s with the screen off the L1 engine was still advancing (1556624 → 1556626), there were no <code>idling detected</code> lines in that launch at all, and a send attempted immediately after unlock succeeded first try (<code>T7/03</code>).</li>
+<li><strong><a class=did href="../../DEFECT-LEDGER.html#SR-12">SR-12</a></strong> (shielded stall watchdog firing at 40 s) never fired: every shield completed in 5–7 s.</li>
 <li><strong>"Rotating a screen must not lock the wallet"</strong> is trivially satisfied because rotation cannot happen: 22 of 31 activities in <code>wallet/AndroidManifest.xml</code> are <code>android:screenOrientation="portrait"</code> (only <code>de.schildbach.wallet.MainActivity</code>, <code>AddressBookActivity</code>, <code>NetworkMonitorActivity</code>, <code>BlockInfoActivity</code>, <code>ScanActivity</code>, <code>SweepWalletActivity</code>, <code>WalletUriHandlerActivity</code>, <code>InviteHandlerActivity</code>, <code>ImportSharedImageActivity</code> are free).</li>
 </ul>
 <h2 id="environment-problems-not-product-defects">Environment problems (not product defects)</h2>
 <ul>
-<li>ENV-3 confirmed: concurrent <code>uiautomator dump</code> calls throw <code>IllegalStateException: UiAutomationService … already registered!</code> into the crash buffer. The single FATAL in <code>logcat.txt</code> (03:16:55) is this, not the app.</li>
+<li>ENV-3 confirmed: concurrent <code>uiautomator dump</code> calls throw <code>IllegalStateException: UiAutomationService … already registered!</code> into the crash buffer. The single FATAL in <a class=ev href="../S10/logcat.txt">logcat.txt</a> (03:16:55) is this, not the app.</li>
 <li><code>adb shell am start -d '&lt;url&gt;'</code> must be written as <code>adb shell "am start … -d '&lt;url&gt;'"</code>; quoting only on the host lets the <em>device</em> shell split the URL on <code>&amp;</code> (the invite link silently lost its last two parameters on the first attempt).</li>
 <li>The send-amount keypad reuses the same resource ids (<code>btn_1</code>…<code>btn_9</code>) as the lock-screen PIN pad, which made an automated unlock helper type the PIN into the amount field. Harness hazard, not an app bug — but worth knowing for other streams.</li>
 <li>The app's numeric keypads expose no <code>EditText</code>, so "paste an amount with a currency symbol" is not expressible through the UI; covered instead via BIP21 <code>amount=</code> values.</li>
@@ -335,4 +337,12 @@ MISMATCH after restore: one transaction lost from the history (S10-D1) and the c
 <ul>
 <li>The <strong>username request</strong> screen for T9 could not be exercised: this wallet already owns <code>qa1s13939</code>, so the request flow is unreachable. Edit Profile (with a typed Display Name) was used as the closest analogue and restored correctly.</li>
 <li>The <strong>rotation</strong> leg of T1 is inapplicable (see contra-findings) rather than passed.</li>
-</ul></html>
+</ul><div id=lb><span class=x>&times;</span><span class="nv pv">&#8249;</span><span class="nv nx">&#8250;</span><img><div class=cap></div></div>
+<script>(function(){var lb=document.getElementById('lb'),im=lb.querySelector('img'),cap=lb.querySelector('.cap'),L=[],i=0;
+function links(){return Array.prototype.slice.call(document.querySelectorAll('a[href$=".webp"],a[href$=".png"]'))}
+function show(n){L=links();if(n<0||n>=L.length)return;i=n;var a=L[i];im.src=a.href;cap.innerHTML=(a.textContent.trim()||a.href.split('/').slice(-3).join('/'))+' &nbsp;('+(i+1)+'/'+L.length+') &nbsp;<a href="'+a.href+'" target=_blank rel=noopener>open file</a>';lb.classList.add('on')}
+function hide(){lb.classList.remove('on');im.src=''}
+document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".webp"],a[href$=".png"]');if(a&&!a.closest('#lb')){e.preventDefault();show(links().indexOf(a))}});
+lb.querySelector('.x').onclick=hide;lb.querySelector('.pv').onclick=function(e){e.stopPropagation();show(i-1)};lb.querySelector('.nx').onclick=function(e){e.stopPropagation();show(i+1)};
+lb.addEventListener('click',function(e){if(e.target===lb||e.target===im)hide()});
+document.addEventListener('keydown',function(e){if(!lb.classList.contains('on'))return;if(e.key==='Escape')hide();if(e.key==='ArrowLeft')show(i-1);if(e.key==='ArrowRight')show(i+1)});})();</script></html>

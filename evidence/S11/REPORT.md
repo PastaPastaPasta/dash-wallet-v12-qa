@@ -2,7 +2,7 @@
 agent: S11 · emulator: emulator-5566 / AVD dw-qa7 · date: 2026-09-19 (01:50 – 03:01 host)
 Builds: `fix-12.0.0-testnet3-release-signed.apk` (versionCode 12000000) and
 `master-11.9.0-testnet3-release-signed.apk` (versionCode 11090002).
-Reference seed `[seed phrase redacted]`,
+Reference seed `job flower agree lyrics industry note boost finger buddy dog exact fat`,
 READ-ONLY (nothing sent / shielded / no username). Expected balance **107.08173522** (per D-014).
 
 ## Summary table

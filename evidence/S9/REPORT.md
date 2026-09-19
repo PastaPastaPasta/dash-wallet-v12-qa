@@ -2,7 +2,7 @@
 
 Build under test: `fix-12.0.0-testnet3-release-signed.apk`, versionCode **12000000**, versionName 12.0.0, minSdk 29 / targetSdk 35.
 Mainnet `hashengineering.darkcoin.wallet` uninstalled first; testnet package `hashengineering.darkcoin.wallet_test` installed clean.
-Throwaway wallet seed (in `notes.md`): `[seed phrase redacted]`, PIN 1234.
+Throwaway wallet seed (in `notes.md`): `abstract fork speak manual talk cream seed penalty edit recipe profit evolve`, PIN 1234.
 Faucet: 1 tDASH to `yYxUzAE8SNndkcnWyt1RRXEUvbHVV12Bdk`, txid `afcfb69ab343b09c09d2bce10e880964279112da1a92e8622ef6ea2354daf267`.
 
 ## Summary table

@@ -4,11 +4,13 @@ tr:nth-child(even){background:#fafbfc}code{background:#f4f4f4;padding:1px 4px;bo
 h1{border-bottom:3px solid #008de4}h2{border-bottom:1px solid #ccc;margin-top:40px}a{color:#008de4}a.ev{background:#e8f4fd;padding:0 3px;border-radius:3px;font-family:ui-monospace,monospace;font-size:12px}
 nav.top{background:#012060;color:#fff;padding:8px 24px;margin:-16px -24px 16px;position:sticky;top:0;z-index:5}nav.top a{color:#fff;margin-right:18px;text-decoration:none}nav.top a:hover{text-decoration:underline}
 .S1{color:#b00020;font-weight:bold}.S2{color:#c75000;font-weight:bold}.toc{background:#f8f9fb;border:1px solid #e3e6ea;padding:8px 16px;font-size:13px;columns:2}.toc ul{margin:2px 0;padding-left:16px}
+#lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:50;align-items:center;justify-content:center;flex-direction:column}#lb.on{display:flex}#lb img{max-width:96vw;max-height:88vh;border:2px solid #fff;box-shadow:0 0 30px #000}#lb .cap{color:#eee;font:13px ui-monospace,monospace;margin-top:8px}#lb .cap a{color:#8cf}#lb .x{position:absolute;top:10px;right:18px;color:#fff;font-size:30px;cursor:pointer}#lb .nv{position:absolute;top:50%;color:#fff;font-size:44px;cursor:pointer;padding:0 16px;user-select:none}#lb .pv{left:0}#lb .nx{right:0}a.img img{cursor:zoom-in}
+a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:target{background:#fff3b0;outline:2px solid #f5b400}
 .note{background:#fff8e1;border-left:4px solid #f5b400;padding:8px 12px;margin:12px 0}
 </style><nav class=top><a href="../../index.html">Home</a><a href="../../QA-REPORT.html">Full report</a><a href="../../EXEC-SUMMARY.html">Executive summary</a><a href="../../STORY-MATRIX.html">User-story matrix</a><a href="../../DEFECT-LEDGER.html">Defect register</a><a href="../index.html">Evidence gallery</a><a href="../../QA-PLAN.html">Test plan</a><a href="../../streams.html">Stream reports</a></nav><h1 id="qa-report-stream-s9-x1-x8-agent-opus-s9-emulator-emulator-5564-dw-qa6-2026-09-19-0129-0327-cdt">QA report: Stream S9 (X1-X8)   (agent: Opus S9, emulator: emulator-5564 / dw-qa6, 2026-09-19 01:29-03:27 CDT)</h1>
 <p>Build under test: <code>fix-12.0.0-testnet3-release-signed.apk</code>, versionCode <strong>12000000</strong>, versionName 12.0.0, minSdk 29 / targetSdk 35.
 Mainnet <code>hashengineering.darkcoin.wallet</code> uninstalled first; testnet package <code>hashengineering.darkcoin.wallet_test</code> installed clean.
-Throwaway wallet seed (in <a class=ev href="../S9/notes.md">notes.md</a>): <code>[seed phrase redacted]</code>, PIN 1234.
+Throwaway wallet seed (in <a class=ev href="../S9/notes.md">notes.md</a>): <code>abstract fork speak manual talk cream seed penalty edit recipe profit evolve</code>, PIN 1234.
 Faucet: 1 tDASH to <code>yYxUzAE8SNndkcnWyt1RRXEUvbHVV12Bdk</code>, txid <code>afcfb69ab343b09c09d2bce10e880964279112da1a92e8622ef6ea2354daf267</code>.</p>
 <h2 id="summary-table">Summary table</h2>
 <table>
@@ -22,7 +24,7 @@ Faucet: 1 tDASH to <code>yYxUzAE8SNndkcnWyt1RRXEUvbHVV12Bdk</code>, txid <code>a
 </thead>
 <tbody>
 <tr>
-<td>X1 Sends fail after idle teardown (D-031)</td>
+<td>X1 Sends fail after idle teardown (<a class=did href="../../DEFECT-LEDGER.html#D-031">D-031</a>)</td>
 <td><strong>NOT REPRODUCED</strong> (5/5 sends succeeded)</td>
 <td><a class=ev href="../S9/X1/x1-cycle4-failed-send.mp4">X1/x1-cycle4-failed-send.mp4</a>, <a class=ev href="../S9/X1/43-c4-RESULT.webp">X1/43-c4-RESULT.png</a>, <a class=ev href="../S9/final-logs/files/log/wallet.log">final-logs/files/log/wallet.log</a></td>
 <td>4 idle teardowns observed; the L1 engine restarted 0s/0s/19s/19s later and every send broadcast fine - but the teardown itself is real and frequent (every 6-24 min)</td>
@@ -130,12 +132,12 @@ Faucet: 1 tDASH to <code>yYxUzAE8SNndkcnWyt1RRXEUvbHVV12Bdk</code>, txid <code>a
 </code></pre>
 <p>No <code>SendEngineNotSyncedException</code>, no "funding gate closed", no "not fully synced" dialog in any cycle.</p>
 <p>Why cycles 1-2 never tripped the detector: <code>SyncActivityIdleDetector.IDLE_TRANSACTION_TIMEOUT_MIN = 9</code> - any wallet tx event in the last 9 samples keeps the service "active", and the faucet receive / each self-send resets that window. Once &gt;9 min has passed since the last tx, 3 consecutive block-less minutes suffice; on live testnet that happened every 6-24 minutes (4 times in 100 minutes).</p>
-<p><strong>Conclusion:</strong> the SR-09/D-031 teardown is real and frequent on this build, but the recovery path (<code>startIfEnabled()</code> on app foreground) works here - the engine is back in 0-19 s and sends succeed. Residual exposure is the ~13-19 s window right after foregrounding; I could not land a send inside it even driving the flow from a <code>dash:</code> deeplink. S7's device-observed failure (engine down 3 m 17 s) did not recur.
+<p><strong>Conclusion:</strong> the <a class=did href="../../DEFECT-LEDGER.html#SR-09">SR-09</a>/<a class=did href="../../DEFECT-LEDGER.html#D-031">D-031</a> teardown is real and frequent on this build, but the recovery path (<code>startIfEnabled()</code> on app foreground) works here - the engine is back in 0-19 s and sends succeed. Residual exposure is the ~13-19 s window right after foregrounding; I could not land a send inside it even driving the flow from a <code>dash:</code> deeplink. S7's device-observed failure (engine down 3 m 17 s) did not recur.
 Videos: <a class=ev href="../S9/X1/x1-cycle1-send.mp4">X1/x1-cycle1-send.mp4</a>, <a class=ev href="../S9/X1/x1-cycle3-send.mp4">x1-cycle3-send.mp4</a>, <a class=ev href="../S9/X1/x1-cycle4-failed-send.mp4">x1-cycle4-failed-send.mp4</a>, <a class=ev href="../S9/X1/x1-race-send.mp4">x1-race-send.mp4</a>.</p>
 <p>Side observations in X1:
-- Confirm sheet shows <strong>Network fee 0.0001 / Total 0.0011</strong> but the broadcast paid <strong>226 duffs (0.00000226)</strong> - SR-28 confirmed on device (<a class=ev href="../S9/X1/28-after-pin-send.webp">X1/28-after-pin-send.png</a> vs <a class=ev href="../S9/X1/29-send-result.webp">X1/29-send-result.png</a>).
+- Confirm sheet shows <strong>Network fee 0.0001 / Total 0.0011</strong> but the broadcast paid <strong>226 duffs (0.00000226)</strong> - <a class=did href="../../DEFECT-LEDGER.html#SR-28">SR-28</a> confirmed on device (<a class=ev href="../S9/X1/28-after-pin-send.webp">X1/28-after-pin-send.png</a> vs <a class=ev href="../S9/X1/29-send-result.webp">X1/29-send-result.png</a>).
 - The success sheet for a self-send reads "Sent to <code>ybhMKMNdRvuKiMrNgmQ13RnGmAMXErLchg</code>" (the <strong>change</strong> address, not the entered destination) and "Amount Sent -0.00000226".
-- Receive screen still showed the used address <code>yYxUzAE8...</code> right after the faucet receive (<a class=ev href="../S9/X1/18-receive-2nd.webp">X1/18-receive-2nd.png</a>) but had rotated to <code>yMUsXaTRuRSGHC34tBkpZnXEMVt6UTQXFJ</code> by 02:59 (<a class=ev href="../S9/X7/02-payments.webp">X7/02-payments.png</a>) - D-003 is a delay, not a permanent pin, on a wallet created on the fix build.</p>
+- Receive screen still showed the used address <code>yYxUzAE8...</code> right after the faucet receive (<a class=ev href="../S9/X1/18-receive-2nd.webp">X1/18-receive-2nd.png</a>) but had rotated to <code>yMUsXaTRuRSGHC34tBkpZnXEMVt6UTQXFJ</code> by 02:59 (<a class=ev href="../S9/X7/02-payments.webp">X7/02-payments.png</a>) - <a class=did href="../../DEFECT-LEDGER.html#D-003">D-003</a> is a delay, not a permanent pin, on a wallet created on the fix build.</p>
 <h3 id="x2-network-monitor">X2 - Network monitor</h3>
 <p>Online, synced (<a class=ev href="../S9/X2/03-netmon-synced.webp">X2/03-netmon-synced.png</a>): "Synced / Connected to the Dash network", Block headers / Block filters / Masternode list height / ChainLock height all 1,556,595, plus "The wallet engine does not report individual peer connections." and "Peer and block lists come from the dashj diagnostic engine. Turn on dashj sync in Tools to view them." Rotation to landscape and back is clean, no lock, no data loss (<code>X2/04</code>, <code>X2/05</code>).</p>
 <p>During sync (<a class=ev href="../S9/X2/13-netmon-during-sync.webp">X2/13-netmon-during-sync.png</a>): stage label "Downloading block headers", "99%", ranges "1,556,616 / 1,556,621" - per-stage labels work.</p>
@@ -170,7 +172,7 @@ Videos: <a class=ev href="../S9/X1/x1-cycle1-send.mp4">X1/x1-cycle1-send.mp4</a>
 <ul>
 <li><strong>Without an identity there is no contacts UI at all</strong>: bottom nav has 3 items and the home card routes to "Welcome to Dash Pay / Create a username" (<code>X7/04</code>). Searching for <code>qa1s13939</code> and hitting a "no identity" error is unreachable.</li>
 <li>Shield 0.99999096 -&gt; shielded 0.997 (fee ~0.003), but only after a kill+relaunch (defect S9-D5): <code>X7/12</code>, <code>X7/19</code>, <code>X7/21</code>.</li>
-<li>Username <strong><code>qa9s9zkrmvtpqwxnb3d7</code></strong> (20 chars, non-contested) created from the shielded pool for 0.03: <code>08:16:34 BlockchainIdentityData - creation: BlockchainIdentityData(DONE, qa9s9zkrmvtpqwxnb3d7, CONFIRMED, null, null, DHP9CGTqKAcMt83ryjDosYGEGD3sKzxe9wW9SocKvco5)</code> (<code>X7/26</code>-<code>X7/34</code>). No transaction-history row was written for it (confirms D-007 / SR-11) - only the "Shielded" row appears (<code>X7/39</code>).</li>
+<li>Username <strong><code>qa9s9zkrmvtpqwxnb3d7</code></strong> (20 chars, non-contested) created from the shielded pool for 0.03: <code>08:16:34 BlockchainIdentityData - creation: BlockchainIdentityData(DONE, qa9s9zkrmvtpqwxnb3d7, CONFIRMED, null, null, DHP9CGTqKAcMt83ryjDosYGEGD3sKzxe9wW9SocKvco5)</code> (<code>X7/26</code>-<code>X7/34</code>). No transaction-history row was written for it (confirms <a class=did href="../../DEFECT-LEDGER.html#D-007">D-007</a> / <a class=did href="../../DEFECT-LEDGER.html#SR-11">SR-11</a>) - only the "Shielded" row appears (<code>X7/39</code>).</li>
 <li><strong>Airplane mode + "Send request"</strong>: tapped twice, waited 30 s - the button is completely inert. No spinner, no toast, no <code>send_contact_request_error_title</code>/<code>_message</code> dialog, no state change (<code>X7/44</code>, <code>X7/45</code>). Only background DAPI "tcp connect error" noise in the log.</li>
 <li>Network back on -&gt; "Send request" -&gt; "Request sent", Activity row "Contact request sent 3:22 AM" (<code>X7/50</code>); Contacts shows "Pending Requests (1) / QA Stream Five / Contact Request Pending" (<code>X7/51</code>).</li>
 <li>Non-existent <code>zzzznotarealuser9999</code> -&gt; clean empty state "There are no users that match ..." (<code>X7/52</code>).</li>
@@ -246,7 +248,7 @@ Videos: <a class=ev href="../S9/X1/x1-cycle1-send.mp4">X1/x1-cycle1-send.mp4</a>
 <td>Cold launch shows a balance ~2x the real one for &gt;30 s (1.996984 vs 0.999991) on a wallet whose only txs are self-sends</td>
 <td>Wallet with &gt;=1 self-send -&gt; force-stop -&gt; launch -&gt; read the header</td>
 <td><code>X3/02</code>, <code>X3/03</code>; log <code>07:41:08 WalletBalanceFacts: total=199698418 ... confirmed=99999322 unconfirmed=99699096 txCount=5</code></td>
-<td><code>L1ShadowSyncService</code> WalletBalanceFacts / <code>CutoverUiDataService</code> publish the partial during rescan (extends D-002 / SR-10)</td>
+<td><code>L1ShadowSyncService</code> WalletBalanceFacts / <code>CutoverUiDataService</code> publish the partial during rescan (extends <a class=did href="../../DEFECT-LEDGER.html#D-002">D-002</a> / <a class=did href="../../DEFECT-LEDGER.html#SR-10">SR-10</a>)</td>
 </tr>
 <tr>
 <td>S9-D3</td>
@@ -262,7 +264,7 @@ Videos: <a class=ev href="../S9/X1/x1-cycle1-send.mp4">X1/x1-cycle1-send.mp4</a>
 <td>Safe-mode screen is hidden behind the generic ACRA crash sheet; the user must Cancel a "send a crash report?" prompt before seeing <code>safe_mode_startup_message</code> and "Try Again"</td>
 <td>Two pre-milestone launch deaths (or equivalent breadcrumb state) -&gt; launch</td>
 <td><code>X5/07</code> then <code>X5/09</code></td>
-<td><code>StartupBreadcrumbs</code> / crash-report dialog ordering (relates to SR-41)</td>
+<td><code>StartupBreadcrumbs</code> / crash-report dialog ordering (relates to <a class=did href="../SR/REPORT.html#SR-41">SR-41</a>)</td>
 </tr>
 <tr>
 <td>S9-D5</td>
@@ -270,7 +272,7 @@ Videos: <a class=ev href="../S9/X1/x1-cycle1-send.mp4">X1/x1-cycle1-send.mp4</a>
 <td>Shielded transfer screen stuck on "Shielded balance is syncing - transfers will be available shortly" for &gt;8 min, blocking Continue; only a force-stop + relaunch cleared it</td>
 <td>Fresh wallet with 1 tDASH -&gt; Join DashPay &gt; Continue &gt; Shield your funds first &gt; Max &gt; Continue</td>
 <td><code>X7/09</code>, <code>X7/12</code>, <code>X7/14</code>, then <code>X7/19</code> after relaunch; log only repeats <code>ShieldedBalanceServiceImpl - shielded runtime ready ... (sync loop running)</code> every ~60 s</td>
-<td><code>ui/shielded/*</code> gating flow / <code>ShieldedBalanceServiceImpl</code> readiness signal (adjacent to SR-12/SR-14)</td>
+<td><code>ui/shielded/*</code> gating flow / <code>ShieldedBalanceServiceImpl</code> readiness signal (adjacent to <a class=did href="../../DEFECT-LEDGER.html#SR-12">SR-12</a>/<a class=did href="../SR/REPORT.html#SR-14">SR-14</a>)</td>
 </tr>
 <tr>
 <td>S9-D6</td>
@@ -298,7 +300,7 @@ Videos: <a class=ev href="../S9/X1/x1-cycle1-send.mp4">X1/x1-cycle1-send.mp4</a>
 </tr>
 </tbody>
 </table>
-<p>Re-confirmations of existing ledger entries: <strong>SR-28</strong> (flat 0.0001 fee shown, 226 duffs actually paid - <code>X1/28</code> vs <code>X1/29</code>), <strong>D-007 / SR-11</strong> (username creation writes no history row - <code>X7/39</code>), <strong>D-001 / SR-33</strong> (1-minute foreground auto-lock fired ~30 times in 2 h and interrupted nearly every multi-step flow), <strong>D-003</strong> (receive address not rotated immediately after use, but it did rotate later - <code>X1/18</code> vs <code>X7/02</code>).</p>
+<p>Re-confirmations of existing ledger entries: <strong><a class=did href="../../DEFECT-LEDGER.html#SR-28">SR-28</a></strong> (flat 0.0001 fee shown, 226 duffs actually paid - <code>X1/28</code> vs <code>X1/29</code>), <strong><a class=did href="../../DEFECT-LEDGER.html#D-007">D-007</a> / <a class=did href="../../DEFECT-LEDGER.html#SR-11">SR-11</a></strong> (username creation writes no history row - <code>X7/39</code>), <strong><a class=did href="../../DEFECT-LEDGER.html#D-001">D-001</a> / <a class=did href="../../DEFECT-LEDGER.html#SR-33">SR-33</a></strong> (1-minute foreground auto-lock fired ~30 times in 2 h and interrupted nearly every multi-step flow), <strong><a class=did href="../../DEFECT-LEDGER.html#D-003">D-003</a></strong> (receive address not rotated immediately after use, but it did rotate later - <code>X1/18</code> vs <code>X7/02</code>).</p>
 <h2 id="environment-problems-not-product-defects">Environment problems (not product defects)</h2>
 <ul>
 <li><code>qa-app.sh &lt;serial&gt; launch</code> (monkey) does not start this app on emulator-5564; used <code>am start -a android.intent.action.MAIN -c android.intent.category.LAUNCHER -n hashengineering.darkcoin.wallet_test/de.schildbach.wallet.ui.OnboardingActivity</code> throughout.</li>
@@ -315,8 +317,16 @@ Videos: <a class=ev href="../S9/X1/x1-cycle1-send.mp4">X1/x1-cycle1-send.mp4</a>
 </ul>
 <h2 id="artefacts">Artefacts</h2>
 <ul>
-<li><a class=ev href="../S9/notes.md">~/workspace/dash-wallet-qa/evidence/S9/notes.md</a>, <code>logcat.txt</code> (22 MB), <a class=ev href="../S9/mem.csv">mem.csv</a> (117 samples), <a class=ev href="../S9/oom-exitinfo.txt">oom-exitinfo.txt</a></li>
+<li><a class=ev href="../S9/notes.md">~/workspace/dash-wallet-qa/evidence/S9/notes.md</a>, <a class=ev href="../S9/logcat.txt">logcat.txt</a> (22 MB), <a class=ev href="../S9/mem.csv">mem.csv</a> (117 samples), <a class=ev href="../S9/oom-exitinfo.txt">oom-exitinfo.txt</a></li>
 <li><a class=ev href="../S9/final-logs/files/log/wallet.log">~/workspace/dash-wallet-qa/evidence/S9/final-logs/files/log/wallet.log</a> (1.46 MB, whole session)</li>
 <li>Videos: <a class=ev href="../S9/X1/x1-cycle1-send.mp4">X1/x1-cycle1-send.mp4</a>, <a class=ev href="../S9/X1/x1-cycle3-send.mp4">X1/x1-cycle3-send.mp4</a>, <a class=ev href="../S9/X1/x1-cycle4-failed-send.mp4">X1/x1-cycle4-failed-send.mp4</a>, <a class=ev href="../S9/X1/x1-race-send.mp4">X1/x1-race-send.mp4</a>, <a class=ev href="../S9/X5/x5-safemode.mp4">X5/x5-safemode.mp4</a></li>
 <li>Screenshots: <code>X1/</code> 64, <code>X2/</code> 15, <code>X3/</code> 15, <code>X4/</code> 14, <code>X5/</code> 13, <code>X7/</code> 53, <code>X8/</code> 3</li>
-</ul></html>
+</ul><div id=lb><span class=x>&times;</span><span class="nv pv">&#8249;</span><span class="nv nx">&#8250;</span><img><div class=cap></div></div>
+<script>(function(){var lb=document.getElementById('lb'),im=lb.querySelector('img'),cap=lb.querySelector('.cap'),L=[],i=0;
+function links(){return Array.prototype.slice.call(document.querySelectorAll('a[href$=".webp"],a[href$=".png"]'))}
+function show(n){L=links();if(n<0||n>=L.length)return;i=n;var a=L[i];im.src=a.href;cap.innerHTML=(a.textContent.trim()||a.href.split('/').slice(-3).join('/'))+' &nbsp;('+(i+1)+'/'+L.length+') &nbsp;<a href="'+a.href+'" target=_blank rel=noopener>open file</a>';lb.classList.add('on')}
+function hide(){lb.classList.remove('on');im.src=''}
+document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".webp"],a[href$=".png"]');if(a&&!a.closest('#lb')){e.preventDefault();show(links().indexOf(a))}});
+lb.querySelector('.x').onclick=hide;lb.querySelector('.pv').onclick=function(e){e.stopPropagation();show(i-1)};lb.querySelector('.nx').onclick=function(e){e.stopPropagation();show(i+1)};
+lb.addEventListener('click',function(e){if(e.target===lb||e.target===im)hide()});
+document.addEventListener('keydown',function(e){if(!lb.classList.contains('on'))return;if(e.key==='Escape')hide();if(e.key==='ArrowLeft')show(i-1);if(e.key==='ArrowRight')show(i+1)});})();</script></html>

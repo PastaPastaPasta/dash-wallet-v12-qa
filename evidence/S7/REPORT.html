@@ -4,12 +4,14 @@ tr:nth-child(even){background:#fafbfc}code{background:#f4f4f4;padding:1px 4px;bo
 h1{border-bottom:3px solid #008de4}h2{border-bottom:1px solid #ccc;margin-top:40px}a{color:#008de4}a.ev{background:#e8f4fd;padding:0 3px;border-radius:3px;font-family:ui-monospace,monospace;font-size:12px}
 nav.top{background:#012060;color:#fff;padding:8px 24px;margin:-16px -24px 16px;position:sticky;top:0;z-index:5}nav.top a{color:#fff;margin-right:18px;text-decoration:none}nav.top a:hover{text-decoration:underline}
 .S1{color:#b00020;font-weight:bold}.S2{color:#c75000;font-weight:bold}.toc{background:#f8f9fb;border:1px solid #e3e6ea;padding:8px 16px;font-size:13px;columns:2}.toc ul{margin:2px 0;padding-left:16px}
+#lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:50;align-items:center;justify-content:center;flex-direction:column}#lb.on{display:flex}#lb img{max-width:96vw;max-height:88vh;border:2px solid #fff;box-shadow:0 0 30px #000}#lb .cap{color:#eee;font:13px ui-monospace,monospace;margin-top:8px}#lb .cap a{color:#8cf}#lb .x{position:absolute;top:10px;right:18px;color:#fff;font-size:30px;cursor:pointer}#lb .nv{position:absolute;top:50%;color:#fff;font-size:44px;cursor:pointer;padding:0 16px;user-select:none}#lb .pv{left:0}#lb .nx{right:0}a.img img{cursor:zoom-in}
+a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:target{background:#fff3b0;outline:2px solid #f5b400}
 .note{background:#fff8e1;border-left:4px solid #f5b400;padding:8px 12px;margin:12px 0}
 </style><nav class=top><a href="../../index.html">Home</a><a href="../../QA-REPORT.html">Full report</a><a href="../../EXEC-SUMMARY.html">Executive summary</a><a href="../../STORY-MATRIX.html">User-story matrix</a><a href="../../DEFECT-LEDGER.html">Defect register</a><a href="../index.html">Evidence gallery</a><a href="../../QA-PLAN.html">Test plan</a><a href="../../streams.html">Stream reports</a></nav><h1 id="qa-report-s7-e8-b5-r1-bk1-tx1-n1-agent-opus-s7-emulator-emulator-5566-dw-qa7-2026-09-19">QA report: S7 — E8, B5, R1, BK1, TX1, N1   (agent: Opus S7, emulator: emulator-5566 / dw-qa7, 2026-09-19)</h1>
 <p>Builds: <code>master-11.9.0-testnet3-release-signed.apk</code> (versionCode 11090002) -&gt; in-place <code>adb install -r</code>
 <code>fix-12.0.0-testnet3-release-signed.apk</code> (versionCode 12000000, <code>fix/upgrade-memory-and-sync</code>).
-Throwaway testnet wallet, seed <code>[seed phrase redacted]</code>, PIN 1234.
-Collectors: <a class=ev href="../S7/mem.csv">evidence/S7/mem.csv</a> (60 s samples 00:22-01:38), <code>evidence/S7/logcat.txt</code> (00:22-00:38 only, see Environment problems),
+Throwaway testnet wallet, seed <code>air pet hole injury snack toast end share seven cute ghost squirrel</code>, PIN 1234.
+Collectors: <a class=ev href="../S7/mem.csv">evidence/S7/mem.csv</a> (60 s samples 00:22-01:38), <a class=ev href="../S7/logcat.txt">evidence/S7/logcat.txt</a> (00:22-00:38 only, see Environment problems),
 <a class=ev href="../S7/notes.md">evidence/S7/notes.md</a>, <a class=ev href="../S7/oom-exitinfo.txt">evidence/S7/oom-exitinfo.txt</a>, <a class=ev href="../S7/mem-notes.txt">evidence/S7/mem-notes.txt</a>.</p>
 <h2 id="summary-table">Summary table</h2>
 <table>
@@ -59,10 +61,10 @@ Collectors: <a class=ev href="../S7/mem.csv">evidence/S7/mem.csv</a> (60 s sampl
 <td>Shade captured with a real wallet notification. The prescribed trick cannot work: the app correctly suppresses a notification for its own send, so a genuine third-party receive-while-backgrounded was not exercised. A stale duplicate receive notification was found instead (D-04).</td>
 </tr>
 <tr>
-<td><strong>SR-03 / SR-28 / SR-29</strong> (orchestrator static-review follow-ups)</td>
-<td><strong>SR-03 mixed, SR-28 confirmed, SR-29 confirmed</strong></td>
+<td><strong><a class=did href="../../DEFECT-LEDGER.html#SR-03">SR-03</a> / <a class=did href="../../DEFECT-LEDGER.html#SR-28">SR-28</a> / <a class=did href="../../DEFECT-LEDGER.html#SR-29">SR-29</a></strong> (orchestrator static-review follow-ups)</td>
+<td><strong><a class=did href="../../DEFECT-LEDGER.html#SR-03">SR-03</a> mixed, <a class=did href="../../DEFECT-LEDGER.html#SR-28">SR-28</a> confirmed, <a class=did href="../../DEFECT-LEDGER.html#SR-29">SR-29</a> confirmed</strong></td>
 <td>see per-test detail</td>
-<td>SR-03: the <strong>upgraded</strong> (dashj-born) keychain rotates correctly; after <strong>reset + restore-from-seed on the fix build</strong> every address handed out is already used (D-02). SR-28 and SR-29 reproduced exactly as predicted (D-01, D-01b, D-09).</td>
+<td><a class=did href="../../DEFECT-LEDGER.html#SR-03">SR-03</a>: the <strong>upgraded</strong> (dashj-born) keychain rotates correctly; after <strong>reset + restore-from-seed on the fix build</strong> every address handed out is already used (D-02). <a class=did href="../../DEFECT-LEDGER.html#SR-28">SR-28</a> and <a class=did href="../../DEFECT-LEDGER.html#SR-29">SR-29</a> reproduced exactly as predicted (D-01, D-01b, D-09).</td>
 </tr>
 </tbody>
 </table>
@@ -268,7 +270,7 @@ Collectors: <a class=ev href="../S7/mem.csv">evidence/S7/mem.csv</a> (60 s sampl
 <td><code>BlockchainServiceImpl</code> idle teardown vs <code>L1ShadowSyncService.startIfEnabled()</code> / <code>SendCoinsTaskRunner.sendViaSdkBridged</code> (<code>SendCoinsTaskRunner.kt:451</code>, <code>:172</code>)</td>
 </tr>
 <tr>
-<td><strong>D-01 (SR-28)</strong></td>
+<td><strong>D-01 (<a class=did href="../../DEFECT-LEDGER.html#SR-28">SR-28</a>)</strong></td>
 <td>S3</td>
 <td>Send confirm sheet shows a flat 0.0001 DASH network fee, 10x-44x the fee actually charged</td>
 <td>Fix build, post-cutover. Send any amount -&gt; confirm sheet always reads <code>Network fee 0.0001</code>, <code>Total = amount + 0.0001</code>. Complete it and open the tx detail: real fee 0.00000226 (0.01 send) / 0.00000976 (send-all). Master 11.9.0 showed the exact 0.00000227 on its confirm sheet.</td>
@@ -276,7 +278,7 @@ Collectors: <a class=ev href="../S7/mem.csv">evidence/S7/mem.csv</a> (60 s sampl
 <td>SDK send seam / fee estimation (<code>SdkL1SendService</code>, <code>SendCoinsViewModel.executeDryRun</code>)</td>
 </tr>
 <tr>
-<td><strong>D-01b (SR-28)</strong></td>
+<td><strong>D-01b (<a class=did href="../../DEFECT-LEDGER.html#SR-28">SR-28</a>)</strong></td>
 <td>S3</td>
 <td>Amount field silently clamps to <code>balance - 0.0001</code>; that reserve is unspendable and "Max" is inconsistent with it</td>
 <td>Balance 0.999995. On the amount screen type <code>.99994547</code> (balance - 0.00005): at the 4th <code>9</code> the field jumps to <code>0.99989547</code> (= balance - 0.0001) and refuses to go higher. <strong>No "insufficient funds" message is shown</strong> - it silently clamps. Tapping <strong>Max</strong> instead fills the <em>full</em> balance <code>0.99999547</code>.</td>
@@ -284,7 +286,7 @@ Collectors: <a class=ev href="../S7/mem.csv">evidence/S7/mem.csv</a> (60 s sampl
 <td>enter-amount / max-button fee reserve</td>
 </tr>
 <tr>
-<td><strong>D-02 (SR-03)</strong></td>
+<td><strong>D-02 (<a class=did href="../../DEFECT-LEDGER.html#SR-03">SR-03</a>)</strong></td>
 <td>S3</td>
 <td>After reset + restore-from-seed on the fix build, Receive and "Specify Amount" hand out <strong>already-used</strong> addresses</td>
 <td>Fix build: Security &gt; Reset Wallet, restore the same seed, wait for 100%. Receive -&gt; <code>yLRHLPYFiRXPQPm2CaD5AsifEfqpYbSRKo</code> (insight: 3 tx appearances, 1.01 received). Specify Amount -&gt; <code>yMahoHJCR7ZGztjQwxZ7FZpBEMDdnTpRjh</code> (2 appearances). Continue again -&gt; <code>yMwdDaL2Ttje2uWJiDTjoV6x4fYxNUt5QM</code> (2 appearances). Send 0.01 to the shown address, reopen Receive -&gt; it advances to <code>yhyt2iGA2rKEQNDRUV5GPGS6cj8QAyeMAC</code>, also already used (2 appearances). The <strong>upgraded</strong> (dashj-born) keychain by contrast rotated to genuinely fresh zero-history addresses every time.</td>
@@ -340,7 +342,7 @@ Collectors: <a class=ev href="../S7/mem.csv">evidence/S7/mem.csv</a> (60 s sampl
 <td>home tx-list empty state under filter</td>
 </tr>
 <tr>
-<td><strong>D-09 (SR-29)</strong></td>
+<td><strong>D-09 (<a class=did href="../../DEFECT-LEDGER.html#SR-29">SR-29</a>)</strong></td>
 <td>S4</td>
 <td>Send-all first attempt fails on an insufficient-funds error, then succeeds on an internal retry</td>
 <td>Fix build, post-cutover, Max -&gt; Send. <code>06:11:28 SdkL1SendService - SDK l1SendAll: floor 99998764 duffs not deliverable at fee; retrying engine-authoritatively</code> with <code>DashSdkError$PlatformWallet$CoreInsufficientFunds: available Some(99999547), required Some(99999740)</code>, then <code>06:11:29 SDK l1SendAll: broadcast 99999547 duffs ... txid 065a166e7dcdb2df96c285afd746f45e70bfe89f2fdedffec4fbe2d30e075927</code>. User-visible outcome is success; cost is a thrown exception and ~1 s extra latency. Same root cause as D-01 (0.0001 flat fee floor).</td>
@@ -355,7 +357,7 @@ Collectors: <a class=ev href="../S7/mem.csv">evidence/S7/mem.csv</a> (60 s sampl
 <ul>
 <li><code>qa-app.sh &lt;serial&gt; launch</code> (monkey) does not start this app on these AVDs; used <code>am start -n hashengineering.darkcoin.wallet_test/de.schildbach.wallet.ui.OnboardingActivity</code> throughout.</li>
 <li><code>qa-app.sh text</code> did not escape spaces when I entered the recovery phrase (only the first word landed). Worked around with <code>input text 'a%sb%sc'</code>; the helper has since been fixed on disk.</li>
-<li>The session <code>logcat.txt</code> stopped collecting at 00:38 (the backgrounded <code>adb logcat</code> died, probably at an <code>adb root</code> transition). All log evidence here cites the app's own <code>wallet.log</code>, pulled three times and covering the whole session.</li>
+<li>The session <a class=ev href="../S7/logcat.txt">logcat.txt</a> stopped collecting at 00:38 (the backgrounded <code>adb logcat</code> died, probably at an <code>adb root</code> transition). All log evidence here cites the app's own <code>wallet.log</code>, pulled three times and covering the whole session.</li>
 <li>The recovery-phrase and restore screens set <code>FLAG_SECURE</code>, so <code>screencap</code> returns an all-black image (<a class=ev href="../S7/BK1/07-restore-options.webp">BK1/07-restore-options.png</a>). Those steps are evidenced by uiautomator text dumps quoted above.</li>
 <li>Default Auto Logout is 1 min, which locked the screen repeatedly between steps; raised to 1 hour via More &gt; Security &gt; Advanced Security (<a class=ev href="../S7/R1/05-autologout.webp">R1/05-autologout.png</a>).</li>
 <li>Master had a <code>CoinJoin</code> row in Settings; the fix build does not. Not investigated - flagging only.</li>
@@ -368,4 +370,12 @@ Collectors: <a class=ev href="../S7/mem.csv">evidence/S7/mem.csv</a> (60 s sampl
 <li><strong>B5 "Sync everything (from the beginning)"</strong>: displayed but not confirmed - a full dashj chain scan would have consumed the rest of the session. "Start sync from date" was confirmed instead.</li>
 <li><strong>N1 third-party receive while backgrounded</strong>: not possible on this stream (self-sends are correctly not notified, no second wallet, faucet quota spent).</li>
 <li><strong>Copy txid / share from tx detail</strong>: feature does not exist in this build (verified in source).</li>
-</ul></html>
+</ul><div id=lb><span class=x>&times;</span><span class="nv pv">&#8249;</span><span class="nv nx">&#8250;</span><img><div class=cap></div></div>
+<script>(function(){var lb=document.getElementById('lb'),im=lb.querySelector('img'),cap=lb.querySelector('.cap'),L=[],i=0;
+function links(){return Array.prototype.slice.call(document.querySelectorAll('a[href$=".webp"],a[href$=".png"]'))}
+function show(n){L=links();if(n<0||n>=L.length)return;i=n;var a=L[i];im.src=a.href;cap.innerHTML=(a.textContent.trim()||a.href.split('/').slice(-3).join('/'))+' &nbsp;('+(i+1)+'/'+L.length+') &nbsp;<a href="'+a.href+'" target=_blank rel=noopener>open file</a>';lb.classList.add('on')}
+function hide(){lb.classList.remove('on');im.src=''}
+document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".webp"],a[href$=".png"]');if(a&&!a.closest('#lb')){e.preventDefault();show(links().indexOf(a))}});
+lb.querySelector('.x').onclick=hide;lb.querySelector('.pv').onclick=function(e){e.stopPropagation();show(i-1)};lb.querySelector('.nx').onclick=function(e){e.stopPropagation();show(i+1)};
+lb.addEventListener('click',function(e){if(e.target===lb||e.target===im)hide()});
+document.addEventListener('keydown',function(e){if(!lb.classList.contains('on'))return;if(e.key==='Escape')hide();if(e.key==='ArrowLeft')show(i-1);if(e.key==='ArrowRight')show(i+1)});})();</script></html>

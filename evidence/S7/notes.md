@@ -3,7 +3,7 @@ Stories: E8 (fresh small wallet master 11.9.0 -> fix 12.0.0), B5 (dashj toggle),
 
 - 2026-09-19T00:22:36 logcat -> evidence/S7/logcat.txt (pid 17767), memlog -> mem.csv 60s (pid 17837)
 - 2026-09-19T00:22:40 installed master 11.9.0 (11090002)
-- 2026-09-19T00:26 E8: created wallet on master 11.9.0. SEED (throwaway testnet): `[seed phrase redacted]`  PIN 1234
+- 2026-09-19T00:26 E8: created wallet on master 11.9.0. SEED (throwaway testnet): `air pet hole injury snack toast end share seven cute ghost squirrel`  PIN 1234
 - 2026-09-19T00:28:05 E8 receive addr #1: yLRHLPYFiRXPQPm2CaD5AsifEfqpYbSRKo (evidence/S7/E8/14-master-receive.png)
 - 2026-09-19T00:29:36 E8 faucet sent 1 tDASH, txid aa57902d1c5547d48cabe6d674babe10b728ab1262f6564bfcca1a6ec7b1bb33 (evidence/S7/E8/15-faucet-sent.png)
 - 2026-09-19T00:33:34 E8 master: received 1.00 tDASH, memo 'S7-faucet-memo' saved (25-master-txdetail-memo.png)

@@ -1,7 +1,7 @@
 # QA report: S1 — A1 + Tier C (+ D3, SR-28/29/30)   (agent: Opus S1, emulator-5554 / dw-qa1, 2026-09-19 00:09–01:27 local)
 
 Build under test: `fix-12.0.0-testnet3-release-signed.apk`, versionCode **12000000**, versionName 12.0.0, minSdk 29 / targetSdk 35.
-Wallet: fresh, created on this build. Recovery phrase (throwaway testnet): `[seed phrase redacted]`.
+Wallet: fresh, created on this build. Recovery phrase (throwaway testnet): `swamp dad rent tower dumb cart dust vocal often today chimney amazing`.
 Username: **qa1s13939**, identity `DYjxDk3kTzf2PXAK3LfGj2cWitnyLKhx1y8u3626hbMm`.
 
 ## Summary table

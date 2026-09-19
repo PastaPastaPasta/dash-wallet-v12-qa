@@ -10,7 +10,7 @@
   => CJ1's UI expectations (keep-spendable / move-to-shielded / in-progress / failure) are UNREACHABLE
      in this APK. Will verify empirically and then focus on: are the ex-CoinJoin coins counted + spendable?
 2026-09-19T02:02:36
-S12 CJ1 wallet seed: [seed phrase redacted]
+S12 CJ1 wallet seed: gospel tip talent possible practice leave vicious come swing luggage ice sand
 
 ## CJ1 (master 11.9.0 baseline)
 - 02:02 installed master-11.9.0-testnet3-release-signed.apk (versionCode 11090002) after uninstalling prior install

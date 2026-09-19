@@ -4,10 +4,12 @@ tr:nth-child(even){background:#fafbfc}code{background:#f4f4f4;padding:1px 4px;bo
 h1{border-bottom:3px solid #008de4}h2{border-bottom:1px solid #ccc;margin-top:40px}a{color:#008de4}a.ev{background:#e8f4fd;padding:0 3px;border-radius:3px;font-family:ui-monospace,monospace;font-size:12px}
 nav.top{background:#012060;color:#fff;padding:8px 24px;margin:-16px -24px 16px;position:sticky;top:0;z-index:5}nav.top a{color:#fff;margin-right:18px;text-decoration:none}nav.top a:hover{text-decoration:underline}
 .S1{color:#b00020;font-weight:bold}.S2{color:#c75000;font-weight:bold}.toc{background:#f8f9fb;border:1px solid #e3e6ea;padding:8px 16px;font-size:13px;columns:2}.toc ul{margin:2px 0;padding-left:16px}
+#lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:50;align-items:center;justify-content:center;flex-direction:column}#lb.on{display:flex}#lb img{max-width:96vw;max-height:88vh;border:2px solid #fff;box-shadow:0 0 30px #000}#lb .cap{color:#eee;font:13px ui-monospace,monospace;margin-top:8px}#lb .cap a{color:#8cf}#lb .x{position:absolute;top:10px;right:18px;color:#fff;font-size:30px;cursor:pointer}#lb .nv{position:absolute;top:50%;color:#fff;font-size:44px;cursor:pointer;padding:0 16px;user-select:none}#lb .pv{left:0}#lb .nx{right:0}a.img img{cursor:zoom-in}
+a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:target{background:#fff3b0;outline:2px solid #f5b400}
 .note{background:#fff8e1;border-left:4px solid #f5b400;padding:8px 12px;margin:12px 0}
 </style><nav class=top><a href="../../index.html">Home</a><a href="../../QA-REPORT.html">Full report</a><a href="../../EXEC-SUMMARY.html">Executive summary</a><a href="../../STORY-MATRIX.html">User-story matrix</a><a href="../../DEFECT-LEDGER.html">Defect register</a><a href="../index.html">Evidence gallery</a><a href="../../QA-PLAN.html">Test plan</a><a href="../../streams.html">Stream reports</a></nav><h1 id="qa-report-s1-a1-tier-c-d3-sr-282930-agent-opus-s1-emulator-5554-dw-qa1-2026-09-19-00090127-local">QA report: S1 — A1 + Tier C (+ D3, SR-28/29/30)   (agent: Opus S1, emulator-5554 / dw-qa1, 2026-09-19 00:09–01:27 local)</h1>
 <p>Build under test: <code>fix-12.0.0-testnet3-release-signed.apk</code>, versionCode <strong>12000000</strong>, versionName 12.0.0, minSdk 29 / targetSdk 35.
-Wallet: fresh, created on this build. Recovery phrase (throwaway testnet): <code>[seed phrase redacted]</code>.
+Wallet: fresh, created on this build. Recovery phrase (throwaway testnet): <code>swamp dad rent tower dumb cart dust vocal often today chimney amazing</code>.
 Username: <strong>qa1s13939</strong>, identity <code>DYjxDk3kTzf2PXAK3LfGj2cWitnyLKhx1y8u3626hbMm</code>.</p>
 <h2 id="summary-table">Summary table</h2>
 <table>
@@ -117,19 +119,19 @@ Username: <strong>qa1s13939</strong>, identity <code>DYjxDk3kTzf2PXAK3LfGj2cWitn
 <td>request survived the reset/restore, accepted, paid 0.001 by username, row shows the contact name</td>
 </tr>
 <tr>
-<td>SR-28 confirm fee vs actual</td>
+<td><a class=did href="../../DEFECT-LEDGER.html#SR-28">SR-28</a> confirm fee vs actual</td>
 <td><strong>CONFIRMED</strong></td>
 <td><a class=ev href="../S1/C1/07-after-pin.webp">C1/07-after-pin.png</a>, <a class=ev href="../S1/C1/17-insight-sendtx.txt">C1/17-insight-sendtx.txt</a></td>
 <td>quoted 0.0001, actual 0.00000226 (~44x)</td>
 </tr>
 <tr>
-<td>SR-29 send-all failed-then-retry</td>
+<td><a class=did href="../../DEFECT-LEDGER.html#SR-29">SR-29</a> send-all failed-then-retry</td>
 <td>NOT REPRODUCED</td>
 <td><a class=ev href="../S1/C2/05-sendall-log.txt">C2/05-sendall-log.txt</a></td>
 <td>single <code>l1SendAll</code> broadcast, no failure, no retry</td>
 </tr>
 <tr>
-<td>SR-30 Max on shielded send</td>
+<td><a class=did href="../../DEFECT-LEDGER.html#SR-30">SR-30</a> Max on shielded send</td>
 <td><strong>CONFIRMED</strong></td>
 <td><code>SR30/01,02*.png</code>, notes <code>06:10:44</code> excerpt</td>
 <td>Max amount always fails pre-broadcast; rescued by one silent auto-retry</td>
@@ -206,7 +208,7 @@ Username: <strong>qa1s13939</strong>, identity <code>DYjxDk3kTzf2PXAK3LfGj2cWitn
 <li>Wipe log is clean: <code>05:32:42 L1ShadowSyncService - wallet-wipe SDK cleanup ... deleting the SPV dataDir (21 files) ... NO rebind</code>, <code>SdkWalletBinder - binder state reset</code>, <code>WalletApplicationExt - databases cleared (isWalletWipe = true)</code>, <code>OnboardingActivity - reset finished</code>.</li>
 </ul>
 <h3 id="c1-send-to-address-the-fail-ledger-item-d-029">C1 send to address — the FAIL (ledger item D-029)</h3>
-<p>Full timeline, UI state and retries are in <a class=ev href="../S1/notes.md">notes.md</a> under "C1 … === D-029 detail ===". Short version: the app was foreground, idle and displaying a fully synced UI (<code>phase=SYNCED 100.0% headers 1556573/1556573</code> at 05:57:29, and the send screen itself read <code>Balance: DASH 0.01000737 ~ $0.61</code>). At 06:01:00 <code>BlockchainServiceImpl - idling detected, stopping service</code> / <code>serviceJob cancelled after 4 minutes</code> and <code>L1ShadowLifecycle STOPPED after 4m7s up; all four loops torn down … Nothing runs until the next startIfEnabled()</code>. The send 26 s later failed with the modal "Problem sending coins! Currently payments are not possible because the wallet is not fully synced with the network" and, in the log, <code>SdkL1SendService - SDK l1Send not attempted (L1 funding gate closed: SDK L1 engine not running)</code> → <code>SendEngineNotSyncedException</code> (<code>SendCoinsTaskRunner.kt:172/451</code>). An immediate retry 74 s later failed identically. Only force-stop + relaunch restarted the engine (<code>06:03:14 L1 shadow SPV started</code>), after which the identical send succeeded (<code>06:05:00 SDK l1Send: broadcast 100000 duffs … txid bd9fc16d…</code>, InstantLocked 0 s later).</p>
+<p>Full timeline, UI state and retries are in <a class=ev href="../S1/notes.md">notes.md</a> under "C1 … === <a class=did href="../../DEFECT-LEDGER.html#D-029">D-029</a> detail ===". Short version: the app was foreground, idle and displaying a fully synced UI (<code>phase=SYNCED 100.0% headers 1556573/1556573</code> at 05:57:29, and the send screen itself read <code>Balance: DASH 0.01000737 ~ $0.61</code>). At 06:01:00 <code>BlockchainServiceImpl - idling detected, stopping service</code> / <code>serviceJob cancelled after 4 minutes</code> and <code>L1ShadowLifecycle STOPPED after 4m7s up; all four loops torn down … Nothing runs until the next startIfEnabled()</code>. The send 26 s later failed with the modal "Problem sending coins! Currently payments are not possible because the wallet is not fully synced with the network" and, in the log, <code>SdkL1SendService - SDK l1Send not attempted (L1 funding gate closed: SDK L1 engine not running)</code> → <code>SendEngineNotSyncedException</code> (<code>SendCoinsTaskRunner.kt:172/451</code>). An immediate retry 74 s later failed identically. Only force-stop + relaunch restarted the engine (<code>06:03:14 L1 shadow SPV started</code>), after which the identical send succeeded (<code>06:05:00 SDK l1Send: broadcast 100000 duffs … txid bd9fc16d…</code>, InstantLocked 0 s later).</p>
 <h2 id="defects-found">Defects found</h2>
 <table>
 <thead>
@@ -242,7 +244,7 @@ Username: <strong>qa1s13939</strong>, identity <code>DYjxDk3kTzf2PXAK3LfGj2cWitn
 <td>Confirm dialog quotes a network fee ~44x the fee actually paid; the post-send detail sheet shows neither the fee nor the recipient</td>
 <td>Send 0.001 to any address; read "Network fee 0.0001" on the confirm sheet; compare with insight after broadcast</td>
 <td><a class=ev href="../S1/C1/07-after-pin.webp">C1/07-after-pin.png</a> (quote 0.0001), <a class=ev href="../S1/C1/17-insight-sendtx.txt">C1/17-insight-sendtx.txt</a> (<code>fees 2.26e-06</code>, 225-byte tx), <a class=ev href="../S1/C1/13-after-retry2.webp">C1/13-after-retry2.png</a> (detail sheet: only "Amount Sent −0.00000226")</td>
-<td>send confirm fee estimate (SR-28)</td>
+<td>send confirm fee estimate (<a class=did href="../../DEFECT-LEDGER.html#SR-28">SR-28</a>)</td>
 </tr>
 <tr>
 <td class=S1>S1-D04</td>
@@ -250,7 +252,7 @@ Username: <strong>qa1s13939</strong>, identity <code>DYjxDk3kTzf2PXAK3LfGj2cWitn
 <td>"Max" on any shielded transfer offers an amount that can never be broadcast; it always fails once and is silently auto-retried with a smaller amount, stranding dust</td>
 <td>Payments → Internal → Shielded balance → Max (either direction) → Continue → Confirm → PIN</td>
 <td>shield: <code>05:21:58 shieldFromWallet rejected pre-broadcast (no lock tracked)</code> + <code>max shield auto-adjusting … reserve 1000 duffs (1 UTXOs), retrying once with 0.99999</code>; unshield: <code>06:10:44 withdrawToCore rejected pre-broadcast … Insufficient shielded balance: available 95510957600, required 95786148200</code> + <code>max withdraw auto-adjusting … retrying once with 0.95235766</code>; drain: <code>06:25:17 … reserve 1488 duffs (3 UTXOs), retrying once with 0.96133372</code>. <code>SR30/*</code>, <a class=ev href="../S1/C2/11-drain-log.txt">C2/11-drain-log.txt</a></td>
-<td><code>ShieldedTransferExecutor</code> Max computation (SR-30). Result: the user is charged/credited a different amount than the one they confirmed, and 737–1225 duffs are left stranded so the wallet never drains to zero</td>
+<td><code>ShieldedTransferExecutor</code> Max computation (<a class=did href="../../DEFECT-LEDGER.html#SR-30">SR-30</a>). Result: the user is charged/credited a different amount than the one they confirmed, and 737–1225 duffs are left stranded so the wallet never drains to zero</td>
 </tr>
 <tr>
 <td class=S1>S1-D05</td>
@@ -338,7 +340,7 @@ Username: <strong>qa1s13939</strong>, identity <code>DYjxDk3kTzf2PXAK3LfGj2cWitn
 <ul>
 <li><code>$QA_ROOT/bin/qa-faucet.sh</code> is blocked by Cloudflare error 1010 (<code>browser_signature_banned</code>) for the headless Playwright user-agent. Worked around with the studio browser (one request only, txid <code>7efffea3…</code>). Now documented in AGENT-BRIEF.md.</li>
 <li>The brief's Platform explorer <code>platform-explorer.pshenmic.dev</code> is the <strong>mainnet</strong> deployment; testnet DPNS/identity lookups must go to <code>testnet.platform-explorer.pshenmic.dev</code>.</li>
-<li><code>qa-app.sh logcat-start</code> produced an empty file for the first ~65 min; <code>logcat-early.txt</code> (ring-buffer dump, 15 978 lines) covers that window, <code>logcat.txt</code> (117 172 lines) covers the rest.</li>
+<li><code>qa-app.sh logcat-start</code> produced an empty file for the first ~65 min; <a class=ev href="../S1/logcat-early.txt">logcat-early.txt</a> (ring-buffer dump, 15 978 lines) covers that window, <a class=ev href="../S1/logcat.txt">logcat.txt</a> (117 172 lines) covers the rest.</li>
 <li><code>adb shell input text</code> needs spaces encoded as <code>%s</code>; the first pass of the A1.8 negative tests entered a single word and was re-run correctly.</li>
 <li>The app auto-locks after ~1 min of foreground idle, which repeatedly interrupted poll loops (expected behaviour, not filed).</li>
 </ul>
@@ -355,6 +357,14 @@ Username: <strong>qa1s13939</strong>, identity <code>DYjxDk3kTzf2PXAK3LfGj2cWitn
 <li>Journal: <code>/Users/dcg/workspace/dash-wallet-qa/evidence/S1/notes.md</code></li>
 <li>Per-test: <code>A1/01-onboarding … A1/08-negative</code>, <code>C1</code>, <code>C2</code>, <code>C3</code>, <code>C4</code>, <code>C5</code>, <code>C6</code>, <code>C7</code>, <code>D3</code>, <code>SR30</code></li>
 <li>Videos: <a class=ev href="../S1/A1/03-shield/s1-shield-1.mp4">A1/03-shield/s1-shield-1.mp4</a>, <a class=ev href="../S1/A1/04-username/s1-username-1.mp4">A1/04-username/s1-username-1.mp4</a>, <a class=ev href="../S1/A1/06-reset-restore/s1-reset-1.mp4">A1/06-reset-restore/s1-reset-1.mp4</a>, <a class=ev href="../S1/A1/06-reset-restore/s1-restore-1.mp4">A1/06-reset-restore/s1-restore-1.mp4</a>, <a class=ev href="../S1/A1/07-after-restore/s1-restore-2.mp4">A1/07-after-restore/s1-restore-2.mp4</a>, <a class=ev href="../S1/C1/s1-c1-send.mp4">C1/s1-c1-send.mp4</a>, <a class=ev href="../S1/C4/s1-c4-unshield.mp4">C4/s1-c4-unshield.mp4</a>, <a class=ev href="../S1/D3/s1-d3-contact.mp4">D3/s1-d3-contact.mp4</a>, <a class=ev href="../S1/SR30/s1-sr30-max.mp4">SR30/s1-sr30-max.mp4</a>, <a class=ev href="../S1/C2/s1-c2-sendall.mp4">C2/s1-c2-sendall.mp4</a>, <a class=ev href="../S1/C2/s1-c2-drain.mp4">C2/s1-c2-drain.mp4</a></li>
-<li>Logs: <code>logcat-early.txt</code>, <code>logcat.txt</code>, <a class=ev href="../S1/mem.csv">mem.csv</a>, <a class=ev href="../S1/exitinfo.txt">exitinfo.txt</a>, <code>A1/05-before-reset/wallet.log</code>, <a class=ev href="../S1/A1/07-after-restore/files/log/wallet.log">A1/07-after-restore/files/log/wallet.log</a>, <code>final-logs/wallet.log</code></li>
+<li>Logs: <a class=ev href="../S1/logcat-early.txt">logcat-early.txt</a>, <a class=ev href="../S1/logcat.txt">logcat.txt</a>, <a class=ev href="../S1/mem.csv">mem.csv</a>, <a class=ev href="../S1/exitinfo.txt">exitinfo.txt</a>, <code>A1/05-before-reset/wallet.log</code>, <a class=ev href="../S1/A1/07-after-restore/files/log/wallet.log">A1/07-after-restore/files/log/wallet.log</a>, <code>final-logs/wallet.log</code></li>
 <li>Shared: <code>/Users/dcg/workspace/dash-wallet-qa/evidence/shared/usernames.txt</code>, <code>/Users/dcg/workspace/dash-wallet-qa/evidence/shared/contact-accepted.txt</code></li>
-</ul></html>
+</ul><div id=lb><span class=x>&times;</span><span class="nv pv">&#8249;</span><span class="nv nx">&#8250;</span><img><div class=cap></div></div>
+<script>(function(){var lb=document.getElementById('lb'),im=lb.querySelector('img'),cap=lb.querySelector('.cap'),L=[],i=0;
+function links(){return Array.prototype.slice.call(document.querySelectorAll('a[href$=".webp"],a[href$=".png"]'))}
+function show(n){L=links();if(n<0||n>=L.length)return;i=n;var a=L[i];im.src=a.href;cap.innerHTML=(a.textContent.trim()||a.href.split('/').slice(-3).join('/'))+' &nbsp;('+(i+1)+'/'+L.length+') &nbsp;<a href="'+a.href+'" target=_blank rel=noopener>open file</a>';lb.classList.add('on')}
+function hide(){lb.classList.remove('on');im.src=''}
+document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".webp"],a[href$=".png"]');if(a&&!a.closest('#lb')){e.preventDefault();show(links().indexOf(a))}});
+lb.querySelector('.x').onclick=hide;lb.querySelector('.pv').onclick=function(e){e.stopPropagation();show(i-1)};lb.querySelector('.nx').onclick=function(e){e.stopPropagation();show(i+1)};
+lb.addEventListener('click',function(e){if(e.target===lb||e.target===im)hide()});
+document.addEventListener('keydown',function(e){if(!lb.classList.contains('on'))return;if(e.key==='Escape')hide();if(e.key==='ArrowLeft')show(i-1);if(e.key==='ArrowRight')show(i+1)});})();</script></html>
