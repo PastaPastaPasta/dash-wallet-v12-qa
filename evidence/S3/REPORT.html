@@ -1,0 +1,369 @@
+<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Stream S3 report</title><style>body{font-family:system-ui,-apple-system,sans-serif;max-width:1400px;margin:0 auto;padding:16px 24px;line-height:1.45;background:#fff;color:#111}
+table{border-collapse:collapse;font-size:13px;margin:12px 0}th,td{border:1px solid #ddd;padding:4px 8px;vertical-align:top;text-align:left}th{background:#f3f6fa;position:sticky;top:0}
+tr:nth-child(even){background:#fafbfc}code{background:#f4f4f4;padding:1px 4px;border-radius:3px;font-size:12px}pre{background:#f4f4f4;padding:10px;overflow:auto}
+h1{border-bottom:3px solid #008de4}h2{border-bottom:1px solid #ccc;margin-top:40px}a{color:#008de4}a.ev{background:#e8f4fd;padding:0 3px;border-radius:3px;font-family:ui-monospace,monospace;font-size:12px}
+nav.top{background:#012060;color:#fff;padding:8px 24px;margin:-16px -24px 16px;position:sticky;top:0;z-index:5}nav.top a{color:#fff;margin-right:18px;text-decoration:none}nav.top a:hover{text-decoration:underline}
+.S1{color:#b00020;font-weight:bold}.S2{color:#c75000;font-weight:bold}.toc{background:#f8f9fb;border:1px solid #e3e6ea;padding:8px 16px;font-size:13px;columns:2}.toc ul{margin:2px 0;padding-left:16px}
+.note{background:#fff8e1;border-left:4px solid #f5b400;padding:8px 12px;margin:12px 0}
+</style><nav class=top><a href="../../index.html">Home</a><a href="../../QA-REPORT.html">Full report</a><a href="../../EXEC-SUMMARY.html">Executive summary</a><a href="../../STORY-MATRIX.html">User-story matrix</a><a href="../../DEFECT-LEDGER.html">Defect register</a><a href="../index.html">Evidence gallery</a><a href="../../QA-PLAN.html">Test plan</a><a href="../../streams.html">Stream reports</a></nav><h1 id="qa-report-s3-a3-a3b-upgrade-master-1190-fix-1200-agent-opus-s3-emulator-emulator-5558-dw-qa3-2026-09-19">QA report: S3 — A3 / A3b (upgrade master 11.9.0 -&gt; fix 12.0.0)   (agent: Opus S3, emulator: emulator-5558 / dw-qa3, 2026-09-19)</h1>
+<p>Builds: <code>master-11.9.0-testnet3-release-signed.apk</code> versionCode <strong>11090002</strong> -&gt; <code>fix-12.0.0-testnet3-release-signed.apk</code> versionCode <strong>12000000</strong> (same QA key, <code>adb install -r</code> = true in-place upgrade; <code>dumpsys package</code> confirmed 12000000 / minSdk 29).
+Wallet: reference seed <code>[seed phrase redacted]</code>, app PIN 1234. READ-ONLY — nothing sent, shielded, or registered.</p>
+<h2 id="summary-table">Summary table</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Verdict</th>
+<th>Key evidence file(s)</th>
+<th>One-line finding</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A3.1 Install master, restore seed, onboarding</td>
+<td>PASS</td>
+<td><code>S3/A3/01-master-sync/01..09-home-t0.png</code></td>
+<td>Restore + PIN + permissions clean on 11.9.0.</td>
+</tr>
+<tr>
+<td>A3.2 dashj sync window (30-min floor; &gt;=50% from the start)</td>
+<td>PASS</td>
+<td><a class=ev href="../S3/A3/01-master-sync/poll.log">S3/A3/01-master-sync/poll.log</a>, <code>poll-01..05-*.png</code></td>
+<td>55%-&gt;100% (height 1556420/1556563) in ~26 min; PSS 190-224 MB, native 37-41 MB.</td>
+</tr>
+<tr>
+<td>A3.2b master Tools/About captured for comparison</td>
+<td>PASS</td>
+<td><code>01-master-sync/10..13-master-*.png</code></td>
+<td>DashJ 22.0.5-SNAPSHOT; no dashj toggle in Tools.</td>
+</tr>
+<tr>
+<td>A3.3 Pre-upgrade snapshot + <code>last_version</code></td>
+<td>PASS</td>
+<td><a class=ev href="../S3/A3/02-pre-upgrade/01-home-pre-upgrade.webp">S3/A3/02-pre-upgrade/01-home-pre-upgrade.png</a>, <a class=ev href="../S3/A3/06-restart/files/log/wallet.log">.../files/log/wallet.log</a></td>
+<td><code>last_version=11090002</code> (&lt; 12000000). Balance 107.081735.</td>
+</tr>
+<tr>
+<td>A3.4 In-place upgrade to 12000000</td>
+<td>PASS</td>
+<td><a class=ev href="../S3/A3/03-upgrade-launch/a3-upgrade-launch-1.mp4">S3/A3/03-upgrade-launch/a3-upgrade-launch-1.mp4</a>, <code>-2.mp4</code></td>
+<td><code>install -r</code> succeeded, data preserved, version 12000000.</td>
+</tr>
+<tr>
+<td>A3.5 Cutover assertions on the upgrade launch</td>
+<td><strong>PASS</strong></td>
+<td><code>03-upgrade-launch/grep-cutover-state.txt</code>, <a class=ev href="../S3/A3/03-upgrade-launch/grep-l1-shadow-started.txt">grep-l1-shadow-started.txt</a>, <a class=ev href="../S3/A3/03-upgrade-launch/grep-starting-peergroup-ONLY-PRE-UPGRADE.txt">grep-starting-peergroup-ONLY-PRE-UPGRADE.txt</a>, <code>grep-explainer.txt</code>, <a class=ev href="../S3/A3/03-upgrade-launch/03-after-unlock.webp">03-after-unlock.png</a></td>
+<td>One <code>DUAL_RUNNING -&gt; CUT_OVER</code>, one <code>L1 shadow SPV started</code>, zero post-cutover <code>starting peergroup</code>, zero <code>OverlappingFileLockException</code>, zero <code>idling detected</code> during replay, explainer armed+shown exactly once, balance held at last known.</td>
+</tr>
+<tr>
+<td>A3.6 Replay to 100%, balance, tx list, memory</td>
+<td>PASS (balance note)</td>
+<td><code>S3/A3/04-replay/</code>, <a class=ev href="../S3/A3/05-post-sync/00-home-100pct.webp">05-post-sync/00-home-100pct.png</a>, <code>txlist-01..12.png</code>, <a class=ev href="../S3/mem.csv">S3/mem.csv</a></td>
+<td>100% in ~4 min 27 s; balance 107.08173522 (see balance note); PSS peak 620 MB / native 463 MB; no LMK/OOM.</td>
+</tr>
+<tr>
+<td>A3.7 Kill + relaunch -&gt; SETTLED, no 2nd explainer, balance</td>
+<td><strong>PARTIAL FAIL</strong></td>
+<td><a class=ev href="../S3/A3/06-restart/dashpay-datastore-strings.txt">S3/A3/06-restart/dashpay-datastore-strings.txt</a>, <code>grep-cutover-state.txt</code>, <a class=ev href="../S3/A3/06-restart/02-relaunch-home.webp">02-relaunch-home.png</a></td>
+<td>No 2nd explainer, balance unchanged — but state stays <code>CUT_OVER</code>, never <code>SETTLED</code> (D-054).</td>
+</tr>
+<tr>
+<td>A3.7b Background 10 min -&gt; foreground</td>
+<td>PASS</td>
+<td><a class=ev href="../S3/A3/06-restart/grep-background-10min.txt">06-restart/grep-background-10min.txt</a>, <a class=ev href="../S3/A3/06-restart/04-after-10min-bg-fg.webp">04-after-10min-bg-fg.png</a></td>
+<td>One clean post-replay <code>idling detected, stopping service</code>; memory fell to 271 MB PSS; balance unchanged.</td>
+</tr>
+<tr>
+<td>A3b Locked upgrade: classification + notification + no engine start</td>
+<td>PASS</td>
+<td><a class=ev href="../S3/A3b/grep-bind-locked.txt">S3/A3b/grep-bind-locked.txt</a>, <a class=ev href="../S3/A3b/08-shade-on-lockscreen.webp">08-shade-on-lockscreen.png</a>, <a class=ev href="../S3/A3b/a3b-locked-upgrade.mp4">a3b-locked-upgrade.mp4</a></td>
+<td><code>SDK bind pending: DEVICE_LOCKED</code>, lock-screen notification shown, zero engine starts while locked.</td>
+</tr>
+<tr>
+<td>A3b Bind heals within 5 s of unlock</td>
+<td>PASS</td>
+<td><a class=ev href="../S3/A3b/grep-unlock-bind.txt">S3/A3b/grep-unlock-bind.txt</a>, <a class=ev href="../S3/A3b/a3b-unlock.mp4">a3b-unlock.mp4</a></td>
+<td><code>ACTION_USER_PRESENT</code> 06:28:34 -&gt; bind established 06:28:37 = <strong>3 s</strong>.</td>
+</tr>
+<tr>
+<td>A3b Engine start after unlock -&gt; sync to 100%</td>
+<td><strong>FAIL</strong></td>
+<td><a class=ev href="../S3/A3b/grep-engine-never-started.txt">S3/A3b/grep-engine-never-started.txt</a>, <a class=ev href="../S3/A3b/15-home.webp">15-home.png</a>, <a class=ev href="../S3/A3b/grep-probe3-recovery.txt">grep-probe3-recovery.txt</a></td>
+<td>Engine never re-kicked after the deferred bind heals; replay wedged at 0% for 16 min until a manual force-stop+relaunch (D-056).</td>
+</tr>
+<tr>
+<td>A3b After forced restart: 100% + balance</td>
+<td>PASS</td>
+<td><a class=ev href="../S3/A3b/grep-a3b-complete.txt">S3/A3b/grep-a3b-complete.txt</a>, <a class=ev href="../S3/A3b/16-a3b-final.webp">16-a3b-final.png</a></td>
+<td><code>phase=SYNCED 100.0% 1556593/1556593</code>, balance 107.081735 (== A3).</td>
+</tr>
+<tr>
+<td>A3.9 Tools / About comparison master vs fix</td>
+<td>PASS</td>
+<td><a class=ev href="../S3/A3/07-tools-about/02b-fix-tools-dashj-toggle.webp">S3/A3/07-tools-about/02b-fix-tools-dashj-toggle.png</a>, <a class=ev href="../S3/A3/07-tools-about/04-fix-about.webp">04-fix-about.png</a> vs <code>01-master-sync/11,13-master-*.png</code></td>
+<td>About L1 row flips DashJ -&gt; "Dash Kotlin SDK 0.1.0-v42int19-SNAPSHOT"; Tools gains the dashj-sync diagnostic toggle (OFF).</td>
+</tr>
+<tr>
+<td>Baseline check 1 (orchestrator): Forgot-PIN back-nav on MASTER</td>
+<td>PASS (master safe)</td>
+<td><code>S3/baseline/m1-01..07-*.png</code></td>
+<td>Master always returns to the PIN lock screen =&gt; the fix-build bypass S4 found is a <strong>regression</strong>.</td>
+</tr>
+<tr>
+<td>Baseline check 2 (orchestrator): Reset-wallet PIN prompt on MASTER</td>
+<td>n/a (master also unprotected)</td>
+<td><code>S3/baseline/m2-01..04-*.png</code></td>
+<td>Master wipes with <strong>no PIN prompt either</strong> =&gt; the fix-build S1 is <strong>pre-existing</strong>, not a regression.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="per-test-detail">Per-test detail</h2>
+<h3 id="a3-upgrade-master-1190-fix-1200">A3 — upgrade master 11.9.0 -&gt; fix 12.0.0</h3>
+<p>Wall clock (host):
+- 00:10 clean device, install master 11090002; 00:13 seed restored, PIN set, home reached (header already "Syncing 55%").
+- 00:14-&gt;00:39:44 dashj: 55 -&gt; 60 -&gt; 68 -&gt; 79 -&gt; 89 -&gt; 99 -&gt; 100 % (<code>chain/common height 1556420/1556563</code>), then masternode-list phase. ~26 min to tip.
+- 00:43:36 pre-upgrade sample; 00:43:41 <code>kill</code>; 00:43:43 <code>adb install -r</code> fix APK; version 12000000.
+- 00:43:52 <code>screenrecord</code> started; 00:43:57 <code>launch</code>.
+- 00:48:10 explainer visible; 00:49:00 replay complete; 00:52:58 kill; 00:53:03 relaunch; 00:54:49-&gt;01:05:28 background 10 min.</p>
+<p>Assertions (quoted from the live <a class=ev href="../S3/A3/06-restart/files/log/wallet.log">wallet.log</a>; the <code>05:xx</code> prefix is the log's own clock, host time = prefix - 5 h):</p>
+<table>
+<thead>
+<tr>
+<th>Assertion</th>
+<th>Expected</th>
+<th>Actual</th>
+<th>Verdict</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cutover transition on the upgrade launch</td>
+<td><code>DUAL_RUNNING -&gt; ... -&gt; CUT_OVER</code></td>
+<td><code>05:43:59 CutoverCoordinator - cutover state DUAL_RUNNING -&gt; CUT_OVER (upgraded-wallet launch)</code> — exactly one</td>
+<td>PASS</td>
+</tr>
+<tr>
+<td><code>L1 shadow SPV started</code></td>
+<td>exactly 1</td>
+<td>1, at <code>05:44:04 ... for SDK wallet b7118ed5... (dataDir=.../l1_shadow_spv/testnet)</code></td>
+<td>PASS</td>
+</tr>
+<tr>
+<td>dashj <code>starting peergroup</code> after cutover</td>
+<td>0</td>
+<td>only <code>05:42:24</code> (master, ~95 s BEFORE the upgrade). Counter-evidence repeats on every <code>check()</code>: <code>BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch</code></td>
+<td>PASS</td>
+</tr>
+<tr>
+<td><code>OverlappingFileLockException</code></td>
+<td>0</td>
+<td>0</td>
+<td>PASS</td>
+</tr>
+<tr>
+<td><code>idling detected</code> during the replay</td>
+<td>0</td>
+<td>0 (the guard logged <code>idle counters, but a replay is in progress (...%) — keeping the service alive</code>)</td>
+<td>PASS</td>
+</tr>
+<tr>
+<td>one-time explainer</td>
+<td>armed + shown once</td>
+<td><code>05:43:59 upgrade cutover: one-time sync explainer armed (upgraded-wallet launch)</code>; sheet on screen with live "Syncing 99%"</td>
+<td>PASS</td>
+</tr>
+<tr>
+<td>balance during the replay</td>
+<td>last known, not a wrong number</td>
+<td><code>107.081735</code> under a "Syncing balance" header — identical to the master pre-upgrade value; <code>CutoverUiDataService ... lastKnown=10708173522</code></td>
+<td>PASS</td>
+</tr>
+<tr>
+<td><code>filter-stall watchdog</code> / engine restarts</td>
+<td>0</td>
+<td>0</td>
+<td>PASS</td>
+</tr>
+<tr>
+<td><code>OutOfMemory</code> / <code>FATAL</code> in wallet.log</td>
+<td>0</td>
+<td>0</td>
+<td>PASS</td>
+</tr>
+</tbody>
+</table>
+<p>Replay metrics: first height change <code>synced_height_persisted=Some(1999)</code> at 00:44:14 = <strong>17 s</strong> after launch; tip <code>Some(1556568)</code> at 00:48:23 = <strong>4 min 27 s</strong>; <code>replay complete — releasing the wake lock</code> at 05:49:00 = <strong>~5 min 3 s</strong>. SDK balance converged to <code>10708173522 duffs</code> at 05:46:23.</p>
+<p>Memory (<a class=ev href="../S3/mem.csv">S3/mem.csv</a>, 30 s cadence): session peak <strong>TOTAL PSS 635,726 KB (~621 MB)</strong>, <strong>Native Heap 492,576 KB (~481 MB)</strong>; during the A3 replay window peak PSS 619,637 KB / native 463,492 KB at 00:47:55. Master baseline on the same wallet was PSS 190-224 MB / native 37-41 MB — roughly <strong>3x PSS and 11x native heap</strong>. Settles to ~480 MB PSS / ~320 MB native after the replay, and <strong>271 MB PSS / 106 MB native</strong> when idle in the background. <code>dumpsys activity exit-info</code> shows only <code>reason=10 (USER REQUESTED) subreason=21 (FORCE STOP)</code> — my own kill. No LMK, no OOM kill.</p>
+<p>Tx list after 100%: populated and scrollable across 12 pages (<code>05-post-sync/txlist-01..12.png</code>) — Sent/Received/Internal/CoinJoin "Mixing Transactions" groups, DashPay contact rows ("Asd15augiossh"), fiat values resolved.</p>
+<h3 id="a3b-locked-device-upgrade">A3b — locked-device upgrade</h3>
+<ul>
+<li>master reinstalled, seed restored 01:10:40, synced 15 min to <strong>85 %</strong> (<code>06:25:54 ... progress 85</code>) — a genuine mid-sync upgrade.</li>
+<li>01:26 <code>setpin 1234</code>, <code>kill</code>, <code>lock</code>. Device provably locked at service start: <code>dumpsys trust</code> -&gt; <code>deviceLocked=1, strongAuthRequired=0x1</code>, <code>mCurrentFocus=Window{... NotificationShade}</code>.</li>
+<li>01:26:42 <code>adb install -r</code> fix APK; 01:26:54 <code>am start-foreground-service -n .../de.schildbach.wallet.service.BlockchainServiceImpl</code>.</li>
+<li>Classification exactly right: <code>SdkBindDeferredWhileLockedException: SDK bind deferred: the device is locked, so the lock-bound master alias would be denied</code> -&gt; <code>SDK bind pending: DEVICE_LOCKED (... device provably locked=true ...)</code>, plus <code>unlock-heal receiver registered (ACTION_USER_PRESENT, exported — SystemUI is the sender)</code>.</li>
+<li>Lock-screen notification: <strong>"Unlock your phone to finish the wallet update / Tap here once your phone is unlocked and the update will finish setting up. Your funds are safe, and your balance stays at its last known amount until then."</strong></li>
+<li>No engine start while locked: <code>L1 shadow SPV started</code> = 0, <code>L1 shadow sync not started: app wallet not bound to the SDK yet</code>, <code>starting peergroup</code> only at <code>06:09:55</code> (master, pre-upgrade).</li>
+<li>Unlock 01:28:30 -&gt; <code>06:28:34 device unlocked (ACTION_USER_PRESENT) — running an immediate SDK bind retry</code> -&gt; <code>06:28:37 SDK wallet bind established after 6 failed pass(es)</code> -&gt; <code>SDK bind established — clearing the pending state (DEVICE_LOCKED)</code>. <strong>3 s</strong>, within the 5 s target. Pending notification cleared.</li>
+<li>Then D-056: the replay never started until a manual force-stop + relaunch at 01:44:35. After that: <code>06:48:03 L1Shadow phase=SYNCED 100.0% headers 1556593/1556593 filters 1556593/1556593 wallet 1556593</code>, <code>06:49:00 replay complete</code>, balance <strong>107.081735</strong> — identical to A3. Whole-run counts: SPV starts 1, peergroup 1 (master only), explainer 1, file-lock 0, watchdog 0, OOM/FATAL 0. <code>exit-info</code>: <code>reason=10 FORCE STOP</code> + <code>reason=16 PACKAGE UPDATED</code> only.</li>
+</ul>
+<h3 id="a39-tools-about-master-vs-fix">A3.9 Tools / About: master vs fix</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>master 11.9.0</th>
+<th>fix 12.0.0</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>About — App version</td>
+<td><code>11.9.0 (2) - testnet</code></td>
+<td><code>12.0.0 (0) - testnet</code></td>
+</tr>
+<tr>
+<td>About — L1 engine row</td>
+<td><strong>DashJ</strong> <code>22.0.5-SNAPSHOT</code></td>
+<td><strong>Dash Kotlin SDK</strong> <code>0.1.0-v42int19-SNAPSHOT</code></td>
+</tr>
+<tr>
+<td>About — Platform</td>
+<td><code>4.0.1-SNAPSHOT</code></td>
+<td><code>4.0.1-SNAPSHOT</code> (unchanged)</td>
+</tr>
+<tr>
+<td>Tools</td>
+<td>Address book, Import private key, Network monitor, Extended public key (BIP44), Masternode keys, CSV export, <strong>Connections</strong>, Credits/Buy, ZenLedger</td>
+<td>same minus <strong>Connections</strong>, plus <strong>"dashj sync (diagnostic)"</strong> toggle, OFF by default ("Run the legacy dashj engine alongside the SDK to compare")</td>
+</tr>
+<tr>
+<td>More</td>
+<td>no balance header, no Invitations</td>
+<td>balance header "Dash Wallet 107.081 D / Shielded 0.000 D", adds <strong>Invitations</strong> and <strong>Username Voting</strong></td>
+</tr>
+<tr>
+<td>Settings</td>
+<td>..., <strong>CoinJoin (Turned off)</strong>, ...</td>
+<td>same list <strong>without</strong> the CoinJoin row</td>
+</tr>
+</tbody>
+</table>
+<p>The About label flip confirms <code>state.sdkOwnsL1 == true</code> post-cutover (<code>AboutFragment.kt:87-96</code>).</p>
+<h2 id="defects-found">Defects found</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Sev</th>
+<th>Title</th>
+<th>Repro</th>
+<th>Evidence</th>
+<th>Suspected area</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>D-056</td>
+<td><strong>S1</strong></td>
+<td>After a locked-device upgrade the SDK L1 engine never starts; replay wedged at 0% until the user force-stops the app</td>
+<td>master 11.9.0 with a synced wallet -&gt; set device PIN -&gt; lock screen -&gt; <code>adb install -r</code> fix APK -&gt; <code>am start-foreground-service ...BlockchainServiceImpl</code> while locked -&gt; unlock. Bind heals in 3 s but the replay stays at 0%.</td>
+<td><a class=ev href="../S3/A3b/grep-engine-never-started.txt">S3/A3b/grep-engine-never-started.txt</a>, <a class=ev href="../S3/A3b/grep-unlock-bind.txt">grep-unlock-bind.txt</a>, <a class=ev href="../S3/A3b/15-home.webp">15-home.png</a>, <a class=ev href="../S3/A3b/grep-probe3-recovery.txt">grep-probe3-recovery.txt</a></td>
+<td><code>PlatformSyncService.kickSdkEngines</code> / <code>SdkBindRetryService.onBindEstablished</code></td>
+</tr>
+<tr>
+<td>D-054</td>
+<td>S3</td>
+<td><code>CutoverState.SETTLED</code> is unreachable — state stays <code>CUT_OVER</code> forever</td>
+<td>Complete an upgrade cutover, reach 100%, kill + relaunch, read <code>files/datastore/dashpay.preferences_pb</code>.</td>
+<td><a class=ev href="../S3/A3/06-restart/dashpay-datastore-strings.txt">S3/A3/06-restart/dashpay-datastore-strings.txt</a> (<code>cutover_state</code> -&gt; <code>CUT_OVER</code>), <code>06-restart/grep-cutover-state.txt</code> (only one transition ever logged)</td>
+<td><code>CutoverStateMachine.kt:107,139</code> / <code>CutoverCoordinator</code></td>
+</tr>
+<tr>
+<td>D-055</td>
+<td>S3</td>
+<td>SDK replay costs ~3x PSS and ~11x native heap vs dashj on the same wallet</td>
+<td>Compare <a class=ev href="../S3/mem.csv">S3/mem.csv</a> master window (00:14-00:43) against the fix replay window (00:44-00:49).</td>
+<td><a class=ev href="../S3/mem.csv">S3/mem.csv</a>: master 190-224 MB PSS / 37-41 MB native vs fix peak 620-636 MB PSS / 463-493 MB native</td>
+<td>L1 shadow SPV native engine</td>
+</tr>
+<tr>
+<td>D-057</td>
+<td>S4</td>
+<td>About shows "12.0.0 <strong>(0)</strong>"</td>
+<td>Open More &gt; Settings &gt; About Dash on the fix build.</td>
+<td><a class=ev href="../S3/A3/07-tools-about/04-fix-about.webp">S3/A3/07-tools-about/04-fix-about.png</a></td>
+<td><code>AboutFragment.kt</code> — build number is <code>VERSION_CODE % 100</code>, and <code>12000000 % 100 == 0</code></td>
+</tr>
+<tr>
+<td>D-058</td>
+<td>S4</td>
+<td>Inactivity notification quotes a stale partial balance</td>
+<td>Upgrade with a partially-synced wallet; "You've still got Dash on this device!" said "balance of DASH 6.93208425" while the wallet holds 107.08.</td>
+<td><a class=ev href="../S3/A3b/08-shade-on-lockscreen.webp">S3/A3b/08-shade-on-lockscreen.png</a>; <code>06:26:47 BootstrapReceiver - detected balance, showing inactivity notification</code></td>
+<td><code>BootstrapReceiver</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="d-056-detail-the-s1">D-056 detail (the S1)</h3>
+<ol>
+<li><code>06:26:47</code> process starts while the device is locked; <code>PlatformSyncService</code> kicks the bind.</li>
+<li><code>06:26:48</code> breadcrumb <code>21 SDK_L1_ENGINE_STARTING</code> -&gt; <code>L1ShadowSyncService.startIfEnabled()</code> runs and returns <strong>false</strong>: <code>L1 shadow sync not started: app wallet not bound to the SDK yet</code>. Breadcrumb <code>22 SDK_L1_ENGINE_STARTED</code> is marked anyway — it records the call, not the outcome, so the trail looks healthy.</li>
+<li><code>06:26:48 ... 06:28:07</code> bind keeps deferring -&gt; blocker <code>DEVICE_LOCKED</code> (correct).</li>
+<li><code>06:28:34</code> unlock -&gt; <code>06:28:37</code> bind established (correct).</li>
+<li><strong>Nothing re-kicks the engine.</strong> In <code>wt-fix @616ac58ff</code> the only production callers of <code>l1ShadowSyncService.startIfEnabled()</code> are <code>PlatformSyncService.kickSdkEngines</code> (line 462, reached from <code>BlockchainServiceImpl.resume()</code> on a <em>foreground-service start</em>), the filter-stall watchdog (<code>L1ShadowSyncService.kt:2795</code>, which requires an already-running engine) and the post-wallet-re-creation restart (<code>:3259</code>). Neither <code>SdkBindRetryService.onBindEstablished()</code> nor <code>SdkWalletBinder</code> re-kicks it.</li>
+<li>Observed for <strong>16 min 10 s</strong> (bind 06:28:37 -&gt; engine start 06:44:47): <code>grep -c 'L1 shadow SPV started'</code> = 0, <code>grep -c 'synced_height_persisted=Some'</code> = 0, and every minute <code>BlockchainServiceImpl - idle counters, but a replay is in progress (0%) — keeping the service alive until it completes</code>. The foreground service is pinned alive by the replay guard while nothing replays.</li>
+</ol>
+<p>Recovery probes (orchestrator-requested; 2 min wait + <code>grep -c 'L1 shadow SPV started'</code> each):</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Action</th>
+<th>Result</th>
+<th>Recovered</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>bg</code> then <code>fg</code> (foreground visit; bind retry does fire)</td>
+<td>0 starts, 0 heights</td>
+<td><strong>NO</strong></td>
+</tr>
+<tr>
+<td>2</td>
+<td>airplane <code>net off</code> 20 s / <code>net on</code></td>
+<td>0 starts, 0 heights</td>
+<td><strong>NO</strong></td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>kill</code> + <code>launch</code> (fresh process -&gt; <code>resume()</code> -&gt; <code>kickSdkEngines</code>)</td>
+<td><strong>1</strong> start at <code>06:44:47</code>; 220 height events in 30 s, height 363000 in 60 s, 100% at <code>06:48:03</code></td>
+<td><strong>YES</strong></td>
+</tr>
+</tbody>
+</table>
+<p>User cost: sync only starts after the user force-stops and relaunches the app. The UI gives no hint — it shows "Syncing..." at 0% with a stale balance (6.932082 here) — so a real user has no reason to try a restart and would see a permanently stuck wallet after an overnight/locked update.</p>
+<h2 id="orchestrator-requested-master-baseline-checks">Orchestrator-requested master baseline checks</h2>
+<ol>
+<li><strong>Lock-screen bypass via Forgot PIN — MASTER IS SAFE.</strong> With master auto-locked: "Forgot PIN?" -&gt; "Enter recovery phrase" -&gt; BACK x3 returns to the <strong>Enter PIN</strong> lock screen every time, and a fresh <code>launch</code> also lands on the lock screen. The unlocked home is never reachable without the PIN. =&gt; S4's finding on fix 12.0.0 is a <strong>regression</strong>. Evidence <code>S3/baseline/m1-01..07-*.png</code>.</li>
+<li><strong>Reset wallet without a PIN — MASTER IS ALSO UNPROTECTED.</strong> More &gt; Security &gt; "Reset Wallet" -&gt; single confirmation dialog ("Are you sure you want to reset the wallet?") -&gt; "Reset wallet" -&gt; wallet wiped immediately, app lands on onboarding. The PIN is never requested; master has no "Save data and reset wallet" step at all. =&gt; the fix-build S1 is <strong>pre-existing in 11.9.0</strong>, not a regression (still a real exposure; should be reclassified). Evidence <code>S3/baseline/m2-01..04-*.png</code>.</li>
+</ol>
+<h2 id="balance-note-not-a-fix-build-defect">Balance note (not a fix-build defect)</h2>
+<p>The brief's expected reference balance is <strong>107.43173749</strong>. Both builds independently report <strong>107.08173522</strong> (<code>10708173522</code> duffs):
+- master 11.9.0 / dashj: <a class=ev href="../S3/A3/02-pre-upgrade/01-home-pre-upgrade.webp">S3/A3/02-pre-upgrade/01-home-pre-upgrade.png</a>
+- fix 12.0.0 / SDK: <a class=ev href="../S3/A3/05-post-sync/00-home-100pct.webp">S3/A3/05-post-sync/00-home-100pct.png</a>, <a class=ev href="../S3/A3b/16-a3b-final.webp">S3/A3b/16-a3b-final.png</a>, and <code>CutoverUiDataService - SDK balance published: 10708173522 duffs</code></p>
+<p>Delta = <strong>0.35000227</strong>, exactly the newest transaction both builds list ("Sent - 0.350002", 05 September). Two independent engines agreeing means the brief's number pre-dates that send. Recommend updating the expected reference balance to 107.08173522 (or re-deriving it from the explorer).</p>
+<h2 id="environment-problems-not-product-defects">Environment problems (not product defects)</h2>
+<ul>
+<li><code>qa-app.sh logcat-start</code> used <code>nohup A logcat</code> where <code>A</code> is a shell function -&gt; <code>nohup: A: No such file or directory</code>, so logcat was not captured 00:10-00:20. Re-run with the orchestrator's fixed helper at 00:21; the ring-buffer snapshot <code>S3/logcat-early.txt</code> (33,892 lines) back-fills the master install/restore window, and <code>S3/logcat-manual-0020.txt</code> holds the interim manual capture.</li>
+<li><code>logcat -b crash</code> contains two <code>FATAL EXCEPTION</code> entries (00:44:58, 00:47:12), both <code>com.android.commands.uiautomator</code> — "UiAutomationService ... already registered", caused by my own concurrent <code>uiautomator dump</code> calls. Not the app. <a class=ev href="../S3/A3/04-replay/crash-buffer-uiautomator-only.txt">S3/A3/04-replay/crash-buffer-uiautomator-only.txt</a>.</li>
+<li><code>adb shell input text "a b c"</code> splits on spaces; seed entry needs <code>%s</code> separators. Under the replay's CPU load <code>input tap</code> also drops events — the upgrade-launch PIN took three attempts (one "Wrong PIN! 7 attempts remaining"). The app never ANR'd, but input responsiveness during the replay is visibly degraded. <a class=ev href="../S3/A3/03-upgrade-launch/pin-stuck-004649.webp">S3/A3/03-upgrade-launch/pin-stuck-004649.png</a>, <a class=ev href="../S3/A3/03-upgrade-launch/after-pin-2.webp">after-pin-2.png</a>, <a class=ev href="../S3/A3/03-upgrade-launch/after-pin-3.webp">after-pin-3.png</a>.</li>
+<li>The master-sync poll loop's auto-unlock tapped digits while the launcher had focus for polls 02-05, so those poll screenshots show the launcher rather than the app. The <a class=ev href="../S3/A3/06-restart/files/log/wallet.log">wallet.log</a>-derived numbers in <a class=ev href="../S3/A3/01-master-sync/poll.log">poll.log</a> are unaffected.</li>
+</ul>
+<h2 id="not-run-blocked">Not run / blocked</h2>
+<ul>
+<li>Step 2 asked for a 60-minute dashj window "or until &gt;= 50%, whichever is first, but not less than 30 minutes". The header percentage was already 55% at t=0, so the binding constraint was the 30-minute floor and I upgraded at t~30 min. By then dashj had reached the tip (~26 min on this emulator), so <strong>A3 is an upgrade from a fully-synced master, not mid-sync</strong>. A3b covers the mid-sync case properly (upgraded at 85%).</li>
+<li>E8 (fresh small v11.9 wallet upgrade) was not part of this stream's instructions and was not run.</li>
+</ul></html>

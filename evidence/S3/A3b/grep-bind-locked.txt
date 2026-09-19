@@ -1,0 +1,60 @@
+06:17:14 [main] LockScreenActivity - show lock screen true = ![keepUnlocked=false] && autologout=true && (keepUnlockedUntilPenEntered=false || shouldLogout=true) || isHealthy=true
+06:17:49 [LLMQBackgroundThread] LLMQBackgroundThread - InstantSendManager:  pendingInstantSendLocks 0, DB: SPVISDB:  isLockCache:  0, txidCache: 0, outpointCache: 0, isLockHashHeight: 0
+06:18:33 [LLMQBackgroundThread] LLMQBackgroundThread - InstantSendManager:  pendingInstantSendLocks 0, DB: SPVISDB:  isLockCache:  0, txidCache: 0, outpointCache: 0, isLockHashHeight: 0
+06:19:18 [LLMQBackgroundThread] LLMQBackgroundThread - InstantSendManager:  pendingInstantSendLocks 0, DB: SPVISDB:  isLockCache:  0, txidCache: 0, outpointCache: 0, isLockHashHeight: 0
+06:20:03 [LLMQBackgroundThread] LLMQBackgroundThread - InstantSendManager:  pendingInstantSendLocks 0, DB: SPVISDB:  isLockCache:  0, txidCache: 0, outpointCache: 0, isLockHashHeight: 0
+06:20:48 [LLMQBackgroundThread] LLMQBackgroundThread - InstantSendManager:  pendingInstantSendLocks 0, DB: SPVISDB:  isLockCache:  0, txidCache: 0, outpointCache: 0, isLockHashHeight: 0
+06:21:33 [LLMQBackgroundThread] LLMQBackgroundThread - InstantSendManager:  pendingInstantSendLocks 0, DB: SPVISDB:  isLockCache:  0, txidCache: 0, outpointCache: 0, isLockHashHeight: 0
+06:22:25 [LLMQBackgroundThread] LLMQBackgroundThread - InstantSendManager:  pendingInstantSendLocks 0, DB: SPVISDB:  isLockCache:  0, txidCache: 0, outpointCache: 0, isLockHashHeight: 0
+06:23:08 [LLMQBackgroundThread] LLMQBackgroundThread - InstantSendManager:  pendingInstantSendLocks 0, DB: SPVISDB:  isLockCache:  0, txidCache: 0, outpointCache: 0, isLockHashHeight: 0
+06:23:51 [LLMQBackgroundThread] LLMQBackgroundThread - InstantSendManager:  pendingInstantSendLocks 0, DB: SPVISDB:  isLockCache:  0, txidCache: 0, outpointCache: 0, isLockHashHeight: 0
+06:24:35 [LLMQBackgroundThread] LLMQBackgroundThread - InstantSendManager:  pendingInstantSendLocks 0, DB: SPVISDB:  isLockCache:  0, txidCache: 0, outpointCache: 0, isLockHashHeight: 0
+06:25:19 [LLMQBackgroundThread] LLMQBackgroundThread - InstantSendManager:  pendingInstantSendLocks 0, DB: SPVISDB:  isLockCache:  0, txidCache: 0, outpointCache: 0, isLockHashHeight: 0
+06:26:04 [LLMQBackgroundThread] LLMQBackgroundThread - InstantSendManager:  pendingInstantSendLocks 0, DB: SPVISDB:  isLockCache:  0, txidCache: 0, outpointCache: 0, isLockHashHeight: 0
+06:26:47 [DefaultDispatcher-worker-6] SdkWalletBinder - SDK bind deferred: the device is locked and the SDK master alias is lock-bound; retrying on unlock / app foreground
+06:26:47 [DefaultDispatcher-worker-6] SdkWalletBinder - SDK wallet bind still not established (1 consecutive failed pass(es)); a bind retry is pending
+06:26:47 [DefaultDispatcher-worker-6] SdkWalletBinder - SDK wallet binding pass failed; retry pending
+de.schildbach.wallet.service.platform.sdk.SdkBindDeferredWhileLockedException: SDK bind deferred: the device is locked, so the lock-bound master alias would be denied
+	at de.schildbach.wallet.service.platform.sdk.SdkWalletBinder.bindLocked(SdkWalletBinder.kt:1170)
+	at de.schildbach.wallet.service.platform.sdk.SdkWalletBinder.access$bindLocked(SdkWalletBinder.kt:280)
+	at de.schildbach.wallet.service.platform.sdk.SdkWalletBinder$bindLocked$1.invokeSuspend(SdkWalletBinder.kt:0)
+06:26:47 [DefaultDispatcher-worker-4] SdkBindRetryService - SDK bind pending: DEVICE_LOCKED (1 consecutive failure(s); device provably locked=true; unlocked keystore denials in a row=0; other failures in a row=0; cause=de.schildbach.wallet.service.platform.sdk.SdkBindDeferredWhileLockedException: SDK bind deferred: the device is locked, so the lock-bound master alias would be denied)
+06:26:47 [DefaultDispatcher-worker-2] SdkBindRetryService - SDK bind retry 1 (cutover-ui bound-wallet wait): re-running the wallet bind pass (1 consecutive failure(s) so far)
+06:26:47 [DefaultDispatcher-worker-2] SdkWalletBinder - SDK bind deferred: the device is locked and the SDK master alias is lock-bound; retrying on unlock / app foreground
+06:26:47 [DefaultDispatcher-worker-2] SdkWalletBinder - SDK wallet bind still not established (2 consecutive failed pass(es)); a bind retry is pending
+06:26:47 [DefaultDispatcher-worker-2] SdkWalletBinder - SDK wallet binding pass failed; retry pending
+de.schildbach.wallet.service.platform.sdk.SdkBindDeferredWhileLockedException: SDK bind deferred: the device is locked, so the lock-bound master alias would be denied
+	at de.schildbach.wallet.service.platform.sdk.SdkWalletBinder.bindLocked(SdkWalletBinder.kt:1170)
+	at de.schildbach.wallet.service.platform.sdk.SdkWalletBinder.access$bindLocked(SdkWalletBinder.kt:280)
+	at de.schildbach.wallet.service.platform.sdk.SdkWalletBinder$bindLocked$1.invokeSuspend(SdkWalletBinder.kt:0)
+06:26:47 [DefaultDispatcher-worker-3] SdkBindRetryService - SDK bind pending: DEVICE_LOCKED (2 consecutive failure(s); device provably locked=true; unlocked keystore denials in a row=0; other failures in a row=0; cause=de.schildbach.wallet.service.platform.sdk.SdkBindDeferredWhileLockedException: SDK bind deferred: the device is locked, so the lock-bound master alias would be denied)
+06:26:47 [DefaultDispatcher-worker-2] SdkBindRetryService - SDK bind retry 1 (cutover-ui bound-wallet wait) failed — 2 consecutive failure(s); device provably locked=true. No dashj fallback: retrying on the ladder, on unlock and on app foreground
+06:26:47 [DefaultDispatcher-worker-2] CutoverUiDataService - cutover UI pipelines waiting for a SINGLE bound SDK wallet (none, or more than one loaded — post-reset orphan not pruned yet, or a failed bind pending retry?); retrying every 5000ms
+06:26:48 [DefaultDispatcher-worker-3] SdkWalletBinder - SDK bind deferred: the device is locked and the SDK master alias is lock-bound; retrying on unlock / app foreground
+06:26:48 [DefaultDispatcher-worker-3] SdkWalletBinder - SDK wallet bind still not established (3 consecutive failed pass(es)); a bind retry is pending
+06:26:48 [DefaultDispatcher-worker-13] SdkBindRetryService - SDK bind pending: DEVICE_LOCKED (3 consecutive failure(s); device provably locked=true; unlocked keystore denials in a row=0; other failures in a row=0; cause=de.schildbach.wallet.service.platform.sdk.SdkBindDeferredWhileLockedException: SDK bind deferred: the device is locked, so the lock-bound master alias would be denied)
+06:26:48 [DefaultDispatcher-worker-3] SdkWalletBinder - SDK wallet binding pass failed; retry pending
+de.schildbach.wallet.service.platform.sdk.SdkBindDeferredWhileLockedException: SDK bind deferred: the device is locked, so the lock-bound master alias would be denied
+	at de.schildbach.wallet.service.platform.sdk.SdkWalletBinder.bindLocked(SdkWalletBinder.kt:1170)
+	at de.schildbach.wallet.service.platform.sdk.SdkWalletBinder.access$bindLocked(SdkWalletBinder.kt:280)
+	at de.schildbach.wallet.service.platform.sdk.SdkWalletBinder$bindLocked$1.invokeSuspend(SdkWalletBinder.kt:0)
+06:26:52 [DefaultDispatcher-worker-1] SdkBindRetryService - SDK bind retry 2 (cutover-ui bound-wallet wait): re-running the wallet bind pass (3 consecutive failure(s) so far)
+06:26:52 [DefaultDispatcher-worker-12] SdkWalletBinder - SDK bind deferred: the device is locked and the SDK master alias is lock-bound; retrying on unlock / app foreground
+06:26:52 [DefaultDispatcher-worker-12] SdkWalletBinder - SDK wallet bind still not established (4 consecutive failed pass(es)); a bind retry is pending
+06:26:52 [DefaultDispatcher-worker-12] SdkWalletBinder - SDK wallet binding pass failed; retry pending
+de.schildbach.wallet.service.platform.sdk.SdkBindDeferredWhileLockedException: SDK bind deferred: the device is locked, so the lock-bound master alias would be denied
+	at de.schildbach.wallet.service.platform.sdk.SdkWalletBinder.bindLocked(SdkWalletBinder.kt:1170)
+	at de.schildbach.wallet.service.platform.sdk.SdkWalletBinder.access$bindLocked(SdkWalletBinder.kt:280)
+	at de.schildbach.wallet.service.platform.sdk.SdkWalletBinder$bindLocked$1.invokeSuspend(SdkWalletBinder.kt:0)
+06:26:52 [DefaultDispatcher-worker-12] SdkBindRetryService - SDK bind retry 2 (cutover-ui bound-wallet wait) failed — 4 consecutive failure(s); device provably locked=true. No dashj fallback: retrying on the ladder, on unlock and on app foreground
+06:26:52 [DefaultDispatcher-worker-13] SdkBindRetryService - SDK bind pending: DEVICE_LOCKED (4 consecutive failure(s); device provably locked=true; unlocked keystore denials in a row=0; other failures in a row=0; cause=de.schildbach.wallet.service.platform.sdk.SdkBindDeferredWhileLockedException: SDK bind deferred: the device is locked, so the lock-bound master alias would be denied)
+06:27:07 [DefaultDispatcher-worker-1] SdkBindRetryService - SDK bind retry 3 (cutover-ui bound-wallet wait): re-running the wallet bind pass (4 consecutive failure(s) so far)
+06:27:07 [DefaultDispatcher-worker-9] SdkWalletBinder - SDK bind deferred: the device is locked and the SDK master alias is lock-bound; retrying on unlock / app foreground
+06:27:07 [DefaultDispatcher-worker-9] SdkWalletBinder - SDK wallet bind still not established (5 consecutive failed pass(es)); a bind retry is pending
+06:27:07 [DefaultDispatcher-worker-4] SdkBindRetryService - SDK bind pending: DEVICE_LOCKED (5 consecutive failure(s); device provably locked=true; unlocked keystore denials in a row=0; other failures in a row=0; cause=de.schildbach.wallet.service.platform.sdk.SdkBindDeferredWhileLockedException: SDK bind deferred: the device is locked, so the lock-bound master alias would be denied)
+06:27:07 [DefaultDispatcher-worker-9] SdkWalletBinder - SDK wallet binding pass failed; retry pending
+de.schildbach.wallet.service.platform.sdk.SdkBindDeferredWhileLockedException: SDK bind deferred: the device is locked, so the lock-bound master alias would be denied
+	at de.schildbach.wallet.service.platform.sdk.SdkWalletBinder.bindLocked(SdkWalletBinder.kt:1170)
+	at de.schildbach.wallet.service.platform.sdk.SdkWalletBinder.access$bindLocked(SdkWalletBinder.kt:280)
+	at de.schildbach.wallet.service.platform.sdk.SdkWalletBinder$bindLocked$1.invokeSuspend(SdkWalletBinder.kt:0)
+06:27:07 [DefaultDispatcher-worker-9] SdkBindRetryService - SDK bind retry 3 (cutover-ui bound-wallet wait) failed — 5 consecutive failure(s); device provably locked=true. No dashj fallback: retrying on the ladder, on unlock and on app foreground

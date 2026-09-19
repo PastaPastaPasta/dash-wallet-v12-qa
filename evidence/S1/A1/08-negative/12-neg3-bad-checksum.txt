@@ -1,0 +1,3 @@
+text="Error"
+text="Wallet could not be restored:&#10;&#10;Error&#10;&#10;Bad recovery phrase?"
+text="OK"

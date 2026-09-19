@@ -1,0 +1,4 @@
+64:06:06:27 [DefaultDispatcher-worker-2] TxDisplayCacheService - rebuildWrappedList: 0 raw txs → 0 wrappers → 0 sorted | getTransactions=5ms wrapAll=0ms sort=0ms total=5ms
+66:06:06:27 [DefaultDispatcher-worker-3] TxDisplayCacheService - updateDisplayCache: 0 rows in 2ms
+67:06:06:27 [DefaultDispatcher-worker-3] TxDisplayCacheService - STARTUP rebuildWrappedList DONE (_transactionsLoaded=true) at 1789797987357
+929:06:09:54 [DefaultDispatcher-worker-17] TxDisplayCacheService - Sync complete (cutoverCommitted=true): SDK=1010 records | dashj wallet=0 txs | group cache=0 txs/0 groups | display=1021 rows — cache is complete (SDK holds 1010 records, display has 1021 rows)

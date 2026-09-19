@@ -1,0 +1,5 @@
+12242:org.bitcoinj.core.InsufficientMoneyException: Insufficient money,  missing 1001.0001 DASH
+12259:org.bitcoinj.core.InsufficientMoneyException: Insufficient money,  missing 100.0001 DASH
+12276:org.bitcoinj.core.InsufficientMoneyException: Insufficient money,  missing 10.0001 DASH
+12293:org.bitcoinj.core.InsufficientMoneyException: Insufficient money,  missing 1.0001 DASH
+12311:org.bitcoinj.core.InsufficientMoneyException: Insufficient money,  missing 0.0011 DASH

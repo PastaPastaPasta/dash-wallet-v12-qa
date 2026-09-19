@@ -1,0 +1,101 @@
+--------- beginning of crash
+09-19 03:16:55.070 25088 25088 E AndroidRuntime: FATAL EXCEPTION: main
+09-19 03:16:55.070 25088 25088 E AndroidRuntime: PID: 25088
+09-19 03:16:55.070 25088 25088 E AndroidRuntime: java.lang.IllegalStateException: UiAutomationService android.accessibilityservice.IAccessibilityServiceClient$Stub$Proxy@7144b4already registered!
+09-19 03:16:55.070 25088 25088 E AndroidRuntime: 	at android.os.Parcel.createExceptionOrNull(Parcel.java:3250)
+09-19 03:16:55.070 25088 25088 E AndroidRuntime: 	at android.os.Parcel.createException(Parcel.java:3226)
+09-19 03:16:55.070 25088 25088 E AndroidRuntime: 	at android.os.Parcel.readException(Parcel.java:3209)
+09-19 03:16:55.070 25088 25088 E AndroidRuntime: 	at android.os.Parcel.readException(Parcel.java:3151)
+09-19 03:16:55.070 25088 25088 E AndroidRuntime: 	at android.view.accessibility.IAccessibilityManager$Stub$Proxy.registerUiTestAutomationService(IAccessibilityManager.java:1098)
+09-19 03:16:55.070 25088 25088 E AndroidRuntime: 	at android.app.UiAutomationConnection.registerUiTestAutomationServiceLocked(UiAutomationConnection.java:651)
+09-19 03:16:55.070 25088 25088 E AndroidRuntime: 	at android.app.UiAutomationConnection.connect(UiAutomationConnection.java:119)
+09-19 03:16:55.070 25088 25088 E AndroidRuntime: 	at android.app.UiAutomation.connectWithTimeout(UiAutomation.java:385)
+09-19 03:16:55.070 25088 25088 E AndroidRuntime: 	at android.app.UiAutomation.connect(UiAutomation.java:330)
+09-19 03:16:55.070 25088 25088 E AndroidRuntime: 	at com.android.uiautomator.core.UiAutomationShellWrapper.connect(UiAutomationShellWrapper.java:36)
+09-19 03:16:55.070 25088 25088 E AndroidRuntime: 	at com.android.commands.uiautomator.DumpCommand.run(DumpCommand.java:78)
+09-19 03:16:55.070 25088 25088 E AndroidRuntime: 	at com.android.commands.uiautomator.Launcher.main(Launcher.java:83)
+09-19 03:16:55.070 25088 25088 E AndroidRuntime: 	at com.android.internal.os.RuntimeInit.nativeFinishInit(Native Method)
+09-19 03:16:55.070 25088 25088 E AndroidRuntime: 	at com.android.internal.os.RuntimeInit.main(RuntimeInit.java:369)
+09-19 03:16:55.070 25088 25088 E AndroidRuntime: Caused by: android.os.RemoteException: Remote stack trace:
+09-19 03:16:55.070 25088 25088 E AndroidRuntime: 	at com.android.server.accessibility.UiAutomationManager.registerUiTestAutomationServiceLocked(UiAutomationManager.java:109)
+09-19 03:16:55.070 25088 25088 E AndroidRuntime: 	at com.android.server.accessibility.AccessibilityManagerService.registerUiTestAutomationService(AccessibilityManagerService.java:1489)
+09-19 03:16:55.070 25088 25088 E AndroidRuntime: 	at android.view.accessibility.IAccessibilityManager$Stub.onTransact(IAccessibilityManager.java:546)
+09-19 03:16:55.070 25088 25088 E AndroidRuntime: 	at android.os.Binder.execTransactInternal(Binder.java:1500)
+09-19 03:16:55.070 25088 25088 E AndroidRuntime: 	at android.os.Binder.execTransact(Binder.java:1444)
+09-19 03:16:55.070 25088 25088 E AndroidRuntime: 
+09-19 03:16:55.070 25088 25088 E AndroidRuntime: Error reporting crash
+09-19 03:16:55.070 25088 25088 E AndroidRuntime: java.lang.RuntimeException: Bad file descriptor
+09-19 03:16:55.070 25088 25088 E AndroidRuntime: 	at android.os.BinderProxy.transactNative(Native Method)
+09-19 03:16:55.070 25088 25088 E AndroidRuntime: 	at android.os.BinderProxy.transact(BinderProxy.java:586)
+09-19 03:16:55.070 25088 25088 E AndroidRuntime: 	at android.os.IServiceManager$Stub$Proxy.checkService(IServiceManager.java:441)
+09-19 03:16:55.070 25088 25088 E AndroidRuntime: 	at android.os.ServiceManagerProxy.getService(ServiceManagerNative.java:63)
+09-19 03:16:55.070 25088 25088 E AndroidRuntime: 	at android.os.ServiceManager.rawGetService(ServiceManager.java:428)
+09-19 03:16:55.070 25088 25088 E AndroidRuntime: 	at android.os.ServiceManager.getService(ServiceManager.java:175)
+09-19 03:16:55.070 25088 25088 E AndroidRuntime: 	at android.app.ActivityManager$3.create(ActivityManager.java:5692)
+09-19 03:16:55.070 25088 25088 E AndroidRuntime: 	at android.app.ActivityManager$3.create(ActivityManager.java:5689)
+09-19 03:16:55.070 25088 25088 E AndroidRuntime: 	at android.util.Singleton.get(Singleton.java:44)
+09-19 03:16:55.070 25088 25088 E AndroidRuntime: 	at android.app.ActivityManager.getService(ActivityManager.java:5680)
+09-19 03:16:55.070 25088 25088 E AndroidRuntime: 	at com.android.internal.os.RuntimeInit$KillApplicationHandler.uncaughtException(RuntimeInit.java:170)
+09-19 03:16:55.070 25088 25088 E AndroidRuntime: 	at java.lang.ThreadGroup.uncaughtException(ThreadGroup.java:1071)
+09-19 03:16:55.070 25088 25088 E AndroidRuntime: 	at java.lang.ThreadGroup.uncaughtException(ThreadGroup.java:1066)
+09-19 03:16:55.070 25088 25088 E AndroidRuntime: 	at java.lang.Thread.dispatchUncaughtException(Thread.java:2306)
+ACTIVITY MANAGER PROCESS EXIT INFO (dumpsys activity exit-info)
+Last Timestamp of Persistence Into Persistent Storage: 2026-09-19 03:17:38.746
+  package: hashengineering.darkcoin.wallet_test
+    Historical Process Exit for uid=10211
+        ApplicationExitInfo #0:
+          timestamp=2026-09-19 03:30:34.637 pid=26663 realUid=10211 packageUid=10211 definingUid=10211 user=0
+          process=hashengineering.darkcoin.wallet_test reason=10 (USER REQUESTED) subreason=21 (FORCE STOP) status=0
+          importance=100 pss=0.00 rss=554MB description=stop hashengineering.darkcoin.wallet_test due to from pid 28050 state=empty trace=null
+        ApplicationExitInfo #1:
+          timestamp=2026-09-19 03:25:42.894 pid=21963 realUid=10211 packageUid=10211 definingUid=10211 user=0
+          process=hashengineering.darkcoin.wallet_test reason=10 (USER REQUESTED) subreason=21 (FORCE STOP) status=0
+          importance=100 pss=0.00 rss=598MB description=stop hashengineering.darkcoin.wallet_test due to from pid 26637 state=empty trace=null
+        ApplicationExitInfo #2:
+          timestamp=2026-09-19 03:10:06.187 pid=21562 realUid=10211 packageUid=10211 definingUid=10211 user=0
+          process=hashengineering.darkcoin.wallet_test reason=10 (USER REQUESTED) subreason=24 (KILL BACKGROUND) status=0
+          importance=300 pss=0.00 rss=487MB description=kill background state=empty trace=null
+        ApplicationExitInfo #3:
+          timestamp=2026-09-19 03:09:10.018 pid=21082 realUid=10211 packageUid=10211 definingUid=10211 user=0
+          process=hashengineering.darkcoin.wallet_test reason=10 (USER REQUESTED) subreason=24 (KILL BACKGROUND) status=0
+          importance=300 pss=0.00 rss=515MB description=kill background state=empty trace=null
+        ApplicationExitInfo #4:
+          timestamp=2026-09-19 03:07:57.999 pid=20669 realUid=10211 packageUid=10211 definingUid=10211 user=0
+          process=hashengineering.darkcoin.wallet_test reason=10 (USER REQUESTED) subreason=24 (KILL BACKGROUND) status=0
+          importance=300 pss=0.00 rss=516MB description=kill background state=empty trace=null
+        ApplicationExitInfo #5:
+          timestamp=2026-09-19 03:07:04.316 pid=20239 realUid=10211 packageUid=10211 definingUid=10211 user=0
+          process=hashengineering.darkcoin.wallet_test reason=10 (USER REQUESTED) subreason=24 (KILL BACKGROUND) status=0
+          importance=300 pss=0.00 rss=494MB description=kill background state=empty trace=null
+        ApplicationExitInfo #6:
+          timestamp=2026-09-19 03:05:58.622 pid=19510 realUid=10211 packageUid=10211 definingUid=10211 user=0
+          process=hashengineering.darkcoin.wallet_test reason=10 (USER REQUESTED) subreason=24 (KILL BACKGROUND) status=0
+          importance=300 pss=0.00 rss=499MB description=kill background state=empty trace=null
+        ApplicationExitInfo #7:
+          timestamp=2026-09-19 03:04:00.926 pid=18821 realUid=10211 packageUid=10211 definingUid=10211 user=0
+          process=hashengineering.darkcoin.wallet_test reason=10 (USER REQUESTED) subreason=24 (KILL BACKGROUND) status=0
+          importance=300 pss=0.00 rss=522MB description=kill background state=empty trace=null
+        ApplicationExitInfo #8:
+          timestamp=2026-09-19 03:02:30.149 pid=17792 realUid=10211 packageUid=10211 definingUid=10211 user=0
+          process=hashengineering.darkcoin.wallet_test reason=10 (USER REQUESTED) subreason=24 (KILL BACKGROUND) status=0
+          importance=300 pss=0.00 rss=510MB description=kill background state=empty trace=null
+        ApplicationExitInfo #9:
+          timestamp=2026-09-19 03:01:15.145 pid=17014 realUid=10211 packageUid=10211 definingUid=10211 user=0
+          process=hashengineering.darkcoin.wallet_test reason=10 (USER REQUESTED) subreason=21 (FORCE STOP) status=0
+          importance=400 pss=0.00 rss=0.00 description=stop hashengineering.darkcoin.wallet_test due to from pid 17764 state=empty trace=null
+        ApplicationExitInfo #10:
+          timestamp=2026-09-19 03:00:52.942 pid=15522 realUid=10211 packageUid=10211 definingUid=10211 user=0
+          process=hashengineering.darkcoin.wallet_test reason=10 (USER REQUESTED) subreason=21 (FORCE STOP) status=0
+          importance=100 pss=0.00 rss=0.00 description=stop hashengineering.darkcoin.wallet_test due to from pid 16846 state=empty trace=null
+        ApplicationExitInfo #11:
+          timestamp=2026-09-19 02:59:46.798 pid=14831 realUid=10211 packageUid=10211 definingUid=10211 user=0
+          process=hashengineering.darkcoin.wallet_test reason=10 (USER REQUESTED) subreason=21 (FORCE STOP) status=0
+          importance=100 pss=0.00 rss=0.00 description=stop hashengineering.darkcoin.wallet_test due to from pid 15376 state=empty trace=null
+        ApplicationExitInfo #12:
+          timestamp=2026-09-19 02:59:34.057 pid=14111 realUid=10211 packageUid=10211 definingUid=10211 user=0
+          process=hashengineering.darkcoin.wallet_test reason=10 (USER REQUESTED) subreason=21 (FORCE STOP) status=0
+          importance=300 pss=0.00 rss=0.00 description=stop hashengineering.darkcoin.wallet_test due to from pid 14795 state=empty trace=null
+        ApplicationExitInfo #13:
+          timestamp=2026-09-19 02:58:49.627 pid=13187 realUid=10211 packageUid=10211 definingUid=10211 user=0
+          process=hashengineering.darkcoin.wallet_test reason=10 (USER REQUESTED) subreason=21 (FORCE STOP) status=0
+          importance=100 pss=0.00 rss=541MB description=stop hashengineering.darkcoin.wallet_test due to from pid 14093 state=empty trace=null

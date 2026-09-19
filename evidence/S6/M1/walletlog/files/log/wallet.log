@@ -1,0 +1,764 @@
+05:20:32 [main] StartupBreadcrumbs - STARTUP breadcrumb: 1 LOGGING_INITIALIZED +13ms
+05:20:32 [main] StartupBreadcrumbs - STARTUP breadcrumb: 2 FIREBASE_INITIALIZED +15ms
+05:20:32 [process-exit-reasons] ProcessExitReasons - PROCESS EXIT REASON: none recorded (fresh install, or the history was cleared)
+05:20:32 [main] WalletApplication - STARTUP WalletApplication.onCreate()
+05:20:32 [main] StartupBreadcrumbs - STARTUP breadcrumb: 3 CONFIG_LOADED +20ms
+05:20:32 [main] StartupBreadcrumbs - STARTUP breadcrumb: 11 ONCREATE_COMPLETE +60ms
+05:20:32 [main] WalletActivityTracker - activity lifecycle: app started
+05:20:32 [main] WalletActivityTracker - activity lifecycle: activity OnboardingActivity created
+05:20:32 [main] WalletActivityTracker - activity lifecycle: current: OnboardingActivity, activities: 1 visible: 0 foreground: 0
+05:20:32 [main] AppForegroundMonitor - App moved to foreground
+05:20:32 [main] WalletActivityTracker - activity lifecycle: current: OnboardingActivity, activities: 1 visible: 1 foreground: 0
+05:20:32 [main] WalletActivityTracker - activity lifecycle: current: OnboardingActivity, activities: 1 visible: 1 foreground: 1
+05:20:33 [DefaultDispatcher-worker-8] ExploreSyncWorker - sync explore db started
+05:20:33 [DefaultDispatcher-worker-8] ExploreDataSyncStatus - sync explore data progress: 0.0
+05:20:33 [DefaultDispatcher-worker-8] GCExploreDatabase - preloading explore db from assets /data/user/0/hashengineering.darkcoin.wallet/cache/explore.db, test database: false
+05:20:33 [DefaultDispatcher-worker-8] GCExploreDatabase - missing preloaded database explore/explore.db
+05:20:33 [DefaultDispatcher-worker-8] ExploreSyncWorker - local data timestamp: 0 (Wed Dec 31 18:00:00 CST 1969)
+05:20:33 [DefaultDispatcher-worker-8] GCExploreDatabase - error getting remote data timestamp
+com.google.firebase.FirebaseException: An internal error has occurred. [ API key not valid. Please pass a valid API key. ]
+	at com.google.android.gms.internal.firebase-auth-api.zzaag.zza(com.google.firebase:firebase-auth@@22.0.0:4)
+	at com.google.android.gms.internal.firebase-auth-api.zzabf.zza(com.google.firebase:firebase-auth@@22.0.0:26)
+	at com.google.android.gms.internal.firebase-auth-api.zzabg.zzl(com.google.firebase:firebase-auth@@22.0.0:1)
+	at com.google.android.gms.internal.firebase-auth-api.zzabd.zzh(com.google.firebase:firebase-auth@@22.0.0:25)
+	at com.google.android.gms.internal.firebase-auth-api.zzaae.zzh(com.google.firebase:firebase-auth@@22.0.0:1)
+	at com.google.android.gms.internal.firebase-auth-api.zzyb.zza(com.google.firebase:firebase-auth@@22.0.0:2)
+	at com.google.android.gms.internal.firebase-auth-api.zzabo.zzc(com.google.firebase:firebase-auth@@22.0.0:10)
+	at com.google.android.gms.internal.firebase-auth-api.zzabo.zzb(com.google.firebase:firebase-auth@@22.0.0:14)
+	at com.google.android.gms.internal.firebase-auth-api.zzaat.zzn(com.google.firebase:firebase-auth@@22.0.0:4)
+	at com.google.android.gms.internal.firebase-auth-api.zzyh.zzz(com.google.firebase:firebase-auth@@22.0.0:2)
+	at com.google.android.gms.internal.firebase-auth-api.zzaaf.zzv(com.google.firebase:firebase-auth@@22.0.0:2)
+	at com.google.android.gms.internal.firebase-auth-api.zzzk.zzc(com.google.firebase:firebase-auth@@22.0.0:1)
+	at com.google.android.gms.internal.firebase-auth-api.zzabh.run(com.google.firebase:firebase-auth@@22.0.0:1)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+	at com.google.firebase.concurrent.CustomThreadFactory.lambda$newThread$0(CustomThreadFactory.java:47)
+	at com.google.firebase.concurrent.CustomThreadFactory.$r8$lambda$XB8AY3Hcio74byWuTzgVEC3Hiek(CustomThreadFactory.java:0)
+	at com.google.firebase.concurrent.CustomThreadFactory$$ExternalSyntheticLambda0.run(R8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:1012)
+05:20:33 [DefaultDispatcher-worker-8] ExploreSyncWorker - remote data timestamp: -1 (Wed Dec 31 17:59:59 CST 1969)
+05:20:33 [DefaultDispatcher-worker-8] ExploreSyncWorker - unable to delete /data/user/0/hashengineering.darkcoin.wallet/cache/explore.db
+05:20:33 [DefaultDispatcher-worker-8] ExploreSyncWorker - explore db is up to date, nothing to sync
+05:20:33 [DefaultDispatcher-worker-8] ExploreDataSyncStatus - sync explore data progress: 100.0
+05:20:33 [DefaultDispatcher-worker-8] ExploreDatabase - Open database explore-database
+05:20:33 [DefaultDispatcher-worker-8] ExploreSyncWorker - adding PiggyCards test merchants
+05:20:33 [DefaultDispatcher-worker-8] ExploreSyncWorker - PiggyCards test merchant added successfully
+05:20:58 [main] WalletActivityTracker - activity lifecycle: current: OnboardingActivity, activities: 1 visible: 1 foreground: 0
+05:20:58 [main] WalletActivityTracker - activity lifecycle: activity SelectSecurityLevelActivity created
+05:20:58 [main] WalletActivityTracker - activity lifecycle: current: SelectSecurityLevelActivity, activities: 2 visible: 1 foreground: 0
+05:20:58 [main] WalletActivityTracker - activity lifecycle: current: SelectSecurityLevelActivity, activities: 2 visible: 2 foreground: 0
+05:20:58 [main] WalletActivityTracker - activity lifecycle: current: SelectSecurityLevelActivity, activities: 2 visible: 2 foreground: 1
+05:20:59 [main] WalletActivityTracker - activity lifecycle: current: OnboardingActivity, activities: 2 visible: 1 foreground: 1
+05:21:22 [main] WalletActivityTracker - activity lifecycle: current: SelectSecurityLevelActivity, activities: 2 visible: 1 foreground: 0
+05:21:23 [main] WalletActivityTracker - activity lifecycle: current: OnboardingActivity, activities: 2 visible: 2 foreground: 0
+05:21:23 [main] WalletActivityTracker - activity lifecycle: current: OnboardingActivity, activities: 2 visible: 2 foreground: 1
+05:21:23 [DefaultDispatcher-worker-7] BLSJniLibrary - Initializing BLS JNI Library
+05:21:23 [DefaultDispatcher-worker-7] WalletApplication - === starting app using configuration: prod, org.darkcoin.production
+05:21:23 [DefaultDispatcher-worker-7] MnemonicCodeExt - BIP39 wordlist loaded from: 'bip39-wordlists/english.txt', took 1.677 ms
+05:21:23 [DefaultDispatcher-worker-7] MnemonicCode - PBKDF2 took 7.058 ms
+05:21:23 [DefaultDispatcher-worker-7] OnboardingViewModel - successfully created new wallet
+05:21:23 [DefaultDispatcher-worker-10] BLSJniLibrary - Initializing BLS JNI Library
+05:21:23 [DefaultDispatcher-worker-10] TxDisplayCacheService - rebuildWrappedList: 0 raw txs → 0 wrappers → 0 sorted | getTransactions=2ms wrapAll=0ms sort=0ms total=2ms
+05:21:23 [DefaultDispatcher-worker-7] KeyChainGroup - Activating a new HD chain: DeterministicKeyChain{P2PKH, accountPath=[44H, 5H, 0H], lookaheadSize=100, lookaheadThreshold=33}
+05:21:23 [DefaultDispatcher-worker-8] TxDisplayCacheService - updateDisplayCache: 0 rows in 1ms
+05:21:23 [DefaultDispatcher-worker-8] TxDisplayCacheService - STARTUP rebuildWrappedList DONE (_transactionsLoaded=true) at 1789795283088
+05:21:23 [DefaultDispatcher-worker-8] WalletObserver - observing transactions start de.schildbach.wallet.transactions.WalletObserver@b667a83
+05:21:23 [DefaultDispatcher-worker-8] BLSJniLibrary - Initializing BLS JNI Library
+05:21:23 [dashj user thread] BLSJniLibrary - Initializing BLS JNI Library
+05:21:23 [DefaultDispatcher-worker-7] AnyKeyChainGroup - Activating a new HD chain: AuthenticationKeyChain{BLOCKCHAIN_IDENTITY, ECDSA, P2PKH, accountPath=[9H, 5H, 5H, 0H, 0H, 0H], lookaheadSize=0, lookaheadThreshold=0}
+05:21:23 [DefaultDispatcher-worker-7] AnyKeyChainGroup - Activating a new HD chain: AuthenticationKeyChain{BLOCKCHAIN_IDENTITY_FUNDING, ECDSA, P2PKH, accountPath=[9H, 5H, 5H, 1H], lookaheadSize=5, lookaheadThreshold=5}
+05:21:23 [DefaultDispatcher-worker-7] AnyKeyChainGroup - Activating a new HD chain: AuthenticationKeyChain{MASTERNODE_OWNER, ECDSA, P2PKH, accountPath=[9H, 5H, 3H, 2H], lookaheadSize=5, lookaheadThreshold=5}
+05:21:23 [DefaultDispatcher-worker-7] BLSJniLibrary - Initializing BLS JNI Library
+05:21:23 [main] WalletActivityTracker - activity lifecycle: current: SelectSecurityLevelActivity, activities: 2 visible: 1 foreground: 1
+05:21:23 [main] WalletActivityTracker - activity lifecycle: activity SelectSecurityLevelActivity destroyed
+05:21:23 [main] WalletActivityTracker - activity lifecycle: current: SelectSecurityLevelActivity, activities: 1 visible: 1 foreground: 1
+05:21:23 [DefaultDispatcher-worker-7] AnyKeyChainGroup - Activating a new HD chain: AuthenticationKeyChain{MASTERNODE_OPERATOR, BLS, P2PKH, accountPath=[9H, 5H, 3H, 3H], lookaheadSize=5, lookaheadThreshold=5}
+05:21:23 [DefaultDispatcher-worker-7] AnyKeyChainGroup - Activating a new HD chain: AuthenticationKeyChain{MASTERNODE_VOTING, ECDSA, P2PKH, accountPath=[9H, 5H, 3H, 1H], lookaheadSize=5, lookaheadThreshold=5}
+05:21:23 [DefaultDispatcher-worker-7] AnyKeyChainGroup - Activating a new HD chain: AuthenticationKeyChain{BLOCKCHAIN_IDENTITY_TOPUP, ECDSA, P2PKH, accountPath=[9H, 5H, 5H, 2H], lookaheadSize=5, lookaheadThreshold=5}
+05:21:23 [DefaultDispatcher-worker-7] AnyKeyChainGroup - Activating a new HD chain: AuthenticationKeyChain{INVITATION_FUNDING, ECDSA, P2PKH, accountPath=[9H, 5H, 5H, 3H], lookaheadSize=5, lookaheadThreshold=5}
+05:21:23 [DefaultDispatcher-worker-7] AnyKeyChainGroup - Activating a new HD chain: AuthenticationKeyChain{MASTERNODE_PLATFORM_OPERATOR, EdDSA, P2PKH, accountPath=[9H, 5H, 3H, 4H], lookaheadSize=0, lookaheadThreshold=0}
+05:21:23 [DefaultDispatcher-worker-7] AnyKeyChainGroup - Activating a new HD chain: AnyDeterministicKeyChain{ECDSA, P2PKH, accountPath=[9H, 5H, 4H, 0H], lookaheadSize=100, lookaheadThreshold=33}
+05:21:23 [DefaultDispatcher-worker-5] CutoverCoordinator - cutover state DUAL_RUNNING -> CUT_OVER (fresh-wallet setup (restore/new))
+05:21:23 [main] WalletActivityTracker - activity lifecycle: current: OnboardingActivity, activities: 1 visible: 1 foreground: 0
+05:21:23 [main] WalletActivityTracker - activity lifecycle: activity SetPinActivity created
+05:21:23 [main] WalletActivityTracker - activity lifecycle: current: SetPinActivity, activities: 2 visible: 1 foreground: 0
+05:21:23 [main] SecurityGuard - loading security guard [healthy=true] with keys: [modern_encryption_migration_complete]
+05:21:23 [main] SecurityGuard - loading security guard [healthy=true] with keys: [modern_encryption_migration_complete]
+05:21:23 [main] WalletActivityTracker - activity lifecycle: current: SetPinActivity, activities: 2 visible: 2 foreground: 0
+05:21:23 [main] WalletActivityTracker - activity lifecycle: current: SetPinActivity, activities: 2 visible: 2 foreground: 1
+05:21:23 [main] WalletActivityTracker - activity lifecycle: current: OnboardingActivity, activities: 2 visible: 1 foreground: 1
+05:22:06 [main] SecurityGuard - removing security keys
+05:22:06 [main] ModernEncryptionProvider - deleting ui_pin_key
+05:22:06 [main] ModernEncryptionProvider - deleting wallet_password_key
+05:22:06 [main] SecurityGuard - Cleared DataStore backups
+05:22:06 [main] ModernEncryptionProvider - key store does not have ui_pin_key, but has android.security.keystore2.AndroidKeyStoreSpi$KeyEntriesEnumerator@2f8001e, generating new key. Stack trace:
+  at dalvik.system.VMStack.getThreadStackTrace(Native Method)
+  at java.lang.Thread.getStackTrace(Thread.java:1841)
+  at de.schildbach.wallet.security.ModernEncryptionProvider.getSecretKey(ModernEncryptionProvider.kt:175)
+  at de.schildbach.wallet.security.ModernEncryptionProvider.encrypt(ModernEncryptionProvider.kt:79)
+  at de.schildbach.wallet.security.DualFallbackEncryptionProvider.encrypt(DualFallbackEncryptionProvider.kt:85)
+  at de.schildbach.wallet.security.SecurityGuard.validateKeyIntegrity(SecurityGuard.java:307)
+  at de.schildbach.wallet.security.SecurityGuard.savePin(SecurityGuard.java:262)
+  at de.schildbach.wallet.livedata.EncryptWalletLiveData.savePin(EncryptWalletLiveData.kt:106)
+  at de.schildbach.wallet.ui.SetPinViewModel.savePinAndEncrypt(SetPinViewModel.kt:74)
+  at de.schildbach.wallet.ui.SetPinViewModel.savePinAndEncrypt(SetPinViewModel.kt:65)
+  at de.schildbach.wallet.ui.SetPinActivity$nextStep$submit$1.run(SetPinActivity.kt:289)
+  at android.os.Handler.handleCallback(Handler.java:959)
+  at android.os.Handler.dispatchMessage(Handler.java:100)
+  at android.os.Looper.loopOnce(Looper.java:232)
+  at android.os.Looper.loop(Looper.java:317)
+  at android.app.ActivityThread.main(ActivityThread.java:8705)
+  at java.lang.reflect.Method.invoke(Native Method)
+  at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:580)
+  at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:886)
+05:22:06 [main] SecurityGuard - Notifying 1 health listeners of status change: HEALTHY
+05:22:06 [main] SecurityGuard - Notifying 1 health listeners of status change: HEALTHY
+05:22:06 [main] ModernEncryptionProvider - Decrypted data for alias: ui_pin_key
+05:22:06 [main] SecurityGuard - Notifying 1 health listeners of status change: HEALTHY
+05:22:06 [main] ModernEncryptionProvider - Decrypted data for alias: ui_pin_key
+05:22:06 [main] MnemonicBasedKeyProvider - Derived key from mnemonic for alias: ui_pin_key
+05:22:06 [main] SecurityGuard - Notifying 1 health listeners of status change: HEALTHY
+05:22:06 [main] DualFallbackEncryptionProvider - Added mnemonic-fallback for ui_pin_key
+05:22:06 [AsyncTask #1] BLSJniLibrary - Initializing BLS JNI Library
+05:22:06 [AsyncTask #1] KeyCrypterScrypt - Deriving key took 121.8 ms for N=65536, r=8, p=1.
+05:22:06 [AsyncTask #1] ModernEncryptionProvider - key store does not have wallet_password_key, but has android.security.keystore2.AndroidKeyStoreSpi$KeyEntriesEnumerator@30ea9cf, generating new key. Stack trace:
+  at dalvik.system.VMStack.getThreadStackTrace(Native Method)
+  at java.lang.Thread.getStackTrace(Thread.java:1841)
+  at de.schildbach.wallet.security.ModernEncryptionProvider.getSecretKey(ModernEncryptionProvider.kt:175)
+  at de.schildbach.wallet.security.ModernEncryptionProvider.encrypt(ModernEncryptionProvider.kt:79)
+  at de.schildbach.wallet.security.DualFallbackEncryptionProvider.encrypt(DualFallbackEncryptionProvider.kt:85)
+  at de.schildbach.wallet.security.SecurityGuard.validateKeyIntegrity(SecurityGuard.java:307)
+  at de.schildbach.wallet.security.SecurityGuard.savePassword(SecurityGuard.java:204)
+  at de.schildbach.wallet.livedata.EncryptWalletLiveData$EncryptWalletTask.doInBackground$lambda$0(EncryptWalletLiveData.kt:188)
+  at de.schildbach.wallet.livedata.EncryptWalletLiveData$EncryptWalletTask.$r8$lambda$0CMI4LnZeajmC7OpxOq-bClhh3o(EncryptWalletLiveData.kt:0)
+  at de.schildbach.wallet.livedata.EncryptWalletLiveData$EncryptWalletTask$$ExternalSyntheticLambda0.invoke(R8$$SyntheticClass:0)
+  at de.schildbach.wallet.livedata.EncryptWalletLiveData$Companion.encryptAndSavePassword$wallet_prodRelease(EncryptWalletLiveData.kt:58)
+  at de.schildbach.wallet.livedata.EncryptWalletLiveData$EncryptWalletTask.doInBackground(EncryptWalletLiveData.kt:188)
+  at de.schildbach.wallet.livedata.EncryptWalletLiveData$EncryptWalletTask.doInBackground(EncryptWalletLiveData.kt:172)
+  at android.os.AsyncTask$3.call(AsyncTask.java:394)
+  at java.util.concurrent.FutureTask.run(FutureTask.java:264)
+  at android.os.AsyncTask$SerialExecutor$1.run(AsyncTask.java:305)
+  at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+  at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+  at java.lang.Thread.run(Thread.java:1012)
+05:22:06 [main] SecurityGuard - Notifying 1 health listeners of status change: HEALTHY
+05:22:06 [AsyncTask #1] ModernEncryptionProvider - Decrypted data for alias: wallet_password_key
+05:22:06 [AsyncTask #1] EncryptWalletLiveData - wallet successfully encrypted, using key derived by new spending password (65536 scrypt iterations)
+05:22:06 [main] SecurityGuard - Notifying 1 health listeners of status change: HEALTHY
+05:22:06 [main] CoinJoinExtension - CoinJoinExtension serialization: 0ms total (keys:0ms[8], cache:0ms[0], salt:0ms, io:0ms, size:1431bytes, buffer:64KB)
+05:22:06 [main] WalletProtobufSerializer - walletToProto (serial=8) timing: 16ms total, init=0ms, tx=0ms[0], keys=1ms, scripts=0ms[0], metadata=0ms, ext=13ms, friendRecv=0ms, friendSend=0ms, build=0ms
+05:22:06 [main] WalletProtobufSerializer - writeWallet timing: 18ms total (16ms/88% serialization, 2ms/11% I/O) buffer=8KB
+05:22:06 [main] WalletApplication - wallet saved to: '/data/user/0/hashengineering.darkcoin.wallet/files/wallet-protobuf', took 22.77 ms
+05:22:06 [main] CoinJoinExtension - CoinJoinExtension serialization: 0ms total (keys:0ms[8], cache:0ms[0], salt:0ms, io:0ms, size:1431bytes, buffer:64KB)
+05:22:06 [main] WalletProtobufSerializer - walletToProto (serial=8) timing: 2ms total, init=0ms, tx=0ms[0], keys=0ms, scripts=0ms[0], metadata=0ms, ext=2ms, friendRecv=0ms, friendSend=0ms, build=0ms
+05:22:06 [main] WalletApplication - wallet backed up to: 'key-backup-protobuf', took 4.010 ms
+05:22:06 [main] StartupBreadcrumbs - STARTUP breadcrumb: 7 FINALIZE_INIT_BEGIN +93862ms
+05:22:06 [main] SecurityGuard - loading security guard [healthy=true] with keys: [keystore_healthy, modern_encryption_migration_complete, primary_ui_pin_key, primary_wallet_password_key, fallback_mnemonic_ui_pin_key]
+05:22:06 [main] SecurityGuard - loading security guard [healthy=true] with keys: [keystore_healthy, modern_encryption_migration_complete, primary_ui_pin_key, primary_wallet_password_key, fallback_mnemonic_ui_pin_key]
+05:22:06 [main] ModernEncryptionProvider - Decrypted data for alias: wallet_password_key
+05:22:06 [main] KeyCrypterScrypt - Deriving key took 116.4 ms for N=65536, r=8, p=1.
+05:22:06 [main] ModernEncryptionProvider - Decrypted data for alias: wallet_password_key
+05:22:06 [main] MnemonicBasedKeyProvider - Derived key from mnemonic for alias: wallet_password_key
+05:22:06 [main] SecurityGuard - Notifying 1 health listeners of status change: HEALTHY
+05:22:06 [main] DualFallbackEncryptionProvider - Added mnemonic-fallback for wallet_password_key
+05:22:06 [main] SecurityGuard - Mnemonic-based fallbacks ensured for PIN and wallet password
+05:22:06 [main] WalletApplication - Mnemonic-based fallbacks ensured
+05:22:06 [main] ModernEncryptionProvider - Decrypted data for alias: ui_pin_key
+05:22:06 [main] ModernEncryptionProvider - Decrypted data for alias: wallet_password_key
+05:22:06 [main] SecurityGuard - Notifying 1 health listeners of status change: HEALTHY_WITH_FALLBACKS
+05:22:06 [main] DualFallbackEncryptionProvider - Added PIN-fallback for wallet_password_key
+05:22:06 [main] SecurityGuard - PIN-based fallback ensured for wallet password
+05:22:06 [main] WalletApplication - PIN-based fallback added successfully
+05:22:06 [main] WalletApplication - STARTUP finalizeInit: securityGuard done in 252ms
+05:22:06 [main] WalletApplication - STARTUP finalizeInit: initDash done in 8ms
+05:22:06 [main] StartupBreadcrumbs - STARTUP breadcrumb: 8 INIT_DASH_DONE +94122ms
+05:22:06 [main] Configuration - detected app upgrade: 0 -> 12000000
+05:22:06 [main] WalletApplication - STARTUP finalizeInit: afterLoadWallet done in 4ms
+05:22:06 [main] StartupBreadcrumbs - STARTUP breadcrumb: 9 AFTER_LOAD_WALLET_DONE +94126ms
+05:22:06 [main] StartupBreadcrumbs - STARTUP breadcrumb: 20 SDK_BIND_KICKED +94129ms
+05:22:06 [DefaultDispatcher-worker-4] BlockchainIdentityData - creation: BlockchainIdentityData(NONE, null, null, null, null, null)
+05:22:06 [main] PlatformSynchronizationService - Starting the platform sync job
+05:22:06 [main] StartupBreadcrumbs - STARTUP breadcrumb: 10 PLATFORM_INIT_KICKED +94130ms
+05:22:06 [main] WalletApplication - STARTUP finalizeInit: initPlatform+channels done in 4ms
+05:22:06 [DefaultDispatcher-worker-4] SecurityGuard - loading security guard [healthy=true] with keys: [keystore_healthy, fallback_pin_wallet_password_key, primary_ui_pin_key, modern_encryption_migration_complete, fallback_mnemonic_wallet_password_key, primary_wallet_password_key, fallback_mnemonic_ui_pin_key]
+05:22:06 [DefaultDispatcher-worker-4] ModernEncryptionProvider - Decrypted data for alias: wallet_password_key
+05:22:06 [main] WalletApplication - STARTUP finalizeInit: integrations done in 71ms
+05:22:06 [main] WalletActivityTracker - activity lifecycle: current: SetPinActivity, activities: 2 visible: 1 foreground: 0
+05:22:06 [main] WalletActivityTracker - activity lifecycle: activity OnboardingActivity destroyed
+05:22:06 [main] WalletActivityTracker - activity lifecycle: current: SetPinActivity, activities: 1 visible: 1 foreground: 0
+05:22:06 [main] WalletActivityTracker - activity lifecycle: activity VerifySeedActivity created
+05:22:06 [main] WalletActivityTracker - activity lifecycle: current: VerifySeedActivity, activities: 2 visible: 1 foreground: 0
+05:22:06 [main] SecurityGuard - loading security guard [healthy=true] with keys: [keystore_healthy, fallback_pin_wallet_password_key, primary_ui_pin_key, modern_encryption_migration_complete, fallback_mnemonic_wallet_password_key, primary_wallet_password_key, fallback_mnemonic_ui_pin_key]
+05:22:06 [main] SecurityGuard - loading security guard [healthy=true] with keys: [keystore_healthy, fallback_pin_wallet_password_key, primary_ui_pin_key, modern_encryption_migration_complete, fallback_mnemonic_wallet_password_key, primary_wallet_password_key, fallback_mnemonic_ui_pin_key]
+05:22:06 [main] WalletActivityTracker - activity lifecycle: current: VerifySeedActivity, activities: 2 visible: 2 foreground: 0
+05:22:06 [main] WalletActivityTracker - activity lifecycle: current: VerifySeedActivity, activities: 2 visible: 2 foreground: 1
+05:22:06 [DefaultDispatcher-worker-4] KeyCrypterScrypt - Deriving key took 194.4 ms for N=65536, r=8, p=1.
+05:22:06 [DefaultDispatcher-worker-10] DashSdkServiceImpl - bootstrapping Dash Platform SDK for network=mainnet (flavor=prod)
+05:22:06 [DefaultDispatcher-worker-10] DashSdkServiceImpl - SDK tracing file logging (INFO) at /data/user/0/hashengineering.darkcoin.wallet/files/sdk-logs/platform_wallet/run.log: NOT installed (subscriber already set or dir unwritable)
+05:22:06 [DefaultDispatcher-worker-10] DashSdkServiceImpl - Dash Platform SDK started: version=4.2.0-dev.8, restored 0 wallet(s)
+05:22:06 [DefaultDispatcher-worker-10] CheckpointManager - Read 4182 checkpoints up to time 2026-01-20T14:37:37Z, hash is c443288fa6ef670aaae806d6cf9ffae35aac33a580e1dbdd5fbc333e42ac57b4
+05:22:06 [DefaultDispatcher-worker-10] BirthHeightResolver - resolved birth time 1789795283 to SDK birth height 2404800 (checkpoint height 2408832, margin 4032 blocks)
+05:22:06 [main] WalletActivityTracker - activity lifecycle: current: SetPinActivity, activities: 2 visible: 1 foreground: 1
+05:22:06 [main] WalletActivityTracker - activity lifecycle: activity SetPinActivity destroyed
+05:22:06 [main] WalletActivityTracker - activity lifecycle: current: SetPinActivity, activities: 1 visible: 1 foreground: 1
+05:22:07 [DefaultDispatcher-worker-10] DashSdkServiceImpl - app wallet bound to new SDK wallet ee230719… (birthHeight=2404800 via checkpoint mapping; 0 = full scan from genesis)
+05:22:07 [DefaultDispatcher-worker-10] DashSdkServiceImpl - widenAddressWindows: BIP44 account 0 gap -> 1000 on ee230719…
+05:22:07 [DefaultDispatcher-worker-10] DashSdkServiceImpl - widenAddressWindows: BIP32 account 0 gap -> 1000 on ee230719…
+05:22:07 [DefaultDispatcher-worker-10] DashSdkServiceImpl - widenAddressWindows: COIN_JOIN account 0 gap -> 1000 on ee230719…
+05:22:07 [DefaultDispatcher-worker-10] CheckpointManager - Read 4182 checkpoints up to time 2026-01-20T14:37:37Z, hash is c443288fa6ef670aaae806d6cf9ffae35aac33a580e1dbdd5fbc333e42ac57b4
+05:22:07 [DefaultDispatcher-worker-10] BirthHeightResolver - resolved birth time 1789795283 to SDK birth height 2404800 (checkpoint height 2408832, margin 4032 blocks)
+05:22:07 [DefaultDispatcher-worker-10] DashSdkServiceImpl - armSpvRescan: filter watermark rewind to 2404800 armed on ee230719…
+05:22:07 [DefaultDispatcher-worker-9] SdkWalletBinder - address-window heal v2 applied on ee230719…: gaps widened, backfill coverage invalidated — next gate pass rewinds with the widened script set
+05:22:07 [DefaultDispatcher-worker-9] SdkWalletBinder - SDK wallet bound; identity not yet registered — discovery deferred
+05:22:07 [DefaultDispatcher-worker-9] PlatformSynchronizationService - SDK L1 engine not started from Application init — it starts from the foreground blockchain service (resume())
+05:22:07 [DefaultDispatcher-worker-1] SdkBindRetryService - SDK bind established — clearing the pending state (no blocker recorded in this process)
+05:22:07 [DefaultDispatcher-worker-9] StartupBreadcrumbs - STARTUP breadcrumb: 23 CUTOVER_SERVICES_STARTED +94869ms
+05:22:07 [DefaultDispatcher-worker-6] CutoverUiDataService - cutover committed — serving home-screen data from the SDK
+05:22:07 [DefaultDispatcher-worker-5] SdkBlockchainStateService - cutover committed — deriving BlockchainState from the SDK SPV feed
+05:22:07 [DefaultDispatcher-worker-6] CutoverUiDataService - cutover UI active but the engine wallet-event tap is not running (USE_KOTLIN_SDK_L1_SHADOW off, or L1ShadowSyncService not started) — instant receives degrade to the Room-snapshot/block cadence
+05:22:07 [DefaultDispatcher-worker-10] CutoverTxSeamService - cutover committed — priming the SDK seam tx feed
+05:22:07 [DefaultDispatcher-worker-1] CutoverUiDataService - SDK balance published: 0 duffs (was none) | l1Synced=false rescanArmedHold=true dashPayBackfill(armed=false,replaying=false) deferredContactBuilds=0 (unchangedReads=1) persistedAsLastKnown=false lastKnown=none
+05:22:07 [DefaultDispatcher-worker-2] TxDisplayCacheService - Sync complete (cutoverCommitted=true): SDK=0 records | dashj wallet=0 txs | group cache=0 txs/0 groups | display=0 rows — cache is complete (SDK holds 0 records, display has 0 rows)
+05:22:07 [DefaultDispatcher-worker-6] CutoverTxSeamService - seam tx feed primed (0 recent records, 0 in the priming window); serving seam tx reads from the SDK store
+05:22:07 [DefaultDispatcher-worker-9] ShieldedBalanceServiceImpl - shielded runtime ready on SDK wallet ee230719… (account 0, sync loop running)
+05:24:09 [main] WalletActivityTracker - activity lifecycle: current: VerifySeedActivity, activities: 1 visible: 1 foreground: 0
+05:24:09 [main] WalletActivityTracker - activity lifecycle: activity MainActivity created
+05:24:09 [main] WalletActivityTracker - activity lifecycle: current: MainActivity, activities: 2 visible: 1 foreground: 0
+05:24:09 [main] SecurityGuard - loading security guard [healthy=true] with keys: [keystore_healthy, fallback_pin_wallet_password_key, primary_ui_pin_key, modern_encryption_migration_complete, fallback_mnemonic_wallet_password_key, primary_wallet_password_key, fallback_mnemonic_ui_pin_key]
+05:24:09 [main] SecurityGuard - loading security guard [healthy=true] with keys: [keystore_healthy, fallback_pin_wallet_password_key, primary_ui_pin_key, modern_encryption_migration_complete, fallback_mnemonic_wallet_password_key, primary_wallet_password_key, fallback_mnemonic_ui_pin_key]
+05:24:09 [main] ModernEncryptionProvider - Decrypted data for alias: wallet_password_key
+05:24:09 [main] ModernEncryptionProvider - Decrypted data for alias: ui_pin_key
+05:24:09 [main] DashPaymentIntentParser - network parameters = org.darkcoin.production
+05:24:09 [main] DashPaymentIntentParser - network parameters = org.darkcoin.production
+05:24:09 [main] MainViewModel - STARTUP MainViewModel init at 1789795449565
+05:24:09 [main] StartupBreadcrumbs - STARTUP breadcrumb: 12 MAIN_UI_SHOWN +217120ms
+05:24:09 [DefaultDispatcher-worker-1] DapiClient - getDocuments(contractId=GWRSAVFMjXx8HpQFaNJMqBV7MBgMK4br5UESsB4S31Ec, type=domain, {limit=5, where=[]})
+05:24:09 [DefaultDispatcher-worker-7] DapiClient - getDocuments(contractId=GWRSAVFMjXx8HpQFaNJMqBV7MBgMK4br5UESsB4S31Ec, type=domain, {limit=5, where=[]})
+05:24:09 [DefaultDispatcher-worker-2] MainViewModel - blockchain state update: mnlist=0; chain=0; wallet=0
+05:24:09 [DefaultDispatcher-worker-4] DapiClient - getDocuments(contractId=GWRSAVFMjXx8HpQFaNJMqBV7MBgMK4br5UESsB4S31Ec, type=domain, {limit=5, where=[]})
+05:24:09 [main] Configuration - just being used - last used 29829924 minutes ago
+05:24:09 [main] WalletActivityTracker - activity lifecycle: current: MainActivity, activities: 2 visible: 2 foreground: 0
+05:24:09 [DefaultDispatcher-worker-5] CrowdNodeApiAggregator - restoring CrowdNode status
+05:24:09 [DefaultDispatcher-worker-5] BLSJniLibrary - Initializing BLS JNI Library
+05:24:09 [main] WalletTransactionsFragment - STARTUP WalletTransactionsFragment.onViewCreated at 1789795449594
+05:24:09 [main] HistoryHeaderAdapter - set invite, synced = false
+05:24:09 [DefaultDispatcher-worker-5] BLSJniLibrary - Initializing BLS JNI Library
+05:24:09 [main] HistoryHeaderAdapter - set invite = null
+05:24:09 [main] HistoryHeaderAdapter - set invite, synced = false
+05:24:09 [main] SecurityGuard - loading security guard [healthy=true] with keys: [keystore_healthy, fallback_pin_wallet_password_key, primary_ui_pin_key, modern_encryption_migration_complete, fallback_mnemonic_wallet_password_key, primary_wallet_password_key, fallback_mnemonic_ui_pin_key]
+05:24:09 [main] SecurityGuard - loading security guard [healthy=true] with keys: [keystore_healthy, fallback_pin_wallet_password_key, primary_ui_pin_key, modern_encryption_migration_complete, fallback_mnemonic_wallet_password_key, primary_wallet_password_key, fallback_mnemonic_ui_pin_key]
+05:24:09 [main] LockScreenActivity - show lock screen false = ![keepUnlocked=false] && autologout=true && (keepUnlockedUntilPenEntered=false || shouldLogout=false) || isHealthy=true
+05:24:09 [main] MainActivity - updateTrigger => rateStale: RateRetrievalState(lastAttemptFailed=false, staleRates=false, volatile=false)
+05:24:09 [main] WalletActivityTracker - activity lifecycle: current: MainActivity, activities: 2 visible: 2 foreground: 1
+05:24:09 [main] BlockchainIdentityData - creation: BlockchainIdentityData(NONE, null, null, null, null, null)
+05:24:09 [main] BlockchainIdentityData - creation: BlockchainIdentityData(NONE, null, null, null, null, null)
+05:24:09 [main] BlockchainServiceImpl - .onCreate()
+05:24:09 [main] DashPaymentIntentParser - network parameters = org.darkcoin.production
+05:24:09 [main] BlockchainServiceImpl - start foreground service
+05:24:09 [main] BlockchainServiceImpl - .onStartCommand(Intent { cmp=hashengineering.darkcoin.wallet/de.schildbach.wallet.service.BlockchainServiceImpl })
+05:24:09 [DefaultDispatcher-worker-11] BlockchainServiceImpl - onCreate() serviceScope waiting for cleanup null
+05:24:09 [main] WalletTransactionsFragment - STARTUP submitData called on thread=main at 1789795449764
+05:24:09 [DefaultDispatcher-worker-11] BLSJniLibrary - Initializing BLS JNI Library
+05:24:09 [DefaultDispatcher-worker-11] BlockchainServiceImpl - Phase 5d cutover gate: dashjEngineMayStart=false (coordinatorAllowsDashj=false, dashjHeldByCutover=true, dashjSyncDiagnostic=false)
+05:24:09 [main] WalletActivityTracker - activity lifecycle: current: MainActivity, activities: 2 visible: 2 foreground: 0
+05:24:09 [DefaultDispatcher-worker-10] BlockchainServiceImpl - onStartCommand waiting for onCreate to complete...
+05:24:09 [DefaultDispatcher-worker-11] BLSJniLibrary - Initializing BLS JNI Library
+05:24:09 [DefaultDispatcher-worker-11] BlockchainServiceImpl - blockchain does not exist, resetting wallet
+05:24:09 [DefaultDispatcher-worker-5] BLSJniLibrary - Initializing BLS JNI Library
+05:24:09 [Wallet autosave thread] BLSJniLibrary - Initializing BLS JNI Library
+05:24:09 [DefaultDispatcher-worker-11] AbstractQuorumState - resetting masternode list; force: true, requestFreshList: false
+05:24:09 [main] DeviceInfoProvider - Detecting currency based on device, mobile network or locale:
+05:24:09 [main] DeviceInfoProvider - Device Sim Country: us
+05:24:09 [DefaultDispatcher-worker-11] AbstractQuorumState - resetting masternode list; force: true, requestFreshList: false
+05:24:09 [main] MainViewModel - Updating currency exchange rate based on country: US
+05:24:09 [main] BlockchainServiceImpl - .onStartCommand(Intent { act=de.schildbach.wallet.service.cancel_coins_received cmp=hashengineering.darkcoin.wallet/de.schildbach.wallet.service.BlockchainServiceImpl })
+05:24:09 [DefaultDispatcher-worker-5] BlockchainServiceImpl - onStartCommand waiting for onCreate to complete...
+05:24:09 [DefaultDispatcher-worker-11] SPVBlockStore - Creating new SPV block chain file /data/user/0/hashengineering.darkcoin.wallet/app_blockstore/blockchain
+05:24:09 [DefaultDispatcher-worker-11] SPVBlockStore - Creating new SPV block chain file /data/user/0/hashengineering.darkcoin.wallet/app_blockstore/headers
+05:24:09 [DefaultDispatcher-worker-11] BlockchainServiceImpl - verifying backupBlockStore
+05:24:09 [DefaultDispatcher-worker-11] BlockchainServiceImpl - verifying headerStore
+05:24:09 [main] MainViewModel - platform available: false; no identity creation is progress: true
+05:24:09 [main] MainViewModel - Using default Country: US
+05:24:09 [main] MainViewModel - Using default currency: USD
+05:24:09 [DefaultDispatcher-worker-10] Constants - --> GET https://rates.ctx.com/rates?source=ctx
+05:24:09 [pool-48-thread-1] BlockchainServiceImpl - verify blockstore: 227.7 μs, 0 loaded
+05:24:09 [DefaultDispatcher-worker-11] BlockchainServiceImpl - verifying blockStore
+05:24:09 [DefaultDispatcher-worker-4] DapiClient - searching for quorum: 4, 000000000000000e92697c2217d50b9526a698b4ef0eff8fd48743cfa53983db, 2541274
+05:24:09 [pool-48-thread-1] BlockchainServiceImpl - verify blockstore: 168.0 μs, 0 loaded
+05:24:09 [DefaultDispatcher-worker-11] BlockchainServiceImpl - blockstore files verified: true, true
+05:24:09 [DefaultDispatcher-worker-11] CheckpointManager - Attempting to initialize a new block store with a checkpoint for time 1789190483 (2026-09-12T05:21:23Z)
+05:24:10 [DefaultDispatcher-worker-7] DapiClient - searching for quorum: 4, 000000000000000e92697c2217d50b9526a698b4ef0eff8fd48743cfa53983db, 2541274
+05:24:10 [DefaultDispatcher-worker-1] DapiClient - searching for quorum: 4, 000000000000000e92697c2217d50b9526a698b4ef0eff8fd48743cfa53983db, 2541274
+05:24:10 [DefaultDispatcher-worker-11] CheckpointManager - Read 4182 checkpoints up to time 2026-01-20T14:37:37Z, hash is c443288fa6ef670aaae806d6cf9ffae35aac33a580e1dbdd5fbc333e42ac57b4
+05:24:10 [DefaultDispatcher-worker-11] CheckpointManager - Attempting to initialize a new block store with a checkpoint for time 1789190650 (2026-09-12T05:24:10Z)
+05:24:10 [main] WalletActivityTracker - activity lifecycle: current: VerifySeedActivity, activities: 2 visible: 1 foreground: 0
+05:24:10 [main] WalletActivityTracker - activity lifecycle: activity VerifySeedActivity destroyed
+05:24:10 [main] WalletActivityTracker - activity lifecycle: current: VerifySeedActivity, activities: 1 visible: 1 foreground: 0
+05:24:10 [DefaultDispatcher-worker-10] Constants - <-- 200 https://rates.ctx.com/rates?source=ctx (277ms, unknown-length body)
+05:24:10 [DefaultDispatcher-worker-11] CheckpointManager - Read 4182 checkpoints up to time 2026-01-20T14:37:37Z, hash is c443288fa6ef670aaae806d6cf9ffae35aac33a580e1dbdd5fbc333e42ac57b4
+05:24:10 [DefaultDispatcher-worker-11] BlockchainServiceImpl - checkpoints loaded from 'checkpoints.txt', took 162.7 ms
+05:24:10 [DefaultDispatcher-worker-11] BLSJniLibrary - Initializing BLS JNI Library
+05:24:10 [DefaultDispatcher-worker-11] AbstractBlockChain - chain head is at height 2408832:
+ block: 
+   hash: 000000000000001d48fec4e90fe93780f3128d77745ecb1468a14531c53d4737
+   version: 536870912 (0x20000000) (BIP34, BIP66, BIP65)
+   previous block: 000000000000002a1ab581f99a79e79f02e8024b6fca6f680e4dc2bcfe3dc063
+   merkle root: f161306eabcc7c786a20738041e326718f94677260c9e8d062688a8fd24508d4
+   time: 1768919857 (2026-01-20T14:37:37Z)
+   difficulty target (nBits): 422562999
+   nonce: 3317596855
+
+05:24:10 [DefaultDispatcher-worker-11] AbstractBlockChain - chain head is at height 2408832:
+ block: 
+   hash: 000000000000001d48fec4e90fe93780f3128d77745ecb1468a14531c53d4737
+   version: 536870912 (0x20000000) (BIP34, BIP66, BIP65)
+   previous block: 000000000000002a1ab581f99a79e79f02e8024b6fca6f680e4dc2bcfe3dc063
+   merkle root: f161306eabcc7c786a20738041e326718f94677260c9e8d062688a8fd24508d4
+   time: 1768919857 (2026-01-20T14:37:37Z)
+   difficulty target (nBits): 422562999
+   nonce: 3317596855
+
+05:24:10 [main] SecurityGuard - loading security guard [healthy=true] with keys: [keystore_healthy, fallback_pin_wallet_password_key, primary_ui_pin_key, modern_encryption_migration_complete, fallback_mnemonic_wallet_password_key, primary_wallet_password_key, fallback_mnemonic_ui_pin_key]
+05:24:10 [main] BlockchainServiceImpl - network callback registered with NetworkRequest: de.schildbach.wallet.service.BlockchainServiceImpl$NetworkCallbackImpl@c91d8d9
+05:24:10 [DefaultDispatcher-worker-5] BlockchainServiceImpl - monitoring 0 old transactions
+05:24:10 [main] BlockchainServiceImpl - receiver register: tickReceiver, de.schildbach.wallet.service.BlockchainServiceImpl$tickReceiver$1@756d54c
+05:24:10 [DefaultDispatcher-worker-5] BlockchainServiceImpl - network capabilities changed: 100, hasInternet: true, validated: true
+05:24:10 [DefaultDispatcher-worker-9] BlockchainServiceImpl - network available: 100, hasInternet: true, validated: true, type: WiFi
+05:24:10 [DefaultDispatcher-worker-12] BlockchainServiceImpl - cutover committed — Platform quorum lookups wired to the SDK-sourced quorum list
+05:24:10 [DefaultDispatcher-worker-12] StartupBreadcrumbs - STARTUP breadcrumb: 20 SDK_BIND_KICKED +217703ms
+05:24:10 [DefaultDispatcher-worker-12] BlockchainServiceImpl - .onCreate() finished
+05:24:10 [DefaultDispatcher-worker-10] BlockchainServiceImpl - onCreate completed, processing onStartCommand
+05:24:10 [DefaultDispatcher-worker-10] BLSJniLibrary - Initializing BLS JNI Library
+05:24:10 [DefaultDispatcher-worker-10] BlockchainServiceImpl - service start command: Intent { cmp=hashengineering.darkcoin.wallet/de.schildbach.wallet.service.BlockchainServiceImpl }
+05:24:10 [DefaultDispatcher-worker-10] BlockchainServiceImpl - .onStartCommand(Intent { cmp=hashengineering.darkcoin.wallet/de.schildbach.wallet.service.BlockchainServiceImpl }) finished
+05:24:10 [DefaultDispatcher-worker-2] BlockchainServiceImpl - onCreate completed, processing onStartCommand
+05:24:10 [DefaultDispatcher-worker-2] BLSJniLibrary - Initializing BLS JNI Library
+05:24:10 [DefaultDispatcher-worker-2] BlockchainServiceImpl - service start command: Intent { act=de.schildbach.wallet.service.cancel_coins_received cmp=hashengineering.darkcoin.wallet/de.schildbach.wallet.service.BlockchainServiceImpl }
+05:24:10 [DefaultDispatcher-worker-2] BlockchainServiceImpl - .onStartCommand(Intent { act=de.schildbach.wallet.service.cancel_coins_received cmp=hashengineering.darkcoin.wallet/de.schildbach.wallet.service.BlockchainServiceImpl }) finished
+05:24:10 [DefaultDispatcher-worker-5] BlockchainServiceImpl - acquiring check() mutex
+05:24:10 [DefaultDispatcher-worker-5] BlockchainServiceImpl - check()
+05:24:10 [DefaultDispatcher-worker-5] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+05:24:10 [DefaultDispatcher-worker-5] BlockchainServiceImpl - releasing check() mutex
+05:24:10 [DefaultDispatcher-worker-13] BlockchainServiceImpl - acquiring check() mutex
+05:24:10 [DefaultDispatcher-worker-13] BlockchainServiceImpl - check()
+05:24:10 [DefaultDispatcher-worker-13] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+05:24:10 [DefaultDispatcher-worker-13] BlockchainServiceImpl - releasing check() mutex
+05:24:10 [DefaultDispatcher-worker-16] BlockchainServiceImpl - acquiring check() mutex
+05:24:10 [DefaultDispatcher-worker-16] BlockchainServiceImpl - check()
+05:24:10 [DefaultDispatcher-worker-16] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+05:24:10 [DefaultDispatcher-worker-16] BlockchainServiceImpl - releasing check() mutex
+05:24:10 [DefaultDispatcher-worker-10] SdkWalletBinder - SDK wallet bound; identity not yet registered — discovery deferred
+05:24:10 [DefaultDispatcher-worker-10] StartupBreadcrumbs - STARTUP breadcrumb: 21 SDK_L1_ENGINE_STARTING +217705ms
+05:24:10 [DefaultDispatcher-worker-5] ExchangeRatesRepository - exchange rates updated successfully with de.schildbach.wallet.rates.DashRetailClient@76dd850
+05:24:10 [DefaultDispatcher-worker-15] ExchangeRatesRepository - updateTrigger
+05:24:10 [DefaultDispatcher-worker-4] DapiClient - searching for quorum: 4, 000000000000000e92697c2217d50b9526a698b4ef0eff8fd48743cfa53983db, 2541274
+05:24:10 [DefaultDispatcher-worker-1] DapiClient - searching for quorum: 4, 000000000000000e92697c2217d50b9526a698b4ef0eff8fd48743cfa53983db, 2541274
+05:24:10 [DefaultDispatcher-worker-7] DapiClient - searching for quorum: 4, 000000000000000e92697c2217d50b9526a698b4ef0eff8fd48743cfa53983db, 2541274
+05:24:10 [DefaultDispatcher-worker-4] SdkQuorumDataSource - SDK quorum keys refreshed: 24 fetched, 24 cached
+05:24:10 [DefaultDispatcher-worker-7] DapiClient - searching for quorum: result: 8226fba4c06fd9398a852a2f0d1013e9231c2016c3ae87fa7f344c8098e5dfb056fb573f383df422fd44b759fae65698
+05:24:10 [DefaultDispatcher-worker-1] DapiClient - searching for quorum: result: 8226fba4c06fd9398a852a2f0d1013e9231c2016c3ae87fa7f344c8098e5dfb056fb573f383df422fd44b759fae65698
+05:24:10 [DefaultDispatcher-worker-4] DapiClient - searching for quorum: result: 8226fba4c06fd9398a852a2f0d1013e9231c2016c3ae87fa7f344c8098e5dfb056fb573f383df422fd44b759fae65698
+05:24:10 [DefaultDispatcher-worker-2] L1ShadowSyncService - DashPay bring-up before SPV: status=NO_IDENTITY discovery=1 dashPaySyncRan=false drained=0 pending=0 elapsedMs=788
+05:24:10 [DefaultDispatcher-worker-10] L1ShadowSyncService - L1Shadow phase=IDLE 0.0% headers 0/0 filters 0/0 wallet 0
+05:24:10 [DefaultDispatcher-worker-10] L1ShadowSyncService - ReplayMemTelemetry phase=IDLE nativeHeapAllocated=109847808 nativeHeapSize=127221760 jvmUsed=27176320 jvmMax=603979776 headers 0/0 filters 0 wallet 0
+05:24:10 [DefaultDispatcher-worker-8] L1ShadowSyncService - L1 shadow SPV started for SDK wallet ee230719… (dataDir=/data/user/0/hashengineering.darkcoin.wallet/files/l1_shadow_spv/mainnet, default peer discovery); debug-only instrumentation — two SPV engines are now running
+05:24:10 [DefaultDispatcher-worker-8] StartupBreadcrumbs - STARTUP breadcrumb: 22 SDK_L1_ENGINE_STARTED +218513ms
+05:24:10 [DefaultDispatcher-worker-8] StartupBreadcrumbs - STARTUP breadcrumb: 23 CUTOVER_SERVICES_STARTED +218513ms
+05:24:10 [DefaultDispatcher-worker-10] L1ShadowSyncService - ReplayMemTelemetry phase=CONNECTING nativeHeapAllocated=113446368 nativeHeapSize=131039232 jvmUsed=27241856 jvmMax=603979776 headers 2400000/2400000 filters 2404799 wallet 0 SETTLED
+05:24:10 [DefaultDispatcher-worker-9] L1ShadowSyncService - L1Parity probing suspended: the cutover is committed and the dashj engine is held, so its balance is frozen at the cutover snapshot — any comparison against it is a guaranteed MISMATCH that measures nothing. Turn on the Tools 'dashj sync (diagnostic)' toggle to un-hold dashj and resume probing.
+05:24:10 [DefaultDispatcher-worker-9] L1ShadowSyncService - L1Parity cadence relaxing 10000ms -> 60000ms (cutover already committed)
+05:24:10 [DefaultDispatcher-worker-15] L1ShadowSyncService - WalletHistoryFacts: displayDbEmpty count=0 dashjEarliestKeyTime=2026-09-19T05:21:23Z (real line follows at first sync settle)
+05:24:10 [DefaultDispatcher-worker-13] MainViewModel - blockchain state update: mnlist=0; chain=2400000; wallet=-1
+05:24:10 [DefaultDispatcher-worker-9] L1ShadowSyncService - WalletBalanceFacts: total=0 accounts={bip44:0, bip32:0, coinjoin:0, identityRegistration:0, identityTopUpUnbound:0, identityInvitation:0, assetLockTopUp:0, assetLockShieldedTopUp:0, providerVoting:0, providerOwner:0, providerOperator:0, providerPlatform:0} confirmed=0 unconfirmed=0 txCount=0
+05:24:10 [DefaultDispatcher-worker-3] MainViewModel - blockchain state update: mnlist=0; chain=2400000; wallet=-1
+05:24:10 [main] HistoryHeaderAdapter - set invite, synced = true
+05:24:11 [DefaultDispatcher-worker-4] Platform - platform check: 1.673 s
+05:24:11 [DefaultDispatcher-worker-1] Platform - platform check: 1.725 s
+05:24:11 [main] HistoryHeaderAdapter - set invite, synced = false
+05:24:12 [DefaultDispatcher-worker-9] BlockchainServiceImpl - network capabilities changed: 100, hasInternet: true, validated: true
+05:24:12 [DefaultDispatcher-worker-9] BlockchainServiceImpl - acquiring check() mutex
+05:24:12 [DefaultDispatcher-worker-9] BlockchainServiceImpl - check()
+05:24:12 [DefaultDispatcher-worker-9] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+05:24:12 [DefaultDispatcher-worker-9] BlockchainServiceImpl - releasing check() mutex
+05:24:14 [Wallet autosave thread] WalletFiles - Background saving wallet; last seen block is height -1, date unknown, hash null
+05:24:14 [Wallet autosave thread] CoinJoinExtension - CoinJoinExtension serialization: 0ms total (keys:0ms[8], cache:0ms[0], salt:0ms, io:0ms, size:1431bytes, buffer:64KB)
+05:24:14 [Wallet autosave thread] WalletProtobufSerializer - walletToProto (serial=8) timing: 11ms total, init=0ms, tx=0ms[0], keys=0ms, scripts=0ms[0], metadata=0ms, ext=11ms, friendRecv=0ms, friendSend=0ms, build=0ms
+05:24:14 [Wallet autosave thread] WalletProtobufSerializer - writeWallet timing: 13ms total (13ms/100% serialization, 0ms/0% I/O) buffer=8KB
+05:24:14 [Wallet autosave thread] WalletFiles - Save completed in 19.40 ms (15328 bytes); /data/user/0/hashengineering.darkcoin.wallet/files/wallet-protobuf
+05:24:15 [DefaultDispatcher-worker-1] BlockchainServiceImpl - network capabilities changed: 100, hasInternet: true, validated: true
+05:24:15 [DefaultDispatcher-worker-1] BlockchainServiceImpl - acquiring check() mutex
+05:24:15 [DefaultDispatcher-worker-1] BlockchainServiceImpl - check()
+05:24:15 [DefaultDispatcher-worker-1] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+05:24:15 [DefaultDispatcher-worker-1] BlockchainServiceImpl - releasing check() mutex
+05:24:21 [DefaultDispatcher-worker-10] BlockchainServiceImpl - network capabilities changed: 100, hasInternet: true, validated: true
+05:24:21 [DefaultDispatcher-worker-10] BlockchainServiceImpl - acquiring check() mutex
+05:24:21 [DefaultDispatcher-worker-10] BlockchainServiceImpl - check()
+05:24:21 [DefaultDispatcher-worker-10] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+05:24:21 [DefaultDispatcher-worker-10] BlockchainServiceImpl - releasing check() mutex
+05:24:29 [main] WalletActivityTracker - activity lifecycle: current: MainActivity, activities: 1 visible: 1 foreground: 1
+05:24:29 [DefaultDispatcher-worker-16] TimeUtils - timeskew: 715; using last value
+05:24:29 [main] BlockchainServiceImpl - .onStartCommand(Intent { act=de.schildbach.wallet.service.cancel_coins_received cmp=hashengineering.darkcoin.wallet/de.schildbach.wallet.service.BlockchainServiceImpl })
+05:24:29 [DefaultDispatcher-worker-16] BlockchainServiceImpl - onStartCommand waiting for onCreate to complete...
+05:24:29 [DefaultDispatcher-worker-16] BlockchainServiceImpl - onCreate completed, processing onStartCommand
+05:24:29 [DefaultDispatcher-worker-16] BLSJniLibrary - Initializing BLS JNI Library
+05:24:29 [DefaultDispatcher-worker-16] BlockchainServiceImpl - service start command: Intent { act=de.schildbach.wallet.service.cancel_coins_received cmp=hashengineering.darkcoin.wallet/de.schildbach.wallet.service.BlockchainServiceImpl }
+05:24:29 [DefaultDispatcher-worker-16] BlockchainServiceImpl - .onStartCommand(Intent { act=de.schildbach.wallet.service.cancel_coins_received cmp=hashengineering.darkcoin.wallet/de.schildbach.wallet.service.BlockchainServiceImpl }) finished
+05:24:29 [main] DeviceInfoProvider - Detecting currency based on device, mobile network or locale:
+05:24:29 [main] DeviceInfoProvider - Device Sim Country: us
+05:24:29 [main] MainViewModel - Updating currency exchange rate based on country: US
+05:24:32 [native-log-bridge] DashSdkNative - --------- beginning of main
+05:24:32 [native-log-bridge] DashSdkNative - 09-19 00:24:16.775  4533  5134 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(2405999) synced_height_frozen=None synced_height_rejected=None faulted=0
+05:24:32 [native-log-bridge] DashSdkNative - 09-19 00:24:20.094  4533  5133 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(2407999) synced_height_frozen=None synced_height_rejected=None faulted=0
+05:24:32 [native-log-bridge] DashSdkNative - 09-19 00:24:20.106  4533  5132 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(2408000) synced_height_frozen=None synced_height_rejected=None faulted=0
+05:24:32 [native-log-bridge] DashSdkNative - 09-19 00:24:20.903  4533  5134 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(2413000) synced_height_frozen=None synced_height_rejected=None faulted=0
+05:24:32 [native-log-bridge] DashSdkNative - 09-19 00:24:28.275  4533  5134 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(2418000) synced_height_frozen=None synced_height_rejected=None faulted=0
+05:24:35 [DefaultDispatcher-worker-15] DapiClient - getDocuments(contractId=GWRSAVFMjXx8HpQFaNJMqBV7MBgMK4br5UESsB4S31Ec, type=domain, {limit=5, where=[]})
+05:24:35 [DefaultDispatcher-worker-6] DapiClient - getDocuments(contractId=GWRSAVFMjXx8HpQFaNJMqBV7MBgMK4br5UESsB4S31Ec, type=domain, {limit=5, where=[]})
+05:24:35 [DefaultDispatcher-worker-11] DapiClient - getDocuments(contractId=GWRSAVFMjXx8HpQFaNJMqBV7MBgMK4br5UESsB4S31Ec, type=domain, {limit=5, where=[]})
+05:24:35 [DefaultDispatcher-worker-11] Platform - platform check: 428.8 ms
+05:24:35 [DefaultDispatcher-worker-15] Platform - platform check: 434.1 ms
+05:24:36 [DefaultDispatcher-worker-6] Platform - platform check: 1.284 s
+05:24:36 [DefaultDispatcher-worker-6] PlatformServiceImplementation - platform available 3 of 3: true
+05:24:36 [main] MainViewModel - platform available: true; no identity creation is progress: true
+05:24:39 [main] StartupBreadcrumbs - STARTUP breadcrumb: 13 LAUNCH_SURVIVED +247211ms
+05:24:42 [DefaultDispatcher-worker-15] L1ShadowSyncService - L1Shadow phase=FILTERS 98.5% headers 2541275/2541275 filters 2428000/2541275 wallet 2428000
+05:24:42 [DefaultDispatcher-worker-15] L1ShadowSyncService - ReplayMemTelemetry phase=FILTERS nativeHeapAllocated=375572816 nativeHeapSize=410247168 jvmUsed=19020480 jvmMax=603979776 headers 2541275/2541275 filters 2428000 wallet 2428000
+05:24:48 [DefaultDispatcher-worker-5] BlockchainServiceImpl - network capabilities changed: 100, hasInternet: true, validated: true
+05:24:48 [DefaultDispatcher-worker-5] BlockchainServiceImpl - acquiring check() mutex
+05:24:48 [DefaultDispatcher-worker-5] BlockchainServiceImpl - check()
+05:24:48 [DefaultDispatcher-worker-5] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+05:24:48 [DefaultDispatcher-worker-5] BlockchainServiceImpl - releasing check() mutex
+05:24:51 [DefaultDispatcher-worker-16] BlockchainServiceImpl - network capabilities changed: 100, hasInternet: true, validated: true
+05:24:51 [DefaultDispatcher-worker-16] BlockchainServiceImpl - acquiring check() mutex
+05:24:51 [DefaultDispatcher-worker-16] BlockchainServiceImpl - check()
+05:24:51 [DefaultDispatcher-worker-16] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+05:24:51 [DefaultDispatcher-worker-16] BlockchainServiceImpl - releasing check() mutex
+05:24:52 [DefaultDispatcher-worker-16] L1ShadowSyncService - L1Shadow phase=SYNCED 100.0% headers 2541275/2541275 filters 2541275/2541275 wallet 2541275
+05:24:52 [DefaultDispatcher-worker-16] L1ShadowSyncService - ReplayMemTelemetry phase=SYNCED nativeHeapAllocated=224235072 nativeHeapSize=422428672 jvmUsed=20167360 jvmMax=603979776 headers 2541275/2541275 filters 2541275 wallet 2541275 SETTLED
+05:24:52 [DefaultDispatcher-worker-1] L1ShadowSyncService - WalletHistoryFacts: displayDbEmpty count=0 dashjEarliestKeyTime=2026-09-19T05:21:23Z (real line follows at first sync settle)
+05:24:52 [DefaultDispatcher-worker-5] L1ShadowSyncService - WalletBalanceFacts: total=0 accounts={bip44:0, bip32:0, coinjoin:0, identityRegistration:0, identityTopUpUnbound:0, identityInvitation:0, assetLockTopUp:0, assetLockShieldedTopUp:0, providerVoting:0, providerOwner:0, providerOperator:0, providerPlatform:0} confirmed=0 unconfirmed=0 txCount=0
+05:24:52 [DefaultDispatcher-worker-4] MainViewModel - blockchain state update: mnlist=2541275; chain=2541275; wallet=-1
+05:24:52 [main] HistoryHeaderAdapter - set invite, synced = true
+05:24:52 [DefaultDispatcher-worker-15] TxDisplayCacheService - Sync complete (cutoverCommitted=true): SDK=0 records | dashj wallet=0 txs | group cache=0 txs/0 groups | display=0 rows — cache is complete (SDK holds 0 records, display has 0 rows)
+05:24:52 [main] BlockchainServiceImpl - cutover committed and SDK L1 scan synced — triggering identity/contacts discovery
+05:24:52 [DefaultDispatcher-worker-15] BlockchainIdentityData - creation: BlockchainIdentityData(NONE, null, null, null, null, null)
+05:24:52 [DefaultDispatcher-worker-15] PlatformSynchronizationService - discoverAndRecoverIdentity: checking for existing associated identity
+05:24:52 [DefaultDispatcher-worker-15] SecurityGuard - loading security guard [healthy=true] with keys: [keystore_healthy, fallback_pin_wallet_password_key, primary_ui_pin_key, modern_encryption_migration_complete, fallback_mnemonic_wallet_password_key, primary_wallet_password_key, fallback_mnemonic_ui_pin_key]
+05:24:52 [DefaultDispatcher-worker-15] ModernEncryptionProvider - Decrypted data for alias: wallet_password_key
+05:24:52 [DefaultDispatcher-worker-15] KeyCrypterScrypt - Deriving key took 130.0 ms for N=65536, r=8, p=1.
+05:24:52 [DefaultDispatcher-worker-15] DapiClient - getIdentityByFirstPublicKey(8091b58b727505df0a144ed3e9de9d92d93bfcfd)
+05:24:52 [DefaultDispatcher-worker-13] L1ShadowSyncService - L1 engine chainlock height 0 -> 2541275
+05:24:52 [DefaultDispatcher-worker-1] MainViewModel - blockchain state update: mnlist=2541275; chain=2541275; wallet=-1
+05:24:53 [DefaultDispatcher-worker-15] PlatformSynchronizationService - discoverAndRecoverIdentity: no existing identity found
+05:24:53 [DefaultDispatcher-worker-15] PlatformSynchronizationService - identity-discovery guard released (no identity found) — a later discovery may run again
+05:24:53 [DefaultDispatcher-worker-15] BlockchainServiceImpl - post-cutover identity discovery found nothing and the wallet has no identity — re-arming; next attempt no sooner than 120000 ms from now
+05:24:53 [DefaultDispatcher-worker-10] PlatformSynchronizationService - TxMetadata settings: saveToNetwork=false frequency=afterTenTransactions saveAfter=9223372036854775807 paymentCategory=false taxCategory=false exchangeRates=false memos=false giftCards=false storedDocuments=0
+05:24:53 [DefaultDispatcher-worker-1] PlatformSynchronizationService - TxMetadata publish: not publishing — saveToNetwork is OFF (per-device setting; the default for a new or restored install, and it does NOT travel with the wallet)
+05:24:54 [main] WalletActivityTracker - activity lifecycle: current: MainActivity, activities: 1 visible: 1 foreground: 0
+05:24:54 [DefaultDispatcher-worker-14] BlockchainServiceImpl - network capabilities changed: 100, hasInternet: true, validated: true
+05:24:54 [DefaultDispatcher-worker-14] BlockchainServiceImpl - acquiring check() mutex
+05:24:54 [DefaultDispatcher-worker-14] BlockchainServiceImpl - check()
+05:24:54 [DefaultDispatcher-worker-14] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+05:24:54 [DefaultDispatcher-worker-14] BlockchainServiceImpl - releasing check() mutex
+05:25:00 [main] BlockchainServiceImpl - MEM pss=350MB nativeHeap=201/402MB jvm=20/576MB
+05:25:00 [DefaultDispatcher-worker-11] BlockchainServiceImpl - network capabilities changed: 100, hasInternet: true, validated: true
+05:25:00 [DefaultDispatcher-worker-11] BlockchainServiceImpl - acquiring check() mutex
+05:25:00 [DefaultDispatcher-worker-11] BlockchainServiceImpl - check()
+05:25:00 [DefaultDispatcher-worker-11] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+05:25:00 [DefaultDispatcher-worker-11] BlockchainServiceImpl - releasing check() mutex
+05:25:02 [native-log-bridge] DashSdkNative - 09-19 00:24:40.967  4533  5135 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(2423000) synced_height_frozen=None synced_height_rejected=None faulted=0
+05:25:02 [native-log-bridge] DashSdkNative - 09-19 00:24:41.680  4533  5132 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(2428000) synced_height_frozen=None synced_height_rejected=None faulted=0
+05:25:02 [native-log-bridge] DashSdkNative - 09-19 00:24:41.992  4533  5132 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(2433000) synced_height_frozen=None synced_height_rejected=None faulted=0
+05:25:02 [native-log-bridge] DashSdkNative - 09-19 00:24:42.355  4533  5132 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(2438000) synced_height_frozen=None synced_height_rejected=None faulted=0
+05:25:02 [native-log-bridge] DashSdkNative - 09-19 00:24:43.031  4533  5133 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(2443000) synced_height_frozen=None synced_height_rejected=None faulted=0
+05:25:02 [native-log-bridge] DashSdkNative - 09-19 00:24:43.469  4533  5133 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(2448000) synced_height_frozen=None synced_height_rejected=None faulted=0
+05:25:02 [native-log-bridge] DashSdkNative - 09-19 00:24:43.845  4533  5133 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(2453000) synced_height_frozen=None synced_height_rejected=None faulted=0
+05:25:02 [native-log-bridge] DashSdkNative - 09-19 00:24:44.314  4533  5132 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(2458000) synced_height_frozen=None synced_height_rejected=None faulted=0
+05:25:02 [native-log-bridge] DashSdkNative - 09-19 00:24:44.636  4533  5135 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(2463000) synced_height_frozen=None synced_height_rejected=None faulted=0
+05:25:02 [native-log-bridge] DashSdkNative - 09-19 00:24:45.352  4533  5134 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(2468000) synced_height_frozen=None synced_height_rejected=None faulted=0
+05:25:02 [native-log-bridge] DashSdkNative - 09-19 00:24:45.661  4533  5132 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(2473000) synced_height_frozen=None synced_height_rejected=None faulted=0
+05:25:02 [native-log-bridge] DashSdkNative - 09-19 00:24:45.981  4533  5133 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(2478000) synced_height_frozen=None synced_height_rejected=None faulted=0
+05:25:02 [native-log-bridge] DashSdkNative - 09-19 00:24:46.636  4533  5134 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(2483000) synced_height_frozen=None synced_height_rejected=None faulted=0
+05:25:02 [native-log-bridge] DashSdkNative - 09-19 00:24:47.090  4533  5134 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(2488000) synced_height_frozen=None synced_height_rejected=None faulted=0
+05:25:02 [native-log-bridge] DashSdkNative - 09-19 00:24:47.577  4533  5133 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(2493000) synced_height_frozen=None synced_height_rejected=None faulted=0
+05:25:02 [native-log-bridge] DashSdkNative - 09-19 00:24:48.131  4533  5134 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(2498000) synced_height_frozen=None synced_height_rejected=None faulted=0
+05:25:02 [native-log-bridge] DashSdkNative - 09-19 00:24:48.496  4533  5133 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(2503000) synced_height_frozen=None synced_height_rejected=None faulted=0
+05:25:02 [native-log-bridge] DashSdkNative - 09-19 00:24:48.980  4533  5132 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(2508000) synced_height_frozen=None synced_height_rejected=None faulted=0
+05:25:02 [native-log-bridge] DashSdkNative - 09-19 00:24:49.428  4533  5133 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(2513000) synced_height_frozen=None synced_height_rejected=None faulted=0
+05:25:02 [native-log-bridge] DashSdkNative - 09-19 00:24:49.758  4533  5132 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(2518000) synced_height_frozen=None synced_height_rejected=None faulted=0
+05:25:02 [native-log-bridge] DashSdkNative - 09-19 00:24:50.104  4533  5135 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(2523000) synced_height_frozen=None synced_height_rejected=None faulted=0
+05:25:02 [native-log-bridge] DashSdkNative - 09-19 00:24:50.467  4533  5135 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(2528000) synced_height_frozen=None synced_height_rejected=None faulted=0
+05:25:02 [native-log-bridge] DashSdkNative - 09-19 00:24:50.761  4533  5133 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(2533000) synced_height_frozen=None synced_height_rejected=None faulted=0
+05:25:02 [native-log-bridge] DashSdkNative - 09-19 00:24:51.125  4533  5135 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(2538000) synced_height_frozen=None synced_height_rejected=None faulted=0
+05:25:02 [native-log-bridge] DashSdkNative - 09-19 00:24:51.441  4533  5132 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(2541275) synced_height_frozen=None synced_height_rejected=None faulted=0
+05:25:02 [native-log-bridge] DashSdkNative - 09-19 00:24:52.762  4533  5135 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=None synced_height_frozen=None synced_height_rejected=None faulted=0
+05:25:12 [main] WalletActivityTracker - activity lifecycle: current: MainActivity, activities: 1 visible: 1 foreground: 1
+05:25:12 [main] DeviceInfoProvider - Detecting currency based on device, mobile network or locale:
+05:25:12 [main] DeviceInfoProvider - Device Sim Country: us
+05:25:12 [main] MainViewModel - Updating currency exchange rate based on country: US
+05:25:12 [main] BlockchainServiceImpl - .onStartCommand(Intent { act=de.schildbach.wallet.service.cancel_coins_received cmp=hashengineering.darkcoin.wallet/de.schildbach.wallet.service.BlockchainServiceImpl })
+05:25:12 [DefaultDispatcher-worker-14] BlockchainServiceImpl - onStartCommand waiting for onCreate to complete...
+05:25:12 [DefaultDispatcher-worker-14] BlockchainServiceImpl - onCreate completed, processing onStartCommand
+05:25:12 [DefaultDispatcher-worker-14] BLSJniLibrary - Initializing BLS JNI Library
+05:25:12 [DefaultDispatcher-worker-14] BlockchainServiceImpl - service start command: Intent { act=de.schildbach.wallet.service.cancel_coins_received cmp=hashengineering.darkcoin.wallet/de.schildbach.wallet.service.BlockchainServiceImpl }
+05:25:12 [DefaultDispatcher-worker-14] BlockchainServiceImpl - .onStartCommand(Intent { act=de.schildbach.wallet.service.cancel_coins_received cmp=hashengineering.darkcoin.wallet/de.schildbach.wallet.service.BlockchainServiceImpl }) finished
+05:25:15 [DefaultDispatcher-worker-14] BlockchainServiceImpl - network capabilities changed: 100, hasInternet: true, validated: true
+05:25:15 [DefaultDispatcher-worker-14] BlockchainServiceImpl - acquiring check() mutex
+05:25:15 [DefaultDispatcher-worker-14] BlockchainServiceImpl - check()
+05:25:15 [DefaultDispatcher-worker-14] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+05:25:15 [DefaultDispatcher-worker-14] BlockchainServiceImpl - releasing check() mutex
+05:25:18 [DefaultDispatcher-worker-10] BlockchainServiceImpl - network capabilities changed: 100, hasInternet: true, validated: true
+05:25:18 [DefaultDispatcher-worker-10] BlockchainServiceImpl - acquiring check() mutex
+05:25:18 [DefaultDispatcher-worker-10] BlockchainServiceImpl - check()
+05:25:18 [DefaultDispatcher-worker-10] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+05:25:18 [DefaultDispatcher-worker-10] BlockchainServiceImpl - releasing check() mutex
+05:25:21 [DefaultDispatcher-worker-2] BlockchainServiceImpl - network capabilities changed: 100, hasInternet: true, validated: true
+05:25:21 [DefaultDispatcher-worker-2] BlockchainServiceImpl - acquiring check() mutex
+05:25:21 [DefaultDispatcher-worker-2] BlockchainServiceImpl - check()
+05:25:21 [DefaultDispatcher-worker-2] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+05:25:21 [DefaultDispatcher-worker-2] BlockchainServiceImpl - releasing check() mutex
+05:25:24 [DefaultDispatcher-worker-10] BlockchainServiceImpl - network capabilities changed: 100, hasInternet: true, validated: true
+05:25:24 [DefaultDispatcher-worker-10] BlockchainServiceImpl - acquiring check() mutex
+05:25:24 [DefaultDispatcher-worker-10] BlockchainServiceImpl - check()
+05:25:24 [DefaultDispatcher-worker-10] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+05:25:24 [DefaultDispatcher-worker-10] BlockchainServiceImpl - releasing check() mutex
+05:25:36 [DefaultDispatcher-worker-12] BlockchainServiceImpl - network capabilities changed: 100, hasInternet: true, validated: true
+05:25:36 [DefaultDispatcher-worker-12] BlockchainServiceImpl - acquiring check() mutex
+05:25:36 [DefaultDispatcher-worker-12] BlockchainServiceImpl - check()
+05:25:36 [DefaultDispatcher-worker-12] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+05:25:36 [DefaultDispatcher-worker-12] BlockchainServiceImpl - releasing check() mutex
+05:25:39 [DefaultDispatcher-worker-14] BlockchainServiceImpl - network capabilities changed: 100, hasInternet: true, validated: true
+05:25:39 [DefaultDispatcher-worker-14] BlockchainServiceImpl - acquiring check() mutex
+05:25:39 [DefaultDispatcher-worker-14] BlockchainServiceImpl - check()
+05:25:39 [DefaultDispatcher-worker-14] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+05:25:39 [DefaultDispatcher-worker-14] BlockchainServiceImpl - releasing check() mutex
+05:25:41 [DefaultDispatcher-worker-6] BlockchainServiceImpl - network capabilities changed: 101, hasInternet: true, validated: true
+05:25:41 [DefaultDispatcher-worker-6] BlockchainServiceImpl - acquiring check() mutex
+05:25:41 [DefaultDispatcher-worker-6] BlockchainServiceImpl - check()
+05:25:41 [DefaultDispatcher-worker-6] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+05:25:41 [DefaultDispatcher-worker-6] BlockchainServiceImpl - releasing check() mutex
+05:25:41 [DefaultDispatcher-worker-14] BlockchainServiceImpl - network available: 101, hasInternet: true, validated: true, type: Cellular
+05:25:41 [DefaultDispatcher-worker-14] BlockchainServiceImpl - acquiring check() mutex
+05:25:41 [DefaultDispatcher-worker-14] BlockchainServiceImpl - check()
+05:25:41 [DefaultDispatcher-worker-14] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+05:25:41 [DefaultDispatcher-worker-14] BlockchainServiceImpl - releasing check() mutex
+05:25:42 [DefaultDispatcher-worker-2] BlockchainServiceImpl - network capabilities changed: 100, hasInternet: true, validated: true
+05:25:42 [DefaultDispatcher-worker-2] BlockchainServiceImpl - acquiring check() mutex
+05:25:42 [DefaultDispatcher-worker-2] BlockchainServiceImpl - check()
+05:25:42 [DefaultDispatcher-worker-2] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+05:25:42 [DefaultDispatcher-worker-2] BlockchainServiceImpl - releasing check() mutex
+05:25:46 [DefaultDispatcher-worker-8] BlockchainServiceImpl - network capabilities changed: 100, hasInternet: true, validated: true
+05:25:46 [DefaultDispatcher-worker-8] BlockchainServiceImpl - acquiring check() mutex
+05:25:46 [DefaultDispatcher-worker-8] BlockchainServiceImpl - check()
+05:25:46 [DefaultDispatcher-worker-8] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+05:25:46 [DefaultDispatcher-worker-8] BlockchainServiceImpl - releasing check() mutex
+05:25:52 [main] BiometricHelper - No biometric credentials
+05:25:52 [main] LockScreenActivity - fingerprint was disabled
+05:25:52 [main] LockScreenActivity - LockState = ENTER_PIN
+05:26:00 [main] BlockchainServiceImpl - MEM pss=340MB nativeHeap=201/403MB jvm=18/576MB
+05:26:00 [main] BlockchainServiceImpl - History of transactions/blocks/headers/mnlistdiff (sdk): 0/0/0/0
+05:26:22 [DefaultDispatcher-worker-2] BlockchainServiceImpl - network capabilities changed: 100, hasInternet: true, validated: true
+05:26:22 [DefaultDispatcher-worker-2] BlockchainServiceImpl - acquiring check() mutex
+05:26:22 [DefaultDispatcher-worker-2] BlockchainServiceImpl - check()
+05:26:22 [DefaultDispatcher-worker-2] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+05:26:22 [DefaultDispatcher-worker-2] BlockchainServiceImpl - releasing check() mutex
+05:26:25 [DefaultDispatcher-worker-7] Platform - platform check: 2.268 min
+05:26:25 [DefaultDispatcher-worker-7] PlatformServiceImplementation - platform available 3 of 3: true
+05:26:31 [DefaultDispatcher-worker-7] BlockchainServiceImpl - network capabilities changed: 100, hasInternet: true, validated: true
+05:26:31 [DefaultDispatcher-worker-7] BlockchainServiceImpl - acquiring check() mutex
+05:26:31 [DefaultDispatcher-worker-7] BlockchainServiceImpl - check()
+05:26:31 [DefaultDispatcher-worker-7] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+05:26:31 [DefaultDispatcher-worker-7] BlockchainServiceImpl - releasing check() mutex
+05:26:37 [main] SecurityGuard - loading security guard [healthy=true] with keys: [keystore_healthy, fallback_pin_wallet_password_key, primary_ui_pin_key, modern_encryption_migration_complete, fallback_mnemonic_wallet_password_key, primary_wallet_password_key, fallback_mnemonic_ui_pin_key]
+05:26:37 [main] ModernEncryptionProvider - Decrypted data for alias: ui_pin_key
+05:26:37 [main] BiometricHelper - No biometric credentials
+05:26:38 [DefaultDispatcher-worker-6] BlockchainServiceImpl - network lost: 101, remaining networks: 1
+05:27:00 [main] BlockchainServiceImpl - MEM pss=341MB nativeHeap=202/403MB jvm=17/576MB
+05:27:00 [main] BlockchainServiceImpl - History of transactions/blocks/headers/mnlistdiff (sdk): 0/0/0/0, 0/0/0/0
+05:27:00 [main] BlockchainServiceImpl - idling detected, stopping service
+05:27:19 [DefaultDispatcher-worker-3] BlockchainServiceImpl - network capabilities changed: 100, hasInternet: true, validated: true
+05:27:19 [DefaultDispatcher-worker-3] BlockchainServiceImpl - acquiring check() mutex
+05:27:19 [DefaultDispatcher-worker-3] BlockchainServiceImpl - check()
+05:27:19 [DefaultDispatcher-worker-3] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+05:27:19 [DefaultDispatcher-worker-3] BlockchainServiceImpl - releasing check() mutex
+05:27:19 [main] BlockchainServiceImpl - cutover committed and SDK L1 scan synced — triggering identity/contacts discovery
+05:27:19 [DefaultDispatcher-worker-12] BlockchainIdentityData - creation: BlockchainIdentityData(NONE, null, null, null, null, null)
+05:27:19 [DefaultDispatcher-worker-12] PlatformSynchronizationService - discoverAndRecoverIdentity: checking for existing associated identity
+05:27:19 [DefaultDispatcher-worker-12] SecurityGuard - loading security guard [healthy=true] with keys: [keystore_healthy, fallback_pin_wallet_password_key, primary_ui_pin_key, modern_encryption_migration_complete, fallback_mnemonic_wallet_password_key, primary_wallet_password_key, fallback_mnemonic_ui_pin_key]
+05:27:19 [DefaultDispatcher-worker-12] ModernEncryptionProvider - Decrypted data for alias: wallet_password_key
+05:27:19 [DefaultDispatcher-worker-12] KeyCrypterScrypt - Deriving key took 129.0 ms for N=65536, r=8, p=1.
+05:27:19 [DefaultDispatcher-worker-12] DapiClient - getIdentityByFirstPublicKey(8091b58b727505df0a144ed3e9de9d92d93bfcfd)
+05:27:20 [DefaultDispatcher-worker-12] PlatformSynchronizationService - discoverAndRecoverIdentity: no existing identity found
+05:27:20 [DefaultDispatcher-worker-12] PlatformSynchronizationService - identity-discovery guard released (no identity found) — a later discovery may run again
+05:27:20 [DefaultDispatcher-worker-12] BlockchainServiceImpl - post-cutover identity discovery found nothing and the wallet has no identity — re-arming; next attempt no sooner than 120000 ms from now
+05:27:20 [DefaultDispatcher-worker-13] PlatformSynchronizationService - TxMetadata settings: saveToNetwork=false frequency=afterTenTransactions saveAfter=9223372036854775807 paymentCategory=false taxCategory=false exchangeRates=false memos=false giftCards=false storedDocuments=0
+05:27:25 [DefaultDispatcher-worker-3] BlockchainServiceImpl - network capabilities changed: 100, hasInternet: true, validated: true
+05:27:25 [DefaultDispatcher-worker-3] BlockchainServiceImpl - acquiring check() mutex
+05:27:25 [DefaultDispatcher-worker-3] BlockchainServiceImpl - check()
+05:27:25 [DefaultDispatcher-worker-3] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+05:27:25 [DefaultDispatcher-worker-3] BlockchainServiceImpl - releasing check() mutex
+05:27:28 [DefaultDispatcher-worker-6] BlockchainServiceImpl - network capabilities changed: 100, hasInternet: true, validated: true
+05:27:28 [DefaultDispatcher-worker-6] BlockchainServiceImpl - acquiring check() mutex
+05:27:28 [DefaultDispatcher-worker-6] BlockchainServiceImpl - check()
+05:27:28 [DefaultDispatcher-worker-6] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+05:27:28 [DefaultDispatcher-worker-6] BlockchainServiceImpl - releasing check() mutex
+05:27:31 [DefaultDispatcher-worker-8] BlockchainServiceImpl - network capabilities changed: 100, hasInternet: true, validated: true
+05:27:31 [DefaultDispatcher-worker-8] BlockchainServiceImpl - acquiring check() mutex
+05:27:31 [DefaultDispatcher-worker-8] BlockchainServiceImpl - check()
+05:27:31 [DefaultDispatcher-worker-8] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+05:27:31 [DefaultDispatcher-worker-8] BlockchainServiceImpl - releasing check() mutex
+05:27:37 [main] BiometricHelper - No biometric credentials
+05:27:37 [main] LockScreenActivity - fingerprint was disabled
+05:27:37 [main] LockScreenActivity - LockState = ENTER_PIN
+05:28:00 [main] BlockchainServiceImpl - MEM pss=342MB nativeHeap=202/403MB jvm=17/576MB
+05:28:00 [main] BlockchainServiceImpl - History of transactions/blocks/headers/mnlistdiff (sdk): 0/0/0/0, 0/0/0/0, 0/0/0/0
+05:28:00 [main] BlockchainServiceImpl - idling detected, stopping service
+05:28:22 [DefaultDispatcher-worker-2] L1ShadowSyncService - L1 engine chainlock height 2541275 -> 2541276
+05:28:22 [DefaultDispatcher-worker-1] MainViewModel - blockchain state update: mnlist=2541275; chain=2541275; wallet=-1
+05:28:22 [DefaultDispatcher-worker-1] BlockchainServiceImpl - network capabilities changed: 100, hasInternet: true, validated: true
+05:28:22 [DefaultDispatcher-worker-1] BlockchainServiceImpl - acquiring check() mutex
+05:28:22 [DefaultDispatcher-worker-1] BlockchainServiceImpl - check()
+05:28:22 [DefaultDispatcher-worker-1] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+05:28:22 [DefaultDispatcher-worker-1] BlockchainServiceImpl - releasing check() mutex
+05:28:25 [DefaultDispatcher-worker-9] L1ShadowSyncService - L1Shadow phase=FILTERS 100.0% headers 2541276/2541276 filters 2541275/2541276 wallet 2541275
+05:28:25 [DefaultDispatcher-worker-12] MainViewModel - blockchain state update: mnlist=2541276; chain=2541276; wallet=-1
+05:28:25 [DefaultDispatcher-worker-9] MainViewModel - blockchain state update: mnlist=2541276; chain=2541276; wallet=-1
+05:28:25 [DefaultDispatcher-worker-11] BlockchainServiceImpl - network capabilities changed: 100, hasInternet: true, validated: true
+05:28:25 [DefaultDispatcher-worker-11] BlockchainServiceImpl - acquiring check() mutex
+05:28:25 [DefaultDispatcher-worker-11] BlockchainServiceImpl - check()
+05:28:25 [DefaultDispatcher-worker-11] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+05:28:25 [DefaultDispatcher-worker-11] BlockchainServiceImpl - releasing check() mutex
+05:28:26 [DefaultDispatcher-worker-2] L1ShadowSyncService - L1Shadow phase=SYNCED 100.0% headers 2541276/2541276 filters 2541276/2541276 wallet 2541276
+05:28:26 [DefaultDispatcher-worker-2] MainViewModel - blockchain state update: mnlist=2541276; chain=2541276; wallet=-1
+05:28:32 [native-log-bridge] DashSdkNative - 09-19 00:28:22.657  4533  5134 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=None synced_height_frozen=None synced_height_rejected=None faulted=0
+05:28:32 [native-log-bridge] DashSdkNative - 09-19 00:28:25.555  4533  5135 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(2541276) synced_height_frozen=None synced_height_rejected=None faulted=0
+05:28:59 [DefaultDispatcher-worker-7] BlockchainServiceImpl - network capabilities changed: 100, hasInternet: true, validated: true
+05:28:59 [DefaultDispatcher-worker-7] BlockchainServiceImpl - acquiring check() mutex
+05:28:59 [DefaultDispatcher-worker-7] BlockchainServiceImpl - check()
+05:28:59 [DefaultDispatcher-worker-7] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+05:28:59 [DefaultDispatcher-worker-7] BlockchainServiceImpl - releasing check() mutex
+05:29:00 [main] BlockchainServiceImpl - MEM pss=344MB nativeHeap=204/404MB jvm=17/576MB
+05:29:00 [main] BlockchainServiceImpl - History of transactions/blocks/headers/mnlistdiff (sdk): 0/1/1/1, 0/0/0/0, 0/0/0/0, 0/0/0/0
+05:29:02 [DefaultDispatcher-worker-10] BlockchainServiceImpl - network capabilities changed: 100, hasInternet: true, validated: true
+05:29:02 [DefaultDispatcher-worker-10] BlockchainServiceImpl - acquiring check() mutex
+05:29:02 [DefaultDispatcher-worker-10] BlockchainServiceImpl - check()
+05:29:02 [DefaultDispatcher-worker-10] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+05:29:02 [DefaultDispatcher-worker-10] BlockchainServiceImpl - releasing check() mutex
+05:29:04 [DefaultDispatcher-worker-2] L1ShadowSyncService - L1Shadow phase=SYNCED 100.0% headers 2541277/2541277 filters 2541277/2541277 wallet 2541277
+05:29:04 [DefaultDispatcher-worker-5] MainViewModel - blockchain state update: mnlist=2541276; chain=2541276; wallet=-1
+05:29:05 [DefaultDispatcher-worker-9] L1ShadowSyncService - L1 engine chainlock height 2541276 -> 2541277
+05:29:05 [DefaultDispatcher-worker-13] MainViewModel - blockchain state update: mnlist=2541277; chain=2541277; wallet=-1
+05:29:05 [DefaultDispatcher-worker-5] BlockchainServiceImpl - network capabilities changed: 100, hasInternet: true, validated: true
+05:29:05 [DefaultDispatcher-worker-5] BlockchainServiceImpl - acquiring check() mutex
+05:29:05 [DefaultDispatcher-worker-5] BlockchainServiceImpl - check()
+05:29:05 [DefaultDispatcher-worker-5] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+05:29:05 [DefaultDispatcher-worker-5] BlockchainServiceImpl - releasing check() mutex
+05:29:11 [DefaultDispatcher-worker-10] BlockchainServiceImpl - network capabilities changed: 100, hasInternet: true, validated: true
+05:29:11 [DefaultDispatcher-worker-10] BlockchainServiceImpl - acquiring check() mutex
+05:29:11 [DefaultDispatcher-worker-10] BlockchainServiceImpl - check()
+05:29:11 [DefaultDispatcher-worker-10] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+05:29:11 [DefaultDispatcher-worker-10] BlockchainServiceImpl - releasing check() mutex
+05:29:23 [DefaultDispatcher-worker-9] BlockchainServiceImpl - network capabilities changed: 100, hasInternet: true, validated: true
+05:29:23 [DefaultDispatcher-worker-9] BlockchainServiceImpl - acquiring check() mutex
+05:29:23 [DefaultDispatcher-worker-9] BlockchainServiceImpl - check()
+05:29:23 [DefaultDispatcher-worker-9] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+05:29:23 [DefaultDispatcher-worker-9] BlockchainServiceImpl - releasing check() mutex
+05:29:23 [main] BlockchainServiceImpl - cutover committed and SDK L1 scan synced — triggering identity/contacts discovery
+05:29:23 [DefaultDispatcher-worker-9] BlockchainIdentityData - creation: BlockchainIdentityData(NONE, null, null, null, null, null)
+05:29:23 [DefaultDispatcher-worker-9] PlatformSynchronizationService - discoverAndRecoverIdentity: checking for existing associated identity
+05:29:23 [DefaultDispatcher-worker-9] SecurityGuard - loading security guard [healthy=true] with keys: [keystore_healthy, fallback_pin_wallet_password_key, primary_ui_pin_key, modern_encryption_migration_complete, fallback_mnemonic_wallet_password_key, primary_wallet_password_key, fallback_mnemonic_ui_pin_key]
+05:29:23 [DefaultDispatcher-worker-9] ModernEncryptionProvider - Decrypted data for alias: wallet_password_key
+05:29:23 [DefaultDispatcher-worker-9] KeyCrypterScrypt - Deriving key took 108.5 ms for N=65536, r=8, p=1.
+05:29:23 [DefaultDispatcher-worker-9] DapiClient - getIdentityByFirstPublicKey(8091b58b727505df0a144ed3e9de9d92d93bfcfd)
+05:29:29 [DefaultDispatcher-worker-4] BlockchainServiceImpl - network capabilities changed: 100, hasInternet: true, validated: true
+05:29:29 [DefaultDispatcher-worker-4] BlockchainServiceImpl - acquiring check() mutex
+05:29:29 [DefaultDispatcher-worker-4] BlockchainServiceImpl - check()
+05:29:29 [DefaultDispatcher-worker-4] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+05:29:29 [DefaultDispatcher-worker-4] BlockchainServiceImpl - releasing check() mutex
+05:29:32 [native-log-bridge] DashSdkNative - 09-19 00:29:04.667  4533  5134 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(2541277) synced_height_frozen=None synced_height_rejected=None faulted=0
+05:29:32 [native-log-bridge] DashSdkNative - 09-19 00:29:05.023  4533  5135 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=None synced_height_frozen=None synced_height_rejected=None faulted=0
+05:29:35 [DefaultDispatcher-worker-1] BlockchainServiceImpl - network capabilities changed: 100, hasInternet: true, validated: true
+05:29:35 [DefaultDispatcher-worker-1] BlockchainServiceImpl - acquiring check() mutex
+05:29:35 [DefaultDispatcher-worker-1] BlockchainServiceImpl - check()
+05:29:35 [DefaultDispatcher-worker-1] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+05:29:35 [DefaultDispatcher-worker-1] BlockchainServiceImpl - releasing check() mutex
+05:29:41 [DefaultDispatcher-worker-12] BlockchainServiceImpl - network capabilities changed: 100, hasInternet: true, validated: true
+05:29:41 [DefaultDispatcher-worker-12] BlockchainServiceImpl - acquiring check() mutex
+05:29:41 [DefaultDispatcher-worker-12] BlockchainServiceImpl - check()
+05:29:41 [DefaultDispatcher-worker-12] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+05:29:41 [DefaultDispatcher-worker-12] BlockchainServiceImpl - releasing check() mutex
+05:29:44 [DefaultDispatcher-worker-7] BlockchainServiceImpl - network capabilities changed: 100, hasInternet: true, validated: true
+05:29:44 [DefaultDispatcher-worker-7] BlockchainServiceImpl - acquiring check() mutex
+05:29:44 [DefaultDispatcher-worker-7] BlockchainServiceImpl - check()
+05:29:44 [DefaultDispatcher-worker-7] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+05:29:44 [DefaultDispatcher-worker-7] BlockchainServiceImpl - releasing check() mutex
+05:29:47 [DefaultDispatcher-worker-13] BlockchainServiceImpl - network capabilities changed: 100, hasInternet: true, validated: true
+05:29:47 [DefaultDispatcher-worker-13] BlockchainServiceImpl - acquiring check() mutex
+05:29:47 [DefaultDispatcher-worker-13] BlockchainServiceImpl - check()
+05:29:47 [DefaultDispatcher-worker-13] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+05:29:47 [DefaultDispatcher-worker-13] BlockchainServiceImpl - releasing check() mutex
+05:29:50 [DefaultDispatcher-worker-2] BlockchainServiceImpl - network capabilities changed: 100, hasInternet: true, validated: true
+05:29:50 [DefaultDispatcher-worker-2] BlockchainServiceImpl - acquiring check() mutex
+05:29:50 [DefaultDispatcher-worker-2] BlockchainServiceImpl - check()
+05:29:50 [DefaultDispatcher-worker-2] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+05:29:50 [DefaultDispatcher-worker-2] BlockchainServiceImpl - releasing check() mutex
+05:29:53 [DefaultDispatcher-worker-7] BlockchainServiceImpl - network capabilities changed: 100, hasInternet: true, validated: true
+05:29:53 [DefaultDispatcher-worker-7] BlockchainServiceImpl - acquiring check() mutex
+05:29:53 [DefaultDispatcher-worker-7] BlockchainServiceImpl - check()
+05:29:53 [DefaultDispatcher-worker-7] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+05:29:53 [DefaultDispatcher-worker-7] BlockchainServiceImpl - releasing check() mutex
+05:29:57 [main] SecurityGuard - loading security guard [healthy=true] with keys: [keystore_healthy, fallback_pin_wallet_password_key, primary_ui_pin_key, modern_encryption_migration_complete, fallback_mnemonic_wallet_password_key, primary_wallet_password_key, fallback_mnemonic_ui_pin_key]
+05:29:57 [main] ModernEncryptionProvider - Decrypted data for alias: ui_pin_key
+05:29:57 [main] BiometricHelper - No biometric credentials
+05:30:00 [main] BlockchainServiceImpl - MEM pss=346MB nativeHeap=205/404MB jvm=18/576MB
+05:30:00 [main] BlockchainServiceImpl - History of transactions/blocks/headers/mnlistdiff (sdk): 0/1/1/1, 0/1/1/1, 0/0/0/0, 0/0/0/0, 0/0/0/0
+05:30:05 [DefaultDispatcher-worker-1] BlockchainServiceImpl - network capabilities changed: 100, hasInternet: true, validated: true
+05:30:05 [DefaultDispatcher-worker-1] BlockchainServiceImpl - acquiring check() mutex
+05:30:05 [DefaultDispatcher-worker-1] BlockchainServiceImpl - check()
+05:30:05 [DefaultDispatcher-worker-1] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+05:30:05 [DefaultDispatcher-worker-1] BlockchainServiceImpl - releasing check() mutex
+05:30:08 [DefaultDispatcher-worker-2] BlockchainServiceImpl - network capabilities changed: 100, hasInternet: true, validated: true
+05:30:08 [DefaultDispatcher-worker-2] BlockchainServiceImpl - acquiring check() mutex
+05:30:08 [DefaultDispatcher-worker-2] BlockchainServiceImpl - check()
+05:30:08 [DefaultDispatcher-worker-2] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+05:30:08 [DefaultDispatcher-worker-2] BlockchainServiceImpl - releasing check() mutex
+05:30:11 [DefaultDispatcher-worker-12] BlockchainServiceImpl - network capabilities changed: 100, hasInternet: true, validated: true
+05:30:11 [DefaultDispatcher-worker-12] BlockchainServiceImpl - acquiring check() mutex
+05:30:11 [DefaultDispatcher-worker-12] BlockchainServiceImpl - check()
+05:30:11 [DefaultDispatcher-worker-12] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+05:30:11 [DefaultDispatcher-worker-12] BlockchainServiceImpl - releasing check() mutex
+05:30:14 [DefaultDispatcher-worker-13] BlockchainServiceImpl - network capabilities changed: 100, hasInternet: true, validated: true
+05:30:14 [DefaultDispatcher-worker-13] BlockchainServiceImpl - acquiring check() mutex
+05:30:14 [DefaultDispatcher-worker-13] BlockchainServiceImpl - check()
+05:30:14 [DefaultDispatcher-worker-13] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+05:30:14 [DefaultDispatcher-worker-13] BlockchainServiceImpl - releasing check() mutex
+05:30:23 [DefaultDispatcher-worker-11] BlockchainServiceImpl - network capabilities changed: 100, hasInternet: true, validated: true
+05:30:23 [DefaultDispatcher-worker-11] BlockchainServiceImpl - acquiring check() mutex
+05:30:23 [DefaultDispatcher-worker-11] BlockchainServiceImpl - check()
+05:30:23 [DefaultDispatcher-worker-11] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+05:30:23 [DefaultDispatcher-worker-11] BlockchainServiceImpl - releasing check() mutex
+05:30:26 [DefaultDispatcher-worker-5] BlockchainServiceImpl - network capabilities changed: 100, hasInternet: true, validated: true
+05:30:26 [DefaultDispatcher-worker-5] BlockchainServiceImpl - acquiring check() mutex
+05:30:26 [DefaultDispatcher-worker-5] BlockchainServiceImpl - check()
+05:30:26 [DefaultDispatcher-worker-5] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+05:30:26 [DefaultDispatcher-worker-5] BlockchainServiceImpl - releasing check() mutex
+05:30:32 [DefaultDispatcher-worker-6] BlockchainServiceImpl - network capabilities changed: 100, hasInternet: true, validated: true
+05:30:32 [DefaultDispatcher-worker-6] BlockchainServiceImpl - acquiring check() mutex
+05:30:32 [DefaultDispatcher-worker-6] BlockchainServiceImpl - check()
+05:30:32 [DefaultDispatcher-worker-6] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+05:30:32 [DefaultDispatcher-worker-6] BlockchainServiceImpl - releasing check() mutex
+05:30:35 [DefaultDispatcher-worker-3] L1ShadowSyncService - L1Shadow phase=SYNCED 100.0% headers 2541278/2541278 filters 2541277/2541277 wallet 2541277
+05:30:35 [DefaultDispatcher-worker-6] MainViewModel - blockchain state update: mnlist=2541277; chain=2541278; wallet=-1
+05:30:35 [DefaultDispatcher-worker-8] BlockchainServiceImpl - network capabilities changed: 100, hasInternet: true, validated: true
+05:30:35 [DefaultDispatcher-worker-8] BlockchainServiceImpl - acquiring check() mutex
+05:30:35 [DefaultDispatcher-worker-8] BlockchainServiceImpl - check()
+05:30:35 [DefaultDispatcher-worker-8] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+05:30:35 [DefaultDispatcher-worker-8] BlockchainServiceImpl - releasing check() mutex
+05:30:36 [DefaultDispatcher-worker-6] L1ShadowSyncService - L1 engine chainlock height 2541277 -> 2541278
+05:30:36 [DefaultDispatcher-worker-5] MainViewModel - blockchain state update: mnlist=2541277; chain=2541278; wallet=-1
+05:30:36 [DefaultDispatcher-worker-4] MainViewModel - blockchain state update: mnlist=2541278; chain=2541278; wallet=-1
+05:30:38 [DefaultDispatcher-worker-6] BlockchainServiceImpl - network capabilities changed: 100, hasInternet: true, validated: true
+05:30:38 [DefaultDispatcher-worker-6] BlockchainServiceImpl - acquiring check() mutex
+05:30:38 [DefaultDispatcher-worker-6] BlockchainServiceImpl - check()
+05:30:38 [DefaultDispatcher-worker-6] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+05:30:38 [DefaultDispatcher-worker-6] BlockchainServiceImpl - releasing check() mutex

@@ -1,0 +1,2 @@
+fees 2.26e-06 valueIn 0.01 valueOut 0.00999774 size 225
+vout [(['ygUWAkqbnKURkJ1mMEEh5FPKAfQmMdSUH9'], '0.00100000'), (['ygzkrgScsivncTA2A32bYRTLXXAqqpekwH'], '0.00899774')]

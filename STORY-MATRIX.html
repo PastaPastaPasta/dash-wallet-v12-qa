@@ -1,0 +1,443 @@
+<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>User-story matrix</title><style>body{font-family:system-ui,-apple-system,sans-serif;max-width:1400px;margin:0 auto;padding:16px 24px;line-height:1.45;background:#fff;color:#111}
+table{border-collapse:collapse;font-size:13px;margin:12px 0}th,td{border:1px solid #ddd;padding:4px 8px;vertical-align:top;text-align:left}th{background:#f3f6fa;position:sticky;top:0}
+tr:nth-child(even){background:#fafbfc}code{background:#f4f4f4;padding:1px 4px;border-radius:3px;font-size:12px}pre{background:#f4f4f4;padding:10px;overflow:auto}
+h1{border-bottom:3px solid #008de4}h2{border-bottom:1px solid #ccc;margin-top:40px}a{color:#008de4}a.ev{background:#e8f4fd;padding:0 3px;border-radius:3px;font-family:ui-monospace,monospace;font-size:12px}
+nav.top{background:#012060;color:#fff;padding:8px 24px;margin:-16px -24px 16px;position:sticky;top:0;z-index:5}nav.top a{color:#fff;margin-right:18px;text-decoration:none}nav.top a:hover{text-decoration:underline}
+.S1{color:#b00020;font-weight:bold}.S2{color:#c75000;font-weight:bold}.toc{background:#f8f9fb;border:1px solid #e3e6ea;padding:8px 16px;font-size:13px;columns:2}.toc ul{margin:2px 0;padding-left:16px}
+.note{background:#fff8e1;border-left:4px solid #f5b400;padding:8px 12px;margin:12px 0}
+</style><nav class=top><a href="index.html">Home</a><a href="QA-REPORT.html">Full report</a><a href="EXEC-SUMMARY.html">Executive summary</a><a href="STORY-MATRIX.html">User-story matrix</a><a href="DEFECT-LEDGER.html">Defect register</a><a href="evidence/index.html">Evidence gallery</a><a href="QA-PLAN.html">Test plan</a><a href="streams.html">Stream reports</a></nav><h1>User-story matrix</h1><div class=note>Public QA archive. Seed phrases have been redacted from text, screenshots and video; logcat dumps over 2 MB were left out (available on request). Screenshots are served as WebP. All wallets are testnet or empty-mainnet throwaways.</div><h2 id="user-story-matrix-every-story-tested-with-verdict-and-proof">User-story matrix (every story tested, with verdict and proof)</h2>
+<p>Verdict legend: <strong>PASS</strong> works as intended · <strong>PASS+</strong> works but with defects noted · <strong>FAIL</strong> does not work / wrong result · <strong>BLOCKED</strong> could not be exercised (reason given) · <strong>N/R</strong> not run. Proof paths are relative to <code>evidence/</code>. Defect IDs refer to the register below.</p>
+<h3 id="a-the-three-scenarios-from-the-brief">A. The three scenarios from the brief</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>User story</th>
+<th>Verdict</th>
+<th>Proof</th>
+<th>Defects</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A1</td>
+<td>Install, create wallet, save phrase, fund 1 tDASH, shield all, create non-contested username, screenshot, reset, restore from phrase, balances and txs identical</td>
+<td><strong>PASS+</strong></td>
+<td class=S1>S1/A1/01-onboarding…08-negative, videos <code>S1/A1/*/s1-*.mp4</code>; parity table in S1/REPORT.md</td>
+<td>D-012 reset has no PIN, D-027/D-050 shield cost undisclosed, D-042 Max retry, D-007 no username-fee row, D-018 time shift</td>
+</tr>
+<tr>
+<td>A2</td>
+<td>Clean install, restore reference seed, sync finishes, balance correct</td>
+<td><strong>PASS</strong> (balance 107.08173522 to the duff; brief's 107.43 is stale, see D-014)</td>
+<td class=S2>S2/A2/17-SYNCED-balance.png, S2/A2/a2-sync-100.mp4, S2/A2/walletlog-after-sync</td>
+<td>D-002 inflated partial balance during replay, D-003 reused receive address</td>
+</tr>
+<tr>
+<td>A3</td>
+<td>Upgrade master 11.9.0 → 12.0.0 mid-sync, sync finishes, balance correct, no stall, no memory kill</td>
+<td><strong>PASS+</strong> (cutover clean; balance held; 4 m 27 s; no LMK)</td>
+<td>S3/A3/03-upgrade-launch/a3-upgrade-launch-1.mp4, S3/A3/05-post-sync, S3/mem.csv</td>
+<td>D-024 never SETTLED, D-025/D-035 memory 3×/11× dashj</td>
+</tr>
+<tr>
+<td>A3b</td>
+<td>Same upgrade with the device LOCKED, bind after unlock</td>
+<td><strong>FAIL</strong> (bind in 3 s PASS; engine never starts, 16 min wedge)</td>
+<td>S3/A3b/a3b-locked-upgrade.mp4, a3b-unlock.mp4, grep-engine-never-started.txt</td>
+<td><strong>D-056 (S1)</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="b-sync-cutover-memory-beyond-the-brief">B. Sync, cutover, memory beyond the brief</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>User story</th>
+<th>Verdict</th>
+<th>Proof</th>
+<th>Defects</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>B1</td>
+<td>Replay survives low-memory pressure (RUNNING_CRITICAL)</td>
+<td><strong>PASS</strong> (3 GB and 2.5 GB + ballast)</td>
+<td class=S2>S2/B3/torture-timeline.txt, S11/P3/pressure-log.txt, S11/P3/p3-replay.mp4</td>
+<td>footprint does not shrink under trim (D-025)</td>
+</tr>
+<tr>
+<td>B2</td>
+<td>Kill during replay: ≤ 5,000 blocks lost, sync completes</td>
+<td><strong>PASS</strong> for blocks (0 lost on 5 kills) / <strong>FAIL</strong> for balance</td>
+<td class=S2>S2/B2/kill3/kill3-results.txt, k1..k3.mp4, S2/B2/11-BALANCE-after-kills.png, S11/P2/09-BALANCE-after-kill-INFLATED.png</td>
+<td><strong>D-041 (S1)</strong> 21× inflated balance claims synced</td>
+</tr>
+<tr>
+<td>B3</td>
+<td>Network flap ×3 during replay</td>
+<td><strong>PASS</strong></td>
+<td class=S2>S2/B3/03-during-net-off-3.png, torture-timeline.txt</td>
+<td>—</td>
+</tr>
+<tr>
+<td>B4</td>
+<td>30-min background idle after sync</td>
+<td><strong>PASS</strong> (one stop/start, zero wakelock growth)</td>
+<td class=S2>S2/B4/04-home-after-30min-idle.png, batterystats-*.txt</td>
+<td>D-004 misleading idle log</td>
+</tr>
+<tr>
+<td>B5</td>
+<td>Tools › dashj diagnostic toggle is the only way to start dashj</td>
+<td><strong>PASS</strong> (parity MATCH sdk=dashj)</td>
+<td>S7/B5/s7-b5-dashj-toggle.mp4, B5/09,11,14</td>
+<td>—</td>
+</tr>
+<tr>
+<td>B6</td>
+<td>Sends keep working after the idle teardown</td>
+<td><strong>FAIL</strong></td>
+<td class=S1>S1/C1/08,09-send-blocked-log.txt, S7/TX1/SR29-05..09; S9/X1 (non-repro when a resume follows)</td>
+<td><strong>D-031 (S1)</strong></td>
+</tr>
+<tr>
+<td>B7</td>
+<td>Mainnet fresh wallet, test-vector seed, mainnet upgrade</td>
+<td><strong>PASS+</strong></td>
+<td>S6/M1..M4, M3/upgrade-launch.mp4</td>
+<td>D-025/D-035 1 GB PSS, D-026, D-036</td>
+</tr>
+<tr>
+<td>B8</td>
+<td>Massive wallet (3,000 txs, 800 addresses) restore on a 2 GB device, gap limit, live growth, kill/bg</td>
+<td><strong>PASS</strong> sync/memory/gap-limit, <strong>FAIL</strong> history</td>
+<td>S8/L1..L8, L4-*.mp4, L6-restore-100.mp4, L2/explorer-utxo-sum-final.txt</td>
+<td><strong>D-037 (S1)</strong> history rows missing</td>
+</tr>
+<tr>
+<td>B9</td>
+<td>Locked-screen / screen-off background sync</td>
+<td><strong>PASS</strong></td>
+<td>S10/T7 (wallet.log), S8/L4</td>
+<td>—</td>
+</tr>
+<tr>
+<td>B10</td>
+<td>Offline / reconnect state surfaced</td>
+<td><strong>FAIL</strong></td>
+<td>S9/X2, S9/X3</td>
+<td>D-070 (S2), D-079</td>
+</tr>
+</tbody>
+</table>
+<h3 id="c-money-moving-flows-on-the-sdk-seam">C. Money-moving flows on the SDK seam</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>User story</th>
+<th>Verdict</th>
+<th>Proof</th>
+<th>Defects</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C1</td>
+<td>Send to address; fee, confirm, result, tx row direction</td>
+<td><strong>PASS+</strong></td>
+<td class=S1>S1/C1, S7/TX1, S9/X1 videos</td>
+<td>D-032/SR-28 flat 0.0001 fee, D-057 change shown as "Sent to", D-048 tax category</td>
+</tr>
+<tr>
+<td>C2</td>
+<td>Send-all / Max drains</td>
+<td><strong>PASS+</strong></td>
+<td class=S1>S1/C2/s1-c2-sendall.mp4, s1-c2-drain.mp4, S7/TX1/SR29-*</td>
+<td>D-033 first attempt fails + retry, D-042 dust stranded, D-064 Max &gt; balance</td>
+</tr>
+<tr>
+<td>C3</td>
+<td>Receive: address rotates, QR, specify amount</td>
+<td><strong>FAIL</strong> (SDK-created/restored keychains)</td>
+<td class=S1>S1/C3, S2/A2/26, S7/BK1/12,13,18</td>
+<td>D-003 (S2 privacy)</td>
+</tr>
+<tr>
+<td>C4</td>
+<td>Unshield</td>
+<td><strong>PASS+</strong></td>
+<td class=S1>S1/C4/s1-c4-unshield.mp4</td>
+<td>D-047 detail says "Received"/Income</td>
+</tr>
+<tr>
+<td>C5</td>
+<td>Memo + tax category persist</td>
+<td><strong>PASS</strong></td>
+<td class=S1>S1/C5/05-after-relaunch-detail.png</td>
+<td>—</td>
+</tr>
+<tr>
+<td>C6</td>
+<td>Payment URI / BIP21</td>
+<td><strong>PASS+</strong></td>
+<td class=S1>S1/C6, S4/E11, S10/T4</td>
+<td>D-086 label/message dropped, D-077 lock-screen skipped</td>
+</tr>
+<tr>
+<td>C7</td>
+<td>Address book, xpub, import key, CSV export</td>
+<td><strong>PASS+</strong> / import BLOCKED (QR only)</td>
+<td class=S1>S1/C7, S4/E7, S8/L8, S9/X4</td>
+<td>D-049/D-062/D-081 CSV, D-030, D-073 labels</td>
+</tr>
+<tr>
+<td>C8</td>
+<td>Interrupt every money flow (HOME/kill/airplane mid-shield/unshield/send), double-submit</td>
+<td><strong>PASS</strong> (no funds lost, exactly one tx)</td>
+<td>S10/T1, T2, s10-t1f-t2-send.mp4</td>
+<td>D-066 shield resumes only after relaunch, D-087</td>
+</tr>
+<tr>
+<td>C9</td>
+<td>Amount and address edge cases (dust, &gt; balance, exact, comma decimal, mainnet addr, username)</td>
+<td><strong>PASS+</strong></td>
+<td>S10/T3, T4, S4/E11</td>
+<td>D-088 no dust guard, D-089 locale formats</td>
+</tr>
+<tr>
+<td>C10</td>
+<td>Ex-CoinJoin funds spendable after upgrade</td>
+<td><strong>FAIL</strong></td>
+<td>S12/CJ1, escape-hatches/*</td>
+<td><strong>D-068 (S1)</strong> funds stranded; D-063 migration prompt suppressed</td>
+</tr>
+</tbody>
+</table>
+<h3 id="d-dashpay-platform">D. DashPay / Platform</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>User story</th>
+<th>Verdict</th>
+<th>Proof</th>
+<th>Defects</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>D0</td>
+<td>Username eligibility gating by balance</td>
+<td><strong>PASS+</strong></td>
+<td>S5/D0</td>
+<td>D-053 home tile vanishes, D-005 transparent-only warning</td>
+</tr>
+<tr>
+<td>D1</td>
+<td>Contested username classification, fee, voting explainer, criteria list</td>
+<td><strong>PASS+</strong></td>
+<td>S5/D1</td>
+<td>D-054 criteria sort</td>
+</tr>
+<tr>
+<td>D2</td>
+<td>Invite creation (shielded) and claim on a second wallet, no "Loading invite" hang</td>
+<td><strong>PASS+</strong> (&lt; 1 s validation)</td>
+<td>S5/D2/d2-invite.mp4, D2b/d2b-claim-finish.mp4</td>
+<td>D-038 invite forgotten on restart, D-039, D-078 late error</td>
+</tr>
+<tr>
+<td>D3</td>
+<td>Contact request send/accept, pay by username, contact-named tx row</td>
+<td><strong>PASS</strong> (cross-wallet S5↔S1)</td>
+<td>S5/D3, S1/D3/s1-d3-contact.mp4</td>
+<td>D-080 offline request inert, D-052 coverage debt after restore</td>
+</tr>
+<tr>
+<td>D4</td>
+<td>Non-contested username from the shielded pool, explorer-verified</td>
+<td><strong>PASS</strong> (3 wallets)</td>
+<td class=S1>S1/A1/04-username/s1-username-1.mp4, S5/D4/d4-username.mp4, S9/X7</td>
+<td>D-007 no history row, D-006</td>
+</tr>
+<tr>
+<td>D5</td>
+<td>Profile edit (name, about, avatar) persists and survives restore</td>
+<td><strong>PASS</strong></td>
+<td>S5/D5, S10/T6</td>
+<td>—</td>
+</tr>
+<tr>
+<td>D6</td>
+<td>Username voting UI</td>
+<td><strong>PASS</strong> (empty on testnet)</td>
+<td>S5/D6</td>
+<td>—</td>
+</tr>
+<tr>
+<td>D7</td>
+<td>DashPay screens in de-DE / ar-EG</td>
+<td><strong>PASS+</strong></td>
+<td>S5/D7, S10/T6/30-37</td>
+<td>D-034, D-067, D-085</td>
+</tr>
+<tr>
+<td>D8</td>
+<td>Buy credits / identity top-up</td>
+<td><strong>PASS+</strong> (2 top-ups landed, explorer-verified)</td>
+<td>S12/BC1/bc1-credits.mp4, explorer-identity-final.json</td>
+<td>D-095 auto-lock cancels top-up, D-096 "may have gone through", D-097 stale/missing credit balance</td>
+</tr>
+</tbody>
+</table>
+<h3 id="e-regression-sweep-security-settings-localisation-accessibility">E. Regression sweep, security, settings, localisation, accessibility</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>User story</th>
+<th>Verdict</th>
+<th>Proof</th>
+<th>Defects</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>E1</td>
+<td>Onboarding variants, bad seeds, back-press, offline first launch</td>
+<td><strong>PASS+</strong></td>
+<td>S4/E1, S4/E11/airplane</td>
+<td>D-017 useless "Error", D-015 file restore DEBUG-only</td>
+</tr>
+<tr>
+<td>E2</td>
+<td>Security: PIN change, auto-lock, rotate-no-lock, Forgot PIN, reset</td>
+<td><strong>FAIL</strong> (2 security defects)</td>
+<td>S4/E2/e2-forgotpin-bypass.mp4, S3/baseline</td>
+<td><strong>D-011 (S1 regression)</strong> lock bypass, D-012 reset without PIN (pre-existing)</td>
+</tr>
+<tr>
+<td>E3</td>
+<td>Settings: currency, rates, hide balance, notifications, About</td>
+<td><strong>PASS+</strong></td>
+<td>S4/E3</td>
+<td>D-019 "(0)", D-023</td>
+</tr>
+<tr>
+<td>E4</td>
+<td>Explore Dash (list mode)</td>
+<td><strong>PASS</strong></td>
+<td>S4/E4</td>
+<td>—</td>
+</tr>
+<tr>
+<td>E5</td>
+<td>Integrations up to the credential step</td>
+<td><strong>PASS (limited)</strong></td>
+<td>S4/E5</td>
+<td>—</td>
+</tr>
+<tr>
+<td>E6</td>
+<td>Contact Support log bundle</td>
+<td><strong>PASS</strong></td>
+<td>S4/E6</td>
+<td>—</td>
+</tr>
+<tr>
+<td>E7</td>
+<td>Tools screens, Network monitor</td>
+<td><strong>PASS+</strong></td>
+<td>S4/E7, S9/X2</td>
+<td>D-070 offline never shown</td>
+</tr>
+<tr>
+<td>E8</td>
+<td>Fresh small wallet on master → upgraded</td>
+<td><strong>PASS</strong></td>
+<td>S7/E8/s7-e8-upgrade-launch.mp4</td>
+<td>—</td>
+</tr>
+<tr>
+<td>E9</td>
+<td>Unit tests</td>
+<td><strong>PASS</strong> (2077/0/0/1)</td>
+<td>S4/unit-tests.log</td>
+<td>—</td>
+</tr>
+<tr>
+<td>E10</td>
+<td>8 locales × 14 screens, RTL, font scale, dark mode</td>
+<td><strong>FAIL</strong></td>
+<td>S4/E10/*, e10-ar.mp4, S10/T5</td>
+<td>D-085 mirrored keypads, D-091 coverage, D-071/D-072/D-092</td>
+</tr>
+<tr>
+<td>E11</td>
+<td>Deep links, process death, rapid taps, kill during PIN</td>
+<td><strong>PASS+</strong></td>
+<td>S4/E11, S10/T8, T9</td>
+<td>D-077, D-078</td>
+</tr>
+<tr>
+<td>R1</td>
+<td>Rescan blockchain from a date</td>
+<td><strong>PASS+</strong></td>
+<td>S7/R1/s7-r1-rescan.mp4</td>
+<td>D-045 re-notifies old receive, D-060 dialog copy</td>
+</tr>
+<tr>
+<td>BK1</td>
+<td>Backup to / restore from file</td>
+<td><strong>BLOCKED</strong> (DEBUG-only)</td>
+<td>S7/R1/01-security.png</td>
+<td>D-040</td>
+</tr>
+<tr>
+<td>X5</td>
+<td>Corrupt / unreadable wallet file, safe mode</td>
+<td><strong>PASS+</strong></td>
+<td>S9/X5/x5-safemode.mp4</td>
+<td>D-076</td>
+</tr>
+<tr>
+<td>SR-05</td>
+<td>Stale wipe marker</td>
+<td><strong>FAIL</strong></td>
+<td>S4/SR05/sr05.mp4</td>
+<td><strong>SR-05 (S1)</strong></td>
+</tr>
+<tr>
+<td>SR-22</td>
+<td>Restore date picker default</td>
+<td><strong>FAIL</strong></td>
+<td>S4/SR22/01-07</td>
+<td><strong>SR-22 (S1)</strong></td>
+</tr>
+<tr>
+<td>SR-34</td>
+<td>Auto-logout "Immediately" + rotate/dark/font</td>
+<td><strong>PASS</strong></td>
+<td>S4/SR34/sr34.mp4</td>
+<td>—</td>
+</tr>
+<tr>
+<td>X6</td>
+<td>6-hour foreground-service notice</td>
+<td><strong>N/R</strong> (code-verified only)</td>
+<td>S9/REPORT.md</td>
+<td>—</td>
+</tr>
+<tr>
+<td>SR-01</td>
+<td>Filter-stall watchdog restart</td>
+<td><strong>N/R</strong> on device (static S1; stall never occurred in ~40 replays)</td>
+<td>evidence/SR/REPORT.md</td>
+<td>SR-01</td>
+</tr>
+</tbody>
+</table></html>

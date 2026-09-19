@@ -1,0 +1,12 @@
+ACTIVITY MANAGER PROCESS EXIT INFO (dumpsys activity exit-info)
+Last Timestamp of Persistence Into Persistent Storage: 2026-09-19 01:12:16.285
+  package: hashengineering.darkcoin.wallet
+    Historical Process Exit for uid=10208
+        ApplicationExitInfo #0:
+          timestamp=2026-09-19 01:16:35.001 pid=9521 realUid=10208 packageUid=10208 definingUid=10208 user=0
+          process=hashengineering.darkcoin.wallet reason=10 (USER REQUESTED) subreason=21 (FORCE STOP) status=0
+          importance=100 pss=0.00 rss=1.1GB description=stop hashengineering.darkcoin.wallet due to from pid 13745 state=empty trace=null
+        ApplicationExitInfo #1:
+          timestamp=2026-09-19 01:06:45.606 pid=8028 realUid=10208 packageUid=10208 definingUid=10208 user=0
+          process=hashengineering.darkcoin.wallet reason=10 (USER REQUESTED) subreason=21 (FORCE STOP) status=0
+          importance=100 pss=0.00 rss=319MB description=stop hashengineering.darkcoin.wallet due to from pid 9343 state=empty trace=null

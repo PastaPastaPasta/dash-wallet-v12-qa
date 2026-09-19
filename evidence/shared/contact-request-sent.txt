@@ -1,0 +1,4 @@
+2026-09-19T05:44:13Z  S5 (qa5s5ebkdus2c6kkt9m7t, identity FGk3cH3u7pF1Nyfs5E1rU4g9bdmPWgoEn41Uj61Gu6M4) sent a DashPay contact request to S1 username: qa1s13939
+evidence: /Users/dcg/workspace/dash-wallet-qa/evidence/S5/D3/10-request-sent.png
+UPDATE 2026-09-19T06:31:28Z: S1 ACCEPTED. Activity on S5: "Contact request sent" 12:43 AM -> "qa1s13939 has accepted your contact request" 01:06 AM -> "Received 0.001 DASH" 01:10 AM (S1 paid the contact).
+evidence: /Users/dcg/workspace/dash-wallet-qa/evidence/S5/D3/17-s1-contact-detail.png

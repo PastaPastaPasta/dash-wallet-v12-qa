@@ -1,0 +1,7 @@
+05:15:24 [DefaultDispatcher-worker-13] L1ShadowSyncService - L1 engine tx event: Detected(txidHex=7efffea3f48e144dbe6f13ae0eb491c67d1018a9e890bd11fa47e8b68abed4d2, netAmountDuffs=100000000, feeDuffs=null, contextCode=0, directionCode=0)
+05:15:24 [DefaultDispatcher-worker-13] CutoverUiDataService - engine detected tx 7efffea3f48e144dbe6f13ae0eb491c67d1018a9e890bd11fa47e8b68abed4d2 pre-block (context=0, net=100000000 duffs) — syncing display row now
+05:15:24 [DefaultDispatcher-worker-9] CutoverUiDataService - engine-detected receive 7efffea3f48e144dbe6f13ae0eb491c67d1018a9e890bd11fa47e8b68abed4d2 (100000000 duffs) — notifying in 2000ms unless an outgoing sibling classifies it internal
+05:15:24 [DefaultDispatcher-worker-4] L1ShadowSyncService - L1 engine tx event: InstantLocked(txidHex=7efffea3f48e144dbe6f13ae0eb491c67d1018a9e890bd11fa47e8b68abed4d2)
+05:15:24 [DefaultDispatcher-worker-14] CutoverUiDataService - engine IS lock for 7efffea3f48e144dbe6f13ae0eb491c67d1018a9e890bd11fa47e8b68abed4d2 — display row flipped pre-block
+05:18:23 [DefaultDispatcher-worker-5] WalletTransactionMetadataProvider - txmetadata for 7efffea3f48e144dbe6f13ae0eb491c67d1018a9e890bd11fa47e8b68abed4d2 does not exist, perform insert, then update
+05:18:23 [DefaultDispatcher-worker-5] WalletTransactionMetadataProvider - txmetadata for 7efffea3f48e144dbe6f13ae0eb491c67d1018a9e890bd11fa47e8b68abed4d2 DROPPED — no wallet tx and no fallback row; any platform metadata for this transaction will not be displayed

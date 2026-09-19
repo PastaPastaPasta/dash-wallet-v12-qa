@@ -1,0 +1,154 @@
+<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>QA plan</title><style>body{font-family:system-ui,-apple-system,sans-serif;max-width:1400px;margin:0 auto;padding:16px 24px;line-height:1.45;background:#fff;color:#111}
+table{border-collapse:collapse;font-size:13px;margin:12px 0}th,td{border:1px solid #ddd;padding:4px 8px;vertical-align:top;text-align:left}th{background:#f3f6fa;position:sticky;top:0}
+tr:nth-child(even){background:#fafbfc}code{background:#f4f4f4;padding:1px 4px;border-radius:3px;font-size:12px}pre{background:#f4f4f4;padding:10px;overflow:auto}
+h1{border-bottom:3px solid #008de4}h2{border-bottom:1px solid #ccc;margin-top:40px}a{color:#008de4}a.ev{background:#e8f4fd;padding:0 3px;border-radius:3px;font-family:ui-monospace,monospace;font-size:12px}
+nav.top{background:#012060;color:#fff;padding:8px 24px;margin:-16px -24px 16px;position:sticky;top:0;z-index:5}nav.top a{color:#fff;margin-right:18px;text-decoration:none}nav.top a:hover{text-decoration:underline}
+.S1{color:#b00020;font-weight:bold}.S2{color:#c75000;font-weight:bold}.toc{background:#f8f9fb;border:1px solid #e3e6ea;padding:8px 16px;font-size:13px;columns:2}.toc ul{margin:2px 0;padding-left:16px}
+.note{background:#fff8e1;border-left:4px solid #f5b400;padding:8px 12px;margin:12px 0}
+</style><nav class=top><a href="index.html">Home</a><a href="QA-REPORT.html">Full report</a><a href="EXEC-SUMMARY.html">Executive summary</a><a href="STORY-MATRIX.html">User-story matrix</a><a href="DEFECT-LEDGER.html">Defect register</a><a href="evidence/index.html">Evidence gallery</a><a href="QA-PLAN.html">Test plan</a><a href="streams.html">Stream reports</a></nav><h1>QA plan</h1><div class=note>Public QA archive. Seed phrases have been redacted from text, screenshots and video; logcat dumps over 2 MB were left out (available on request). Screenshots are served as WebP. All wallets are testnet or empty-mainnet throwaways.</div><h1 id="dash-wallet-v12-qa-plan-fixupgrade-memory-and-sync">Dash Wallet v12 QA plan — <code>fix/upgrade-memory-and-sync</code></h1>
+<p>Written 2026-09-18. Branch head at plan time: <code>616ac58ff</code> (496 commits ahead of <code>master</code> @ <code>bde52b520</code>, which is 23 commits past the <code>v11.9.0</code> tag). Everything below runs on the <code>_testNet3</code> flavour, <code>release</code> build type, signed with a throwaway QA key.</p>
+<h2 id="0-environment-already-set-up-on-this-mac">0. Environment (already set up on this Mac)</h2>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Env script</td>
+<td><code>source ~/workspace/dash-wallet-qa/env.sh</code> (JDK 17, Android SDK, PATH, <code>QA_*</code> vars)</td>
+</tr>
+<tr>
+<td>SDK</td>
+<td><code>/opt/homebrew/share/android-commandlinetools</code> (emulator 37.1, platform-tools, build-tools 36, platform 36, API 35 google_apis arm64 image)</td>
+</tr>
+<tr>
+<td>Worktrees</td>
+<td><code>$QA_MASTER_WT</code> = master baseline (branch <code>qa/master-baseline</code>), <code>$QA_FIX_WT</code> = fix branch (branch <code>qa/upgrade-memory-and-sync</code>, tracks <code>upstream/fix/upgrade-memory-and-sync</code>)</td>
+</tr>
+<tr>
+<td>Signed APKs</td>
+<td><code>$QA_APKS/master-11.9.0-testnet3-release-signed.apk</code> (versionCode 11090002), <code>$QA_APKS/fix-12.0.0-testnet3-release-signed.apk</code> (versionCode 12000000). Same QA key, so <code>adb install -r</code> performs a true in-place upgrade.</td>
+</tr>
+<tr>
+<td>AVDs</td>
+<td><code>dw-qa1</code>, <code>dw-qa2</code>, <code>dw-qa3</code>: Pixel 6, API 35 (Android 15) google_apis arm64, 3 GB RAM, 8 GB data, <code>adb root</code> works.</td>
+</tr>
+<tr>
+<td>Helpers</td>
+<td><code>$QA_ROOT/bin/qa-emu.sh</code> (start/wait/stop), <code>$QA_ROOT/bin/qa-app.sh &lt;serial&gt; &lt;cmd&gt;</code> (install/reinstall/launch/kill/ui/tapon/screenshot/pull-logs/wallet-log/grep-log/mem/memlog/lowmem/net/lock/unlock/…), <code>$QA_ROOT/bin/qa-faucet.sh &lt;yAddr&gt;</code></td>
+</tr>
+<tr>
+<td>Evidence</td>
+<td><code>$QA_EVIDENCE/&lt;test-id&gt;/…</code> (screenshots, wallet.log pulls, logcat, mem CSV, notes.md)</td>
+</tr>
+<tr>
+<td>App package</td>
+<td><code>hashengineering.darkcoin.wallet_test</code>; app log at <code>/data/data/&lt;pkg&gt;/files/log/wallet.log</code> (rolling), pulled with <code>qa-app.sh &lt;serial&gt; pull-logs &lt;dir&gt;</code> (uses <code>adb root</code>).</td>
+</tr>
+<tr>
+<td>Stubs</td>
+<td><code>wallet/google-services.json</code> is a <strong>stub</strong> (Firebase init passes, nothing reaches Google). <code>GOOGLE_PLAY_API_KEY</code> is a placeholder (Explore map tiles will not render). No <code>service.properties</code> (Coinbase/Uphold/Topper/ZenLedger keys are placeholders, so those integrations are expected to fail at the OAuth/API step — out of scope).</td>
+</tr>
+<tr>
+<td>Faucet</td>
+<td><code>https://faucet.thepasta.org</code> — 1 tDASH per request, 3 per hour per IP, CAP challenge solved by the skill's Playwright helper. Request once, never loop.</td>
+</tr>
+<tr>
+<td>Explorers</td>
+<td>Core testnet: <code>https://insight.testnet.networks.dash.org/insight-api/addr/&lt;addr&gt;</code> ; Platform testnet: <code>https://testnet.platform-explorer.pshenmic.dev</code> (DPNS names, identities; the bare host is MAINNET).</td>
+</tr>
+</tbody>
+</table>
+<p>Known/accepted environment limits: no Google Play services sign-in, no email client on the emulator (Contact Support attachment path is exercised up to the share sheet only; logs are pulled with adb), Explore map has no tiles.</p>
+<h2 id="1-what-changed-and-where-qa-focus-goes">1. What changed, and where QA focus goes</h2>
+<p>The branch is the <strong>dashj → Dash Platform Kotlin SDK cutover</strong> for L1 (SPV) plus a large memory/sync recovery effort. Non-doc change areas by volume:</p>
+<ol>
+<li><strong><code>wallet/…/service/platform/sdk</code></strong> (56 files): <code>CutoverStateMachine</code> (DUAL_RUNNING → READY_OBSERVED → CUT_OVER → SETTLED), SDK bind/retry, L1 shadow SPV engine, filter-stall watchdog + engine restart (<code>616ac58ff</code>), replay memory telemetry, watermark persistence.</li>
+<li><strong>Startup / lifecycle</strong>: startup breadcrumbs, wallet-load budget, wallet-file-size guard, process-exit-reason logging, foreground service promise, boot/alarm scheduling, "rotating a screen must not lock the wallet", auto-logout on background.</li>
+<li><strong>Post-cutover data seam</strong>: home screen, tx list, tx detail, balance, send authority, send-all drain, instant receives, metadata all served by the SDK instead of dashj. Anything that displays or spends money is affected.</li>
+<li><strong>DashPay / usernames / invites</strong> (35 + 11 + 12 files): username creation routing (contested vs non-contested), voting tile, invites via shielded pool, contact request coverage, DIP-15 friend chains (20-address cap issue filed upstream), identity retry.</li>
+<li><strong>Shielded balance</strong> (new UI: <code>ui/shielded/*</code>): shield / unshield transfers, stall notice + watchdog, fees.</li>
+<li><strong>Restore / reset / migration</strong>: wallet wipe sequence, restore-from-seed on SDK, Room migrations (v22).</li>
+<li><strong>common/</strong> (120 files) + integrations (maya 44, crowdnode 39, coinbase 23, uphold 5, exploredash 15): shared money formatting shims, BIP39/WIF utilities, CrowdNode deposit-all, Maya/SwapKit sells, Coinbase fiat-option crash fix.</li>
+<li><strong>Build</strong>: minSdk 24 → 29, 64-bit only (arm64-v8a, x86_64), APK ~300 MB (two ~50 MB native SDK libs), versionCode 12000000, BIP70 dashj implementation deleted (SDK route only), grpc-netty-shaded keep rules.</li>
+</ol>
+<p>So: the <em>core</em> risk is sync/cutover/memory; the <em>secondary</em> risk is every screen that reads balance or transactions from the new seam; the <em>tertiary</em> risk is regressions in untouched-looking flows that now sit on minSdk 29 and R8 keep-rule changes.</p>
+<h2 id="2-test-matrix">2. Test matrix</h2>
+<p>Each test gets an ID, a dedicated emulator, an evidence folder, and a PASS/FAIL/BLOCKED verdict with the exact evidence file names. All tests capture: screenshots at each named step, <code>wallet.log</code> pull at the end, <code>logcat</code> for the whole run, and a memory CSV sampled every 60 s (<code>qa-app.sh &lt;serial&gt; memlog</code>).</p>
+<h3 id="tier-a-the-three-scenarios-from-the-brief-must-run">Tier A — the three scenarios from the brief (must run)</h3>
+<p><strong>A1 — Fresh wallet, shield, username, reset, restore (emulator dw-qa1)</strong>
+1. Install fix APK, create new wallet, set PIN <code>1234</code>, view and record the 12-word recovery phrase (evidence: screenshot + typed into <code>notes.md</code>; this is a throwaway testnet wallet).
+2. Get a receive address, fund via faucet (1 tDASH covers the 0.11 minimum). Wait for the receive to show and be confirmed/InstantSend-locked. Record txid and balance.
+3. Send all balance to shielded (More › Shielded balance › Shield, or the equivalent entry). Record fee, resulting shielded and transparent balances, tx list.
+4. Create a <strong>non-contested</strong> username (fee 0.03 tDASH from <code>Constants.DASH_PAY_FEE</code>; funded from the shielded pool, min 0.035). Wait for identity registration + DPNS to complete. Screenshot the home/profile showing the username. Verify on the Platform explorer.
+5. Screenshot balance + transaction list (this is the reference for step 7).
+6. More › Security › Reset wallet (confirm PIN), then Restore from recovery phrase with the phrase from step 1.
+7. Wait for sync to finish. Assert: balances (transparent + shielded) and transaction list identical to step 5; username re-associated. Diff the two screenshots and the two <code>wallet.log</code> balance lines.
+8. Negative checks along the way: wrong PIN on reset, malformed seed word, back-navigation from each screen does not crash.</p>
+<p><strong>A2 — Restore the reference seed on a clean install, does sync finish (emulator dw-qa2)</strong>
+Seed: <code>[seed phrase redacted]</code>. Expected balance <strong>107.43173749</strong> tDASH.
+1. Install fix APK, restore from seed, set PIN.
+2. Watch sync to 100% (<code>grep-log 'percentageSync|cutover state|L1 shadow SPV started|filter-stall|idling detected|restart'</code>). Sample memory every 60 s. Record: time to first block, time to 100%, number of engine restarts, any "filter cursor has sat at" watchdog lines, any "idling detected" lines, peak PSS / native heap.
+3. Assert final balance == 107.43173749 and tx list populated. Cross-check against the insight explorer for the first few receive addresses (get them from the wallet's address book / xpub).
+4. Stall probes: after 100%, background the app 5 min, foreground; kill process, relaunch; toggle airplane mode off/on mid-sync (do this on a <em>second</em> restore pass so the clean pass stays clean).</p>
+<p><strong>A3 — Upgrade path master 11.9.0 → fix 12.0.0 (emulator dw-qa3)</strong>
+1. Install <strong>master</strong> APK, restore the reference seed, set PIN, let dashj sync start and run ~60 min (or until it has real progress; record % and block height).
+2. <code>adb install -r</code> the <strong>fix</strong> APK over it (same signing key). Launch. This crosses the cutover boundary (<code>FIRST_CUTOVER_VERSION_CODE=12000000</code>).
+3. Assert in <code>wallet.log</code>: <code>cutover state DUAL_RUNNING -&gt; … -&gt; CUT_OVER</code> on this launch, exactly one <code>L1 shadow SPV started</code>, <strong>no</strong> <code>starting peergroup</code> (dashj) line, the one-time "A one-time sync is needed" explainer shown once (screenshot), no <code>OverlappingFileLockException</code>, no <code>idling detected</code> while replaying.
+4. Sync to 100%, balance == 107.43173749, memory CSV shows no runaway (compare against plan targets: native heap bounded, JVM idle well under the heap), no LMK/OOM kill (<code>qa-app.sh oom</code>, <code>dumpsys activity exit-info</code>).
+5. Repeat step 3's assertions after a process kill + relaunch (SETTLED state reached, no second explainer).
+6. Variant A3b (same emulator after A3, or dw-qa3 reset): upgrade while the device is <strong>locked</strong> (set a device PIN, lock, install -r, launch via <code>am start</code>, then unlock) — the pending-bind notification path, bind within 5 s of unlock.</p>
+<h3 id="tier-b-synccutovermemory-beyond-the-brief">Tier B — sync/cutover/memory beyond the brief</h3>
+<ul>
+<li><strong>B1 Low-memory pressure during replay</strong> (dw-qa2 after A2): fresh restore of the reference seed on an AVD with <code>hw.ramSize=1536</code>; send <code>am send-trim-memory RUNNING_CRITICAL</code> every 2 min; assert the replay resumes from its watermark (log "syncedHeight"), engine restart count, no data loss.</li>
+<li><strong>B2 Kill/restart torture</strong>: during A2's replay, <code>am force-stop</code> at 25/50/75%; each relaunch must resume without losing more than ~5,000 blocks (plan target).</li>
+<li><strong>B3 Network flap</strong>: airplane mode 2 min on/off ×3 during replay; peers reconnect, filter cursor moves again, watchdog behaves.</li>
+<li><strong>B4 Background/idle</strong>: after 100%, leave app backgrounded 30 min; no "idling detected … stopping service" loops, service count sane, no wakelock storm in <code>dumpsys batterystats</code>.</li>
+<li><strong>B5 Tools › dashj sync toggle</strong> (if present in Tools on this build): turning it on is the <em>only</em> thing that should produce a dashj peergroup start.</li>
+</ul>
+<h3 id="tier-c-money-moving-flows-on-the-sdk-seam-fresh-faucet-wallet-dw-qa1-after-a1-or-a-fourth-avd">Tier C — money-moving flows on the SDK seam (fresh faucet wallet, dw-qa1 after A1 or a fourth AVD)</h3>
+<ul>
+<li><strong>C1 Send to address</strong> (QR + paste), fee display, tx appears instantly, correct sign/direction ("never announce our own send as a receive").</li>
+<li><strong>C2 Send-all / max</strong>: transparent balance drains to zero, no dust left, works with a shielded balance present.</li>
+<li><strong>C3 Receive</strong>: address rotates after use; InstantSend lock shows; notification arrives while backgrounded.</li>
+<li><strong>C4 Unshield</strong> back to transparent; "stuck on Received" regression check.</li>
+<li><strong>C5 Tx detail sheet</strong>: memo + tax category persist across relaunch; explorer link; "Loading" never sticks.</li>
+<li><strong>C6 Payment request URI</strong> (<code>dash:</code> deep link via <code>am start -a VIEW -d 'dash:y…?amount=0.01'</code>), BIP70 is SDK-only now — test a BIP70 URL against <code>scripts/bip70-test-server.py</code> if time permits.</li>
+<li><strong>C7 Address book, xpub display, import private key (WIF)</strong> from Tools.</li>
+</ul>
+<h3 id="tier-d-dashpay-platform-dw-qa1-wallet-with-username-from-a1">Tier D — DashPay / Platform (dw-qa1 wallet with username from A1)</h3>
+<ul>
+<li><strong>D1 Contested username</strong> attempt (fee 0.20/0.25): routes to the voting tile, shows end time, can be cancelled.</li>
+<li><strong>D2 Invites</strong>: create an invite from the shielded pool, open the link on dw-qa2 (fresh wallet), claim; "Loading Invite…" must not hang.</li>
+<li><strong>D3 Contact request</strong> dw-qa1 ↔ dw-qa2: send, accept, pay a contact, payment visible both sides; then lock dw-qa2, pay again, unlock, verify visibility (section 16/17 of the branch plan).</li>
+<li><strong>D4 Profile edit</strong> (display name, avatar), username display in More.</li>
+</ul>
+<h3 id="tier-e-regression-sweep-of-untouched-looking-areas">Tier E — regression sweep of untouched-looking areas</h3>
+<ul>
+<li><strong>E1 Onboarding</strong> variants: create vs restore vs restore-from-file, skip PIN paths, biometric prompt absent on emulator, back-press at each step (<code>#1551</code> onboarding crash fixes).</li>
+<li><strong>E2 Security</strong>: change PIN, auto-lock timeout, forgot PIN → reset, screen rotation must not lock (MO-995), app background → relock.</li>
+<li><strong>E3 Settings</strong>: local currency change, exchange rate source, notifications toggle, hide balance, language switch (values-* were touched).</li>
+<li><strong>E4 Explore Dash</strong>: opens without the map key (list view), merchant search, gift card list (empty is fine).</li>
+<li><strong>E5 CrowdNode / Maya / Coinbase / Uphold</strong>: screens open, no crash before the credential step; CrowdNode deposit-all guard; Coinbase fiat-option crash regression.</li>
+<li><strong>E6 Contact Support flow</strong>: More › Contact Support, type an issue, attach logs, reach the share sheet; confirm the log bundle contains <code>wallet.log</code> and the SDK native log copy.</li>
+<li><strong>E7 Transaction export (CSV / ZenLedger)</strong> from Tools.</li>
+<li><strong>E8 Upgrade regression for a <em>fresh v11.9 wallet</em></strong> (not the reference seed): create on master, fund 0.05, upgrade, confirm cutover + balance. Small wallet must not hit the wallet-file-size guard's "RISKY" verdict.</li>
+<li><strong>E9 Static</strong>: <code>./gradlew :wallet:test_testNet3DebugUnitTest</code> on the fix worktree (unit tests), <code>ktlintCheck</code>; note the master APK's lint-vital <code>MissingDefaultResource</code> errors also exist there (pre-existing, <code>abortOnError false</code>).</li>
+</ul>
+<h2 id="3-execution-model">3. Execution model</h2>
+<ul>
+<li>One Opus subagent per emulator/test-stream, run in parallel: <strong>Stream 1</strong> = A1 → C → D; <strong>Stream 2</strong> = A2 → B; <strong>Stream 3</strong> = A3 → A3b → E8. A fourth Opus agent runs E (regression sweep) on whichever emulator frees first, and E9 on the host.</li>
+<li>Long waits (sync ~1 h) are handled inside the agent with poll loops of <code>qa-app.sh grep-log</code>, memory sampling, and periodic screenshots. Agents must never fabricate progress: every claim cites a file under <code>$QA_EVIDENCE</code>.</li>
+<li>Agents report using the template in <code>$QA_ROOT/REPORT-TEMPLATE.md</code>. I merge the reports into <code>$QA_ROOT/QA-REPORT.md</code> with a defect list (ID, severity, repro, evidence, log excerpt, suspected commit).</li>
+<li>Severity: <strong>S1</strong> funds/balance wrong or lost, crash loop, sync never finishes; <strong>S2</strong> sync stalls but recovers only with user action, memory kill, wrong tx history; <strong>S3</strong> UI/flow bug with workaround; <strong>S4</strong> cosmetic.</li>
+</ul>
+<h2 id="4-open-items-assumptions">4. Open items / assumptions</h2>
+<ul>
+<li>Faucet gives 1 tDASH per request; the brief's 0.11 minimum is satisfied by one request per wallet.</li>
+<li>The reference-seed balance 107.43173749 is taken from the brief; if the wallet has received funds since, the A2/A3 assertion becomes "balance ≥ 107.43173749 and equals the explorer sum".</li>
+<li>The emulator has no Google account, so Google Drive / email sending from Contact Support is verified only to the share sheet.</li>
+<li>The master baseline is <code>master @ bde52b520</code> (11.9.0, versionCode 11090002), which satisfies "11.9.0 or higher".</li>
+</ul></html>

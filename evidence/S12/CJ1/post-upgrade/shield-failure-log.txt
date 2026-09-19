@@ -1,0 +1,21 @@
+11895:07:34:55 [DefaultDispatcher-worker-7] ShieldedBalanceServiceImpl - shielded runtime ready on SDK wallet 2bfe60df… (account 0, sync loop running)
+11914:07:34:57 [DefaultDispatcher-worker-5] L1ShadowSyncService - WalletBalanceFacts: total=0 accounts={bip44:0, bip32:0, coinjoin:0, identityRegistration:0, identityTopUpUnbound:0, identityInvitation:0, assetLockTopUp:0, assetLockShieldedTopUp:0, providerVoti
+11923:07:35:23 [DefaultDispatcher-worker-3] L1ShadowSyncService - WalletBalanceFacts: total=99997138 accounts={bip44:0, bip32:0, coinjoin:99997138, identityRegistration:0, identityTopUpUnbound:0, identityInvitation:0, assetLockTopUp:0, assetLockShieldedTopUp:0
+12420:07:40:25 [main] WalletActivityTracker - activity lifecycle: activity ShieldedBalanceActivity created
+12421:07:40:25 [main] WalletActivityTracker - activity lifecycle: current: ShieldedBalanceActivity, activities: 2 visible: 1 foreground: 0
+12426:07:40:25 [main] WalletActivityTracker - activity lifecycle: current: ShieldedBalanceActivity, activities: 2 visible: 2 foreground: 0
+12430:07:40:25 [main] WalletActivityTracker - activity lifecycle: current: ShieldedBalanceActivity, activities: 2 visible: 2 foreground: 1
+12482:07:42:04 [DefaultDispatcher-worker-11] ShieldedBalanceServiceImpl - shielded shieldFromWallet rejected pre-broadcast (no lock tracked)
+12483:org.dashfoundation.dashsdk.errors.DashSdkError$PlatformWallet$AssetLockInsufficientFunds: asset lock coin selection is short: available 0 duffs, required 50000000 duffs
+12486:	at org.dashfoundation.dashsdk.wallet.PlatformWalletManager$shieldedFundFromAssetLock$2.invokeSuspend(PlatformWalletManager.kt:808)
+12487:	at org.dashfoundation.dashsdk.wallet.PlatformWalletManager$shieldedFundFromAssetLock$2.invoke(PlatformWalletManager.kt:0)
+12488:	at org.dashfoundation.dashsdk.wallet.PlatformWalletManager$shieldedFundFromAssetLock$2.invoke(PlatformWalletManager.kt:0)
+12498:	at org.dashfoundation.dashsdk.wallet.PlatformWalletManager.shieldedFundFromAssetLock(PlatformWalletManager.kt:1606)
+12499:	at org.dashfoundation.dashsdk.wallet.PlatformWalletManager.shieldedFundFromAssetLock$default(PlatformWalletManager.kt:1600)
+12500:	at de.schildbach.wallet.service.platform.sdk.DashSdkShieldedSource.fundFromAssetLock(ShieldedBalanceServiceImpl.kt:534)
+12501:	at de.schildbach.wallet.service.platform.sdk.ShieldedBalanceServiceImpl.shieldFromWalletInternal-EGohdcg(ShieldedBalanceServiceImpl.kt:1221)
+12502:	at de.schildbach.wallet.service.platform.sdk.ShieldedBalanceServiceImpl.access$shieldFromWalletInternal-EGohdcg(ShieldedBalanceServiceImpl.kt:687)
+12503:	at de.schildbach.wallet.service.platform.sdk.ShieldedBalanceServiceImpl$shieldFromWalletInternal$1.invokeSuspend(ShieldedBalanceServiceImpl.kt:0)
+12513:	at org.dashfoundation.dashsdk.ffi.FundingNative.shieldedFundFromAssetLock(Native Method)
+12514:	at org.dashfoundation.dashsdk.wallet.PlatformWalletManager$shieldedFundFromAssetLock$2.invokeSuspend(PlatformWalletManager.kt:1612)
+12516:07:42:04 [DefaultDispatcher-worker-11] ShieldedTransferExecutor - shielded transfer not sent: pre-broadcast asset-lock coin-selection failure

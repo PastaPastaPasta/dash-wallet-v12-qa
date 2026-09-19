@@ -1,0 +1,2 @@
+05:44:04 [DefaultDispatcher-worker-1] L1ShadowSyncService - L1 shadow SPV started for SDK wallet b7118ed5… (dataDir=/data/user/0/hashengineering.darkcoin.wallet_test/files/l1_shadow_spv/testnet, default peer discovery); debug-only instrumentation — two SPV engines are now running
+05:53:11 [DefaultDispatcher-worker-9] L1ShadowSyncService - L1 shadow SPV started for SDK wallet b7118ed5… (dataDir=/data/user/0/hashengineering.darkcoin.wallet_test/files/l1_shadow_spv/testnet, default peer discovery); debug-only instrumentation — two SPV engines are now running

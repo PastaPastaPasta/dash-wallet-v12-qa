@@ -1,0 +1,2 @@
+06:26:47 [bootstrap] BootstrapReceiver - detected balance, showing inactivity notification
+06:26:47 [DefaultDispatcher-worker-7] ContactRequestNotificationService - unseen notification count: 0 -> 1

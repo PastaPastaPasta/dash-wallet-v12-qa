@@ -1,0 +1,6 @@
+05:21:58 [DefaultDispatcher-worker-11] ShieldedBalanceServiceImpl - shielded shieldFromWallet rejected pre-broadcast (no lock tracked)
+05:21:58 [DefaultDispatcher-worker-11] ShieldedTransferExecutor - max shield auto-adjusting for L1 asset-lock fee: requested 1, reserve 1000 duffs (1 UTXOs), retrying once with 0.99999
+06:10:44 [DefaultDispatcher-worker-12] ShieldedBalanceServiceImpl - shielded withdrawToCore rejected pre-broadcast (notes released)
+06:23:31 [DefaultDispatcher-worker-6] SdkL1SendService - SDK l1SendAll: broadcast 96135540 duffs to ygzkrgSc…, txid 9981b17d1f064f1404de5c2bd766a2cd96f9ccade68a42a39c089ad10ff87bd5
+06:25:17 [DefaultDispatcher-worker-3] ShieldedBalanceServiceImpl - shielded shieldFromWallet rejected pre-broadcast (no lock tracked)
+06:25:17 [DefaultDispatcher-worker-3] ShieldedTransferExecutor - max shield auto-adjusting for L1 asset-lock fee: requested 0.9613486, reserve 1488 duffs (3 UTXOs), retrying once with 0.96133372

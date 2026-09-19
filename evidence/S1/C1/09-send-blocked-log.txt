@@ -1,0 +1,17 @@
+05:21:38 [main] SendCoinsTaskRunner - authenticate with pin
+05:26:27 [main] SendCoinsTaskRunner - authenticate with pin
+05:32:42 [DefaultDispatcher-worker-4] BlockchainServiceImpl - serviceJob cancelled after 19 minutes
+05:48:46 [main] SendCoinsTaskRunner - authenticate with pin
+06:00:49 [main] SendCoinsTaskRunner - authenticate with pin
+06:01:00 [DefaultDispatcher-worker-2] BlockchainServiceImpl - serviceJob cancelled after 4 minutes
+06:01:26 [DefaultDispatcher-worker-15] SendCoinsTaskRunner - cutover committed: routing the SendRequest payment via the SDK bridge (100000 duffs to ygUWAkqb…)
+06:01:26 [DefaultDispatcher-worker-15] SdkL1SendService - SDK l1Send not attempted (L1 funding gate closed: SDK L1 engine not running); using dashj
+de.schildbach.wallet.payments.SendEngineNotSyncedException: cutover committed but the SDK engine cannot fund a send yet (L1 funding gate closed: SDK L1 engine not running)
+	at de.schildbach.wallet.payments.SendCoinsTaskRunnerKt.sdkSendNotAttemptedException(SendCoinsTaskRunner.kt:172)
+	at de.schildbach.wallet.payments.SendCoinsTaskRunner.sendViaSdkBridged(SendCoinsTaskRunner.kt:451)
+	at de.schildbach.wallet.payments.SendCoinsTaskRunner.access$sendViaSdkBridged(SendCoinsTaskRunner.kt:333)
+	at de.schildbach.wallet.payments.SendCoinsTaskRunner$sendCoins$5.invokeSuspend(SendCoinsTaskRunner.kt:1179)
+	at de.schildbach.wallet.payments.SendCoinsTaskRunner$sendCoins$5.invoke(SendCoinsTaskRunner.kt:0)
+	at de.schildbach.wallet.payments.SendCoinsTaskRunner$sendCoins$5.invoke(SendCoinsTaskRunner.kt:0)
+	at de.schildbach.wallet.payments.SendCoinsTaskRunner.sendCoins(SendCoinsTaskRunner.kt:1145)
+	at de.schildbach.wallet.payments.SendCoinsTaskRunner.sendCoins$default(SendCoinsTaskRunner.kt:1137)

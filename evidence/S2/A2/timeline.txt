@@ -1,0 +1,17 @@
+2026-09-19T00:13:54 | ui_sync= | ui_ind= | ui_bal= | log_height=height=0 | log_pct=
+2026-09-19T00:14:57 | ui_sync=text="Syncing 64%" | ui_ind=text="Syncing balance" | ui_bal=text="825.392741" | log_height=height=0 | log_pct=
+2026-09-19T00:16:04 | ui_sync= | ui_ind= | ui_bal= | L1Shadow phase=FILTERS 79.9% headers 1556552/1556552 filters 615999/1556552 wallet 615999 | synced_height_persisted=Some(615999)
+2026-09-19T00:17:07 | ui_sync= | ui_ind= | ui_bal= | L1Shadow phase=FILTERS 87.1% headers 1556553/1556553 filters 955999/1556553 wallet 955999 | synced_height_persisted=Some(940999)
+2026-09-19T00:18:10 | ui_sync= | ui_ind= | ui_bal= | L1Shadow phase=FILTERS 96.0% headers 1556553/1556553 filters 1370999/1556553 wallet 1370999 | synced_height_persisted=Some(1350999)
+2026-09-19T00:19:12 | ui_sync=text="Syncing 99%" | ui_ind=text="Syncing balance" | ui_bal=text="107.081735" | L1Shadow phase=FILTERS 100.0% headers 1556555/1556555 filters 1555999/1556554 wallet 1555999 | synced_height_persisted=Some(1555999)
+2026-09-19T00:20:18 | ui_sync= | ui_ind= | ui_bal= | L1Shadow phase=FILTERS 100.0% headers 1556556/1556556 filters 1555999/1556554 wallet 1555999 | synced_height_persisted=Some(1555999)
+2026-09-19T00:21:20 | ui_sync= | ui_ind= | ui_bal= | L1Shadow phase=FILTERS 100.0% headers 1556558/1556558 filters 1555999/1556554 wallet 1555999 | synced_height_persisted=Some(1555999)
+2026-09-19T00:22:23 | ui_sync= | ui_ind= | ui_bal=text="107.081735" | L1Shadow phase=SYNCED 100.0% headers 1556559/1556559 filters 1556559/1556559 wallet 1556559 | synced_height_persisted=Some(1556559)
+2026-09-19T00:23:25 | ui_sync= | ui_ind= | ui_bal= | L1Shadow phase=SYNCED 100.0% headers 1556559/1556559 filters 1556559/1556559 wallet 1556559 | synced_height_persisted=Some(1556559)
+2026-09-19T00:24:27 | ui_sync= | ui_ind= | ui_bal= | L1Shadow phase=SYNCED 100.0% headers 1556559/1556559 filters 1556559/1556559 wallet 1556559 | synced_height_persisted=Some(1556559)
+2026-09-19T00:25:34 | ui_sync= | ui_ind= | ui_bal= | L1Shadow phase=SYNCED 100.0% headers 1556559/1556559 filters 1556559/1556559 wallet 1556559 | synced_height_persisted=Some(1556559)
+2026-09-19T00:26:39 | ui_sync= | ui_ind= | ui_bal= | L1Shadow phase=SYNCED 100.0% headers 1556559/1556559 filters 1556559/1556559 wallet 1556559 | synced_height_persisted=Some(1556559)
+2026-09-19T00:27:42 | ui_sync= | ui_ind= | ui_bal= | L1Shadow phase=SYNCED 100.0% headers 1556559/1556559 filters 1556559/1556559 wallet 1556559 | synced_height_persisted=Some(1556559)
+2026-09-19T00:28:44 | ui_sync= | ui_ind= | ui_bal= | L1Shadow phase=SYNCED 100.0% headers 1556559/1556559 filters 1556559/1556559 wallet 1556559 | synced_height_persisted=Some(1556559)
+2026-09-19T00:29:47 | ui_sync= | ui_ind= | ui_bal= | L1Shadow phase=SYNCED 100.0% headers 1556559/1556559 filters 1556559/1556559 wallet 1556559 | synced_height_persisted=Some(1556559)
+2026-09-19T00:30:49 | ui_sync= | ui_ind= | ui_bal=text="107.081735" | L1Shadow phase=SYNCED 100.0% headers 1556560/1556560 filters 1556559/1556559 wallet 1556559 | synced_height_persisted=Some(1556560)

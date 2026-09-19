@@ -1,0 +1,6 @@
+06:07:05 [Wallet autosave thread] BLSJniLibrary - Initializing BLS JNI Library
+06:07:10 [Wallet autosave thread] WalletFiles - Background saving wallet; last seen block is height -1, date unknown, hash null
+06:07:10 [Wallet autosave thread] CoinJoinExtension - CoinJoinExtension serialization: 0ms total (keys:0ms[8], cache:0ms[0], salt:0ms, io:0ms, size:1431bytes, buffer:64KB)
+06:07:10 [Wallet autosave thread] WalletProtobufSerializer - walletToProto (serial=8) timing: 7ms total, init=0ms, tx=0ms[0], keys=0ms, scripts=0ms[0], metadata=0ms, ext=6ms, friendRecv=0ms, friendSend=0ms, build=0ms
+06:07:10 [Wallet autosave thread] WalletProtobufSerializer - writeWallet timing: 7ms total (7ms/100% serialization, 0ms/0% I/O) buffer=8KB
+06:07:10 [Wallet autosave thread] WalletFiles - Save completed in 12.94 ms (15322 bytes); /data/user/0/hashengineering.darkcoin.wallet_test/files/wallet-protobuf-testnet

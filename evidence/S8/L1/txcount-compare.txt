@@ -1,0 +1,12 @@
+2026-09-19T01:17:36 grow=1600 tx_display_cache=1490 sdk_transactions=1601
+2026-09-19T01:17:56 grow=1600 tx_display_cache=1490 sdk_transactions=1601
+2026-09-19T01:18:16 grow=1600 tx_display_cache=1490 sdk_transactions=1601
+2026-09-19T01:19:39 grow=1600 display[count|maxtime]=1490|1789798643000 sdk_tx=1601
+2026-09-19T01:20:04 grow=1600 display[count|maxtime]=1490|1789798643000 sdk_tx=1601
+2026-09-19T01:20:29 grow=1600 display[count|maxtime]=1490|1789798643000 sdk_tx=1601
+2026-09-19T01:23:01 display=1600 sdk=1711 delta=111
+2026-09-19T01:23:41 display=1668 sdk=1779 delta=111
+2026-09-19T01:24:21 display=1690 sdk=1801 delta=111
+2026-09-19T01:25:01 display=1690 sdk=1801 delta=111
+2026-09-19T01:32:52 after-kill-relaunch display=1890 sdk=2001 delta=111
+2026-09-19T01:47:30 after-lowmem grow=2400 display=2290 sdk=2401 delta=111

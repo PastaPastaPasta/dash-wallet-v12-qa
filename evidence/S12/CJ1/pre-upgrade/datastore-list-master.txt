@@ -1,0 +1,7 @@
+/data/data/hashengineering.darkcoin.wallet_test/files/datastore:
+coinbase.preferences_pb
+coinjoin.preferences_pb
+exchange_rates_config.preferences_pb
+explore.preferences_pb
+uphold.preferences_pb
+wallet_ui.preferences_pb

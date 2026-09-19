@@ -1,0 +1,12 @@
+===== 2026-09-19T00:26:05 sample 1 =====
+05:21:23 [DefaultDispatcher-worker-5] CutoverCoordinator - cutover state DUAL_RUNNING -> CUT_OVER (fresh-wallet setup (restore/new))
+05:24:10 [DefaultDispatcher-worker-8] L1ShadowSyncService - L1 shadow SPV started for SDK wallet ee230719… (dataDir=/data/user/0/hashengineering.darkcoin.wallet/files/l1_shadow_spv/mainnet, default peer discovery); debug-only instrumentation — two SPV engines are now running
+05:25:00 [main] BlockchainServiceImpl - MEM pss=350MB nativeHeap=201/402MB jvm=20/576MB
+05:26:00 [main] BlockchainServiceImpl - MEM pss=340MB nativeHeap=201/403MB jvm=18/576MB
+===== 2026-09-19T00:28:35 sample 2 =====
+05:25:00 [main] BlockchainServiceImpl - MEM pss=350MB nativeHeap=201/402MB jvm=20/576MB
+05:26:00 [main] BlockchainServiceImpl - MEM pss=340MB nativeHeap=201/403MB jvm=18/576MB
+05:27:00 [main] BlockchainServiceImpl - MEM pss=341MB nativeHeap=202/403MB jvm=17/576MB
+05:27:00 [main] BlockchainServiceImpl - idling detected, stopping service
+05:28:00 [main] BlockchainServiceImpl - MEM pss=342MB nativeHeap=202/403MB jvm=17/576MB
+05:28:00 [main] BlockchainServiceImpl - idling detected, stopping service

@@ -1,0 +1,9 @@
+07:27:52 [DefaultDispatcher-worker-6] CutoverCoordinator - cutover state DUAL_RUNNING -> CUT_OVER (fresh-wallet setup (restore/new))
+07:28:33 [DefaultDispatcher-worker-14] L1ShadowSyncService - L1Shadow phase=CONNECTING 0.0% headers 0/0 filters 0/0 wallet 0
+07:28:33 [DefaultDispatcher-worker-10] L1ShadowSyncService - L1 shadow SPV started for SDK wallet b7118ed5… (dataDir=/data/user/0/hashengineering.darkcoin.wallet_test/files/l1_shadow_spv/testnet, default peer discovery); debug-only instrumentation — two SPV engines are now running
+07:29:03 [DefaultDispatcher-worker-10] L1ShadowSyncService - L1Shadow phase=HEADERS 41.5% headers 1238000/1556608 filters 140000/1556608 wallet 140000
+07:29:33 [DefaultDispatcher-worker-2] L1ShadowSyncService - L1Shadow phase=FILTERS 72.7% headers 1556608/1556608 filters 280000/1556608 wallet 285000
+07:30:05 [DefaultDispatcher-worker-6] L1ShadowSyncService - L1Shadow phase=FILTERS 77.7% headers 1556608/1556608 filters 515000/1556608 wallet 520000
+07:30:35 [DefaultDispatcher-worker-10] L1ShadowSyncService - L1Shadow phase=FILTERS 91.4% headers 1556608/1556608 filters 1155000/1556608 wallet 1155000
+07:31:05 [DefaultDispatcher-worker-15] L1ShadowSyncService - L1Shadow phase=FILTERS 98.7% headers 1556608/1556608 filters 1495000/1556608 wallet 1505000
+07:33:09 [DefaultDispatcher-worker-15] L1ShadowSyncService - L1Shadow phase=SYNCED 100.0% headers 1556608/1556608 filters 1556608/1556608 wallet 1556608

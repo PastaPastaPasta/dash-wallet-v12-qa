@@ -1,0 +1,25 @@
+06:26:45 [main] StartupBreadcrumbs - STARTUP breadcrumb: 1 LOGGING_INITIALIZED +68ms
+06:26:45 [main] StartupBreadcrumbs - STARTUP breadcrumb: 2 FIREBASE_INITIALIZED +68ms
+06:26:45 [main] StartupBreadcrumbs - STARTUP breadcrumb: 3 CONFIG_LOADED +74ms
+06:26:45 [main] StartupBreadcrumbs - STARTUP breadcrumb: 4 WALLET_LOAD_BEGIN +74ms size=1036231
+06:26:46 [main] StartupBreadcrumbs - STARTUP breadcrumb: 5 WALLET_PROTOBUF_PARSED +526ms took=441.8 ms deferredFriendChains=4
+06:26:46 [main] StartupBreadcrumbs - STARTUP breadcrumb: 6 WALLET_CONSISTENCY_CHECKED +533ms
+06:26:46 [main] StartupBreadcrumbs - STARTUP breadcrumb: 7 FINALIZE_INIT_BEGIN +546ms
+06:26:47 [main] StartupBreadcrumbs - STARTUP breadcrumb: 8 INIT_DASH_DONE +1481ms
+06:26:47 [main] StartupBreadcrumbs - STARTUP breadcrumb: 9 AFTER_LOAD_WALLET_DONE +1485ms
+06:26:47 [main] StartupBreadcrumbs - STARTUP breadcrumb: 20 SDK_BIND_KICKED +1497ms
+06:26:47 [main] StartupBreadcrumbs - STARTUP breadcrumb: 10 PLATFORM_INIT_KICKED +1497ms
+06:26:47 [DefaultDispatcher-worker-6] PlatformSynchronizationService - SDK L1 engine not started from Application init — it starts from the foreground blockchain service (resume())
+06:26:47 [DefaultDispatcher-worker-6] StartupBreadcrumbs - STARTUP breadcrumb: 23 CUTOVER_SERVICES_STARTED +1514ms
+06:26:47 [main] StartupBreadcrumbs - STARTUP breadcrumb: 11 ONCREATE_COMPLETE +1711ms
+06:26:48 [DefaultDispatcher-worker-9] StartupBreadcrumbs - STARTUP breadcrumb: 20 SDK_BIND_KICKED +2449ms
+06:26:48 [DefaultDispatcher-worker-11] StartupBreadcrumbs - STARTUP breadcrumb: 21 SDK_L1_ENGINE_STARTING +2457ms
+06:26:48 [DefaultDispatcher-worker-11] L1ShadowSyncService - L1 shadow sync not started: app wallet not bound to the SDK yet
+06:26:48 [DefaultDispatcher-worker-11] StartupBreadcrumbs - STARTUP breadcrumb: 22 SDK_L1_ENGINE_STARTED +2459ms
+06:26:48 [DefaultDispatcher-worker-11] StartupBreadcrumbs - STARTUP breadcrumb: 23 CUTOVER_SERVICES_STARTED +2459ms
+06:29:00 [main] BlockchainServiceImpl - idle counters, but a replay is in progress (0%) — keeping the service alive until it completes
+06:29:33 [main] StartupBreadcrumbs - STARTUP breadcrumb: 12 MAIN_UI_SHOWN +167593ms
+06:30:00 [main] BlockchainServiceImpl - idle counters, but a replay is in progress (0%) — keeping the service alive until it completes
+06:30:03 [main] StartupBreadcrumbs - STARTUP breadcrumb: 13 LAUNCH_SURVIVED +197709ms
+06:31:00 [main] BlockchainServiceImpl - idle counters, but a replay is in progress (0%) — keeping the service alive until it completes
+06:32:00 [main] BlockchainServiceImpl - idle counters, but a replay is in progress (0%) — keeping the service alive until it completes

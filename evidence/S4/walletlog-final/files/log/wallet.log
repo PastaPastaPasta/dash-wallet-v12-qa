@@ -1,0 +1,1122 @@
+08:34:25 [main] StartupBreadcrumbs - STARTUP breadcrumb: 1 LOGGING_INITIALIZED +4ms
+08:34:25 [main] StartupBreadcrumbs - STARTUP breadcrumb: 2 FIREBASE_INITIALIZED +5ms
+08:34:25 [main] WalletApplication - STARTUP WalletApplication.onCreate()
+08:34:25 [process-exit-reasons] ProcessExitReasons - PROCESS EXIT REASON: none recorded (fresh install, or the history was cleared)
+08:34:25 [main] StartupBreadcrumbs - STARTUP breadcrumb: 3 CONFIG_LOADED +10ms
+08:34:25 [main] StartupBreadcrumbs - STARTUP breadcrumb: 11 ONCREATE_COMPLETE +19ms
+08:34:25 [main] WalletActivityTracker - activity lifecycle: app started
+08:34:25 [main] WalletActivityTracker - activity lifecycle: activity OnboardingActivity created
+08:34:25 [main] WalletActivityTracker - activity lifecycle: current: OnboardingActivity, activities: 1 visible: 0 foreground: 0
+08:34:25 [main] AppForegroundMonitor - App moved to foreground
+08:34:25 [main] WalletActivityTracker - activity lifecycle: current: OnboardingActivity, activities: 1 visible: 1 foreground: 0
+08:34:25 [main] WalletActivityTracker - activity lifecycle: current: OnboardingActivity, activities: 1 visible: 1 foreground: 1
+08:34:25 [DefaultDispatcher-worker-3] ExploreSyncWorker - sync explore db started
+08:34:25 [DefaultDispatcher-worker-3] ExploreDataSyncStatus - sync explore data progress: 0.0
+08:34:25 [DefaultDispatcher-worker-3] GCExploreDatabase - preloading explore db from assets /data/user/0/hashengineering.darkcoin.wallet_test/cache/explore.db, test database: true
+08:34:25 [DefaultDispatcher-worker-3] GCExploreDatabase - preloading explore db from assets /data/user/0/hashengineering.darkcoin.wallet_test/cache/explore.db, test database: false
+08:34:25 [DefaultDispatcher-worker-3] GCExploreDatabase - missing preloaded database explore/explore.db
+08:34:25 [DefaultDispatcher-worker-3] ExploreSyncWorker - local data timestamp: 0 (Wed Dec 31 18:00:00 CST 1969)
+08:34:25 [DefaultDispatcher-worker-3] GCExploreDatabase - error getting remote data timestamp
+com.google.firebase.FirebaseNetworkException: A network error (such as timeout, interrupted connection or unreachable host) has occurred.
+	at com.google.android.gms.internal.firebase-auth-api.zzaag.zza(com.google.firebase:firebase-auth@@22.0.0:19)
+	at com.google.android.gms.internal.firebase-auth-api.zzabf.zza(com.google.firebase:firebase-auth@@22.0.0:26)
+	at com.google.android.gms.internal.firebase-auth-api.zzabg.zzl(com.google.firebase:firebase-auth@@22.0.0:1)
+	at com.google.android.gms.internal.firebase-auth-api.zzabd.zzh(com.google.firebase:firebase-auth@@22.0.0:25)
+	at com.google.android.gms.internal.firebase-auth-api.zzaae.zzh(com.google.firebase:firebase-auth@@22.0.0:1)
+	at com.google.android.gms.internal.firebase-auth-api.zzyb.zza(com.google.firebase:firebase-auth@@22.0.0:2)
+	at com.google.android.gms.internal.firebase-auth-api.zzabo.zzb(com.google.firebase:firebase-auth@@22.0.0:16)
+	at com.google.android.gms.internal.firebase-auth-api.zzaat.zzn(com.google.firebase:firebase-auth@@22.0.0:4)
+	at com.google.android.gms.internal.firebase-auth-api.zzyh.zzz(com.google.firebase:firebase-auth@@22.0.0:2)
+	at com.google.android.gms.internal.firebase-auth-api.zzaaf.zzv(com.google.firebase:firebase-auth@@22.0.0:2)
+	at com.google.android.gms.internal.firebase-auth-api.zzzk.zzc(com.google.firebase:firebase-auth@@22.0.0:1)
+	at com.google.android.gms.internal.firebase-auth-api.zzabh.run(com.google.firebase:firebase-auth@@22.0.0:1)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+	at com.google.firebase.concurrent.CustomThreadFactory.lambda$newThread$0(CustomThreadFactory.java:47)
+	at com.google.firebase.concurrent.CustomThreadFactory.$r8$lambda$XB8AY3Hcio74byWuTzgVEC3Hiek(CustomThreadFactory.java:0)
+	at com.google.firebase.concurrent.CustomThreadFactory$$ExternalSyntheticLambda0.run(R8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:1012)
+08:34:25 [DefaultDispatcher-worker-3] ExploreSyncWorker - remote data timestamp: -1 (Wed Dec 31 17:59:59 CST 1969)
+08:34:25 [DefaultDispatcher-worker-3] ExploreSyncWorker - unable to delete /data/user/0/hashengineering.darkcoin.wallet_test/cache/explore.db
+08:34:25 [DefaultDispatcher-worker-3] ExploreSyncWorker - explore db is up to date, nothing to sync
+08:34:25 [DefaultDispatcher-worker-3] ExploreDataSyncStatus - sync explore data progress: 100.0
+08:34:25 [DefaultDispatcher-worker-3] ExploreDatabase - Open database explore-database
+08:34:25 [DefaultDispatcher-worker-3] ExploreSyncWorker - adding PiggyCards test merchants
+08:34:26 [DefaultDispatcher-worker-7] ExploreSyncWorker - PiggyCards test merchant added successfully
+08:34:51 [main] WalletActivityTracker - activity lifecycle: current: OnboardingActivity, activities: 1 visible: 1 foreground: 0
+08:34:51 [main] WalletActivityTracker - activity lifecycle: activity SelectSecurityLevelActivity created
+08:34:51 [main] WalletActivityTracker - activity lifecycle: current: SelectSecurityLevelActivity, activities: 2 visible: 1 foreground: 0
+08:34:51 [main] WalletActivityTracker - activity lifecycle: current: SelectSecurityLevelActivity, activities: 2 visible: 2 foreground: 0
+08:34:51 [main] WalletActivityTracker - activity lifecycle: current: SelectSecurityLevelActivity, activities: 2 visible: 2 foreground: 1
+08:34:51 [main] WalletActivityTracker - activity lifecycle: current: OnboardingActivity, activities: 2 visible: 1 foreground: 1
+08:35:01 [main] WalletActivityTracker - activity lifecycle: current: SelectSecurityLevelActivity, activities: 2 visible: 1 foreground: 0
+08:35:01 [main] WalletActivityTracker - activity lifecycle: current: OnboardingActivity, activities: 2 visible: 2 foreground: 0
+08:35:01 [main] WalletActivityTracker - activity lifecycle: current: OnboardingActivity, activities: 2 visible: 2 foreground: 1
+08:35:01 [DefaultDispatcher-worker-3] BLSJniLibrary - Initializing BLS JNI Library
+08:35:01 [DefaultDispatcher-worker-3] WalletApplication - === starting app using configuration: _testNet3, org.darkcoin.test
+08:35:01 [DefaultDispatcher-worker-3] MnemonicCodeExt - BIP39 wordlist loaded from: 'bip39-wordlists/english.txt', took 2.341 ms
+08:35:01 [DefaultDispatcher-worker-3] MnemonicCode - PBKDF2 took 9.171 ms
+08:35:01 [DefaultDispatcher-worker-3] OnboardingViewModel - successfully created new wallet
+08:35:01 [DefaultDispatcher-worker-8] BLSJniLibrary - Initializing BLS JNI Library
+08:35:01 [DefaultDispatcher-worker-8] TxDisplayCacheService - rebuildWrappedList: 0 raw txs → 0 wrappers → 0 sorted | getTransactions=0ms wrapAll=1ms sort=2ms total=3ms
+08:35:01 [DefaultDispatcher-worker-8] TxDisplayCacheService - updateDisplayCache: 0 rows in 0ms
+08:35:01 [DefaultDispatcher-worker-8] TxDisplayCacheService - STARTUP rebuildWrappedList DONE (_transactionsLoaded=true) at 1789806901625
+08:35:01 [DefaultDispatcher-worker-3] KeyChainGroup - Activating a new HD chain: DeterministicKeyChain{P2PKH, accountPath=[44H, 1H, 0H], lookaheadSize=100, lookaheadThreshold=33}
+08:35:01 [DefaultDispatcher-worker-8] WalletObserver - observing transactions start de.schildbach.wallet.transactions.WalletObserver@20f51ae
+08:35:01 [DefaultDispatcher-worker-8] BLSJniLibrary - Initializing BLS JNI Library
+08:35:01 [dashj user thread] BLSJniLibrary - Initializing BLS JNI Library
+08:35:01 [DefaultDispatcher-worker-3] AnyKeyChainGroup - Activating a new HD chain: AuthenticationKeyChain{BLOCKCHAIN_IDENTITY, ECDSA, P2PKH, accountPath=[9H, 1H, 5H, 0H, 0H, 0H], lookaheadSize=0, lookaheadThreshold=0}
+08:35:01 [DefaultDispatcher-worker-3] AnyKeyChainGroup - Activating a new HD chain: AuthenticationKeyChain{BLOCKCHAIN_IDENTITY_FUNDING, ECDSA, P2PKH, accountPath=[9H, 1H, 5H, 1H], lookaheadSize=5, lookaheadThreshold=5}
+08:35:01 [DefaultDispatcher-worker-3] AnyKeyChainGroup - Activating a new HD chain: AuthenticationKeyChain{MASTERNODE_OWNER, ECDSA, P2PKH, accountPath=[9H, 1H, 3H, 2H], lookaheadSize=5, lookaheadThreshold=5}
+08:35:01 [DefaultDispatcher-worker-3] BLSJniLibrary - Initializing BLS JNI Library
+08:35:01 [DefaultDispatcher-worker-3] AnyKeyChainGroup - Activating a new HD chain: AuthenticationKeyChain{MASTERNODE_OPERATOR, BLS, P2PKH, accountPath=[9H, 1H, 3H, 3H], lookaheadSize=5, lookaheadThreshold=5}
+08:35:01 [main] WalletActivityTracker - activity lifecycle: current: SelectSecurityLevelActivity, activities: 2 visible: 1 foreground: 1
+08:35:01 [main] WalletActivityTracker - activity lifecycle: activity SelectSecurityLevelActivity destroyed
+08:35:01 [main] WalletActivityTracker - activity lifecycle: current: SelectSecurityLevelActivity, activities: 1 visible: 1 foreground: 1
+08:35:01 [DefaultDispatcher-worker-3] AnyKeyChainGroup - Activating a new HD chain: AuthenticationKeyChain{MASTERNODE_VOTING, ECDSA, P2PKH, accountPath=[9H, 1H, 3H, 1H], lookaheadSize=5, lookaheadThreshold=5}
+08:35:01 [DefaultDispatcher-worker-3] AnyKeyChainGroup - Activating a new HD chain: AuthenticationKeyChain{BLOCKCHAIN_IDENTITY_TOPUP, ECDSA, P2PKH, accountPath=[9H, 1H, 5H, 2H], lookaheadSize=5, lookaheadThreshold=5}
+08:35:01 [DefaultDispatcher-worker-3] AnyKeyChainGroup - Activating a new HD chain: AuthenticationKeyChain{INVITATION_FUNDING, ECDSA, P2PKH, accountPath=[9H, 1H, 5H, 3H], lookaheadSize=5, lookaheadThreshold=5}
+08:35:01 [DefaultDispatcher-worker-3] AnyKeyChainGroup - Activating a new HD chain: AuthenticationKeyChain{MASTERNODE_PLATFORM_OPERATOR, EdDSA, P2PKH, accountPath=[9H, 1H, 3H, 4H], lookaheadSize=0, lookaheadThreshold=0}
+08:35:01 [DefaultDispatcher-worker-3] AnyKeyChainGroup - Activating a new HD chain: AnyDeterministicKeyChain{ECDSA, P2PKH, accountPath=[9H, 1H, 4H, 0H], lookaheadSize=100, lookaheadThreshold=33}
+08:35:01 [DefaultDispatcher-worker-11] CutoverCoordinator - cutover state DUAL_RUNNING -> CUT_OVER (fresh-wallet setup (restore/new))
+08:35:01 [main] WalletActivityTracker - activity lifecycle: current: OnboardingActivity, activities: 1 visible: 1 foreground: 0
+08:35:01 [main] WalletActivityTracker - activity lifecycle: activity SetPinActivity created
+08:35:01 [main] WalletActivityTracker - activity lifecycle: current: SetPinActivity, activities: 2 visible: 1 foreground: 0
+08:35:01 [main] SecurityGuard - loading security guard [healthy=true] with keys: [modern_encryption_migration_complete]
+08:35:01 [main] SecurityGuard - loading security guard [healthy=true] with keys: [modern_encryption_migration_complete]
+08:35:01 [main] WalletActivityTracker - activity lifecycle: current: SetPinActivity, activities: 2 visible: 2 foreground: 0
+08:35:01 [main] WalletActivityTracker - activity lifecycle: current: SetPinActivity, activities: 2 visible: 2 foreground: 1
+08:35:01 [main] WalletActivityTracker - activity lifecycle: current: OnboardingActivity, activities: 2 visible: 1 foreground: 1
+08:35:30 [main] SecurityGuard - removing security keys
+08:35:30 [main] ModernEncryptionProvider - deleting ui_pin_key
+08:35:30 [main] ModernEncryptionProvider - deleting wallet_password_key
+08:35:30 [main] SecurityGuard - Cleared DataStore backups
+08:35:30 [main] ModernEncryptionProvider - key store does not have ui_pin_key, but has android.security.keystore2.AndroidKeyStoreSpi$KeyEntriesEnumerator@4a61c8b, generating new key. Stack trace:
+  at dalvik.system.VMStack.getThreadStackTrace(Native Method)
+  at java.lang.Thread.getStackTrace(Thread.java:1841)
+  at de.schildbach.wallet.security.ModernEncryptionProvider.getSecretKey(ModernEncryptionProvider.kt:175)
+  at de.schildbach.wallet.security.ModernEncryptionProvider.encrypt(ModernEncryptionProvider.kt:79)
+  at de.schildbach.wallet.security.DualFallbackEncryptionProvider.encrypt(DualFallbackEncryptionProvider.kt:85)
+  at de.schildbach.wallet.security.SecurityGuard.validateKeyIntegrity(SecurityGuard.java:307)
+  at de.schildbach.wallet.security.SecurityGuard.savePin(SecurityGuard.java:262)
+  at de.schildbach.wallet.livedata.EncryptWalletLiveData.savePin(EncryptWalletLiveData.kt:106)
+  at de.schildbach.wallet.ui.SetPinViewModel.savePinAndEncrypt(SetPinViewModel.kt:74)
+  at de.schildbach.wallet.ui.SetPinViewModel.savePinAndEncrypt(SetPinViewModel.kt:65)
+  at de.schildbach.wallet.ui.SetPinActivity$nextStep$submit$1.run(SetPinActivity.kt:289)
+  at android.os.Handler.handleCallback(Handler.java:959)
+  at android.os.Handler.dispatchMessage(Handler.java:100)
+  at android.os.Looper.loopOnce(Looper.java:232)
+  at android.os.Looper.loop(Looper.java:317)
+  at android.app.ActivityThread.main(ActivityThread.java:8705)
+  at java.lang.reflect.Method.invoke(Native Method)
+  at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:580)
+  at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:886)
+08:35:30 [main] SecurityGuard - Notifying 1 health listeners of status change: HEALTHY
+08:35:30 [main] SecurityGuard - Notifying 1 health listeners of status change: HEALTHY
+08:35:30 [main] ModernEncryptionProvider - Decrypted data for alias: ui_pin_key
+08:35:30 [main] SecurityGuard - Notifying 1 health listeners of status change: HEALTHY
+08:35:30 [main] ModernEncryptionProvider - Decrypted data for alias: ui_pin_key
+08:35:30 [main] MnemonicBasedKeyProvider - Derived key from mnemonic for alias: ui_pin_key
+08:35:30 [main] SecurityGuard - Notifying 1 health listeners of status change: HEALTHY
+08:35:30 [main] DualFallbackEncryptionProvider - Added mnemonic-fallback for ui_pin_key
+08:35:30 [AsyncTask #1] BLSJniLibrary - Initializing BLS JNI Library
+08:35:30 [AsyncTask #1] KeyCrypterScrypt - Deriving key took 105.3 ms for N=65536, r=8, p=1.
+08:35:30 [AsyncTask #1] ModernEncryptionProvider - key store does not have wallet_password_key, but has android.security.keystore2.AndroidKeyStoreSpi$KeyEntriesEnumerator@35eeef8, generating new key. Stack trace:
+  at dalvik.system.VMStack.getThreadStackTrace(Native Method)
+  at java.lang.Thread.getStackTrace(Thread.java:1841)
+  at de.schildbach.wallet.security.ModernEncryptionProvider.getSecretKey(ModernEncryptionProvider.kt:175)
+  at de.schildbach.wallet.security.ModernEncryptionProvider.encrypt(ModernEncryptionProvider.kt:79)
+  at de.schildbach.wallet.security.DualFallbackEncryptionProvider.encrypt(DualFallbackEncryptionProvider.kt:85)
+  at de.schildbach.wallet.security.SecurityGuard.validateKeyIntegrity(SecurityGuard.java:307)
+  at de.schildbach.wallet.security.SecurityGuard.savePassword(SecurityGuard.java:204)
+  at de.schildbach.wallet.livedata.EncryptWalletLiveData$EncryptWalletTask.doInBackground$lambda$0(EncryptWalletLiveData.kt:188)
+  at de.schildbach.wallet.livedata.EncryptWalletLiveData$EncryptWalletTask.$r8$lambda$0CMI4LnZeajmC7OpxOq-bClhh3o(EncryptWalletLiveData.kt:0)
+  at de.schildbach.wallet.livedata.EncryptWalletLiveData$EncryptWalletTask$$ExternalSyntheticLambda0.invoke(R8$$SyntheticClass:0)
+  at de.schildbach.wallet.livedata.EncryptWalletLiveData$Companion.encryptAndSavePassword$wallet__testNet3Release(EncryptWalletLiveData.kt:58)
+  at de.schildbach.wallet.livedata.EncryptWalletLiveData$EncryptWalletTask.doInBackground(EncryptWalletLiveData.kt:188)
+  at de.schildbach.wallet.livedata.EncryptWalletLiveData$EncryptWalletTask.doInBackground(EncryptWalletLiveData.kt:172)
+  at android.os.AsyncTask$3.call(AsyncTask.java:394)
+  at java.util.concurrent.FutureTask.run(FutureTask.java:264)
+  at android.os.AsyncTask$SerialExecutor$1.run(AsyncTask.java:305)
+  at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+  at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+  at java.lang.Thread.run(Thread.java:1012)
+08:35:30 [main] SecurityGuard - Notifying 1 health listeners of status change: HEALTHY
+08:35:30 [AsyncTask #1] ModernEncryptionProvider - Decrypted data for alias: wallet_password_key
+08:35:30 [AsyncTask #1] EncryptWalletLiveData - wallet successfully encrypted, using key derived by new spending password (65536 scrypt iterations)
+08:35:30 [main] SecurityGuard - Notifying 1 health listeners of status change: HEALTHY
+08:35:30 [main] CoinJoinExtension - CoinJoinExtension serialization: 0ms total (keys:0ms[8], cache:0ms[0], salt:0ms, io:0ms, size:1447bytes, buffer:64KB)
+08:35:30 [main] WalletProtobufSerializer - walletToProto (serial=8) timing: 14ms total, init=0ms, tx=0ms[0], keys=1ms, scripts=0ms[0], metadata=0ms, ext=12ms, friendRecv=0ms, friendSend=0ms, build=0ms
+08:35:30 [main] WalletProtobufSerializer - writeWallet timing: 15ms total (14ms/93% serialization, 1ms/6% I/O) buffer=8KB
+08:35:30 [main] WalletApplication - wallet saved to: '/data/user/0/hashengineering.darkcoin.wallet_test/files/wallet-protobuf-testnet', took 19.88 ms
+08:35:30 [main] CoinJoinExtension - CoinJoinExtension serialization: 0ms total (keys:0ms[8], cache:0ms[0], salt:0ms, io:0ms, size:1447bytes, buffer:64KB)
+08:35:30 [main] WalletProtobufSerializer - walletToProto (serial=8) timing: 3ms total, init=0ms, tx=0ms[0], keys=0ms, scripts=0ms[0], metadata=0ms, ext=1ms, friendRecv=0ms, friendSend=0ms, build=0ms
+08:35:30 [main] WalletApplication - wallet backed up to: 'key-backup-protobuf-testnet', took 4.262 ms
+08:35:30 [main] StartupBreadcrumbs - STARTUP breadcrumb: 7 FINALIZE_INIT_BEGIN +65323ms
+08:35:30 [main] SecurityGuard - loading security guard [healthy=true] with keys: [keystore_healthy, modern_encryption_migration_complete, primary_ui_pin_key, primary_wallet_password_key, fallback_mnemonic_ui_pin_key]
+08:35:30 [main] SecurityGuard - loading security guard [healthy=true] with keys: [keystore_healthy, modern_encryption_migration_complete, primary_ui_pin_key, primary_wallet_password_key, fallback_mnemonic_ui_pin_key]
+08:35:31 [main] ModernEncryptionProvider - Decrypted data for alias: wallet_password_key
+08:35:31 [main] KeyCrypterScrypt - Deriving key took 105.9 ms for N=65536, r=8, p=1.
+08:35:31 [main] ModernEncryptionProvider - Decrypted data for alias: wallet_password_key
+08:35:31 [main] MnemonicBasedKeyProvider - Derived key from mnemonic for alias: wallet_password_key
+08:35:31 [main] SecurityGuard - Notifying 1 health listeners of status change: HEALTHY
+08:35:31 [main] DualFallbackEncryptionProvider - Added mnemonic-fallback for wallet_password_key
+08:35:31 [main] SecurityGuard - Mnemonic-based fallbacks ensured for PIN and wallet password
+08:35:31 [main] WalletApplication - Mnemonic-based fallbacks ensured
+08:35:31 [main] ModernEncryptionProvider - Decrypted data for alias: ui_pin_key
+08:35:31 [main] ModernEncryptionProvider - Decrypted data for alias: wallet_password_key
+08:35:31 [main] SecurityGuard - Notifying 1 health listeners of status change: HEALTHY_WITH_FALLBACKS
+08:35:31 [main] DualFallbackEncryptionProvider - Added PIN-fallback for wallet_password_key
+08:35:31 [main] SecurityGuard - PIN-based fallback ensured for wallet password
+08:35:31 [main] WalletApplication - PIN-based fallback added successfully
+08:35:31 [main] WalletApplication - STARTUP finalizeInit: securityGuard done in 210ms
+08:35:31 [main] WalletApplication - STARTUP finalizeInit: initDash done in 8ms
+08:35:31 [main] StartupBreadcrumbs - STARTUP breadcrumb: 8 INIT_DASH_DONE +65542ms
+08:35:31 [main] Configuration - detected app upgrade: 0 -> 12000000
+08:35:31 [main] WalletApplication - STARTUP finalizeInit: afterLoadWallet done in 1ms
+08:35:31 [main] StartupBreadcrumbs - STARTUP breadcrumb: 9 AFTER_LOAD_WALLET_DONE +65543ms
+08:35:31 [main] StartupBreadcrumbs - STARTUP breadcrumb: 20 SDK_BIND_KICKED +65546ms
+08:35:31 [main] PlatformSynchronizationService - Starting the platform sync job
+08:35:31 [main] StartupBreadcrumbs - STARTUP breadcrumb: 10 PLATFORM_INIT_KICKED +65546ms
+08:35:31 [main] WalletApplication - STARTUP finalizeInit: initPlatform+channels done in 3ms
+08:35:31 [DefaultDispatcher-worker-10] BlockchainIdentityData - creation: BlockchainIdentityData(NONE, null, null, null, null, null)
+08:35:31 [DefaultDispatcher-worker-9] SecurityGuard - loading security guard [healthy=true] with keys: [keystore_healthy, fallback_pin_wallet_password_key, primary_ui_pin_key, modern_encryption_migration_complete, fallback_mnemonic_wallet_password_key, primary_wallet_password_key, fallback_mnemonic_ui_pin_key]
+08:35:31 [DefaultDispatcher-worker-9] ModernEncryptionProvider - Decrypted data for alias: wallet_password_key
+08:35:31 [main] WalletApplication - STARTUP finalizeInit: integrations done in 59ms
+08:35:31 [main] WalletActivityTracker - activity lifecycle: current: SetPinActivity, activities: 2 visible: 1 foreground: 0
+08:35:31 [main] WalletActivityTracker - activity lifecycle: activity OnboardingActivity destroyed
+08:35:31 [main] WalletActivityTracker - activity lifecycle: current: SetPinActivity, activities: 1 visible: 1 foreground: 0
+08:35:31 [main] WalletActivityTracker - activity lifecycle: activity VerifySeedActivity created
+08:35:31 [main] WalletActivityTracker - activity lifecycle: current: VerifySeedActivity, activities: 2 visible: 1 foreground: 0
+08:35:31 [main] SecurityGuard - loading security guard [healthy=true] with keys: [keystore_healthy, fallback_pin_wallet_password_key, primary_ui_pin_key, modern_encryption_migration_complete, fallback_mnemonic_wallet_password_key, primary_wallet_password_key, fallback_mnemonic_ui_pin_key]
+08:35:31 [main] SecurityGuard - loading security guard [healthy=true] with keys: [keystore_healthy, fallback_pin_wallet_password_key, primary_ui_pin_key, modern_encryption_migration_complete, fallback_mnemonic_wallet_password_key, primary_wallet_password_key, fallback_mnemonic_ui_pin_key]
+08:35:31 [main] WalletActivityTracker - activity lifecycle: current: VerifySeedActivity, activities: 2 visible: 2 foreground: 0
+08:35:31 [main] WalletActivityTracker - activity lifecycle: current: VerifySeedActivity, activities: 2 visible: 2 foreground: 1
+08:35:31 [DefaultDispatcher-worker-9] KeyCrypterScrypt - Deriving key took 171.4 ms for N=65536, r=8, p=1.
+08:35:31 [DefaultDispatcher-worker-9] DashSdkServiceImpl - bootstrapping Dash Platform SDK for network=testnet (flavor=_testNet3)
+08:35:31 [DefaultDispatcher-worker-9] DashSdkServiceImpl - SDK tracing file logging (INFO) at /data/user/0/hashengineering.darkcoin.wallet_test/files/sdk-logs/platform_wallet/run.log: NOT installed (subscriber already set or dir unwritable)
+08:35:31 [main] WalletActivityTracker - activity lifecycle: current: SetPinActivity, activities: 2 visible: 1 foreground: 1
+08:35:31 [main] WalletActivityTracker - activity lifecycle: activity SetPinActivity destroyed
+08:35:31 [main] WalletActivityTracker - activity lifecycle: current: SetPinActivity, activities: 1 visible: 1 foreground: 1
+08:35:31 [DefaultDispatcher-worker-8] DashSdkServiceImpl - Dash Platform SDK started: version=4.2.0-dev.8, restored 0 wallet(s)
+08:35:31 [DefaultDispatcher-worker-8] CheckpointManager - Read 2440 checkpoints up to time 2026-01-20T11:13:46Z, hash is 64631969817a1892a432d246a7c17a63d5c57d76d2ddf0404b48486637fe32a0
+08:35:31 [DefaultDispatcher-worker-8] BirthHeightResolver - resolved birth time 1789806901 to SDK birth height 1401408 (checkpoint height 1405440, margin 4032 blocks)
+08:35:31 [DefaultDispatcher-worker-8] DashSdkServiceImpl - app wallet bound to new SDK wallet 3a063165… (birthHeight=1401408 via checkpoint mapping; 0 = full scan from genesis)
+08:35:31 [DefaultDispatcher-worker-8] DashSdkServiceImpl - widenAddressWindows: BIP44 account 0 gap -> 1000 on 3a063165…
+08:35:31 [DefaultDispatcher-worker-8] DashSdkServiceImpl - widenAddressWindows: BIP32 account 0 gap -> 1000 on 3a063165…
+08:35:31 [DefaultDispatcher-worker-8] DashSdkServiceImpl - widenAddressWindows: COIN_JOIN account 0 gap -> 1000 on 3a063165…
+08:35:31 [DefaultDispatcher-worker-11] CheckpointManager - Read 2440 checkpoints up to time 2026-01-20T11:13:46Z, hash is 64631969817a1892a432d246a7c17a63d5c57d76d2ddf0404b48486637fe32a0
+08:35:31 [DefaultDispatcher-worker-11] BirthHeightResolver - resolved birth time 1789806901 to SDK birth height 1401408 (checkpoint height 1405440, margin 4032 blocks)
+08:35:31 [DefaultDispatcher-worker-11] DashSdkServiceImpl - armSpvRescan: filter watermark rewind to 1401408 armed on 3a063165…
+08:35:31 [DefaultDispatcher-worker-8] SdkWalletBinder - address-window heal v2 applied on 3a063165…: gaps widened, backfill coverage invalidated — next gate pass rewinds with the widened script set
+08:35:31 [DefaultDispatcher-worker-8] SdkWalletBinder - SDK wallet bound; identity not yet registered — discovery deferred
+08:35:31 [DefaultDispatcher-worker-6] SdkBindRetryService - SDK bind established — clearing the pending state (no blocker recorded in this process)
+08:35:31 [DefaultDispatcher-worker-8] PlatformSynchronizationService - SDK L1 engine not started from Application init — it starts from the foreground blockchain service (resume())
+08:35:31 [DefaultDispatcher-worker-8] StartupBreadcrumbs - STARTUP breadcrumb: 23 CUTOVER_SERVICES_STARTED +66134ms
+08:35:31 [DefaultDispatcher-worker-4] CutoverTxSeamService - cutover committed — priming the SDK seam tx feed
+08:35:31 [DefaultDispatcher-worker-6] SdkBlockchainStateService - cutover committed — deriving BlockchainState from the SDK SPV feed
+08:35:31 [DefaultDispatcher-worker-3] CutoverUiDataService - cutover committed — serving home-screen data from the SDK
+08:35:31 [DefaultDispatcher-worker-3] CutoverUiDataService - cutover UI active but the engine wallet-event tap is not running (USE_KOTLIN_SDK_L1_SHADOW off, or L1ShadowSyncService not started) — instant receives degrade to the Room-snapshot/block cadence
+08:35:31 [DefaultDispatcher-worker-12] TxDisplayCacheService - Sync complete (cutoverCommitted=true): SDK=0 records | dashj wallet=0 txs | group cache=0 txs/0 groups | display=0 rows — cache is complete (SDK holds 0 records, display has 0 rows)
+08:35:31 [DefaultDispatcher-worker-9] CutoverTxSeamService - seam tx feed primed (0 recent records, 0 in the priming window); serving seam tx reads from the SDK store
+08:35:31 [DefaultDispatcher-worker-11] CutoverUiDataService - SDK balance published: 0 duffs (was none) | l1Synced=false rescanArmedHold=true dashPayBackfill(armed=false,replaying=false) deferredContactBuilds=0 (unchangedReads=1) persistedAsLastKnown=false lastKnown=none
+08:35:31 [DefaultDispatcher-worker-8] ShieldedBalanceServiceImpl - shielded runtime ready on SDK wallet 3a063165… (account 0, sync loop running)
+08:35:59 [main] WalletActivityTracker - activity lifecycle: current: VerifySeedActivity, activities: 1 visible: 1 foreground: 0
+08:35:59 [main] WalletActivityTracker - activity lifecycle: activity MainActivity created
+08:35:59 [main] WalletActivityTracker - activity lifecycle: current: MainActivity, activities: 2 visible: 1 foreground: 0
+08:35:59 [main] SecurityGuard - loading security guard [healthy=true] with keys: [keystore_healthy, fallback_pin_wallet_password_key, primary_ui_pin_key, modern_encryption_migration_complete, fallback_mnemonic_wallet_password_key, primary_wallet_password_key, fallback_mnemonic_ui_pin_key]
+08:35:59 [main] SecurityGuard - loading security guard [healthy=true] with keys: [keystore_healthy, fallback_pin_wallet_password_key, primary_ui_pin_key, modern_encryption_migration_complete, fallback_mnemonic_wallet_password_key, primary_wallet_password_key, fallback_mnemonic_ui_pin_key]
+08:35:59 [main] ModernEncryptionProvider - Decrypted data for alias: wallet_password_key
+08:35:59 [main] ModernEncryptionProvider - Decrypted data for alias: ui_pin_key
+08:36:00 [main] DashPaymentIntentParser - network parameters = org.darkcoin.test
+08:36:00 [main] DashPaymentIntentParser - network parameters = org.darkcoin.test
+08:36:00 [main] BlockchainIdentityData - creation: BlockchainIdentityData(NONE, null, null, null, null, null)
+08:36:00 [main] MainViewModel - STARTUP MainViewModel init at 1789806960039
+08:36:00 [DefaultDispatcher-worker-9] MainViewModel - blockchain state update: mnlist=0; chain=0; wallet=0
+08:36:00 [main] StartupBreadcrumbs - STARTUP breadcrumb: 12 MAIN_UI_SHOWN +94369ms
+08:36:00 [DefaultDispatcher-worker-13] DapiClient - getDocuments(contractId=GWRSAVFMjXx8HpQFaNJMqBV7MBgMK4br5UESsB4S31Ec, type=domain, {limit=5, where=[]})
+08:36:00 [main] Configuration - just being used - last used 29830116 minutes ago
+08:36:00 [DefaultDispatcher-worker-5] DapiClient - getDocuments(contractId=GWRSAVFMjXx8HpQFaNJMqBV7MBgMK4br5UESsB4S31Ec, type=domain, {limit=5, where=[]})
+08:36:00 [main] WalletActivityTracker - activity lifecycle: current: MainActivity, activities: 2 visible: 2 foreground: 0
+08:36:00 [DefaultDispatcher-worker-7] DapiClient - getDocuments(contractId=GWRSAVFMjXx8HpQFaNJMqBV7MBgMK4br5UESsB4S31Ec, type=domain, {limit=5, where=[]})
+08:36:00 [DefaultDispatcher-worker-1] CrowdNodeApiAggregator - restoring CrowdNode status
+08:36:00 [DefaultDispatcher-worker-1] BLSJniLibrary - Initializing BLS JNI Library
+08:36:00 [main] WalletTransactionsFragment - STARTUP WalletTransactionsFragment.onViewCreated at 1789806960064
+08:36:00 [main] HistoryHeaderAdapter - set invite, synced = false
+08:36:00 [main] BlockchainIdentityData - creation: BlockchainIdentityData(NONE, null, null, null, null, null)
+08:36:00 [DefaultDispatcher-worker-10] BLSJniLibrary - Initializing BLS JNI Library
+08:36:00 [main] HistoryHeaderAdapter - set invite = null
+08:36:00 [main] HistoryHeaderAdapter - set invite, synced = false
+08:36:00 [main] SecurityGuard - loading security guard [healthy=true] with keys: [keystore_healthy, fallback_pin_wallet_password_key, primary_ui_pin_key, modern_encryption_migration_complete, fallback_mnemonic_wallet_password_key, primary_wallet_password_key, fallback_mnemonic_ui_pin_key]
+08:36:00 [main] SecurityGuard - loading security guard [healthy=true] with keys: [keystore_healthy, fallback_pin_wallet_password_key, primary_ui_pin_key, modern_encryption_migration_complete, fallback_mnemonic_wallet_password_key, primary_wallet_password_key, fallback_mnemonic_ui_pin_key]
+08:36:00 [main] LockScreenActivity - show lock screen false = ![keepUnlocked=false] && autologout=true && (keepUnlockedUntilPenEntered=false || shouldLogout=false) || isHealthy=true
+08:36:00 [main] MainActivity - updateTrigger => rateStale: RateRetrievalState(lastAttemptFailed=false, staleRates=false, volatile=false)
+08:36:00 [main] WalletActivityTracker - activity lifecycle: current: MainActivity, activities: 2 visible: 2 foreground: 1
+08:36:00 [main] MainViewModel - platform available: false; no identity creation is progress: true
+08:36:00 [OkHttp https://www.dash.org/...] Constants - --> HEAD https://www.dash.org/
+08:36:00 [OkHttp https://www.dash.org/...] Constants - <-- HTTP FAILED: java.net.UnknownHostException: Unable to resolve host "www.dash.org": No address associated with hostname
+08:36:00 [OkHttp https://www.dash.org/...] OkHttpClient - okHttp call failure
+java.net.UnknownHostException: Unable to resolve host "www.dash.org": No address associated with hostname
+	at java.net.Inet6AddressImpl.lookupHostByName(Inet6AddressImpl.java:156)
+	at java.net.Inet6AddressImpl.lookupAllHostAddr(Inet6AddressImpl.java:103)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1152)
+	at okhttp3.Dns$Companion$DnsSystem.lookup(Dns.kt:49)
+	at okhttp3.internal.connection.RouteSelector.resetNextInetSocketAddress(RouteSelector.kt:169)
+	at okhttp3.internal.connection.RouteSelector.nextProxy(RouteSelector.kt:131)
+	at okhttp3.internal.connection.RouteSelector.next(RouteSelector.kt:73)
+	at okhttp3.internal.connection.ExchangeFinder.findConnection(ExchangeFinder.kt:205)
+	at okhttp3.internal.connection.ExchangeFinder.findHealthyConnection(ExchangeFinder.kt:106)
+	at okhttp3.internal.connection.ExchangeFinder.find(ExchangeFinder.kt:74)
+	at okhttp3.internal.connection.RealCall.initExchange$okhttp(RealCall.kt:255)
+	at okhttp3.internal.connection.ConnectInterceptor.intercept(ConnectInterceptor.kt:32)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:109)
+	at okhttp3.internal.cache.CacheInterceptor.intercept(CacheInterceptor.kt:95)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:109)
+	at okhttp3.internal.http.BridgeInterceptor.intercept(BridgeInterceptor.kt:83)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:109)
+	at okhttp3.internal.http.RetryAndFollowUpInterceptor.intercept(RetryAndFollowUpInterceptor.kt:76)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:109)
+	at okhttp3.logging.HttpLoggingInterceptor.intercept(HttpLoggingInterceptor.kt:221)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:109)
+	at okhttp3.internal.connection.RealCall.getResponseWithInterceptorChain$okhttp(RealCall.kt:201)
+	at okhttp3.internal.connection.RealCall$AsyncCall.run(RealCall.kt:517)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+	at java.lang.Thread.run(Thread.java:1012)
+Caused by: android.system.GaiException: android_getaddrinfo failed: EAI_NODATA (No address associated with hostname)
+	at libcore.io.Linux.android_getaddrinfo(Native Method)
+	at libcore.io.ForwardingOs.android_getaddrinfo(ForwardingOs.java:133)
+	at libcore.io.BlockGuardOs.android_getaddrinfo(BlockGuardOs.java:222)
+	at libcore.io.ForwardingOs.android_getaddrinfo(ForwardingOs.java:133)
+	at java.net.Inet6AddressImpl.lookupHostByName(Inet6AddressImpl.java:135)
+	... 25 common frames omitted
+08:36:00 [OkHttp https://insight.dash.org/...] Constants - --> HEAD https://insight.dash.org/insight
+08:36:00 [OkHttp https://insight.dash.org/...] Constants - <-- HTTP FAILED: java.net.UnknownHostException: Unable to resolve host "insight.dash.org": No address associated with hostname
+08:36:00 [OkHttp https://insight.dash.org/...] OkHttpClient - okHttp call failure
+java.net.UnknownHostException: Unable to resolve host "insight.dash.org": No address associated with hostname
+	at java.net.Inet6AddressImpl.lookupHostByName(Inet6AddressImpl.java:156)
+	at java.net.Inet6AddressImpl.lookupAllHostAddr(Inet6AddressImpl.java:103)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1152)
+	at okhttp3.Dns$Companion$DnsSystem.lookup(Dns.kt:49)
+	at okhttp3.internal.connection.RouteSelector.resetNextInetSocketAddress(RouteSelector.kt:169)
+	at okhttp3.internal.connection.RouteSelector.nextProxy(RouteSelector.kt:131)
+	at okhttp3.internal.connection.RouteSelector.next(RouteSelector.kt:73)
+	at okhttp3.internal.connection.ExchangeFinder.findConnection(ExchangeFinder.kt:205)
+	at okhttp3.internal.connection.ExchangeFinder.findHealthyConnection(ExchangeFinder.kt:106)
+	at okhttp3.internal.connection.ExchangeFinder.find(ExchangeFinder.kt:74)
+	at okhttp3.internal.connection.RealCall.initExchange$okhttp(RealCall.kt:255)
+	at okhttp3.internal.connection.ConnectInterceptor.intercept(ConnectInterceptor.kt:32)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:109)
+	at okhttp3.internal.cache.CacheInterceptor.intercept(CacheInterceptor.kt:95)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:109)
+	at okhttp3.internal.http.BridgeInterceptor.intercept(BridgeInterceptor.kt:83)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:109)
+	at okhttp3.internal.http.RetryAndFollowUpInterceptor.intercept(RetryAndFollowUpInterceptor.kt:76)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:109)
+	at okhttp3.logging.HttpLoggingInterceptor.intercept(HttpLoggingInterceptor.kt:221)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:109)
+	at okhttp3.internal.connection.RealCall.getResponseWithInterceptorChain$okhttp(RealCall.kt:201)
+	at okhttp3.internal.connection.RealCall$AsyncCall.run(RealCall.kt:517)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+	at java.lang.Thread.run(Thread.java:1012)
+Caused by: android.system.GaiException: android_getaddrinfo failed: EAI_NODATA (No address associated with hostname)
+	at libcore.io.Linux.android_getaddrinfo(Native Method)
+	at libcore.io.ForwardingOs.android_getaddrinfo(ForwardingOs.java:133)
+	at libcore.io.BlockGuardOs.android_getaddrinfo(BlockGuardOs.java:222)
+	at libcore.io.ForwardingOs.android_getaddrinfo(ForwardingOs.java:133)
+	at java.net.Inet6AddressImpl.lookupHostByName(Inet6AddressImpl.java:135)
+	... 25 common frames omitted
+08:36:00 [DefaultDispatcher-worker-9] TimeUtils - timeskew: network time is null
+08:36:00 [DefaultDispatcher-worker-13] Documents - Document query: unable to get documents of GWRSAVFMjXx8HpQFaNJMqBV7MBgMK4br5UESsB4S31Ec with {limit=5, where=[]}
+java.lang.Exception: Attempted to unwrap a Failure: Dapi client error: no available addresses to retry, last error: grpc error: code: 'The service is currently unavailable', message: "tcp connect error"
+	at org.dashj.platform.sdk.base.Result$Failure.unwrap(Result.java:51)
+	at org.dashj.platform.dapiclient.DapiClient.getDocuments(DapiClient.kt:629)
+	at org.dashj.platform.sdk.platform.PlatformStateRepository.fetchDocuments(PlatformStateRepository.kt:72)
+	at org.dashj.platform.sdk.platform.Documents.get(Documents.kt:175)
+	at org.dashj.platform.sdk.platform.Platform.check(Platform.kt:199)
+	at org.dashj.platform.sdk.platform.Platform.check$default(Platform.kt:190)
+	at de.schildbach.wallet.service.platform.PlatformServiceImplementation$isPlatformAvailable$2$1.invokeSuspend(PlatformService.kt:234)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.internal.LimitedDispatcher$Worker.run(LimitedDispatcher.kt:124)
+	at kotlinx.coroutines.scheduling.TaskImpl.run(Tasks.kt:89)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:586)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:820)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:717)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:704)
+08:36:00 [DefaultDispatcher-worker-7] Documents - Document query: unable to get documents of GWRSAVFMjXx8HpQFaNJMqBV7MBgMK4br5UESsB4S31Ec with {limit=5, where=[]}
+java.lang.Exception: Attempted to unwrap a Failure: Dapi client error: no available addresses to retry, last error: grpc error: code: 'The service is currently unavailable', message: "tcp connect error"
+	at org.dashj.platform.sdk.base.Result$Failure.unwrap(Result.java:51)
+	at org.dashj.platform.dapiclient.DapiClient.getDocuments(DapiClient.kt:629)
+	at org.dashj.platform.sdk.platform.PlatformStateRepository.fetchDocuments(PlatformStateRepository.kt:72)
+	at org.dashj.platform.sdk.platform.Documents.get(Documents.kt:175)
+	at org.dashj.platform.sdk.platform.Platform.check(Platform.kt:199)
+	at org.dashj.platform.sdk.platform.Platform.check$default(Platform.kt:190)
+	at de.schildbach.wallet.service.platform.PlatformServiceImplementation$isPlatformAvailable$2$1.invokeSuspend(PlatformService.kt:234)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.internal.LimitedDispatcher$Worker.run(LimitedDispatcher.kt:124)
+	at kotlinx.coroutines.scheduling.TaskImpl.run(Tasks.kt:89)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:586)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:820)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:717)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:704)
+08:36:00 [DefaultDispatcher-worker-5] Documents - Document query: unable to get documents of GWRSAVFMjXx8HpQFaNJMqBV7MBgMK4br5UESsB4S31Ec with {limit=5, where=[]}
+java.lang.Exception: Attempted to unwrap a Failure: Dapi client error: no available addresses to retry, last error: grpc error: code: 'The service is currently unavailable', message: "tcp connect error"
+	at org.dashj.platform.sdk.base.Result$Failure.unwrap(Result.java:51)
+	at org.dashj.platform.dapiclient.DapiClient.getDocuments(DapiClient.kt:629)
+	at org.dashj.platform.sdk.platform.PlatformStateRepository.fetchDocuments(PlatformStateRepository.kt:72)
+	at org.dashj.platform.sdk.platform.Documents.get(Documents.kt:175)
+	at org.dashj.platform.sdk.platform.Platform.check(Platform.kt:199)
+	at org.dashj.platform.sdk.platform.Platform.check$default(Platform.kt:190)
+	at de.schildbach.wallet.service.platform.PlatformServiceImplementation$isPlatformAvailable$2$1.invokeSuspend(PlatformService.kt:234)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.internal.LimitedDispatcher$Worker.run(LimitedDispatcher.kt:124)
+	at kotlinx.coroutines.scheduling.TaskImpl.run(Tasks.kt:89)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:586)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:820)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:717)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:704)
+08:36:00 [DefaultDispatcher-worker-5] PlatformServiceImplementation - platform available 0 of 3: false
+08:36:00 [main] BlockchainServiceImpl - .onCreate()
+08:36:00 [main] DashPaymentIntentParser - network parameters = org.darkcoin.test
+08:36:00 [main] BlockchainServiceImpl - start foreground service
+08:36:00 [DefaultDispatcher-worker-13] BlockchainServiceImpl - onCreate() serviceScope waiting for cleanup null
+08:36:00 [DefaultDispatcher-worker-13] BLSJniLibrary - Initializing BLS JNI Library
+08:36:00 [DefaultDispatcher-worker-13] BlockchainServiceImpl - Phase 5d cutover gate: dashjEngineMayStart=false (coordinatorAllowsDashj=false, dashjHeldByCutover=true, dashjSyncDiagnostic=false)
+08:36:00 [DefaultDispatcher-worker-13] BlockchainServiceImpl - cannot load the bootstrap stream: mnlistdiff-testnet.dat
+08:36:00 [DefaultDispatcher-worker-13] BlockchainServiceImpl - cannot load the bootstrap stream: qrinfo-testnet.dat
+08:36:00 [DefaultDispatcher-worker-13] BLSJniLibrary - Initializing BLS JNI Library
+08:36:00 [DefaultDispatcher-worker-13] BlockchainServiceImpl - blockchain does not exist, resetting wallet
+08:36:00 [DefaultDispatcher-worker-13] AbstractQuorumState - resetting masternode list; force: true, requestFreshList: false
+08:36:00 [Wallet autosave thread] BLSJniLibrary - Initializing BLS JNI Library
+08:36:00 [DefaultDispatcher-worker-13] AbstractQuorumState - resetting masternode list; force: true, requestFreshList: false
+08:36:00 [DefaultDispatcher-worker-7] BLSJniLibrary - Initializing BLS JNI Library
+08:36:00 [main] BlockchainServiceImpl - .onStartCommand(Intent { cmp=hashengineering.darkcoin.wallet_test/de.schildbach.wallet.service.BlockchainServiceImpl })
+08:36:00 [DefaultDispatcher-worker-13] SPVBlockStore - Creating new SPV block chain file /data/user/0/hashengineering.darkcoin.wallet_test/app_blockstore/blockchain-testnet
+08:36:00 [DefaultDispatcher-worker-1] BlockchainServiceImpl - onStartCommand waiting for onCreate to complete...
+08:36:00 [DefaultDispatcher-worker-13] SPVBlockStore - Creating new SPV block chain file /data/user/0/hashengineering.darkcoin.wallet_test/app_blockstore/headers-testnet
+08:36:00 [main] WalletActivityTracker - activity lifecycle: current: MainActivity, activities: 2 visible: 2 foreground: 0
+08:36:00 [DefaultDispatcher-worker-13] BlockchainServiceImpl - verifying backupBlockStore
+08:36:00 [DefaultDispatcher-worker-13] BlockchainServiceImpl - verifying headerStore
+08:36:00 [main] BlockchainServiceImpl - .onStartCommand(Intent { act=de.schildbach.wallet.service.cancel_coins_received cmp=hashengineering.darkcoin.wallet_test/de.schildbach.wallet.service.BlockchainServiceImpl })
+08:36:00 [DefaultDispatcher-worker-7] BlockchainServiceImpl - onStartCommand waiting for onCreate to complete...
+08:36:00 [main] WalletTransactionsFragment - STARTUP submitData called on thread=main at 1789806960290
+08:36:00 [main] DeviceInfoProvider - Detecting currency based on device, mobile network or locale:
+08:36:00 [main] DeviceInfoProvider - Device Sim Country: us
+08:36:00 [main] MainViewModel - Updating currency exchange rate based on country: US
+08:36:00 [main] MainViewModel - Using default Country: US
+08:36:00 [main] MainViewModel - Using default currency: USD
+08:36:00 [pool-47-thread-1] BlockchainServiceImpl - verify blockstore: 505.3 μs, 0 loaded
+08:36:00 [DefaultDispatcher-worker-13] BlockchainServiceImpl - verifying blockStore
+08:36:00 [DefaultDispatcher-worker-5] Constants - --> GET https://rates.ctx.com/rates?source=ctx
+08:36:00 [DefaultDispatcher-worker-5] Constants - <-- HTTP FAILED: java.net.UnknownHostException: Unable to resolve host "rates.ctx.com": No address associated with hostname
+08:36:00 [DefaultDispatcher-worker-5] ExchangeRatesRepository - failed to fetch exchange rates with de.schildbach.wallet.rates.DashRetailClient@2d6964e
+java.net.UnknownHostException: Unable to resolve host "rates.ctx.com": No address associated with hostname
+	at java.net.Inet6AddressImpl.lookupHostByName(Inet6AddressImpl.java:156)
+	at java.net.Inet6AddressImpl.lookupAllHostAddr(Inet6AddressImpl.java:103)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1152)
+	at okhttp3.Dns$Companion$DnsSystem.lookup(Dns.kt:49)
+	at okhttp3.internal.connection.RouteSelector.resetNextInetSocketAddress(RouteSelector.kt:169)
+	at okhttp3.internal.connection.RouteSelector.nextProxy(RouteSelector.kt:131)
+	at okhttp3.internal.connection.RouteSelector.next(RouteSelector.kt:73)
+	at okhttp3.internal.connection.ExchangeFinder.findConnection(ExchangeFinder.kt:205)
+	at okhttp3.internal.connection.ExchangeFinder.findHealthyConnection(ExchangeFinder.kt:106)
+	at okhttp3.internal.connection.ExchangeFinder.find(ExchangeFinder.kt:74)
+	at okhttp3.internal.connection.RealCall.initExchange$okhttp(RealCall.kt:255)
+	at okhttp3.internal.connection.ConnectInterceptor.intercept(ConnectInterceptor.kt:32)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:109)
+	at okhttp3.internal.cache.CacheInterceptor.intercept(CacheInterceptor.kt:95)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:109)
+	at okhttp3.internal.http.BridgeInterceptor.intercept(BridgeInterceptor.kt:83)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:109)
+	at okhttp3.internal.http.RetryAndFollowUpInterceptor.intercept(RetryAndFollowUpInterceptor.kt:76)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:109)
+	at de.schildbach.wallet.rates.RetrofitClient$SecureTimeInterceptor.intercept(RetrofitClient.java:73)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:109)
+	at okhttp3.logging.HttpLoggingInterceptor.intercept(HttpLoggingInterceptor.kt:221)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:109)
+	at okhttp3.internal.connection.RealCall.getResponseWithInterceptorChain$okhttp(RealCall.kt:201)
+	at okhttp3.internal.connection.RealCall.execute(RealCall.kt:154)
+	at retrofit2.OkHttpCall.execute(OkHttpCall.java:188)
+	at retrofit2.DefaultCallAdapterFactory$ExecutorCallbackCall.execute(DefaultCallAdapterFactory.java:104)
+	at de.schildbach.wallet.rates.DashRetailClient.getRates(DashRetailClient.java:43)
+	at de.schildbach.wallet.rates.ExchangeRatesRepository$refreshRates$1.invokeSuspend(ExchangeRatesRepository.kt:85)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.internal.LimitedDispatcher$Worker.run(LimitedDispatcher.kt:124)
+	at kotlinx.coroutines.scheduling.TaskImpl.run(Tasks.kt:89)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:586)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:820)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:717)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:704)
+Caused by: android.system.GaiException: android_getaddrinfo failed: EAI_NODATA (No address associated with hostname)
+	at libcore.io.Linux.android_getaddrinfo(Native Method)
+	at libcore.io.ForwardingOs.android_getaddrinfo(ForwardingOs.java:133)
+	at libcore.io.BlockGuardOs.android_getaddrinfo(BlockGuardOs.java:222)
+	at libcore.io.ForwardingOs.android_getaddrinfo(ForwardingOs.java:133)
+	at java.net.Inet6AddressImpl.lookupHostByName(Inet6AddressImpl.java:135)
+	... 36 common frames omitted
+08:36:00 [DefaultDispatcher-worker-5] ExchangeRatesRepository - updateTrigger
+08:36:00 [DefaultDispatcher-worker-8] Constants - --> GET https://bitpay.com/rates
+08:36:00 [DefaultDispatcher-worker-8] Constants - <-- HTTP FAILED: java.net.UnknownHostException: Unable to resolve host "bitpay.com": No address associated with hostname
+08:36:00 [DefaultDispatcher-worker-8] ExchangeRatesRepository - failed to fetch exchange rates with de.schildbach.wallet.rates.DashRatesSecondFallback@1c87fbd
+java.net.UnknownHostException: Unable to resolve host "bitpay.com": No address associated with hostname
+	at java.net.Inet6AddressImpl.lookupHostByName(Inet6AddressImpl.java:156)
+	at java.net.Inet6AddressImpl.lookupAllHostAddr(Inet6AddressImpl.java:103)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1152)
+	at okhttp3.Dns$Companion$DnsSystem.lookup(Dns.kt:49)
+	at okhttp3.internal.connection.RouteSelector.resetNextInetSocketAddress(RouteSelector.kt:169)
+	at okhttp3.internal.connection.RouteSelector.nextProxy(RouteSelector.kt:131)
+	at okhttp3.internal.connection.RouteSelector.next(RouteSelector.kt:73)
+	at okhttp3.internal.connection.ExchangeFinder.findConnection(ExchangeFinder.kt:205)
+	at okhttp3.internal.connection.ExchangeFinder.findHealthyConnection(ExchangeFinder.kt:106)
+	at okhttp3.internal.connection.ExchangeFinder.find(ExchangeFinder.kt:74)
+	at okhttp3.internal.connection.RealCall.initExchange$okhttp(RealCall.kt:255)
+	at okhttp3.internal.connection.ConnectInterceptor.intercept(ConnectInterceptor.kt:32)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:109)
+	at okhttp3.internal.cache.CacheInterceptor.intercept(CacheInterceptor.kt:95)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:109)
+	at okhttp3.internal.http.BridgeInterceptor.intercept(BridgeInterceptor.kt:83)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:109)
+	at okhttp3.internal.http.RetryAndFollowUpInterceptor.intercept(RetryAndFollowUpInterceptor.kt:76)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:109)
+	at de.schildbach.wallet.rates.RetrofitClient$SecureTimeInterceptor.intercept(RetrofitClient.java:73)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:109)
+	at okhttp3.logging.HttpLoggingInterceptor.intercept(HttpLoggingInterceptor.kt:221)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:109)
+	at okhttp3.internal.connection.RealCall.getResponseWithInterceptorChain$okhttp(RealCall.kt:201)
+	at okhttp3.internal.connection.RealCall.execute(RealCall.kt:154)
+	at retrofit2.OkHttpCall.execute(OkHttpCall.java:188)
+	at retrofit2.DefaultCallAdapterFactory$ExecutorCallbackCall.execute(DefaultCallAdapterFactory.java:104)
+	at de.schildbach.wallet.rates.BitPayClient.getRates(BitPayClient.java:39)
+	at de.schildbach.wallet.rates.DashRatesSecondFallback.getRates(DashRatesSecondFallback.java:34)
+	at de.schildbach.wallet.rates.ExchangeRatesRepository$refreshRates$1.invokeSuspend(ExchangeRatesRepository.kt:85)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.internal.LimitedDispatcher$Worker.run(LimitedDispatcher.kt:124)
+	at kotlinx.coroutines.scheduling.TaskImpl.run(Tasks.kt:89)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:586)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:820)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:717)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:704)
+Caused by: android.system.GaiException: android_getaddrinfo failed: EAI_NODATA (No address associated with hostname)
+	at libcore.io.Linux.android_getaddrinfo(Native Method)
+	at libcore.io.ForwardingOs.android_getaddrinfo(ForwardingOs.java:133)
+	at libcore.io.BlockGuardOs.android_getaddrinfo(BlockGuardOs.java:222)
+	at libcore.io.ForwardingOs.android_getaddrinfo(ForwardingOs.java:133)
+	at java.net.Inet6AddressImpl.lookupHostByName(Inet6AddressImpl.java:135)
+	... 37 common frames omitted
+08:36:00 [DefaultDispatcher-worker-6] ExchangeRatesRepository - updateTrigger
+08:36:00 [pool-47-thread-1] BlockchainServiceImpl - verify blockstore: 1.334 ms, 0 loaded
+08:36:00 [DefaultDispatcher-worker-13] BlockchainServiceImpl - blockstore files verified: true, true
+08:36:00 [DefaultDispatcher-worker-13] CheckpointManager - Attempting to initialize a new block store with a checkpoint for time 1789202101 (2026-09-12T08:35:01Z)
+08:36:00 [DefaultDispatcher-worker-13] CheckpointManager - Read 2440 checkpoints up to time 2026-01-20T11:13:46Z, hash is 64631969817a1892a432d246a7c17a63d5c57d76d2ddf0404b48486637fe32a0
+08:36:00 [DefaultDispatcher-worker-13] CheckpointManager - Attempting to initialize a new block store with a checkpoint for time 1789202160 (2026-09-12T08:36:00Z)
+08:36:00 [main] MainActivity - updateTrigger => rateStale: RateRetrievalState(lastAttemptFailed=true, staleRates=false, volatile=false)
+08:36:00 [DefaultDispatcher-worker-13] CheckpointManager - Read 2440 checkpoints up to time 2026-01-20T11:13:46Z, hash is 64631969817a1892a432d246a7c17a63d5c57d76d2ddf0404b48486637fe32a0
+08:36:00 [DefaultDispatcher-worker-13] BlockchainServiceImpl - checkpoints loaded from 'checkpoints-testnet.txt', took 65.61 ms
+08:36:00 [DefaultDispatcher-worker-13] BLSJniLibrary - Initializing BLS JNI Library
+08:36:00 [DefaultDispatcher-worker-13] AbstractBlockChain - chain head is at height 1405440:
+ block: 
+   hash: 000000173e6c9dd4ca8a5a75699fbb5dc4713bc238d2ce98aec7fe3a77febfeb
+   version: 536870912 (0x20000000) (BIP34, BIP66, BIP65)
+   previous block: 000000773d05044b4db27c023a9a12bc59eaf1f396ad7e5180ef4cb14d366150
+   merkle root: ea3165fb830ba2267ad050760183eb5b8241c694406868382bdf6c2307c8e936
+   time: 1768907626 (2026-01-20T11:13:46Z)
+   difficulty target (nBits): 503367276
+   nonce: 128740
+
+08:36:00 [DefaultDispatcher-worker-13] AbstractBlockChain - chain head is at height 1405440:
+ block: 
+   hash: 000000173e6c9dd4ca8a5a75699fbb5dc4713bc238d2ce98aec7fe3a77febfeb
+   version: 536870912 (0x20000000) (BIP34, BIP66, BIP65)
+   previous block: 000000773d05044b4db27c023a9a12bc59eaf1f396ad7e5180ef4cb14d366150
+   merkle root: ea3165fb830ba2267ad050760183eb5b8241c694406868382bdf6c2307c8e936
+   time: 1768907626 (2026-01-20T11:13:46Z)
+   difficulty target (nBits): 503367276
+   nonce: 128740
+
+08:36:00 [main] SecurityGuard - loading security guard [healthy=true] with keys: [keystore_healthy, fallback_pin_wallet_password_key, primary_ui_pin_key, modern_encryption_migration_complete, fallback_mnemonic_wallet_password_key, primary_wallet_password_key, fallback_mnemonic_ui_pin_key]
+08:36:00 [main] BlockchainServiceImpl - network callback registered with NetworkRequest: de.schildbach.wallet.service.BlockchainServiceImpl$NetworkCallbackImpl@6b709be
+08:36:00 [DefaultDispatcher-worker-11] BlockchainServiceImpl - monitoring 0 old transactions
+08:36:00 [main] BlockchainServiceImpl - receiver register: tickReceiver, de.schildbach.wallet.service.BlockchainServiceImpl$tickReceiver$1@35b9335
+08:36:00 [DefaultDispatcher-worker-3] BlockchainServiceImpl - cutover committed — Platform quorum lookups wired to the SDK-sourced quorum list
+08:36:00 [DefaultDispatcher-worker-3] StartupBreadcrumbs - STARTUP breadcrumb: 20 SDK_BIND_KICKED +94898ms
+08:36:00 [DefaultDispatcher-worker-3] BlockchainServiceImpl - .onCreate() finished
+08:36:00 [DefaultDispatcher-worker-3] BlockchainServiceImpl - acquiring check() mutex
+08:36:00 [DefaultDispatcher-worker-3] BlockchainServiceImpl - check()
+08:36:00 [DefaultDispatcher-worker-3] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+08:36:00 [DefaultDispatcher-worker-3] BlockchainServiceImpl - releasing check() mutex
+08:36:00 [DefaultDispatcher-worker-8] BlockchainServiceImpl - onCreate completed, processing onStartCommand
+08:36:00 [DefaultDispatcher-worker-8] BLSJniLibrary - Initializing BLS JNI Library
+08:36:00 [DefaultDispatcher-worker-8] BlockchainServiceImpl - service start command: Intent { act=de.schildbach.wallet.service.cancel_coins_received cmp=hashengineering.darkcoin.wallet_test/de.schildbach.wallet.service.BlockchainServiceImpl }
+08:36:00 [DefaultDispatcher-worker-8] BlockchainServiceImpl - .onStartCommand(Intent { act=de.schildbach.wallet.service.cancel_coins_received cmp=hashengineering.darkcoin.wallet_test/de.schildbach.wallet.service.BlockchainServiceImpl }) finished
+08:36:00 [DefaultDispatcher-worker-13] BlockchainServiceImpl - onCreate completed, processing onStartCommand
+08:36:00 [DefaultDispatcher-worker-13] BLSJniLibrary - Initializing BLS JNI Library
+08:36:00 [DefaultDispatcher-worker-13] BlockchainServiceImpl - service start command: Intent { cmp=hashengineering.darkcoin.wallet_test/de.schildbach.wallet.service.BlockchainServiceImpl }
+08:36:00 [DefaultDispatcher-worker-13] BlockchainServiceImpl - .onStartCommand(Intent { cmp=hashengineering.darkcoin.wallet_test/de.schildbach.wallet.service.BlockchainServiceImpl }) finished
+08:36:00 [DefaultDispatcher-worker-10] SdkWalletBinder - SDK wallet bound; identity not yet registered — discovery deferred
+08:36:00 [DefaultDispatcher-worker-3] StartupBreadcrumbs - STARTUP breadcrumb: 21 SDK_L1_ENGINE_STARTING +94901ms
+08:36:00 [main] WalletActivityTracker - activity lifecycle: current: VerifySeedActivity, activities: 2 visible: 1 foreground: 0
+08:36:00 [main] WalletActivityTracker - activity lifecycle: activity VerifySeedActivity destroyed
+08:36:00 [main] WalletActivityTracker - activity lifecycle: current: VerifySeedActivity, activities: 1 visible: 1 foreground: 0
+08:36:05 [Wallet autosave thread] WalletFiles - Background saving wallet; last seen block is height -1, date unknown, hash null
+08:36:05 [Wallet autosave thread] CoinJoinExtension - CoinJoinExtension serialization: 0ms total (keys:0ms[8], cache:0ms[0], salt:0ms, io:0ms, size:1447bytes, buffer:64KB)
+08:36:05 [Wallet autosave thread] WalletProtobufSerializer - walletToProto (serial=8) timing: 6ms total, init=0ms, tx=0ms[0], keys=0ms, scripts=0ms[0], metadata=0ms, ext=5ms, friendRecv=0ms, friendSend=0ms, build=0ms
+08:36:05 [Wallet autosave thread] WalletProtobufSerializer - writeWallet timing: 6ms total (6ms/100% serialization, 0ms/0% I/O) buffer=8KB
+08:36:05 [Wallet autosave thread] WalletFiles - Save completed in 7.958 ms (15498 bytes); /data/user/0/hashengineering.darkcoin.wallet_test/files/wallet-protobuf-testnet
+08:36:05 [main] WalletActivityTracker - activity lifecycle: current: MainActivity, activities: 1 visible: 1 foreground: 1
+08:36:05 [OkHttp https://www.dash.org/...] Constants - --> HEAD https://www.dash.org/
+08:36:05 [OkHttp https://www.dash.org/...] Constants - <-- HTTP FAILED: java.net.UnknownHostException: Unable to resolve host "www.dash.org": No address associated with hostname
+08:36:05 [OkHttp https://www.dash.org/...] OkHttpClient - okHttp call failure
+java.net.UnknownHostException: Unable to resolve host "www.dash.org": No address associated with hostname
+	at java.net.Inet6AddressImpl.lookupHostByName(Inet6AddressImpl.java:156)
+	at java.net.Inet6AddressImpl.lookupAllHostAddr(Inet6AddressImpl.java:103)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1152)
+	at okhttp3.Dns$Companion$DnsSystem.lookup(Dns.kt:49)
+	at okhttp3.internal.connection.RouteSelector.resetNextInetSocketAddress(RouteSelector.kt:169)
+	at okhttp3.internal.connection.RouteSelector.nextProxy(RouteSelector.kt:131)
+	at okhttp3.internal.connection.RouteSelector.next(RouteSelector.kt:73)
+	at okhttp3.internal.connection.ExchangeFinder.findConnection(ExchangeFinder.kt:205)
+	at okhttp3.internal.connection.ExchangeFinder.findHealthyConnection(ExchangeFinder.kt:106)
+	at okhttp3.internal.connection.ExchangeFinder.find(ExchangeFinder.kt:74)
+	at okhttp3.internal.connection.RealCall.initExchange$okhttp(RealCall.kt:255)
+	at okhttp3.internal.connection.ConnectInterceptor.intercept(ConnectInterceptor.kt:32)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:109)
+	at okhttp3.internal.cache.CacheInterceptor.intercept(CacheInterceptor.kt:95)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:109)
+	at okhttp3.internal.http.BridgeInterceptor.intercept(BridgeInterceptor.kt:83)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:109)
+	at okhttp3.internal.http.RetryAndFollowUpInterceptor.intercept(RetryAndFollowUpInterceptor.kt:76)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:109)
+	at okhttp3.logging.HttpLoggingInterceptor.intercept(HttpLoggingInterceptor.kt:221)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:109)
+	at okhttp3.internal.connection.RealCall.getResponseWithInterceptorChain$okhttp(RealCall.kt:201)
+	at okhttp3.internal.connection.RealCall$AsyncCall.run(RealCall.kt:517)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+	at java.lang.Thread.run(Thread.java:1012)
+Caused by: android.system.GaiException: android_getaddrinfo failed: EAI_NODATA (No address associated with hostname)
+	at libcore.io.Linux.android_getaddrinfo(Native Method)
+	at libcore.io.ForwardingOs.android_getaddrinfo(ForwardingOs.java:133)
+	at libcore.io.BlockGuardOs.android_getaddrinfo(BlockGuardOs.java:222)
+	at libcore.io.ForwardingOs.android_getaddrinfo(ForwardingOs.java:133)
+	at java.net.Inet6AddressImpl.lookupHostByName(Inet6AddressImpl.java:135)
+	... 25 common frames omitted
+08:36:05 [OkHttp https://insight.dash.org/...] Constants - --> HEAD https://insight.dash.org/insight
+08:36:05 [OkHttp https://insight.dash.org/...] Constants - <-- HTTP FAILED: java.net.UnknownHostException: Unable to resolve host "insight.dash.org": No address associated with hostname
+08:36:05 [OkHttp https://insight.dash.org/...] OkHttpClient - okHttp call failure
+java.net.UnknownHostException: Unable to resolve host "insight.dash.org": No address associated with hostname
+	at java.net.Inet6AddressImpl.lookupHostByName(Inet6AddressImpl.java:156)
+	at java.net.Inet6AddressImpl.lookupAllHostAddr(Inet6AddressImpl.java:103)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1152)
+	at okhttp3.Dns$Companion$DnsSystem.lookup(Dns.kt:49)
+	at okhttp3.internal.connection.RouteSelector.resetNextInetSocketAddress(RouteSelector.kt:169)
+	at okhttp3.internal.connection.RouteSelector.nextProxy(RouteSelector.kt:131)
+	at okhttp3.internal.connection.RouteSelector.next(RouteSelector.kt:73)
+	at okhttp3.internal.connection.ExchangeFinder.findConnection(ExchangeFinder.kt:205)
+	at okhttp3.internal.connection.ExchangeFinder.findHealthyConnection(ExchangeFinder.kt:106)
+	at okhttp3.internal.connection.ExchangeFinder.find(ExchangeFinder.kt:74)
+	at okhttp3.internal.connection.RealCall.initExchange$okhttp(RealCall.kt:255)
+	at okhttp3.internal.connection.ConnectInterceptor.intercept(ConnectInterceptor.kt:32)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:109)
+	at okhttp3.internal.cache.CacheInterceptor.intercept(CacheInterceptor.kt:95)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:109)
+	at okhttp3.internal.http.BridgeInterceptor.intercept(BridgeInterceptor.kt:83)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:109)
+	at okhttp3.internal.http.RetryAndFollowUpInterceptor.intercept(RetryAndFollowUpInterceptor.kt:76)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:109)
+	at okhttp3.logging.HttpLoggingInterceptor.intercept(HttpLoggingInterceptor.kt:221)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:109)
+	at okhttp3.internal.connection.RealCall.getResponseWithInterceptorChain$okhttp(RealCall.kt:201)
+	at okhttp3.internal.connection.RealCall$AsyncCall.run(RealCall.kt:517)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+	at java.lang.Thread.run(Thread.java:1012)
+Caused by: android.system.GaiException: android_getaddrinfo failed: EAI_NODATA (No address associated with hostname)
+	at libcore.io.Linux.android_getaddrinfo(Native Method)
+	at libcore.io.ForwardingOs.android_getaddrinfo(ForwardingOs.java:133)
+	at libcore.io.BlockGuardOs.android_getaddrinfo(BlockGuardOs.java:222)
+	at libcore.io.ForwardingOs.android_getaddrinfo(ForwardingOs.java:133)
+	at java.net.Inet6AddressImpl.lookupHostByName(Inet6AddressImpl.java:135)
+	... 25 common frames omitted
+08:36:05 [DefaultDispatcher-worker-1] TimeUtils - timeskew: network time is null
+08:36:05 [main] BlockchainServiceImpl - .onStartCommand(Intent { act=de.schildbach.wallet.service.cancel_coins_received cmp=hashengineering.darkcoin.wallet_test/de.schildbach.wallet.service.BlockchainServiceImpl })
+08:36:05 [DefaultDispatcher-worker-2] BlockchainServiceImpl - onStartCommand waiting for onCreate to complete...
+08:36:05 [DefaultDispatcher-worker-2] BlockchainServiceImpl - onCreate completed, processing onStartCommand
+08:36:05 [DefaultDispatcher-worker-2] BLSJniLibrary - Initializing BLS JNI Library
+08:36:05 [DefaultDispatcher-worker-2] BlockchainServiceImpl - service start command: Intent { act=de.schildbach.wallet.service.cancel_coins_received cmp=hashengineering.darkcoin.wallet_test/de.schildbach.wallet.service.BlockchainServiceImpl }
+08:36:05 [DefaultDispatcher-worker-2] BlockchainServiceImpl - .onStartCommand(Intent { act=de.schildbach.wallet.service.cancel_coins_received cmp=hashengineering.darkcoin.wallet_test/de.schildbach.wallet.service.BlockchainServiceImpl }) finished
+08:36:06 [main] DeviceInfoProvider - Detecting currency based on device, mobile network or locale:
+08:36:06 [main] DeviceInfoProvider - Device Sim Country: us
+08:36:06 [main] MainViewModel - Updating currency exchange rate based on country: US
+08:36:11 [DefaultDispatcher-worker-3] L1ShadowSyncService - DashPay bring-up before SPV: status=PARTIAL_NO_IDENTITY discovery=3 dashPaySyncRan=false drained=0 pending=0 elapsedMs=11152
+08:36:11 [DefaultDispatcher-worker-5] L1ShadowSyncService - L1 shadow SPV started for SDK wallet 3a063165… (dataDir=/data/user/0/hashengineering.darkcoin.wallet_test/files/l1_shadow_spv/testnet, default peer discovery); debug-only instrumentation — two SPV engines are now running
+08:36:11 [DefaultDispatcher-worker-5] StartupBreadcrumbs - STARTUP breadcrumb: 22 SDK_L1_ENGINE_STARTED +106063ms
+08:36:11 [DefaultDispatcher-worker-5] StartupBreadcrumbs - STARTUP breadcrumb: 23 CUTOVER_SERVICES_STARTED +106063ms
+08:36:11 [DefaultDispatcher-worker-13] L1ShadowSyncService - L1Shadow phase=IDLE 0.0% headers 0/0 filters 0/0 wallet 0
+08:36:11 [DefaultDispatcher-worker-13] L1ShadowSyncService - ReplayMemTelemetry phase=IDLE nativeHeapAllocated=97832688 nativeHeapSize=109121536 jvmUsed=19912304 jvmMax=603979776 headers 0/0 filters 0 wallet 0
+08:36:11 [DefaultDispatcher-worker-3] L1ShadowSyncService - ReplayMemTelemetry phase=CONNECTING nativeHeapAllocated=100729856 nativeHeapSize=112246784 jvmUsed=19912304 jvmMax=603979776 headers 1400000/1400000 filters 1401407 wallet 0 SETTLED
+08:36:11 [main] HistoryHeaderAdapter - set invite, synced = true
+08:36:11 [DefaultDispatcher-worker-4] L1ShadowSyncService - L1Parity probing suspended: the cutover is committed and the dashj engine is held, so its balance is frozen at the cutover snapshot — any comparison against it is a guaranteed MISMATCH that measures nothing. Turn on the Tools 'dashj sync (diagnostic)' toggle to un-hold dashj and resume probing.
+08:36:11 [DefaultDispatcher-worker-4] L1ShadowSyncService - L1Parity cadence relaxing 10000ms -> 60000ms (cutover already committed)
+08:36:11 [DefaultDispatcher-worker-9] L1ShadowSyncService - WalletBalanceFacts: total=0 accounts={bip44:0, bip32:0, coinjoin:0, identityRegistration:0, identityTopUpUnbound:0, identityInvitation:0, assetLockTopUp:0, assetLockShieldedTopUp:0, providerVoting:0, providerOwner:0, providerOperator:0, providerPlatform:0} confirmed=0 unconfirmed=0 txCount=0
+08:36:11 [DefaultDispatcher-worker-9] L1ShadowSyncService - WalletHistoryFacts: displayDbEmpty count=0 dashjEarliestKeyTime=2026-09-19T08:35:01Z (real line follows at first sync settle)
+08:36:11 [DefaultDispatcher-worker-4] MainViewModel - blockchain state update: mnlist=0; chain=1400000; wallet=-1
+08:36:11 [DefaultDispatcher-worker-5] MainViewModel - blockchain state update: mnlist=0; chain=1400000; wallet=-1
+08:36:30 [main] StartupBreadcrumbs - STARTUP breadcrumb: 13 LAUNCH_SURVIVED +124493ms
+08:36:30 [DefaultDispatcher-worker-8] DapiClient - getDocuments(contractId=GWRSAVFMjXx8HpQFaNJMqBV7MBgMK4br5UESsB4S31Ec, type=domain, {limit=5, where=[]})
+08:36:30 [DefaultDispatcher-worker-11] DapiClient - getDocuments(contractId=GWRSAVFMjXx8HpQFaNJMqBV7MBgMK4br5UESsB4S31Ec, type=domain, {limit=5, where=[]})
+08:36:30 [DefaultDispatcher-worker-7] DapiClient - getDocuments(contractId=GWRSAVFMjXx8HpQFaNJMqBV7MBgMK4br5UESsB4S31Ec, type=domain, {limit=5, where=[]})
+08:36:30 [DefaultDispatcher-worker-7] Documents - Document query: unable to get documents of GWRSAVFMjXx8HpQFaNJMqBV7MBgMK4br5UESsB4S31Ec with {limit=5, where=[]}
+java.lang.Exception: Attempted to unwrap a Failure: Dapi client error: no available addresses to use
+	at org.dashj.platform.sdk.base.Result$Failure.unwrap(Result.java:51)
+	at org.dashj.platform.dapiclient.DapiClient.getDocuments(DapiClient.kt:629)
+	at org.dashj.platform.sdk.platform.PlatformStateRepository.fetchDocuments(PlatformStateRepository.kt:72)
+	at org.dashj.platform.sdk.platform.Documents.get(Documents.kt:175)
+	at org.dashj.platform.sdk.platform.Platform.check(Platform.kt:199)
+	at org.dashj.platform.sdk.platform.Platform.check$default(Platform.kt:190)
+	at de.schildbach.wallet.service.platform.PlatformServiceImplementation$isPlatformAvailable$2$1.invokeSuspend(PlatformService.kt:234)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.internal.LimitedDispatcher$Worker.run(LimitedDispatcher.kt:124)
+	at kotlinx.coroutines.scheduling.TaskImpl.run(Tasks.kt:89)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:586)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:820)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:717)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:704)
+08:36:30 [DefaultDispatcher-worker-8] Documents - Document query: unable to get documents of GWRSAVFMjXx8HpQFaNJMqBV7MBgMK4br5UESsB4S31Ec with {limit=5, where=[]}
+java.lang.Exception: Attempted to unwrap a Failure: Dapi client error: no available addresses to use
+	at org.dashj.platform.sdk.base.Result$Failure.unwrap(Result.java:51)
+	at org.dashj.platform.dapiclient.DapiClient.getDocuments(DapiClient.kt:629)
+	at org.dashj.platform.sdk.platform.PlatformStateRepository.fetchDocuments(PlatformStateRepository.kt:72)
+	at org.dashj.platform.sdk.platform.Documents.get(Documents.kt:175)
+	at org.dashj.platform.sdk.platform.Platform.check(Platform.kt:199)
+	at org.dashj.platform.sdk.platform.Platform.check$default(Platform.kt:190)
+	at de.schildbach.wallet.service.platform.PlatformServiceImplementation$isPlatformAvailable$2$1.invokeSuspend(PlatformService.kt:234)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.internal.LimitedDispatcher$Worker.run(LimitedDispatcher.kt:124)
+	at kotlinx.coroutines.scheduling.TaskImpl.run(Tasks.kt:89)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:586)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:820)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:717)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:704)
+08:36:30 [DefaultDispatcher-worker-11] Documents - Document query: unable to get documents of GWRSAVFMjXx8HpQFaNJMqBV7MBgMK4br5UESsB4S31Ec with {limit=5, where=[]}
+java.lang.Exception: Attempted to unwrap a Failure: Dapi client error: no available addresses to use
+	at org.dashj.platform.sdk.base.Result$Failure.unwrap(Result.java:51)
+	at org.dashj.platform.dapiclient.DapiClient.getDocuments(DapiClient.kt:629)
+	at org.dashj.platform.sdk.platform.PlatformStateRepository.fetchDocuments(PlatformStateRepository.kt:72)
+	at org.dashj.platform.sdk.platform.Documents.get(Documents.kt:175)
+	at org.dashj.platform.sdk.platform.Platform.check(Platform.kt:199)
+	at org.dashj.platform.sdk.platform.Platform.check$default(Platform.kt:190)
+	at de.schildbach.wallet.service.platform.PlatformServiceImplementation$isPlatformAvailable$2$1.invokeSuspend(PlatformService.kt:234)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.internal.LimitedDispatcher$Worker.run(LimitedDispatcher.kt:124)
+	at kotlinx.coroutines.scheduling.TaskImpl.run(Tasks.kt:89)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:586)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:820)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:717)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:704)
+08:36:30 [DefaultDispatcher-worker-1] PlatformServiceImplementation - platform available 0 of 3: false
+08:37:00 [main] BlockchainServiceImpl - MEM pss=198MB nativeHeap=93/105MB jvm=17/576MB
+08:37:00 [DefaultDispatcher-worker-7] DapiClient - getDocuments(contractId=GWRSAVFMjXx8HpQFaNJMqBV7MBgMK4br5UESsB4S31Ec, type=domain, {limit=5, where=[]})
+08:37:00 [DefaultDispatcher-worker-5] DapiClient - getDocuments(contractId=GWRSAVFMjXx8HpQFaNJMqBV7MBgMK4br5UESsB4S31Ec, type=domain, {limit=5, where=[]})
+08:37:00 [DefaultDispatcher-worker-3] DapiClient - getDocuments(contractId=GWRSAVFMjXx8HpQFaNJMqBV7MBgMK4br5UESsB4S31Ec, type=domain, {limit=5, where=[]})
+08:37:00 [DefaultDispatcher-worker-3] Documents - Document query: unable to get documents of GWRSAVFMjXx8HpQFaNJMqBV7MBgMK4br5UESsB4S31Ec with {limit=5, where=[]}
+java.lang.Exception: Attempted to unwrap a Failure: Dapi client error: transport error: grpc error: code: 'The service is currently unavailable', message: "tcp connect error", source: tonic::transport::Error(Transport, ConnectError(ConnectError("tcp connect error", 68.67.122.16:1443, Os { code: 101, kind: NetworkUnreachable, message: "Network is unreachable" })))
+	at org.dashj.platform.sdk.base.Result$Failure.unwrap(Result.java:51)
+	at org.dashj.platform.dapiclient.DapiClient.getDocuments(DapiClient.kt:629)
+	at org.dashj.platform.sdk.platform.PlatformStateRepository.fetchDocuments(PlatformStateRepository.kt:72)
+	at org.dashj.platform.sdk.platform.Documents.get(Documents.kt:175)
+	at org.dashj.platform.sdk.platform.Platform.check(Platform.kt:199)
+	at org.dashj.platform.sdk.platform.Platform.check$default(Platform.kt:190)
+	at de.schildbach.wallet.service.platform.PlatformServiceImplementation$isPlatformAvailable$2$1.invokeSuspend(PlatformService.kt:234)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.internal.LimitedDispatcher$Worker.run(LimitedDispatcher.kt:124)
+	at kotlinx.coroutines.scheduling.TaskImpl.run(Tasks.kt:89)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:586)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:820)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:717)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:704)
+08:37:00 [DefaultDispatcher-worker-5] Documents - Document query: unable to get documents of GWRSAVFMjXx8HpQFaNJMqBV7MBgMK4br5UESsB4S31Ec with {limit=5, where=[]}
+java.lang.Exception: Attempted to unwrap a Failure: Dapi client error: transport error: grpc error: code: 'The service is currently unavailable', message: "tcp connect error", source: tonic::transport::Error(Transport, ConnectError(ConnectError("tcp connect error", 68.67.122.16:1443, Os { code: 101, kind: NetworkUnreachable, message: "Network is unreachable" })))
+	at org.dashj.platform.sdk.base.Result$Failure.unwrap(Result.java:51)
+	at org.dashj.platform.dapiclient.DapiClient.getDocuments(DapiClient.kt:629)
+	at org.dashj.platform.sdk.platform.PlatformStateRepository.fetchDocuments(PlatformStateRepository.kt:72)
+	at org.dashj.platform.sdk.platform.Documents.get(Documents.kt:175)
+	at org.dashj.platform.sdk.platform.Platform.check(Platform.kt:199)
+	at org.dashj.platform.sdk.platform.Platform.check$default(Platform.kt:190)
+	at de.schildbach.wallet.service.platform.PlatformServiceImplementation$isPlatformAvailable$2$1.invokeSuspend(PlatformService.kt:234)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.internal.LimitedDispatcher$Worker.run(LimitedDispatcher.kt:124)
+	at kotlinx.coroutines.scheduling.TaskImpl.run(Tasks.kt:89)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:586)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:820)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:717)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:704)
+08:37:00 [DefaultDispatcher-worker-7] Documents - Document query: unable to get documents of GWRSAVFMjXx8HpQFaNJMqBV7MBgMK4br5UESsB4S31Ec with {limit=5, where=[]}
+java.lang.Exception: Attempted to unwrap a Failure: Dapi client error: transport error: grpc error: code: 'The service is currently unavailable', message: "tcp connect error", source: tonic::transport::Error(Transport, ConnectError(ConnectError("tcp connect error", 68.67.122.16:1443, Os { code: 101, kind: NetworkUnreachable, message: "Network is unreachable" })))
+	at org.dashj.platform.sdk.base.Result$Failure.unwrap(Result.java:51)
+	at org.dashj.platform.dapiclient.DapiClient.getDocuments(DapiClient.kt:629)
+	at org.dashj.platform.sdk.platform.PlatformStateRepository.fetchDocuments(PlatformStateRepository.kt:72)
+	at org.dashj.platform.sdk.platform.Documents.get(Documents.kt:175)
+	at org.dashj.platform.sdk.platform.Platform.check(Platform.kt:199)
+	at org.dashj.platform.sdk.platform.Platform.check$default(Platform.kt:190)
+	at de.schildbach.wallet.service.platform.PlatformServiceImplementation$isPlatformAvailable$2$1.invokeSuspend(PlatformService.kt:234)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.internal.LimitedDispatcher$Worker.run(LimitedDispatcher.kt:124)
+	at kotlinx.coroutines.scheduling.TaskImpl.run(Tasks.kt:89)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:586)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:820)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:717)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:704)
+08:37:00 [DefaultDispatcher-worker-5] PlatformServiceImplementation - platform available 0 of 3: false
+08:37:11 [main] BiometricHelper - No biometric credentials
+08:37:11 [main] LockScreenActivity - fingerprint was disabled
+08:37:11 [main] LockScreenActivity - LockState = ENTER_PIN
+08:37:30 [DefaultDispatcher-worker-12] DapiClient - getDocuments(contractId=GWRSAVFMjXx8HpQFaNJMqBV7MBgMK4br5UESsB4S31Ec, type=domain, {limit=5, where=[]})
+08:37:30 [DefaultDispatcher-worker-4] DapiClient - getDocuments(contractId=GWRSAVFMjXx8HpQFaNJMqBV7MBgMK4br5UESsB4S31Ec, type=domain, {limit=5, where=[]})
+08:37:30 [DefaultDispatcher-worker-8] DapiClient - getDocuments(contractId=GWRSAVFMjXx8HpQFaNJMqBV7MBgMK4br5UESsB4S31Ec, type=domain, {limit=5, where=[]})
+08:37:30 [DefaultDispatcher-worker-8] Documents - Document query: unable to get documents of GWRSAVFMjXx8HpQFaNJMqBV7MBgMK4br5UESsB4S31Ec with {limit=5, where=[]}
+java.lang.Exception: Attempted to unwrap a Failure: Dapi client error: no available addresses to retry, last error: grpc error: code: 'The service is currently unavailable', message: "tcp connect error"
+	at org.dashj.platform.sdk.base.Result$Failure.unwrap(Result.java:51)
+	at org.dashj.platform.dapiclient.DapiClient.getDocuments(DapiClient.kt:629)
+	at org.dashj.platform.sdk.platform.PlatformStateRepository.fetchDocuments(PlatformStateRepository.kt:72)
+	at org.dashj.platform.sdk.platform.Documents.get(Documents.kt:175)
+	at org.dashj.platform.sdk.platform.Platform.check(Platform.kt:199)
+	at org.dashj.platform.sdk.platform.Platform.check$default(Platform.kt:190)
+	at de.schildbach.wallet.service.platform.PlatformServiceImplementation$isPlatformAvailable$2$1.invokeSuspend(PlatformService.kt:234)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.internal.LimitedDispatcher$Worker.run(LimitedDispatcher.kt:124)
+	at kotlinx.coroutines.scheduling.TaskImpl.run(Tasks.kt:89)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:586)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:820)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:717)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:704)
+08:37:30 [DefaultDispatcher-worker-4] Documents - Document query: unable to get documents of GWRSAVFMjXx8HpQFaNJMqBV7MBgMK4br5UESsB4S31Ec with {limit=5, where=[]}
+java.lang.Exception: Attempted to unwrap a Failure: Dapi client error: no available addresses to retry, last error: grpc error: code: 'The service is currently unavailable', message: "tcp connect error"
+	at org.dashj.platform.sdk.base.Result$Failure.unwrap(Result.java:51)
+	at org.dashj.platform.dapiclient.DapiClient.getDocuments(DapiClient.kt:629)
+	at org.dashj.platform.sdk.platform.PlatformStateRepository.fetchDocuments(PlatformStateRepository.kt:72)
+	at org.dashj.platform.sdk.platform.Documents.get(Documents.kt:175)
+	at org.dashj.platform.sdk.platform.Platform.check(Platform.kt:199)
+	at org.dashj.platform.sdk.platform.Platform.check$default(Platform.kt:190)
+	at de.schildbach.wallet.service.platform.PlatformServiceImplementation$isPlatformAvailable$2$1.invokeSuspend(PlatformService.kt:234)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.internal.LimitedDispatcher$Worker.run(LimitedDispatcher.kt:124)
+	at kotlinx.coroutines.scheduling.TaskImpl.run(Tasks.kt:89)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:586)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:820)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:717)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:704)
+08:37:30 [DefaultDispatcher-worker-12] Documents - Document query: unable to get documents of GWRSAVFMjXx8HpQFaNJMqBV7MBgMK4br5UESsB4S31Ec with {limit=5, where=[]}
+java.lang.Exception: Attempted to unwrap a Failure: Dapi client error: no available addresses to retry, last error: grpc error: code: 'The service is currently unavailable', message: "tcp connect error"
+	at org.dashj.platform.sdk.base.Result$Failure.unwrap(Result.java:51)
+	at org.dashj.platform.dapiclient.DapiClient.getDocuments(DapiClient.kt:629)
+	at org.dashj.platform.sdk.platform.PlatformStateRepository.fetchDocuments(PlatformStateRepository.kt:72)
+	at org.dashj.platform.sdk.platform.Documents.get(Documents.kt:175)
+	at org.dashj.platform.sdk.platform.Platform.check(Platform.kt:199)
+	at org.dashj.platform.sdk.platform.Platform.check$default(Platform.kt:190)
+	at de.schildbach.wallet.service.platform.PlatformServiceImplementation$isPlatformAvailable$2$1.invokeSuspend(PlatformService.kt:234)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.internal.LimitedDispatcher$Worker.run(LimitedDispatcher.kt:124)
+	at kotlinx.coroutines.scheduling.TaskImpl.run(Tasks.kt:89)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:586)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:820)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:717)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:704)
+08:37:30 [DefaultDispatcher-worker-8] PlatformServiceImplementation - platform available 0 of 3: false
+08:37:35 [DefaultDispatcher-worker-6] BlockchainServiceImpl - network capabilities changed: 103, hasInternet: true, validated: true
+08:37:35 [DefaultDispatcher-worker-6] BlockchainServiceImpl - acquiring check() mutex
+08:37:35 [DefaultDispatcher-worker-6] BlockchainServiceImpl - check()
+08:37:35 [DefaultDispatcher-worker-6] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+08:37:35 [DefaultDispatcher-worker-6] BlockchainServiceImpl - releasing check() mutex
+08:37:35 [DefaultDispatcher-worker-10] BlockchainServiceImpl - network available: 103, hasInternet: true, validated: true, type: Cellular
+08:37:35 [DefaultDispatcher-worker-10] BlockchainServiceImpl - acquiring check() mutex
+08:37:35 [DefaultDispatcher-worker-10] BlockchainServiceImpl - check()
+08:37:35 [DefaultDispatcher-worker-10] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+08:37:35 [DefaultDispatcher-worker-10] BlockchainServiceImpl - releasing check() mutex
+08:37:35 [DefaultDispatcher-worker-4] BlockchainServiceImpl - network capabilities changed: 103, hasInternet: true, validated: true
+08:37:35 [DefaultDispatcher-worker-4] BlockchainServiceImpl - acquiring check() mutex
+08:37:35 [DefaultDispatcher-worker-4] BlockchainServiceImpl - check()
+08:37:35 [DefaultDispatcher-worker-4] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+08:37:35 [DefaultDispatcher-worker-4] BlockchainServiceImpl - releasing check() mutex
+08:37:39 [DefaultDispatcher-worker-2] BlockchainServiceImpl - network capabilities changed: 104, hasInternet: true, validated: true
+08:37:39 [DefaultDispatcher-worker-2] BlockchainServiceImpl - acquiring check() mutex
+08:37:39 [DefaultDispatcher-worker-2] BlockchainServiceImpl - check()
+08:37:39 [DefaultDispatcher-worker-2] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+08:37:39 [DefaultDispatcher-worker-2] BlockchainServiceImpl - releasing check() mutex
+08:37:39 [DefaultDispatcher-worker-12] BlockchainServiceImpl - network available: 104, hasInternet: true, validated: true, type: WiFi
+08:37:39 [DefaultDispatcher-worker-5] BlockchainServiceImpl - acquiring check() mutex
+08:37:39 [DefaultDispatcher-worker-5] BlockchainServiceImpl - check()
+08:37:39 [DefaultDispatcher-worker-5] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+08:37:39 [DefaultDispatcher-worker-5] BlockchainServiceImpl - releasing check() mutex
+08:37:39 [DefaultDispatcher-worker-11] BlockchainServiceImpl - network capabilities changed: 104, hasInternet: true, validated: true
+08:37:39 [DefaultDispatcher-worker-11] BlockchainServiceImpl - acquiring check() mutex
+08:37:39 [DefaultDispatcher-worker-11] BlockchainServiceImpl - check()
+08:37:39 [DefaultDispatcher-worker-11] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+08:37:39 [DefaultDispatcher-worker-11] BlockchainServiceImpl - releasing check() mutex
+08:37:41 [DefaultDispatcher-worker-11] BlockchainServiceImpl - network capabilities changed: 104, hasInternet: true, validated: true
+08:37:41 [DefaultDispatcher-worker-11] BlockchainServiceImpl - acquiring check() mutex
+08:37:41 [DefaultDispatcher-worker-11] BlockchainServiceImpl - check()
+08:37:41 [DefaultDispatcher-worker-11] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+08:37:41 [DefaultDispatcher-worker-11] BlockchainServiceImpl - releasing check() mutex
+08:37:42 [DefaultDispatcher-worker-7] MainViewModel - blockchain state update: mnlist=0; chain=1400000; wallet=-1
+08:37:43 [DefaultDispatcher-worker-1] L1ShadowSyncService - L1Shadow phase=HEADERS 60.3% headers 1416000/1556647 filters 1401407/1556647 wallet 0
+08:37:43 [DefaultDispatcher-worker-1] L1ShadowSyncService - ReplayMemTelemetry phase=HEADERS nativeHeapAllocated=102157712 nativeHeapSize=113983488 jvmUsed=20800384 jvmMax=603979776 headers 1416000/1556647 filters 1401407 wallet 0
+08:37:43 [main] HistoryHeaderAdapter - set invite, synced = false
+08:37:56 [native-log-bridge] DashSdkNative - --------- beginning of main
+08:37:56 [native-log-bridge] DashSdkNative - 09-19 03:37:46.421  9462  9887 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(1401999) synced_height_frozen=None synced_height_rejected=None faulted=0
+08:37:56 [native-log-bridge] DashSdkNative - 09-19 03:37:47.541  9462  9888 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(1403999) synced_height_frozen=None synced_height_rejected=None faulted=0
+08:37:56 [native-log-bridge] DashSdkNative - 09-19 03:37:48.334  9462  9887 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(1405999) synced_height_frozen=None synced_height_rejected=None faulted=0
+08:37:56 [native-log-bridge] DashSdkNative - 09-19 03:37:48.493  9462  9889 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(1407999) synced_height_frozen=None synced_height_rejected=None faulted=0
+08:37:56 [native-log-bridge] DashSdkNative - 09-19 03:37:48.915  9462  9886 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(1412999) synced_height_frozen=None synced_height_rejected=None faulted=0
+08:37:56 [native-log-bridge] DashSdkNative - 09-19 03:37:49.852  9462  9889 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(1417999) synced_height_frozen=None synced_height_rejected=None faulted=0
+08:37:56 [native-log-bridge] DashSdkNative - 09-19 03:37:50.087  9462  9888 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(1422999) synced_height_frozen=None synced_height_rejected=None faulted=0
+08:37:56 [native-log-bridge] DashSdkNative - 09-19 03:37:50.263  9462  9888 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(1427999) synced_height_frozen=None synced_height_rejected=None faulted=0
+08:37:56 [native-log-bridge] DashSdkNative - 09-19 03:37:51.370  9462  9888 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(1432999) synced_height_frozen=None synced_height_rejected=None faulted=0
+08:37:56 [native-log-bridge] DashSdkNative - 09-19 03:37:52.502  9462  9889 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(1437999) synced_height_frozen=None synced_height_rejected=None faulted=0
+08:37:56 [native-log-bridge] DashSdkNative - 09-19 03:37:53.248  9462  9888 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(1442999) synced_height_frozen=None synced_height_rejected=None faulted=0
+08:37:58 [DefaultDispatcher-worker-11] DapiClient - getDocuments(contractId=GWRSAVFMjXx8HpQFaNJMqBV7MBgMK4br5UESsB4S31Ec, type=domain, {limit=5, where=[]})
+08:37:58 [DefaultDispatcher-worker-6] DapiClient - getDocuments(contractId=GWRSAVFMjXx8HpQFaNJMqBV7MBgMK4br5UESsB4S31Ec, type=domain, {limit=5, where=[]})
+08:37:58 [DefaultDispatcher-worker-11] Documents - Document query: unable to get documents of GWRSAVFMjXx8HpQFaNJMqBV7MBgMK4br5UESsB4S31Ec with {limit=5, where=[]}
+java.lang.Exception: Attempted to unwrap a Failure: Dapi client error: no available addresses to use
+	at org.dashj.platform.sdk.base.Result$Failure.unwrap(Result.java:51)
+	at org.dashj.platform.dapiclient.DapiClient.getDocuments(DapiClient.kt:629)
+	at org.dashj.platform.sdk.platform.PlatformStateRepository.fetchDocuments(PlatformStateRepository.kt:72)
+	at org.dashj.platform.sdk.platform.Documents.get(Documents.kt:175)
+	at org.dashj.platform.sdk.platform.Platform.check(Platform.kt:199)
+	at org.dashj.platform.sdk.platform.Platform.check$default(Platform.kt:190)
+	at de.schildbach.wallet.service.platform.PlatformServiceImplementation$isPlatformAvailable$2$1.invokeSuspend(PlatformService.kt:234)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.internal.LimitedDispatcher$Worker.run(LimitedDispatcher.kt:124)
+	at kotlinx.coroutines.scheduling.TaskImpl.run(Tasks.kt:89)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:586)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:820)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:717)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:704)
+08:37:58 [DefaultDispatcher-worker-11] DapiClient - getDocuments(contractId=GWRSAVFMjXx8HpQFaNJMqBV7MBgMK4br5UESsB4S31Ec, type=domain, {limit=5, where=[]})
+08:37:58 [DefaultDispatcher-worker-11] Documents - Document query: unable to get documents of GWRSAVFMjXx8HpQFaNJMqBV7MBgMK4br5UESsB4S31Ec with {limit=5, where=[]}
+java.lang.Exception: Attempted to unwrap a Failure: Dapi client error: no available addresses to use
+	at org.dashj.platform.sdk.base.Result$Failure.unwrap(Result.java:51)
+	at org.dashj.platform.dapiclient.DapiClient.getDocuments(DapiClient.kt:629)
+	at org.dashj.platform.sdk.platform.PlatformStateRepository.fetchDocuments(PlatformStateRepository.kt:72)
+	at org.dashj.platform.sdk.platform.Documents.get(Documents.kt:175)
+	at org.dashj.platform.sdk.platform.Platform.check(Platform.kt:199)
+	at org.dashj.platform.sdk.platform.Platform.check$default(Platform.kt:190)
+	at de.schildbach.wallet.service.platform.PlatformServiceImplementation$isPlatformAvailable$2$1.invokeSuspend(PlatformService.kt:234)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.internal.LimitedDispatcher$Worker.run(LimitedDispatcher.kt:124)
+	at kotlinx.coroutines.scheduling.TaskImpl.run(Tasks.kt:89)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:586)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:820)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:717)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:704)
+08:37:58 [DefaultDispatcher-worker-6] Documents - Document query: unable to get documents of GWRSAVFMjXx8HpQFaNJMqBV7MBgMK4br5UESsB4S31Ec with {limit=5, where=[]}
+java.lang.Exception: Attempted to unwrap a Failure: Dapi client error: no available addresses to use
+	at org.dashj.platform.sdk.base.Result$Failure.unwrap(Result.java:51)
+	at org.dashj.platform.dapiclient.DapiClient.getDocuments(DapiClient.kt:629)
+	at org.dashj.platform.sdk.platform.PlatformStateRepository.fetchDocuments(PlatformStateRepository.kt:72)
+	at org.dashj.platform.sdk.platform.Documents.get(Documents.kt:175)
+	at org.dashj.platform.sdk.platform.Platform.check(Platform.kt:199)
+	at org.dashj.platform.sdk.platform.Platform.check$default(Platform.kt:190)
+	at de.schildbach.wallet.service.platform.PlatformServiceImplementation$isPlatformAvailable$2$1.invokeSuspend(PlatformService.kt:234)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.internal.LimitedDispatcher$Worker.run(LimitedDispatcher.kt:124)
+	at kotlinx.coroutines.scheduling.TaskImpl.run(Tasks.kt:89)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:586)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:820)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:717)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:704)
+08:37:58 [DefaultDispatcher-worker-6] PlatformServiceImplementation - platform available 0 of 3: false
+08:37:58 [DefaultDispatcher-worker-2] BlockchainServiceImpl - network capabilities changed: 103, hasInternet: true, validated: true
+08:37:58 [DefaultDispatcher-worker-2] BlockchainServiceImpl - acquiring check() mutex
+08:37:58 [DefaultDispatcher-worker-2] BlockchainServiceImpl - check()
+08:37:58 [DefaultDispatcher-worker-2] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+08:37:58 [DefaultDispatcher-worker-2] BlockchainServiceImpl - releasing check() mutex
+08:38:00 [main] BlockchainServiceImpl - MEM pss=288MB nativeHeap=181/193MB jvm=19/576MB
+08:38:00 [main] BlockchainServiceImpl - History of transactions/blocks/headers/mnlistdiff (sdk): 0/96592/156647/1556647
+08:38:00 [main] BlockchainServiceImpl - replay in progress on the SDK path — acquiring the wake lock
+08:38:00 [DefaultDispatcher-worker-5] DapiClient - getDocuments(contractId=GWRSAVFMjXx8HpQFaNJMqBV7MBgMK4br5UESsB4S31Ec, type=domain, {limit=5, where=[]})
+08:38:00 [DefaultDispatcher-worker-6] DapiClient - getDocuments(contractId=GWRSAVFMjXx8HpQFaNJMqBV7MBgMK4br5UESsB4S31Ec, type=domain, {limit=5, where=[]})
+08:38:00 [DefaultDispatcher-worker-5] Documents - Document query: unable to get documents of GWRSAVFMjXx8HpQFaNJMqBV7MBgMK4br5UESsB4S31Ec with {limit=5, where=[]}
+java.lang.Exception: Attempted to unwrap a Failure: Dapi client error: no available addresses to use
+	at org.dashj.platform.sdk.base.Result$Failure.unwrap(Result.java:51)
+	at org.dashj.platform.dapiclient.DapiClient.getDocuments(DapiClient.kt:629)
+	at org.dashj.platform.sdk.platform.PlatformStateRepository.fetchDocuments(PlatformStateRepository.kt:72)
+	at org.dashj.platform.sdk.platform.Documents.get(Documents.kt:175)
+	at org.dashj.platform.sdk.platform.Platform.check(Platform.kt:199)
+	at org.dashj.platform.sdk.platform.Platform.check$default(Platform.kt:190)
+	at de.schildbach.wallet.service.platform.PlatformServiceImplementation$isPlatformAvailable$2$1.invokeSuspend(PlatformService.kt:234)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.internal.LimitedDispatcher$Worker.run(LimitedDispatcher.kt:124)
+	at kotlinx.coroutines.scheduling.TaskImpl.run(Tasks.kt:89)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:586)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:820)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:717)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:704)
+08:38:00 [DefaultDispatcher-worker-1] DapiClient - getDocuments(contractId=GWRSAVFMjXx8HpQFaNJMqBV7MBgMK4br5UESsB4S31Ec, type=domain, {limit=5, where=[]})
+08:38:00 [DefaultDispatcher-worker-1] Documents - Document query: unable to get documents of GWRSAVFMjXx8HpQFaNJMqBV7MBgMK4br5UESsB4S31Ec with {limit=5, where=[]}
+java.lang.Exception: Attempted to unwrap a Failure: Dapi client error: no available addresses to use
+	at org.dashj.platform.sdk.base.Result$Failure.unwrap(Result.java:51)
+	at org.dashj.platform.dapiclient.DapiClient.getDocuments(DapiClient.kt:629)
+	at org.dashj.platform.sdk.platform.PlatformStateRepository.fetchDocuments(PlatformStateRepository.kt:72)
+	at org.dashj.platform.sdk.platform.Documents.get(Documents.kt:175)
+	at org.dashj.platform.sdk.platform.Platform.check(Platform.kt:199)
+	at org.dashj.platform.sdk.platform.Platform.check$default(Platform.kt:190)
+	at de.schildbach.wallet.service.platform.PlatformServiceImplementation$isPlatformAvailable$2$1.invokeSuspend(PlatformService.kt:234)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.internal.LimitedDispatcher$Worker.run(LimitedDispatcher.kt:124)
+	at kotlinx.coroutines.scheduling.TaskImpl.run(Tasks.kt:89)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:586)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:820)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:717)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:704)
+08:38:00 [DefaultDispatcher-worker-6] Documents - Document query: unable to get documents of GWRSAVFMjXx8HpQFaNJMqBV7MBgMK4br5UESsB4S31Ec with {limit=5, where=[]}
+java.lang.Exception: Attempted to unwrap a Failure: Dapi client error: no available addresses to use
+	at org.dashj.platform.sdk.base.Result$Failure.unwrap(Result.java:51)
+	at org.dashj.platform.dapiclient.DapiClient.getDocuments(DapiClient.kt:629)
+	at org.dashj.platform.sdk.platform.PlatformStateRepository.fetchDocuments(PlatformStateRepository.kt:72)
+	at org.dashj.platform.sdk.platform.Documents.get(Documents.kt:175)
+	at org.dashj.platform.sdk.platform.Platform.check(Platform.kt:199)
+	at org.dashj.platform.sdk.platform.Platform.check$default(Platform.kt:190)
+	at de.schildbach.wallet.service.platform.PlatformServiceImplementation$isPlatformAvailable$2$1.invokeSuspend(PlatformService.kt:234)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.internal.LimitedDispatcher$Worker.run(LimitedDispatcher.kt:124)
+	at kotlinx.coroutines.scheduling.TaskImpl.run(Tasks.kt:89)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:586)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:820)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:717)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:704)
+08:38:00 [DefaultDispatcher-worker-6] PlatformServiceImplementation - platform available 0 of 3: false
+08:38:01 [DefaultDispatcher-worker-5] L1ShadowSyncService - L1Shadow phase=SYNCED 100.0% headers 1556647/1556647 filters 1556647/1556647 wallet 1556647
+08:38:01 [main] HistoryHeaderAdapter - set invite, synced = true
+08:38:01 [DefaultDispatcher-worker-5] L1ShadowSyncService - ReplayMemTelemetry phase=SYNCED nativeHeapAllocated=191253072 nativeHeapSize=207323136 jvmUsed=20163888 jvmMax=603979776 headers 1556647/1556647 filters 1556647 wallet 1556647 SETTLED
+08:38:01 [DefaultDispatcher-worker-5] MainViewModel - blockchain state update: mnlist=1556647; chain=1556647; wallet=-1
+08:38:01 [main] BlockchainServiceImpl - cutover committed and SDK L1 scan synced — triggering identity/contacts discovery
+08:38:01 [DefaultDispatcher-worker-5] BlockchainIdentityData - creation: BlockchainIdentityData(NONE, null, null, null, null, null)
+08:38:01 [DefaultDispatcher-worker-5] PlatformSynchronizationService - discoverAndRecoverIdentity: checking for existing associated identity
+08:38:01 [DefaultDispatcher-worker-5] SecurityGuard - loading security guard [healthy=true] with keys: [keystore_healthy, fallback_pin_wallet_password_key, primary_ui_pin_key, modern_encryption_migration_complete, fallback_mnemonic_wallet_password_key, primary_wallet_password_key, fallback_mnemonic_ui_pin_key]
+08:38:01 [DefaultDispatcher-worker-4] L1ShadowSyncService - WalletHistoryFacts: displayDbEmpty count=0 dashjEarliestKeyTime=2026-09-19T08:35:01Z (real line follows at first sync settle)
+08:38:01 [DefaultDispatcher-worker-7] TxDisplayCacheService - Sync complete (cutoverCommitted=true): SDK=0 records | dashj wallet=0 txs | group cache=0 txs/0 groups | display=0 rows — cache is complete (SDK holds 0 records, display has 0 rows)
+08:38:01 [DefaultDispatcher-worker-11] L1ShadowSyncService - WalletBalanceFacts: total=0 accounts={bip44:0, bip32:0, coinjoin:0, identityRegistration:0, identityTopUpUnbound:0, identityInvitation:0, assetLockTopUp:0, assetLockShieldedTopUp:0, providerVoting:0, providerOwner:0, providerOperator:0, providerPlatform:0} confirmed=0 unconfirmed=0 txCount=0
+08:38:01 [DefaultDispatcher-worker-5] ModernEncryptionProvider - Decrypted data for alias: wallet_password_key
+08:38:01 [DefaultDispatcher-worker-5] KeyCrypterScrypt - Deriving key took 106.9 ms for N=65536, r=8, p=1.
+08:38:01 [DefaultDispatcher-worker-5] DapiClient - getIdentityByFirstPublicKey(7f93da2d76e7c936e00429084a9c25b49391642e)
+08:38:01 [DefaultDispatcher-worker-5] PlatformSynchronizationService - discoverAndRecoverIdentity: no existing identity found
+08:38:01 [DefaultDispatcher-worker-5] PlatformSynchronizationService - identity-discovery guard released (no identity found) — a later discovery may run again
+08:38:01 [DefaultDispatcher-worker-5] BlockchainServiceImpl - post-cutover identity discovery found nothing and the wallet has no identity — re-arming; next attempt no sooner than 120000 ms from now
+08:38:01 [DefaultDispatcher-worker-4] PlatformSynchronizationService - TxMetadata publish: not publishing — saveToNetwork is OFF (per-device setting; the default for a new or restored install, and it does NOT travel with the wallet)
+08:38:01 [DefaultDispatcher-worker-6] PlatformSynchronizationService - TxMetadata settings: saveToNetwork=false frequency=afterTenTransactions saveAfter=9223372036854775807 paymentCategory=false taxCategory=false exchangeRates=false memos=false giftCards=false storedDocuments=0
+08:38:03 [DefaultDispatcher-worker-6] L1ShadowSyncService - L1 engine chainlock height 0 -> 1556647
+08:38:03 [DefaultDispatcher-worker-12] MainViewModel - blockchain state update: mnlist=1556647; chain=1556647; wallet=-1
+08:38:09 [DefaultDispatcher-worker-7] BlockchainServiceImpl - network lost: 103, remaining networks: 1
+08:38:23 [main] SecurityGuard - loading security guard [healthy=true] with keys: [keystore_healthy, fallback_pin_wallet_password_key, primary_ui_pin_key, modern_encryption_migration_complete, fallback_mnemonic_wallet_password_key, primary_wallet_password_key, fallback_mnemonic_ui_pin_key]
+08:38:23 [main] ModernEncryptionProvider - Decrypted data for alias: ui_pin_key
+08:38:23 [main] BiometricHelper - No biometric credentials
+08:38:26 [native-log-bridge] DashSdkNative - 09-19 03:37:57.380  9462  9887 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(1447999) synced_height_frozen=None synced_height_rejected=None faulted=0
+08:38:26 [native-log-bridge] DashSdkNative - 09-19 03:37:57.612  9462  9888 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(1452999) synced_height_frozen=None synced_height_rejected=None faulted=0
+08:38:26 [native-log-bridge] DashSdkNative - 09-19 03:37:57.763  9462  9888 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(1457999) synced_height_frozen=None synced_height_rejected=None faulted=0
+08:38:26 [native-log-bridge] DashSdkNative - 09-19 03:37:57.934  9462  9888 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(1462999) synced_height_frozen=None synced_height_rejected=None faulted=0
+08:38:26 [native-log-bridge] DashSdkNative - 09-19 03:37:58.096  9462  9889 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(1467999) synced_height_frozen=None synced_height_rejected=None faulted=0
+08:38:26 [native-log-bridge] DashSdkNative - 09-19 03:37:58.233  9462  9886 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(1472999) synced_height_frozen=None synced_height_rejected=None faulted=0
+08:38:26 [native-log-bridge] DashSdkNative - 09-19 03:37:58.391  9462  9888 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(1477999) synced_height_frozen=None synced_height_rejected=None faulted=0
+08:38:26 [native-log-bridge] DashSdkNative - 09-19 03:37:58.534  9462  9886 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(1482999) synced_height_frozen=None synced_height_rejected=None faulted=0
+08:38:26 [native-log-bridge] DashSdkNative - 09-19 03:37:58.675  9462  9889 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(1487999) synced_height_frozen=None synced_height_rejected=None faulted=0
+08:38:26 [native-log-bridge] DashSdkNative - 09-19 03:37:58.974  9462  9886 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(1492999) synced_height_frozen=None synced_height_rejected=None faulted=0
+08:38:26 [native-log-bridge] DashSdkNative - 09-19 03:37:58.976  9462  9889 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(1497999) synced_height_frozen=None synced_height_rejected=None faulted=0
+08:38:26 [native-log-bridge] DashSdkNative - 09-19 03:37:59.139  9462  9888 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(1502999) synced_height_frozen=None synced_height_rejected=None faulted=0
+08:38:26 [native-log-bridge] DashSdkNative - 09-19 03:37:59.290  9462  9886 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(1507999) synced_height_frozen=None synced_height_rejected=None faulted=0
+08:38:26 [native-log-bridge] DashSdkNative - 09-19 03:37:59.584  9462  9887 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(1512999) synced_height_frozen=None synced_height_rejected=None faulted=0
+08:38:26 [native-log-bridge] DashSdkNative - 09-19 03:37:59.585  9462  9886 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(1517999) synced_height_frozen=None synced_height_rejected=None faulted=0
+08:38:26 [native-log-bridge] DashSdkNative - 09-19 03:37:59.724  9462  9887 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(1522999) synced_height_frozen=None synced_height_rejected=None faulted=0
+08:38:26 [native-log-bridge] DashSdkNative - 09-19 03:37:59.856  9462  9887 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(1527999) synced_height_frozen=None synced_height_rejected=None faulted=0
+08:38:26 [native-log-bridge] DashSdkNative - 09-19 03:38:00.011  9462  9887 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(1532999) synced_height_frozen=None synced_height_rejected=None faulted=0
+08:38:26 [native-log-bridge] DashSdkNative - 09-19 03:38:00.248  9462  9886 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(1537999) synced_height_frozen=None synced_height_rejected=None faulted=0
+08:38:26 [native-log-bridge] DashSdkNative - 09-19 03:38:00.388  9462  9888 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(1542999) synced_height_frozen=None synced_height_rejected=None faulted=0
+08:38:26 [native-log-bridge] DashSdkNative - 09-19 03:38:00.496  9462  9889 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(1547999) synced_height_frozen=None synced_height_rejected=None faulted=0
+08:38:26 [native-log-bridge] DashSdkNative - 09-19 03:38:00.575  9462  9889 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(1552999) synced_height_frozen=None synced_height_rejected=None faulted=0
+08:38:26 [native-log-bridge] DashSdkNative - 09-19 03:38:00.679  9462  9889 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(1556647) synced_height_frozen=None synced_height_rejected=None faulted=0
+08:38:26 [native-log-bridge] DashSdkNative - 09-19 03:38:03.847  9462  9889 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=None synced_height_frozen=None synced_height_rejected=None faulted=0
+08:38:30 [DefaultDispatcher-worker-5] DapiClient - getDocuments(contractId=GWRSAVFMjXx8HpQFaNJMqBV7MBgMK4br5UESsB4S31Ec, type=domain, {limit=5, where=[]})
+08:38:30 [DefaultDispatcher-worker-12] DapiClient - getDocuments(contractId=GWRSAVFMjXx8HpQFaNJMqBV7MBgMK4br5UESsB4S31Ec, type=domain, {limit=5, where=[]})
+08:38:30 [DefaultDispatcher-worker-6] DapiClient - getDocuments(contractId=GWRSAVFMjXx8HpQFaNJMqBV7MBgMK4br5UESsB4S31Ec, type=domain, {limit=5, where=[]})
+08:38:30 [DefaultDispatcher-worker-6] Documents - Document query: unable to get documents of GWRSAVFMjXx8HpQFaNJMqBV7MBgMK4br5UESsB4S31Ec with {limit=5, where=[]}
+java.lang.Exception: Attempted to unwrap a Failure: Dapi client error: no available addresses to use
+	at org.dashj.platform.sdk.base.Result$Failure.unwrap(Result.java:51)
+	at org.dashj.platform.dapiclient.DapiClient.getDocuments(DapiClient.kt:629)
+	at org.dashj.platform.sdk.platform.PlatformStateRepository.fetchDocuments(PlatformStateRepository.kt:72)
+	at org.dashj.platform.sdk.platform.Documents.get(Documents.kt:175)
+	at org.dashj.platform.sdk.platform.Platform.check(Platform.kt:199)
+	at org.dashj.platform.sdk.platform.Platform.check$default(Platform.kt:190)
+	at de.schildbach.wallet.service.platform.PlatformServiceImplementation$isPlatformAvailable$2$1.invokeSuspend(PlatformService.kt:234)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.internal.LimitedDispatcher$Worker.run(LimitedDispatcher.kt:124)
+	at kotlinx.coroutines.scheduling.TaskImpl.run(Tasks.kt:89)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:586)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:820)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:717)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:704)
+08:38:30 [DefaultDispatcher-worker-12] Documents - Document query: unable to get documents of GWRSAVFMjXx8HpQFaNJMqBV7MBgMK4br5UESsB4S31Ec with {limit=5, where=[]}
+java.lang.Exception: Attempted to unwrap a Failure: Dapi client error: no available addresses to use
+	at org.dashj.platform.sdk.base.Result$Failure.unwrap(Result.java:51)
+	at org.dashj.platform.dapiclient.DapiClient.getDocuments(DapiClient.kt:629)
+	at org.dashj.platform.sdk.platform.PlatformStateRepository.fetchDocuments(PlatformStateRepository.kt:72)
+	at org.dashj.platform.sdk.platform.Documents.get(Documents.kt:175)
+	at org.dashj.platform.sdk.platform.Platform.check(Platform.kt:199)
+	at org.dashj.platform.sdk.platform.Platform.check$default(Platform.kt:190)
+	at de.schildbach.wallet.service.platform.PlatformServiceImplementation$isPlatformAvailable$2$1.invokeSuspend(PlatformService.kt:234)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.internal.LimitedDispatcher$Worker.run(LimitedDispatcher.kt:124)
+	at kotlinx.coroutines.scheduling.TaskImpl.run(Tasks.kt:89)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:586)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:820)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:717)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:704)
+08:38:30 [DefaultDispatcher-worker-5] Documents - Document query: unable to get documents of GWRSAVFMjXx8HpQFaNJMqBV7MBgMK4br5UESsB4S31Ec with {limit=5, where=[]}
+java.lang.Exception: Attempted to unwrap a Failure: Dapi client error: no available addresses to use
+	at org.dashj.platform.sdk.base.Result$Failure.unwrap(Result.java:51)
+	at org.dashj.platform.dapiclient.DapiClient.getDocuments(DapiClient.kt:629)
+	at org.dashj.platform.sdk.platform.PlatformStateRepository.fetchDocuments(PlatformStateRepository.kt:72)
+	at org.dashj.platform.sdk.platform.Documents.get(Documents.kt:175)
+	at org.dashj.platform.sdk.platform.Platform.check(Platform.kt:199)
+	at org.dashj.platform.sdk.platform.Platform.check$default(Platform.kt:190)
+	at de.schildbach.wallet.service.platform.PlatformServiceImplementation$isPlatformAvailable$2$1.invokeSuspend(PlatformService.kt:234)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.internal.LimitedDispatcher$Worker.run(LimitedDispatcher.kt:124)
+	at kotlinx.coroutines.scheduling.TaskImpl.run(Tasks.kt:89)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:586)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:820)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:717)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:704)
+08:38:30 [DefaultDispatcher-worker-5] PlatformServiceImplementation - platform available 0 of 3: false
+08:38:35 [DefaultDispatcher-worker-4] BlockchainServiceImpl - network capabilities changed: 104, hasInternet: true, validated: true
+08:38:35 [DefaultDispatcher-worker-4] BlockchainServiceImpl - acquiring check() mutex
+08:38:35 [DefaultDispatcher-worker-4] BlockchainServiceImpl - check()
+08:38:35 [DefaultDispatcher-worker-4] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+08:38:35 [DefaultDispatcher-worker-4] BlockchainServiceImpl - releasing check() mutex
+08:38:38 [DefaultDispatcher-worker-9] BlockchainServiceImpl - network capabilities changed: 104, hasInternet: true, validated: true
+08:38:38 [DefaultDispatcher-worker-9] BlockchainServiceImpl - acquiring check() mutex
+08:38:38 [DefaultDispatcher-worker-9] BlockchainServiceImpl - check()
+08:38:38 [DefaultDispatcher-worker-9] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+08:38:38 [DefaultDispatcher-worker-9] BlockchainServiceImpl - releasing check() mutex

@@ -1,0 +1,3 @@
+05:48:24 [DefaultDispatcher-worker-7] L1ShadowSyncService - ReplayMemTelemetry phase=SYNCED nativeHeapAllocated=341607552 nativeHeapSize=560553984 jvmUsed=70790896 jvmMax=603979776 headers 1556568/1556568 filters 1556568 wallet 1556568 SETTLED
+05:53:11 [DefaultDispatcher-worker-11] L1ShadowSyncService - ReplayMemTelemetry phase=CONNECTING nativeHeapAllocated=268127488 nativeHeapSize=303587328 jvmUsed=41765856 jvmMax=603979776 headers 1556570/1556565 filters 1532170 wallet 1556570
+05:53:14 [DefaultDispatcher-worker-8] L1ShadowSyncService - ReplayMemTelemetry phase=MASTERNODES nativeHeapAllocated=289938560 nativeHeapSize=327184384 jvmUsed=47336416 jvmMax=603979776 headers 1556570/1556570 filters 1556570 wallet 1556570 SETTLED

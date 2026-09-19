@@ -1,0 +1,316 @@
+<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Stream S11 report</title><style>body{font-family:system-ui,-apple-system,sans-serif;max-width:1400px;margin:0 auto;padding:16px 24px;line-height:1.45;background:#fff;color:#111}
+table{border-collapse:collapse;font-size:13px;margin:12px 0}th,td{border:1px solid #ddd;padding:4px 8px;vertical-align:top;text-align:left}th{background:#f3f6fa;position:sticky;top:0}
+tr:nth-child(even){background:#fafbfc}code{background:#f4f4f4;padding:1px 4px;border-radius:3px;font-size:12px}pre{background:#f4f4f4;padding:10px;overflow:auto}
+h1{border-bottom:3px solid #008de4}h2{border-bottom:1px solid #ccc;margin-top:40px}a{color:#008de4}a.ev{background:#e8f4fd;padding:0 3px;border-radius:3px;font-family:ui-monospace,monospace;font-size:12px}
+nav.top{background:#012060;color:#fff;padding:8px 24px;margin:-16px -24px 16px;position:sticky;top:0;z-index:5}nav.top a{color:#fff;margin-right:18px;text-decoration:none}nav.top a:hover{text-decoration:underline}
+.S1{color:#b00020;font-weight:bold}.S2{color:#c75000;font-weight:bold}.toc{background:#f8f9fb;border:1px solid #e3e6ea;padding:8px 16px;font-size:13px;columns:2}.toc ul{margin:2px 0;padding-left:16px}
+.note{background:#fff8e1;border-left:4px solid #f5b400;padding:8px 12px;margin:12px 0}
+</style><nav class=top><a href="../../index.html">Home</a><a href="../../QA-REPORT.html">Full report</a><a href="../../EXEC-SUMMARY.html">Executive summary</a><a href="../../STORY-MATRIX.html">User-story matrix</a><a href="../../DEFECT-LEDGER.html">Defect register</a><a href="../index.html">Evidence gallery</a><a href="../../QA-PLAN.html">Test plan</a><a href="../../streams.html">Stream reports</a></nav><h1 id="qa-report-s11-p1p4-sdk-replay-on-a-real-history-wallet-under-constrained-conditions">QA report: S11 (P1–P4) — SDK replay on a real-history wallet under constrained conditions</h1>
+<p>agent: S11 · emulator: emulator-5566 / AVD dw-qa7 · date: 2026-09-19 (01:50 – 03:01 host)
+Builds: <code>fix-12.0.0-testnet3-release-signed.apk</code> (versionCode 12000000) and
+<code>master-11.9.0-testnet3-release-signed.apk</code> (versionCode 11090002).
+Reference seed <code>[seed phrase redacted]</code>,
+READ-ONLY (nothing sent / shielded / no username). Expected balance <strong>107.08173522</strong> (per D-014).</p>
+<h2 id="summary-table">Summary table</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Verdict</th>
+<th>Key evidence</th>
+<th>One-line finding</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1 baseline restore (3 GB)</td>
+<td><strong>PASS</strong></td>
+<td><a class=ev href="../S11/P1/12-SYNCED-home.webp">P1/12-SYNCED-home.png</a>, <a class=ev href="../S11/P1/db/db-counts.txt">P1/db/db-counts.txt</a></td>
+<td>restore→100 % in 5 m 42 s (engine start→100 % 4 m 31 s), balance exact, peak 596 MB PSS / 457 MB native, exit-info empty</td>
+</tr>
+<tr>
+<td>P1 D-037 probe (history completeness)</td>
+<td><strong>FAIL — D-037 CONFIRMED</strong></td>
+<td><a class=ev href="../S11/P1/history/52-19-oct-2024-rows.webp">P1/history/52-19-oct-2024-rows.png</a>, <a class=ev href="../S11/P1/db/explorer-vs-db.txt">P1/db/explorer-vs-db.txt</a></td>
+<td>2 of 399 SDK receives (0.53848582 tDASH) have no history row; both absent from the txos-union. The wallet's FIRST receive (2019-07-31) IS present, so the severe S8 form does not generalise</td>
+</tr>
+<tr>
+<td>P2 single kill during replay (D-041)</td>
+<td><strong>FAIL — D-041 CONFIRMED</strong></td>
+<td><a class=ev href="../S11/P2/09-BALANCE-after-kill-INFLATED.webp">P2/09-BALANCE-after-kill-INFLATED.png</a>, <a class=ev href="../S11/P2/p2-recovery.mp4">P2/p2-recovery.mp4</a></td>
+<td>ONE force-stop mid-replay → app reports SYNCED with <strong>2336.304271 tDASH</strong> (21.82× wrong); bg/fg does not fix; force-stop+relaunch does</td>
+</tr>
+<tr>
+<td>P2 no-kill control</td>
+<td><strong>PASS</strong> (= P1)</td>
+<td><a class=ev href="../S11/P1/12-SYNCED-home.webp">P1/12-SYNCED-home.png</a></td>
+<td>the identical restore without a kill lands on 107.081735</td>
+</tr>
+<tr>
+<td>P3 low-memory replay</td>
+<td><strong>PASS</strong> (with ENV caveat)</td>
+<td><a class=ev href="../S11/P3/05-SYNCED-balance.webp">P3/05-SYNCED-balance.png</a>, <a class=ev href="../S11/P3/pressure-log.txt">P3/pressure-log.txt</a>, <a class=ev href="../S11/P3/exitinfo.txt">P3/exitinfo.txt</a></td>
+<td>survives 5 × RUNNING_CRITICAL, no LMK, 4 m 36 s to 100 %, balance exact; footprint does NOT shrink under trim (peak 568 MB PSS)</td>
+</tr>
+<tr>
+<td>P4 upgrade path on the constrained device</td>
+<td><strong>PASS</strong></td>
+<td><a class=ev href="../S11/P4/09-explainer.webp">P4/09-explainer.png</a>, <a class=ev href="../S11/P4/10-replay-home.webp">P4/10-replay-home.png</a>, <a class=ev href="../S11/P4/12-SYNCED-balance.webp">P4/12-SYNCED-balance.png</a></td>
+<td>cutover 1 s after launch, explainer once, zero post-upgrade <code>starting peergroup</code>, balance HELD at last-known 794.227628 during replay, 9 m 38 s to 100 %, final balance exact, no LMK at 647 MB peak PSS</td>
+</tr>
+<tr>
+<td>P4 tx detail during replay</td>
+<td><strong>FAIL — new S11-D1</strong></td>
+<td><a class=ev href="../S11/P4/11-replay-4.webp">P4/11-replay-4.png</a>, <a class=ev href="../S11/P4/14-txdetail-post-sync.webp">P4/14-txdetail-post-sync.png</a></td>
+<td>a tx-detail sheet opened during the replay never populates and mis-binds labels/values for 9 min; correct after SYNCED</td>
+</tr>
+</tbody>
+</table>
+<h2 id="per-test-detail">Per-test detail</h2>
+<h3 id="p1-baseline-restore-on-the-3-gb-device">P1 — baseline restore on the 3 GB device</h3>
+<p>Steps (wallet.log clock = host + 5 h 00):
+1. 01:50 uninstall S7's app, <code>adb root</code>, logcat + memlog(30 s) started; clean install of the fix APK.
+2. 06:52:16 first launch; Restore wallet → seed → PIN 1234 → notification + background permissions.
+3. 06:53:10 <code>cutover state DUAL_RUNNING -&gt; CUT_OVER (fresh-wallet setup (restore/new))</code>
+   06:54:17 <code>armSpvRescan: filter watermark rewind to 0 armed on b7118ed5…</code>
+   06:54:21 <code>L1 shadow SPV started for SDK wallet b7118ed5…</code>
+   06:58:52 <code>L1Shadow phase=SYNCED 100.0% headers 1556595/1556595 filters 1556595 wallet 1556595 SETTLED</code>
+4. Assertions
+   - time: CUT_OVER → 100 % = <strong>5 min 42 s</strong>; engine start → 100 % = <strong>4 min 31 s</strong>
+   - balance: <code>SDK balance published: 10708173522 duffs</code> = <strong>107.08173522</strong> vs expected 107.08173522 — <strong>MATCH</strong>
+   - memory (<a class=ev href="../S11/mem-p1p2.csv">mem-p1p2.csv</a>): peak TOTAL PSS <strong>610,373 kB (596 MB)</strong>, peak Native Heap <strong>468,360 kB (457 MB)</strong>,
+     peak Dalvik <strong>40,291 kB</strong>; idle after sync ≈ 465 MB PSS / 311 MB native
+   - <code>dumpsys activity exit-info</code>: <strong>empty</strong> (no process death) → <a class=ev href="../S11/P1/exitinfo.txt">P1/exitinfo.txt</a>
+   - 0 <code>starting peergroup</code>, 0 <code>filter-stall</code>, 0 <code>idling detected</code> during the replay, 0 <code>OverlappingFileLockException</code>, 0 <code>OutOfMemory</code>
+   - reproduced D-002 (header 156.405901 under "Syncing balance" early in the replay, <a class=ev href="../S11/P1/09-home-start.webp">P1/09-home-start.png</a>)
+   - reproduced D-001 (auto-lock to Enter PIN during the unattended poll, <a class=ev href="../S11/P1/10-sync-poll5.webp">P1/10-sync-poll5.png</a>).
+     After that I disabled <code>auto_logout_enabled</code> in shared_prefs so the device could be observed —
+     noted as a deliberate harness change in <a class=ev href="../S11/notes.md">notes.md</a>.
+5. Databases pulled as root into <code>P1/db/</code> (dash-sdk.db + -wal/-shm, dash-wallet-database + -wal/-shm).</p>
+<p><strong>SQL counts</strong> (<a class=ev href="../S11/P1/db/db-counts.txt">P1/db/db-counts.txt</a>)
+| query | result |
+|---|---|
+| <code>SELECT COUNT(*) FROM transactions</code> (dash-sdk.db) | <strong>3269</strong> |
+| txos-union <code>SELECT COUNT(*) FROM (SELECT txid … UNION SELECT spendingTxid …)</code> | <strong>2396</strong> |
+| <code>SELECT COUNT(*) FROM tx_display_cache</code> (dash-wallet-database) | <strong>1519</strong> |
+| <code>SELECT COUNT(*) FROM tx_display_cache WHERE valueSatoshis &gt; 0</code> | <strong>397</strong> |</p>
+<p>873 SDK transactions have <strong>no</strong> <code>txos</code> row at all, i.e. they are invisible to both the display-cache
+writer (<code>SdkTxStoreWalker</code>) and to <code>TxDisplayCacheService.decideCacheRebuild</code> — exactly D-037's root cause.
+Display-row titles: Sent 722, Received 391, Internal 354, Mixing Transactions 51, Upgrade Fee 1
+(so display rows &lt; transactions is expected because CoinJoin rounds group).</p>
+<p><strong>Explorer cross-check</strong> — first 20 BIP44 receive addresses <code>m/44'/1'/0'/0/i</code> (derived with
+<code>uvx --with bip-utils</code>; index 0 = <code>yWcaVhiPFfxx7ugWgLDRcQGf1XJGWXkcxd</code>), insight
+<code>addr/&lt;a&gt;?noTxList=1</code> → <a class=ev href="../S11/P1/insight-addr-summary.txt">P1/insight-addr-summary.txt</a> (273 tx appearances), and the full tx bodies via
+<code>addrs/&lt;20 addrs&gt;/txs</code> → <a class=ev href="../S11/P1/db/explorer-vs-db.txt">P1/db/explorer-vs-db.txt</a>:
+- 236 distinct txs touch those addresses; <strong>166 are purely incoming</strong> (no input of ours)
+- of those 166: <strong>0</strong> missing from <code>transactions</code>, <strong>41</strong> missing from the txos-union, <strong>2</strong> missing from <code>tx_display_cache</code>
+- whole wallet: 399 SDK transactions with <code>netAmount &gt; 0</code>; exactly the same 2 have no display row (399 − 2 = 397 = the SQL count)</p>
+<p>The two invisible receives:</p>
+<pre><code>30d25cfa437dc80b83c3f4cda912e466c5c5d9144679d0bedfe3a174bd9c5a16  h1123983  2024-10-19 07:21:52Z  +0.20000000
+301d24c9ab71b31d745188d31642925a8b09ea8e8a6b662a1398b3b2b954ce12  h1123983  2024-10-19 07:21:52Z  +0.33848582
+</code></pre>
+<p>Both present in <code>transactions</code>, both absent from the txos-union. Total hidden receipts <strong>0.53848582 tDASH</strong>.</p>
+<p><strong>UI verification</strong>
+- Scrolled the history to the bottom (~170 swipes): section "31 July, 2019" with the last row
+  <code>Received + D 0.1 / 5:04 AM</code> — the wallet's <strong>first</strong> receive
+  (<code>bc3860520181daa812639c924745597a3c114743c620fa1867cce74a3c91b0a6</code>, block 146742, 0.1 tDASH to
+  address index 0) is <strong>present and correctly dated</strong> → <a class=ev href="../S11/P1/history/99-bottom-of-history.webp">P1/history/99-bottom-of-history.png</a>.
+- Section "19 October, 2024" renders exactly <strong>five</strong> <code>Received +0.2</code> rows at 2:21 AM
+  (<a class=ev href="../S11/P1/history/52-19-oct-2024-rows.webp">P1/history/52-19-oct-2024-rows.png</a>). The explorer has <strong>seven</strong> incoming txs in block 1123983 at
+  that minute (six × 0.2 and one × 0.33848582). Two are missing from the list.</p>
+<p><strong>Verdict P1: PASS for sync/balance/memory; D-037 CONFIRMED in its display-cache form, with a much
+smaller blast radius on this wallet (2 of 399 receives) than on S8's massive wallet, and the
+"earliest receives disappear" symptom does NOT reproduce here.</strong></p>
+<h3 id="p2-one-kill-during-replay-d-041-confirmdeny-no-kill-control">P2 — one kill during replay (D-041 confirm/deny) + no-kill control</h3>
+<ol>
+<li>02:13 uninstall → clean install → restore the seed again (PIN 1234). Replay starts 07:14:21.</li>
+<li>Kill point 07:16:55 <code>phase=FILTERS 92.7% headers 1556601/1556601 filters 1215999 wallet 1220999</code>
+   (wallet cursor 78.4 % of tip). The 50 % target was not hittable: <code>L1Shadow phase=</code> is logged only
+   every 30 s and the cursor jumped 665,999 → 1,220,999 inside one window. <strong>One</strong> <code>am force-stop</code>
+   at 02:17:09 → <a class=ev href="../S11/P2/05-before-kill.webp">P2/05-before-kill.png</a>, video <a class=ev href="../S11/P2/p2-kill-relaunch.mp4">P2/p2-kill-relaunch.mp4</a>.</li>
+<li>Relaunch 02:17:17. 07:17:21 <code>phase=IDLE 0.0% … wallet 1415999</code> → resumed <strong>above</strong> the last logged
+   cursor: <strong>no blocks lost</strong>, no rescan from 0.</li>
+<li>During the replay the header was <em>correct</em> (107.081735 at 02:18:25–02:19:03), then diverged upward
+   (2293.32319 → 2327.154954) and, when <code>phase=SYNCED</code> was reached at 07:19:46, the "Syncing balance"
+   label and the progress pane <strong>disappeared</strong> leaving <strong>2336.304271 tDASH</strong> on screen
+   → <a class=ev href="../S11/P2/09-BALANCE-after-kill-INFLATED.webp">P2/09-BALANCE-after-kill-INFLATED.png</a>.
+   <code>07:19:44 CutoverUiDataService - SDK balance published: 233630427063 duffs (was 233411690591) | l1Synced=false …
+   07:19:46 L1ShadowSyncService - L1Shadow phase=SYNCED 100.0% …</code>
+   Every publish in the run carries <code>l1Synced=false</code>; the stream stops converging 2 s before SYNCED
+   (<a class=ev href="../S11/P2/sdk-balance-published.txt">P2/sdk-balance-published.txt</a>). Error factor <strong>21.82×</strong>.</li>
+<li>Ground truth from the DB pulled while inflated (<code>P2/db-inflated/</code>):
+   <code>SELECT SUM(amount) FROM txos WHERE spendingTxid IS NULL</code> = <strong>10708173522</strong> duffs = 107.08173522,
+   <code>transactions</code> = 3269. On-disk state is correct; only the published aggregate is wrong.</li>
+<li>Recovery: HOME 20 s then foreground → still 2336.304271 (<code>P2/10</code>, <code>P2/11</code>). <code>am force-stop</code> +
+   relaunch → 107.081735 immediately (<a class=ev href="../S11/P2/13-recovered.webp">P2/13-recovered.png</a>, video <a class=ev href="../S11/P2/p2-recovery.mp4">P2/p2-recovery.mp4</a>):
+   <code>07:21:47 CutoverUiDataService - SDK balance published: 10708173522 duffs (was none) … lastKnown=233630427063</code>
+   <strong>New datum vs S2: the inflated value had been persisted as <code>lastKnown</code></strong>, so any "hold last known
+   balance" path would resurface 2336.30 on a later launch.</li>
+<li><code>exit-info</code> shows only the two deliberate FORCE STOPs, no LMK/OOM (<a class=ev href="../S11/P2/exitinfo.txt">P2/exitinfo.txt</a>).</li>
+</ol>
+<p><strong>Verdict P2: FAIL — D-041 CONFIRMED on a second device, and with a SINGLE kill (S2 needed 25/50/75 %
+torture). No-kill control = P1, which lands on the correct balance, so the kill is the trigger.</strong></p>
+<h3 id="p3-low-memory-replay">P3 — low-memory replay</h3>
+<p><strong>ENV limitation:</strong> emulator 37.1 refuses to run this AVD below 2560 MB. Both <code>hw.ramSize=1536</code> in
+<code>~/.android/avd/dw-qa7.avd/config.ini</code> and <code>emulator -memory 1536</code> print
+<code>INFO | Increasing RAM size to 2560MB</code> (<code>$QA_LOGS/emu-dw-qa7.log</code>, <code>$QA_LOGS/emu-dw-qa7-1536.log</code>).
+Guest <code>MemTotal</code> = 2,531,992 kB. To approximate a 1.5 GB-class device I added a <strong>600 MB RAM-backed
+tmpfs ballast</strong> at <code>/dev/s11ballast</code> on top (removed afterwards) and ran the requested
+<code>am send-trim-memory RUNNING_CRITICAL</code> every 60 s.</p>
+<ol>
+<li>Clean uninstall + install of the fix APK, restore the seed.
+   07:27:52 CUT_OVER, 07:28:33 <code>L1 shadow SPV started</code> (phase=CONNECTING).</li>
+<li>RUNNING_CRITICAL at 02:29:19 / 02:30:19 / 02:31:19 / 02:32:20 / 02:33:20 (<a class=ev href="../S11/P3/pressure-log.txt">P3/pressure-log.txt</a>);
+   guest <code>MemAvailable</code> stayed 778–923 MB with the ballast held.</li>
+<li>07:33:09 <code>phase=SYNCED 100.0%</code> → <strong>engine start → 100 % in 4 min 36 s</strong> (vs 4 min 31 s at 3 GB:
+   no measurable slowdown).</li>
+<li>Assertions
+   - process <strong>survived</strong>: pid 3772 unchanged across all five trims; <code>exit-info</code> <strong>empty</strong>, no LMK,
+     no OOM → <a class=ev href="../S11/P3/exitinfo.txt">P3/exitinfo.txt</a>
+   - <strong>no kill occurred, so no watermark resume was exercised in P3 and 0 blocks were lost.</strong>
+     <code>grep -E 'syncedHeight|watermark|resum'</code> shows only the initial <code>armSpvRescan: filter watermark
+     rewind to 0 armed</code> at 07:28:29.
+   - final balance <code>10708173522 duffs</code> = <strong>107.08173522</strong> — MATCH; header 107.081735 → <a class=ev href="../S11/P3/05-SYNCED-balance.webp">P3/05-SYNCED-balance.png</a>
+   - peak TOTAL PSS <strong>581,409 kB (568 MB)</strong>, peak native <strong>479,961 kB (469 MB)</strong>, peak Dalvik 53,768 kB
+   - 0 filter-stall, 0 <code>idling detected</code> during the replay, 0 OOM, 0 <code>OverlappingFileLockException</code>
+   - video <a class=ev href="../S11/P3/p3-replay.mp4">P3/p3-replay.mp4</a></li>
+</ol>
+<p><strong>Key observation:</strong> the app's footprint does <strong>not</strong> shrink in response to RUNNING_CRITICAL — it stays
+at the same ~570–610 MB as the unconstrained run. On a real 1.5 GB phone with a 512 MB-class budget
+this is the LMK exposure already filed as D-025/D-035.</p>
+<p><strong>Verdict P3: PASS (survives, correct balance, no slowdown), with the ENV caveat that a true 1.5 GB
+guest was not achievable on this emulator build.</strong></p>
+<h3 id="p4-upgrade-path-master-1190-fix-1200-on-the-constrained-device">P4 — upgrade path master 11.9.0 → fix 12.0.0 on the constrained device</h3>
+<ol>
+<li>Uninstall, install master 11.9.0 (versionCode 11090002), restore the seed, PIN 1234.
+   07:36:43 <code>BlockchainServiceImpl - starting peergroup</code> (dashj).</li>
+<li>After ~11 min of dashj: <code>chain/common height 592721/1556620</code>, <code>Chain download 72% done with
+   964025 blocks to go, block date 2021-10-12</code>, header <strong>788.189094</strong> under "Syncing 71 %"
+   → <a class=ev href="../S11/P4/06-master-after-10min.webp">P4/06-master-after-10min.png</a>. Master memory peak: <strong>263,205 kB PSS / 49,763 kB native /
+   101,365 kB Dalvik</strong> — native heap ~10× smaller than the SDK replay.</li>
+<li>02:48:58 force-stop, 02:48:59 <code>adb install -r</code> the fix APK (true in-place upgrade), launch.</li>
+<li>Assertions on this launch
+   - 07:49:00 <code>cutover state DUAL_RUNNING -&gt; CUT_OVER (upgraded-wallet launch)</code> (1 s after launch)
+   - 07:49:00 <code>upgrade cutover: one-time sync explainer armed</code> — <strong>exactly one</strong> <code>explainer</code> line in the
+     whole log; explainer displayed → <a class=ev href="../S11/P4/09-explainer.webp">P4/09-explainer.png</a>
+   - 07:49:02 <code>armSpvRescan: filter watermark rewind to 0 armed</code> → the upgrade re-scans from height 0
+   - 07:49:05 <code>L1 shadow SPV started</code>; <strong>zero</strong> <code>starting peergroup</code> after the upgrade
+   - no <code>OverlappingFileLockException</code>, no <code>idling detected</code> during the replay, no OOM</li>
+<li><strong>Balance held at the last-known value during the replay: YES.</strong> At 02:49:5x the header reads
+   <strong>794.227628</strong> under "Syncing balance" (<a class=ev href="../S11/P4/10-replay-home.webp">P4/10-replay-home.png</a>) while the SDK published
+   <code>0 duffs … lastKnown=79422762803</code> at 07:49:03. S3's observation reproduces on the upgrade path.</li>
+<li>07:58:43 <code>phase=SYNCED 100.0%</code> → <strong>engine start → 100 % in 9 min 38 s</strong> (≈2× the clean-restore time;
+   the run also cycled MASTERNODES/HEADERS/FILTERS again at 100 %).</li>
+<li>Final balance <code>10708173522 duffs</code> = <strong>107.08173522</strong>, header 107.081735 → <a class=ev href="../S11/P4/12-SYNCED-balance.webp">P4/12-SYNCED-balance.png</a>.</li>
+<li><strong>No LMK kills:</strong> pid 8640 constant for the whole replay; <code>exit-info</code> records only the deliberate
+   master FORCE STOP at 02:48:55 → <a class=ev href="../S11/P4/exitinfo.txt">P4/exitinfo.txt</a>. Peak <strong>662,100 kB PSS (647 MB)</strong> / <strong>506,947 kB
+   native (495 MB)</strong> / 59,556 kB Dalvik — the highest of all four runs, on the most constrained device,
+   and still no kill.</li>
+<li>Video <a class=ev href="../S11/P4/p4-upgrade.mp4">P4/p4-upgrade.mp4</a> (first 180 s incl. cutover + explainer).</li>
+</ol>
+<p><strong>Verdict P4: PASS.</strong></p>
+<h2 id="defects-found">Defects found</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Sev</th>
+<th>Title</th>
+<th>Repro steps</th>
+<th>Evidence</th>
+<th>Suspected area</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>D-041</strong> (confirmed, 2nd device)</td>
+<td><strong>S1</strong></td>
+<td>Grossly inflated balance after a kill during the replay; app claims to be synced</td>
+<td>clean install fix APK → restore the reference seed → <strong>one</strong> <code>am force-stop</code> while <code>phase=FILTERS</code> (here wallet cursor 1,220,999/1,556,601) → relaunch → wait for <code>phase=SYNCED</code>: header shows 2336.304271 with no "Syncing balance" label (expected 107.08173522, 21.82×). bg/fg does not fix; force-stop+relaunch does</td>
+<td><a class=ev href="../S11/P2/09-BALANCE-after-kill-INFLATED.webp">S11/P2/09-BALANCE-after-kill-INFLATED.png</a>, <a class=ev href="../S11/P2/sdk-balance-published.txt">S11/P2/sdk-balance-published.txt</a> (<code>07:19:44 SDK balance published: 233630427063 duffs … l1Synced=false</code>, <code>07:19:46 phase=SYNCED</code>), <code>S11/P2/db-inflated/</code> (<code>SUM(txos)=10708173522</code>), <a class=ev href="../S11/P2/p2-recovery.mp4">S11/P2/p2-recovery.mp4</a>, <a class=ev href="../S11/P2/exitinfo.txt">S11/P2/exitinfo.txt</a></td>
+<td>in-memory UTXO-set aggregation after a mid-replay restart (<code>CutoverUiDataService</code> / SDK bip44 bucket). New: <code>lastKnown=233630427063</code> shows the bad value is persisted</td>
+</tr>
+<tr>
+<td><strong>D-037</strong> (confirmed on the reference seed)</td>
+<td><strong>S1</strong></td>
+<td>Historical incoming transactions have no history row when the tx has no <code>txos</code> row</td>
+<td>restore the reference seed on the fix build, sync to 100 %, open History → "19 October, 2024": 5 <code>Received +0.2</code> rows where the explorer has 7 incoming txs in block 1123983</td>
+<td><a class=ev href="../S11/P1/history/52-19-oct-2024-rows.webp">S11/P1/history/52-19-oct-2024-rows.png</a>, <a class=ev href="../S11/P1/db/explorer-vs-db.txt">S11/P1/db/explorer-vs-db.txt</a>, <a class=ev href="../S11/P1/db/db-counts.txt">S11/P1/db/db-counts.txt</a> (transactions 3269, txos-union 2396, display 1519, valueSatoshis&gt;0 397)</td>
+<td><code>SdkTxStoreWalker</code> / <code>TxDisplayCacheService.decideCacheRebuild</code> enumerate from <code>txos</code>, so the 873 transactions with no <code>txos</code> row are invisible; 2 of them are real receives worth 0.53848582 tDASH</td>
+</tr>
+<tr>
+<td><strong>S11-D1</strong> (new)</td>
+<td>S3</td>
+<td>Transaction-detail sheet opened during the replay never populates and mis-binds labels to values</td>
+<td>during the post-upgrade replay tap any history row: sheet titled "Sent successfully" with a success check for a 2021 tx, empty amount / "Sent from" / "Sent to"; "Network fee" shows the value <code>Sent to D</code>, "Date" shows <code>Sent to</code>; Tax Category stuck on "Loading…". Persisted 9 min (02:52→02:58). Correct after SYNCED</td>
+<td><a class=ev href="../S11/P4/11-replay-4.webp">S11/P4/11-replay-4.png</a> … <a class=ev href="../S11/P4/11-replay-12.webp">S11/P4/11-replay-12.png</a> vs <a class=ev href="../S11/P4/14-txdetail-post-sync.webp">S11/P4/14-txdetail-post-sync.png</a></td>
+<td>TransactionDetails binding while the SDK seam has no data yet</td>
+</tr>
+<tr>
+<td>D-001 (re-observed)</td>
+<td>S4</td>
+<td>Foreground auto-lock after 60 s idle broke two unattended observation windows</td>
+<td>leave the app on Home without touching</td>
+<td><a class=ev href="../S11/P1/10-sync-poll5.webp">S11/P1/10-sync-poll5.png</a></td>
+<td><code>auto_logout_minutes = 1</code></td>
+</tr>
+<tr>
+<td>D-002 (re-observed)</td>
+<td class=S2>S2</td>
+<td>Inflated partial balance under the greyed "Syncing balance" label during the replay</td>
+<td>restore, watch the header</td>
+<td><a class=ev href="../S11/P1/09-home-start.webp">S11/P1/09-home-start.png</a> (156.405901), <a class=ev href="../S11/P3/03-home-replay-start.webp">S11/P3/03-home-replay-start.png</a> (134.357093)</td>
+<td>SR-10</td>
+</tr>
+<tr>
+<td>D-025 / D-035 (supporting data)</td>
+<td class=S2>S2</td>
+<td>SDK replay footprint is ~2.5× dashj's on the same device and does not respond to RUNNING_CRITICAL</td>
+<td>compare <a class=ev href="../S11/mem-p3p4.csv">mem-p3p4.csv</a> master window (02:37–02:48) vs fix window (02:49–02:59)</td>
+<td>master peak 263 MB PSS / 50 MB native vs fix peak 647 MB PSS / 495 MB native</td>
+<td>replay memory telemetry</td>
+</tr>
+</tbody>
+</table>
+<h2 id="environment-problems-not-product-defects">Environment problems (not product defects)</h2>
+<ul>
+<li><strong>ENV-6 (new):</strong> emulator 37.1 clamps this AVD to 2560 MB — <code>hw.ramSize=1536</code> and <code>emulator -memory
+  1536</code> both log <code>Increasing RAM size to 2560MB</code>. A genuine 1.5 GB guest is not reachable; P3/P4 used
+  2560 MB + a 600 MB tmpfs ballast + RUNNING_CRITICAL trims instead. <code>config.ini</code> has been restored to
+  <code>hw.ramSize=3072</code> (takes effect on the next boot of dw-qa7); the ballast was deleted.</li>
+<li><code>qa-app.sh launch</code> (monkey) did not start the app on this device at all; every launch in this stream
+  used <code>am start -n …/de.schildbach.wallet.ui.OnboardingActivity</code>.</li>
+<li><code>input text 1234</code> does not register on the app's PIN pads — the digit buttons must be tapped
+  (<code>tapon 'resource-id=…:id/btn_N'</code>).</li>
+<li>ENV-4 confirmed: doing <code>adb root</code> <strong>before</strong> starting <code>logcat-start</code> keeps the pipe alive for the
+  whole session (subsequent <code>adb root</code> from <code>grep-log</code> is a no-op). Both logcat captures are intact.</li>
+<li>D-001 forced a deliberate harness change after P1: <code>auto_logout_enabled=false</code> written into
+  <code>shared_prefs/…_preferences.xml</code> with the app stopped, so the history could be scrolled.</li>
+</ul>
+<h2 id="not-run-blocked">Not run / blocked</h2>
+<ul>
+<li>The P2 kill could not be placed at exactly 50 % of the wallet cursor: the progress line is emitted
+  only every 30 s and the cursor jumped 665,999 → 1,220,999 inside one window. The kill landed at
+  78.4 %; it was still a single mid-replay kill and reproduced D-041.</li>
+<li>P4's "balance held during replay" was observed at one point (02:49:5x, 794.227628) only: a keep-alive
+  gesture accidentally opened a tx-detail sheet (which is how S11-D1 was found) and it covered the
+  header for the rest of that replay.</li>
+</ul>
+<h2 id="evidence-paths">Evidence paths</h2>
+<ul>
+<li><code>/Users/dcg/workspace/dash-wallet-qa/evidence/S11/notes.md</code> (running journal)</li>
+<li><code>/Users/dcg/workspace/dash-wallet-qa/evidence/S11/P1/</code>, <code>P2/</code>, <code>P3/</code>, <code>P4/</code></li>
+<li><code>/Users/dcg/workspace/dash-wallet-qa/evidence/S11/mem-p1p2.csv</code>, <a class=ev href="../S11/mem-p3p4.csv">mem-p3p4.csv</a></li>
+<li><code>/Users/dcg/workspace/dash-wallet-qa/evidence/S11/logcat-p1p2.txt</code>, <code>logcat-p3p4.txt</code></li>
+<li>pulled <a class=ev href="../S11/P2/logs/files/log/wallet.log">wallet.log</a>: <a class=ev href="../S11/P2/logs/files/log/wallet.log">S11/P2/logs/files/log/wallet.log</a> (P1+P2), <a class=ev href="../S11/P2/logs/files/log/wallet.log">S11/P4/logs/files/log/wallet.log</a> (P3+P4)</li>
+</ul>
+<h2 id="evidence-notes">Evidence notes</h2>
+<ul>
+<li><code>P1/db/</code>: all six files (<code>dash-sdk.db</code>, <code>-wal</code>, <code>-shm</code>, <code>dash-wallet-database</code>, <code>-wal</code>, <code>-shm</code>) were
+  pulled with <code>adb pull</code> as root; opening them with <code>sqlite3</code> checkpointed the WALs into the main
+  files, so only <code>dash-sdk.db</code> and <code>dash-wallet-database</code> remain on disk (all rows included).</li>
+<li><code>P3/logs/</code> is empty: P3's <a class=ev href="../S11/P2/logs/files/log/wallet.log">wallet.log</a> was lost when the package was uninstalled at the start of P4.
+  P3 is covered by <a class=ev href="../S11/P3/phases.txt">P3/phases.txt</a>, <a class=ev href="../S11/P3/pressure-log.txt">P3/pressure-log.txt</a>, <a class=ev href="../S11/P3/exitinfo.txt">P3/exitinfo.txt</a>, <a class=ev href="../S11/mem-p3p4.csv">mem-p3p4.csv</a> and
+  <code>logcat-p3p4.txt</code>, all captured live during the run.</li>
+<li><a class=ev href="../S11/P2/logs/files/log/wallet.log">P2/logs/files/log/wallet.log</a> covers P1+P2; <a class=ev href="../S11/P2/logs/files/log/wallet.log">P4/logs/files/log/wallet.log</a> covers P4.</li>
+</ul></html>

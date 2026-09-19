@@ -1,0 +1,11 @@
+--------- beginning of crash
+09-19 01:46:10.198 12412 12412 E AndroidRuntime: *** FATAL EXCEPTION IN SYSTEM PROCESS: main
+09-19 01:46:10.198 12412 12412 E AndroidRuntime: DeadSystemException: The system died; earlier logs will point to the root cause
+09-19 01:55:53.023 19339 19339 E AndroidRuntime: *** FATAL EXCEPTION IN SYSTEM PROCESS: main
+09-19 01:55:53.023 19339 19339 E AndroidRuntime: DeadSystemException: The system died; earlier logs will point to the root cause
+09-19 02:01:11.779 24220 24220 E AndroidRuntime: *** FATAL EXCEPTION IN SYSTEM PROCESS: main
+09-19 02:01:11.779 24220 24220 E AndroidRuntime: DeadSystemException: The system died; earlier logs will point to the root cause
+09-19 02:06:36.512 29103 29103 E AndroidRuntime: *** FATAL EXCEPTION IN SYSTEM PROCESS: main
+09-19 02:06:36.512 29103 29103 E AndroidRuntime: DeadSystemException: The system died; earlier logs will point to the root cause
+09-19 02:11:56.691  1724  1724 E AndroidRuntime: *** FATAL EXCEPTION IN SYSTEM PROCESS: main
+09-19 02:11:56.691  1724  1724 E AndroidRuntime: DeadSystemException: The system died; earlier logs will point to the root cause

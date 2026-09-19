@@ -1,0 +1,8 @@
+== dash-sdk.db transactions count
+3269
+== txos-union count
+2396
+== wallet db tx_display_cache count
+1519
+== tx_display_cache valueSatoshis>0
+397

@@ -1,0 +1,322 @@
+<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Stream S9 report</title><style>body{font-family:system-ui,-apple-system,sans-serif;max-width:1400px;margin:0 auto;padding:16px 24px;line-height:1.45;background:#fff;color:#111}
+table{border-collapse:collapse;font-size:13px;margin:12px 0}th,td{border:1px solid #ddd;padding:4px 8px;vertical-align:top;text-align:left}th{background:#f3f6fa;position:sticky;top:0}
+tr:nth-child(even){background:#fafbfc}code{background:#f4f4f4;padding:1px 4px;border-radius:3px;font-size:12px}pre{background:#f4f4f4;padding:10px;overflow:auto}
+h1{border-bottom:3px solid #008de4}h2{border-bottom:1px solid #ccc;margin-top:40px}a{color:#008de4}a.ev{background:#e8f4fd;padding:0 3px;border-radius:3px;font-family:ui-monospace,monospace;font-size:12px}
+nav.top{background:#012060;color:#fff;padding:8px 24px;margin:-16px -24px 16px;position:sticky;top:0;z-index:5}nav.top a{color:#fff;margin-right:18px;text-decoration:none}nav.top a:hover{text-decoration:underline}
+.S1{color:#b00020;font-weight:bold}.S2{color:#c75000;font-weight:bold}.toc{background:#f8f9fb;border:1px solid #e3e6ea;padding:8px 16px;font-size:13px;columns:2}.toc ul{margin:2px 0;padding-left:16px}
+.note{background:#fff8e1;border-left:4px solid #f5b400;padding:8px 12px;margin:12px 0}
+</style><nav class=top><a href="../../index.html">Home</a><a href="../../QA-REPORT.html">Full report</a><a href="../../EXEC-SUMMARY.html">Executive summary</a><a href="../../STORY-MATRIX.html">User-story matrix</a><a href="../../DEFECT-LEDGER.html">Defect register</a><a href="../index.html">Evidence gallery</a><a href="../../QA-PLAN.html">Test plan</a><a href="../../streams.html">Stream reports</a></nav><h1 id="qa-report-stream-s9-x1-x8-agent-opus-s9-emulator-emulator-5564-dw-qa6-2026-09-19-0129-0327-cdt">QA report: Stream S9 (X1-X8)   (agent: Opus S9, emulator: emulator-5564 / dw-qa6, 2026-09-19 01:29-03:27 CDT)</h1>
+<p>Build under test: <code>fix-12.0.0-testnet3-release-signed.apk</code>, versionCode <strong>12000000</strong>, versionName 12.0.0, minSdk 29 / targetSdk 35.
+Mainnet <code>hashengineering.darkcoin.wallet</code> uninstalled first; testnet package <code>hashengineering.darkcoin.wallet_test</code> installed clean.
+Throwaway wallet seed (in <a class=ev href="../S9/notes.md">notes.md</a>): <code>[seed phrase redacted]</code>, PIN 1234.
+Faucet: 1 tDASH to <code>yYxUzAE8SNndkcnWyt1RRXEUvbHVV12Bdk</code>, txid <code>afcfb69ab343b09c09d2bce10e880964279112da1a92e8622ef6ea2354daf267</code>.</p>
+<h2 id="summary-table">Summary table</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Verdict</th>
+<th>Key evidence file(s)</th>
+<th>One-line finding</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>X1 Sends fail after idle teardown (D-031)</td>
+<td><strong>NOT REPRODUCED</strong> (5/5 sends succeeded)</td>
+<td><a class=ev href="../S9/X1/x1-cycle4-failed-send.mp4">X1/x1-cycle4-failed-send.mp4</a>, <a class=ev href="../S9/X1/43-c4-RESULT.webp">X1/43-c4-RESULT.png</a>, <a class=ev href="../S9/final-logs/files/log/wallet.log">final-logs/files/log/wallet.log</a></td>
+<td>4 idle teardowns observed; the L1 engine restarted 0s/0s/19s/19s later and every send broadcast fine - but the teardown itself is real and frequent (every 6-24 min)</td>
+</tr>
+<tr>
+<td>X2 Network monitor (SDK rewrite)</td>
+<td><strong>FAIL</strong></td>
+<td><a class=ev href="../S9/X2/03-netmon-synced.webp">X2/03-netmon-synced.png</a>, <a class=ev href="../S9/X2/11-netmon-airplane-4min.webp">X2/11-netmon-airplane-4min.png</a>, <a class=ev href="../S9/X2/13-netmon-during-sync.webp">X2/13-netmon-during-sync.png</a>, <a class=ev href="../S9/X2/04-netmon-landscape.webp">X2/04-netmon-landscape.png</a></td>
+<td>Stage labels/heights/ChainLock/rotation correct online, but with all networking off 4-5 min it still reads "Synced / Connected to the Dash network"</td>
+</tr>
+<tr>
+<td>X3 Sync status "unable to connect"</td>
+<td><strong>FAIL</strong></td>
+<td><a class=ev href="../S9/X3/02-home-no-net.webp">X3/02-home-no-net.png</a>, <a class=ev href="../S9/X3/04-netmon-no-net.webp">X3/04-netmon-no-net.png</a>, <a class=ev href="../S9/X3/06-netmon-no-net-5min.webp">X3/06-netmon-no-net-5min.png</a>, <a class=ev href="../S9/X3/10-home-after-reconnect.webp">X3/10-home-after-reconnect.png</a></td>
+<td><code>sync_status_unable_to_connect</code> never appears anywhere; also a transient ~2x wrong balance (1.996984) on cold start. Reconnect after network restore: 6 s</td>
+</tr>
+<tr>
+<td>X4 CSV export</td>
+<td><strong>PASS (caveat)</strong></td>
+<td><a class=ev href="../S9/X4/dash-wallet-transactions-2026-09-19.csv">X4/dash-wallet-transactions-2026-09-19.csv</a>, <a class=ev href="../S9/X4/03-share-sheet.webp">X4/03-share-sheet.png</a>, <a class=ev href="../S9/X4/13-csv-empty-result.webp">X4/13-csv-empty-result.png</a></td>
+<td>Share sheet reached, file correct; 1 row for a 5-tx wallet because internal self-transfers (and their real fees) are excluded by design. Empty-wallet message correct</td>
+</tr>
+<tr>
+<td>X5 Safe-mode / degraded startup</td>
+<td><strong>PASS (caveat)</strong></td>
+<td><a class=ev href="../S9/X5/x5-safemode.mp4">X5/x5-safemode.mp4</a>, <a class=ev href="../S9/X5/09-safemode-message.webp">X5/09-safemode-message.png</a>, <a class=ev href="../S9/X5/11-recovered-home.webp">X5/11-recovered-home.png</a></td>
+<td>Unreadable + truncated wallet files both auto-recover from <code>key-backup-protobuf-testnet</code> with the correct balance; safe mode + "Try Again" works, but the ACRA crash sheet covers the explanation first</td>
+</tr>
+<tr>
+<td>X6 6-hour foreground-service notice</td>
+<td><strong>NOT RUN</strong> (per instruction)</td>
+<td>code grep</td>
+<td>Channel + both strings exist and are wired to <code>onTimeout()</code></td>
+</tr>
+<tr>
+<td>X7 DashPay contact-request error surfaces</td>
+<td><strong>PARTIAL FAIL</strong></td>
+<td><a class=ev href="../S9/X7/44-request-airplane.webp">X7/44-request-airplane.png</a>, <a class=ev href="../S9/X7/50-request-result.webp">X7/50-request-result.png</a>, <a class=ev href="../S9/X7/52-search-nonexistent.webp">X7/52-search-nonexistent.png</a></td>
+<td>Offline "Send request" is silently inert (no <code>send_contact_request_error_*</code> ever shown). Online path, pending list and not-found empty state all correct</td>
+</tr>
+<tr>
+<td>X8 Notification channels</td>
+<td><strong>PASS</strong></td>
+<td><a class=ev href="../S9/X8/01-notification-channels.webp">X8/01-notification-channels.png</a></td>
+<td>All 6 channels present incl. <code>dash.notifications.ongoing</code> (Synchronization) and <code>dash.notifications.contacts</code> (Contact requests)</td>
+</tr>
+</tbody>
+</table>
+<p>Memory over the 2 h session (<a class=ev href="../S9/mem.csv">mem.csv</a>, 117 samples @60 s): peak <strong>TOTAL PSS 406,696 KB (397 MB)</strong>, peak Dalvik heap 42,021 KB. <a class=ev href="../S9/oom-exitinfo.txt">oom-exitinfo.txt</a>: every process exit is <code>reason=10 (USER REQUESTED) subreason=21 (FORCE STOP)</code> - <strong>no LMK, no OOM, no ANR, no crash</strong> all session.</p>
+<h2 id="per-test-detail">Per-test detail</h2>
+<h3 id="x1-sends-after-the-idle-teardown-d-031-clean-repro-attempt">X1 - Sends after the idle teardown (D-031 clean repro attempt)</h3>
+<p>Five cycles, each ending in a real 0.001 tDASH self-send.</p>
+<table>
+<thead>
+<tr>
+<th>Cycle</th>
+<th>Protocol</th>
+<th>Teardown seen</th>
+<th>Send</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>home fg 3 min (3 auto-locks) -&gt; HOME 3 min -&gt; fg -&gt; unlock -&gt; send</td>
+<td><strong>none</strong></td>
+<td>OK, txid <code>645fbe3ca203b11dc70a04429992dd93fa058dc0d5fb0f33575c72ae80f918d7</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td>same protocol repeated</td>
+<td><strong>none</strong></td>
+<td>not attempted (no teardown to test against)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>orchestrator variant: Tools &gt; Network monitor left untouched 5.5 min</td>
+<td>teardown #1 <code>06:58:00</code>, #2 <code>07:04:35</code></td>
+<td>OK, txid <code>31bc6adc0655d87c001b65c9e95dc5473ed753d6d37e668eb97d74efaf95c6ec</code></td>
+</tr>
+<tr>
+<td>4</td>
+<td>HOME for 9 min (until the teardown fired with the app backgrounded)</td>
+<td>teardown #3 <code>07:16:00</code>, <strong>no resume while backgrounded</strong></td>
+<td>OK, txid <code>f31d78d048051dc13a2aca824fd614177dc794abbe301738cd854d333daf1ebe</code></td>
+</tr>
+<tr>
+<td>5</td>
+<td>race: <code>dash:</code> deeplink fired seconds after teardown #4</td>
+<td>teardown #4 <code>07:32:00</code></td>
+<td>OK, txid <code>1c3cff5d3cb51057a5da9a1c545a1e256bb94445075e30eae8d5d669fafb4ebc</code></td>
+</tr>
+</tbody>
+</table>
+<p>Log (<a class=ev href="../S9/final-logs/files/log/wallet.log">final-logs/files/log/wallet.log</a>):</p>
+<pre><code>06:58:00 BlockchainServiceImpl - idling detected, stopping service
+06:58:14 BlockchainServiceImpl - .onDestroy()
+06:58:14 L1ShadowSyncService - L1ShadowLifecycle STOPPED after 24m24s up; all four loops torn down ...; teardown #1 this process. Nothing runs until the next startIfEnabled().
+06:58:15 L1ShadowSyncService - L1ShadowLifecycle RESUMING after 0s down (teardown #1 this process)
+07:01:00 idling detected, stopping service   07:04:35 onDestroy -&gt; STOPPED (#2) -&gt; 07:04:36 RESUMING after 0s down
+07:16:00 idling detected, stopping service -&gt; onDestroy -&gt; STOPPED (#3)  [backgrounded: NO resume]
+07:16:20 L1ShadowLifecycle RESUMING after 19s down (teardown #3)   &lt;- triggered by foregrounding the app
+07:17:27 SdkL1SendService - SDK l1Send: broadcast 100000 duffs to yYxUzAE8..., txid f31d78d0...
+07:32:00 idling detected ... STOPPED (#4)   07:32:20 RESUMING after 19s down   07:33:11 l1Send broadcast OK
+</code></pre>
+<p>No <code>SendEngineNotSyncedException</code>, no "funding gate closed", no "not fully synced" dialog in any cycle.</p>
+<p>Why cycles 1-2 never tripped the detector: <code>SyncActivityIdleDetector.IDLE_TRANSACTION_TIMEOUT_MIN = 9</code> - any wallet tx event in the last 9 samples keeps the service "active", and the faucet receive / each self-send resets that window. Once &gt;9 min has passed since the last tx, 3 consecutive block-less minutes suffice; on live testnet that happened every 6-24 minutes (4 times in 100 minutes).</p>
+<p><strong>Conclusion:</strong> the SR-09/D-031 teardown is real and frequent on this build, but the recovery path (<code>startIfEnabled()</code> on app foreground) works here - the engine is back in 0-19 s and sends succeed. Residual exposure is the ~13-19 s window right after foregrounding; I could not land a send inside it even driving the flow from a <code>dash:</code> deeplink. S7's device-observed failure (engine down 3 m 17 s) did not recur.
+Videos: <a class=ev href="../S9/X1/x1-cycle1-send.mp4">X1/x1-cycle1-send.mp4</a>, <a class=ev href="../S9/X1/x1-cycle3-send.mp4">x1-cycle3-send.mp4</a>, <a class=ev href="../S9/X1/x1-cycle4-failed-send.mp4">x1-cycle4-failed-send.mp4</a>, <a class=ev href="../S9/X1/x1-race-send.mp4">x1-race-send.mp4</a>.</p>
+<p>Side observations in X1:
+- Confirm sheet shows <strong>Network fee 0.0001 / Total 0.0011</strong> but the broadcast paid <strong>226 duffs (0.00000226)</strong> - SR-28 confirmed on device (<a class=ev href="../S9/X1/28-after-pin-send.webp">X1/28-after-pin-send.png</a> vs <a class=ev href="../S9/X1/29-send-result.webp">X1/29-send-result.png</a>).
+- The success sheet for a self-send reads "Sent to <code>ybhMKMNdRvuKiMrNgmQ13RnGmAMXErLchg</code>" (the <strong>change</strong> address, not the entered destination) and "Amount Sent -0.00000226".
+- Receive screen still showed the used address <code>yYxUzAE8...</code> right after the faucet receive (<a class=ev href="../S9/X1/18-receive-2nd.webp">X1/18-receive-2nd.png</a>) but had rotated to <code>yMUsXaTRuRSGHC34tBkpZnXEMVt6UTQXFJ</code> by 02:59 (<a class=ev href="../S9/X7/02-payments.webp">X7/02-payments.png</a>) - D-003 is a delay, not a permanent pin, on a wallet created on the fix build.</p>
+<h3 id="x2-network-monitor">X2 - Network monitor</h3>
+<p>Online, synced (<a class=ev href="../S9/X2/03-netmon-synced.webp">X2/03-netmon-synced.png</a>): "Synced / Connected to the Dash network", Block headers / Block filters / Masternode list height / ChainLock height all 1,556,595, plus "The wallet engine does not report individual peer connections." and "Peer and block lists come from the dashj diagnostic engine. Turn on dashj sync in Tools to view them." Rotation to landscape and back is clean, no lock, no data loss (<code>X2/04</code>, <code>X2/05</code>).</p>
+<p>During sync (<a class=ev href="../S9/X2/13-netmon-during-sync.webp">X2/13-netmon-during-sync.png</a>): stage label "Downloading block headers", "99%", ranges "1,556,616 / 1,556,621" - per-stage labels work.</p>
+<p>Airplane mode ON while running and synced, checked at 1 / 2 / 4 minutes (<code>X2/09,10,11</code>): unchanged "Synced / Connected to the Dash network", heights frozen at 1,556,616. The engine's own last phase line was <code>07:44:53 L1Shadow phase=HEADERS</code> and then nothing. Net restored -&gt; "Downloading block headers 99%" then Synced 1,556,622 (<code>X2/12</code>, <code>X2/15</code>).</p>
+<h3 id="x3-unable-to-connect">X3 - "unable to connect"</h3>
+<p>Cold launch with wifi+data disabled:
+- Home header briefly showed <strong>1.996984 tDASH</strong> - ~2x the true balance - for &gt;30 s (<code>X3/02</code>, <code>X3/03</code>), then settled to 0.999991 with the "Syncing balance" label (<code>X3/07</code>). Root cause in the log: <code>07:41:08 L1ShadowSyncService - WalletBalanceFacts: total=199698418 ... confirmed=99999322 unconfirmed=99699096 txCount=5</code>.
+- Network monitor after 5 min offline: still "Synced / Connected to the Dash network", heights 1,556,608 (<code>X3/04</code>, <code>X3/06</code>), while the engine had reported <code>07:35:32 L1Shadow phase=CONNECTING</code>.
+- Home header never says "Unable to connect to the Dash network" (<code>sync_status_unable_to_connect</code>, <code>wallet/res/values/strings-extra.xml:375</code>); grepping <code>wallet/src</code> shows <strong>no code reference to that string at all</strong>.
+- Recovery: network enabled 07:41:35 -&gt; <code>07:41:37 phase=MASTERNODES</code> (2 s) -&gt; <code>07:41:41 phase=SYNCED</code> 1,556,613 (6 s).</p>
+<h3 id="x4-csv-export">X4 - CSV export</h3>
+<p>5 transactions (<code>dash-sdk.db transactions = 5</code>; 1 Received + 4 Internal, <a class=ev href="../S9/X4/04-home-txlist.webp">X4/04-home-txlist.png</a>). Export reaches the share sheet as <a class=ev href="../S9/X4/dash-wallet-transactions-2026-09-19.csv">dash-wallet-transactions-2026-09-19.csv</a> (<code>X4/03</code>); the file lands in <code>/data/data/&lt;pkg&gt;/cache/report/</code> and is pulled to <a class=ev href="../S9/X4/dash-wallet-transactions-2026-09-19.csv">X4/dash-wallet-transactions-2026-09-19.csv</a>. Content: header + <strong>1 row</strong> -</p>
+<pre><code>2026-09-19T06:35:54Z,Income,,DASH,DASH Wallet,1.00,DASH,DASH Wallet,,,,afcfb69ab343b09c09d2bce10e880964279112da1a92e8622ef6ea2354daf267
+</code></pre>
+<p>Amount, date and txid correct. The 4 internal self-sends are excluded deliberately (<code>CSVExporter.kt:60</code>, <code>shouldExclude = excludeInternal &amp;&amp; isInternal(tx) &amp;&amp; opReturnBurnDuffs(tx) == 0L</code>), so 1 row vs 5 UI rows is by design - but the ~904 duffs of real fees those txs paid are absent, and <code>Fee</code>/<code>Fee Currency</code> are hard-wired empty (<code>TaxBitExporter.kt:42-43</code>).</p>
+<p>Empty wallet (after Reset Wallet -&gt; Create new wallet): "There are no transactions to export yet." (<code>X4/13</code>) - <code>report_transaction_history_dialog_export_csv_empty</code> correct.</p>
+<h3 id="x5-safe-mode-degraded-startup">X5 - Safe-mode / degraded startup</h3>
+<p>Wallet file <code>/data/data/&lt;pkg&gt;/files/wallet-protobuf-testnet</code> (178,383 bytes). Video <a class=ev href="../S9/X5/x5-safemode.mp4">X5/x5-safemode.mp4</a>.</p>
+<ol>
+<li><code>chmod 000</code> + launch -&gt; <strong>no</strong> error screen. <code>07:52:03 WalletApplication - wallet restored from backup: 'key-backup-protobuf-testnet'</code>, breadcrumb <code>96 WALLET_RECOVERED_FROM_BACKUP +1986ms</code>, home shows the correct 0.999991 (<code>X5/02</code>, <code>X5/03</code>). Every autosave then throws <code>java.io.FileNotFoundException: .../wallet-protobuf-testnet: open failed: EACCES</code> silently.</li>
+<li><code>chmod 600</code> + <code>chown u0_a209</code> + relaunch -&gt; wallet intact, 0.999991 (<code>X5/04</code>).</li>
+<li>Truncate to 89,191 of 178,383 bytes + launch -&gt; recovered from backup in 524 ms, balance correct (<code>X5/06</code>). Backup restored afterwards.</li>
+<li>Forced safe mode (breadcrumb trail rewritten to <code>previous=INCOMPLETE_PRE_MILESTONE prevLastStage=4</code>, <code>startup.failures=1</code>): header became <code>failures=1 safeModeRuns=1 safeMode=true</code>, breadcrumb <code>91 WALLET_LOAD_SKIPPED_SAFE_MODE +165ms</code>. The <strong>first</strong> thing the user sees is the generic ACRA sheet "Previous crash detected / Would you like to send a crash report..." (<code>X5/07</code>); only after Cancel does <code>safe_mode_startup_message</code> + <strong>Try Again / Report / Close</strong> appear (<code>X5/09</code>). "Try Again" -&gt; <code>98 SAFE_MODE_RETRY</code> -&gt; <code>99 SAFE_MODE_RETRY_OK</code>, wallet loads, balance 0.999991 (<code>X5/11</code>).</li>
+</ol>
+<h3 id="x6-6-hour-foreground-service-notice-not-run">X6 - 6-hour foreground-service notice - NOT RUN</h3>
+<ul>
+<li><code>wallet/res/values/strings.xml:397</code> <code>notification_background_processes_paused</code> = "Background processing paused"</li>
+<li><code>wallet/res/values/strings.xml:398</code> <code>notification_background_processes_paused_text</code> = "You've reached the Android 6-hour foreground service limit for blockchain sync. Tap to reset..."</li>
+<li>Used at <code>wallet/src/de/schildbach/wallet/service/BlockchainServiceImpl.kt:3077</code> and <code>:3079</code>, reached from <code>override fun onTimeout(startId, fgsType)</code> at <code>:3044</code>. A test-only simulation hook exists at <code>:2099-2104</code> (<code>TEST_TIMEOUT_MINUTES</code>) but is not enabled in the release build.</li>
+</ul>
+<h3 id="x7-dashpay-contact-requests">X7 - DashPay contact requests</h3>
+<ul>
+<li><strong>Without an identity there is no contacts UI at all</strong>: bottom nav has 3 items and the home card routes to "Welcome to Dash Pay / Create a username" (<code>X7/04</code>). Searching for <code>qa1s13939</code> and hitting a "no identity" error is unreachable.</li>
+<li>Shield 0.99999096 -&gt; shielded 0.997 (fee ~0.003), but only after a kill+relaunch (defect S9-D5): <code>X7/12</code>, <code>X7/19</code>, <code>X7/21</code>.</li>
+<li>Username <strong><code>qa9s9zkrmvtpqwxnb3d7</code></strong> (20 chars, non-contested) created from the shielded pool for 0.03: <code>08:16:34 BlockchainIdentityData - creation: BlockchainIdentityData(DONE, qa9s9zkrmvtpqwxnb3d7, CONFIRMED, null, null, DHP9CGTqKAcMt83ryjDosYGEGD3sKzxe9wW9SocKvco5)</code> (<code>X7/26</code>-<code>X7/34</code>). No transaction-history row was written for it (confirms D-007 / SR-11) - only the "Shielded" row appears (<code>X7/39</code>).</li>
+<li><strong>Airplane mode + "Send request"</strong>: tapped twice, waited 30 s - the button is completely inert. No spinner, no toast, no <code>send_contact_request_error_title</code>/<code>_message</code> dialog, no state change (<code>X7/44</code>, <code>X7/45</code>). Only background DAPI "tcp connect error" noise in the log.</li>
+<li>Network back on -&gt; "Send request" -&gt; "Request sent", Activity row "Contact request sent 3:22 AM" (<code>X7/50</code>); Contacts shows "Pending Requests (1) / QA Stream Five / Contact Request Pending" (<code>X7/51</code>).</li>
+<li>Non-existent <code>zzzznotarealuser9999</code> -&gt; clean empty state "There are no users that match ..." (<code>X7/52</code>).</li>
+</ul>
+<h3 id="x8-notification-channels">X8 - Notification channels</h3>
+<p><code>am start -a android.settings.APP_NOTIFICATION_SETTINGS ...</code> (<code>X8/01</code>) plus <code>/data/system/notification_policy.xml</code>. All six channels present and enabled:</p>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>name</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>dash.notifications.ongoing</code></td>
+<td>Synchronization</td>
+<td>"Shows a notification when the app is synchronizing with the network."</td>
+</tr>
+<tr>
+<td><code>dash.notifications.generic</code></td>
+<td>Generic notifications</td>
+<td>"Other Dash Wallet events"</td>
+</tr>
+<tr>
+<td><code>dash.notifications.contacts</code></td>
+<td>Contact requests</td>
+<td>"Alerts you when someone sends you a contact request."</td>
+</tr>
+<tr>
+<td><code>dash.notifications.dashpay</code></td>
+<td>DashPay</td>
+<td>"Status of ongoing DashPay operations."</td>
+</tr>
+<tr>
+<td><code>dash.notifications.push</code></td>
+<td>Push Notifications</td>
+<td>"Shows push notifications sent to you by Dash"</td>
+</tr>
+<tr>
+<td><code>dash.notifications.transactions</code></td>
+<td>Transactions</td>
+<td>"Receive alerts about incoming transactions."</td>
+</tr>
+</tbody>
+</table>
+<p>No live sync foreground notification was posted while I looked (<a class=ev href="../S9/X8/03-shade.webp">X8/03-shade.png</a>) - the wallet was already synced.</p>
+<h2 id="defects-found">Defects found</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Sev</th>
+<th>Title</th>
+<th>Repro steps</th>
+<th>Evidence</th>
+<th>Suspected area</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S9-D1</td>
+<td><strong>S2</strong></td>
+<td>Network monitor and home header never show a disconnected state: with wifi+data off for 4-6 min the monitor still reads "Synced / Connected to the Dash network" with frozen heights, while the engine's last phase was CONNECTING/HEADERS</td>
+<td>Sync to 100% -&gt; Tools &gt; Network monitor -&gt; <code>svc wifi disable; svc data disable</code> -&gt; wait 4 min</td>
+<td><code>X2/09,10,11</code>, <code>X3/04,06</code>; log <code>07:35:32 L1Shadow phase=CONNECTING</code>, <code>07:44:53 phase=HEADERS</code>, then nothing</td>
+<td><code>ui/NetworkMonitorViewModel.kt:73-81</code> has no disconnected branch; <code>sync_status_unable_to_connect</code> (<code>strings-extra.xml:375</code>) has <strong>zero</strong> references in <code>wallet/src</code></td>
+</tr>
+<tr>
+<td>S9-D2</td>
+<td><strong>S2</strong></td>
+<td>Cold launch shows a balance ~2x the real one for &gt;30 s (1.996984 vs 0.999991) on a wallet whose only txs are self-sends</td>
+<td>Wallet with &gt;=1 self-send -&gt; force-stop -&gt; launch -&gt; read the header</td>
+<td><code>X3/02</code>, <code>X3/03</code>; log <code>07:41:08 WalletBalanceFacts: total=199698418 ... confirmed=99999322 unconfirmed=99699096 txCount=5</code></td>
+<td><code>L1ShadowSyncService</code> WalletBalanceFacts / <code>CutoverUiDataService</code> publish the partial during rescan (extends D-002 / SR-10)</td>
+</tr>
+<tr>
+<td>S9-D3</td>
+<td><strong>S3</strong></td>
+<td>Contact request while offline: "Send request" is silently inert - no spinner, no toast, no <code>send_contact_request_error_*</code> dialog</td>
+<td>Identity registered -&gt; Contacts &gt; search a real user -&gt; disable wifi+data -&gt; tap "Send request" x2, wait 30 s</td>
+<td><code>X7/44</code>, <code>X7/45</code></td>
+<td><code>send_contact_request_error_title/_message</code> (<code>strings-dashpay.xml:160-161</code>) never surfaced; contact-request send path</td>
+</tr>
+<tr>
+<td>S9-D4</td>
+<td><strong>S3</strong></td>
+<td>Safe-mode screen is hidden behind the generic ACRA crash sheet; the user must Cancel a "send a crash report?" prompt before seeing <code>safe_mode_startup_message</code> and "Try Again"</td>
+<td>Two pre-milestone launch deaths (or equivalent breadcrumb state) -&gt; launch</td>
+<td><code>X5/07</code> then <code>X5/09</code></td>
+<td><code>StartupBreadcrumbs</code> / crash-report dialog ordering (relates to SR-41)</td>
+</tr>
+<tr>
+<td>S9-D5</td>
+<td><strong>S3</strong></td>
+<td>Shielded transfer screen stuck on "Shielded balance is syncing - transfers will be available shortly" for &gt;8 min, blocking Continue; only a force-stop + relaunch cleared it</td>
+<td>Fresh wallet with 1 tDASH -&gt; Join DashPay &gt; Continue &gt; Shield your funds first &gt; Max &gt; Continue</td>
+<td><code>X7/09</code>, <code>X7/12</code>, <code>X7/14</code>, then <code>X7/19</code> after relaunch; log only repeats <code>ShieldedBalanceServiceImpl - shielded runtime ready ... (sync loop running)</code> every ~60 s</td>
+<td><code>ui/shielded/*</code> gating flow / <code>ShieldedBalanceServiceImpl</code> readiness signal (adjacent to SR-12/SR-14)</td>
+</tr>
+<tr>
+<td>S9-D6</td>
+<td><strong>S3</strong></td>
+<td>"Join DashPay" affordability warning reads the transparent balance only: "You have 0.00001225 Dash. Some usernames cost up to 0.25 Dash." while 0.997 tDASH sits in the shielded pool the next screen offers to pay from</td>
+<td>Shield all funds -&gt; home &gt; Join DashPay</td>
+<td><code>X7/22a</code> vs <code>X7/24</code></td>
+<td>DashPay onboarding balance check</td>
+</tr>
+<tr>
+<td>S9-D7</td>
+<td><strong>S4</strong></td>
+<td>Self-send result sheet names the <strong>change</strong> address as "Sent to" and shows the fee as the amount ("Amount Sent -0.00000226") instead of the 0.001 sent to the typed address</td>
+<td>Send 0.001 to one of your own receive addresses</td>
+<td><code>X1/29</code>, <code>X1/43</code></td>
+<td>post-cutover tx-detail seam</td>
+</tr>
+<tr>
+<td>S9-D8</td>
+<td><strong>S4</strong></td>
+<td>CSV export omits the fees of internal self-transfers: 5 txs in the UI, 1 row in the CSV, and <code>Fee</code>/<code>Fee Currency</code> are always empty, so ~904 duffs of real spend is invisible to a tax importer</td>
+<td>Wallet with self-sends -&gt; Tools &gt; CSV export</td>
+<td><a class=ev href="../S9/X4/dash-wallet-transactions-2026-09-19.csv">X4/dash-wallet-transactions-2026-09-19.csv</a> vs <code>X4/04</code></td>
+<td><code>transactions/CSVExporter.kt:60</code>, <code>transactions/TaxBitExporter.kt:42-43</code></td>
+</tr>
+</tbody>
+</table>
+<p>Re-confirmations of existing ledger entries: <strong>SR-28</strong> (flat 0.0001 fee shown, 226 duffs actually paid - <code>X1/28</code> vs <code>X1/29</code>), <strong>D-007 / SR-11</strong> (username creation writes no history row - <code>X7/39</code>), <strong>D-001 / SR-33</strong> (1-minute foreground auto-lock fired ~30 times in 2 h and interrupted nearly every multi-step flow), <strong>D-003</strong> (receive address not rotated immediately after use, but it did rotate later - <code>X1/18</code> vs <code>X7/02</code>).</p>
+<h2 id="environment-problems-not-product-defects">Environment problems (not product defects)</h2>
+<ul>
+<li><code>qa-app.sh &lt;serial&gt; launch</code> (monkey) does not start this app on emulator-5564; used <code>am start -a android.intent.action.MAIN -c android.intent.category.LAUNCHER -n hashengineering.darkcoin.wallet_test/de.schildbach.wallet.ui.OnboardingActivity</code> throughout.</li>
+<li><code>adb uninstall hashengineering.darkcoin.wallet_test</code> returned <code>DELETE_FAILED_INTERNAL_ERROR</code>; the mainnet package uninstalled fine and the testnet APK installed clean.</li>
+<li>Faucet: <code>qa-faucet.sh</code> not used; the studio browser made exactly one request (<a class=ev href="../S9/X1/14-faucet.webp">X1/14-faucet.png</a>).</li>
+<li>The wallet was <strong>reset at 03:25</strong> to test the empty-wallet CSV case, so the device now holds a new, unfunded, unnamed wallet. Pre-reset wallet backup: <code>X5/wallet-protobuf-testnet.bak</code>.</li>
+</ul>
+<h2 id="not-run-blocked-with-reason">Not run / blocked, with reason</h2>
+<ul>
+<li><strong>X6</strong> - 6-hour FGS timeout: not reachable in a 2-hour session; code path verified by grep.</li>
+<li><strong>X7 first sub-case</strong> ("search qa1s13939 without an identity"): unreachable - no contacts UI exists before an identity.</li>
+<li><strong>X1 cycle 2 send</strong>: skipped, no teardown occurred in that window.</li>
+<li>Live sync foreground notification text: not observed; the wallet never re-entered a long replay while the shade was open.</li>
+</ul>
+<h2 id="artefacts">Artefacts</h2>
+<ul>
+<li><a class=ev href="../S9/notes.md">~/workspace/dash-wallet-qa/evidence/S9/notes.md</a>, <code>logcat.txt</code> (22 MB), <a class=ev href="../S9/mem.csv">mem.csv</a> (117 samples), <a class=ev href="../S9/oom-exitinfo.txt">oom-exitinfo.txt</a></li>
+<li><a class=ev href="../S9/final-logs/files/log/wallet.log">~/workspace/dash-wallet-qa/evidence/S9/final-logs/files/log/wallet.log</a> (1.46 MB, whole session)</li>
+<li>Videos: <a class=ev href="../S9/X1/x1-cycle1-send.mp4">X1/x1-cycle1-send.mp4</a>, <a class=ev href="../S9/X1/x1-cycle3-send.mp4">X1/x1-cycle3-send.mp4</a>, <a class=ev href="../S9/X1/x1-cycle4-failed-send.mp4">X1/x1-cycle4-failed-send.mp4</a>, <a class=ev href="../S9/X1/x1-race-send.mp4">X1/x1-race-send.mp4</a>, <a class=ev href="../S9/X5/x5-safemode.mp4">X5/x5-safemode.mp4</a></li>
+<li>Screenshots: <code>X1/</code> 64, <code>X2/</code> 15, <code>X3/</code> 15, <code>X4/</code> 14, <code>X5/</code> 13, <code>X7/</code> 53, <code>X8/</code> 3</li>
+</ul></html>

@@ -1,0 +1,46 @@
+/data/data/hashengineering.darkcoin.wallet_test/databases:
+total 10824
+drwxrwx--x  2 u0_a207 u0_a207    4096 2026-09-19 01:07 .
+drwx------ 12 u0_a207 u0_a207    4096 2026-09-19 02:03 ..
+-rw-rw----  1 u0_a207 u0_a207   57344 2026-09-19 01:05 com.google.android.datatransport.events
+-rw-rw----  1 u0_a207 u0_a207       0 2026-09-19 01:05 com.google.android.datatransport.events-journal
+-rw-rw----  1 u0_a207 u0_a207 8957952 2026-09-19 02:07 dash-sdk.db
+-rw-------  1 u0_a207 u0_a207   32768 2026-09-19 02:11 dash-sdk.db-shm
+-rw-rw----  1 u0_a207 u0_a207  524288 2026-09-19 02:11 dash-sdk.db-wal
+-rw-rw----  1 u0_a207 u0_a207  774144 2026-09-19 02:07 dash-wallet-database
+-rw-------  1 u0_a207 u0_a207   32768 2026-09-19 02:14 dash-wallet-database-shm
+-rw-------  1 u0_a207 u0_a207  524288 2026-09-19 02:14 dash-wallet-database-wal
+-rw-rw----  1 u0_a207 u0_a207   98304 2026-09-19 01:47 explore-database
+-rw-rw----  1 u0_a207 u0_a207       0 2026-09-19 01:47 explore-database-journal
+-rw-rw----  1 u0_a207 u0_a207   16384 2026-09-19 02:04 google_app_measurement_local.db
+-rw-rw----  1 u0_a207 u0_a207       0 2026-09-19 02:04 google_app_measurement_local.db-journal
+
+/data/data/hashengineering.darkcoin.wallet_test/files:
+total 4412
+drwxrwx--x  9 u0_a207 u0_a207    4096 2026-09-19 02:04 .
+drwx------ 12 u0_a207 u0_a207    4096 2026-09-19 02:03 ..
+drwx------  6 u0_a207 u0_a207    4096 2026-09-19 01:47 .com.google.firebase.crashlytics.files.v2:hashengineering.darkcoin.wallet_test
+drwx------  5 u0_a207 u0_a207    4096 2026-09-19 01:05 AFRequestCache
+-rw-------  1 u0_a207 u0_a207     114 2026-09-19 01:47 PersistedInstallation.W0RFRkFVTFRd+MTowMDAwMDAwMDAwMDA6YW5kcm9pZDowMDAwMDAwMDAwMDAwMDAx.json
+drwx------  2 u0_a207 u0_a207    4096 2026-09-19 02:09 datastore
+-rw-------  1 u0_a207 u0_a207       0 2026-09-19 01:05 generatefid.lock
+-rw-rw----  1 u0_a207 u0_a207   15328 2026-09-19 02:04 key-backup-protobuf-testnet
+drwx------  3 u0_a207 u0_a207    4096 2026-09-19 02:04 l1_shadow_spv
+drwx------  2 u0_a207 u0_a207    4096 2026-09-19 01:05 log
+drwx------  2 u0_a207 u0_a207    4096 2026-09-19 01:32 migration_flags
+drwx------  7 u0_a207 u0_a207    4096 2026-09-19 01:47 sdk-logs
+-rw-------  1 u0_a207 u0_a207  200704 2026-09-19 01:07 shielded_tree_testnet.sqlite
+-rw-------  1 u0_a207 u0_a207   32768 2026-09-19 02:07 shielded_tree_testnet.sqlite-shm
+-rw-------  1 u0_a207 u0_a207 4120032 2026-09-19 02:07 shielded_tree_testnet.sqlite-wal
+-rw-------  1 u0_a207 u0_a207    1284 2026-09-19 02:04 startup.breadcrumbs
+-rw-------  1 u0_a207 u0_a207       1 2026-09-19 02:04 startup.failures
+-rw-------  1 u0_a207 u0_a207       1 2026-09-19 02:04 startup.safemoderuns
+-rw-------  1 u0_a207 u0_a207   15322 2026-09-19 02:04 wallet-protobuf-testnet
+
+/data/data/hashengineering.darkcoin.wallet_test/files/log:
+total 2676
+drwx------ 2 u0_a207 u0_a207    4096 2026-09-19 01:05 .
+drwxrwx--x 9 u0_a207 u0_a207    4096 2026-09-19 02:04 ..
+-rw------- 1 u0_a207 u0_a207 2715143 2026-09-19 02:16 wallet.log
+490576	/data/data/hashengineering.darkcoin.wallet_test/files/l1_shadow_spv
+10816	/data/data/hashengineering.darkcoin.wallet_test/databases

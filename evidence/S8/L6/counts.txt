@@ -1,0 +1,5 @@
+2026-09-19T02:02:05 L6 PRE-RESET grow=2879 display=2828 sdk=2876 delta=48 (L1 started at grow=1200)
+2026-09-19T02:03:42 L6 restore start, grow=3000
+2026-09-19T02:04:29 L6 PIN submitted
+2026-09-19T02:10:10 L6 POST-RESTORE grow=3000 display=2543 sdk=3001 delta=458
+2026-09-19T02:10:40 L6 POST-RESTORE grow=3000 display=2543 sdk=3001 delta=458

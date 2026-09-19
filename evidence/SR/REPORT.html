@@ -1,0 +1,556 @@
+<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Stream SR report</title><style>body{font-family:system-ui,-apple-system,sans-serif;max-width:1400px;margin:0 auto;padding:16px 24px;line-height:1.45;background:#fff;color:#111}
+table{border-collapse:collapse;font-size:13px;margin:12px 0}th,td{border:1px solid #ddd;padding:4px 8px;vertical-align:top;text-align:left}th{background:#f3f6fa;position:sticky;top:0}
+tr:nth-child(even){background:#fafbfc}code{background:#f4f4f4;padding:1px 4px;border-radius:3px;font-size:12px}pre{background:#f4f4f4;padding:10px;overflow:auto}
+h1{border-bottom:3px solid #008de4}h2{border-bottom:1px solid #ccc;margin-top:40px}a{color:#008de4}a.ev{background:#e8f4fd;padding:0 3px;border-radius:3px;font-family:ui-monospace,monospace;font-size:12px}
+nav.top{background:#012060;color:#fff;padding:8px 24px;margin:-16px -24px 16px;position:sticky;top:0;z-index:5}nav.top a{color:#fff;margin-right:18px;text-decoration:none}nav.top a:hover{text-decoration:underline}
+.S1{color:#b00020;font-weight:bold}.S2{color:#c75000;font-weight:bold}.toc{background:#f8f9fb;border:1px solid #e3e6ea;padding:8px 16px;font-size:13px;columns:2}.toc ul{margin:2px 0;padding-left:16px}
+.note{background:#fff8e1;border-left:4px solid #f5b400;padding:8px 12px;margin:12px 0}
+</style><nav class=top><a href="../../index.html">Home</a><a href="../../QA-REPORT.html">Full report</a><a href="../../EXEC-SUMMARY.html">Executive summary</a><a href="../../STORY-MATRIX.html">User-story matrix</a><a href="../../DEFECT-LEDGER.html">Defect register</a><a href="../index.html">Evidence gallery</a><a href="../../QA-PLAN.html">Test plan</a><a href="../../streams.html">Stream reports</a></nav><h1 id="stream-sr-static-risk-review-no-devices-of-fixupgrade-memory-and-sync-616ac58ff">Stream SR — static risk review (no devices) of fix/upgrade-memory-and-sync @ 616ac58ff</h1>
+<p>Paths relative to <code>~/workspace/dash-wallet-qa/wt-fix/</code>.</p>
+<h2 id="findings-table-most-severe-first">Findings table (most severe first)</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Sev</th>
+<th>Title</th>
+<th>File:line</th>
+<th>Ledger</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SR-01</td>
+<td><strong>S1</strong></td>
+<td>Filter-stall watchdog cancels its own coroutine inside <code>stop()</code>; the SPV engine is stopped and <strong>never restarted</strong> — the 99%-forever stall becomes permanent</td>
+<td><code>wallet/src/de/schildbach/wallet/service/platform/sdk/L1ShadowSyncService.kt:2713-2723</code>, <code>:2777-2806</code>, <code>:2320-2333</code>, <code>:3396-3401</code></td>
+<td><strong>NEW — regression in HEAD commit <code>616ac58ff</code></strong></td>
+</tr>
+<tr>
+<td>SR-02</td>
+<td><strong>S1</strong></td>
+<td>Shielded-invite one-time spending key is discarded if the flow is cancelled after the note is funded → permanent, silent fund loss</td>
+<td><code>…/sdk/SdkShieldedInviteCreation.kt:349-419</code> (key at <code>:350</code>, spend at <code>:359</code>, persist at <code>:413</code>); caller <code>ui/more/ConfirmInviteDialogFragment.kt:147</code></td>
+<td>NEW</td>
+</tr>
+<tr>
+<td>SR-03</td>
+<td><strong>S1</strong></td>
+<td>Receive screen is pinned to external key <strong>#0</strong> forever — restored wallets publish their oldest, most-reused address</td>
+<td><code>ui/payments/PaymentsReceiveFragment.kt:115-118</code> → <code>ui/payments/PaymentsViewModel.kt:54-59</code> → <code>WalletApplication.java:1962-1964</code></td>
+<td><strong>root cause of D-003</strong></td>
+</tr>
+<tr>
+<td>SR-04</td>
+<td><strong>S1</strong></td>
+<td><code>freshReceiveAddress()</code> equally poisoned: Topper/Coinbase deposit addresses and paper-wallet sweeps go to already-used addresses</td>
+<td><code>WalletApplication.java:1968-1970</code>; <code>ui/buy_sell/BuyAndSellViewModel.kt:271-278</code>; <code>ui/main/shortcuts/ShortcutsViewModel.kt:211-218</code>; <code>ui/payments/SweepWalletFragment.java:621</code></td>
+<td>NEW</td>
+</tr>
+<tr>
+<td>SR-05</td>
+<td><strong>S1</strong></td>
+<td>A stale <code>wallet-wipe.pending</code> marker destroys a healthy, funded wallet on the next cold launch, with no confirmation</td>
+<td><code>util/WalletWipeState.kt:95-99</code>; <code>WalletApplication.java:390-395</code>; <code>WalletApplicationExt.kt:105-125</code></td>
+<td>NEW</td>
+</tr>
+<tr>
+<td>SR-06</td>
+<td><strong>S1</strong></td>
+<td>Periodic background-sync alarm passes <code>INTERVAL_DAY</code> as its repeat interval, so the 15-min backoff is discarded and the alarm is never delivered → no dependable background sync</td>
+<td><code>WalletApplication.java:1818</code> (interval chosen <code>:1741-1746</code>; shared PendingIntent <code>:1773-1782</code>)</td>
+<td>docs §32, <strong>unfixed in code</strong></td>
+</tr>
+<tr>
+<td>SR-07</td>
+<td><strong>S1</strong></td>
+<td><code>fallbackToDestructiveMigration()</code> is global, not scoped to v1–11 as its comment claims → every table dropped on any downgrade from schema 22</td>
+<td><code>di/DatabaseModule.kt:56</code> (cf. <code>fallbackToDestructiveMigrationFrom</code> in <code>androidTest/…/DatabaseMigrationTest.kt:100</code>)</td>
+<td>NEW</td>
+</tr>
+<tr>
+<td>SR-08</td>
+<td><strong>S1</strong></td>
+<td><code>prodRelease</code> silently seeds all five <code>USE_KOTLIN_SDK_*</code> flags on first launch after upgrade — real mainnet funds onto unreviewed paths</td>
+<td><code>ui/dashpay/utils/DashPayConfig.kt:651-660</code>, <code>:374-391</code> (KDoc <code>:364-372</code>)</td>
+<td>release gate</td>
+</tr>
+<tr>
+<td>SR-09</td>
+<td><strong>S2</strong></td>
+<td><code>idling detected, stopping service</code> every minute forever: <code>stopSelf()</code> can't destroy a <strong>bound</strong> service but <em>latches</em> the stop — the service dies the instant the user leaves MainActivity, and SR-06 means nothing brings it back</td>
+<td><code>service/BlockchainServiceImpl.kt:2007-2010</code>; <code>ui/AbstractBindServiceActivity.kt:48-78</code></td>
+<td><strong>root cause of D-004</strong></td>
+</tr>
+<tr>
+<td>SR-10</td>
+<td><strong>S2</strong></td>
+<td>Mid-replay "hold last known balance" is inert on a created/restored wallet (<code>lastKnown == null</code> → falls through to the live partial)</td>
+<td><code>…/sdk/CutoverUiDataService.kt:2384-2398</code>; seed <code>:2545-2547</code>; persist gate <code>:2769-2786</code></td>
+<td><strong>root cause of D-002</strong></td>
+</tr>
+<tr>
+<td>SR-11</td>
+<td><strong>S2</strong></td>
+<td>Username created from the shielded pool writes <strong>no</strong> transaction-history row — a gap, not a design decision</td>
+<td><code>…/sdk/SdkShieldedUsernameCreation.kt:788-796</code>; <code>…/sdk/CutoverUiDataService.kt:375-387</code>, <code>:3230-3231</code>; orphan API <code>…/ShieldedBalanceServiceImpl.kt:1055-1062</code></td>
+<td><strong>root cause of D-007</strong></td>
+</tr>
+<tr>
+<td>SR-12</td>
+<td><strong>S2</strong></td>
+<td>Shielded stall watchdog fires on healthy transfers (40 s vs a ~30 s proof) and, once fired, <strong>permanently bricks</strong> the transfer screen</td>
+<td><code>ui/shielded/ShieldedTransferExecutor.kt:293-301</code>, <code>:631-634</code>, <code>:663-670</code>; <code>ui/shielded/ShieldedTransferScreen.kt:293</code>, <code>:406-416</code>, <code>:1108-1152</code></td>
+<td>NEW</td>
+</tr>
+<tr>
+<td>SR-13</td>
+<td><strong>S2</strong></td>
+<td>Shielded Send spend runs in <code>viewModelScope</code>; on VM clear the outcome is lost while the JNI proof may still broadcast, and the screen resets to re-submittable</td>
+<td><code>ui/shielded/ShieldedSendViewModel.kt:160</code>, <code>:167</code>, <code>:181</code>, <code>:218-243</code></td>
+<td>NEW</td>
+</tr>
+<tr>
+<td>SR-14</td>
+<td><strong>S2</strong></td>
+<td>Shielded username/invite creation has <strong>no</strong> stall watchdog; a wedged FFI leaves <code>Proving</code> forever and the single-flight gate refuses all retries for the process</td>
+<td><code>…/sdk/SdkShieldedUsernameCreation.kt:769-800</code>, <code>:810-818</code>; <code>ui/shielded/ShieldedUi.kt:88-99</code></td>
+<td>NEW</td>
+</tr>
+<tr>
+<td>SR-15</td>
+<td><strong>S2</strong></td>
+<td>Filter-stall watchdog restart costs up to <strong>155,000 blocks</strong> of re-scan, and its 10-min threshold sits inside the window where the filter cursor legitimately doesn't move</td>
+<td><code>…/sdk/L1ShadowSyncService.kt:3480-3496</code>, <code>:2317-2323</code>, <code>:2354-2377</code>; <code>service/SyncActivityIdleDetector.kt:91-109</code></td>
+<td>NEW</td>
+</tr>
+<tr>
+<td>SR-16</td>
+<td><strong>S2</strong></td>
+<td>Send-all drain guard's dashj half is structurally inert post-cutover (held wallet has 0 UTXOs); the seam half has no live producer → both misses and permanent false positives</td>
+<td><code>…/sdk/SdkL1SendService.kt:1155</code>, <code>:1546</code>; <code>ui/send/SendCoinsViewModel.kt:461</code>; <code>crowdnode/utils/CrowdNodeConstants.kt:44</code></td>
+<td>NEW</td>
+</tr>
+<tr>
+<td>SR-17</td>
+<td><strong>S2</strong></td>
+<td><code>SeamOutputLockRegistry</code> has <strong>no release API</strong> and the guard consults a global <code>hasAnyLocks()</code> — one lock refuses every send-all wallet-wide until process restart</td>
+<td><code>…/sdk/SeamOutputLockRegistry.kt:56-73</code></td>
+<td>NEW (latent behind a disabled flag)</td>
+</tr>
+<tr>
+<td>SR-18</td>
+<td><strong>S2</strong></td>
+<td><code>estimateNetworkFee</code> never migrated — still calls <code>completeTx</code> on the held dashj wallet → Coinbase transfer dead-ends with a false "insufficient funds" and never prompts for auth</td>
+<td><code>payments/SendCoinsTaskRunner.kt:580-623</code> (<code>:602</code>); <code>integrations/coinbase/…/TransferDashFragment.kt:137</code></td>
+<td>NEW</td>
+</tr>
+<tr>
+<td>SR-19</td>
+<td><strong>S2</strong></td>
+<td>Memo and exchange rate silently dropped on every SDK-routed send; <code>onCoinsReceived</code> backstop never fires for a drain</td>
+<td><code>ui/send/SendCoinsViewModel.kt:283-284</code>; <code>payments/SendCoinsTaskRunner.kt:437</code>, <code>:1075</code>, <code>:1179</code>; <code>service/BlockchainServiceImpl.kt:665-682</code></td>
+<td>NEW</td>
+</tr>
+<tr>
+<td>SR-20</td>
+<td><strong>S2</strong></td>
+<td><code>WalletWipeSequence.finish()</code> calls <code>markComplete()</code> even when most of the wipe failed — every step after the first swallows its own exception</td>
+<td><code>util/WalletWipeSequence.kt:94-103</code>; <code>WalletApplicationExt.kt:111-125</code>, <code>:167-203</code>; <code>WalletApplication.java:1903-1907</code></td>
+<td>NEW</td>
+</tr>
+<tr>
+<td>SR-21</td>
+<td><strong>S2</strong></td>
+<td>Reset can hang on the "resetting…" spinner indefinitely (<code>wipeInProgress.first { !it }</code> with no timeout) when the service is already tearing down</td>
+<td><code>ui/OnboardingActivity.kt:408-412</code>; <code>WalletApplication.java:1834-1838</code>; <code>service/BlockchainServiceImpl.kt:2696-2700</code>, <code>:2872-2876</code>, <code>:3005</code></td>
+<td>NEW</td>
+</tr>
+<tr>
+<td>SR-22</td>
+<td><strong>S2</strong></td>
+<td>Restore date picker opens on <strong>today</strong>; one confirm tap sets a birth height that hides the wallet's entire history, and it is not correctable in place</td>
+<td><code>ui/RestoreWalletFromSeedActivity.kt:167-189</code>; <code>…/sdk/SdkWalletBinder.kt:80-90</code>; <code>…/sdk/BirthHeightResolver.kt:41</code>, <code>:78</code>, <code>:83-90</code>, <code>:106-122</code></td>
+<td>NEW</td>
+</tr>
+<tr>
+<td>SR-23</td>
+<td><strong>S2</strong></td>
+<td><code>targetSdk</code>/<code>compileSdk</code> regressed 36 → 35 in every module — Play rejects new releases targeting &lt; 36 as of 31 Aug 2026</td>
+<td><code>wallet/build.gradle:285-287</code>; <code>common/build.gradle:11-13</code>; <code>features/exploredash/build.gradle:14-16</code>; all <code>integrations/*/build.gradle</code></td>
+<td><strong>release blocker</strong></td>
+</tr>
+<tr>
+<td>SR-24</td>
+<td><strong>S2</strong></td>
+<td>Autosave debounce stretched to 60 s on wallets ≥ soft limit with <strong>no</strong> forced flush after a send or on background</td>
+<td><code>WalletApplication.java:954-958</code>; <code>util/WalletFileSizeGuard.kt:138-145</code></td>
+<td>NEW</td>
+</tr>
+<tr>
+<td>SR-25</td>
+<td><strong>S2</strong></td>
+<td>RISKY size threshold is ~26 MB (fallback heap) / ~51 MB, far below what the KDoc implies; any OOM there routes to a destructive key-backup recovery announced by a single Toast</td>
+<td><code>util/WalletFileSizeGuard.kt:98-101</code>; <code>WalletApplication.java:1279-1296</code>, <code>:1371</code>, <code>:1422-1454</code></td>
+<td>NEW</td>
+</tr>
+<tr>
+<td>SR-26</td>
+<td><strong>S2</strong></td>
+<td>Preserved-aside wallet copies (<code>.oversize/.oomed/.pre-seed-restore</code>) are never reclaimed</td>
+<td><code>util/WalletFileSizeGuard.kt:161-180</code>; <code>WalletApplication.java:1532-1542</code></td>
+<td>NEW</td>
+</tr>
+<tr>
+<td>SR-27</td>
+<td><strong>S2</strong></td>
+<td>CoinJoin mixing removed and the persisted <code>privacyMode</code> dropped with no migration — a silent privacy-posture downgrade on upgrade</td>
+<td><code>database/entity/BlockchainIdentityData.kt</code>; <code>…/sdk/CoinJoinFundsMigrationService.kt:56-62</code></td>
+<td>NEW</td>
+</tr>
+<tr>
+<td>SR-28</td>
+<td>S3</td>
+<td>Confirm dialog shows a flat <strong>0.0001 DASH</strong> fee (~44× real) and uses it as the affordability gate → false "insufficient funds" near the balance</td>
+<td><code>ui/send/SendCoinsViewModel.kt:482</code>, <code>:511</code>, <code>:519</code>, <code>:525</code>; <code>ui/send/SendCoinsFragment.kt:295,300-305</code>; <code>common/…/util/Constants.kt:47</code></td>
+<td>NEW</td>
+</tr>
+<tr>
+<td>SR-29</td>
+<td>S3</td>
+<td>Send-all fee reserve is sized at 1.5 duffs/byte but the drain builds at 2 duffs/byte → <strong>every</strong> send-max fails its first attempt and depends on a string-matched retry</td>
+<td><code>…/sdk/SdkL1SendService.kt:233-234</code>, <code>:342-348</code>, <code>:1372</code>; <code>…/sdk/CoreSendAllNative.java:120</code>, <code>:235</code></td>
+<td>NEW</td>
+</tr>
+<tr>
+<td>SR-30</td>
+<td>S3</td>
+<td>Shielded "Max" (send-to-address) can never succeed: no fee reserve, and the fee-adjust retry isn't wired to that screen</td>
+<td><code>ui/shielded/ShieldedSendViewModel.kt:111-114</code>, <code>:185-193</code>; <code>…/ShieldedBalanceService.kt:413-419</code>; cf. <code>…/SdkShieldedInviteCreation.kt:104-110</code>, <code>:128</code></td>
+<td>NEW</td>
+</tr>
+<tr>
+<td>SR-31</td>
+<td>S3</td>
+<td>Fiat-mode "Max" loses max-spend handling via a lossy round trip → "Insufficient funds" or a failed transfer after a 30 s proof</td>
+<td><code>ui/shielded/ShieldedTransferViewModel.kt:257-262</code>, <code>:293-294</code>, <code>:623-633</code>, <code>:710</code></td>
+<td>NEW</td>
+</tr>
+<tr>
+<td>SR-32</td>
+<td>S3</td>
+<td>Send screen "Max" has <strong>no</strong> replay hold, so it publishes the untrusted partial while the header holds last-known</td>
+<td><code>…/sdk/CutoverUiDataService.kt:2400-2413</code>; <code>ui/send/SendCoinsViewModel.kt:181-189</code></td>
+<td>extends D-002</td>
+</tr>
+<tr>
+<td>SR-33</td>
+<td>S3</td>
+<td>Foreground auto-lock every ~60 s is the <strong>default</strong> <code>auto_logout_minutes = 1</code> + a timer reset only by <code>onUserInteraction</code>. <strong>Pre-existing in 11.9.0</strong></td>
+<td><code>common/…/Configuration.java:164,172</code>; <code>AutoLogout.java:35,88-108</code>; <code>ui/LockScreenActivity.kt:166-172,182-192,280,454-456</code></td>
+<td><strong>root cause of D-001 — recommend downgrade</strong></td>
+</tr>
+<tr>
+<td>SR-34</td>
+<td>S3</td>
+<td>0-minute ("logout immediately") mode became live for the first time in this branch — <code>onStoppedLast()</code> was dead code before MO-995</td>
+<td><code>WalletActivityTracker.java:83-89</code>, <code>:140-178</code> (rotation guard <code>:162-164</code>)</td>
+<td>NEW aggravator to D-001</td>
+</tr>
+<tr>
+<td>SR-35</td>
+<td>S3</td>
+<td>Filter-stall watchdog latches <code>EXHAUSTED</code> for the life of the process; give-up is WARN/INFO only, no user surface</td>
+<td><code>…/sdk/L1ShadowSyncService.kt:1143-1155</code>, <code>:2797-2814</code></td>
+<td>NEW</td>
+</tr>
+<tr>
+<td>SR-36</td>
+<td>S3</td>
+<td><code>WalletWipeSequence.begin()</code> proceeds with a destructive wipe after failing to write its own recovery marker</td>
+<td><code>util/WalletWipeSequence.kt:60-67</code>; <code>util/WalletWipeState.kt:65-76</code></td>
+<td>NEW</td>
+</tr>
+<tr>
+<td>SR-37</td>
+<td>S3</td>
+<td>CrowdNode account locking throws <code>IllegalStateException</code> mid-flow when the tx seam hasn't primed — after the signup tx is broadcast</td>
+<td><code>data/WalletDataAdapter.kt:191-201</code>, <code>:227</code>; <code>…/sdk/CutoverTxSeamService.kt:229</code>, <code>:233-238</code></td>
+<td>NEW (latent)</td>
+</tr>
+<tr>
+<td>SR-38</td>
+<td>S3</td>
+<td>Oversize / OOM wallet recovery renames the wallet file aside and depends on <code>restoreWalletFromBackup()</code>; a null result drops the user to onboarding needing their seed</td>
+<td><code>WalletApplication.java:1195-1214</code>, <code>:1279-1296</code>; <code>util/WalletFileSizeGuard.kt:63-108</code></td>
+<td>NEW</td>
+</tr>
+<tr>
+<td>SR-39</td>
+<td>S3</td>
+<td>Default <code>abiFilters</code> drops <code>armeabi-v7a</code>; with minSdk 29 those users silently stop receiving updates; QA never exercises the shipped x86_64 native path</td>
+<td><code>wallet/build.gradle:294-305</code></td>
+<td>NEW</td>
+</tr>
+<tr>
+<td>SR-40</td>
+<td>S3</td>
+<td><code>RECEIVER_NOT_EXPORTED</code> gated at API 26 instead of 33 → receiver <strong>exported</strong> on API 29–32; any app can force-finish the wallet activity</td>
+<td><code>common/…/InteractionAwareActivity.java:37-41</code></td>
+<td>pre-existing</td>
+</tr>
+<tr>
+<td>SR-41</td>
+<td>S3</td>
+<td>20 s wallet-load budget can strand a legitimately slow launch on the safe-mode crash-report screen</td>
+<td><code>util/WalletLoadBudget.kt:59</code>; <code>WalletApplication.java:1223-1231</code>; <code>util/StartupBreadcrumbs.kt:149</code>, <code>:311-320</code></td>
+<td>NEW ("Try again" workaround)</td>
+</tr>
+<tr>
+<td>SR-42</td>
+<td>S4</td>
+<td>CrowdNode/contact handlers still run on the <em>received</em> path for our own bridged sends → polluted frequent-contacts ordering</td>
+<td><code>service/BlockchainServiceImpl.kt:704</code>, <code>:713-717</code>, <code>:730</code>, <code>:777</code></td>
+<td>acknowledged NOT FIXED in <code>e4993d240</code></td>
+</tr>
+<tr>
+<td>SR-43</td>
+<td>S4</td>
+<td><code>compileSdk</code> moved <strong>inside</strong> <code>defaultConfig {}</code> in every module; only works via a Groovy closure-owner fallthrough</td>
+<td><code>wallet/build.gradle:285</code>; <code>features/exploredash/build.gradle:13-14</code></td>
+<td>NEW</td>
+</tr>
+<tr>
+<td>SR-44</td>
+<td>info</td>
+<td>The cutover state machine is a constant in shipping: every install is <code>CUT_OVER</code> from first launch; <code>DUAL_RUNNING</code>/<code>READY_OBSERVED</code>/rollback are dead paths</td>
+<td><code>…/sdk/CutoverStateMachine.kt:21-45</code>, <code>:124-141</code></td>
+<td>test-planning note</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Confirmed non-findings:</strong> migration 21→22 is byte-correct against exported schemas and all of 11→22 are registered (<code>database/AppDatabaseMigrations.kt:270-288</code>, <code>di/DatabaseModule.kt:42-54</code>); <code>Sha256Hash</code>→<code>TxId</code> entity change is schema-neutral; no SharedPreferences settings lost on upgrade; DataStore seeding off the main thread; other API-level gates correct; no exact-alarm usage.</p>
+<h2 id="detail-on-the-items-observed-by-device-streams">Detail on the items observed by device streams</h2>
+<h3 id="sr-01-the-new-watchdog-kills-the-engine-it-was-written-to-revive">SR-01 — the new watchdog kills the engine it was written to revive</h3>
+<p><code>checkFilterStall()</code> (<code>L1ShadowSyncService.kt:2777</code>) executes inside <code>watchdogJob</code> (<code>scope.launch { watchdogLoop() }</code> at <code>:2287</code>). On <code>Decision.RESTART</code> it runs <code>runCatching { stop(); startIfEnabled() }</code>; <code>stop()</code> at <code>:2328</code> does <code>watchdogJob?.cancel()</code>, cancelling the coroutine currently running it. <code>source.stopSpv()</code> (suspend, <code>:1378</code>) then throws <code>CancellationException</code> (swallowed by <code>runCatching</code>, native client may not be torn down). <code>startIfEnabled()</code> (<code>:2214</code>) begins <code>if (!isEnabled()) return false</code>, and <code>isEnabled()</code> (<code>:3396-3401</code>) wraps a DataStore read in <code>catch (e: Exception)</code>; <code>CancellationException</code> is an <code>Exception</code>, so it returns <strong>false</strong>. Net: engine stopped, all loops cancelled, INFO "engine restart declined to start", nothing ever restarts it. Only the pure decider is unit-tested. <strong>Repro:</strong> grep wallet.log for <code>filter-stall watchdog: … restarting the SPV engine</code>; expect no following <code>L1 shadow SPV started</code>, an <code>engine restart declined to start</code>, and no further <code>L1Shadow phase=</code> lines. Force via <code>filterStallThresholdMs</code> ctor param at <code>:1809</code>.</p>
+<h3 id="sr-09-root-cause-of-d-004">SR-09 — root cause of D-004</h3>
+<p><code>BlockchainServiceImpl.kt:2007-2010</code> calls <code>stopSelf()</code> from the per-minute <code>ACTION_TIME_TICK</code> receiver. <code>MainActivity</code> extends <code>AbstractBindServiceActivity</code> (binds <code>BIND_AUTO_CREATE</code> in onResume, unbinds in onPause). Android will not destroy a started service with bound clients, so the line repeats forever while foreground. Wake lock is not leaked (<code>holdWakeLockWhileReplaying</code> releases post-sync). Residual cost: dataSync FGS + notification stay up; per-minute <code>Debug.getPss()</code> walk. On Android 15+ the 6-hour cap fires <code>onTimeout</code> → "background processes paused" notification + a no-op <code>stopSelf()</code>. <strong>Real hazard:</strong> the latched stop destroys the service on the first <code>onPause</code> of MainActivity, and SR-06 means nothing brings it back.</p>
+<h3 id="sr-10-root-cause-of-d-002">SR-10 — root cause of D-002</h3>
+<p><code>CutoverUiDataService.kt:2384-2398</code>: <code>when { sdk == null -&gt; dashj; synced -&gt; sdk; lastKnown != null &amp;&amp; lastKnown.isPositive -&gt; lastKnown; else -&gt; sdk }</code>. <code>_lastKnownTotalBalance</code> is seeded from <code>WalletUIConfig.LAST_TOTAL_BALANCE</code> (<code>:2545-2547</code>), written only when <code>synced &amp;&amp; !armedRescanHold &amp;&amp; backfillStatus.settled &amp;&amp; buildsSettled</code> (<code>:2769</code>, <code>:2784-2786</code>). A wallet created or restored on this build has never had a synced launch → <code>lastKnown == null</code> → live partial published. S2's log: <code>SDK balance published: 81792053377 duffs … l1Synced=false … persistedAsLastKnown=false lastKnown=0</code>. The greyed "Syncing balance" label comes from a different source (<code>ui/main/HeaderBalanceFragment.kt:58-70</code>), so label and figure are not coupled.</p>
+<h3 id="sr-33sr-34-root-cause-of-d-001-not-a-regression">SR-33/SR-34 — root cause of D-001, not a regression</h3>
+<p><code>Configuration.java:164</code> defaults <code>auto_logout_enabled = true</code>; <code>:172</code> defaults <code>auto_logout_minutes = 1</code>. <code>AutoLogout.java:35</code> ticks every 5 s, fires at 60 s; reset only by <code>onUserInteraction()</code> (<code>LockScreenActivity.kt:182-192</code>). Every <code>LockState = ENTER_PIN</code> in S2's wallet.log is preceded by <code>BiometricHelper - No biometric credentials</code> + <code>fingerprint was disabled</code> (the <code>setLockState</code> path), never by <code>show lock screen …</code>. <code>git diff master...HEAD</code> does not touch <code>AutoLogout.java</code> or the auto-logout defaults. <strong>Recommend confirming on 11.9.0 and downgrading D-001.</strong> New aggravator (SR-34): <code>WalletActivityTracker.onStoppedLast()</code> was dead code before MO-995; now <code>setAppWentBackground(true)</code> makes <code>shouldLogout()</code> true in 0-minute mode and broadcasts <code>FORCE_FINISH_ACTION</code>. Test rotation/dark-mode/font-scale on MainActivity, AddressBookActivity, NetworkMonitorActivity, BlockInfoActivity with auto-logout "immediately".</p>
+<h3 id="sr-11-the-missing-username-fee-history-row-is-a-gap">SR-11 — the missing username-fee history row is a gap</h3>
+<p><code>SdkShieldedUsernameCreation.kt:788-796</code>: post-spend bookkeeping after a successful Type-20 <code>createIdentityFromPool</code> is one call to <code>noteExternalShieldedSpendBroadcast()</code> (sets a balance-stale flag only). The row-title table (<code>CutoverUiDataService.kt:375-387</code>) and display-cache planner are keyed on an L1 asset-lock txid; a Type-20 create-from-pool has none. <code>observeShieldedActivity()</code> (<code>ShieldedBalanceService.kt:213</code>) has zero production consumers. The transparent path does get a row (<code>AssetLockKind.UPGRADE → dashpay_upgrade_fee</code>).</p>
+<h2 id="user-story-catalogue-from-git-diff-name-only-masterhead-walletsrcdeschildbachwalletui-154-files-191-new-strings">User-story catalogue (from <code>git diff --name-only master...HEAD -- 'wallet/src/de/schildbach/wallet/ui/**'</code>, 154 files, + 191 new strings)</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Feature</th>
+<th>UI package(s)</th>
+<th>Key new strings</th>
+<th>Covered at time of review</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>One-time cutover sync notice</td>
+<td><code>ui/cutover/</code></td>
+<td><code>cutover_sync_notice_*</code></td>
+<td class=S2>S2, S6 partly</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Network Monitor rewritten for the SDK engine</td>
+<td><code>ui/</code> NetworkMonitorActivity</td>
+<td>20 × <code>network_monitor_*</code></td>
+<td>none</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Home header balance + "Syncing balance"</td>
+<td><code>ui/main/</code></td>
+<td><code>syncing_balance</code></td>
+<td class=S2>S2 (D-002)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Shielded balance card, address, tabs</td>
+<td><code>ui/shielded/</code></td>
+<td><code>shielded_balance_card_title</code>, <code>shielded_tab_*</code>, …</td>
+<td class=S1>S1, S5</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Shielded transfer both directions incl. stall/ambiguous/failed/resumed</td>
+<td><code>ui/shielded/</code></td>
+<td><code>shielded_proving_*</code>, <code>_transfer_stalled_*</code>, …</td>
+<td class=S1>S1, S5</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Shielded balance verification / scan progress</td>
+<td><code>ui/shielded/</code></td>
+<td><code>shielded_verifying_*</code>, <code>_error_*</code></td>
+<td>partial</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Username payment source choice (Dash vs shielded)</td>
+<td><code>ui/username/</code></td>
+<td><code>username_payment_*</code></td>
+<td class=S1>S1, S5</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Username cost info sheet</td>
+<td><code>ui/username/</code></td>
+<td><code>username_cost_info_*</code></td>
+<td>partial</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Instant (non-contested) username alongside a contested request</td>
+<td><code>ui/username/</code></td>
+<td><code>create_instant_username_description</code>, …</td>
+<td>none</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Username request failure/ambiguity handling</td>
+<td><code>ui/username/</code></td>
+<td><code>username_request_ambiguous_*</code>, …</td>
+<td>partial</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Identity / top-up progress states</td>
+<td><code>ui/username/</code>, <code>ui/dashpay/</code></td>
+<td><code>identity_processing_*</code></td>
+<td>none</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Buy credits (identity top-up)</td>
+<td><code>ui/dashpay/</code></td>
+<td><code>buy_credits_*</code></td>
+<td>none</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Invitations — private (shielded) vs standard</td>
+<td><code>ui/invite/</code></td>
+<td><code>invite_payment_*</code>, <code>invitation_fee_amount</code></td>
+<td>none</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Invitation creation failure handling</td>
+<td><code>ui/invite/</code></td>
+<td><code>invitation_creation_*</code></td>
+<td>none</td>
+</tr>
+<tr>
+<td>15</td>
+<td>CoinJoin removal + mixed-funds migration</td>
+<td><code>ui/migration/</code>, <code>ui/coinjoin/</code></td>
+<td>13 × <code>mixed_funds_migration_*</code></td>
+<td>none — moves money</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Send flow error surfaces</td>
+<td><code>ui/send/</code></td>
+<td><code>send_coins_error_*</code></td>
+<td>partial</td>
+</tr>
+<tr>
+<td>17</td>
+<td>Tx row classification — shielded, unshielded, invitation</td>
+<td><code>ui/transactions/</code></td>
+<td><code>transaction_row_*</code></td>
+<td class=S1>S1 (D-007)</td>
+</tr>
+<tr>
+<td>18</td>
+<td>DashPay contacts — send/accept errors, pending counts, notification channel</td>
+<td><code>ui/dashpay/</code>, <code>ui/notifications/</code></td>
+<td><code>send_contact_request_error_*</code>, …</td>
+<td>none</td>
+</tr>
+<tr>
+<td>19</td>
+<td>SDK bind pending / failed / keystore-blocked notices</td>
+<td><code>ui/</code></td>
+<td><code>sdk_bind_*</code></td>
+<td>S3 partly</td>
+</tr>
+<tr>
+<td>20</td>
+<td>Degraded-startup / safe-mode onboarding screen</td>
+<td><code>ui/OnboardingActivity</code></td>
+<td><code>safe_mode_startup_message</code></td>
+<td>none</td>
+</tr>
+<tr>
+<td>21</td>
+<td>Reset wallet / wipe sequence</td>
+<td><code>ui/more/</code>, <code>util/WalletWipe*</code></td>
+<td>—</td>
+<td class=S1>S1 (D-012, D-013)</td>
+</tr>
+<tr>
+<td>22</td>
+<td>Restore from seed &amp; receive-address selection after restore</td>
+<td><code>ui/</code>, <code>ui/payments/</code></td>
+<td>—</td>
+<td class=S2>S2 (D-003)</td>
+</tr>
+<tr>
+<td>23</td>
+<td>Lock screen / PIN / biometric enroll</td>
+<td><code>ui/LockScreenActivity</code>, <code>ui/SetPinActivity</code></td>
+<td>—</td>
+<td class=S2>S2/S3/S4/S6 (D-001, D-011)</td>
+</tr>
+<tr>
+<td>24</td>
+<td>Transaction-history CSV export</td>
+<td><code>ui/more/</code></td>
+<td><code>report_transaction_history_dialog_export_csv_empty</code></td>
+<td>none</td>
+</tr>
+<tr>
+<td>25</td>
+<td>6-hour foreground-service limit notice</td>
+<td><code>service/BlockchainServiceImpl</code></td>
+<td><code>notification_background_processes_paused_text</code></td>
+<td>none</td>
+</tr>
+<tr>
+<td>26</td>
+<td>Sync-status "unable to connect"</td>
+<td><code>ui/main/</code></td>
+<td><code>sync_status_unable_to_connect</code></td>
+<td>none</td>
+</tr>
+<tr>
+<td>27</td>
+<td>About screen — Kotlin SDK version row</td>
+<td><code>ui/more/</code></td>
+<td><code>about_kotlin_sdk_label</code></td>
+<td>trivial</td>
+</tr>
+<tr>
+<td>28</td>
+<td>Buy/sell, Explore Dash, backup, compose_views</td>
+<td>various</td>
+<td>—</td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+<h2 id="areas-not-assessed">Areas not assessed</h2>
+<p>Execution (no device/build in this stream); the Rust/Kotlin SDK internals; why the intermediate replay balance overshoots 8×; full audits of the five largest files; D-001 on the 11.9.0 baseline; real oversize-wallet handling (no ≥26 MB fixture); translation completeness of 191 new strings; DIP-15 parity gate sign-off.</p>
+<p><strong>Suggested triage order:</strong> SR-01 → SR-05 + SR-03/SR-04 → SR-07 + SR-08 → SR-23 → SR-06 + SR-09 → SR-10/SR-11.</p></html>

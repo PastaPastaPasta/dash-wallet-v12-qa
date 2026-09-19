@@ -1,0 +1,1 @@
+dashpay://invite?du=qa5s5ebkdus2c6kkt9m7t&osk=46859d9bdc49c2d37a482e583a9e7927e57254dd929a30398da6c2081f934571&bh=0&amt=3000000000&display-name=QA%20Stream%20Five&avatar-url=https%3A%2F%2Fwww.gravatar.com%2Favatar%2F205e460b479e2e5b48aec07710c08d50%3Fs%3D200%26dashpay-profile-pic-zoom%3D0.0%252C0.0%252C1.0%252C1.0

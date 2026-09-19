@@ -1,0 +1,86 @@
+/data/data/hashengineering.darkcoin.wallet_test/databases:
+total 6916
+drwxrwx--x  2 u0_a207 u0_a207    4096 2026-09-19 01:07 .
+drwx------ 10 u0_a207 u0_a207    4096 2026-09-19 01:07 ..
+-rw-rw----  1 u0_a207 u0_a207   57344 2026-09-19 01:05 com.google.android.datatransport.events
+-rw-rw----  1 u0_a207 u0_a207       0 2026-09-19 01:05 com.google.android.datatransport.events-journal
+-rw-rw----  1 u0_a207 u0_a207 5332992 2026-09-19 01:11 dash-sdk.db
+-rw-------  1 u0_a207 u0_a207   32768 2026-09-19 01:11 dash-sdk.db-shm
+-rw-------  1 u0_a207 u0_a207  524288 2026-09-19 01:11 dash-sdk.db-wal
+-rw-rw----  1 u0_a207 u0_a207  466944 2026-09-19 01:10 dash-wallet-database
+-rw-------  1 u0_a207 u0_a207   32768 2026-09-19 01:12 dash-wallet-database-shm
+-rw-------  1 u0_a207 u0_a207  453232 2026-09-19 01:12 dash-wallet-database-wal
+-rw-rw----  1 u0_a207 u0_a207   98304 2026-09-19 01:05 explore-database
+-rw-rw----  1 u0_a207 u0_a207       0 2026-09-19 01:05 explore-database-journal
+-rw-rw----  1 u0_a207 u0_a207   16384 2026-09-19 01:10 google_app_measurement_local.db
+-rw-rw----  1 u0_a207 u0_a207       0 2026-09-19 01:10 google_app_measurement_local.db-journal
+
+/data/data/hashengineering.darkcoin.wallet_test/files:
+total 4404
+drwxrwx--x  8 u0_a207 u0_a207    4096 2026-09-19 01:07 .
+drwx------ 10 u0_a207 u0_a207    4096 2026-09-19 01:07 ..
+drwx------  6 u0_a207 u0_a207    4096 2026-09-19 01:05 .com.google.firebase.crashlytics.files.v2:hashengineering.darkcoin.wallet_test
+drwx------  5 u0_a207 u0_a207    4096 2026-09-19 01:05 AFRequestCache
+-rw-------  1 u0_a207 u0_a207     114 2026-09-19 01:05 PersistedInstallation.W0RFRkFVTFRd+MTowMDAwMDAwMDAwMDA6YW5kcm9pZDowMDAwMDAwMDAwMDAwMDAx.json
+drwx------  2 u0_a207 u0_a207    4096 2026-09-19 01:12 datastore
+-rw-------  1 u0_a207 u0_a207       0 2026-09-19 01:05 generatefid.lock
+-rw-rw----  1 u0_a207 u0_a207   15328 2026-09-19 01:07 key-backup-protobuf-testnet
+drwx------  3 u0_a207 u0_a207    4096 2026-09-19 01:07 l1_shadow_spv
+drwx------  2 u0_a207 u0_a207    4096 2026-09-19 01:05 log
+drwx------  7 u0_a207 u0_a207    4096 2026-09-19 01:07 sdk-logs
+-rw-------  1 u0_a207 u0_a207  200704 2026-09-19 01:07 shielded_tree_testnet.sqlite
+-rw-------  1 u0_a207 u0_a207   32768 2026-09-19 01:11 shielded_tree_testnet.sqlite-shm
+-rw-------  1 u0_a207 u0_a207 4120032 2026-09-19 01:11 shielded_tree_testnet.sqlite-wal
+-rw-------  1 u0_a207 u0_a207     684 2026-09-19 01:10 startup.breadcrumbs
+-rw-------  1 u0_a207 u0_a207       1 2026-09-19 01:10 startup.failures
+-rw-------  1 u0_a207 u0_a207       1 2026-09-19 01:10 startup.safemoderuns
+-rw-------  1 u0_a207 u0_a207   15322 2026-09-19 01:07 wallet-protobuf-testnet
+
+/data/data/hashengineering.darkcoin.wallet_test/files/log:
+total 460
+drwx------ 2 u0_a207 u0_a207   4096 2026-09-19 01:05 .
+drwxrwx--x 8 u0_a207 u0_a207   4096 2026-09-19 01:07 ..
+-rw------- 1 u0_a207 u0_a207 444525 2026-09-19 01:13 wallet.log
+24	/data/data/hashengineering.darkcoin.wallet_test/app_blockstore
+64	/data/data/hashengineering.darkcoin.wallet_test/cache
+8	/data/data/hashengineering.darkcoin.wallet_test/code_cache
+6908	/data/data/hashengineering.darkcoin.wallet_test/databases
+510512	/data/data/hashengineering.darkcoin.wallet_test/files
+252	/data/data/hashengineering.darkcoin.wallet_test/no_backup
+32	/data/data/hashengineering.darkcoin.wallet_test/oat
+80	/data/data/hashengineering.darkcoin.wallet_test/shared_prefs
+---
+total 64
+drwx------ 8 u0_a207 u0_a207 4096 2026-09-19 01:07 .
+drwx------ 3 u0_a207 u0_a207 4096 2026-09-19 01:07 ..
+drwx------ 2 u0_a207 u0_a207 4096 2026-09-19 01:11 block_headers
+drwx------ 2 u0_a207 u0_a207 4096 2026-09-19 01:11 blocks
+drwx------ 2 u0_a207 u0_a207 4096 2026-09-19 01:11 filter_headers
+drwx------ 2 u0_a207 u0_a207 4096 2026-09-19 01:11 filters
+drwx------ 2 u0_a207 u0_a207 4096 2026-09-19 01:11 metadata
+drwx------ 2 u0_a207 u0_a207 4096 2026-09-19 01:13 peers
+32	/data/data/hashengineering.darkcoin.wallet_test/files/AFRequestCache
+8	/data/data/hashengineering.darkcoin.wallet_test/files/PersistedInstallation.W0RFRkFVTFRd+MTowMDAwMDAwMDAwMDA6YW5kcm9pZDowMDAwMDAwMDAwMDAwMDAx.json
+64	/data/data/hashengineering.darkcoin.wallet_test/files/datastore
+4	/data/data/hashengineering.darkcoin.wallet_test/files/generatefid.lock
+20	/data/data/hashengineering.darkcoin.wallet_test/files/key-backup-protobuf-testnet
+489840	/data/data/hashengineering.darkcoin.wallet_test/files/l1_shadow_spv
+452	/data/data/hashengineering.darkcoin.wallet_test/files/log
+15696	/data/data/hashengineering.darkcoin.wallet_test/files/sdk-logs
+200	/data/data/hashengineering.darkcoin.wallet_test/files/shielded_tree_testnet.sqlite
+36	/data/data/hashengineering.darkcoin.wallet_test/files/shielded_tree_testnet.sqlite-shm
+4028	/data/data/hashengineering.darkcoin.wallet_test/files/shielded_tree_testnet.sqlite-wal
+8	/data/data/hashengineering.darkcoin.wallet_test/files/startup.breadcrumbs
+8	/data/data/hashengineering.darkcoin.wallet_test/files/startup.failures
+8	/data/data/hashengineering.darkcoin.wallet_test/files/startup.safemoderuns
+20	/data/data/hashengineering.darkcoin.wallet_test/files/wallet-protobuf-testnet
+---
+175240	/data/data/hashengineering.darkcoin.wallet_test/files/l1_shadow_spv/testnet/block_headers
+204528	/data/data/hashengineering.darkcoin.wallet_test/files/l1_shadow_spv/testnet/blocks
+50184	/data/data/hashengineering.darkcoin.wallet_test/files/l1_shadow_spv/testnet/filter_headers
+59724	/data/data/hashengineering.darkcoin.wallet_test/files/l1_shadow_spv/testnet/filters
+32	/data/data/hashengineering.darkcoin.wallet_test/files/l1_shadow_spv/testnet/metadata
+112	/data/data/hashengineering.darkcoin.wallet_test/files/l1_shadow_spv/testnet/peers
+--- df
+Filesystem       Size Used Avail Use% Mounted on
+/dev/block/dm-44 7.7G 1.9G  5.7G  26% /mnt/pass_through/0/emulated

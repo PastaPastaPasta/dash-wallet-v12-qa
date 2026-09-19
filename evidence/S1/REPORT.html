@@ -1,0 +1,360 @@
+<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Stream S1 report</title><style>body{font-family:system-ui,-apple-system,sans-serif;max-width:1400px;margin:0 auto;padding:16px 24px;line-height:1.45;background:#fff;color:#111}
+table{border-collapse:collapse;font-size:13px;margin:12px 0}th,td{border:1px solid #ddd;padding:4px 8px;vertical-align:top;text-align:left}th{background:#f3f6fa;position:sticky;top:0}
+tr:nth-child(even){background:#fafbfc}code{background:#f4f4f4;padding:1px 4px;border-radius:3px;font-size:12px}pre{background:#f4f4f4;padding:10px;overflow:auto}
+h1{border-bottom:3px solid #008de4}h2{border-bottom:1px solid #ccc;margin-top:40px}a{color:#008de4}a.ev{background:#e8f4fd;padding:0 3px;border-radius:3px;font-family:ui-monospace,monospace;font-size:12px}
+nav.top{background:#012060;color:#fff;padding:8px 24px;margin:-16px -24px 16px;position:sticky;top:0;z-index:5}nav.top a{color:#fff;margin-right:18px;text-decoration:none}nav.top a:hover{text-decoration:underline}
+.S1{color:#b00020;font-weight:bold}.S2{color:#c75000;font-weight:bold}.toc{background:#f8f9fb;border:1px solid #e3e6ea;padding:8px 16px;font-size:13px;columns:2}.toc ul{margin:2px 0;padding-left:16px}
+.note{background:#fff8e1;border-left:4px solid #f5b400;padding:8px 12px;margin:12px 0}
+</style><nav class=top><a href="../../index.html">Home</a><a href="../../QA-REPORT.html">Full report</a><a href="../../EXEC-SUMMARY.html">Executive summary</a><a href="../../STORY-MATRIX.html">User-story matrix</a><a href="../../DEFECT-LEDGER.html">Defect register</a><a href="../index.html">Evidence gallery</a><a href="../../QA-PLAN.html">Test plan</a><a href="../../streams.html">Stream reports</a></nav><h1 id="qa-report-s1-a1-tier-c-d3-sr-282930-agent-opus-s1-emulator-5554-dw-qa1-2026-09-19-00090127-local">QA report: S1 — A1 + Tier C (+ D3, SR-28/29/30)   (agent: Opus S1, emulator-5554 / dw-qa1, 2026-09-19 00:09–01:27 local)</h1>
+<p>Build under test: <code>fix-12.0.0-testnet3-release-signed.apk</code>, versionCode <strong>12000000</strong>, versionName 12.0.0, minSdk 29 / targetSdk 35.
+Wallet: fresh, created on this build. Recovery phrase (throwaway testnet): <code>[seed phrase redacted]</code>.
+Username: <strong>qa1s13939</strong>, identity <code>DYjxDk3kTzf2PXAK3LfGj2cWitnyLKhx1y8u3626hbMm</code>.</p>
+<h2 id="summary-table">Summary table</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Verdict</th>
+<th>Key evidence file(s)</th>
+<th>One-line finding</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A1.1 create wallet, phrase, verify</td>
+<td>PASS</td>
+<td><code>A1/01-onboarding/01..15-*.png</code></td>
+<td>12-word flow + "Verified Successfully" OK; phrase screen is FLAG_SECURE (screenshots black by design)</td>
+</tr>
+<tr>
+<td>A1.2 receive from faucet</td>
+<td>PASS</td>
+<td><a class=ev href="../S1/A1/02-receive/04-home-after-faucet.webp">A1/02-receive/04-home-after-faucet.png</a>, <a class=ev href="../S1/A1/02-receive/07-insight-addr.json">07-insight-addr.json</a></td>
+<td>1.0 tDASH detected pre-block and InstantSend-locked within the same second</td>
+</tr>
+<tr>
+<td>A1.3 shield everything (Max)</td>
+<td>PASS w/ defects</td>
+<td><a class=ev href="../S1/A1/03-shield/08-confirm.webp">A1/03-shield/08-confirm.png</a>, <a class=ev href="../S1/A1/03-shield/14-shield-tx-detail.webp">14-shield-tx-detail.png</a>, <a class=ev href="../S1/A1/03-shield/s1-shield-1.mp4">s1-shield-1.mp4</a></td>
+<td>works in ~8 s; no fee shown anywhere; 0.00213115 lost silently; 737 duffs dust left; first attempt fails + silent retry</td>
+</tr>
+<tr>
+<td>A1.4 non-contested username</td>
+<td>PASS</td>
+<td><a class=ev href="../S1/A1/04-username/13-home-username-ready.webp">A1/04-username/13-home-username-ready.png</a>, <a class=ev href="../S1/A1/04-username/14-explorer-identity.json">14-explorer-identity.json</a></td>
+<td>registered in ~30 s, verified on the testnet Platform explorer (contested=false)</td>
+</tr>
+<tr>
+<td>A1.5 reference state</td>
+<td>PASS</td>
+<td><a class=ev href="../S1/A1/05-before-reset/02-exact-balances.webp">A1/05-before-reset/02-exact-balances.png</a>, <a class=ev href="../S1/A1/05-before-reset/04-txlist-scrolled.webp">04-txlist-scrolled.png</a>, <code>wallet.log</code></td>
+<td>transparent 0.00000737 / shielded 0.96786148 / 2 tx rows</td>
+</tr>
+<tr>
+<td>A1.6 reset wallet</td>
+<td>PASS w/ defect</td>
+<td><code>A1/06-reset-restore/03,04,05*.png</code>, <a class=ev href="../S1/A1/06-reset-restore/s1-reset-1.mp4">s1-reset-1.mp4</a></td>
+<td>wipe is clean, but <strong>no PIN is ever requested</strong></td>
+</tr>
+<tr>
+<td>A1.7 restore + parity</td>
+<td><strong>PASS</strong></td>
+<td><a class=ev href="../S1/A1/07-after-restore/03-home.webp">A1/07-after-restore/03-home.png</a>, <a class=ev href="../S1/A1/07-after-restore/06-exact-balances.webp">06-exact-balances.png</a>, <code>files/log/wallet.log</code></td>
+<td>balances, shielded, username and tx list all identical; only the shield row's displayed time moved 12:21→12:30 (block time)</td>
+</tr>
+<tr>
+<td>A1.8 negative restore inputs</td>
+<td>PASS w/ defect</td>
+<td><code>A1/08-negative/10,11,12-*.txt</code></td>
+<td>all three rejected, no crash; error text is a literal placeholder <code>Error</code></td>
+</tr>
+<tr>
+<td>C1 send to address</td>
+<td><strong>FAIL</strong></td>
+<td><a class=ev href="../S1/C1/08-after-confirm.webp">C1/08-after-confirm.png</a>, <a class=ev href="../S1/C1/09-send-blocked-log.txt">09-send-blocked-log.txt</a>, <a class=ev href="../S1/C1/13-after-retry2.webp">13-after-retry2.png</a></td>
+<td>send impossible after 4 min idle ("not fully synced"); only an app restart recovers</td>
+</tr>
+<tr>
+<td>C2 send-all / drain</td>
+<td>PASS w/ defects</td>
+<td><a class=ev href="../S1/C2/05-sendall-log.txt">C2/05-sendall-log.txt</a>, <a class=ev href="../S1/C2/09-home-drained.webp">09-home-drained.png</a>, <a class=ev href="../S1/C2/11-drain-log.txt">11-drain-log.txt</a></td>
+<td>send-all to address is clean; Max→shielded leaves 1225 duffs of dust (does not drain to zero)</td>
+</tr>
+<tr>
+<td>C3 receive</td>
+<td><strong>FAIL</strong></td>
+<td><a class=ev href="../S1/C3/01-receive.webp">C3/01-receive.png</a>, <a class=ev href="../S1/C3/02-insight-addr-reused.json">02-insight-addr-reused.json</a>, <a class=ev href="../S1/C3/05-receive-with-amount.webp">05-receive-with-amount.png</a></td>
+<td>QR + amount flow fine, but the Receive tab never rotates the address after use</td>
+</tr>
+<tr>
+<td>C4 unshield</td>
+<td>PASS w/ defect</td>
+<td><a class=ev href="../S1/C4/06-home-after-unshield.webp">C4/06-home-after-unshield.png</a>, <a class=ev href="../S1/C4/07-unshield-tx-detail.webp">07-unshield-tx-detail.png</a></td>
+<td>list row correctly "Unshielded"; the detail sheet still says "Amount Received"/Income</td>
+</tr>
+<tr>
+<td>C5 memo + tax category persistence</td>
+<td>PASS</td>
+<td><a class=ev href="../S1/C5/03-memo-saved.webp">C5/03-memo-saved.png</a>, <a class=ev href="../S1/C5/05-after-relaunch-detail.webp">05-after-relaunch-detail.png</a></td>
+<td>both survive force-stop + relaunch, no stuck "Loading"</td>
+</tr>
+<tr>
+<td>C6 payment URI</td>
+<td>PASS</td>
+<td><a class=ev href="../S1/C6/01-deeplink-prefilled.webp">C6/01-deeplink-prefilled.png</a>, <a class=ev href="../S1/C6/02-invalid-uri.webp">02-invalid-uri.png</a></td>
+<td>valid URI pre-fills address+amount; invalid URI → clean error, no crash</td>
+</tr>
+<tr>
+<td>C7 tools</td>
+<td>PASS / partly BLOCKED</td>
+<td><a class=ev href="../S1/C7/03-xpub.webp">C7/03-xpub.png</a>, <a class=ev href="../S1/C7/06-export.csv">C7/06-export.csv</a>, <a class=ev href="../S1/C7/08-scan-key.webp">C7/08-scan-key.png</a></td>
+<td>address book, tpub, CSV export OK (CSV has issues); WIF import is camera-only → BLOCKED</td>
+</tr>
+<tr>
+<td>D3 contact request from S5</td>
+<td>PASS</td>
+<td><a class=ev href="../S1/D3/01-notifications.webp">D3/01-notifications.png</a>, <a class=ev href="../S1/D3/07-after-send.webp">07-after-send.png</a>, <a class=ev href="../S1/D3/08-home-txrow.webp">08-home-txrow.png</a></td>
+<td>request survived the reset/restore, accepted, paid 0.001 by username, row shows the contact name</td>
+</tr>
+<tr>
+<td>SR-28 confirm fee vs actual</td>
+<td><strong>CONFIRMED</strong></td>
+<td><a class=ev href="../S1/C1/07-after-pin.webp">C1/07-after-pin.png</a>, <a class=ev href="../S1/C1/17-insight-sendtx.txt">C1/17-insight-sendtx.txt</a></td>
+<td>quoted 0.0001, actual 0.00000226 (~44x)</td>
+</tr>
+<tr>
+<td>SR-29 send-all failed-then-retry</td>
+<td>NOT REPRODUCED</td>
+<td><a class=ev href="../S1/C2/05-sendall-log.txt">C2/05-sendall-log.txt</a></td>
+<td>single <code>l1SendAll</code> broadcast, no failure, no retry</td>
+</tr>
+<tr>
+<td>SR-30 Max on shielded send</td>
+<td><strong>CONFIRMED</strong></td>
+<td><code>SR30/01,02*.png</code>, notes <code>06:10:44</code> excerpt</td>
+<td>Max amount always fails pre-broadcast; rescued by one silent auto-retry</td>
+</tr>
+</tbody>
+</table>
+<p>Memory over the whole 78-minute session (<a class=ev href="../S1/mem.csv">mem.csv</a>, 77 samples): peak TOTAL PSS <strong>480 MB</strong>, peak native heap <strong>316 MB</strong> (both at 00:40:51, during the post-restore replay), peak Dalvik heap 42 MB. No LMK/OOM kill — <a class=ev href="../S1/exitinfo.txt">exitinfo.txt</a> shows only my own two FORCE STOPs. No <code>FATAL</code>/<code>AndroidRuntime</code> in 117k lines of logcat, no <code>OutOfMemory</code>, no <code>OverlappingFileLockException</code>, no <code>filter-stall watchdog</code>.</p>
+<h2 id="per-test-detail">Per-test detail</h2>
+<h3 id="a11a12-create-fund">A1.1–A1.2 create + fund</h3>
+<ul>
+<li>00:10 install, 00:11 create wallet → 12-word security level → PIN 1234 → "Backup your recovery phrase" → phrase → verify-by-tapping-in-order → "Verified Successfully".</li>
+<li><code>wallet.log 05:10:33 CutoverCoordinator - cutover state DUAL_RUNNING -&gt; CUT_OVER (fresh-wallet setup (restore/new))</code>, <code>05:13:06 L1ShadowSyncService - L1 shadow SPV started</code>.</li>
+<li>Faucet: <code>qa-faucet.sh</code> failed (Cloudflare 1010, headless UA banned — environment, not product). Requested once through the studio browser: txid <code>7efffea3f48e144dbe6f13ae0eb491c67d1018a9e890bd11fa47e8b68abed4d2</code>, 1.0 tDASH.</li>
+<li><code>05:15:24 L1ShadowSyncService - L1 engine tx event: Detected(... netAmountDuffs=100000000 ...)</code> → <code>CutoverUiDataService - engine detected tx ... pre-block — syncing display row now</code> → <code>InstantLocked(...)</code> → <code>display row flipped pre-block</code>, all inside the same second. Explorer agrees (<a class=ev href="../S1/A1/02-receive/07-insight-addr.json">A1/02-receive/07-insight-addr.json</a>).</li>
+</ul>
+<h3 id="a13-shield-max">A1.3 shield (Max)</h3>
+<ul>
+<li>Entry point is <strong>not</strong> the More screen (its "Shielded" card is inert); it is Payments → <strong>Internal</strong> → "Shielded balance".</li>
+<li>Result: transparent <code>0.00000737</code>, shielded <code>0.99786148</code> — total <code>0.99786885</code> from <code>1.00000000</code>, i.e. <strong>0.00213115 consumed</strong>, of which only <code>0.00000263</code> (the L1 network fee) is visible anywhere in the UI.</li>
+<li><code>05:21:58 ShieldedBalanceServiceImpl - shielded shieldFromWallet rejected pre-broadcast (no lock tracked)</code> (+ full stack trace), then <code>05:21:58 ShieldedTransferExecutor - max shield auto-adjusting for L1 asset-lock fee: requested 1, reserve 1000 duffs (1 UTXOs), retrying once with 0.99999</code>.</li>
+</ul>
+<h3 id="a14-username">A1.4 username</h3>
+<ul>
+<li>Non-contested rule confirmed by the app's own explainer: "Any username that has a number 2–9 or 20 or more characters will be automatically approved". <code>qa1s13939</code> qualifies.</li>
+<li><code>05:26:58 BlockchainIdentityData - creation: BlockchainIdentityData(DONE, qa1s13939, CONFIRMED, null, null, DYjxDk3kTzf2PXAK3LfGj2cWitnyLKhx1y8u3626hbMm)</code>.</li>
+<li>Explorer (<code>https://testnet.platform-explorer.pshenmic.dev</code>): alias <code>qa1s13939.dash</code>, <code>status ok</code>, <code>contested false</code>, <code>totalTopUpsAmount 3000000000</code> credits = exactly 0.03 DASH. Shielded went 0.99786148 → 0.96786148, exactly −0.03.</li>
+<li>The brief's <code>platform-explorer.pshenmic.dev</code> is the <strong>mainnet</strong> instance (its status reports core height 2 539 047); the testnet instance is <code>testnet.platform-explorer.pshenmic.dev</code>.</li>
+</ul>
+<h3 id="a16a17-reset-restore-the-headline-assertion">A1.6–A1.7 reset + restore  (the headline assertion)</h3>
+<table>
+<thead>
+<tr>
+<th>item</th>
+<th>before reset</th>
+<th>after restore</th>
+<th>verdict</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>transparent</td>
+<td>0.00000737</td>
+<td>0.00000737</td>
+<td>MATCH</td>
+</tr>
+<tr>
+<td>shielded</td>
+<td>0.96786148</td>
+<td>0.96786148</td>
+<td>MATCH</td>
+</tr>
+<tr>
+<td>username</td>
+<td>qa1s13939</td>
+<td>qa1s13939</td>
+<td>MATCH</td>
+</tr>
+<tr>
+<td>tx list</td>
+<td>Shielded −0.999993, Received +1</td>
+<td>Shielded −0.999993, Received +1</td>
+<td>MATCH</td>
+</tr>
+<tr>
+<td>shield row time</td>
+<td>12:21 AM</td>
+<td>12:30 AM</td>
+<td>differs (block time, see S1-D11)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Restore took ~5 min end to end (<code>Syncing 6%</code> → <code>55%</code> in 30 s → done by 00:43). <code>05:41:11 L1Shadow phase=SYNCED 100.0% headers 1556564/1556564 filters 1556564/1556564 wallet 1556564 ... SETTLED</code>.</li>
+<li>Wipe log is clean: <code>05:32:42 L1ShadowSyncService - wallet-wipe SDK cleanup ... deleting the SPV dataDir (21 files) ... NO rebind</code>, <code>SdkWalletBinder - binder state reset</code>, <code>WalletApplicationExt - databases cleared (isWalletWipe = true)</code>, <code>OnboardingActivity - reset finished</code>.</li>
+</ul>
+<h3 id="c1-send-to-address-the-fail-ledger-item-d-029">C1 send to address — the FAIL (ledger item D-029)</h3>
+<p>Full timeline, UI state and retries are in <a class=ev href="../S1/notes.md">notes.md</a> under "C1 … === D-029 detail ===". Short version: the app was foreground, idle and displaying a fully synced UI (<code>phase=SYNCED 100.0% headers 1556573/1556573</code> at 05:57:29, and the send screen itself read <code>Balance: DASH 0.01000737 ~ $0.61</code>). At 06:01:00 <code>BlockchainServiceImpl - idling detected, stopping service</code> / <code>serviceJob cancelled after 4 minutes</code> and <code>L1ShadowLifecycle STOPPED after 4m7s up; all four loops torn down … Nothing runs until the next startIfEnabled()</code>. The send 26 s later failed with the modal "Problem sending coins! Currently payments are not possible because the wallet is not fully synced with the network" and, in the log, <code>SdkL1SendService - SDK l1Send not attempted (L1 funding gate closed: SDK L1 engine not running)</code> → <code>SendEngineNotSyncedException</code> (<code>SendCoinsTaskRunner.kt:172/451</code>). An immediate retry 74 s later failed identically. Only force-stop + relaunch restarted the engine (<code>06:03:14 L1 shadow SPV started</code>), after which the identical send succeeded (<code>06:05:00 SDK l1Send: broadcast 100000 duffs … txid bd9fc16d…</code>, InstantLocked 0 s later).</p>
+<h2 id="defects-found">Defects found</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Sev</th>
+<th>Title</th>
+<th>Repro steps</th>
+<th>Evidence</th>
+<th>Suspected area</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class=S1>S1-D01</td>
+<td><strong>S2</strong></td>
+<td>Sending becomes impossible ~4 min after the app goes idle, with a false "not fully synced" message; only an app restart recovers</td>
+<td>Open the app, leave it foreground and idle &gt;4 min, then Send → any address → amount → PIN → Confirm</td>
+<td><a class=ev href="../S1/C1/08-after-confirm.webp">C1/08-after-confirm.png</a>, <a class=ev href="../S1/C1/09-send-blocked-log.txt">C1/09-send-blocked-log.txt</a>, <a class=ev href="../S1/C1/11-after-retry-confirm.webp">C1/11-after-retry-confirm.png</a>; log <code>06:01:00 idling detected, stopping service</code> / <code>serviceJob cancelled after 4 minutes</code> / <code>L1ShadowLifecycle STOPPED after 4m7s up</code> then <code>06:01:26 SendEngineNotSyncedException: … L1 funding gate closed: SDK L1 engine not running</code></td>
+<td><code>BlockchainServiceImpl</code> idle shutdown vs <code>SdkL1SendService</code>/<code>SendCoinsTaskRunner.kt:172,451</code>; the send path should call <code>startIfEnabled()</code> instead of failing</td>
+</tr>
+<tr>
+<td class=S1>S1-D02</td>
+<td>S3</td>
+<td>"Reset Wallet" never asks for the PIN</td>
+<td>More → Security → Reset Wallet → "Reset wallet" → "Save data and reset wallet"</td>
+<td><code>A1/06-reset-restore/03,04,05-*.png</code>, <a class=ev href="../S1/A1/06-reset-restore/s1-reset-1.mp4">A1/06-reset-restore/s1-reset-1.mp4</a></td>
+<td>reset/wipe sequence — the brief's "confirm with PIN" step does not exist, so the wrong-PIN negative test was unrunnable</td>
+</tr>
+<tr>
+<td class=S1>S1-D03</td>
+<td>S3</td>
+<td>Confirm dialog quotes a network fee ~44x the fee actually paid; the post-send detail sheet shows neither the fee nor the recipient</td>
+<td>Send 0.001 to any address; read "Network fee 0.0001" on the confirm sheet; compare with insight after broadcast</td>
+<td><a class=ev href="../S1/C1/07-after-pin.webp">C1/07-after-pin.png</a> (quote 0.0001), <a class=ev href="../S1/C1/17-insight-sendtx.txt">C1/17-insight-sendtx.txt</a> (<code>fees 2.26e-06</code>, 225-byte tx), <a class=ev href="../S1/C1/13-after-retry2.webp">C1/13-after-retry2.png</a> (detail sheet: only "Amount Sent −0.00000226")</td>
+<td>send confirm fee estimate (SR-28)</td>
+</tr>
+<tr>
+<td class=S1>S1-D04</td>
+<td>S3</td>
+<td>"Max" on any shielded transfer offers an amount that can never be broadcast; it always fails once and is silently auto-retried with a smaller amount, stranding dust</td>
+<td>Payments → Internal → Shielded balance → Max (either direction) → Continue → Confirm → PIN</td>
+<td>shield: <code>05:21:58 shieldFromWallet rejected pre-broadcast (no lock tracked)</code> + <code>max shield auto-adjusting … reserve 1000 duffs (1 UTXOs), retrying once with 0.99999</code>; unshield: <code>06:10:44 withdrawToCore rejected pre-broadcast … Insufficient shielded balance: available 95510957600, required 95786148200</code> + <code>max withdraw auto-adjusting … retrying once with 0.95235766</code>; drain: <code>06:25:17 … reserve 1488 duffs (3 UTXOs), retrying once with 0.96133372</code>. <code>SR30/*</code>, <a class=ev href="../S1/C2/11-drain-log.txt">C2/11-drain-log.txt</a></td>
+<td><code>ShieldedTransferExecutor</code> Max computation (SR-30). Result: the user is charged/credited a different amount than the one they confirmed, and 737–1225 duffs are left stranded so the wallet never drains to zero</td>
+</tr>
+<tr>
+<td class=S1>S1-D05</td>
+<td>S3</td>
+<td>Shielded transfer confirm sheet shows no fee line at all; the shielded-side cost is disclosed nowhere</td>
+<td>Shield 1.0 with Max; compare pre/post totals</td>
+<td><a class=ev href="../S1/A1/03-shield/08-confirm.webp">A1/03-shield/08-confirm.png</a> ("Total 1.00 Đ"), <a class=ev href="../S1/A1/03-shield/15-shielded-screen-after.webp">A1/03-shield/15-shielded-screen-after.png</a> (0.00000737 + 0.99786148 = 0.99786885)</td>
+<td>shielded confirm UI — 0.00213115 (0.21%) unexplained</td>
+</tr>
+<tr>
+<td class=S1>S1-D06</td>
+<td>S3</td>
+<td>Unshield transaction detail sheet presents an internal unshield as an external receive and defaults it to taxable "Income"</td>
+<td>C4 unshield 0.01, then open the "Unshielded" row</td>
+<td><a class=ev href="../S1/C4/07-unshield-tx-detail.webp">C4/07-unshield-tx-detail.png</a> ("Amount Received", "Received at", "Tax Category: Income") vs the list row which correctly reads "Unshielded"</td>
+<td>tx-detail classification on the SDK seam (the "stuck on Received" family)</td>
+</tr>
+<tr>
+<td class=S1>S1-D07</td>
+<td>S3</td>
+<td>The Receive tab never rotates the address after it has been used</td>
+<td>Receive, note the address; receive funds to it; return to Receive</td>
+<td><a class=ev href="../S1/C3/01-receive.webp">C3/01-receive.png</a>, <a class=ev href="../S1/C3/02-insight-addr-reused.json">C3/02-insight-addr-reused.json</a> (3 txs, 1.01 received on <code>yRjAzoy…</code>), contrast <a class=ev href="../S1/C3/05-receive-with-amount.webp">C3/05-receive-with-amount.png</a> which does hand out a fresh address</td>
+<td>receive screen address provider (privacy)</td>
+</tr>
+<tr>
+<td class=S1>S1-D08</td>
+<td>S3</td>
+<td>DashPay welcome screen reports only the transparent balance although the username is paid from the shielded pool</td>
+<td>More/Home → Join DashPay with all funds shielded</td>
+<td><a class=ev href="../S1/A1/04-username/02-welcome-balance-note.webp">A1/04-username/02-welcome-balance-note.png</a> — "You have 0.00000737 Dash. Some usernames cost up to 0.25 Dash." while 0.99786148 sat shielded</td>
+<td><code>WelcomeToDashPayFragment</code> balance source</td>
+</tr>
+<tr>
+<td class=S1>S1-D09</td>
+<td>S3</td>
+<td>Outgoing address-send defaults its Tax Category to "Income"</td>
+<td>Send to an address, open the resulting detail sheet</td>
+<td><a class=ev href="../S1/C1/13-after-retry2.webp">C1/13-after-retry2.png</a> vs the app's own explainer <a class=ev href="../S1/C1/15-tax-explainer.webp">C1/15-tax-explainer.png</a> ("Outgoing transactions by default will be marked as Expense"). The contact payment (D3) correctly defaulted to Expense</td>
+<td>tax-category defaulting for self/address sends</td>
+</tr>
+<tr>
+<td class=S1>S1-D10</td>
+<td>S3</td>
+<td>CSV export omits internal transactions, exports an own-pool unshield as "Income", and leaves every Fee column empty</td>
+<td>Tools → CSV export → Export transactions</td>
+<td><a class=ev href="../S1/C7/06-export.csv">C7/06-export.csv</a> — 5 rows, missing <code>bd9fc16d…</code> (the "Internal" row visible in the app); <code>Fee</code>/<code>Fee Currency</code> empty on all rows; <code>31546c95…</code> (own shielded → own wallet) exported as <code>Income</code></td>
+<td>CSV export / tax reporting</td>
+</tr>
+<tr>
+<td class=S1>S1-D11</td>
+<td>S4</td>
+<td>A restored wallet shows a different time for the same transaction (first-seen before reset, block time after)</td>
+<td>Compare A1 step 5 and step 7 tx lists</td>
+<td><a class=ev href="../S1/A1/05-before-reset/04-txlist-scrolled.webp">A1/05-before-reset/04-txlist-scrolled.png</a> (12:21 AM) vs <a class=ev href="../S1/A1/07-after-restore/03-home.webp">A1/07-after-restore/03-home.png</a> (12:30 AM); insight block time 2026-09-19T00:30:27 (<a class=ev href="../S1/A1/07-after-restore/04-insight-shieldtx.txt">A1/07-after-restore/04-insight-shieldtx.txt</a>)</td>
+<td>tx timestamp source after restore. Amounts/balances/order all match, so this is display-only — flagged S4 rather than S1, reclassify if the "any difference" rule is meant literally</td>
+</tr>
+<tr>
+<td class=S1>S1-D12</td>
+<td>S4</td>
+<td>Every restore failure shows the same message with a literal <code>Error</code> placeholder in place of the reason</td>
+<td>Restore with a malformed word / 11 words / bad checksum</td>
+<td><code>A1/08-negative/10,11,12-*.txt</code> — all three: "Wallet could not be restored:\n\nError\n\nBad recovery phrase?"</td>
+<td>restore error mapping</td>
+</tr>
+<tr>
+<td class=S1>S1-D13</td>
+<td>S4</td>
+<td>The "I accept" label on the username confirm sheet is not clickable; only the checkbox square is</td>
+<td>Username flow → Request Username → tap the words "I accept"</td>
+<td><a class=ev href="../S1/A1/04-username/09-accept-checked.webp">A1/04-username/09-accept-checked.png</a> (Confirm still <code>enabled="false"</code>) vs <a class=ev href="../S1/A1/04-username/10-accept-checked2.webp">10-accept-checked2.png</a></td>
+<td>username confirm dialog hit target</td>
+</tr>
+<tr>
+<td class=S1>S1-D14</td>
+<td>S4</td>
+<td>"Import private key" offers only a camera scan — no paste/manual field for a WIF</td>
+<td>Tools → Import private key</td>
+<td><a class=ev href="../S1/C7/07-import-key.webp">C7/07-import-key.png</a>, <a class=ev href="../S1/C7/08-scan-key.webp">C7/08-scan-key.png</a>, <a class=ev href="../S1/C7/09-scanner.webp">C7/09-scanner.png</a></td>
+<td>import flow; also the reason the WIF sweep test is BLOCKED here</td>
+</tr>
+</tbody>
+</table>
+<h2 id="environment-problems-not-product-defects">Environment problems (not product defects)</h2>
+<ul>
+<li><code>$QA_ROOT/bin/qa-faucet.sh</code> is blocked by Cloudflare error 1010 (<code>browser_signature_banned</code>) for the headless Playwright user-agent. Worked around with the studio browser (one request only, txid <code>7efffea3…</code>). Now documented in AGENT-BRIEF.md.</li>
+<li>The brief's Platform explorer <code>platform-explorer.pshenmic.dev</code> is the <strong>mainnet</strong> deployment; testnet DPNS/identity lookups must go to <code>testnet.platform-explorer.pshenmic.dev</code>.</li>
+<li><code>qa-app.sh logcat-start</code> produced an empty file for the first ~65 min; <code>logcat-early.txt</code> (ring-buffer dump, 15 978 lines) covers that window, <code>logcat.txt</code> (117 172 lines) covers the rest.</li>
+<li><code>adb shell input text</code> needs spaces encoded as <code>%s</code>; the first pass of the A1.8 negative tests entered a single word and was re-run correctly.</li>
+<li>The app auto-locks after ~1 min of foreground idle, which repeatedly interrupted poll loops (expected behaviour, not filed).</li>
+</ul>
+<h2 id="not-run-blocked-with-reason">Not run / blocked, with reason</h2>
+<ul>
+<li><strong>WIF import/sweep (part of C7)</strong> — BLOCKED: the only entry point is a QR scanner and the emulator has no camera source able to present a QR (restarting the AVD with a virtual-scene poster is out of scope). Error handling partially covered by feeding the generated testnet WIF as a <code>dash:</code> URI → "Invalid Dash URI", no crash (<a class=ev href="../S1/C7/10-wif-as-uri.webp">C7/10-wif-as-uri.png</a>).</li>
+<li><strong>Wrong-PIN-on-reset negative check (A1.8)</strong> — cannot be run: the reset flow never asks for a PIN (S1-D02).</li>
+<li><strong>C1 "send to a random valid testnet address"</strong> — deliberately not done; the task restricted sends to my own wallet's addresses to preserve funds.</li>
+<li>Masternode keys / Network monitor / ZenLedger (Tools) — not exercised; out of the assigned scope.</li>
+</ul>
+<h2 id="evidence-paths">Evidence paths</h2>
+<ul>
+<li>Root: <code>/Users/dcg/workspace/dash-wallet-qa/evidence/S1/</code></li>
+<li>Journal: <code>/Users/dcg/workspace/dash-wallet-qa/evidence/S1/notes.md</code></li>
+<li>Per-test: <code>A1/01-onboarding … A1/08-negative</code>, <code>C1</code>, <code>C2</code>, <code>C3</code>, <code>C4</code>, <code>C5</code>, <code>C6</code>, <code>C7</code>, <code>D3</code>, <code>SR30</code></li>
+<li>Videos: <a class=ev href="../S1/A1/03-shield/s1-shield-1.mp4">A1/03-shield/s1-shield-1.mp4</a>, <a class=ev href="../S1/A1/04-username/s1-username-1.mp4">A1/04-username/s1-username-1.mp4</a>, <a class=ev href="../S1/A1/06-reset-restore/s1-reset-1.mp4">A1/06-reset-restore/s1-reset-1.mp4</a>, <a class=ev href="../S1/A1/06-reset-restore/s1-restore-1.mp4">A1/06-reset-restore/s1-restore-1.mp4</a>, <a class=ev href="../S1/A1/07-after-restore/s1-restore-2.mp4">A1/07-after-restore/s1-restore-2.mp4</a>, <a class=ev href="../S1/C1/s1-c1-send.mp4">C1/s1-c1-send.mp4</a>, <a class=ev href="../S1/C4/s1-c4-unshield.mp4">C4/s1-c4-unshield.mp4</a>, <a class=ev href="../S1/D3/s1-d3-contact.mp4">D3/s1-d3-contact.mp4</a>, <a class=ev href="../S1/SR30/s1-sr30-max.mp4">SR30/s1-sr30-max.mp4</a>, <a class=ev href="../S1/C2/s1-c2-sendall.mp4">C2/s1-c2-sendall.mp4</a>, <a class=ev href="../S1/C2/s1-c2-drain.mp4">C2/s1-c2-drain.mp4</a></li>
+<li>Logs: <code>logcat-early.txt</code>, <code>logcat.txt</code>, <a class=ev href="../S1/mem.csv">mem.csv</a>, <a class=ev href="../S1/exitinfo.txt">exitinfo.txt</a>, <code>A1/05-before-reset/wallet.log</code>, <a class=ev href="../S1/A1/07-after-restore/files/log/wallet.log">A1/07-after-restore/files/log/wallet.log</a>, <code>final-logs/wallet.log</code></li>
+<li>Shared: <code>/Users/dcg/workspace/dash-wallet-qa/evidence/shared/usernames.txt</code>, <code>/Users/dcg/workspace/dash-wallet-qa/evidence/shared/contact-accepted.txt</code></li>
+</ul></html>

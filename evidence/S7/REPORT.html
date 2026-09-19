@@ -1,0 +1,371 @@
+<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Stream S7 report</title><style>body{font-family:system-ui,-apple-system,sans-serif;max-width:1400px;margin:0 auto;padding:16px 24px;line-height:1.45;background:#fff;color:#111}
+table{border-collapse:collapse;font-size:13px;margin:12px 0}th,td{border:1px solid #ddd;padding:4px 8px;vertical-align:top;text-align:left}th{background:#f3f6fa;position:sticky;top:0}
+tr:nth-child(even){background:#fafbfc}code{background:#f4f4f4;padding:1px 4px;border-radius:3px;font-size:12px}pre{background:#f4f4f4;padding:10px;overflow:auto}
+h1{border-bottom:3px solid #008de4}h2{border-bottom:1px solid #ccc;margin-top:40px}a{color:#008de4}a.ev{background:#e8f4fd;padding:0 3px;border-radius:3px;font-family:ui-monospace,monospace;font-size:12px}
+nav.top{background:#012060;color:#fff;padding:8px 24px;margin:-16px -24px 16px;position:sticky;top:0;z-index:5}nav.top a{color:#fff;margin-right:18px;text-decoration:none}nav.top a:hover{text-decoration:underline}
+.S1{color:#b00020;font-weight:bold}.S2{color:#c75000;font-weight:bold}.toc{background:#f8f9fb;border:1px solid #e3e6ea;padding:8px 16px;font-size:13px;columns:2}.toc ul{margin:2px 0;padding-left:16px}
+.note{background:#fff8e1;border-left:4px solid #f5b400;padding:8px 12px;margin:12px 0}
+</style><nav class=top><a href="../../index.html">Home</a><a href="../../QA-REPORT.html">Full report</a><a href="../../EXEC-SUMMARY.html">Executive summary</a><a href="../../STORY-MATRIX.html">User-story matrix</a><a href="../../DEFECT-LEDGER.html">Defect register</a><a href="../index.html">Evidence gallery</a><a href="../../QA-PLAN.html">Test plan</a><a href="../../streams.html">Stream reports</a></nav><h1 id="qa-report-s7-e8-b5-r1-bk1-tx1-n1-agent-opus-s7-emulator-emulator-5566-dw-qa7-2026-09-19">QA report: S7 — E8, B5, R1, BK1, TX1, N1   (agent: Opus S7, emulator: emulator-5566 / dw-qa7, 2026-09-19)</h1>
+<p>Builds: <code>master-11.9.0-testnet3-release-signed.apk</code> (versionCode 11090002) -&gt; in-place <code>adb install -r</code>
+<code>fix-12.0.0-testnet3-release-signed.apk</code> (versionCode 12000000, <code>fix/upgrade-memory-and-sync</code>).
+Throwaway testnet wallet, seed <code>[seed phrase redacted]</code>, PIN 1234.
+Collectors: <a class=ev href="../S7/mem.csv">evidence/S7/mem.csv</a> (60 s samples 00:22-01:38), <code>evidence/S7/logcat.txt</code> (00:22-00:38 only, see Environment problems),
+<a class=ev href="../S7/notes.md">evidence/S7/notes.md</a>, <a class=ev href="../S7/oom-exitinfo.txt">evidence/S7/oom-exitinfo.txt</a>, <a class=ev href="../S7/mem-notes.txt">evidence/S7/mem-notes.txt</a>.</p>
+<h2 id="summary-table">Summary table</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Verdict</th>
+<th>Key evidence file(s)</th>
+<th>One-line finding</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>E8</strong> Fresh small wallet created on master 11.9.0, upgraded to fix 12.0.0</td>
+<td><strong>PASS</strong></td>
+<td><a class=ev href="../S7/E8/post-upgrade/files/log/wallet.log">E8/post-upgrade/files/log/wallet.log</a>, <a class=ev href="../S7/E8/26-master-home-balance.webp">E8/26-master-home-balance.png</a> vs <a class=ev href="../S7/E8/59-fix-home-full.webp">E8/59-fix-home-full.png</a>, <a class=ev href="../S7/E8/56-fix-explainer.webp">E8/56-fix-explainer.png</a>, <a class=ev href="../S7/E8/s7-e8-upgrade-launch.mp4">E8/s7-e8-upgrade-launch.mp4</a></td>
+<td>Cutover clean: <code>DUAL_RUNNING -&gt; CUT_OVER</code> once, one <code>L1 shadow SPV started</code>, zero post-cutover <code>starting peergroup</code>, explainer once, no <code>OverlappingFileLockException</code>, size-guard verdict NORMAL (not RISKY), 100% sync in 29 s, balance/tx list/memo/currency/PIN identical across the upgrade. Persisted state stays <code>CUT_OVER</code>, never <code>SETTLED</code> (D-06).</td>
+</tr>
+<tr>
+<td><strong>B5</strong> Tools &gt; dashj sync (diagnostic) toggle</td>
+<td><strong>PASS</strong></td>
+<td><a class=ev href="../S7/B5/02-netmon-before.webp">B5/02-netmon-before.png</a>, <a class=ev href="../S7/B5/09-netmon-dashj-on.webp">B5/09-netmon-dashj-on.png</a>, <a class=ev href="../S7/B5/11-netmon-blocks.webp">B5/11-netmon-blocks.png</a>, <a class=ev href="../S7/B5/14-netmon-after-off.webp">B5/14-netmon-after-off.png</a>, <a class=ev href="../S7/B5/s7-b5-dashj-toggle.mp4">B5/s7-b5-dashj-toggle.mp4</a></td>
+<td>Cancel leaves it off (no peergroup); confirm starts dashj (<code>starting peergroup</code>) and Network monitor gains peers + blocks; off logs <code>stopping peergroup</code>. Parity probe: <strong>MATCH sdk=99999547 dashj=99999547, tx 3/3</strong>. ~+15-22 MB PSS with dashj on.</td>
+</tr>
+<tr>
+<td><strong>R1</strong> Rescan blockchain (+ creation-date picker)</td>
+<td><strong>PASS</strong></td>
+<td><a class=ev href="../S7/R1/07-rescan-dialog.webp">R1/07-rescan-dialog.png</a>, <a class=ev href="../S7/R1/08-datepicker.webp">R1/08-datepicker.png</a>, <a class=ev href="../S7/R1/11-rescan-confirm-with-date.webp">R1/11-rescan-confirm-with-date.png</a>, <a class=ev href="../S7/R1/13-after-rescan-home.webp">R1/13-after-rescan-home.png</a>, <a class=ev href="../S7/R1/s7-r1-rescan.mp4">R1/s7-r1-rescan.mp4</a></td>
+<td>Rescan from Sep 1 2026 rewinds the filter watermark to 1401408, resyncs to 100% and leaves balance + tx list + memo unchanged. Only timestamps drift (D-05). <code>SaveMetadataAndResetDialogFragment</code> unreachable - see Not run.</td>
+</tr>
+<tr>
+<td><strong>BK1</strong> Backup / restore from file</td>
+<td><strong>BLOCKED (feature absent) -&gt; substituted reset + restore-from-seed, PASS</strong></td>
+<td><a class=ev href="../S7/R1/01-security.webp">R1/01-security.png</a>, <a class=ev href="../S7/BK1/03-reset-dialog.webp">BK1/03-reset-dialog.png</a>, <a class=ev href="../S7/BK1/11-restored-home.webp">BK1/11-restored-home.png</a>, <a class=ev href="../S7/BK1/s7-bk1-reset.mp4">BK1/s7-bk1-reset.mp4</a></td>
+<td>No file backup in Security and no "Restore from file" button in onboarding - gated behind <code>BuildConfig.DEBUG</code> (<code>OnboardingActivity.kt:301</code>), and this is a release build. Substitute path clean: wrong seed -&gt; proper error, correct seed -&gt; balance 0.999983 and all 5 txs restored exactly.</td>
+</tr>
+<tr>
+<td><strong>TX1</strong> Transaction list &amp; detail edge cases</td>
+<td><strong>PASS with defects</strong></td>
+<td><a class=ev href="../S7/TX1/03-filter-sent.webp">TX1/03-filter-sent.png</a>, <a class=ev href="../S7/TX1/04-filter-received.webp">TX1/04-filter-received.png</a>, <a class=ev href="../S7/TX1/07-txdetail-received.webp">TX1/07-txdetail-received.png</a>, <a class=ev href="../S7/TX1/12-txdetail-internal.webp">TX1/12-txdetail-internal.png</a>, <a class=ev href="../S7/TX1/08-explorer.webp">TX1/08-explorer.png</a>, <a class=ev href="../S7/TX1/13-duplicate-address-rows.webp">TX1/13-duplicate-address-rows.png</a></td>
+<td>Direction/sign correct everywhere (a self-send is never announced as a receive, confirmed in log). Explorer chooser works. Copy-txid and share are <strong>not implemented</strong> in this build. Display defects D-03, D-05, D-07, D-08.</td>
+</tr>
+<tr>
+<td><strong>N1</strong> Notifications</td>
+<td><strong>PARTIAL</strong></td>
+<td><a class=ev href="../S7/N1/06-notification-shade.webp">N1/06-notification-shade.png</a>, <a class=ev href="../S7/N1/07-notification-expanded.webp">N1/07-notification-expanded.png</a></td>
+<td>Shade captured with a real wallet notification. The prescribed trick cannot work: the app correctly suppresses a notification for its own send, so a genuine third-party receive-while-backgrounded was not exercised. A stale duplicate receive notification was found instead (D-04).</td>
+</tr>
+<tr>
+<td><strong>SR-03 / SR-28 / SR-29</strong> (orchestrator static-review follow-ups)</td>
+<td><strong>SR-03 mixed, SR-28 confirmed, SR-29 confirmed</strong></td>
+<td>see per-test detail</td>
+<td>SR-03: the <strong>upgraded</strong> (dashj-born) keychain rotates correctly; after <strong>reset + restore-from-seed on the fix build</strong> every address handed out is already used (D-02). SR-28 and SR-29 reproduced exactly as predicted (D-01, D-01b, D-09).</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="per-test-detail">Per-test detail</h2>
+<h3 id="e8-fresh-small-wallet-on-master-1190-fix-1200">E8 - fresh small wallet on master 11.9.0 -&gt; fix 12.0.0</h3>
+<p><strong>Steps (wall clock)</strong>
+1. 00:22 installed master 11.9.0 clean; 00:23-00:27 created a 12-word wallet, PIN 1234, verified the phrase, granted notifications + background (<code>E8/02</code>-<code>E8/13</code>).
+2. 00:28 receive address #1 <code>yLRHLPYFiRXPQPm2CaD5AsifEfqpYbSRKo</code> (<code>E8/14</code>). Funded <strong>once</strong> from faucet.thepasta.org (Cap PoW challenge, one request) - txid <code>aa57902d1c5547d48cabe6d674babe10b728ab1262f6564bfcca1a6ec7b1bb33</code> (<a class=ev href="../S7/E8/15-faucet-sent.webp">E8/15-faucet-sent.png</a>).
+3. 00:29-00:33 receive landed and confirmed (<code>E8/21</code>, <code>E8/53</code>); insight confirms 1 tDASH, 0 unconfirmed. Added memo <strong>"S7-faucet-memo"</strong> (<a class=ev href="../S7/E8/25-master-txdetail-memo.webp">E8/25-master-txdetail-memo.png</a>).
+4. 00:35 receive address <strong>rotated</strong> on master to <code>yMahoHJCR7ZGztjQwxZ7FZpBEMDdnTpRjh</code> (<code>E8/27</code>). Sent 0.05 to it - confirm sheet fee <strong>0.00000227</strong>, total 0.05000227 (<code>E8/35</code>); result "Amount Sent -0.00000227", change <code>yg6CfcF5yBA9eNaJGgrczqEGLxcAAyJiSq</code> (<code>E8/37</code>). txid <code>1a1dac75452c890f0c976a000315cfd96a702feded36e2d57f7828340c3a330a</code>, confirmed on insight.
+5. 00:37-00:40 set Local currency <strong>EUR</strong> (<code>E8/48</code>), enabled home tap-to-hide (<code>E8/52</code>).
+6. 00:42 pre-upgrade capture: <a class=ev href="../S7/E8/pre-upgrade/files/log/wallet.log">E8/pre-upgrade/files/log/wallet.log</a>, <a class=ev href="../S7/E8/pre-upgrade/prefs-master.xml">E8/pre-upgrade/prefs-master.xml</a> -&gt; <code>last_version=11090002</code>, <code>previous_version=0</code>, <code>best_chain_height_ever=1556564</code>; wallet file <strong>274,663 bytes</strong>.
+7. 00:42:10 <code>am force-stop</code>; 00:42:12 <code>adb install -r</code> fix 12.0.0; video started; 00:42:19 launched.</p>
+<p><strong>Cutover assertions</strong> (file <a class=ev href="../S7/E8/post-upgrade/files/log/wallet.log">E8/post-upgrade/files/log/wallet.log</a>)</p>
+<table>
+<thead>
+<tr>
+<th>Assertion</th>
+<th>Expected</th>
+<th>Actual</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cutover state</code> this launch</td>
+<td>one DUAL_RUNNING -&gt; CUT_OVER</td>
+<td>line 3715 <code>05:42:20 CutoverCoordinator - cutover state DUAL_RUNNING -&gt; CUT_OVER (upgraded-wallet launch)</code> - exactly 1</td>
+</tr>
+<tr>
+<td><code>L1 shadow SPV started</code></td>
+<td>exactly 1</td>
+<td>line 3922; <code>grep -c</code> = 1 for that process</td>
+</tr>
+<tr>
+<td><code>starting peergroup</code> after cutover</td>
+<td>0</td>
+<td>0 (the 3 occurrences are master, 05:26/05:38/05:40)</td>
+</tr>
+<tr>
+<td>one-time explainer</td>
+<td>shown once</td>
+<td>line 3717 <code>explainer armed</code>; UI <a class=ev href="../S7/E8/56-fix-explainer.webp">E8/56-fix-explainer.png</a>; not shown again after kill+relaunch</td>
+</tr>
+<tr>
+<td><code>OverlappingFileLockException</code></td>
+<td>0</td>
+<td><code>grep -c</code> = 0</td>
+</tr>
+<tr>
+<td>wallet-file-size guard verdict</td>
+<td>not RISKY</td>
+<td><code>grep -c 'wallet file size guard'</code> = <strong>0</strong> -&gt; verdict NORMAL (the line only logs when != NORMAL, <code>WalletApplication.java:1196</code>). 274,663 B vs soft limit <code>min(heap/10, 100 MB)</code>. Also 0 <code>autosave debounce raised</code> lines.</td>
+</tr>
+<tr>
+<td>sync to 100%</td>
+<td>yes</td>
+<td>line 3946 <code>05:42:49 L1Shadow phase=SYNCED 100.0% headers 1556564/1556564 filters 1556564/1556564 wallet 1556564</code> - <strong>29 s after launch</strong></td>
+</tr>
+<tr>
+<td>balance identical</td>
+<td>0.999998</td>
+<td>SDK published 99999773 duffs; home shows 0.999998 (<a class=ev href="../S7/E8/59-fix-home-full.webp">E8/59-fix-home-full.png</a>) vs master <a class=ev href="../S7/E8/26-master-home-balance.webp">E8/26-master-home-balance.png</a></td>
+</tr>
+<tr>
+<td>tx list identical</td>
+<td>Internal 12:36 + Received 12:29 (+1, memo)</td>
+<td>identical; memo <code>S7-faucet-memo</code> present</td>
+</tr>
+<tr>
+<td>memo persisted</td>
+<td>yes</td>
+<td><code>E8/59</code>, <code>TX1/07</code></td>
+</tr>
+<tr>
+<td>currency persisted</td>
+<td>EUR</td>
+<td>EUR 53.31 on the fix home (<code>E8/58</code>, <code>E8/59</code>)</td>
+</tr>
+<tr>
+<td>hide balance persisted</td>
+<td>-</td>
+<td>the home tap-to-hide is <strong>session-scoped in both builds</strong> (no <code>hide_balance</code> key in <code>wallet_ui.preferences_pb</code>; cf. <code>E8/pre-upgrade/wallet_ui.preferences_pb</code>). The persisted setting is More &gt; Security &gt; Autohide Balance; enabled on the fix build and it did persist (<a class=ev href="../S7/R1/02-autohide-on.webp">R1/02-autohide-on.png</a>).</td>
+</tr>
+<tr>
+<td>PIN still works</td>
+<td>yes</td>
+<td><a class=ev href="../S7/E8/54-fix-first-launch.webp">E8/54-fix-first-launch.png</a> -&gt; unlocked with 1234</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Post-100% send (step 5)</strong> - 00:48 sent 0.01 to own fresh address <code>yMwdDaL2Ttje2uWJiDTjoV6x4fYxNUt5QM</code> via the SDK path: <code>05:48:42 SdkL1SendService - SDK l1Send: broadcast 1000000 duffs ... txid 65953a637494d70b30b4279314267f874751012c4e2be3f28e2bf246313d1cb7</code> (confirmed on insight). Detail shows "Amount Sent -0.00000226" (<code>E8/66</code>). Kill + relaunch 00:49 -&gt; <code>05:49:36 cutover committed - serving home-screen data from the SDK</code>, <code>05:49:44 phase=SYNCED 100.0%</code>, <code>TxDisplayCacheService - cache is complete (SDK holds 3 records, display has 3 rows)</code>, no second explainer, no peergroup.</p>
+<p><strong>Memory</strong> (<a class=ev href="../S7/mem.csv">evidence/S7/mem.csv</a>, <a class=ev href="../S7/mem-notes.txt">evidence/S7/mem-notes.txt</a>)</p>
+<table>
+<thead>
+<tr>
+<th>Point</th>
+<th>TOTAL PSS</th>
+<th>Native heap</th>
+<th>Dalvik heap</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>master 11.9.0, pre-upgrade</td>
+<td>186,776 KB</td>
+<td>29,364 KB</td>
+<td>36,140 KB</td>
+</tr>
+<tr>
+<td>fix 12.0.0, just after cutover + 100%</td>
+<td>305,268 KB</td>
+<td>172,544 KB</td>
+<td>18,656 KB</td>
+</tr>
+<tr>
+<td>fix 12.0.0, after kill + relaunch</td>
+<td>279,208 KB</td>
+<td>145,512 KB</td>
+<td>19,516 KB</td>
+</tr>
+<tr>
+<td>session peak (during the BK1 restore replay)</td>
+<td><strong>631,014 KB</strong></td>
+<td>461,860 KB</td>
+<td>32,308 KB</td>
+</tr>
+</tbody>
+</table>
+<p>No LMK/OOM kill: <a class=ev href="../S7/oom-exitinfo.txt">oom-exitinfo.txt</a> lists only two exits, both <code>reason=10 (USER REQUESTED) subreason=21 (FORCE STOP)</code> - my own force-stops. <code>grep -cE 'OutOfMemory|FATAL'</code> on wallet.log = <strong>0</strong>.</p>
+<p><strong>Verdict: PASS.</strong></p>
+<h3 id="b5-tools-dashj-sync-diagnostic">B5 - Tools &gt; dashj sync (diagnostic)</h3>
+<ul>
+<li>Before: Network monitor "Synced / Connected to the Dash network", headers=filters=mnlist=chainlock 1,556,570, hint "Peer and block lists come from the dashj diagnostic engine. Turn on dashj sync in Tools to view them." (<a class=ev href="../S7/B5/02-netmon-before.webp">B5/02-netmon-before.png</a>).</li>
+<li>Tapping the switch opens a 3-way dialog <strong>Sync from date</strong> / <strong>Sync everything (from the beginning)</strong> / <strong>Cancel</strong> (<code>B5/05</code>, <code>B5/07</code>).</li>
+<li><strong>Cancel</strong> -&gt; toggle stays off, <code>starting peergroup</code> count unchanged (<a class=ev href="../S7/B5/06-after-cancel.webp">B5/06-after-cancel.png</a>).</li>
+<li><strong>Confirm "Start sync from date"</strong> -&gt; <code>05:53:42 dashj-sync-diagnostic toggle -&gt; true; re-resolved dashjEngineMayStart=true</code>; <code>05:53:42 dashj-sync-diagnostic: store head 1556564 at/beyond checkpoint 1405440 for from-date 1789795446 - resuming</code>; <code>05:53:42 starting peergroup</code>.</li>
+<li>Network monitor then shows real peers (<code>/Dash Core:23.1.8(dcg-masternode-3)/</code>, protocol 70240, 50-423 ms) and a block list (<code>B5/09</code>, <code>B5/11</code>).</li>
+<li>Correctness cross-check: <code>05:54:26 dashj-sync-diagnostic: dashj caught up (100%) - parity MATCH estimated sdk=99999547 dashj=99999547 confirmed sdk=99999547 dashj=99999547 tx sdk=3 dashj=3</code>.</li>
+<li><strong>Off</strong> -&gt; <code>05:56:28 dashj-sync-diagnostic toggle -&gt; false</code>; <code>05:56:28 stopping peergroup</code>; Network monitor reverts to the no-peer hint (<code>B5/14</code>).</li>
+<li>Memory: off 287,039 KB PSS / Dalvik 19,696 -&gt; on 301,266 -&gt; 308,654 KB / Dalvik 28,552 -&gt; 33,380 -&gt; off again 298,478 KB. <strong>~ +15-22 MB PSS, +9-14 MB Dalvik with dashj running.</strong></li>
+</ul>
+<p><strong>Verdict: PASS.</strong></p>
+<h3 id="r1-rescan-blockchain">R1 - Rescan blockchain</h3>
+<ul>
+<li>Entry point: More &gt; Settings &gt; <strong>Rescan blockchain</strong> (present on both builds).</li>
+<li>Dialog: "Are you sure you want to rescan blockchain? This will temporarily hide your wallet balance and remove transactions..." with optional <strong>Select wallet creation date</strong> (<code>R1/07</code>).</li>
+<li>Date picker (<code>WalletCreationDatePickerDialog</code>): picked <strong>Tuesday, September 1, 2026</strong>, OK; dialog then reads "September 1, 2026" (<code>R1/08</code>, <code>R1/10</code>, <code>R1/11</code>).</li>
+<li>Confirm -&gt; <code>06:00:30 SettingsFragment - -&gt; blockchain rescan starting at date: Tue Sep 01 00:00:00 CDT 2026</code>; <code>06:00:30 DashSdkServiceImpl - armSpvRescan: filter watermark rewind to 1401408 armed</code>; <code>06:00:30 SdkWalletBinder - blockchain-reset rescan arm ...: armed=true</code>.</li>
+<li>Sync restarted from the rewound watermark: <code>06:00:31 phase=FILTERS 98.3% ... filters 1476408/1556573</code> -&gt; <code>06:00:33 phase=SYNCED 100.0%</code>.</li>
+<li>After: balance <strong>0.999995</strong> and the identical 3-row tx list with memo intact (<a class=ev href="../S7/R1/13-after-rescan-home.webp">R1/13-after-rescan-home.png</a>).</li>
+</ul>
+<p><strong>Verdict: PASS</strong> (with D-05 on timestamps).</p>
+<h3 id="bk1-backup-restore-from-file">BK1 - Backup / restore from file</h3>
+<p><strong>Feature absent in this build, proven from source</strong>
+- More &gt; Security offers only View Recovery Phrase / Change PIN / Autohide Balance / Advanced Security / Reset Wallet - no "Backup wallet" (<a class=ev href="../S7/R1/01-security.webp">R1/01-security.png</a>).
+- Onboarding shows only Create new wallet and Restore wallet, and Restore wallet goes straight to the seed screen (<code>BK1/06</code>, <code>BK1/07</code>). <code>wt-fix/wallet/src/de/schildbach/wallet/ui/OnboardingActivity.kt:301</code> wraps the restore-from-file button in <code>if (BuildConfig.DEBUG)</code>, so it is compiled out of this release APK.</p>
+<p><strong>Substitute coverage executed (reset + restore from recovery phrase)</strong>
+1. Reset Wallet dialog, <strong>Cancel</strong> path first -&gt; returns to Security untouched (<code>BK1/03</code>, <code>BK1/04</code>).
+2. Confirm -&gt; wipe completes and hands the UI to onboarding (<code>BK1/05</code>, <code>BK1/06</code>).
+3. <strong>Wrong recovery phrase</strong> (<code>...ghost zebra</code>) -&gt; error dialog "Wallet could not be restored: Error - Bad recovery phrase?" (the literal <code>Error</code> placeholder in the message is cosmetic).
+4. Correct phrase + PIN 1234 -&gt; replay <code>06:28:44 phase=FILTERS ... filters 225999</code> -&gt; <code>06:29:44 phase=SYNCED 100.0% headers 1556585/1556585</code>.
+5. <strong>Balance and txs match exactly</strong>: pre-reset 0.999983 / 5 rows (<a class=ev href="../S7/BK1/02-pre-reset-home.webp">BK1/02-pre-reset-home.png</a>); post-restore 0.999983 / same 5 rows (<a class=ev href="../S7/BK1/11-restored-home.webp">BK1/11-restored-home.png</a>). SDK published 99998345 duffs.
+6. Expected losses after a full wipe: private note, local currency (back to USD), Autohide Balance. The reset dialog warns only about the recovery phrase - UX note, not filed.</p>
+<p><strong>Verdict: BLOCKED for the file-backup path (feature not in a release build); PASS for the equivalent reset + restore-from-seed path.</strong></p>
+<h3 id="tx1-transaction-list-detail">TX1 - Transaction list &amp; detail</h3>
+<ul>
+<li><strong>Filter tabs</strong>: All / Sent / Received / Gift cards. <em>Received</em> correctly shows only the faucet receive (<code>TX1/04</code>) - the four self-sends are classified <strong>Internal</strong> and never announced as receives. <em>Sent</em> renders an <strong>empty list with no empty-state text</strong> (<code>TX1/03</code>) where master printed "There are no transactions to display".</li>
+<li><strong>Pull-to-refresh</strong>: swipe-down produced no visible refresh indicator; list and balance stayed correct (<code>TX1/06</code>).</li>
+<li><strong>Receive detail</strong>: "Amount Received +1.00", received-at address, Tax Category Income, memo (<code>TX1/07</code>).</li>
+<li><strong>Send / self-send detail</strong>: "Amount Sent -0.00000226", "Moved from" / "Internally moved to" - direction and sign correct (<code>TX1/12</code>). Log corroboration: <code>05:48:42 tx 65953a63... was authored by this wallet - not a receive, no notification</code>.</li>
+<li><strong>Explorer link</strong>: opens a "Select block explorer" sheet (Blockchair / Insight); Insight launches Chrome (<code>TX1/08</code>, <code>TX1/09</code>).</li>
+<li><strong>Copy txid / share</strong>: <strong>not implemented</strong>. <code>grep -niE "clipboard|ACTION_SEND|share"</code> over <code>TransactionDetailsDialogFragment.kt</code> and <code>TransactionResultViewBinder.kt</code> returns nothing; the only share affordance nearby is Receive &gt; "Share Address".</li>
+</ul>
+<p><strong>Verdict: PASS with defects D-03, D-05, D-07, D-08.</strong></p>
+<h3 id="n1-notifications">N1 - Notifications</h3>
+<ul>
+<li>Notification permission granted during onboarding; the shade contains genuine wallet notifications (<a class=ev href="../S7/N1/06-notification-shade.webp">N1/06-notification-shade.png</a>, <a class=ev href="../S7/N1/07-notification-expanded.webp">N1/07-notification-expanded.png</a>, captured with <code>cmd statusbar expand-notifications</code> / <code>collapse</code>).</li>
+<li>The prescribed trick (start a send to your own address, background immediately) <strong>cannot produce a receive notification by design</strong>: <code>06:19:51 SdkL1SendService - SDK l1Send: broadcast 1000000 duffs to ye3YgWym..., txid c178a892b31d0908286c841949c66da9814bc94bb0266ec88569c32c53e184d8</code> followed by <code>06:19:51 tx c178a892... was authored by this wallet - not a receive, no notification</code>. That is the correct behaviour under test ("never announce our own send as a receive"), so it doubles as positive evidence for TX1.</li>
+<li>A genuine third-party receive while backgrounded could not be produced (no second wallet on this stream, faucet quota already used) -&gt; <strong>PARTIAL</strong>.</li>
+<li>What did surface is D-04, a stale duplicate receive notification triggered by the R1 rescan.</li>
+</ul>
+<hr />
+<h2 id="defects-found">Defects found</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Sev</th>
+<th>Title</th>
+<th>Repro steps</th>
+<th>Evidence</th>
+<th>Suspected area</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>D-10</strong></td>
+<td><strong>S2</strong></td>
+<td>After "idling detected, stopping service" tears down the L1 shadow engine, <strong>every send fails</strong> with a misleading "not fully synced" error and never recovers in place</td>
+<td>Fix build, cutover committed, 100% synced. Leave the app idle ~2 min. <code>06:07:00 BlockchainServiceImpl - idling detected, stopping service</code> -&gt; <code>06:07:00 L1ShadowLifecycle STOPPED after 2m42s up; ... Nothing runs until the next startIfEnabled()</code>. Now confirm any payment: UI shows <strong>"Problem sending coins! Currently payments are not possible because the wallet is not fully synced with the network"</strong>, log throws <code>SendEngineNotSyncedException: cutover committed but the SDK engine cannot fund a send yet (L1 funding gate closed: SDK L1 engine not running)</code> at 06:07:03, 06:08:25 and ~06:09. Reproduced for both a 0.01 send and a send-all; retrying in place never recovers. Recovery needed backgrounding + re-foregrounding: <code>06:10:17 L1ShadowLifecycle RESUMING after 3m17s down</code>. The app idles out roughly every 1-5 min (7 <code>idling detected</code> lines this session).</td>
+<td><a class=ev href="../S7/TX1/SR29-05-problem-sending.webp">TX1/SR29-05-problem-sending.png</a>, <a class=ev href="../S7/TX1/SR29-07-retry-result.webp">TX1/SR29-07-retry-result.png</a>, <a class=ev href="../S7/TX1/SR29-08-normal-send-in-enginedown.webp">TX1/SR29-08-normal-send-in-enginedown.png</a>, <a class=ev href="../S7/TX1/SR29-09-after-bg-fg.webp">TX1/SR29-09-after-bg-fg.png</a>, <a class=ev href="../S7/BK1/pre-reset/files/log/wallet.log">BK1/pre-reset/files/log/wallet.log</a></td>
+<td><code>BlockchainServiceImpl</code> idle teardown vs <code>L1ShadowSyncService.startIfEnabled()</code> / <code>SendCoinsTaskRunner.sendViaSdkBridged</code> (<code>SendCoinsTaskRunner.kt:451</code>, <code>:172</code>)</td>
+</tr>
+<tr>
+<td><strong>D-01 (SR-28)</strong></td>
+<td>S3</td>
+<td>Send confirm sheet shows a flat 0.0001 DASH network fee, 10x-44x the fee actually charged</td>
+<td>Fix build, post-cutover. Send any amount -&gt; confirm sheet always reads <code>Network fee 0.0001</code>, <code>Total = amount + 0.0001</code>. Complete it and open the tx detail: real fee 0.00000226 (0.01 send) / 0.00000976 (send-all). Master 11.9.0 showed the exact 0.00000227 on its confirm sheet.</td>
+<td><a class=ev href="../S7/E8/64-fix-send-confirm.webp">E8/64-fix-send-confirm.png</a> vs <a class=ev href="../S7/E8/66-fix-selfsend-detail.webp">E8/66-fix-selfsend-detail.png</a>; <a class=ev href="../S7/TX1/SR29-03-confirm-sheet.webp">TX1/SR29-03-confirm-sheet.png</a> vs <a class=ev href="../S7/TX1/SR29-12-sendall-detail.webp">TX1/SR29-12-sendall-detail.png</a>; master baseline <a class=ev href="../S7/E8/35-master-send-confirm-sheet.webp">E8/35-master-send-confirm-sheet.png</a></td>
+<td>SDK send seam / fee estimation (<code>SdkL1SendService</code>, <code>SendCoinsViewModel.executeDryRun</code>)</td>
+</tr>
+<tr>
+<td><strong>D-01b (SR-28)</strong></td>
+<td>S3</td>
+<td>Amount field silently clamps to <code>balance - 0.0001</code>; that reserve is unspendable and "Max" is inconsistent with it</td>
+<td>Balance 0.999995. On the amount screen type <code>.99994547</code> (balance - 0.00005): at the 4th <code>9</code> the field jumps to <code>0.99989547</code> (= balance - 0.0001) and refuses to go higher. <strong>No "insufficient funds" message is shown</strong> - it silently clamps. Tapping <strong>Max</strong> instead fills the <em>full</em> balance <code>0.99999547</code>.</td>
+<td><a class=ev href="../S7/TX1/SR28-02-amount-entered.webp">TX1/SR28-02-amount-entered.png</a>, <a class=ev href="../S7/TX1/SR28-03-clamped-to-balance-minus-0.0001.webp">TX1/SR28-03-clamped-to-balance-minus-0.0001.png</a>, <a class=ev href="../S7/TX1/SR29-01-max.webp">TX1/SR29-01-max.png</a></td>
+<td>enter-amount / max-button fee reserve</td>
+</tr>
+<tr>
+<td><strong>D-02 (SR-03)</strong></td>
+<td>S3</td>
+<td>After reset + restore-from-seed on the fix build, Receive and "Specify Amount" hand out <strong>already-used</strong> addresses</td>
+<td>Fix build: Security &gt; Reset Wallet, restore the same seed, wait for 100%. Receive -&gt; <code>yLRHLPYFiRXPQPm2CaD5AsifEfqpYbSRKo</code> (insight: 3 tx appearances, 1.01 received). Specify Amount -&gt; <code>yMahoHJCR7ZGztjQwxZ7FZpBEMDdnTpRjh</code> (2 appearances). Continue again -&gt; <code>yMwdDaL2Ttje2uWJiDTjoV6x4fYxNUt5QM</code> (2 appearances). Send 0.01 to the shown address, reopen Receive -&gt; it advances to <code>yhyt2iGA2rKEQNDRUV5GPGS6cj8QAyeMAC</code>, also already used (2 appearances). The <strong>upgraded</strong> (dashj-born) keychain by contrast rotated to genuinely fresh zero-history addresses every time.</td>
+<td>before <a class=ev href="../S7/BK1/12-SR03-restored-receive-before.webp">BK1/12-SR03-restored-receive-before.png</a>, <a class=ev href="../S7/BK1/13-SR03-specify-amount-restored.webp">BK1/13-SR03-specify-amount-restored.png</a>; after <a class=ev href="../S7/BK1/18-SR03-receive-after-receive.webp">BK1/18-SR03-receive-after-receive.png</a>; upgraded-wallet contrast <a class=ev href="../S7/E8/60-fix-receive-addr3.webp">E8/60-fix-receive-addr3.png</a> + <a class=ev href="../S7/TX1/SR03-01-fix-receive-after-receive.webp">TX1/SR03-01-fix-receive-after-receive.png</a> (0 appearances on insight)</td>
+<td>SDK keychain "next fresh address" pointer after restore-from-seed (matches S1/S2)</td>
+</tr>
+<tr>
+<td><strong>D-03</strong></td>
+<td>S3</td>
+<td>Send-result sheet shows the <strong>change</strong> address as the recipient and classifies an outgoing tx as "Income" (restored/SDK-native wallet)</td>
+<td>On the restored wallet, send 0.01 to <code>yLRHLPYFiRXPQPm2CaD5AsifEfqpYbSRKo</code>. The result sheet reads <code>Sent to yMUaVA6tLcgR1n43WdSWyQcwPZiPSiosVY</code> and <code>Tax Category: Income</code>. On chain (<code>insight /tx/17302fc4d75f30b5ecb8890c44a984a4e6adcd69df031eb56283890f23b718af</code>) the outputs are <code>0.01 -&gt; yLRHLPYF...</code> (real recipient) and <code>0.97998119 -&gt; yMUaVA6t...</code> (change). The intended recipient is never displayed. Broadcast itself was correct: <code>06:35:21 SDK l1Send: broadcast 1000000 duffs to yLRHLPYF...</code>.</td>
+<td><a class=ev href="../S7/BK1/15-SR03-send-result.webp">BK1/15-SR03-send-result.png</a>, <a class=ev href="../S7/BK1/17-state.webp">BK1/17-state.png</a></td>
+<td>post-cutover tx seam change detection / <code>TransactionResultViewBinder</code></td>
+</tr>
+<tr>
+<td><strong>D-04</strong></td>
+<td>S3</td>
+<td>Duplicate/stale receive notification after a rescan</td>
+<td>Fix build with an already-notified receive in history. Settings &gt; Rescan blockchain, confirm. ~4 min later the app re-notifies the old receive: <code>06:04:46 CutoverUiDataService - SDK-discovered receive aa5790... (100000000 duffs) - notifying</code>; the shade shows "Received DASH 1.00" timestamped 15m although the receive happened 35 min earlier and was already notified at <code>05:29:18</code>.</td>
+<td><a class=ev href="../S7/N1/06-notification-shade.webp">N1/06-notification-shade.png</a>, <a class=ev href="../S7/N1/07-notification-expanded.webp">N1/07-notification-expanded.png</a>, <a class=ev href="../S7/BK1/pre-reset/files/log/wallet.log">BK1/pre-reset/files/log/wallet.log</a></td>
+<td><code>CutoverUiDataService</code> SDK-discovered-receive notifier (no already-seen suppression across a rescan)</td>
+</tr>
+<tr>
+<td><strong>D-05</strong></td>
+<td>S4</td>
+<td>Tx list and tx detail disagree on the timestamp; list timestamps shift after a rescan</td>
+<td>Same tx, same moment: list row <code>12:30 AM</code> (<a class=ev href="../S7/TX1/06-pull-to-refresh.webp">TX1/06-pull-to-refresh.png</a>), detail <code>September 19 at 12:29 AM</code> (<a class=ev href="../S7/TX1/07-txdetail-received.webp">TX1/07-txdetail-received.png</a>). Before the R1 rescan the list said 12:29 / 12:36; after it said 12:30 / 12:40 (block times).</td>
+<td><a class=ev href="../S7/E8/59-fix-home-full.webp">E8/59-fix-home-full.png</a> (pre-rescan) vs <code>TX1/06</code> vs <code>TX1/07</code></td>
+<td>tx display cache vs detail time source</td>
+</tr>
+<tr>
+<td><strong>D-06</strong></td>
+<td>S4</td>
+<td><code>CutoverState.SETTLED</code> is unreachable - the state machine never crosses its own horizon</td>
+<td>After cutover, kill + relaunch any number of times: persisted <code>cutover_state</code> in <code>files/datastore/dashpay.preferences_pb</code> stays <code>CUT_OVER</code>. Source: <code>CutoverAction.SETTLE</code> is dispatched nowhere in <code>wallet/src</code> - only <code>OBSERVE_READINESS</code> (<code>CutoverCoordinator.kt:142</code>) and <code>COMMIT_CUTOVER</code> (<code>:151</code>); <code>SETTLE</code>/<code>ROLLBACK</code> appear only in <code>CutoverStateMachine.kt</code> and its unit test. No functional impact (<code>dashjEngineMayStart(CUT_OVER) == false</code>; every "committed" predicate accepts <code>CUT_OVER || SETTLED</code>).</td>
+<td><a class=ev href="../S7/E8/post-upgrade/dashpay-datastore-strings.txt">E8/post-upgrade/dashpay-datastore-strings.txt</a>, <code>CutoverStateMachine.kt:139</code>, <code>CutoverCoordinator.kt:142,151</code></td>
+<td><code>CutoverCoordinator</code></td>
+</tr>
+<tr>
+<td><strong>D-07</strong></td>
+<td>S4</td>
+<td>Tx detail duplicates every input and output address row</td>
+<td>Open the detail of a tx with 1 input and 2 outputs: "Moved from" lists the single input <strong>twice</strong>, "Internally moved to" lists the two outputs <strong>four times</strong>.</td>
+<td><a class=ev href="../S7/TX1/13-duplicate-address-rows.webp">TX1/13-duplicate-address-rows.png</a></td>
+<td><code>TransactionResultViewBinder</code> / <code>transaction_result_address_row</code> inflation</td>
+</tr>
+<tr>
+<td><strong>D-08</strong></td>
+<td>S4</td>
+<td>Filtered tx list shows a blank area instead of the empty-state text</td>
+<td>Home &gt; Filter &gt; Sent on a wallet whose outgoing txs are all "Internal": the list area is completely blank. Master 11.9.0 printed "There are no transactions to display".</td>
+<td><a class=ev href="../S7/TX1/03-filter-sent.webp">TX1/03-filter-sent.png</a>, master baseline <a class=ev href="../S7/E8/13-master-home.webp">E8/13-master-home.png</a></td>
+<td>home tx-list empty state under filter</td>
+</tr>
+<tr>
+<td><strong>D-09 (SR-29)</strong></td>
+<td>S4</td>
+<td>Send-all first attempt fails on an insufficient-funds error, then succeeds on an internal retry</td>
+<td>Fix build, post-cutover, Max -&gt; Send. <code>06:11:28 SdkL1SendService - SDK l1SendAll: floor 99998764 duffs not deliverable at fee; retrying engine-authoritatively</code> with <code>DashSdkError$PlatformWallet$CoreInsufficientFunds: available Some(99999547), required Some(99999740)</code>, then <code>06:11:29 SDK l1SendAll: broadcast 99999547 duffs ... txid 065a166e7dcdb2df96c285afd746f45e70bfe89f2fdedffec4fbe2d30e075927</code>. User-visible outcome is success; cost is a thrown exception and ~1 s extra latency. Same root cause as D-01 (0.0001 flat fee floor).</td>
+<td><a class=ev href="../S7/TX1/SR29-11-sendmax-result.webp">TX1/SR29-11-sendmax-result.png</a>, <a class=ev href="../S7/TX1/SR29-12-sendall-detail.webp">TX1/SR29-12-sendall-detail.png</a>, <a class=ev href="../S7/BK1/pre-reset/files/log/wallet.log">BK1/pre-reset/files/log/wallet.log</a> around 06:11:28</td>
+<td><code>CoreSendAllNative.buildSignBroadcastDrain</code> / fee floor</td>
+</tr>
+</tbody>
+</table>
+<p>Master-build observation (not a fix-branch defect, not reproduced): on master 11.9.0 the first attempt to set Local currency to EUR showed "EUR" in Settings but the datastore still held <code>USD</code> and it reverted to USD on the next launch; a second attempt persisted correctly.</p>
+<hr />
+<h2 id="environment-problems-not-product-defects">Environment problems (not product defects)</h2>
+<ul>
+<li><code>qa-app.sh &lt;serial&gt; launch</code> (monkey) does not start this app on these AVDs; used <code>am start -n hashengineering.darkcoin.wallet_test/de.schildbach.wallet.ui.OnboardingActivity</code> throughout.</li>
+<li><code>qa-app.sh text</code> did not escape spaces when I entered the recovery phrase (only the first word landed). Worked around with <code>input text 'a%sb%sc'</code>; the helper has since been fixed on disk.</li>
+<li>The session <code>logcat.txt</code> stopped collecting at 00:38 (the backgrounded <code>adb logcat</code> died, probably at an <code>adb root</code> transition). All log evidence here cites the app's own <code>wallet.log</code>, pulled three times and covering the whole session.</li>
+<li>The recovery-phrase and restore screens set <code>FLAG_SECURE</code>, so <code>screencap</code> returns an all-black image (<a class=ev href="../S7/BK1/07-restore-options.webp">BK1/07-restore-options.png</a>). Those steps are evidenced by uiautomator text dumps quoted above.</li>
+<li>Default Auto Logout is 1 min, which locked the screen repeatedly between steps; raised to 1 hour via More &gt; Security &gt; Advanced Security (<a class=ev href="../S7/R1/05-autologout.webp">R1/05-autologout.png</a>).</li>
+<li>Master had a <code>CoinJoin</code> row in Settings; the fix build does not. Not investigated - flagging only.</li>
+</ul>
+<hr />
+<h2 id="not-run-blocked-with-reason">Not run / blocked, with reason</h2>
+<ul>
+<li><strong>BK1 file backup / restore-from-file with a password</strong>: not present in a release build (<code>OnboardingActivity.kt:301</code>, <code>if (BuildConfig.DEBUG)</code>), and Security has no backup entry. The "wrong password -&gt; error" path has no UI. Substituted with reset + restore-from-seed including a wrong-seed negative path.</li>
+<li><strong>R1 "Save metadata and reset" dialog</strong> (<code>SaveMetadataAndResetDialogFragment</code>): unreachable on this wallet. <code>SecurityFragment.kt:196</code> only shows it when <code>viewModel.hasIdentity &amp;&amp; viewModel.hasPendingTxMetadataToSave()</code>; this wallet has no DashPay identity, so <code>doReset()</code> is called directly. Needs a stream that created a username.</li>
+<li><strong>B5 "Sync everything (from the beginning)"</strong>: displayed but not confirmed - a full dashj chain scan would have consumed the rest of the session. "Start sync from date" was confirmed instead.</li>
+<li><strong>N1 third-party receive while backgrounded</strong>: not possible on this stream (self-sends are correctly not notified, no second wallet, faucet quota spent).</li>
+<li><strong>Copy txid / share from tx detail</strong>: feature does not exist in this build (verified in source).</li>
+</ul></html>

@@ -1,0 +1,11 @@
+TAG=kill50
+kill_time_local=2026-09-19T01:16:45
+pre_kill_phase_line=L1Shadow phase=FILTERS 82.6% headers 1556578/1556578 filters 745000/1556578 wallet 745000
+pre_kill_cursor=745000
+pre_kill_synced_height_persisted=1290000
+relaunch_time_local=2026-09-19T01:16:52
+post_relaunch_phase_line=L1Shadow phase=IDLE 0.0% headers 0/0 filters 0/0 wallet 1370000
+post_relaunch_cursor=1370000
+post_relaunch_synced_height_persisted=1290000
+blocks_lost_cursor=-625000
+blocks_lost_persisted=0

@@ -1,0 +1,34 @@
+===== 2026-09-19T01:08:22 sample 1 =====
+05:43:52 [DefaultDispatcher-worker-10] BlockchainServiceImpl - starting peergroup
+06:06:57 [DefaultDispatcher-worker-7] CutoverCoordinator - cutover state DUAL_RUNNING -> CUT_OVER (upgraded-wallet launch)
+06:07:00 [main] BlockchainServiceImpl - MEM pss=181MB nativeHeap=56/70MB jvm=23/576MB
+06:07:00 [DefaultDispatcher-worker-6] L1ShadowSyncService - L1 shadow SPV started for SDK wallet 0b91f36d… (dataDir=/data/user/0/hashengineering.darkcoin.wallet/files/l1_shadow_spv/mainnet, default peer discovery); debug-only instrumentation — two SPV engines are now running
+06:08:00 [main] BlockchainServiceImpl - MEM pss=271MB nativeHeap=439/465MB jvm=21/576MB
+===== 2026-09-19T01:10:23 sample 2 =====
+06:06:57 [DefaultDispatcher-worker-7] CutoverCoordinator - cutover state DUAL_RUNNING -> CUT_OVER (upgraded-wallet launch)
+06:07:00 [main] BlockchainServiceImpl - MEM pss=181MB nativeHeap=56/70MB jvm=23/576MB
+06:07:00 [DefaultDispatcher-worker-6] L1ShadowSyncService - L1 shadow SPV started for SDK wallet 0b91f36d… (dataDir=/data/user/0/hashengineering.darkcoin.wallet/files/l1_shadow_spv/mainnet, default peer discovery); debug-only instrumentation — two SPV engines are now running
+06:08:00 [main] BlockchainServiceImpl - MEM pss=271MB nativeHeap=439/465MB jvm=21/576MB
+06:09:00 [main] BlockchainServiceImpl - MEM pss=697MB nativeHeap=568/596MB jvm=20/576MB
+06:10:00 [main] BlockchainServiceImpl - MEM pss=857MB nativeHeap=745/921MB jvm=20/576MB
+===== 2026-09-19T01:12:25 sample 3 =====
+06:07:00 [DefaultDispatcher-worker-6] L1ShadowSyncService - L1 shadow SPV started for SDK wallet 0b91f36d… (dataDir=/data/user/0/hashengineering.darkcoin.wallet/files/l1_shadow_spv/mainnet, default peer discovery); debug-only instrumentation — two SPV engines are now running
+06:08:00 [main] BlockchainServiceImpl - MEM pss=271MB nativeHeap=439/465MB jvm=21/576MB
+06:09:00 [main] BlockchainServiceImpl - MEM pss=697MB nativeHeap=568/596MB jvm=20/576MB
+06:10:00 [main] BlockchainServiceImpl - MEM pss=857MB nativeHeap=745/921MB jvm=20/576MB
+06:11:00 [main] BlockchainServiceImpl - MEM pss=913MB nativeHeap=885/1012MB jvm=20/576MB
+06:12:00 [main] BlockchainServiceImpl - MEM pss=887MB nativeHeap=723/1061MB jvm=25/576MB
+===== 2026-09-19T01:14:27 sample 4 =====
+06:09:00 [main] BlockchainServiceImpl - MEM pss=697MB nativeHeap=568/596MB jvm=20/576MB
+06:10:00 [main] BlockchainServiceImpl - MEM pss=857MB nativeHeap=745/921MB jvm=20/576MB
+06:11:00 [main] BlockchainServiceImpl - MEM pss=913MB nativeHeap=885/1012MB jvm=20/576MB
+06:12:00 [main] BlockchainServiceImpl - MEM pss=887MB nativeHeap=723/1061MB jvm=25/576MB
+06:13:00 [main] BlockchainServiceImpl - MEM pss=618MB nativeHeap=462/1075MB jvm=21/576MB
+06:14:00 [main] BlockchainServiceImpl - MEM pss=618MB nativeHeap=463/1075MB jvm=21/576MB
+===== 2026-09-19T01:16:28 sample 5 =====
+06:12:00 [main] BlockchainServiceImpl - MEM pss=887MB nativeHeap=723/1061MB jvm=25/576MB
+06:13:00 [main] BlockchainServiceImpl - MEM pss=618MB nativeHeap=462/1075MB jvm=21/576MB
+06:14:00 [main] BlockchainServiceImpl - MEM pss=618MB nativeHeap=463/1075MB jvm=21/576MB
+06:15:00 [main] BlockchainServiceImpl - MEM pss=620MB nativeHeap=463/1075MB jvm=21/576MB
+06:16:00 [main] BlockchainServiceImpl - MEM pss=621MB nativeHeap=464/1075MB jvm=21/576MB
+06:16:00 [main] BlockchainServiceImpl - idling detected, stopping service

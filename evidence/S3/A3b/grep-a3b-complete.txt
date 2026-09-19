@@ -1,0 +1,3 @@
+06:48:03 [DefaultDispatcher-worker-12] L1ShadowSyncService - L1Shadow phase=SYNCED 100.0% headers 1556593/1556593 filters 1556593/1556593 wallet 1556593
+06:48:03 [DefaultDispatcher-worker-12] L1ShadowSyncService - ReplayMemTelemetry phase=SYNCED nativeHeapAllocated=297324912 nativeHeapSize=521412608 jvmUsed=35985440 jvmMax=603979776 headers 1556593/1556593 filters 1556593 wallet 1556593 SETTLED
+06:49:00 [main] BlockchainServiceImpl - replay complete — releasing the wake lock

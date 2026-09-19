@@ -1,0 +1,11 @@
+TAG=kill25
+kill_time_local=2026-09-19T01:15:30
+pre_kill_phase_line=L1Shadow phase=FILTERS 78.7% headers 1556578/1556578 filters 560000/1556578 wallet 560000
+pre_kill_cursor=560000
+pre_kill_synced_height_persisted=560000
+relaunch_time_local=2026-09-19T01:15:37
+post_relaunch_phase_line=L1Shadow phase=CONNECTING 80.5% headers 1556578/1556578 filters 645000/1556578 wallet 645000
+post_relaunch_cursor=645000
+post_relaunch_synced_height_persisted=560000
+blocks_lost_cursor=-85000
+blocks_lost_persisted=0

@@ -1,0 +1,58 @@
+09-19 00:44:58.017  9007  9007 E AndroidRuntime: 	at android.os.ServiceManager.rawGetService(ServiceManager.java:428)
+09-19 00:44:58.017  9007  9007 E AndroidRuntime: 	at android.os.ServiceManager.getService(ServiceManager.java:175)
+09-19 00:44:58.017  9007  9007 E AndroidRuntime: 	at android.app.ActivityManager$3.create(ActivityManager.java:5692)
+09-19 00:44:58.017  9007  9007 E AndroidRuntime: 	at android.app.ActivityManager$3.create(ActivityManager.java:5689)
+09-19 00:44:58.017  9007  9007 E AndroidRuntime: 	at android.util.Singleton.get(Singleton.java:44)
+09-19 00:44:58.017  9007  9007 E AndroidRuntime: 	at android.app.ActivityManager.getService(ActivityManager.java:5680)
+09-19 00:44:58.017  9007  9007 E AndroidRuntime: 	at com.android.internal.os.RuntimeInit$KillApplicationHandler.uncaughtException(RuntimeInit.java:170)
+09-19 00:44:58.017  9007  9007 E AndroidRuntime: 	at java.lang.ThreadGroup.uncaughtException(ThreadGroup.java:1071)
+09-19 00:44:58.017  9007  9007 E AndroidRuntime: 	at java.lang.ThreadGroup.uncaughtException(ThreadGroup.java:1066)
+09-19 00:44:58.017  9007  9007 E AndroidRuntime: 	at java.lang.Thread.dispatchUncaughtException(Thread.java:2306)
+09-19 00:47:12.075  9997  9997 E AndroidRuntime: FATAL EXCEPTION: main
+09-19 00:47:12.075  9997  9997 E AndroidRuntime: PID: 9997
+09-19 00:47:12.075  9997  9997 E AndroidRuntime: java.lang.IllegalStateException: UiAutomationService android.accessibilityservice.IAccessibilityServiceClient$Stub$Proxy@54f5f50already registered!
+09-19 00:47:12.075  9997  9997 E AndroidRuntime: 	at android.os.Parcel.createExceptionOrNull(Parcel.java:3250)
+09-19 00:47:12.075  9997  9997 E AndroidRuntime: 	at android.os.Parcel.createException(Parcel.java:3226)
+09-19 00:47:12.075  9997  9997 E AndroidRuntime: 	at android.os.Parcel.readException(Parcel.java:3209)
+09-19 00:47:12.075  9997  9997 E AndroidRuntime: 	at android.os.Parcel.readException(Parcel.java:3151)
+09-19 00:47:12.075  9997  9997 E AndroidRuntime: 	at android.view.accessibility.IAccessibilityManager$Stub$Proxy.registerUiTestAutomationService(IAccessibilityManager.java:1098)
+09-19 00:47:12.075  9997  9997 E AndroidRuntime: 	at android.app.UiAutomationConnection.registerUiTestAutomationServiceLocked(UiAutomationConnection.java:651)
+09-19 00:47:12.075  9997  9997 E AndroidRuntime: 	at android.app.UiAutomationConnection.connect(UiAutomationConnection.java:119)
+09-19 00:47:12.075  9997  9997 E AndroidRuntime: 	at android.app.UiAutomation.connectWithTimeout(UiAutomation.java:385)
+09-19 00:47:12.075  9997  9997 E AndroidRuntime: 	at android.app.UiAutomation.connect(UiAutomation.java:330)
+09-19 00:47:12.075  9997  9997 E AndroidRuntime: 	at com.android.uiautomator.core.UiAutomationShellWrapper.connect(UiAutomationShellWrapper.java:36)
+09-19 00:47:12.075  9997  9997 E AndroidRuntime: 	at com.android.commands.uiautomator.DumpCommand.run(DumpCommand.java:78)
+09-19 00:47:12.075  9997  9997 E AndroidRuntime: 	at com.android.commands.uiautomator.Launcher.main(Launcher.java:83)
+09-19 00:47:12.075  9997  9997 E AndroidRuntime: 	at com.android.internal.os.RuntimeInit.nativeFinishInit(Native Method)
+09-19 00:47:12.075  9997  9997 E AndroidRuntime: 	at com.android.internal.os.RuntimeInit.main(RuntimeInit.java:369)
+09-19 00:47:12.075  9997  9997 E AndroidRuntime: Caused by: android.os.RemoteException: Remote stack trace:
+09-19 00:47:12.075  9997  9997 E AndroidRuntime: 	at com.android.server.accessibility.UiAutomationManager.registerUiTestAutomationServiceLocked(UiAutomationManager.java:109)
+09-19 00:47:12.075  9997  9997 E AndroidRuntime: 	at com.android.server.accessibility.AccessibilityManagerService.registerUiTestAutomationService(AccessibilityManagerService.java:1489)
+09-19 00:47:12.075  9997  9997 E AndroidRuntime: 	at android.view.accessibility.IAccessibilityManager$Stub.onTransact(IAccessibilityManager.java:546)
+09-19 00:47:12.075  9997  9997 E AndroidRuntime: 	at android.os.Binder.execTransactInternal(Binder.java:1500)
+09-19 00:47:12.075  9997  9997 E AndroidRuntime: 	at android.os.Binder.execTransact(Binder.java:1444)
+09-19 00:47:12.075  9997  9997 E AndroidRuntime: 
+09-19 00:47:12.076  9997  9997 E AndroidRuntime: Error reporting crash
+09-19 00:47:12.076  9997  9997 E AndroidRuntime: java.lang.RuntimeException: Bad file descriptor
+09-19 00:47:12.076  9997  9997 E AndroidRuntime: 	at android.os.BinderProxy.transactNative(Native Method)
+09-19 00:47:12.076  9997  9997 E AndroidRuntime: 	at android.os.BinderProxy.transact(BinderProxy.java:586)
+09-19 00:47:12.076  9997  9997 E AndroidRuntime: 	at android.os.IServiceManager$Stub$Proxy.checkService(IServiceManager.java:441)
+09-19 00:47:12.076  9997  9997 E AndroidRuntime: 	at android.os.ServiceManagerProxy.getService(ServiceManagerNative.java:63)
+09-19 00:47:12.076  9997  9997 E AndroidRuntime: 	at android.os.ServiceManager.rawGetService(ServiceManager.java:428)
+09-19 00:47:12.076  9997  9997 E AndroidRuntime: 	at android.os.ServiceManager.getService(ServiceManager.java:175)
+09-19 00:47:12.076  9997  9997 E AndroidRuntime: 	at android.app.ActivityManager$3.create(ActivityManager.java:5692)
+09-19 00:47:12.076  9997  9997 E AndroidRuntime: 	at android.app.ActivityManager$3.create(ActivityManager.java:5689)
+09-19 00:47:12.076  9997  9997 E AndroidRuntime: 	at android.util.Singleton.get(Singleton.java:44)
+09-19 00:47:12.076  9997  9997 E AndroidRuntime: 	at android.app.ActivityManager.getService(ActivityManager.java:5680)
+09-19 00:47:12.076  9997  9997 E AndroidRuntime: 	at com.android.internal.os.RuntimeInit$KillApplicationHandler.uncaughtException(RuntimeInit.java:170)
+09-19 00:47:12.076  9997  9997 E AndroidRuntime: 	at java.lang.ThreadGroup.uncaughtException(ThreadGroup.java:1071)
+09-19 00:47:12.076  9997  9997 E AndroidRuntime: 	at java.lang.ThreadGroup.uncaughtException(ThreadGroup.java:1066)
+09-19 00:47:12.076  9997  9997 E AndroidRuntime: 	at java.lang.Thread.dispatchUncaughtException(Thread.java:2306)
+ACTIVITY MANAGER PROCESS EXIT INFO (dumpsys activity exit-info)
+Last Timestamp of Persistence Into Persistent Storage: 2026-09-19 00:19:18.200
+  package: hashengineering.darkcoin.wallet_test
+    Historical Process Exit for uid=10207
+        ApplicationExitInfo #0:
+          timestamp=2026-09-19 00:43:41.907 pid=4872 realUid=10207 packageUid=10207 definingUid=10207 user=0
+          process=hashengineering.darkcoin.wallet_test reason=10 (USER REQUESTED) subreason=21 (FORCE STOP) status=0
+          importance=100 pss=0.00 rss=347MB description=stop hashengineering.darkcoin.wallet_test due to from pid 8030 state=empty trace=null

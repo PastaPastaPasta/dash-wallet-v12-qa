@@ -1,0 +1,392 @@
+<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Stream S12 report</title><style>body{font-family:system-ui,-apple-system,sans-serif;max-width:1400px;margin:0 auto;padding:16px 24px;line-height:1.45;background:#fff;color:#111}
+table{border-collapse:collapse;font-size:13px;margin:12px 0}th,td{border:1px solid #ddd;padding:4px 8px;vertical-align:top;text-align:left}th{background:#f3f6fa;position:sticky;top:0}
+tr:nth-child(even){background:#fafbfc}code{background:#f4f4f4;padding:1px 4px;border-radius:3px;font-size:12px}pre{background:#f4f4f4;padding:10px;overflow:auto}
+h1{border-bottom:3px solid #008de4}h2{border-bottom:1px solid #ccc;margin-top:40px}a{color:#008de4}a.ev{background:#e8f4fd;padding:0 3px;border-radius:3px;font-family:ui-monospace,monospace;font-size:12px}
+nav.top{background:#012060;color:#fff;padding:8px 24px;margin:-16px -24px 16px;position:sticky;top:0;z-index:5}nav.top a{color:#fff;margin-right:18px;text-decoration:none}nav.top a:hover{text-decoration:underline}
+.S1{color:#b00020;font-weight:bold}.S2{color:#c75000;font-weight:bold}.toc{background:#f8f9fb;border:1px solid #e3e6ea;padding:8px 16px;font-size:13px;columns:2}.toc ul{margin:2px 0;padding-left:16px}
+.note{background:#fff8e1;border-left:4px solid #f5b400;padding:8px 12px;margin:12px 0}
+</style><nav class=top><a href="../../index.html">Home</a><a href="../../QA-REPORT.html">Full report</a><a href="../../EXEC-SUMMARY.html">Executive summary</a><a href="../../STORY-MATRIX.html">User-story matrix</a><a href="../../DEFECT-LEDGER.html">Defect register</a><a href="../index.html">Evidence gallery</a><a href="../../QA-PLAN.html">Test plan</a><a href="../../streams.html">Stream reports</a></nav><h1 id="qa-report-s12-cj1-bc1-nm1-agent-s12-emulator-5558-avd-dw-qa3-2026-09-19">QA report: S12 — CJ1 / BC1 / NM1   (agent: S12, emulator-5558 / AVD dw-qa3, 2026-09-19)</h1>
+<p>Builds: <code>apks/master-11.9.0-testnet3-release-signed.apk</code> (versionCode 11090002) and
+<code>apks/fix-12.0.0-testnet3-release-signed.apk</code> (versionCode 12000000).
+Wallet seed (throwaway): <code>[seed phrase redacted]</code>.
+Faucet: 1 tDASH, txid <code>10e3b5b8dca0702ca350d5f263e5b31c84c678f63d541a5a2b0ee7c1a96cf054</code> (one request, as briefed).</p>
+<h2 id="summary-table">Summary table</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Verdict</th>
+<th>Key evidence file(s)</th>
+<th>One-line finding</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CJ1 mixed-funds migration UI</td>
+<td><strong>BLOCKED (by design)</strong></td>
+<td><code>wt-fix/wallet/src/de/schildbach/wallet/service/platform/sdk/CoinJoinFundsMigrationService.kt:118,425</code>; <a class=ev href="../S12/CJ1/post-upgrade/04-home-after-explainer.webp">S12/CJ1/post-upgrade/04-home-after-explainer.png</a></td>
+<td><code>MIXED_FUNDS_PROMPT_HARD_SUPPRESSED = true</code> — the sheet cannot be shown by any code path, so keep-spendable / move-to-shielded / in-progress / failure / unconfirmed are all unreachable in this APK</td>
+</tr>
+<tr>
+<td>CJ1 funds after upgrade</td>
+<td><strong>FAIL (S1)</strong></td>
+<td><a class=ev href="../S12/CJ1/post-upgrade/12-amount-0.001.webp">S12/CJ1/post-upgrade/12-amount-0.001.png</a>, <a class=ev href="../S12/CJ1/post-upgrade/13-send-balance-unhidden.webp">13-send-balance-unhidden.png</a>, <a class=ev href="../S12/CJ1/post-upgrade/21-shield-result.webp">21-shield-result.png</a>, <a class=ev href="../S12/CJ1/post-upgrade/insufficient-funds-log.txt">insufficient-funds-log.txt</a>, <a class=ev href="../S12/CJ1/post-upgrade/shield-failure-log.txt">shield-failure-log.txt</a>, <a class=ev href="../S12/CJ1/post-upgrade/cj1-send.mp4">cj1-send.mp4</a>, <a class=ev href="../S12/CJ1/post-upgrade/cj1-shield.mp4">cj1-shield.mp4</a></td>
+<td>The whole balance (0.99997138 tDASH) sits in the CoinJoin account after the upgrade; the header shows it but Send, Send-Max and Shield all see <strong>0</strong> — funds stranded with no in-app way out (D-068)</td>
+</tr>
+<tr>
+<td>CJ1 escape hatches</td>
+<td><strong>1 of 5 works</strong></td>
+<td><code>S12/CJ1/escape-hatches/*</code>, <code>S12/CJ1/restore/*</code></td>
+<td>Only downgrading to master 11.9.0 + restoring the seed recovers spendability (real send proven on chain)</td>
+</tr>
+<tr>
+<td>BC1 buy credits / identity top-up</td>
+<td><strong>PASS (with 4 defects)</strong></td>
+<td><code>S12/BC1/26..51*.png</code>, <a class=ev href="../S12/BC1/explorer-identity-final.json">explorer-identity-final.json</a>, <a class=ev href="../S12/BC1/bc1-credits.mp4">bc1-credits.mp4</a></td>
+<td>Username + 2 x 0.001 DASH top-up both landed; explorer credit balance rose 2,562,746,440 -&gt; 2,746,680,400</td>
+</tr>
+<tr>
+<td>NM1 network monitor</td>
+<td><strong>PASS</strong></td>
+<td><code>S12/NM1/02,03,05,06,07,08*.png</code></td>
+<td>dashj OFF = summary + "turn on dashj sync to view peers"; dashj ON = peers/blocks lists; replay state captured at 54%</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="per-test-detail">Per-test detail</h2>
+<h3 id="cj1-coinjoin-mixed-funds-migration-on-upgrade-catalogue-15">CJ1 — CoinJoin mixed-funds migration on upgrade (catalogue #15)</h3>
+<p><strong>Static pre-read (before touching the device).</strong>
+<code>wt-fix/wallet/src/de/schildbach/wallet/service/platform/sdk/CoinJoinFundsMigrationService.kt:118</code>
+<code>const val MIXED_FUNDS_PROMPT_HARD_SUPPRESSED = true</code>, and line 425
+<code>if (MIXED_FUNDS_PROMPT_HARD_SUPPRESSED) return false</code> at the top of <code>shouldPrompt()</code>, plus the same guard
+inside <code>MixedFundsMigrationDialogFragment.showOnce()</code>. The in-code note (Brian, 2026-08-11) says the COMBINE
+drain produced a committed-but-never-propagated mainnet tx <code>0a884b1d...</code> (~75.6 DASH stuck on a permanent
+"Sending" row). The whole <code>ui/migration/</code> surface is dead code in this build. Absence of the prompt is
+therefore NOT a defect — but what the suppression leaves behind is (see D-068).</p>
+<p><strong>Steps (wall clock, local).</strong>
+1. 02:02 uninstall, install master 11.9.0, create wallet, PIN 1234, seed verified.
+2. 02:07 receive address <code>yVYBPPn2zy1KKRUD88wywwXHnKEo7X83H4</code>; faucet 1 tDASH; confirmed (insight balance 1).
+3. 02:11:44 More &gt; Settings &gt; CoinJoin &gt; Continue &gt; <strong>Intermediate</strong> &gt; Start Mixing. Foreground 21 min.
+4. 02:34:49 kill, <code>install -r</code> fix 12.0.0 (true in-place upgrade), relaunch (video <a class=ev href="../S12/CJ1/post-upgrade/cj1-upgrade.mp4">post-upgrade/cj1-upgrade.mp4</a>).
+5. 02:36-03:05 post-upgrade probes; 03:05-03:12 reset + restore on fix; 03:12-03:50 downgrade + restore on master.</p>
+<p><strong>Mixing result (master).</strong> 4 CoinJoin transactions broadcast:
+<code>3c229f43...</code> = CreateDenomination (1 input -&gt; 56 outputs: 29 x 0.00100001, 17 x 0.0100001, 8 x 0.100001,
+0.0004 collateral, 0.00056938 change), plus <code>0a2cacdc...</code>, <code>8d969085...</code>, <code>b46be97f...</code> = MakeCollateralInputs.
+Mixing progress never left 0% — <code>CoinJoinExtension - getMixingProgress: 0.0 = 0.0 / 53</code> and every session ended
+<code>POOL_STATE_ERROR "Session not complete!" / TIMEOUT</code> against testnet MNs <code>68.67.122.*</code>.
+So: the CoinJoin (m/9') account was populated with ~0.9999 tDASH of denominations at 0 mixing rounds; zero
+fully-mixed coins. Master home: <code>0.999971</code>, "Mixing . 0%", history group row
+"Mixing Transactions / 4 transactions / -0.000029" (<a class=ev href="../S12/CJ1/pre-upgrade/32-master-balance-breakdown.webp">pre-upgrade/32-master-balance-breakdown.png</a>).
+The stop-mixing confirm dialog was captured (<a class=ev href="../S12/CJ1/pre-upgrade/34-stop-mixing-confirm-dialog.webp">34-stop-mixing-confirm-dialog.png</a>: "Any funds that have been
+mixed will be combined with your unmixed funds") and deliberately CANCELLED, so the upgrade happened with
+CoinJoin still enabled — the state the migration detector is written for.</p>
+<p><strong>Post-upgrade observations (fix 12.0.0).</strong>
+- Unlock -&gt; cutover explainer "A one-time sync is needed" -&gt; "Got it". <strong>No mixed-funds sheet</strong> (expected).
+- Balance parity exact: master <code>0.999971</code>, fix <code>0.999971</code>, and
+  <code>wallet.log 07:35:23 L1ShadowSyncService - WalletBalanceFacts: total=99997138 accounts={bip44:0, bip32:0, coinjoin:99997138, ...}</code>.
+  The SDK detector source does see the coins.
+- The dashj-side source does not: <code>CoinJoinMixingTxSet - coinjoin grouping 3c229f43... as CreateDenomination (... dashjCoinJoinBalance=0)</code>.
+- No <code>mixed funds detected by ...</code> line anywhere (the probe never runs, because <code>shouldPrompt()</code> short-circuits).
+- History renders sanely: the "Mixing Transactions / 4 transactions / -0.000029" group row survives the upgrade
+  and the fix build re-classifies members correctly (1 CreateDenomination, 3 MakeCollateralInputs). No "Sent D 0"
+  rows (D-020 not reproduced here).
+- Settings on the fix build no longer has a CoinJoin row (<a class=ev href="../S12/CJ1/post-upgrade/06-settings-fix-no-coinjoin.webp">post-upgrade/06-settings-fix-no-coinjoin.png</a>).
+- <strong>SR-27 check.</strong> Before: <code>files/datastore/coinjoin.preferences_pb</code> = <code>coinjoin_mode=INTERMEDIATE</code>,
+  <code>first_time_info_shown</code>, <code>last_mixing_progress</code>; nothing CoinJoin/privacy-related in
+  <code>shared_prefs/..._preferences.xml</code>. After the upgrade the file is identical — the persisted mode is neither
+  read, migrated nor cleared, simply orphaned. <code>dashpay.preferences_pb</code> contains <code>cutover_state CUT_OVER</code> but
+  NO <code>mixed_funds_migration_done</code> / <code>mixed_funds_migration_in_flight</code> key, confirming the migration never ran.
+  (<code>post-upgrade/coinjoin-datastore-fix-after.bin</code>, <a class=ev href="../S12/CJ1/post-upgrade/main-prefs-fix-after.xml">main-prefs-fix-after.xml</a>.)</p>
+<p><strong>Assertions.</strong>
+| Assertion | Expected | Actual |
+|---|---|---|
+| Mixed-funds prompt appears after upgrade | prompt (catalogue #15) | none — hard-suppressed at <code>CoinJoinFundsMigrationService.kt:118</code> |
+| Balance counted after upgrade | 0.99997138 | 0.99997138 OK (<code>accounts={coinjoin:99997138}</code>) |
+| Ex-CoinJoin coins spendable | 0.001 send succeeds | "Insufficient funds", Send disabled, on-screen "Balance: DASH 0.00", Max = 0 <strong>FAIL</strong> |
+| Ex-CoinJoin coins shieldable | shield succeeds | "This transfer was not sent" <strong>FAIL</strong> |
+| Settings CoinJoin row removed | removed | removed OK |
+| Persisted CoinJoin mode handled | migrated or cleared | orphaned <code>coinjoin_mode=INTERMEDIATE</code> <strong>FAIL</strong> (SR-27 confirmed) |
+| Prompt reappears on relaunch | n/a | no prompt, home renders normally (<a class=ev href="../S12/CJ1/post-upgrade/22-relaunch-no-migration-prompt.webp">22-relaunch-no-migration-prompt.png</a>) OK |</p>
+<p><strong>Log excerpts.</strong></p>
+<pre><code>07:38:57 [main] SendCoinsFragment - dryRunException:
+org.bitcoinj.core.InsufficientMoneyException: Insufficient money,  missing 0.0011 DASH
+07:46:58 [DefaultDispatcher-worker-2] ShieldedBalanceServiceImpl - shielded shieldFromWallet rejected pre-broadcast (no lock tracked)
+org.dashfoundation.dashsdk.errors.DashSdkError$PlatformWallet$AssetLockInsufficientFunds:
+  asset lock coin selection is short: available 0 duffs, required 99979074 duffs
+07:46:58 [DefaultDispatcher-worker-2] ShieldedTransferExecutor - shielded transfer not sent: pre-broadcast asset-lock coin-selection failure
+</code></pre>
+<p><strong>Escape-hatch matrix</strong> (same wallet; evidence in <code>S12/CJ1/escape-hatches/</code> and <code>S12/CJ1/restore/</code>):</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Escape a stuck user might try</th>
+<th>Result</th>
+<th>Evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Send &gt; <strong>Max</strong> / send-all to own address</td>
+<td><strong>FAILS</strong> — Max fills 0, "Balance: DASH 0.00"</td>
+<td><a class=ev href="../S12/CJ1/escape-hatches/01-send-max.webp">escape-hatches/01-send-max.png</a></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Payments &gt; Internal &gt; Shielded balance &gt; <strong>Max</strong> (screen offers 0.99997138, "From Dash Wallet 0.99997138")</td>
+<td><strong>FAILS</strong> at PIN — "This transfer was not sent / Nothing left your balance"; <code>AssetLockInsufficientFunds: available 0 duffs, required 99979074</code></td>
+<td><code>escape-hatches/02,03,04*.png</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Tools &gt; <strong>dashj sync (diagnostic)</strong> ON (-&gt; "dashj 100% - matches SDK"), retry send</td>
+<td><strong>FAILS</strong> — still "Balance: DASH 0.00", Max 0</td>
+<td><code>escape-hatches/06,06a,07,08,09*.png</code></td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Reset + restore the same seed on the fix build</strong></td>
+<td><strong>FAILS</strong> — balance returns, <code>accounts={bip44:0, bip32:0, coinjoin:99997138}</code> again, Send still 0.00</td>
+<td><a class=ev href="../S12/CJ1/restore/08-home-after-restore.webp">restore/08-home-after-restore.png</a>, <a class=ev href="../S12/CJ1/restore/10-send-max-after-restore.webp">restore/10-send-max-after-restore.png</a></td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>Downgrade</strong>: uninstall fix, install master 11.9.0, restore seed</td>
+<td><strong>WORKS</strong> — "Balance: DASH 0.99988303", Max 0.99988303, real 0.001 self-send broadcast and confirmed: txid <code>fadea2817fce263559e1acf96d8f04ab634a3609ad2f1e0cdd92993cc9215ec9</code>, IN <code>yXRYQgkWnCrAzmcM2muLphFsBrtk3kEG86 0.100001</code> (a CoinJoin denomination) -&gt; OUT 0.001 + 0.09899873 change, fee 0.00000227</td>
+<td><code>escape-hatches/15..23*.png</code>, <a class=ev href="../S12/CJ1/escape-hatches/cj1-master-send.mp4">cj1-master-send.mp4</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Root-cause confirmation (bonus).</strong> Still on master, sent MAX (0.99987927) from the denominations to the
+wallet's own BIP44 address <code>yby8Md13kUKFZ6GMPUm5JWRBpnBNaS5CXQ</code>, let it confirm, then upgraded in place to the
+fix build again. After that upgrade the log reads
+<code>WalletBalanceFacts: total=99987927 accounts={bip44:99987927, bip32:0, coinjoin:0}</code> and everything (send,
+shield, top-up) behaves normally for the rest of the session. The stranding is specific to coins sitting in the
+CoinJoin (m/9') account at the cutover, not to the wallet or the amount.
+(<code>escape-hatches/24,25,26*.png</code>, then <a class=ev href="../S12/BC1/03-home.webp">BC1/03-home.png</a>.)</p>
+<p><strong>Memory:</strong> peak <code>TOTAL PSS 508777 KB</code> over 135 samples (<a class=ev href="../S12/mem.csv">S12/mem.csv</a>); no LMK, no OOM.
+<code>dumpsys activity exit-info</code> shows only <code>reason=10 (USER REQUESTED) subreason=21 (FORCE STOP)</code> — every process
+death was my own force-stop. No crash, no ANR. Logcat: <code>S12/logcat.txt</code> (39.9 MB).</p>
+<p><strong>Verdict:</strong> migration UI <strong>BLOCKED</strong> (suppressed by design, file:line recorded); funds behaviour <strong>FAIL (S1)</strong>.</p>
+<hr />
+<h3 id="bc1-buy-credits-identity-top-up-catalogue-12">BC1 — Buy credits / identity top-up (catalogue #12)</h3>
+<p>Run on the same wallet after CJ1's consolidation, so no second faucet request was needed
+(balance 0.99987927 tDASH in bip44).</p>
+<p><strong>Steps.</strong>
+1. 03:53 Payments &gt; Internal &gt; Shielded balance -&gt; shield <strong>0.8</strong> -&gt; Confirm -&gt; PIN -&gt; success.
+   More shows "Dash Wallet 0.199 D / Shielded 0.797 D" (<code>BC1/04..07*.png</code>, <a class=ev href="../S12/BC1/bc1-shield.mp4">bc1-shield.mp4</a>).
+2. 03:55 More &gt; Join DashPay -&gt; Continue -&gt; payment option <strong>Shielded balance</strong> -&gt; voting info -&gt; username
+   <code>qa12s12mixedfunds4821</code> (21 chars, non-contested) -&gt; "Username is available" -&gt; Confirm (0.03 from shielded;
+   the "I accept" label is not tappable, only the checkbox square — D-006 reproduced) -&gt; PIN.
+3. 03:56:31 <code>BlockchainIdentityData - creation: BlockchainIdentityData(DONE, qa12s12mixedfunds4821, CONFIRMED, ..., GDpXqZCFyoo3hhBwfmkNdJSBcCDpkpEpsvodLzw8o1fi)</code>.
+   Home shows "Hello qa12s12mixedfunds4821, Your account is ready".
+4. 03:56:40-03:57:40 network off for 60 s -&gt; home shows "Unable to connect to the Dash network / Check your
+   connection" (<a class=ev href="../S12/BC1/19-home-netoff-identity.webp">BC1/19-home-netoff-identity.png</a>). The intermediate identity progress strings
+   (<code>identity_processing_waiting_confirmation</code>, <code>..._network_catching_up</code>) could NOT be observed: registration
+   completed in under 10 s, before the toggle. Recorded as not-observed, not as a pass.
+5. 04:01 Tools &gt; <strong>Credits &gt; Buy</strong> -&gt; 0.001 DASH (the floor: a smaller value clamps back to 0.001 with no
+   message) -&gt; Send -&gt; PIN -&gt; Confirm.
+   * Attempt 1: the 60 s auto-lock fired on the confirm sheet and silently cancelled the top-up — after
+     unlocking, back on Buy Credits with the amount still filled and nothing spent.
+   * Attempt 2: confirm sheet -&gt; asset-lock tx broadcast -&gt; <code>09:03:49 BuyCreditsFragment - SDK top-up failed
+     (ambiguous=true): SDK error: Dapi client error: no available addresses to use</code>; UI showed "Your top-up may
+     have gone through. Please don't try again - check your credit balance in a few minutes." The recovery
+     worker won 91 s later: <code>09:05:20 SdkTopUpRecoveryService - drain: resumed top-up lock fee3034f...:0 - new
+     credit balance 2654713420</code>.
+   * Attempt 3 (clean): <code>09:14:25 PerformTopUpWorker - top-up of 100000 duffs credited; new balance 2746680400</code>.
+   * A deliberate attempt with the network off was refused pre-broadcast with no funds moved:
+     <code>09:11:07 PerformTopUpWorker - top-up not sent: pre-broadcast: SPV client not started</code>.
+6. History row created: "Topup Fee -0.001003"; detail sheet shows "Sent from yZttKKDqz34Gw33k8jcq6wSxMeaLPXUzWM /
+   Sent to ybeiJXuZU5QGynbCEquMiAUALBJh43JdRb / Platform Credits / Network fee 0.00000263"
+   (<a class=ev href="../S12/BC1/39-history-rows.webp">BC1/39-history-rows.png</a>, <a class=ev href="../S12/BC1/40-topup-tx-detail.webp">40-topup-tx-detail.png</a>).</p>
+<p><strong>Explorer verification</strong> (<code>https://testnet.platform-explorer.pshenmic.dev/identity/GDpXqZCFyoo3hhBwfmkNdJSBcCDpkpEpsvodLzw8o1fi</code>,
+saved to <a class=ev href="../S12/BC1/explorer-identity-final.json">BC1/explorer-identity-final.json</a>):</p>
+<table>
+<thead>
+<tr>
+<th>moment</th>
+<th>credit balance</th>
+<th>totalTopUpsAmount</th>
+<th>totalTxs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>after username registration</td>
+<td>2562746440</td>
+<td>3000000000</td>
+<td>2</td>
+</tr>
+<tr>
+<td>after top-up #1 (recovered)</td>
+<td>2654713420</td>
+<td>3100000000</td>
+<td>3</td>
+</tr>
+<tr>
+<td>after top-up #2</td>
+<td>2746680400</td>
+<td>3200000000</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+<p>alias <code>qa12s12mixedfunds4821.dash</code>, <code>status: ok</code>, <code>contested: false</code>. In-app "Current Identity Balance:
+0.0274668 DASH" matches 2746680400 credits exactly.</p>
+<p><strong>Verdict: PASS</strong> — the money moved, the credits landed, on-chain/Platform state matches the UI.
+Four defects below, none fund-losing.</p>
+<hr />
+<h3 id="nm1-network-monitor-on-the-upgraded-wallet">NM1 — Network monitor on the upgraded wallet</h3>
+<table>
+<thead>
+<tr>
+<th>state</th>
+<th>screen</th>
+<th>evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>dashj toggle <strong>OFF</strong>, synced</td>
+<td>"Synced / Connected to the Dash network", Block headers 1,556,620, Block filters 1,556,620, Masternode list height 1,556,620, ChainLock height 1,556,620, plus "The wallet engine does not report individual peer connections." and "Peer and block lists come from the dashj diagnostic engine. Turn on dashj sync in Tools to view them."</td>
+<td><a class=ev href="../S12/NM1/02-network-monitor-peers.webp">NM1/02-network-monitor-peers.png</a>, <a class=ev href="../S12/NM1/03-network-monitor-scrolled.webp">03-network-monitor-scrolled.png</a></td>
+</tr>
+<tr>
+<td>dashj <strong>OFF</strong>, mid-replay (during reset+restore)</td>
+<td>"Downloading filter headers <strong>54%</strong>", Block headers 1,556,626, <strong>Block filters 150,999 / 1,556,626</strong>, ChainLock 1,556,625</td>
+<td><a class=ev href="../S12/NM1/07-network-monitor-during-replay.webp">NM1/07-network-monitor-during-replay.png</a></td>
+</tr>
+<tr>
+<td>after 100%</td>
+<td>back to "Synced", all four heights 1,556,626</td>
+<td><a class=ev href="../S12/NM1/08-network-monitor-replay-2.webp">NM1/08-network-monitor-replay-2.png</a></td>
+</tr>
+<tr>
+<td>dashj <strong>ON</strong> (bonus)</td>
+<td>same summary plus a live <strong>Peers</strong> list (<code>68.67.122.58 / .2 / .32</code>, <code>/Dash Core:23.1.8.../ protocol: 70240</code>, RTT 64-68 ms) and a <strong>Blocks</strong> list</td>
+<td><a class=ev href="../S12/NM1/05-network-monitor-dashj-on.webp">NM1/05-network-monitor-dashj-on.png</a>, <code>06-...-blocks.png</code>, <a class=ev href="../S12/NM1/04-tools-dashj-on-100pct.webp">04-tools-dashj-on-100pct.png</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Verdict: PASS.</strong> One cosmetic inconsistency logged (D-069).</p>
+<hr />
+<h2 id="defects-found">Defects found</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Sev</th>
+<th>Title</th>
+<th>Repro steps</th>
+<th>Evidence</th>
+<th>Suspected area</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>D-068</strong> (confirmed + extended)</td>
+<td><strong>S1</strong></td>
+<td>Ex-CoinJoin funds are counted but completely unspendable after the 11.9.0 -&gt; 12.0.0 upgrade, and the one UI that could rescue them is hard-suppressed</td>
+<td>1. master 11.9.0, fund 1 tDASH; 2. Settings &gt; CoinJoin &gt; Intermediate &gt; Start Mixing until a CreateDenomination tx exists; 3. <code>install -r</code> fix 12.0.0, unlock; 4. Send 0.001 to own address</td>
+<td><code>S12/CJ1/post-upgrade/12,13,14*.png</code>, <a class=ev href="../S12/CJ1/post-upgrade/21-shield-result.webp">21-shield-result.png</a>, <a class=ev href="../S12/CJ1/post-upgrade/insufficient-funds-log.txt">insufficient-funds-log.txt</a>, <a class=ev href="../S12/CJ1/post-upgrade/shield-failure-log.txt">shield-failure-log.txt</a>, <a class=ev href="../S12/CJ1/post-upgrade/cj1-send.mp4">cj1-send.mp4</a>, <a class=ev href="../S12/CJ1/post-upgrade/cj1-shield.mp4">cj1-shield.mp4</a></td>
+<td><code>CoinJoinFundsMigrationService.kt:118/425</code> (<code>MIXED_FUNDS_PROMPT_HARD_SUPPRESSED</code>) + SDK coin selection ignoring <code>AccountType::CoinJoin</code> for spends and asset locks</td>
+</tr>
+<tr>
+<td>D-068a</td>
+<td>S3</td>
+<td>Send says "Balance: DASH 0.00" while the shield screen simultaneously says "From Dash Wallet 0.99997138" for the same funds, then fails at PIN — the user is invited into a transfer that provably cannot work</td>
+<td>as D-068, then Payments &gt; Internal &gt; Shielded balance</td>
+<td><a class=ev href="../S12/CJ1/escape-hatches/02-shield-max.webp">CJ1/escape-hatches/02-shield-max.png</a> vs <a class=ev href="../S12/CJ1/escape-hatches/01-send-max.webp">01-send-max.png</a>, <a class=ev href="../S12/CJ1/escape-hatches/04-shield-max-result.webp">04-shield-max-result.png</a></td>
+<td>shielded transfer VM reads the total balance, not the asset-lock-selectable balance</td>
+</tr>
+<tr>
+<td>D-068b</td>
+<td>S4</td>
+<td>Persisted <code>coinjoin_mode=INTERMEDIATE</code> survives the upgrade in <code>files/datastore/coinjoin.preferences_pb</code>, orphaned — never read, never migrated, never cleared (confirms SR-27)</td>
+<td>dump the datastore before and after <code>install -r</code></td>
+<td><code>CJ1/pre-upgrade/coinjoin-datastore-master-mixing-on.bin</code> vs <code>CJ1/post-upgrade/coinjoin-datastore-fix-after.bin</code></td>
+<td>CoinJoin removal commit left <code>CoinJoinConfig</code>'s datastore behind</td>
+</tr>
+<tr>
+<td><strong>D-069</strong></td>
+<td>S4</td>
+<td>Network monitor shows "Downloading filter headers 54%" while the "Block filters" row reads 150,999 / 1,556,626 (~10%) — headline percentage and counter disagree by ~44 points</td>
+<td>Tools &gt; Network monitor during a post-restore replay</td>
+<td><a class=ev href="../S12/NM1/07-network-monitor-during-replay.webp">S12/NM1/07-network-monitor-during-replay.png</a></td>
+<td>network-monitor progress binding</td>
+</tr>
+<tr>
+<td><strong>D-070</strong></td>
+<td>S3</td>
+<td>The 60 s auto-lock fires on the Buy-Credits confirm sheet and silently cancels the top-up — no error, no "cancelled" message, user dropped back on the amount screen</td>
+<td>Tools &gt; Credits &gt; Buy -&gt; 0.001 -&gt; Send -&gt; PIN -&gt; wait ~60 s on the confirm sheet</td>
+<td><a class=ev href="../S12/BC1/31-buy-progress-1.webp">S12/BC1/31-buy-progress-1.png</a>, <a class=ev href="../S12/BC1/33-after-unlock-buy.webp">33-after-unlock-buy.png</a></td>
+<td><code>AutoLogout</code> vs <code>BuyCreditsFragment</code> confirm dialog (pairs with D-001)</td>
+</tr>
+<tr>
+<td><strong>D-071</strong></td>
+<td>S3</td>
+<td>A top-up that hits <code>Dapi client error: no available addresses to use</code> broadcasts the asset lock anyway and tells the user "Your top-up may have gone through. Please don't try again" — funds locked on L1 with no in-UI progress until a background worker recovers it 91 s later</td>
+<td>Tools &gt; Credits &gt; Buy -&gt; 0.001 -&gt; Send -&gt; PIN -&gt; Confirm when DAPI has no reachable address (reproduced right after a network off/on cycle)</td>
+<td><a class=ev href="../S12/BC1/34-topup-unconfirmed-message.webp">S12/BC1/34-topup-unconfirmed-message.png</a>; log <code>09:03:49</code> ... <code>09:05:20</code>; asset lock <code>fee3034fcb25bf0cbc2a78a8cffbc30acfc4e708aa34e5a0ae50316041cdb316</code> (type 8, 0.001 locked)</td>
+<td><code>PerformTopUpWorker</code> / <code>SdkTopUpRecoveryService</code>; recovery works, but the user-facing window is an unbounded "may have"</td>
+</tr>
+<tr>
+<td><strong>D-072</strong></td>
+<td>S4</td>
+<td>Tools &gt; <strong>Credits</strong> row never shows a credit balance — only the title, an info icon and a "Buy" link — even with 2.7G credits on the identity</td>
+<td>More &gt; Tools, look at the Credits row</td>
+<td><a class=ev href="../S12/BC1/23-tools-credits.webp">S12/BC1/23-tools-credits.png</a>, <a class=ev href="../S12/BC1/50-tools-after-success.webp">50-tools-after-success.png</a></td>
+<td><code>tools_credits_title</code> row has no balance binding</td>
+</tr>
+<tr>
+<td><strong>D-073</strong></td>
+<td>S4</td>
+<td>"Current Identity Balance" on the Buy Credits screen is stale after a successful top-up (still 0.02562746 when the identity is already at 0.02654713); only a relaunch refreshes it</td>
+<td>buy credits, then reopen Buy Credits without killing the app</td>
+<td><a class=ev href="../S12/BC1/36-buy-credits-after-success.webp">S12/BC1/36-buy-credits-after-success.png</a> vs <a class=ev href="../S12/BC1/42-buy-credits-balance-refreshed.webp">42-buy-credits-balance-refreshed.png</a></td>
+<td>Buy-credits VM does not re-read the identity balance after a credited top-up</td>
+</tr>
+<tr>
+<td>D-074</td>
+<td>S4</td>
+<td>Buy Credits amount field silently clamps below-minimum input back to 0.001 with no message</td>
+<td>Tools &gt; Credits &gt; Buy, try to type 0.0001</td>
+<td><a class=ev href="../S12/BC1/29-buy-below-min.webp">S12/BC1/29-buy-below-min.png</a></td>
+<td>same pattern as D-032</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Existing defects re-confirmed on this stream</strong>
+- <strong>D-001</strong> (auto-lock after 60 s) — hit repeatedly; see D-070 for a functional consequence.
+- <strong>D-003 / SR-03</strong> — after reset + restore on the fix build the Receive tab hands out the already-used index-0
+  address <code>yVYBPPn2zy1KKRUD88wywwXHnKEo7X83H4</code> again (<a class=ev href="../S12/CJ1/restore/09-receive-after-restore.webp">CJ1/restore/09-receive-after-restore.png</a>). The wallet
+  created on master then upgraded DID rotate (<code>yiejB3PxsnjX14qHQfiC3tbkPw37fi14Gz</code>), matching S7.
+- <strong>D-006</strong> — "I accept" text label not tappable on the username confirm sheet; only the checkbox square works.
+- <strong>D-024</strong> — <code>dashpay.preferences_pb</code> holds <code>cutover_state CUT_OVER</code>, never SETTLED.
+- <strong>D-020</strong> NOT reproduced: the mixing txs render as a sensible "Mixing Transactions / 4 transactions" group.</p>
+<h2 id="environment-problems-not-product-defects">Environment problems (not product defects)</h2>
+<ul>
+<li><strong>ENV-6 (new):</strong> testnet CoinJoin mixing does not complete. Over 21 min every session ended
+  <code>POOL_STATE_ERROR "Session not complete!"</code> / <code>TIMEOUT</code> against <code>68.67.122.*</code>; <code>getMixingProgress</code> stayed
+  <code>0.0 / 53</code>. Denominations ARE created, so the m/9' bucket is reachable, but fully-mixed coins are not
+  obtainable on this testnet today. CJ1 was exercised with denominated-but-0-round coins.</li>
+<li><strong>ENV-4</strong> re-confirmed: <code>adb root</code> inside the helper subcommands restarts adbd; <code>logcat-start</code> survived here
+  only because root was already active.</li>
+<li>Faucet used exactly once (web UI, per the brief's update). No 429.</li>
+<li>The lock-screen keypad shifts ~65 px down once a "Wrong PIN!" line appears, so cached tap coordinates mis-hit
+  and burned 3 PIN attempts (one 1-minute "Wallet disabled" lockout). Tooling issue, not a product bug.</li>
+</ul>
+<h2 id="not-run-blocked-with-reason">Not run / blocked, with reason</h2>
+<ul>
+<li><strong>Mixed-funds migration UI paths</strong> (dismiss/back, keep-spendable, move-to-shielded, in-progress, failure +
+  restart, unconfirmed, re-trigger, "done" latch): unreachable — <code>MIXED_FUNDS_PROMPT_HARD_SUPPRESSED = true</code>
+  at <code>CoinJoinFundsMigrationService.kt:118</code> gates both <code>shouldPrompt()</code> and <code>showOnce()</code>.</li>
+<li><strong>Fully-mixed (round &gt; 0) coins at the cutover</strong>: not obtainable — see ENV-6. The tested state is the CoinJoin
+  account holding denominations at 0 rounds, which is what both detector sources read.</li>
+<li><strong><code>identity_processing_waiting_confirmation</code> / <code>identity_..._network_catching_up</code></strong>: not observed — username
+  registration completed in under 10 s, before the 60 s airplane-mode window could be applied. The offline
+  banner and the offline top-up refusal (<code>pre-broadcast: SPV client not started</code>) were captured instead.</li>
+</ul></html>

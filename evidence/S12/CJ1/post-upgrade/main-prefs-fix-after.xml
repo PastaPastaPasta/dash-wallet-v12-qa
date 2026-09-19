@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<map>
+    <boolean name="remind_backup" value="true" />
+    <int name="best_header_height_ever" value="1556600" />
+    <long name="last_used" value="1789803294676" />
+    <boolean name="show_notifications_explainer" value="false" />
+    <boolean name="remind_backup_seed" value="false" />
+    <long name="last_backup_seed_time" value="1789801540937" />
+    <int name="best_chain_height_ever" value="1556608" />
+    <int name="last_version" value="12000000" />
+    <boolean name="enable_fingerprint" value="false" />
+    <int name="previous_version" value="11090002" />
+    <string name="prefs_uuid">5d898738-e9d5-4e34-bfd1-b302fb501b3d</string>
+    <int name="onboarding_state" value="0" />
+    <long name="show_tax_catagory_install_time" value="1789801464689" />
+    <boolean name="show_tax_catagory_explainer" value="true" />
+</map>

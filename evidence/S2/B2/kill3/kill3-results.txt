@@ -1,0 +1,28 @@
+TAG=k1
+kill_time=2026-09-19T01:52:20  relaunch_time=2026-09-19T01:52:27
+before_kill_line=L1Shadow phase=FILTERS 77.1% headers 1556594/1556594 filters 488000/1556594 wallet 488000
+before_kill_cursor=488000  before_kill_persisted=343000
+after_relaunch_line=L1Shadow phase=CONNECTING 77.3% headers 1556594/1556593 filters 498000/1556594 wallet 498000
+after_relaunch_cursor=498000  after_relaunch_persisted=343000
+blocks_lost_cursor=-10000
+blocks_lost_persisted=0
+---
+TAG=k2
+kill_time=2026-09-19T01:55:05  relaunch_time=2026-09-19T01:55:12
+before_kill_line=L1Shadow phase=FILTERS 94.5% headers 1556595/1556595 filters 1298000/1556595 wallet 1298000
+before_kill_cursor=1298000  before_kill_persisted=1553000
+after_relaunch_line=L1Shadow phase=CONNECTING 99.5% headers 1556595/1556594 filters 1532170/1556595 wallet 1553000
+after_relaunch_cursor=1553000  after_relaunch_persisted=1553000
+blocks_lost_cursor=-255000
+blocks_lost_persisted=0
+---
+TAG=k3
+kill_time=2026-09-19T01:57:45  relaunch_time=2026-09-19T01:57:51
+before_kill_line=L1Shadow phase=CONNECTING 99.5% headers 1556595/1556594 filters 1532170/1556595 wallet 1553000
+before_kill_cursor=1553000  before_kill_persisted=1552170
+after_relaunch_line=L1Shadow phase=CONNECTING 99.5% headers 1556595/1556595 filters 1532170/1556595 wallet 1552170
+after_relaunch_cursor=1552170  after_relaunch_persisted=1552170
+blocks_lost_cursor=830
+blocks_lost_persisted=0
+---
+DONE 2026-09-19T01:58:01

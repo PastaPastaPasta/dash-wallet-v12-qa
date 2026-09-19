@@ -1,0 +1,17 @@
+explorer distinct txs (20 addrs): 236
+explorer incoming-only txs      : 166
+of those, missing from sdk transactions: 0
+of those, missing from txos-union      : 41
+of those, missing from tx_display_cache: 2
+TOTAL sdk transactions: 3269
+sdk transactions with NO display row: 1801
+sdk transactions absent from txos-union: 873
+  of those, also no display row: 525
+sdk txs netAmount>0: 399  with NO display row: 2
+   MISSING RECEIVE 30d25cfa437dc80b83c3f4cda912e466c5c5d9144679d0bedfe3a174bd9c5a16 h 1123983 2024-10-19T07:21:52 amt 20000000
+   MISSING RECEIVE 301d24c9ab71b31d745188d31642925a8b09ea8e8a6b662a1398b3b2b954ce12 h 1123983 2024-10-19T07:21:52 amt 33848582
+display rows total: 1519 received-ish(valueSatoshis>0): 397
+titles: [('Sent', 722), ('Received', 391), ('Internal', 354), ('Mixing Transactions', 51), ('Upgrade Fee', 1)]
+earliest display rows: [('196e159e0f464d40bb8057d56232bacea0e1750d3fa749a19fdae52d0f5cc05e', 'Sent', -10000000, '2019-07-31 10:04:28'), ('bc3860520181daa812639c924745597a3c114743c620fa1867cce74a3c91b0a6', 'Received', 10000000, '2019-07-31 10:04:28'), ('fd6c3de7c7a31be44184a35cd7768b13d8f100032f7d7e42e3eb2658c0d142a9', 'Received', 100000000, '2019-07-31 10:05:47')]
+EXPLORER-INCOMING MISSING FROM DISPLAY: 30d25cfa437dc80b83c3f4cda912e466c5c5d9144679d0bedfe3a174bd9c5a16 height 1123983 2024-10-19T07:21:52 in sdk transactions: True in txos-union: False
+EXPLORER-INCOMING MISSING FROM DISPLAY: 301d24c9ab71b31d745188d31642925a8b09ea8e8a6b662a1398b3b2b954ce12 height 1123983 2024-10-19T07:21:52 in sdk transactions: True in txos-union: False

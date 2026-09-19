@@ -1,0 +1,16 @@
+use_kotlin_sdk_dpns_reads
+use_kotlin_sdk_dashpay_writes
+use_kotlin_sdk_shielded
+use_kotlin_sdk_l1_invite
+use_kotlin_sdk_l1_shadow
+ cutover_upgrade_boundary_crossed
+cutover_state
+CUT_OVER
+!cutover_upgrade_notice_ever_armed
+cutover_upgrade_notice_pending
+sdk_gap_widened_version
+sdk_bind_ever_succeeded
+sdk_bind_blocker
+NONE
+last_shielded_balance_duffs
+!transaction_metadata_remerge_done

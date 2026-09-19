@@ -1,0 +1,28 @@
+===== 2026-09-19T00:33:36 sample 1 =====
+05:31:31 [DefaultDispatcher-worker-8] L1ShadowSyncService - L1ShadowLifecycle watermark at stop: durable syncedHeight 2541278 covers the committed cursor 2541278 (filter 2541278)
+05:31:32 [DefaultDispatcher-worker-4] L1ShadowSyncService - L1 shadow SPV started for SDK wallet ee230719… (dataDir=/data/user/0/hashengineering.darkcoin.wallet/files/l1_shadow_spv/mainnet, default peer discovery); debug-only instrumentation — two SPV engines are now running
+05:31:32 [DefaultDispatcher-worker-1] L1ShadowSyncService - L1ShadowLifecycle watermark at stop: durable syncedHeight 2541278 covers the committed cursor 2541278 (filter 0)
+05:31:33 [DefaultDispatcher-worker-2] L1ShadowSyncService - L1 shadow hard reset: deleted SPV dataDir /data/user/0/hashengineering.darkcoin.wallet/files/l1_shadow_spv/mainnet (17 files) — header store and scan watermark gone; the restart re-scans from the wallet's birth height
+05:32:38 [DefaultDispatcher-worker-6] CutoverCoordinator - cutover state DUAL_RUNNING -> CUT_OVER (fresh-wallet setup (restore/new))
+05:33:19 [DefaultDispatcher-worker-1] L1ShadowSyncService - L1 shadow SPV started for SDK wallet 0b91f36d… (dataDir=/data/user/0/hashengineering.darkcoin.wallet/files/l1_shadow_spv/mainnet, default peer discovery); debug-only instrumentation — two SPV engines are now running
+===== 2026-09-19T00:35:36 sample 2 =====
+05:31:33 [DefaultDispatcher-worker-2] L1ShadowSyncService - L1 shadow hard reset: deleted SPV dataDir /data/user/0/hashengineering.darkcoin.wallet/files/l1_shadow_spv/mainnet (17 files) — header store and scan watermark gone; the restart re-scans from the wallet's birth height
+05:32:38 [DefaultDispatcher-worker-6] CutoverCoordinator - cutover state DUAL_RUNNING -> CUT_OVER (fresh-wallet setup (restore/new))
+05:33:19 [DefaultDispatcher-worker-1] L1ShadowSyncService - L1 shadow SPV started for SDK wallet 0b91f36d… (dataDir=/data/user/0/hashengineering.darkcoin.wallet/files/l1_shadow_spv/mainnet, default peer discovery); debug-only instrumentation — two SPV engines are now running
+05:34:00 [main] BlockchainServiceImpl - MEM pss=538MB nativeHeap=390/581MB jvm=20/576MB
+05:35:00 [main] BlockchainServiceImpl - MEM pss=912MB nativeHeap=717/851MB jvm=19/576MB
+05:35:00 [main] BlockchainServiceImpl - MEM pss=912MB nativeHeap=717/851MB jvm=19/576MB
+===== 2026-09-19T00:37:37 sample 3 =====
+05:33:19 [DefaultDispatcher-worker-1] L1ShadowSyncService - L1 shadow SPV started for SDK wallet 0b91f36d… (dataDir=/data/user/0/hashengineering.darkcoin.wallet/files/l1_shadow_spv/mainnet, default peer discovery); debug-only instrumentation — two SPV engines are now running
+05:34:00 [main] BlockchainServiceImpl - MEM pss=538MB nativeHeap=390/581MB jvm=20/576MB
+05:35:00 [main] BlockchainServiceImpl - MEM pss=912MB nativeHeap=717/851MB jvm=19/576MB
+05:35:00 [main] BlockchainServiceImpl - MEM pss=912MB nativeHeap=717/851MB jvm=19/576MB
+05:36:00 [main] BlockchainServiceImpl - MEM pss=951MB nativeHeap=750/906MB jvm=22/576MB
+05:37:00 [main] BlockchainServiceImpl - MEM pss=958MB nativeHeap=759/985MB jvm=21/576MB
+===== 2026-09-19T00:39:37 sample 4 =====
+05:35:00 [main] BlockchainServiceImpl - MEM pss=912MB nativeHeap=717/851MB jvm=19/576MB
+05:35:00 [main] BlockchainServiceImpl - MEM pss=912MB nativeHeap=717/851MB jvm=19/576MB
+05:36:00 [main] BlockchainServiceImpl - MEM pss=951MB nativeHeap=750/906MB jvm=22/576MB
+05:37:00 [main] BlockchainServiceImpl - MEM pss=958MB nativeHeap=759/985MB jvm=21/576MB
+05:38:00 [main] BlockchainServiceImpl - MEM pss=941MB nativeHeap=723/1014MB jvm=20/576MB
+05:39:00 [main] BlockchainServiceImpl - MEM pss=704MB nativeHeap=464/1088MB jvm=18/576MB

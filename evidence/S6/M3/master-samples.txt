@@ -1,0 +1,73 @@
+===== 2026-09-19T00:50:10 master sample 1 =====
+ Dalvik Heap 60925 56768 4072 48 62584 68144 43568 24576
+ Native Heap: 43784 44756
+ TOTAL PSS: 199573 TOTAL RSS: 334440 TOTAL SWAP PSS: 319
+05:50:06 [Wallet autosave thread] WalletProtobufSerializer - writeWallet timing: 5ms total (5ms/100% serialization, 0ms/0% I/O) buffer=8KB
+05:50:06 [Wallet autosave thread] WalletFiles - Save completed in 7.205 ms (274006 bytes); /data/user/0/hashengineering.darkcoin.wallet/files/wallet-protobuf
+05:50:06 [PeerGroup Thread] PeerGroup$ChainDownloadSpeedCalculator - 1500 blocks/sec, 0 tx/sec, 6184 pre-filtered tx/sec, 0 headers/sec, 0 mnlistdiff/sec, avg/last 70.08/117.19 kilobytes per sec, chain/common height 453108/2541282, not stalled (threshold <0.39 KB/sec for 30 seconds)
+05:50:07 [PeerGroup Thread] PeerGroup$ChainDownloadSpeedCalculator - 1000 blocks/sec, 1 tx/sec, 4226 pre-filtered tx/sec, 0 headers/sec, 0 mnlistdiff/sec, avg/last 70.52/91.80 kilobytes per sec, chain/common height 454108/2541282, not stalled (threshold <0.39 KB/sec for 30 seconds)
+05:50:08 [PeerGroup Thread] PeerGroup$ChainDownloadSpeedCalculator - 1000 blocks/sec, 1 tx/sec, 3570 pre-filtered tx/sec, 0 headers/sec, 0 mnlistdiff/sec, avg/last 67.78/81.50 kilobytes per sec, chain/common height 455108/2541282, not stalled (threshold <0.39 KB/sec for 30 seconds)
+05:50:09 [PeerGroup Thread] PeerGroup$ChainDownloadSpeedCalculator - 1072 blocks/sec, 0 tx/sec, 4039 pre-filtered tx/sec, 0 headers/sec, 0 mnlistdiff/sec, avg/last 67.96/83.75 kilobytes per sec, chain/common height 456180/2541282, not stalled (threshold <0.39 KB/sec for 30 seconds)
+text="1"
+text="2"
+text="3"
+text="4"
+text="5"
+text="6"
+text="7"
+text="8"
+===== 2026-09-19T00:55:12 master sample 2 =====
+ Dalvik Heap 57293 53136 4072 48 58952 68224 43648 24576
+ Native Heap: 43624 44596
+ TOTAL PSS: 196312 TOTAL RSS: 331356 TOTAL SWAP PSS: 319
+05:55:11 [PeerGroup Thread] PeerGroup$ChainDownloadSpeedCalculator - 500 blocks/sec, 2 tx/sec, 6090 pre-filtered tx/sec, 0 headers/sec, 0 mnlistdiff/sec, avg/last 67.21/45.82 kilobytes per sec, chain/common height 725608/2541286, not stalled (threshold <0.39 KB/sec for 30 seconds)
+05:55:12 [PeerGroup Thread] PeerGroup$ChainDownloadSpeedCalculator - 1000 blocks/sec, 3 tx/sec, 13179 pre-filtered tx/sec, 0 headers/sec, 0 mnlistdiff/sec, avg/last 68.67/82.71 kilobytes per sec, chain/common height 726608/2541286, not stalled (threshold <0.39 KB/sec for 30 seconds)
+05:55:12 [DefaultDispatcher-worker-5] BlockchainServiceImpl - network capabilities changed: 100, hasInternet: true, validated: true
+05:55:12 [DefaultDispatcher-worker-5] BlockchainServiceImpl - acquiring check() mutex
+05:55:12 [DefaultDispatcher-worker-5] BlockchainServiceImpl - check()
+05:55:12 [DefaultDispatcher-worker-5] BlockchainServiceImpl - releasing check() mutex
+text="1"
+text="2"
+text="3"
+text="4"
+text="5"
+text="6"
+text="7"
+text="8"
+===== 2026-09-19T01:00:15 master sample 3 =====
+ Dalvik Heap 50950 46808 4048 47 52624 68161 43585 24576
+ Native Heap: 43624 44596
+ TOTAL PSS: 190034 TOTAL RSS: 325760 TOTAL SWAP PSS: 313
+06:00:12 [Wallet autosave thread] WalletProtobufSerializer - walletToProto (serial=11) timing: 5ms total, init=0ms, tx=0ms[2], keys=0ms, scripts=0ms[0], metadata=0ms, ext=4ms, friendRecv=0ms, friendSend=0ms, build=0ms
+06:00:12 [Wallet autosave thread] WalletProtobufSerializer - writeWallet timing: 5ms total (5ms/100% serialization, 0ms/0% I/O) buffer=8KB
+06:00:12 [Wallet autosave thread] WalletFiles - Save completed in 8.357 ms (275146 bytes); /data/user/0/hashengineering.darkcoin.wallet/files/wallet-protobuf
+06:00:13 [PeerGroup Thread] PeerGroup$ChainDownloadSpeedCalculator - 1000 blocks/sec, 1 tx/sec, 50327 pre-filtered tx/sec, 0 headers/sec, 0 mnlistdiff/sec, avg/last 98.82/80.26 kilobytes per sec, chain/common height 956108/2541288, not stalled (threshold <0.39 KB/sec for 30 seconds)
+06:00:14 [PeerGroup Thread] PeerGroup$ChainDownloadSpeedCalculator - 961 blocks/sec, 6 tx/sec, 23388 pre-filtered tx/sec, 0 headers/sec, 0 mnlistdiff/sec, avg/last 100.90/106.20 kilobytes per sec, chain/common height 957069/2541288, not stalled (threshold <0.39 KB/sec for 30 seconds)
+06:00:15 [PeerGroup Thread] PeerGroup$ChainDownloadSpeedCalculator - 756 blocks/sec, 0 tx/sec, 13498 pre-filtered tx/sec, 0 headers/sec, 0 mnlistdiff/sec, avg/last 98.77/59.06 kilobytes per sec, chain/common height 957825/2541288, not stalled (threshold <0.39 KB/sec for 30 seconds)
+text="1"
+text="2"
+text="3"
+text="4"
+text="5"
+text="6"
+text="7"
+text="8"
+===== 2026-09-19T01:05:18 master sample 4 =====
+ Dalvik Heap 60610 56468 4048 47 62284 70285 45709 24576
+ Native Heap: 43792 44764
+ TOTAL PSS: 199926 TOTAL RSS: 335680 TOTAL SWAP PSS: 313
+06:05:15 [Wallet autosave thread] WalletProtobufSerializer - walletToProto (serial=11) timing: 5ms total, init=0ms, tx=0ms[2], keys=0ms, scripts=0ms[0], metadata=0ms, ext=3ms, friendRecv=0ms, friendSend=0ms, build=0ms
+06:05:15 [Wallet autosave thread] WalletProtobufSerializer - writeWallet timing: 4ms total (4ms/100% serialization, 0ms/0% I/O) buffer=8KB
+06:05:15 [Wallet autosave thread] WalletFiles - Save completed in 6.841 ms (275146 bytes); /data/user/0/hashengineering.darkcoin.wallet/files/wallet-protobuf
+06:05:16 [PeerGroup Thread] PeerGroup$ChainDownloadSpeedCalculator - 538 blocks/sec, 4 tx/sec, 19815 pre-filtered tx/sec, 0 headers/sec, 0 mnlistdiff/sec, avg/last 64.33/50.94 kilobytes per sec, chain/common height 1186646/2541289, not stalled (threshold <0.39 KB/sec for 30 seconds)
+06:05:17 [PeerGroup Thread] PeerGroup$ChainDownloadSpeedCalculator - 462 blocks/sec, 4 tx/sec, 20145 pre-filtered tx/sec, 0 headers/sec, 0 mnlistdiff/sec, avg/last 63.00/43.22 kilobytes per sec, chain/common height 1187108/2541289, not stalled (threshold <0.39 KB/sec for 30 seconds)
+06:05:18 [PeerGroup Thread] PeerGroup$ChainDownloadSpeedCalculator - 395 blocks/sec, 2 tx/sec, 16840 pre-filtered tx/sec, 0 headers/sec, 0 mnlistdiff/sec, avg/last 62.76/35.84 kilobytes per sec, chain/common height 1187503/2541289, not stalled (threshold <0.39 KB/sec for 30 seconds)
+text="1"
+text="2"
+text="3"
+text="4"
+text="5"
+text="6"
+text="7"
+text="8"
+master watch done 2026-09-19T01:05:20

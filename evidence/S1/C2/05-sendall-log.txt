@@ -1,0 +1,10 @@
+06:05:00 [DefaultDispatcher-worker-15] SdkL1SendService - SDK l1Send: broadcast 100000 duffs to ygUWAkqb…, txid bd9fc16db9a662e2f593d3e83403f04fdd558e6c737df6748b8e9f8722ffcc50
+06:08:00 [DefaultDispatcher-worker-3] SendCoinsViewModel - executeDryRun started
+06:08:00 [DefaultDispatcher-worker-3] SendCoinsViewModel - executeDryRun finished (cutover-aware: SDK-overlaid affordability)
+06:08:32 [DefaultDispatcher-worker-8] SdkL1SendService - SDK l1Send: broadcast 100000 duffs to ygeMkM3f…, txid 0499bd57a5d4853b32715f677893ce65783be7b651de02e59eecaf29e3a9aa69
+06:16:11 [DefaultDispatcher-worker-3] SendCoinsViewModel - executeDryRun started
+06:16:11 [DefaultDispatcher-worker-3] SendCoinsViewModel - executeDryRun finished (cutover-aware: SDK-overlaid affordability)
+06:22:50 [DefaultDispatcher-worker-10] SendCoinsViewModel - executeDryRun started
+06:22:50 [DefaultDispatcher-worker-10] SendCoinsViewModel - executeDryRun finished (cutover-aware: SDK send-all / drain)
+06:23:31 [DefaultDispatcher-worker-6] SendCoinsTaskRunner - cutover committed: routing the SendRequest payment via the SDK bridge (96135540 duffs to ygzkrgSc…, send-all)
+06:23:31 [DefaultDispatcher-worker-6] SdkL1SendService - SDK l1SendAll: broadcast 96135540 duffs to ygzkrgSc…, txid 9981b17d1f064f1404de5c2bd766a2cd96f9ccade68a42a39c089ad10ff87bd5
