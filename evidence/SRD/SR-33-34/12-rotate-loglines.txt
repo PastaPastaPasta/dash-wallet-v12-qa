@@ -1,0 +1,17 @@
+16:46:06 [main] LockScreenActivity - show lock screen false = ![keepUnlocked=false] && autologout=true && (keepUnlockedUntilPenEntered=false || shouldLogout=false) || isHealthy=true
+17:01:27 [main] LockScreenActivity - show lock screen true = ![keepUnlocked=false] && autologout=true && (keepUnlockedUntilPenEntered=true || shouldLogout=false) || isHealthy=true
+17:16:40 [main] LockScreenActivity - show lock screen true = ![keepUnlocked=false] && autologout=true && (keepUnlockedUntilPenEntered=false || shouldLogout=true) || isHealthy=true
+17:42:16 [main] LockScreenActivity - show lock screen true = ![keepUnlocked=false] && autologout=true && (keepUnlockedUntilPenEntered=true || shouldLogout=false) || isHealthy=true
+17:49:33 [main] LockScreenActivity - show lock screen false = ![keepUnlocked=false] && autologout=true && (keepUnlockedUntilPenEntered=false || shouldLogout=false) || isHealthy=true
+17:50:15 [main] LockScreenActivity - show lock screen false = ![keepUnlocked=false] && autologout=true && (keepUnlockedUntilPenEntered=false || shouldLogout=false) || isHealthy=true
+17:50:28 [main] LockScreenActivity - show lock screen true = ![keepUnlocked=false] && autologout=true && (keepUnlockedUntilPenEntered=false || shouldLogout=true) || isHealthy=true
+17:50:15 [main] WalletActivityTracker - activity lifecycle: current: MainActivity, activities: 2 visible: 2 foreground: 1
+17:50:16 [main] WalletActivityTracker - activity lifecycle: current: AdvancedSecurityActivity, activities: 2 visible: 1 foreground: 1
+17:50:16 [main] WalletActivityTracker - activity lifecycle: activity AdvancedSecurityActivity destroyed
+17:50:16 [main] WalletActivityTracker - activity lifecycle: current: AdvancedSecurityActivity, activities: 1 visible: 1 foreground: 1
+17:50:23 [main] WalletActivityTracker - activity lifecycle: current: MainActivity, activities: 1 visible: 1 foreground: 0
+17:50:24 [main] WalletActivityTracker - activity lifecycle: current: MainActivity, activities: 1 visible: 0 foreground: 0
+17:50:28 [main] WalletActivityTracker - activity lifecycle: activity MainActivity created
+17:50:28 [main] WalletActivityTracker - activity lifecycle: current: MainActivity, activities: 2 visible: 0 foreground: 0
+17:50:28 [main] WalletActivityTracker - activity lifecycle: current: MainActivity, activities: 2 visible: 1 foreground: 0
+17:50:28 [main] WalletActivityTracker - activity lifecycle: current: MainActivity, activities: 2 visible: 1 foreground: 1

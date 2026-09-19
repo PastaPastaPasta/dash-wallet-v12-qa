@@ -1,0 +1,4 @@
+61dd9f06d875526f size 191 fee 384 duffs vin 1 vout 1
+fd5d4dffc6504f54 size 191 fee 384 duffs vin 1 vout 1
+fcb3231e8048bf9a size 225 fee 226 duffs vin 1 vout 2
+b6109773aceb4c4f size 226 fee 226 duffs vin 1 vout 2

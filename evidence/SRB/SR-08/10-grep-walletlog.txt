@@ -1,0 +1,14 @@
+16:59:56 [main] WalletActivityTracker - activity lifecycle: activity VerifySeedActivity created
+16:59:56 [main] WalletActivityTracker - activity lifecycle: current: VerifySeedActivity, activities: 2 visible: 1 foreground: 0
+16:59:56 [main] WalletActivityTracker - activity lifecycle: current: VerifySeedActivity, activities: 2 visible: 2 foreground: 0
+16:59:56 [main] WalletActivityTracker - activity lifecycle: current: VerifySeedActivity, activities: 2 visible: 2 foreground: 1
+17:00:20 [main] WalletActivityTracker - activity lifecycle: current: VerifySeedActivity, activities: 1 visible: 1 foreground: 0
+17:00:21 [main] WalletActivityTracker - activity lifecycle: current: VerifySeedActivity, activities: 2 visible: 1 foreground: 0
+17:00:21 [main] WalletActivityTracker - activity lifecycle: activity VerifySeedActivity destroyed
+17:00:21 [main] WalletActivityTracker - activity lifecycle: current: VerifySeedActivity, activities: 1 visible: 1 foreground: 0
+17:02:12 [DefaultDispatcher-worker-7] CutoverCoordinator - cutover state DUAL_RUNNING -> CUT_OVER (upgraded-wallet launch)
+17:02:13 [DefaultDispatcher-worker-11] CutoverUiDataService - cutover UI active but the engine wallet-event tap is not running (USE_KOTLIN_SDK_L1_SHADOW off, or L1ShadowSyncService not started) — instant receives degrade to the Room-snapshot/block cadence
+17:02:12 [DefaultDispatcher-worker-7] CutoverCoordinator - cutover state DUAL_RUNNING -> CUT_OVER (upgraded-wallet launch)
+17:02:12 [DefaultDispatcher-worker-1] CutoverCoordinator - upgrade cutover: one-time sync explainer armed (upgraded-wallet launch)
+17:02:12 [DefaultDispatcher-worker-1] CutoverCoordinator - upgrade cutover: replay marked as started for the SDK takeover
+17:02:13 [DefaultDispatcher-worker-11] CutoverUiDataService - cutover UI active but the engine wallet-event tap is not running (USE_KOTLIN_SDK_L1_SHADOW off, or L1ShadowSyncService not started) — instant receives degrade to the Room-snapshot/block cadence

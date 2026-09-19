@@ -1,0 +1,12 @@
+16:57:01 [DefaultDispatcher-worker-4] SendCoinsTaskRunner - cutover committed: routing the SendRequest payment via the SDK bridge (1000000 duffs to yRjAzoyf…)
+16:57:01 [DefaultDispatcher-worker-4] SdkL1SendService - SDK l1Send: broadcast 1000000 duffs to yRjAzoyf…, txid aa659fc9ab82b67a6741e3e88db4fa1e3ef45de3360d33a77e9b0db872854ccc
+17:11:47 [DefaultDispatcher-worker-9] SendCoinsTaskRunner - cutover committed: routing the SendRequest payment via the SDK bridge (98999774 duffs to yRjAzoyf…, send-all)
+17:11:47 [DefaultDispatcher-worker-9] SdkL1SendService - SDK l1SendAll: floor 98999435 duffs not deliverable at fee; retrying engine-authoritatively
+17:11:48 [DefaultDispatcher-worker-9] SdkL1SendService - SDK l1SendAll: broadcast 98999774 duffs to yRjAzoyf…, txid 61dd9f06d875526f683a62e754bdb171d40044a2bae674468d57789a73f79aef
+17:42:46 [DefaultDispatcher-worker-3] SendCoinsTaskRunner - cutover committed: routing the SendRequest payment via the SDK bridge (1000000 duffs to yRjAzoyf…)
+17:42:46 [DefaultDispatcher-worker-3] SdkL1SendService - SDK l1Send: broadcast 1000000 duffs to yRjAzoyf…, txid fcb3231e8048bf9a0f821bd19770835f6510e400f99a77e91177d5efb64cf5a0
+17:43:48 [DefaultDispatcher-worker-10] SendCoinsTaskRunner - cutover committed: routing the SendRequest payment via the SDK bridge (500000 duffs to yRjAzoyf…)
+17:43:49 [DefaultDispatcher-worker-10] SdkL1SendService - SDK l1Send: broadcast 500000 duffs to yRjAzoyf…, txid b6109773aceb4c4f48728036c8acc13e6b9e6d41f33a32832ae5f8067f4cbb0d
+17:45:43 [DefaultDispatcher-worker-9] SendCoinsTaskRunner - cutover committed: routing the SendRequest payment via the SDK bridge (98499548 duffs to yRjAzoyf…, send-all)
+17:45:43 [DefaultDispatcher-worker-9] SdkL1SendService - SDK l1SendAll: floor 98499209 duffs not deliverable at fee; retrying engine-authoritatively
+17:45:44 [DefaultDispatcher-worker-9] SdkL1SendService - SDK l1SendAll: broadcast 98499548 duffs to yRjAzoyf…, txid fd5d4dffc6504f547ad5d9454f7a4fd5a6c8bcfbdff9d47751065e7981d99db1

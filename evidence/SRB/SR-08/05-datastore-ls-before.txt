@@ -1,0 +1,9 @@
+total 64
+drwx------ 2 u0_a210 u0_a210 4096 2026-09-19 12:00 .
+drwxrwx--x 6 u0_a210 u0_a210 4096 2026-09-19 12:01 ..
+-rw------- 1 u0_a210 u0_a210   30 2026-09-19 11:59 coinbase.preferences_pb
+-rw------- 1 u0_a210 u0_a210   35 2026-09-19 12:00 coinjoin.preferences_pb
+-rw------- 1 u0_a210 u0_a210  126 2026-09-19 12:00 exchange_rates_config.preferences_pb
+-rw------- 1 u0_a210 u0_a210  141 2026-09-19 11:58 explore.preferences_pb
+-rw------- 1 u0_a210 u0_a210   30 2026-09-19 11:59 uphold.preferences_pb
+-rw------- 1 u0_a210 u0_a210  111 2026-09-19 12:00 wallet_ui.preferences_pb

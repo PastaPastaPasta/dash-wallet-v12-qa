@@ -1,0 +1,25 @@
+SR-27 AFTER upgrade to FIX 12.0.0  2026-09-19T12:10:16
+--- coinjoin.preferences_pb still on disk? ---
+total 8
+drwx------   3 dcg  staff   96 Sep 19 12:10 .
+drwx------  20 dcg  staff  640 Sep 19 12:10 ..
+-rw-------   1 dcg  staff   97 Sep 19 12:10 coinjoin.preferences_pb
+--- protoc --decode_raw ---
+1 {
+  1: "last_mixing_progress"
+  2 {
+    7: 0x0000000000000000
+  }
+}
+1 {
+  1: "first_time_info_shown"
+  2 {
+    1: 1
+  }
+}
+1 {
+  1: "coinjoin_mode"
+  2 {
+    5: "INTERMEDIATE"
+  }
+}

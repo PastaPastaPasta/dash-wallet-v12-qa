@@ -1,0 +1,1 @@
+3083 /data/data/hashengineering.darkcoin.wallet_test/files/log/wallet.log

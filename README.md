@@ -1,6 +1,6 @@
 # Dash Wallet v12 QA archive
 
-Static QA report for `fix/upgrade-memory-and-sync` @ 616ac58ff (dashj → Dash Platform Kotlin SDK cutover), generated 2026-09-19.
+Static QA report for `fix/upgrade-memory-and-sync` @ 616ac58ff (dashj → Dash Platform Kotlin SDK cutover), generated 2026-09-19. Includes the static-review reproduction pass (streams SRA–SRF, 41 findings taken to emulators).
 
 Browse it at the GitHub Pages URL for this repository. Start at `index.html`.
 

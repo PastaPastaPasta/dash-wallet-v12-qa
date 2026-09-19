@@ -1,0 +1,8 @@
+17:17:30:12 [main] WalletApplication - wallet file size guard: 2000000001 bytes, largeHeap 576MB, soft limit 60397977 bytes -> UNPARSEABLE
+19:17:30:12 [main] WalletFileSizeGuard - wallet file preserved aside: 'wallet-protobuf-testnet' -> 'wallet-protobuf-testnet.oversize.1789839012413' (2000000001 bytes)
+20:17:30:12 [main] WalletApplication - wallet file is 2000000001 bytes (>= 2000000000 hard limit) — unparseable by construction; preserved as 'wallet-protobuf-testnet.oversize.1789839012413', recoverin
+21:17:30:12 [main] WalletApplication - cannot read backup — wallet needs a restore from seed
+50:17:30:12 [main] StartupBreadcrumbs - STARTUP breadcrumb: 95 WALLET_BACKUP_UNUSABLE +10ms java.io.FileNotFoundException: /data/user/0/hashengineering.darkcoin.wallet_test/files/key-backup-protobuf-test
+51:17:30:12 [main] WalletApplication - wallet load AND key-backup recovery both failed — opening degraded (restore from seed required)
+63:17:30:12 [main] OnboardingActivity - degraded startup: walletFileExists=false, walletLoadDegraded=true, safeMode=false — showing the crash-report path
+64:17:30:12 [main] StartupBreadcrumbs - STARTUP breadcrumb: 12 DEGRADED_UI_SHOWN +103ms

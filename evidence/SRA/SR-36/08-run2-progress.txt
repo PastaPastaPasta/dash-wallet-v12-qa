@@ -1,0 +1,9 @@
+25:17:00:06 [main] WalletApplication - Removing all the data and restarting the app.
+26:17:00:06 [main] WalletWipeState - could not create the wallet-wipe marker
+28:17:00:06 [main] WalletWipeSequence - wipe started WITHOUT a recovery marker — a process death mid-wipe will not be repaired
+83:17:00:06 [main] SecurityGuard - loading security guard [healthy=true] with keys: [keystore_healthy, fallback_pin_wallet_password_key, primary_ui_pin_key, modern_encryptio
+84:17:00:06 [main] SecurityGuard - loading security guard [healthy=true] with keys: [keystore_healthy, fallback_pin_wallet_password_key, primary_ui_pin_key, modern_encryptio
+105:17:00:06 [main] SecurityGuard - loading security guard [healthy=true] with keys: [keystore_healthy, fallback_pin_wallet_password_key, primary_ui_pin_key, modern_encryptio
+107:17:00:06 [main] SecurityGuard - loading security guard [healthy=true] with keys: [keystore_healthy, fallback_pin_wallet_password_key, primary_ui_pin_key, modern_encryptio
+170:17:00:07 [main] SecurityGuard - loading security guard [healthy=true] with keys: [keystore_healthy, fallback_pin_wallet_password_key, primary_ui_pin_key, modern_encryptio
+214:17:00:07 [DefaultDispatcher-worker-18] SecurityGuard - loading security guard [healthy=true] with keys: [keystore_healthy, fallback_pin_wallet_password_key, primary_ui_pi

@@ -1,0 +1,113 @@
+<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Stream SRF notes</title><style>body{font-family:system-ui,-apple-system,sans-serif;max-width:1400px;margin:0 auto;padding:16px 24px;line-height:1.45;background:#fff;color:#111}
+table{border-collapse:collapse;font-size:13px;margin:12px 0}th,td{border:1px solid #ddd;padding:4px 8px;vertical-align:top;text-align:left}th{background:#f3f6fa;position:sticky;top:0}
+tr:nth-child(even){background:#fafbfc}code{background:#f4f4f4;padding:1px 4px;border-radius:3px;font-size:12px}pre{background:#f4f4f4;padding:10px;overflow:auto}
+h1{border-bottom:3px solid #008de4}h2{border-bottom:1px solid #ccc;margin-top:40px}a{color:#008de4}a.ev{background:#e8f4fd;padding:0 3px;border-radius:3px;font-family:ui-monospace,monospace;font-size:12px}
+nav.top{background:#012060;color:#fff;padding:8px 24px;margin:-16px -24px 16px;position:sticky;top:0;z-index:5}nav.top a{color:#fff;margin-right:18px;text-decoration:none}nav.top a:hover{text-decoration:underline}
+.S1{color:#b00020;font-weight:bold}.S2{color:#c75000;font-weight:bold}.toc{background:#f8f9fb;border:1px solid #e3e6ea;padding:8px 16px;font-size:13px;columns:2}.toc ul{margin:2px 0;padding-left:16px}
+#lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:50;align-items:center;justify-content:center;flex-direction:column}#lb.on{display:flex}#lb img{max-width:96vw;max-height:88vh;border:2px solid #fff;box-shadow:0 0 30px #000}#lb .cap{color:#eee;font:13px ui-monospace,monospace;margin-top:8px}#lb .cap a{color:#8cf}#lb .x{position:absolute;top:10px;right:18px;color:#fff;font-size:30px;cursor:pointer}#lb .nv{position:absolute;top:50%;color:#fff;font-size:44px;cursor:pointer;padding:0 16px;user-select:none}#lb .pv{left:0}#lb .nx{right:0}a.img img{cursor:zoom-in}
+sup.more a{margin:0 2px;font-size:10px}
+thead.sortable th.asc::after{content:' \25B2';font-size:9px}thead.sortable th.desc::after{content:' \25BC';font-size:9px}
+tr[data-sev=S1] td:nth-child(2){background:#fde7e9}tr[data-sev=S2] td:nth-child(2){background:#fff1e0}
+a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:target{background:#fff3b0;outline:2px solid #f5b400}
+.note{background:#fff8e1;border-left:4px solid #f5b400;padding:8px 12px;margin:12px 0}
+</style><nav class=top><a href="../../index.html">Home</a><a href="../../QA-REPORT.html">Full report</a><a href="../../EXEC-SUMMARY.html">Executive summary</a><a href="../../STORY-MATRIX.html">User-story matrix</a><a href="../../DEFECT-LEDGER.html">Defect register</a><a href="../index.html">Evidence gallery</a><a href="../../QA-PLAN.html">Test plan</a><a href="../../streams.html">Stream reports</a></nav><h1>Stream SRF working notes</h1><p>2026-09-19T11:43:50 SRF start: emulator-5566 (dw-qa6, API 35), FIX 12.0.0 vc12000000 installed</p>
+<h2 id="setup">Setup</h2>
+<ul>
+<li>2026-09-19 11:43 CDT: emulator-5566 (AVD dw-qa6, Android 15 / API 35) started by me (it was not running). <code>adb root</code> OK.</li>
+<li>FIX apk already installed: versionCode=12000000 versionName=12.0.0. Pre-existing wallet on the device (created ~01:30 by an earlier session), PIN 1234 works. Transparent balance 0, history empty.</li>
+<li>Receive address #1: yThkc1p6c3w2KPPwaSZiNgnWL3KiHsewWU</li>
+<li>16:46 UTC faucet drop #1: 1 tDASH, txid d2ae1885fd47a0d69fbb3135a5cf4e6354dca83d293534320ebd706814626e54</li>
+<li>Faucet refuses a 2nd drop to the SAME address ("already received 1 tDASH today"). Will try a fresh address.</li>
+<li>LEDGER: transparent 0.0 / shielded ? (pre-faucet)</li>
+<li>11:51:20 CDT: shielded 0.9 from Dash Wallet. Completed in <strong>&lt; 8 s</strong> (no 30 s proof on this emulator); auto-navigated to More.
+  LEDGER after: transparent 0.099 / shielded 0.897.  Evidence: <a class=ev href="../SRF/setup/13-transfer.webp">setup/13..18*.png</a><sup class=more><a href="../SRF/setup/14-amount09.webp" title="SRF/setup/14-amount09.webp">2</a> <a href="../SRF/setup/15-amount.webp" title="SRF/setup/15-amount.webp">3</a> <a href="../SRF/setup/16-confirm.webp" title="SRF/setup/16-confirm.webp">4</a> <a href="../SRF/setup/17-after-confirm.webp" title="SRF/setup/17-after-confirm.webp">5</a> <a href="../SRF/setup/18-proving.webp" title="SRF/setup/18-proving.webp">6</a></sup>, <a class=ev href="../SRF/setup/srf-shield-fund.mp4">setup/srf-shield-fund.mp4</a></li>
+</ul>
+<h2 id="sr-12-1153-1203-cdt-1653-1703-utc">SR-12 (11:53-12:03 CDT / 16:53-17:03 UTC)</h2>
+<ul>
+<li>LEDGER before: transparent 0.09999737 / shielded 0.89787148</li>
+<li>Unshield 0.1 (Shielded -&gt; Dash Wallet). PIN at 11:56:56. At T+2 s: <code>iptables -A OUTPUT -p tcp --dport 1443/443 -j DROP</code> + <code>emu network speed gsm</code> + <code>delay gprs</code>.</li>
+<li>T+5..T+36 s: "Sending your transfer… / This could take up to 10 minutes…" (Hide).</li>
+<li><strong>T+41 s: "Still finishing your transfer" overlay + system notification</strong> (strings-dashpay.xml:714 shielded_transfer_stalled_title). Button = "Continue in the background". <a class=ev href="../SRF/SR-12/t041.webp">SR-12/t041.png</a></li>
+<li><a class=ev href="../SRF/logs/files/log/wallet.log">wallet.log</a> 16:57:36 <code>ShieldedTransferExecutor - shielded transfer has no outcome after 40000 ms — surfacing Stalled (the spend keeps running; a terminal result will supersede)</code></li>
+<li>16:57:41 the app AUTO-LOCKED (LockScreenActivity LockState = ENTER_PIN) 5 s after the overlay, hiding it behind the PIN screen. Unlock restored the overlay intact.</li>
+<li>"Continue in the background" FINISHES the activity (back to Payments &gt; Internal). <a class=ev href="../SRF/SR-12/21-after-ack.webp">SR-12/21-after-ack.png</a></li>
+<li>Re-entering the screen: Continue button reads "Sending your transfer…", keypad dead (amount stays 0), "0.10 pending" badge. <a class=ev href="../SRF/SR-12/22-reenter.webp">SR-12/22-reenter.png</a>, 23, 24 -&gt; screen NOT usable for a second transfer while Stalled.</li>
+<li>Network restored 12:01:05. 12:01:37 the transfer completed and the app navigated to More: <strong>transparent 0.199 / shielded 0.795</strong> (<a class=ev href="../SRF/SR-12/r030.webp">SR-12/r030.png</a>). So Stalled was a soft advisory, not a brick.</li>
+<li>LEDGER after: transparent 0.199 / shielded 0.795</li>
+</ul>
+<h2 id="sr-31-1211-1227-cdt-1711-1727-utc-transfer-screen-fiat-max">SR-31 (12:11-12:27 CDT / 17:11-17:27 UTC) — transfer screen, fiat Max</h2>
+<ul>
+<li>Currency toggle is the "USD"/"DASH" label at the RIGHT of the amount (1080x2400: tap 995,556). The chevron under the amount is NOT the toggle.</li>
+<li>Round-trip loss visible immediately: 0.05 DASH -&gt; $2.9816 -&gt; 0.04999932 DASH (-68 duffs).</li>
+<li>Fiat Max on Dash Wallet -&gt; Shielded with transparent 0.19999737: shows $11.8751 / 0.19999663 DASH (6..74 duffs short of the balance).</li>
+<li>Confirm + PIN -&gt; fails in ~8 s: <strong>"This transfer was not sent / Nothing left your balance. Check the details and try again."</strong> Balance unchanged. <a class=ev href="../SRF/SR-31/w008.webp">SR-31/w008.png</a></li>
+<li><a class=ev href="../SRF/logs/files/log/wallet.log">wallet.log</a> 17:23:16 <code>ShieldedBalanceServiceImpl - shielded shieldFromWallet rejected pre-broadcast (no lock tracked)</code> and <code>ShieldedTransferExecutor - shielded transfer not sent: pre-broadcast asset-lock coin-selection failure</code></li>
+<li>CONTROL, same screen/balance, DASH-mode Max: SUCCEEDS in &lt;8 s (transparent 0.19999737 -&gt; 0.000008). <a class=ev href="../SRF/SR-31/d008.webp">SR-31/d008.png</a></li>
+<li>Root cause matches the SR: <code>ShieldedTransferViewModel.onConfirm</code> computes <code>isMaxSpend = state.amount == state.availableBalance</code>; in fiat mode the fiat-&gt;DASH round trip makes them unequal, so the executor never gets the max-spend hint and never runs the fee-adjust retry.</li>
+<li>LEDGER after: transparent 0.000008 / shielded ~0.995</li>
+<li>NEW (D-SRF-1): if the shielded runtime is momentarily not READY, Confirm + PIN is a SILENT NO-OP — <code>onConfirm()</code> returns early on <code>!canContinue</code> with no message, twice in a row at 17:15:16 and 17:17:39 (PIN verified in the log, nothing else happened, sheet stayed open). Evidence <a class=ev href="../SRF/SR-31/07-stuck-sheet.webp">SR-31/07-stuck-sheet.png</a>.</li>
+</ul>
+<h2 id="sr-11-1237-1243-cdt-1737-1743-utc-username-from-the-shielded-pool">SR-11 (12:37-12:43 CDT / 17:37-17:43 UTC) — username from the shielded pool</h2>
+<ul>
+<li>More &gt; Join DashPay &gt; "Shielded balance" payment option &gt; username <code>srfqa5566test9</code> (non-contested, 0.03).</li>
+<li><a class=ev href="../SRF/logs/files/log/wallet.log">wallet.log</a>: <code>17:40:34 RequestUserNameViewModel - routing username creation to the shielded-funded SDK path</code>,
+  <code>17:40:42 SdkShieldedUsernameCreation - shielded-funded identity created at index 0 (8HeVCaGd…) — 0.03 denomination, contested=false</code>,
+  <code>17:40:47 CreateIdentityService - SDK username creation broadcast — restore worker will advance the identity tile</code></li>
+<li>Shielded balance 0.992 -&gt; 0.962 (-0.03). Home History shows ONLY: Shielded -0.19999 (12:25), Unshielded +0.1 (12:00), Shielded -0.900003 (11:51), Received +1 (11:46). <strong>No row for the 0.03 username fee.</strong> <a class=ev href="../SRF/SR-11/10-home-history.webp">SR-11/10-home-history.png</a>, <a class=ev href="../SRF/SR-11/12-more-after.webp">SR-11/12-more-after.png</a></li>
+<li>LEDGER after: transparent 0.000008 / shielded 0.962</li>
+</ul>
+<h2 id="sr-14-1247-1258-cdt-1747-1758-utc-invite-creation-network-cut-3-s-in">SR-14 (12:47-12:58 CDT / 17:47-17:58 UTC) — invite creation, network cut 3 s in</h2>
+<ul>
+<li>More &gt; Invitations only appears once the TRANSPARENT balance &gt;= Constants.DASH_PAY_FEE (0.03); with everything
+  shielded (0.962) and 0.000008 transparent the entry is HIDDEN (CreateInviteViewModel.combineLatestData uses
+  walletData.observeTotalBalance()). Had to unshield 0.15 first. -&gt; NEW defect D-SRF-2.</li>
+<li>Invitations &gt; "Create a private invitation" &gt; Non-contested (0.03) &gt; Confirm and pay &gt; PIN; wifi+data disabled at T+3 s.</li>
+<li>T+15 s "This could take about 30 seconds…"; <strong>T+30 s terminal error</strong>, NOT a forever spinner:
+  "The Dash network rejected this invitation, so trying again will not help. Please try a different invitation type, or update the app if the problem continues."</li>
+<li><a class=ev href="../SRF/logs/files/log/wallet.log">wallet.log</a>: <code>17:52:40 SdkShieldedInviteCreation - shielded invite funding rejected pre-broadcast</code>
+  <code>17:52:40 ConfirmInviteDialogFragment - invite creation failed: kind=REJECTED attempt=1 retryAllowed=false</code></li>
+<li>Retry on the same dialog while offline: no-op. After restoring the network: still a no-op —
+  <code>confirm_btn</code> is <code>enabled="false"</code> permanently. Only backing out of the flow lets you try again (which works).</li>
+<li>Funds NOT consumed (shielded stayed 0.810).</li>
+</ul>
+<h2 id="sr-02-1258-1307-cdt-invite-cancelkill-during-the-flow">SR-02 (12:58-13:07 CDT) — invite cancel/kill during the flow</h2>
+<ul>
+<li>LEDGER before: transparent 0.150 / shielded 0.810</li>
+<li>run A kill at T+2 s -&gt; shielded 0.810 (unchanged), no invite in history</li>
+<li>run B kill at T+4 s -&gt; shielded 0.810 (unchanged), no invite in history</li>
+<li>run C kill at T+6 s -&gt; shielded 0.810 -&gt; <strong>0.778</strong> AND "Invitation 1, Sep 19 01:04 pm" IS in Invitations History with a
+  working "Copy Invitation Link" -&gt; the one-time key WAS persisted; no loss.</li>
+<li>The whole key-gen -&gt; fund -&gt; persist pipeline runs in &lt; 6 s on this emulator, so the :359..:413 window is milliseconds.</li>
+<li>Total funds lost across the three kills: 0.</li>
+</ul>
+<h2 id="sr-30-sr-13-1337-1407-cdt-1837-utc-parked-send-to-address-screen">SR-30 / SR-13 (13:37-14:07 CDT / 18:37.. UTC) — parked Send-to-address screen</h2>
+<ul>
+<li>Screen has NO UI entry point; reached with
+  <code>am start -n &lt;pkg&gt;/de.schildbach.wallet.ui.shielded.ShieldedBalanceActivity --ei screen 1 --ez LockScreenActivity.keep_unlocked true</code></li>
+<li>It only accepts a SHIELDED address; a transparent y-address leaves Continue silently dead with no validation message.</li>
+<li><a class=did href="../../DEFECT-LEDGER.html#SR-30">SR-30</a>: Max = 0.77828183, Continue, Confirm, PIN -&gt; fails. <a class=ev href="../SRF/logs/files/log/wallet.log">wallet.log</a>:
+  <code>18:08:48 ShieldedBalanceServiceImpl - shielded transferShielded rejected pre-broadcast (notes released)</code>
+  <code>18:08:48 ShieldedSendViewModel - shielded send not sent: pre-broadcast shielded note-selection failure</code>
+  caused by <code>DashSDKException: shielded transfer failed: Insufficient shielded balance: available 77828183400, required 77991034200</code>
+  (fee 162850800 credits with no reserve). No fee-adjust retry, unlike the transfer screen.</li>
+<li>After that failure the SEND screen's balance sticks at 0 for the rest of the process (Max -&gt; 0, any amount -&gt;
+  "Insufficient funds"); only a force-stop restores it.</li>
+<li><a class=did href="../../DEFECT-LEDGER.html#SR-13">SR-13</a>: 0.05 to my own shielded address, PIN at 13:15:06, BACK at T+3 s. Activity destroyed 18:15:06.</li>
+<li>NO outcome anywhere afterwards: no success screen, no toast, no notification, and NO log line for the result.</li>
+<li>The spend still went through: shielded 0.778 -&gt; 0.776 (the 0.05 came back to my own address; the ~0.0016 fee was spent).</li>
+<li>Re-entering the screen: fully Idle, address blank, amount 0, Continue live -&gt; immediately re-submittable.</li>
+</ul>
+<h2 id="final-ledger">FINAL LEDGER</h2>
+<p>transparent 0.150008 / shielded 0.776 (sum 0.926); 1.0 faucet - 0.03 username - 0.032 invite - ~0.012 fees. No unexplained loss.</p><div id=lb><span class=x>&times;</span><span class="nv pv">&#8249;</span><span class="nv nx">&#8250;</span><img><div class=cap></div></div>
+<script>(function(){var lb=document.getElementById('lb'),im=lb.querySelector('img'),cap=lb.querySelector('.cap'),L=[],i=0;
+function links(){return Array.prototype.slice.call(document.querySelectorAll('a[href$=".webp"],a[href$=".png"]'))}
+function show(n){L=links();if(n<0||n>=L.length)return;i=n;var a=L[i];im.src=a.href;cap.innerHTML=(a.textContent.trim()||a.href.split('/').slice(-3).join('/'))+' &nbsp;('+(i+1)+'/'+L.length+') &nbsp;<a href="'+a.href+'" target=_blank rel=noopener>open file</a>';lb.classList.add('on')}
+function hide(){lb.classList.remove('on');im.src=''}
+document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".webp"],a[href$=".png"]');if(a&&!a.closest('#lb')){e.preventDefault();show(links().indexOf(a))}});
+lb.querySelector('.x').onclick=hide;lb.querySelector('.pv').onclick=function(e){e.stopPropagation();show(i-1)};lb.querySelector('.nx').onclick=function(e){e.stopPropagation();show(i+1)};
+lb.addEventListener('click',function(e){if(e.target===lb||e.target===im)hide()});
+document.addEventListener('keydown',function(e){if(!lb.classList.contains('on'))return;if(e.key==='Escape')hide();if(e.key==='ArrowLeft')show(i-1);if(e.key==='ArrowRight')show(i+1)});})();</script><script>(function(){document.querySelectorAll('thead.sortable').forEach(function(th){var tb=th.parentNode.querySelector('tbody');var ths=th.querySelectorAll('th');
+ths.forEach(function(h,ci){h.style.cursor='pointer';h.title='click to sort';h.addEventListener('click',function(){var rows=Array.prototype.slice.call(tb.querySelectorAll('tr'));var asc=!(h.dataset.asc==='1');ths.forEach(function(x){delete x.dataset.asc;x.classList.remove('asc','desc')});h.dataset.asc=asc?'1':'0';h.classList.add(asc?'asc':'desc');
+var rank={S1:0,S2:1,S3:2,S4:3,other:4,dup:5,info:6,env:7};
+function key(r){if(ci===1)return rank[r.dataset.sev]!==undefined?rank[r.dataset.sev]:9;if(ci===0)return +r.dataset.idx;var c=r.children[ci];return c?c.textContent.trim().toLowerCase():''}
+rows.sort(function(a,b){var ka=key(a),kb=key(b);if(ka<kb)return asc?-1:1;if(ka>kb)return asc?1:-1;return (+a.dataset.idx)-(+b.dataset.idx)});rows.forEach(function(r){tb.appendChild(r)})})})})})();</script></html>

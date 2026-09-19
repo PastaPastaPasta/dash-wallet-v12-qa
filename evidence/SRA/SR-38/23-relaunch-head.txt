@@ -1,0 +1,30 @@
+17:27:39 [DefaultDispatcher-worker-1] BlockchainServiceImpl - releasing check() mutex
+17:27:43 [main] StartupBreadcrumbs - STARTUP breadcrumb: 1 LOGGING_INITIALIZED +4ms
+17:27:43 [main] StartupBreadcrumbs - STARTUP breadcrumb: 2 FIREBASE_INITIALIZED +5ms
+17:27:43 [main] WalletApplication - STARTUP WalletApplication.onCreate()
+17:27:43 [process-exit-reasons] ProcessExitReasons - STARTUP exit history: #0 reason=USER_REQUESTED(10) at=2026-09-19T12:27:40 (3s ago) importance=FOREGROUND(100) pss=0KB
+17:27:43 [process-exit-reasons] ProcessExitReasons - STARTUP exit history: #1 reason=USER_REQUESTED(10) at=2026-09-19T12:25:08 (2m ago) importance=FOREGROUND(100) pss=0KB
+17:27:43 [process-exit-reasons] ProcessExitReasons - STARTUP exit history: #2 reason=USER_REQUESTED(10) at=2026-09-19T12:23:41 (4m ago) importance=FOREGROUND(100) pss=0KB
+17:27:43 [process-exit-reasons] ProcessExitReasons - STARTUP exit history: #3 reason=CRASH(4) at=2026-09-19T12:18:50 (8m ago) importance=FOREGROUND(100) pss=0KB/0.0MB rss
+17:27:43 [process-exit-reasons] ProcessExitReasons - STARTUP exit history: #4 reason=USER_REQUESTED(10) at=2026-09-19T12:01:46 (25m ago) importance=FOREGROUND(100) pss=0K
+17:27:43 [process-exit-reasons] ProcessExitReasons - PROCESS EXIT REASON: USER_REQUESTED(10) — previous process died 3s ago at 2026-09-19T12:27:40, importance=FOREGROUN
+17:27:43 [main] StartupBreadcrumbs - STARTUP breadcrumb: 3 CONFIG_LOADED +7ms
+17:27:43 [main] StartupBreadcrumbs - STARTUP breadcrumb: 11 ONCREATE_COMPLETE +18ms
+17:27:43 [main] BootstrapReceiver - got broadcast: Intent { act=android.intent.action.BOOT_COMPLETED flg=0x9000030 pkg=hashengineering.darkcoin.wallet_test cmp=hashengine
+17:27:43 [bootstrap] BLSJniLibrary - Initializing BLS JNI Library
+17:27:43 [bootstrap] BLSJniLibrary - Initializing BLS JNI Library
+17:27:43 [bootstrap] BootstrapReceiver - wallet does not exist, not showing inactivity warning
+17:27:43 [main] WalletActivityTracker - activity lifecycle: app started
+17:27:43 [main] WalletActivityTracker - activity lifecycle: activity OnboardingActivity created
+17:27:43 [main] WalletActivityTracker - activity lifecycle: current: OnboardingActivity, activities: 1 visible: 0 foreground: 0
+17:27:43 [main] AppForegroundMonitor - App moved to foreground
+17:27:43 [main] WalletActivityTracker - activity lifecycle: current: OnboardingActivity, activities: 1 visible: 1 foreground: 0
+17:27:43 [main] WalletActivityTracker - activity lifecycle: current: OnboardingActivity, activities: 1 visible: 1 foreground: 1
+17:27:44 [DefaultDispatcher-worker-7] ExploreSyncWorker - sync explore db started
+17:27:44 [DefaultDispatcher-worker-7] ExploreDataSyncStatus - sync explore data progress: 0.0
+17:27:44 [DefaultDispatcher-worker-7] GCExploreDatabase - preloading explore db from assets /data/user/0/hashengineering.darkcoin.wallet_test/cache/explore.db, test datab
+17:27:44 [DefaultDispatcher-worker-7] GCExploreDatabase - preloading explore db from assets /data/user/0/hashengineering.darkcoin.wallet_test/cache/explore.db, test datab
+17:27:44 [DefaultDispatcher-worker-7] GCExploreDatabase - missing preloaded database explore/explore.db
+17:27:44 [DefaultDispatcher-worker-7] ExploreSyncWorker - local data timestamp: 0 (Wed Dec 31 18:00:00 CST 1969)
+17:27:44 [DefaultDispatcher-worker-2] GCExploreDatabase - error getting remote data timestamp
+com.google.firebase.FirebaseException: An internal error has occurred. [ API key not valid. Please pass a valid API key. ]

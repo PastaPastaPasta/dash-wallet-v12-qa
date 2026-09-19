@@ -1,0 +1,4 @@
+16:50:40 [DefaultDispatcher-worker-15] BlockchainServiceImpl - onCoinsReceived: dcc0f4c5a09640373f019b40f145e71c426a94e97eab3cc83363819c151140fd; rate: null; replaying: true; inside: false, config: PENDING; will update true
+16:50:40 [main] BlockchainServiceImpl - tx dcc0f4c5a09640373f019b40f145e71c426a94e97eab3cc83363819c151140fd was authored by this wallet — not a receive, no notification
+16:50:40 [DefaultDispatcher-worker-15] SdkBridgedTransactionFactory - bridged SDK tx dcc0f4c5a09640373f019b40f145e71c426a94e97eab3cc83363819c151140fd into the dashj wallet (committed)
+16:52:55 [DefaultDispatcher-worker-1] SdkBridgedTransactionFactory - bridged SDK tx ae7ee67dbe9fb1fc3c4fd54bf69b102e272fe69f1547bae3f510bf83d5925553 into the dashj wallet (committed)

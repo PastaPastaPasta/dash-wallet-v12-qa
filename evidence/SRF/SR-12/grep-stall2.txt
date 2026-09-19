@@ -1,0 +1,9 @@
+13234:16:51:25 [main] WalletActivityTracker - activity lifecycle: current: ShieldedBalanceActivity, activities: 2 visible: 1 foreground: 0
+13260:16:51:26 [main] WalletActivityTracker - activity lifecycle: current: ShieldedBalanceActivity, activities: 2 visible: 1 foreground: 1
+13261:16:51:26 [main] WalletActivityTracker - activity lifecycle: activity ShieldedBalanceActivity destroyed
+13262:16:51:26 [main] WalletActivityTracker - activity lifecycle: current: ShieldedBalanceActivity, activities: 1 visible: 1 foreground: 1
+14191:16:53:03 [main] WalletActivityTracker - activity lifecycle: activity ShieldedBalanceActivity created
+14192:16:53:03 [main] WalletActivityTracker - activity lifecycle: current: ShieldedBalanceActivity, activities: 2 visible: 1 foreground: 0
+14197:16:53:03 [main] WalletActivityTracker - activity lifecycle: current: ShieldedBalanceActivity, activities: 2 visible: 2 foreground: 0
+14201:16:53:03 [main] WalletActivityTracker - activity lifecycle: current: ShieldedBalanceActivity, activities: 2 visible: 2 foreground: 1
+14342:16:57:36 [DefaultDispatcher-worker-4] ShieldedTransferExecutor - shielded transfer has no outcome after 40000 ms — surfacing Stalled (the spend keeps running; a terminal result will supersede)

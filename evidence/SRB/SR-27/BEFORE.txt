@@ -1,0 +1,41 @@
+SR-27 BEFORE upgrade (MASTER 11.9.0, CoinJoin=Intermediate)  2026-09-19T12:08:31
+--- coinjoin.preferences_pb (protoc --decode_raw) ---
+1 {
+  1: "last_mixing_progress"
+  2 {
+    7: 0x0000000000000000
+  }
+}
+1 {
+  1: "first_time_info_shown"
+  2 {
+    1: 1
+  }
+}
+1 {
+  1: "coinjoin_mode"
+  2 {
+    5: "INTERMEDIATE"
+  }
+}
+--- strings ---
+last_mixing_progress
+first_time_info_shown
+coinjoin_mode
+*INTERMEDIATE
+
+--- master dash-wallet-database tables ---
+address_metadata               room_master_table            
+android_metadata               swap_orders                  
+blockchain_state               topup_table                  
+dashpay_contact_request        transaction_metadata         
+dashpay_profile                transaction_metadata_cache   
+exchange_rates                 transaction_metadata_platform
+gift_cards                     tx_display_cache             
+icon_bitmaps                   tx_group_cache               
+imported_masternode_keys       user_alerts                  
+instant_send_locks             username_requests            
+invitation_table               username_votes               
+user_version=21
+
+--- blockchain_identity table? ---

@@ -1,0 +1,104 @@
+SR-43: compileSdk placement, verbatim gradle quotes
+date: 2026-09-19T11:41:31
+
+=== FIX: /Users/dcg/workspace/dash-wallet-qa/wt-fix/wallet/build.gradle lines 280-306 ===
+   280	android {
+   281	    android.ndkVersion '21.3.6528147'
+   282	    namespace "de.schildbach.wallet_test"
+   283	
+   284	    defaultConfig {
+   285	        compileSdk 35
+   286	        minSdkVersion 29
+   287	        targetSdkVersion 35
+   288	        // version code: MMmmppbb; MM = Major Version, mm = minor version, pp == patch version, bb = build
+   289	        versionCode project.hasProperty('versionCode') ? project.property('versionCode') as int : 12000000
+   290	        versionName project.hasProperty('versionName') ? project.property('versionName') : "12.0.0"
+   291	        multiDexEnabled true
+   292	        generatedDensities = ['hdpi', 'xhdpi']
+   293	        vectorDrawables.useSupportLibrary = true
+   294	        // 64-bit only: the Kotlin SDK's native core (Halo2/Orchard) cannot build 32-bit,
+   295	        // and Platform features were already disabled on 32-bit devices.
+   296	        // QA builds pass -PqaArm64 to drop the x86_64 native lib (~65 MB) — the QA
+   297	        // devices are all arm64, so this halves the native payload and the upload size.
+   298	        // Default (prod, x86_64 emulators) keeps both ABIs.
+   299	        ndk {
+   300	            if (project.hasProperty('qaArm64')) {
+   301	                abiFilters 'arm64-v8a'
+   302	            } else {
+   303	                abiFilters 'arm64-v8a', 'x86_64'
+   304	            }
+   305	        }
+   306	        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+=== MASTER: /Users/dcg/workspace/dash-wallet-qa/wt-master/wallet/build.gradle lines 246-262 ===
+   246	    namespace "de.schildbach.wallet_test"
+   247	
+   248	    compileSdk 36
+   249	
+   250	    defaultConfig {
+   251	        minSdkVersion 24
+   252	        targetSdkVersion 36
+   253	        // version code: MMmmppbb; MM = Major Version, mm = minor version, pp == patch version, bb = build
+   254	        versionCode project.hasProperty('versionCode') ? project.property('versionCode') as int : 11090002
+   255	        versionName project.hasProperty('versionName') ? project.property('versionName') : "11.9.0"
+   256	        multiDexEnabled true
+   257	        generatedDensities = ['hdpi', 'xhdpi']
+   258	        vectorDrawables.useSupportLibrary = true
+   259	        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+   260	        ksp {
+   261	            arg("room.schemaLocation", "$projectDir/schemas")
+   262	        }
+
+=== other modules: FIX ===
+--- /Users/dcg/workspace/dash-wallet-qa/wt-fix/common/build.gradle
+10:    defaultConfig {
+11:        compileSdk 35
+12:        minSdkVersion 29
+13:        targetSdkVersion 35
+--- /Users/dcg/workspace/dash-wallet-qa/wt-fix/features/exploredash/build.gradle
+13:    defaultConfig {
+14:        compileSdk 35
+15:        minSdkVersion 29
+16:        targetSdkVersion 35
+--- /Users/dcg/workspace/dash-wallet-qa/wt-fix/integrations/uphold/build.gradle
+11:    defaultConfig {
+12:        compileSdk 35
+13:        minSdkVersion 29
+14:        targetSdkVersion 35
+--- /Users/dcg/workspace/dash-wallet-qa/wt-fix/integrations/coinbase/build.gradle
+13:    defaultConfig {
+14:        compileSdk 35
+15:        minSdkVersion 29
+16:        targetSdkVersion 35
+--- /Users/dcg/workspace/dash-wallet-qa/wt-fix/integrations/crowdnode/build.gradle
+12:    defaultConfig {
+13:        compileSdk 35
+14:        minSdkVersion 29
+15:        targetSdkVersion 35
+
+=== other modules: MASTER ===
+--- /Users/dcg/workspace/dash-wallet-qa/wt-master/common/build.gradle
+10:    compileSdk 36
+12:    defaultConfig {
+13:        minSdkVersion 24
+14:        targetSdkVersion 36
+--- /Users/dcg/workspace/dash-wallet-qa/wt-master/features/exploredash/build.gradle
+13:    compileSdk 36
+15:    defaultConfig {
+16:        minSdkVersion 24
+17:        targetSdkVersion 36
+--- /Users/dcg/workspace/dash-wallet-qa/wt-master/integrations/uphold/build.gradle
+11:    compileSdk 36
+13:    defaultConfig {
+14:        minSdkVersion 24
+15:        targetSdkVersion 36
+--- /Users/dcg/workspace/dash-wallet-qa/wt-master/integrations/coinbase/build.gradle
+13:    compileSdk 36
+15:    defaultConfig {
+16:        minSdkVersion 24
+17:        targetSdkVersion 36
+--- /Users/dcg/workspace/dash-wallet-qa/wt-master/integrations/crowdnode/build.gradle
+12:    compileSdk 36
+14:    defaultConfig {
+15:        minSdkVersion 24
+16:        targetSdkVersion 36

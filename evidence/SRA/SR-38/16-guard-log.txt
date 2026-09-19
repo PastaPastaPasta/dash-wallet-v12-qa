@@ -1,0 +1,6 @@
+17:17:25:18 [main] WalletApplication - wallet file size guard: 2000000001 bytes, largeHeap 576MB, soft limit 60397977 bytes -> UNPARSEABLE
+18:17:25:18 [main] StartupBreadcrumbs - STARTUP breadcrumb: 93 WALLET_FILE_OVERSIZE +18ms size=2000000001 hardLimit=2000000000
+19:17:25:18 [main] WalletFileSizeGuard - wallet file preserved aside: 'wallet-protobuf-testnet' -> 'wallet-protobuf-testnet.oversize.1789838718982' (2000000001 bytes)
+20:17:25:18 [main] WalletApplication - wallet file is 2000000001 bytes (>= 2000000000 hard limit) — unparseable by construction; preserved as 'wallet-protobuf-testnet.oversize.1789838718982', recovering from the key backup
+56:17:25:19 [main] WalletApplication - wallet restored from backup: 'key-backup-protobuf-testnet'
+182:17:25:19 [main] WalletApplication - wallet restored from backup: 'key-backup-protobuf-testnet'

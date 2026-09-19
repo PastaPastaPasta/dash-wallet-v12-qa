@@ -1,0 +1,11 @@
+16:47:16 [DefaultDispatcher-worker-8] L1ShadowSyncService - DashPay bring-up before SPV: status=NO_IDENTITY discovery=1 dashPaySyncRan=false drained=0 pending=0 elapsedMs=326
+17:06:50 [DefaultDispatcher-worker-2] SendCoinsViewModel - executeDryRun finished (cutover-aware: SDK send-all / drain)
+17:11:02 [DefaultDispatcher-worker-11] SendCoinsViewModel - executeDryRun finished (cutover-aware: SDK send-all / drain)
+17:11:47 [DefaultDispatcher-worker-9] SendCoinsTaskRunner - cutover committed: routing the SendRequest payment via the SDK bridge (98999774 duffs to yRjAzoyf…, send-all)
+17:11:47 [DefaultDispatcher-worker-9] SdkL1SendService - SDK l1SendAll: floor 98999435 duffs not deliverable at fee; retrying engine-authoritatively
+org.dashfoundation.dashsdk.errors.DashSdkError$PlatformWallet$CoreInsufficientFunds: insufficient unreserved Core funds across the pooled funding sources [BIP44, BIP32, AllDashpayReceivingFunds]: available Some(98999774), required Some(98999819)
+	at de.schildbach.wallet.service.platform.sdk.DashSdkL1SendSource$sendAllToAddress$2.invokeSuspend(SdkL1SendService.kt:808)
+	at de.schildbach.wallet.service.platform.sdk.DashSdkL1SendSource$sendAllToAddress$2.invoke(SdkL1SendService.kt:0)
+	at de.schildbach.wallet.service.platform.sdk.DashSdkL1SendSource$sendAllToAddress$2.invoke(SdkL1SendService.kt:0)
+	at de.schildbach.wallet.service.platform.sdk.DashSdkL1SendSource.sendAllToAddress(SdkL1SendService.kt:923)
+	at de.schildbach.wallet.service.platform.sdk.DashSdkL1SendSource$sendAllToAddress$2.invokeSuspend(SdkL1SendService.kt:925)

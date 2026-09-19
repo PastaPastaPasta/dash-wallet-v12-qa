@@ -1,0 +1,26 @@
+dash-wallet-database AFTER downgrade to MASTER 11.9.0 (versionCode 11090002)  2026-09-19T11:56:33
+pragma user_version = 21
+
+address_metadata                   0
+android_metadata                   1
+blockchain_state                   1
+dashpay_contact_request            0
+dashpay_profile                    0
+exchange_rates                     168
+gift_cards                         0
+icon_bitmaps                       0
+imported_masternode_keys           0
+instant_send_locks                 2
+invitation_table                   0
+room_master_table                  1
+sqlite_sequence                    1
+swap_orders                        0
+topup_table                        0
+transaction_metadata               1
+transaction_metadata_cache         1
+transaction_metadata_platform      0
+tx_display_cache                   3
+tx_group_cache                     3
+user_alerts                        0
+username_requests                  0
+username_votes                     0

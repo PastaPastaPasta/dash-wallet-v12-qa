@@ -1,0 +1,2 @@
+09-19 11:46:25.047   968  1113 W BtGatt.ScanManager: Moving filtered scan client to downgraded scan (scannerId 1)
+09-19 11:55:07.259  8933  8933 W Configuration: [main] detected app downgrade: 12000000 -> 11090002

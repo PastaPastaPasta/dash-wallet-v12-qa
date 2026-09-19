@@ -1,0 +1,25 @@
+=== STEP 1: background + foreground at 2026-09-19T12:16:26 ===
+3357:17:03:04 [DefaultDispatcher-worker-2] L1ShadowSyncService - L1Shadow filter-stall watchdog: engine restart declined to start (was stuck at 1555000)
+3358:17:03:04 [DefaultDispatcher-worker-2] L1ShadowSyncService - L1Shadow probe watchdog cancelled (StandaloneCoroutine was cancelled)
+
+=== STEP 2: screen off / on (lock-unlock) at 2026-09-19T12:17:13 ===
+3357:17:03:04 [DefaultDispatcher-worker-2] L1ShadowSyncService - L1Shadow filter-stall watchdog: engine restart declined to start (was stuck at 1555000)
+3358:17:03:04 [DefaultDispatcher-worker-2] L1ShadowSyncService - L1Shadow probe watchdog cancelled (StandaloneCoroutine was cancelled)
+
+=== STEP 3: FORCE-STOP + RELAUNCH at 2026-09-19T12:22:11 ===
+595:16:49:34 [DefaultDispatcher-worker-3] L1ShadowSyncService - L1Shadow phase=FILTERS 75.1% headers 1556857/1556857 filters 395000/1556857 wallet 395000
+1348:16:51:24 [DefaultDispatcher-worker-7] L1ShadowSyncService - L1Shadow phase=CONNECTING 85.6% headers 1556857/1556857 filters 885000/1556857 wallet 885000
+1422:16:51:54 [DefaultDispatcher-worker-5] L1ShadowSyncService - L1Shadow phase=FILTERS 89.6% headers 1556858/1556858 filters 1070000/1556858 wallet 1080000
+2042:16:52:24 [DefaultDispatcher-worker-9] L1ShadowSyncService - L1Shadow phase=FILTERS 95.6% headers 1556858/1556858 filters 1350000/1556858 wallet 1360000
+2627:16:52:54 [DefaultDispatcher-worker-10] L1ShadowSyncService - L1Shadow phase=FILTERS 99.3% headers 1556858/1556858 filters 1525000/1556858 wallet 1525000
+2887:16:54:34 [DefaultDispatcher-worker-14] L1ShadowSyncService - L1Shadow phase=CONNECTING 100.0% headers 1556859/1556859 filters 1555000/1556858 wallet 1555000
+1348:16:51:24 [DefaultDispatcher-worker-7] L1ShadowSyncService - L1Shadow phase=CONNECTING 85.6% headers 1556857/1556857 filters 885000/1556857 wallet 885000
+1422:16:51:54 [DefaultDispatcher-worker-5] L1ShadowSyncService - L1Shadow phase=FILTERS 89.6% headers 1556858/1556858 filters 1070000/1556858 wallet 1080000
+2042:16:52:24 [DefaultDispatcher-worker-9] L1ShadowSyncService - L1Shadow phase=FILTERS 95.6% headers 1556858/1556858 filters 1350000/1556858 wallet 1360000
+2627:16:52:54 [DefaultDispatcher-worker-10] L1ShadowSyncService - L1Shadow phase=FILTERS 99.3% headers 1556858/1556858 filters 1525000/1556858 wallet 1525000
+2887:16:54:34 [DefaultDispatcher-worker-14] L1ShadowSyncService - L1Shadow phase=CONNECTING 100.0% headers 1556859/1556859 filters 1555000/1556858 wallet 1555000
+2627:16:52:54 [DefaultDispatcher-worker-10] L1ShadowSyncService - L1Shadow phase=FILTERS 99.3% headers 1556858/1556858 filters 1525000/1556858 wallet 1525000
+2887:16:54:34 [DefaultDispatcher-worker-14] L1ShadowSyncService - L1Shadow phase=CONNECTING 100.0% headers 1556859/1556859 filters 1555000/1556858 wallet 1555000
+4348:17:24:36 [DefaultDispatcher-worker-4] L1ShadowSyncService - L1 shadow SPV started for SDK wallet b7118ed5… (dataDir=/data/user/0/hashengineering.darkcoin.wallet_test/files/l1_shadow_spv/testnet, default peer discovery); debug-only instrumentation — two SPV engines are now running
+4353:17:24:36 [DefaultDispatcher-worker-14] L1ShadowSyncService - L1Shadow phase=CONNECTING 99.5% headers 1556868/1556865 filters 1532170/1556868 wallet 1556868
+4467:17:24:55 [DefaultDispatcher-worker-6] L1ShadowSyncService - L1Shadow phase=SYNCED 100.0% headers 1556870/1556870 filters 1556870/1556870 wallet 1556870

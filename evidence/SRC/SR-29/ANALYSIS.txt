@@ -1,0 +1,32 @@
+SR-29 -- send-all always fails its first attempt, then a string-matched retry saves it
+Source of all lines: /data/data/hashengineering.darkcoin.wallet_test/files/log/wallet.log
+(pulled copy: SR-29/logs/files/log/wallet.log ; grep copy: SR-29/05-grep-sendall.txt)
+
+Attempt #1 (12:11:47 local / 17:11:47 UTC-in-log), wallet had ONE utxo of 98,999,774 duffs:
+
+  17:11:47 SendCoinsTaskRunner - cutover committed: routing the SendRequest payment via the
+           SDK bridge (98999774 duffs to yRjAzoyf…, send-all)
+  17:11:47 SdkL1SendService - SDK l1SendAll: floor 98999435 duffs not deliverable at fee;
+           retrying engine-authoritatively
+  org.dashfoundation.dashsdk.errors.DashSdkError$PlatformWallet$CoreInsufficientFunds:
+    insufficient unreserved Core funds across the pooled funding sources
+    [BIP44, BIP32, AllDashpayReceivingFunds]: available Some(98999774), required Some(98999819)
+        at ...DashSdkL1SendSource$sendAllToAddress$2.invokeSuspend(SdkL1SendService.kt:808)
+  17:11:48 SdkL1SendService - SDK l1SendAll: broadcast 98999774 duffs to yRjAzoyf…,
+           txid 61dd9f06d875526f683a62e754bdb171d40044a2bae674468d57789a73f79aef
+
+Arithmetic, all from the log itself:
+  reserve used for the floor  = 98,999,774 - 98,999,435 =   339 duffs
+                              = sendAllFeeReserveDuffs(1) = (10 + 1*148 + 68) * 3/2
+                              = 226 * 1.5 = 339   (SdkL1SendService.kt:225-234, 1.5 duffs/byte)
+  fee the engine actually charged (tx detail + insight) =   384 duffs  (2 duffs/byte over 192 B)
+  required - available        = 98,999,819 - 98,999,774 =    45 duffs shortfall
+                              = 384 - 339 = exactly the reserve model's shortfall.
+
+Because the reserve is modelled at 1.5 duffs/byte and the drain is built at 2 duffs/byte, the
+floor attempt is short by 25% of the fee on EVERY send-max, regardless of size. The send only
+succeeds because SdkL1SendService.kt:1360-1374 catches the throwable, STRING-MATCHES it via
+isSendAllShortfall() (SdkL1SendService.kt:342-348 -- type check plus
+`message.startsWith("transaction build failed") && message.contains("Insufficient funds")` on the
+legacy arm) and retries with floor=1. Any change to the SDK's error text or type silently turns
+every send-max into a hard failure.

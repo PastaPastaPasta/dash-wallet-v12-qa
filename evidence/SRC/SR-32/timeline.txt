@@ -1,0 +1,9 @@
+RESTORE_START=2026-09-19T12:24:29
+RESTORE_PIN_DONE=2026-09-19T12:25:23
+12:26:06 | header=text="0" fiat=text="$ 0" sync=text="Syncing balance" text="Syncing 24%"  | MAX=
+12:26:21 | header= fiat= sync= | MAX=
+12:26:35 | header= fiat= sync= | MAX=
+12:26:50 | header= fiat= sync= | MAX=
+12:27:04 | header= fiat= sync= | MAX=
+12:27:19 | header= fiat= sync= | MAX=
+COLDSTART=2026-09-19T12:31:42

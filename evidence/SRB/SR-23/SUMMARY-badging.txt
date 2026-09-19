@@ -1,0 +1,8 @@
+SR-23 / SR-39 evidence: aapt dump badging, /opt/homebrew/share/android-commandlinetools/build-tools/36.0.0/aapt
+date: 2026-09-19T11:41:23
+
+APK                                        versionCode  minSdk     targetSdk  compileSdk   native-code
+fix-12.0.0-prod-release-signed             '12000000'   '29'       '35'       '35'         'arm64-v8a' 'x86_64'
+fix-12.0.0-testnet3-release-signed         '12000000'   '29'       '35'       '35'         'arm64-v8a' 'x86_64'
+master-11.9.0-prod-release-signed          '11090002'   '24'       '36'       '36'         'arm64-v8a' 'armeabi-v7a' 'x86' 'x86_64'
+master-11.9.0-testnet3-release-signed      '11090002'   '24'       '36'       '36'         'arm64-v8a' 'armeabi-v7a' 'x86' 'x86_64'

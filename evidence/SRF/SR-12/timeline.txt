@@ -1,0 +1,35 @@
+11:53:42 PIN entered (T0)
+11:53:47 network throttled: speed gsm, delay gprs (T0+5)
+11:53:47 iptables DROP on tcp/1443 and tcp/443 (T0+5)
+11:53:55 T+10s: text="Authenticate" text="Enter your PIN to continue" text="CANCEL" text="1" text="2" text="3" text="4" text="5" text="6" text="7" text="8" text="9" text="Cancel" text="0" 
+11:54:04 T+20s: text="Authenticate" text="Enter your PIN to continue" text="CANCEL" text="1" text="2" text="3" text="4" text="5" text="6" text="7" text="8" text="9" text="Cancel" text="0" 
+11:54:18 T+30s: text="Authenticate" text="Enter your PIN to continue" text="CANCEL" text="1" text="2" text="3" text="4" text="5" text="6" text="7" text="8" text="9" text="Cancel" text="0" 
+11:54:22 T+38s: text="Authenticate" text="Enter your PIN to continue" text="CANCEL" text="1" text="2" text="3" text="4" text="5" text="6" text="7" text="8" text="9" text="Cancel" text="0" 
+11:54:26 T+42s: text="Authenticate" text="Enter your PIN to continue" text="CANCEL" text="1" text="2" text="3" text="4" text="5" text="6" text="7" text="8" text="9" text="Cancel" text="0" 
+11:54:34 T+50s: text="Authenticate" text="Enter your PIN to continue" text="CANCEL" text="1" text="2" text="3" text="4" text="5" text="6" text="7" text="8" text="9" text="Cancel" text="0" 
+11:54:45 T+60s: text="Enter PIN" text="Forgot PIN?" text="Quick Receive" text="Scan to Send" text="1" text="2" text="3" text="4" text="5" text="6" text="7" text="8" text="9" 
+11:54:59 T+75s: text="Enter PIN" text="Forgot PIN?" text="Quick Receive" text="Scan to Send" text="1" text="2" text="3" text="4" text="5" text="6" text="7" text="8" text="9" 
+11:55:14 T+90s: text="Enter PIN" text="Forgot PIN?" text="Quick Receive" text="Scan to Send" text="1" text="2" text="3" text="4" text="5" text="6" text="7" text="8" text="9" 
+11:55:45 T+120s: text="Enter PIN" text="Forgot PIN?" text="Quick Receive" text="Scan to Send" text="1" text="2" text="3" text="4" text="5" text="6" text="7" text="8" text="9" 
+11:56:56 PIN tapped (T0)
+11:56:58 T+2s: iptables DROP tcp/443+1443, emu speed gsm / delay gprs
+11:57:03 T+5s: text="Sending your transfer…" text="This could take up to 10 minutes to complete. We will notify you when it’s done." text="Hide" 
+11:57:08 T+10s: text="Sending your transfer…" text="This could take up to 10 minutes to complete. We will notify you when it’s done." text="Hide" 
+11:57:18 T+20s: text="Sending your transfer…" text="This could take up to 10 minutes to complete. We will notify you when it’s done." text="Hide" 
+11:57:28 T+30s: text="Sending your transfer…" text="This could take up to 10 minutes to complete. We will notify you when it’s done." text="Hide" 
+11:57:34 T+36s: text="Sending your transfer…" text="This could take up to 10 minutes to complete. We will notify you when it’s done." text="Hide" 
+11:57:39 T+41s: text="Still finishing your transfer" text="This is taking a little longer than usual. Your transfer is still in progress and will finish in the background — your shielded balance updates automatically when it completes. This can take a few minutes — the shielded credit appears after the network confirms it. Not done yet, but it’s safe to leave this screen." text="Continue in the background" 
+11:57:44 T+45s: text="Enter PIN" text="Forgot PIN?" text="Quick Receive" text="Scan to Send" text="1" text="2" text="3" text="4" text="5" text="6" text="7" text="8" text="9" text="Cancel" text="0" 
+11:57:49 T+50s: text="Enter PIN" text="Forgot PIN?" text="Quick Receive" text="Scan to Send" text="1" text="2" text="3" text="4" text="5" text="6" text="7" text="8" text="9" text="Cancel" text="0" 
+11:57:59 T+60s: text="Enter PIN" text="Forgot PIN?" text="Quick Receive" text="Scan to Send" text="1" text="2" text="3" text="4" text="5" text="6" text="7" text="8" text="9" text="Cancel" text="0" 
+11:58:14 T+75s: text="Enter PIN" text="Forgot PIN?" text="Quick Receive" text="Scan to Send" text="1" text="2" text="3" text="4" text="5" text="6" text="7" text="8" text="9" text="Cancel" text="0" 
+11:58:29 T+90s: text="Enter PIN" text="Forgot PIN?" text="Quick Receive" text="Scan to Send" text="1" text="2" text="3" text="4" text="5" text="6" text="7" text="8" text="9" text="Cancel" text="0" 
+11:58:48 T+110s: text="Enter PIN" text="Forgot PIN?" text="Quick Receive" text="Scan to Send" text="1" text="2" text="3" text="4" text="5" text="6" text="7" text="8" text="9" text="Cancel" text="0" 
+11:59:09 T+130s: text="Enter PIN" text="Forgot PIN?" text="Quick Receive" text="Scan to Send" text="1" text="2" text="3" text="4" text="5" text="6" text="7" text="8" text="9" text="Cancel" text="0" 
+12:01:05 network restored
+12:01:20 restore+: text="Internal transfer" text="Max" text="0" text="$" text="0" text="USD" text="From" text="Dash Wallet" text="0.09999737" text="0.10 pending" text="To" text="Shielded balance" text="0.89787148" text="1" text="2" text="3" text="4" text="5" text="6" text="7" text="8" text="9" text="." text="0" text="Sending your transfer…" 
+12:01:37 restore+: text="More" text="Dash Wallet" text="0.199 Đ" text="Shielded" text="0.795 Đ" text="Join DashPay" text="Create a username and say goodbye to numerical addresses" text="Buy &amp; Sell Dash" text="Connect with third party exchanges" text="Explore" text="Find merchants that accept DASH" text="Security" text="View passphrase, backup wallet…" 
+12:01:55 restore+: text="More" text="Dash Wallet" text="0.199 Đ" text="Shielded" text="0.795 Đ" text="Join DashPay" text="Create a username and say goodbye to numerical addresses" text="Buy &amp; Sell Dash" text="Connect with third party exchanges" text="Explore" text="Find merchants that accept DASH" text="Security" text="View passphrase, backup wallet…" 
+12:02:12 restore+: text="More" text="Dash Wallet" text="0.199 Đ" text="Shielded" text="0.795 Đ" text="Join DashPay" text="Create a username and say goodbye to numerical addresses" text="Buy &amp; Sell Dash" text="Connect with third party exchanges" text="Explore" text="Find merchants that accept DASH" text="Security" text="View passphrase, backup wallet…" 
+12:02:30 restore+: text="Enter PIN" text="Forgot PIN?" text="Quick Receive" text="Scan to Send" text="1" text="2" text="3" text="4" text="5" text="6" text="7" text="8" text="9" text="Cancel" text="0" 
+12:02:47 restore+: text="Enter PIN" text="Forgot PIN?" text="Quick Receive" text="Scan to Send" text="1" text="2" text="3" text="4" text="5" text="6" text="7" text="8" text="9" text="Cancel" text="0" 

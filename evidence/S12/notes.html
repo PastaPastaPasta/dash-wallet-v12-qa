@@ -58,7 +58,7 @@ S12 <a class=ev href="../index.html#S12-CJ1">CJ1</a> wallet seed: gospel tip tal
   <a class=ev href="../S12/CJ1/pre-upgrade/logs/files/log/wallet.log">wallet.log</a> 07:38:57 <code>SendCoinsFragment - dryRunException: org.bitcoinj.core.InsufficientMoneyException:
   Insufficient money, missing 0.0011 DASH</code>. So the send engine sees ZERO spendable while the header shows 0.999971.
   With the migration prompt hard-suppressed there is no in-app way to move the coins out.</li>
-<li><a class=did href="../SR/REPORT.html#SR-27">SR-27</a>: <code>files/datastore/coinjoin.preferences_pb</code> still contains <code>coinjoin_mode=INTERMEDIATE</code>,
+<li><a class=did href="../../DEFECT-LEDGER.html#SR-27">SR-27</a>: <code>files/datastore/coinjoin.preferences_pb</code> still contains <code>coinjoin_mode=INTERMEDIATE</code>,
   <code>first_time_info_shown</code>, <code>last_mixing_progress</code> AFTER the upgrade - orphaned, never read, never cleared.
   <code>dashpay.preferences_pb</code> has no <code>mixed_funds_migration_done</code>/<code>_in_flight</code> key (prompt never ran).</li>
 </ul>

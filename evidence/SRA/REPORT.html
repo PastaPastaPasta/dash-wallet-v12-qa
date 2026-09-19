@@ -1,0 +1,334 @@
+<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Stream SRA report</title><style>body{font-family:system-ui,-apple-system,sans-serif;max-width:1400px;margin:0 auto;padding:16px 24px;line-height:1.45;background:#fff;color:#111}
+table{border-collapse:collapse;font-size:13px;margin:12px 0}th,td{border:1px solid #ddd;padding:4px 8px;vertical-align:top;text-align:left}th{background:#f3f6fa;position:sticky;top:0}
+tr:nth-child(even){background:#fafbfc}code{background:#f4f4f4;padding:1px 4px;border-radius:3px;font-size:12px}pre{background:#f4f4f4;padding:10px;overflow:auto}
+h1{border-bottom:3px solid #008de4}h2{border-bottom:1px solid #ccc;margin-top:40px}a{color:#008de4}a.ev{background:#e8f4fd;padding:0 3px;border-radius:3px;font-family:ui-monospace,monospace;font-size:12px}
+nav.top{background:#012060;color:#fff;padding:8px 24px;margin:-16px -24px 16px;position:sticky;top:0;z-index:5}nav.top a{color:#fff;margin-right:18px;text-decoration:none}nav.top a:hover{text-decoration:underline}
+.S1{color:#b00020;font-weight:bold}.S2{color:#c75000;font-weight:bold}.toc{background:#f8f9fb;border:1px solid #e3e6ea;padding:8px 16px;font-size:13px;columns:2}.toc ul{margin:2px 0;padding-left:16px}
+#lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:50;align-items:center;justify-content:center;flex-direction:column}#lb.on{display:flex}#lb img{max-width:96vw;max-height:88vh;border:2px solid #fff;box-shadow:0 0 30px #000}#lb .cap{color:#eee;font:13px ui-monospace,monospace;margin-top:8px}#lb .cap a{color:#8cf}#lb .x{position:absolute;top:10px;right:18px;color:#fff;font-size:30px;cursor:pointer}#lb .nv{position:absolute;top:50%;color:#fff;font-size:44px;cursor:pointer;padding:0 16px;user-select:none}#lb .pv{left:0}#lb .nx{right:0}a.img img{cursor:zoom-in}
+sup.more a{margin:0 2px;font-size:10px}
+thead.sortable th.asc::after{content:' \25B2';font-size:9px}thead.sortable th.desc::after{content:' \25BC';font-size:9px}
+tr[data-sev=S1] td:nth-child(2){background:#fde7e9}tr[data-sev=S2] td:nth-child(2){background:#fff1e0}
+a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:target{background:#fff3b0;outline:2px solid #f5b400}
+.note{background:#fff8e1;border-left:4px solid #f5b400;padding:8px 12px;margin:12px 0}
+</style><nav class=top><a href="../../index.html">Home</a><a href="../../QA-REPORT.html">Full report</a><a href="../../EXEC-SUMMARY.html">Executive summary</a><a href="../../STORY-MATRIX.html">User-story matrix</a><a href="../../DEFECT-LEDGER.html">Defect register</a><a href="../index.html">Evidence gallery</a><a href="../../QA-PLAN.html">Test plan</a><a href="../../streams.html">Stream reports</a></nav><h1 id="sra-sr-device-reproduction-report-reset-wallet-wipe-markers-wallet-file-recovery">SRA — SR device-reproduction report (Reset Wallet / wipe markers / wallet-file recovery)</h1>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Emulator</td>
+<td><code>emulator-5554</code> (AVD <strong>dw-qa1</strong>, Android 15 / API 35, 1080x2400) — was NOT running at session start; started with <code>qa-emu.sh start dw-qa1 5554</code></td>
+</tr>
+<tr>
+<td>APK under test</td>
+<td><code>$QA_APKS/fix-12.0.0-testnet3-release-signed.apk</code> — versionCode <strong>12000000</strong>, versionName 12.0.0</td>
+</tr>
+<tr>
+<td>Package</td>
+<td><code>hashengineering.darkcoin.wallet_test</code>, largeMemoryClass <strong>576 MB</strong> (<code>dalvik.vm.heapsize=576m</code>)</td>
+</tr>
+<tr>
+<td>Seed (QA throwaway, created on device)</td>
+<td><code>palace hint east head chronic close length brand right comic excite extra</code></td>
+</tr>
+<tr>
+<td>Funding</td>
+<td>faucet txid <code>a0706d09e1f383216aa2d81697db2418b9e7a9495d860f98d9a442d8180999bd</code> → <code>yMKPQKunBcnXBDc7tk7NZEswfeUNNynDPZ</code> (1 tDASH)</td>
+</tr>
+<tr>
+<td>Reference seed</td>
+<td>NOT touched</td>
+</tr>
+<tr>
+<td>Start / end</td>
+<td>2026-09-19 11:37 – 12:45 CDT</td>
+</tr>
+<tr>
+<td>Evidence root</td>
+<td><code>/Users/dcg/workspace/dash-wallet-qa/evidence/SRA/</code></td>
+</tr>
+<tr>
+<td>Session logs</td>
+<td><a class=ev href="../SRA/logcat.txt">evidence/SRA/logcat.txt</a>, <a class=ev href="../SRA/mem.csv">mem.csv</a>, <a class=ev href="../SRA/final-logs/files/log/wallet.log">final-logs/files/log/wallet.log</a>, <a class=ev href="../SRA/notes.html">notes.md</a></td>
+</tr>
+</tbody>
+</table>
+<p>Log quotes are from <code>/data/data/hashengineering.darkcoin.wallet_test/files/log/wallet.log</code> (pulled copy: <a class=ev href="../SRA/final-logs/files/log/wallet.log">evidence/SRA/final-logs/files/log/wallet.log</a>); its timestamps are UTC, wall-clock here is CDT (UTC-5).</p>
+<h2 id="verdicts">Verdicts</h2>
+<table>
+<thead>
+<tr>
+<th>SR-id</th>
+<th>Verdict</th>
+<th>What I did</th>
+<th>Decisive evidence</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td id="SR-20"><a href="#SR-20">SR-20</a></td>
+<td><strong>REPRODUCED</strong></td>
+<td><code>chmod 500 files/datastore</code>, then More › Security › Reset Wallet › confirm on a funded wallet</td>
+<td><a class=ev href="../SRA/SR-20/08-decisive-grep.txt">SR-20/08-decisive-grep.txt</a>, <a class=ev href="../SRA/SR-20/09-files-after.txt">09-files-after.txt</a>, <a class=ev href="../SRA/SR-20/10-datastore-after.txt">10-datastore-after.txt</a>, <a class=ev href="../SRA/SR-20/13-datastore-md5-before-restore.txt">13-datastore-md5-before-restore.txt</a>, <a class=ev href="../SRA/SR-20/sr20-reset.mp4">sr20-reset.mp4</a></td>
+<td>13 wipe steps failed with EACCES, all swallowed; <code>markComplete()</code> still ran (marker gone), no <code>wipe destruction failed</code>, UI showed onboarding. 7 datastore files survived byte-identical; the next restored wallet inherited the old wallet's <code>CUT_OVER</code> state.</td>
+</tr>
+<tr>
+<td id="SR-36"><a href="#SR-36">SR-36</a></td>
+<td><strong>REPRODUCED — consequence is the OPPOSITE of the row, and worse</strong></td>
+<td><code>chmod 555 files/</code> so the marker cannot be created; Reset Wallet ×3 with kills at +2.1/+2.1/+3.3 s</td>
+<td><a class=ev href="../SRA/SR-36/03-wipe-grep.txt">SR-36/03-wipe-grep.txt</a>, <a class=ev href="../SRA/SR-36/12-destroying-nothing.txt">12-destroying-nothing.txt</a>, <a class=ev href="../SRA/SR-36/06-run1-wallet-alive.webp">06-run1-wallet-alive.png</a>, <a class=ev href="../SRA/SR-36/11-run3-files.txt">11-run3-files.txt</a>, <code>sr36-run{2,3}.mp4</code></td>
+<td><code>wipe started WITHOUT a recovery marker</code> is logged and the UI hands off to onboarding — but <code>finish()</code> reads <code>pending()==false</code> and logs <code>destroying nothing</code>: <strong>the wipe destroys NOTHING</strong>. Relaunch restores the wallet with balance and same PIN.</td>
+</tr>
+<tr>
+<td id="SR-21"><a href="#SR-21">SR-21</a></td>
+<td><strong>PARTIAL</strong> (hazard path hit; no permanent hang in 5 attempts)</td>
+<td>5 timed races (rescan intent, HOME/fg, <code>am stopservice</code> −0.5 s, net-off+stopservice, stop/start storm)</td>
+<td><a class=ev href="../SRA/SR-21/a3-log.txt">SR-21/a3-log.txt</a>, <a class=ev href="../SRA/SR-21/a4-log.txt">a4-log.txt</a>, <a class=ev href="../SRA/SR-21/a5-log.txt">a5-log.txt</a>, <code>sr21-a{1..5}.mp4</code></td>
+<td>Spinner 1/1/4/13/15 s. a5 hit <code>Another onDestroy() is already running cleanup, skipping duplicate cleanup</code> + <code>CRITICAL: Cleanup did not complete within 15 seconds</code>, yet another onDestroy carried the wipe.</td>
+</tr>
+<tr>
+<td id="SR-38"><a href="#SR-38">SR-38</a></td>
+<td><strong>REPRODUCED (outcome); mechanism different and worse</strong></td>
+<td>(b1) <code>truncate -s 2000000001</code> with key backup present; (b2) same + <code>rm key-backup-protobuf-testnet</code></td>
+<td><a class=ev href="../SRA/SR-38/16-guard-log.txt">SR-38/16-guard-log.txt</a>, <a class=ev href="../SRA/SR-38/17-breadcrumbs.txt">17-breadcrumbs.txt</a>, <code>22/23-relaunch*.txt</code>, <a class=ev href="../SRA/SR-38/33-null-log.txt">33-null-log.txt</a>, <a class=ev href="../SRA/SR-38/34-null-degraded.webp">34-null-degraded.png</a>, <a class=ev href="../SRA/SR-38/sr38-nullbackup.mp4">sr38-*.mp4</a><sup class=more><a href="../SRA/SR-38/sr38-relaunch.mp4" title="SRA/SR-38/sr38-relaunch.mp4">2</a> <a href="../SRA/SR-38/sr38-unparseable.mp4" title="SRA/SR-38/sr38-unparseable.mp4">3</a></sup></td>
+<td>(b1) recovered from key backup, funds returned — <strong>for that session only</strong>: the recovered wallet is never written to <code>wallet-protobuf-testnet</code>, so the next launch goes to onboarding with an unread key backup on disk. (b2) null-backup branch reproduces exactly: degraded screen with Restore/Report/Close.</td>
+</tr>
+<tr>
+<td id="SR-25"><a href="#SR-25">SR-25</a></td>
+<td><strong>REPRODUCED (threshold) / NOT REPRODUCED (OOM routing)</strong></td>
+<td>Appended 60 MiB urandom → 62,929,882 bytes, relaunched</td>
+<td><a class=ev href="../SRA/SR-25/06-guard-log.txt">SR-25/06-guard-log.txt</a>, <a class=ev href="../SRA/SR-25/07-risky-loaded-ok.webp">07-risky-loaded-ok.png</a>, <a class=ev href="../SRA/SR-25/sr25-risky.mp4">sr25-risky.mp4</a>, <a class=ev href="../SRA/SR-38/10-t2s.webp">SR-38/10-t2s.png</a></td>
+<td>Soft limit logged as <strong>60,397,977 bytes (57.6 MB)</strong> on 576 MB largeHeap; 25.6 MB on the 256 MB fallback, as the row says. No OOM (parse ignored the tail, 211 ms). Single-Toast claim confirmed via the UNPARSEABLE run.</td>
+</tr>
+<tr>
+<td id="SR-26"><a href="#SR-26">SR-26</a></td>
+<td><strong>REPRODUCED</strong></td>
+<td>Two UNPARSEABLE recoveries, then restore-from-seed, then a full Reset Wallet</td>
+<td><a class=ev href="../SRA/SR-26/01-after-restore.txt">SR-26/01-after-restore.txt</a>, <a class=ev href="../SRA/SR-26/03-after-reset-files.txt">03-after-reset-files.txt</a></td>
+<td>Both <code>wallet-protobuf-testnet.oversize.*</code> (2,000,000,001 B each) survive restore <strong>and</strong> a full Reset Wallet. <code>cleanupFiles()</code> patterns never match <code>.oversize</code>/<code>.oomed</code>.</td>
+</tr>
+<tr>
+<td id="SR-41"><a href="#SR-41">SR-41</a></td>
+<td><strong>REPRODUCED</strong></td>
+<td><code>kill -STOP</code> 450 ms into launch (inside the parse) for 21 s, then relaunched</td>
+<td><a class=ev href="../SRA/SR-41/06-attempt3-log.txt">SR-41/06-attempt3-log.txt</a>, <a class=ev href="../SRA/SR-41/07-next-launch.webp">07-next-launch.png</a>, <a class=ev href="../SRA/SR-41/08-safemode-screen.webp">08-safemode-screen.png</a>, <a class=ev href="../SRA/SR-41/09-safemode-log.txt">09-safemode-log.txt</a>, <a class=ev href="../SRA/SR-41/11-retry-log.txt">11-retry-log.txt</a></td>
+<td>One over-budget load + one pre-milestone death suffices (<code>armSafeModeOnNextDeath()</code> pre-loads the counter to <code>THRESHOLD-1</code>): next launch <code>safeMode=true</code> → <code>WALLET_LOAD_SKIPPED_SAFE_MODE</code> → <code>DEGRADED_UI_SHOWN</code>. "Try Again" recovers in-process. Measured normal loads: <strong>211–257 ms</strong>.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="detail">Detail</h2>
+<h3 id="sr-20-wipe-marked-complete-though-most-steps-failed-reproduced">SR-20 — wipe marked complete though most steps failed — REPRODUCED</h3>
+<p>Setup: wallet created (PIN 1234), funded 1 tDASH, home shows balance + Received row (<a class=ev href="../SRA/setup/15-funded-home.webp">setup/15-funded-home.png</a>).
+Fault at 11:50:20: <code>chmod 500 /data/data/&lt;pkg&gt;/files/datastore</code> (reads still work, writes/deletes EACCES) — <a class=ev href="../SRA/SR-20/03-datastore-pre.txt">SR-20/03-datastore-pre.txt</a>. Reset confirmed 11:50:40 (<a class=ev href="../SRA/SR-20/sr20-reset.mp4">sr20-reset.mp4</a>, <a class=ev href="../SRA/SR-20/04-reset-confirm.webp">04-reset-confirm.png</a> → <a class=ev href="../SRA/SR-20/06-t5s.webp">06-t5s.png</a>).</p>
+<p>Swallowed failures, verbatim (<a class=ev href="../SRA/SR-20/08-decisive-grep.txt">SR-20/08-decisive-grep.txt</a>):</p>
+<pre><code>16:50:43 WalletApplication - failed to delete datastore preferences file: 'dashpay.preferences_pb'
+16:50:43 WalletApplication - failed to delete datastore preferences file: 'explore.preferences_pb'
+16:50:43 WalletApplication - failed to delete datastore preferences file: 'coinbase.preferences_pb'
+16:50:43 WalletApplication - failed to delete datastore preferences file: 'uphold.preferences_pb'
+16:50:43 WalletApplication - failed to delete datastore preferences file: 'wallet_ui.preferences_pb'
+16:50:43 WalletApplication - failed to delete datastore preferences file: 'org.dashfoundation.wallet.secrets.preferences_pb'
+16:50:43 WalletApplication - failed to delete datastore preferences file: 'exchange_rates_config.preferences_pb'
+16:50:43 WalletApplication - datastore preferences cleared; api-cleared: [...], file-deleted: []
+16:50:43 WalletApplicationExt - wallet-wipe listener failed        (x6, each java.io.FileNotFoundException ... EACCES)
+16:50:43 L1ShadowSyncService - wipe cleanup: removeSdkWallet failed; continuing
+16:50:43 CutoverCoordinator - cutover state persist failed (CUT_OVER -&gt; DUAL_RUNNING, wallet wipe); keeping CUT_OVER
+16:50:43 WalletApplicationExt - databases cleared (isWalletWipe = true)
+16:50:43 OnboardingActivity - reset finished — re-running the onboarding routing
+</code></pre>
+<p>Full traces (<code>FileNotFoundException: …/datastore/dashpay.preferences_pb.tmp: open failed: EACCES</code>) at line ~926 of <a class=ev href="../SRA/final-logs/files/log/wallet.log">SR-20/logs/files/log/wallet.log</a>.</p>
+<p>The wipe recorded <strong>success</strong>: no <code>wallet-wipe.pending</code> in <code>files/</code> (<a class=ev href="../SRA/SR-20/09-files-after.txt">09-files-after.txt</a>), no <code>wipe destruction failed</code> / <code>Reset Wallet did not finish</code> anywhere, onboarding shown (<a class=ev href="../SRA/SR-20/11-onboarding-after-wipe.webp">11-onboarding-after-wipe.png</a>), relaunch also onboarding (<a class=ev href="../SRA/SR-20/12-relaunch.webp">12-relaunch.png</a>).</p>
+<p>Survivors (<a class=ev href="../SRA/SR-20/10-datastore-after.txt">10-datastore-after.txt</a>, md5s in <a class=ev href="../SRA/SR-20/13-datastore-md5-before-restore.txt">13-...txt</a>): all seven preference files byte-identical, including <code>org.dashfoundation.wallet.secrets.preferences_pb</code> (md5 <code>5a39ab7f17bc39a81a551d395a665dfe</code>) and <code>dashpay.preferences_pb</code> (md5 <code>53a31a60cfc38852b00ec4fc8e1479de</code>, identical to the pre-wipe hash captured at 11:50:20).</p>
+<p>Leak into the next wallet: restoring the same seed at 11:55 produced a wallet that came up already <code>cutoverCommitted=true</code> and never logged its own <code>cutover state DUAL_RUNNING -&gt; CUT_OVER (fresh-wallet setup (restore/new))</code> — it inherited the destroyed wallet's cutover state, exactly what <code>cutoverCoordinator.resetForWalletWipe()</code> exists to prevent (<a class=ev href="../SRA/SR-20/17-cutover-leak.txt">17-cutover-leak.txt</a>). Balance returned to 1 tDASH (<a class=ev href="../SRA/SR-20/19-restored-funded.webp">19-restored-funded.png</a>).</p>
+<h3 id="sr-36-wipe-with-no-recovery-marker-reproduced-with-the-opposite-consequence">SR-36 — wipe with no recovery marker — REPRODUCED with the opposite consequence</h3>
+<p>Fault: <code>chmod 555 /data/data/&lt;pkg&gt;/files</code>. Runs at 11:58:06 (kill +2.1 s), 12:00:06 (+2.1 s), 12:01:43 (+3.3 s); videos <code>sr36-run{2,3}.mp4</code>.</p>
+<pre><code>16:58:08 WalletApplication  - Removing all the data and restarting the app.
+16:58:08 WalletWipeState    - could not create the wallet-wipe marker
+                              java.io.IOException: Permission denied
+16:58:08 WalletWipeSequence - wipe started WITHOUT a recovery marker — a process death mid-wipe will not be repaired
+16:58:08 AppRestartService  - perform restart on application context: true
+</code></pre>
+<p>The row predicts "proceeds with a destructive wipe". It does not — <code>finish()</code> gates on the marker it just failed to write:</p>
+<pre><code>17:00:06 WalletWipeSequence - wipe teardown reached without a wipe having been started — destroying nothing
+17:01:43 WalletWipeSequence - wipe teardown reached without a wipe having been started — destroying nothing
+</code></pre>
+<p>(<a class=ev href="../SRA/SR-36/12-destroying-nothing.txt">12-destroying-nothing.txt</a>; the only two occurrences in the whole session log.)</p>
+<p>Disk after (<a class=ev href="../SRA/SR-36/07-run2-files.txt">07-run2-files.txt</a>, <a class=ev href="../SRA/SR-36/11-run3-files.txt">11-run3-files.txt</a>): <code>wallet-protobuf-testnet</code> (15,322 B) and <code>key-backup-protobuf-testnet</code> (15,328 B) untouched, no marker. After restoring permissions and relaunching, the app accepts the <strong>same PIN</strong> and shows the <strong>same 1 tDASH balance and history</strong> (<a class=ev href="../SRA/SR-36/06-run1-wallet-alive.webp">06-run1-wallet-alive.png</a>, <a class=ev href="../SRA/SR-36/09-state.webp">09-state.png</a>).</p>
+<p>Timing control (<a class=ev href="../index.html#SRA-CONTROL">CONTROL/</a>, 12:03:18, no fault): the marker appears within 0.15 s of the confirm tap and is gone by ~0.9 s — the whole wipe takes &lt;1 s (<a class=ev href="../SRA/CONTROL/02-control-wipe-log.txt">CONTROL/02-control-wipe-log.txt</a>). So all three kills landed <em>after</em> the point where a real wipe would have finished destroying; nothing was destroyed because <code>finish()</code> refused, not because the kill was early.</p>
+<p>Trigger needs no root: anything that makes <code>filesDir</code> unwritable (full storage, storage fault, MDM/SELinux oddity) produces the same silent no-op.</p>
+<h3 id="sr-21-reset-spinner-with-no-timeout-partial">SR-21 — reset spinner with no timeout — PARTIAL</h3>
+<p><code>showWipeInProgressScreen()</code> awaits <code>wipeInProgress.first { !it }</code> with no timeout; the flag is cleared only by <code>finishWalletWipe()</code>'s <code>finally</code>, which runs only if that onDestroy wins <code>isCleaningUp.compareAndSet(false, true)</code>.</p>
+<table>
+<thead>
+<tr>
+<th>attempt</th>
+<th>perturbation</th>
+<th>spinner</th>
+<th>outcome</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a1 12:09:19</td>
+<td><code>reset_blockchain</code> intent fired with the confirm</td>
+<td>~1 s</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>a2 12:12:04</td>
+<td>HOME at confirm, foreground +1 s</td>
+<td>~1 s</td>
+<td>completed</td>
+</tr>
+<tr>
+<td>a3 12:14:00</td>
+<td><code>am stopservice</code> 0.5 s before confirm</td>
+<td>4 s</td>
+<td>completed (<a class=ev href="../SRA/SR-21/a3-log.txt">a3-log.txt</a>)</td>
+</tr>
+<tr>
+<td>a4 12:16:09</td>
+<td>network off + stopservice + confirm together</td>
+<td>13 s</td>
+<td>completed (<a class=ev href="../SRA/SR-21/a4-log.txt">a4-log.txt</a>)</td>
+</tr>
+<tr>
+<td>a5 12:18:30</td>
+<td>net off + 8× (stopservice; reset_blockchain) storm, confirm +1.2 s</td>
+<td>15 s</td>
+<td>completed (<a class=ev href="../SRA/SR-21/a5-log.txt">a5-log.txt</a>)</td>
+</tr>
+</tbody>
+</table>
+<p>a5 reached the exact hazard and still recovered:</p>
+<pre><code>17:18:30 WalletApplication  - Removing all the data and restarting the app.
+17:18:30 OnboardingActivity - reset in progress — holding onboarding until the wipe finishes
+17:18:45 BlockchainServiceImpl - CRITICAL: Cleanup did not complete within 15 seconds
+17:18:45 BlockchainServiceImpl - Another onDestroy() is already running cleanup, skipping duplicate cleanup
+17:18:45 WalletApplication  - removing wallet from memory during wipe
+17:18:45 WalletApplicationExt - databases cleared (isWalletWipe = true)
+17:18:45 OnboardingActivity - reset finished — re-running the onboarding routing
+</code></pre>
+<p>A 15 s content-free "resetting…" spinner is reproducible; a permanent hang was not produced in 5 attempts. BACK/relaunch recovery was never needed.</p>
+<h3 id="sr-38-sr-25-sr-26-size-guard-recovery-aside-copies">SR-38 + SR-25 + SR-26 — size guard, recovery, aside copies</h3>
+<p>Device parameters, verbatim (<a class=ev href="../SRA/SR-25/06-guard-log.txt">SR-25/06-guard-log.txt</a>):</p>
+<pre><code>17:23:52 WalletApplication - wallet file size guard: 62929882 bytes, largeHeap 576MB, soft limit 60397977 bytes -&gt; RISKY
+17:23:53 WalletApplication - wallet loaded from: '…/wallet-protobuf-testnet', took 211.3 ms (0 DashPay friend chains deferred)
+17:23:53 WalletApplication - wallet autosave debounce raised to 60000 ms for a 62929882 byte wallet file
+</code></pre>
+<p><strong><a class=did href="../../DEFECT-LEDGER.html#SR-25">SR-25</a>.</strong> Soft limit is <code>min(largeHeap/10, 100MB)</code> = 57.6 MB here; 25.6 MB with the 256 MB fallback, so the row's "~26 MB" is accurate. A 62 MB wallet is RISKY and gets the 60 s autosave tier. I could <strong>not</strong> produce the OOM branch — appending 60 MiB of random bytes did not break the parse (211 ms; the parser stops at the end of the valid message) and the wallet unlocked normally with its balance (<a class=ev href="../SRA/SR-25/07-risky-loaded-ok.webp">07-risky-loaded-ok.png</a>). The <code>.oomed</code> path is therefore untested on device; it shares the destructive routing with the UNPARSEABLE path below.</p>
+<p><strong><a class=did href="../../DEFECT-LEDGER.html#SR-38">SR-38</a> b1 — key backup present</strong> (<code>truncate -s 2000000001</code>, 12:25:18):</p>
+<pre><code>17:25:18 WalletApplication   - wallet file size guard: 2000000001 bytes, largeHeap 576MB, soft limit 60397977 bytes -&gt; UNPARSEABLE
+17:25:18 StartupBreadcrumbs  - STARTUP breadcrumb: 93 WALLET_FILE_OVERSIZE +18ms size=2000000001 hardLimit=2000000000
+17:25:18 WalletFileSizeGuard - wallet file preserved aside: 'wallet-protobuf-testnet' -&gt; 'wallet-protobuf-testnet.oversize.1789838718982' (2000000001 bytes)
+17:25:18 WalletApplication   - wallet file is 2000000001 bytes (&gt;= 2000000000 hard limit) — unparseable by construction; preserved as '…', recovering from the key backup
+17:25:19 WalletApplication   - wallet restored from backup: 'key-backup-protobuf-testnet'
+17:25:19 WalletApplication   - wallet restored from backup: 'key-backup-protobuf-testnet'    &lt;-- twice
+</code></pre>
+<p>User-visible: one Toast <code>Your wallet was reset!  It will take some time to recover.</code> (<a class=ev href="../SRA/SR-38/10-t2s.webp">SR-38/10-t2s.png</a>), then a second Toast reading the raw class name <strong><code>java.io.FileNotFoundException</code></strong> (<a class=ev href="../SRA/SR-38/11-t4s.webp">11-t4s.png</a>). Funds returned after unlock: 1 tDASH (<a class=ev href="../SRA/SR-38/18-after-recovery-unlock.webp">18-after-recovery-unlock.png</a>).</p>
+<p>Then (NEW-1): 60 s later and after a force-stop, <code>files/</code> still has no <code>wallet-protobuf-testnet</code>. Next launch:</p>
+<pre><code>17:27:43 BootstrapReceiver   - wallet does not exist, not showing inactivity warning
+17:27:43 WalletActivityTracker - activity lifecycle: activity OnboardingActivity created
+</code></pre>
+<p>breadcrumbs go <code>CONFIG_LOADED → ONCREATE_COMPLETE</code> with no <code>WALLET_LOAD_BEGIN</code> (<code>22/23-relaunch*.txt</code>, <a class=ev href="../SRA/SR-38/21-relaunch-t8s.webp">21-relaunch-t8s.png</a>, <a class=ev href="../SRA/SR-38/sr38-relaunch.mp4">sr38-relaunch.mp4</a>). <code>key-backup-protobuf-testnet</code> (15,328 B) was on disk and never consulted.</p>
+<p><strong><a class=did href="../../DEFECT-LEDGER.html#SR-38">SR-38</a> b2 — key backup removed</strong> (12:30:11), the row's exact scenario:</p>
+<pre><code>17:30:12 WalletApplication  - wallet file size guard: 2000000001 bytes … -&gt; UNPARSEABLE
+17:30:12 WalletFileSizeGuard- wallet file preserved aside: … -&gt; 'wallet-protobuf-testnet.oversize.1789839012413' (2000000001 bytes)
+17:30:12 WalletApplication  - cannot read backup — wallet needs a restore from seed
+17:30:12 StartupBreadcrumbs - STARTUP breadcrumb: 95 WALLET_BACKUP_UNUSABLE +10ms java.io.FileNotFoundException: …/key-backup-protobuf-testnet
+17:30:12 WalletApplication  - wallet load AND key-backup recovery both failed — opening degraded (restore from seed required)
+17:30:12 OnboardingActivity - degraded startup: walletFileExists=false, walletLoadDegraded=true, safeMode=false — showing the crash-report path
+</code></pre>
+<p>Screen: "Previous crash detected" dialog, then <em>"Your wallet file could not be read and no automatic backup was usable. Your funds are safe on the network — restore your wallet with your recovery phrase to continue."</em> with <strong>Restore wallet / Report / Close</strong> (<a class=ev href="../SRA/SR-38/34-null-degraded.webp">34-null-degraded.png</a>). The UI here is clear and offers the right action.</p>
+<p><strong><a class=did href="../../DEFECT-LEDGER.html#SR-26">SR-26</a>.</strong> Both <code>.oversize</code> copies (2,000,000,001 B each) survived a restore-from-seed at 12:31 (<a class=ev href="../SRA/SR-26/01-after-restore.txt">SR-26/01-after-restore.txt</a>) and a full <strong>Reset Wallet</strong> at 12:32:55 (<a class=ev href="../SRA/SR-26/03-after-reset-files.txt">03-after-reset-files.txt</a>, <a class=ev href="../SRA/SR-26/02-after-reset.webp">02-after-reset.png</a>). <code>cleanupFiles()</code> deletes only <code>key-backup-base58*</code>, <code>key-backup-protobuf.*</code> and <code>*.tmp</code>; <code>wallet-protobuf-testnet.oversize.&lt;ms&gt;</code> matches none and there is no other reclaim path. Nominal occupancy after two events: 4 GB. Caveat: my files are sparse (<code>truncate</code>), so <code>du</code> showed 60 MB — a genuine oversize wallet would occupy the full size.</p>
+<h3 id="sr-41-20-s-load-budget-safe-mode-reproduced">SR-41 — 20 s load budget → safe mode — REPRODUCED</h3>
+<p>Real loads never approach the budget: measured <code>took</code> values are <strong>211.3 / 223.8 / 248.4 / 256.9 ms</strong>, and the 62,929,882-byte file parsed in the same 211 ms as the 15,322-byte one (the tail is ignored), so growing the file cannot slow the parse — CPU burners would need ~80× slowdown. Instead I starved the process deterministically: <code>kill -STOP</code> 450 ms into launch (inside <code>readWallet</code>) for 21 s, then <code>kill -CONT</code>.</p>
+<pre><code>17:40:22 StartupBreadcrumbs - STARTUP breadcrumb: 4 WALLET_LOAD_BEGIN +11ms size=15322
+17:40:43 [wallet-load-budget] WalletApplication   - wallet load exceeded its 20000ms budget (0 DashPay friend chains still deriving) — arming safe mode for the next launch
+17:40:43 [wallet-load-budget] StartupBreadcrumbs - STARTUP breadcrumb: 97 WALLET_LOAD_OVERBUDGET +20802ms budgetMs=20000 pendingFriendChains=0
+</code></pre>
+<p>The frozen process was reaped before <code>MAIN_UI_SHOWN</code>; <code>startup.failures</code> was 1 (not 0) because <code>armSafeModeOnNextDeath()</code> pre-loads the counter to <code>SAFE_MODE_THRESHOLD-1</code>. Next launch (12:41:17):</p>
+<pre><code># launch Sat Sep 19 12:41:17 CDT 2026 (previous=INCOMPLETE_PRE_MILESTONE prevLastStage=97 failures=1 safeModeRuns=1 safeMode=true)
+0  APP_ONCREATE +2ms
+3  CONFIG_LOADED +10ms
+91 WALLET_LOAD_SKIPPED_SAFE_MODE +10ms
+11 ONCREATE_COMPLETE +18ms
+12 DEGRADED_UI_SHOWN +108ms
+</code></pre>
+<p>Screen: crash-report dialog (<a class=ev href="../SRA/SR-41/07-next-launch.webp">07-next-launch.png</a>) then <em>"The app did not finish starting up the last few times, so this start skipped loading your wallet…"</em> with <strong>Try Again / Report / Close</strong> (<a class=ev href="../SRA/SR-41/08-safemode-screen.webp">08-safemode-screen.png</a>). So <strong>one</strong> over-budget load plus <strong>one</strong> death is enough — the row's "the last two launches died" reading of <code>SAFE_MODE_THRESHOLD = 2</code> overstates what must go wrong. "Try Again" works: <code>SAFE_MODE_RETRY +36660ms</code> → <code>SAFE_MODE_RETRY_OK +37074ms</code>, counters back to 0, normal PIN screen (<a class=ev href="../SRA/SR-41/10-after-try-again.webp">10-after-try-again.png</a>, <a class=ev href="../SRA/SR-41/11-retry-log.txt">11-retry-log.txt</a>).</p>
+<hr />
+<h2 id="new-defects">NEW defects</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Sev</th>
+<th>Defect</th>
+<th>Repro</th>
+<th>Evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NEW-1</td>
+<td class=S1><strong>S1</strong></td>
+<td>After an oversize/OOM key-backup recovery the recovered wallet is <strong>never written to <code>wallet-protobuf-testnet</code></strong>; the next launch finds no wallet file and goes to ONBOARDING while <code>key-backup-protobuf-testnet</code> sits unread on disk. Recovery is good for exactly one session; user must restore from seed.</td>
+<td>Force-stop; <code>truncate -s 2000000001 files/wallet-protobuf-testnet</code>; launch (recovers, balance correct); wait 60 s; force-stop; launch → onboarding.</td>
+<td><a class=ev href="../SRA/SR-38/19-autosave-log.txt">SR-38/19-autosave-log.txt</a>, <a class=ev href="../SRA/SR-38/22-relaunch-log.txt">22-relaunch-log.txt</a>, <a class=ev href="../SRA/SR-38/23-relaunch-head.txt">23-relaunch-head.txt</a>, <a class=ev href="../SRA/SR-38/21-relaunch-t8s.webp">21-relaunch-t8s.png</a>, <a class=ev href="../SRA/SR-38/sr38-relaunch.mp4">sr38-relaunch.mp4</a></td>
+</tr>
+<tr>
+<td>NEW-2</td>
+<td><strong>S2</strong></td>
+<td><strong>Reset Wallet silently no-ops when <code>filesDir</code> is unwritable</strong> — <code>begin()</code> warns, UI goes to onboarding, <code>finish()</code> logs <code>destroying nothing</code>. Wallet file, key backup, keystore secrets and databases all survive; the wallet is fully usable again after relaunch with the same PIN, after the user was told it was reset.</td>
+<td><code>chmod 555 files/</code>; Reset Wallet; relaunch.</td>
+<td><a class=ev href="../SRA/SR-36/03-wipe-grep.txt">SR-36/03-wipe-grep.txt</a>, <a class=ev href="../SRA/SR-36/12-destroying-nothing.txt">12-destroying-nothing.txt</a>, <a class=ev href="../SRA/SR-36/06-run1-wallet-alive.webp">06-run1-wallet-alive.png</a>, <a class=ev href="../SRA/SR-36/11-run3-files.txt">11-run3-files.txt</a></td>
+</tr>
+<tr>
+<td>NEW-3</td>
+<td><strong>S3</strong></td>
+<td>A catastrophic wallet recovery announces itself with a <strong>raw Java class name Toast</strong> (<code>java.io.FileNotFoundException</code>) from the <code>FileNotFoundException</code> handler's <code>Toast.makeText(this, x.getClass().getName(), …)</code>. Related: the wallet load + <code>restoreWalletFromBackup()</code> run <strong>twice</strong> per launch (<code>WALLET_RECOVERED_FROM_BACKUP</code> at +303 ms and +1012 ms).</td>
+<td>As NEW-1, screenshot at t+4 s.</td>
+<td><a class=ev href="../SRA/SR-38/11-t4s.webp">SR-38/11-t4s.png</a>, <a class=ev href="../SRA/SR-38/17-breadcrumbs.txt">17-breadcrumbs.txt</a>, <a class=ev href="../SRA/SR-38/16-guard-log.txt">16-guard-log.txt</a></td>
+</tr>
+<tr>
+<td>NEW-4</td>
+<td><strong>S3</strong></td>
+<td><strong><code>shielded_tree_testnet.sqlite</code> (+<code>-shm</code>/<code>-wal</code>, ~4.3 MB) survives a clean Reset Wallet</strong> — the previous wallet's shielded note-commitment tree (mtime 11:44) outlived four Reset Wallets. Not covered by <code>destroyWalletFiles()</code>/<code>cleanupFiles()</code>.</td>
+<td>Clean Reset Wallet, no fault injection; <code>ls -la files/</code>.</td>
+<td><a class=ev href="../SRA/CONTROL/04-files-after-clean-wipe.txt">CONTROL/04-files-after-clean-wipe.txt</a>, <a class=ev href="../SRA/SR-26/03-after-reset-files.txt">SR-26/03-after-reset-files.txt</a></td>
+</tr>
+<tr>
+<td>NEW-5</td>
+<td><strong>S3</strong></td>
+<td>After a Reset Wallet in a process where the degraded path had latched, onboarding shows the <strong>degraded screen with no "Create new wallet"</strong> option (<code>walletRecoveryFromSeedNeeded</code> is a process-lifetime latch <code>triggerWipe()</code> does not clear). Relaunching restores normal onboarding.</td>
+<td>Degraded launch (oversize + no key backup) → Restore wallet → Reset Wallet → observe screen.</td>
+<td><a class=ev href="../SRA/SR-26/02-after-reset.webp">SR-26/02-after-reset.png</a>, <a class=ev href="../SRA/SR-26/04-degraded-after-reset.webp">04-degraded-after-reset.png</a>, <a class=ev href="../SRA/SR-26/05-relaunch-after-reset.webp">05-relaunch-after-reset.png</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="environment-notes">Environment notes</h2>
+<ul>
+<li><code>emulator-5554</code> was not running at session start (no emulator processes at all); started via <code>qa-emu.sh start dw-qa1 5554</code>, booted in ~5 s, <code>adb root</code> OK.</li>
+<li>dw-qa1 carried an unknown wallet from an earlier session (data 00:09–03:56); I uninstalled and clean-installed the FIX APK so every log line here belongs to this session.</li>
+<li><code>$APP &lt;serial&gt; text 1234</code> does not drive the PIN pad (same as SRB's note). On set-PIN screens tap <code>resource-id=".../btn_&lt;digit&gt;"</code>; on the lock screen those ids are absent and <code>tapon 'text="1"'</code> works.</li>
+<li>Long <code>adb shell "( … ) &amp;"</code> background loops hang the adb connection; push a script to <code>/data/local/tmp</code> and <code>nohup … &amp;</code> it.</li>
+<li>A <code>truncate</code>d 2 GB wallet file is sparse, so <code>du</code>/<code>df</code> under-report; the guard reads file <em>length</em> so guard behaviour is faithful, but <a class=did href="../../DEFECT-LEDGER.html#SR-26">SR-26</a>'s disk-consumption impact is understated by this method.</li>
+<li>Two <code>wallet-protobuf-testnet.oversize.*</code> files left on the device as <a class=did href="../../DEFECT-LEDGER.html#SR-26">SR-26</a> evidence. All injected permission changes reverted (<code>files/</code> and <code>files/datastore</code> back to <code>700</code>), helper script removed from <code>/data/local/tmp</code>, no CPU burner loops were ever started. logcat/memlog stopped.</li>
+</ul><div id=lb><span class=x>&times;</span><span class="nv pv">&#8249;</span><span class="nv nx">&#8250;</span><img><div class=cap></div></div>
+<script>(function(){var lb=document.getElementById('lb'),im=lb.querySelector('img'),cap=lb.querySelector('.cap'),L=[],i=0;
+function links(){return Array.prototype.slice.call(document.querySelectorAll('a[href$=".webp"],a[href$=".png"]'))}
+function show(n){L=links();if(n<0||n>=L.length)return;i=n;var a=L[i];im.src=a.href;cap.innerHTML=(a.textContent.trim()||a.href.split('/').slice(-3).join('/'))+' &nbsp;('+(i+1)+'/'+L.length+') &nbsp;<a href="'+a.href+'" target=_blank rel=noopener>open file</a>';lb.classList.add('on')}
+function hide(){lb.classList.remove('on');im.src=''}
+document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".webp"],a[href$=".png"]');if(a&&!a.closest('#lb')){e.preventDefault();show(links().indexOf(a))}});
+lb.querySelector('.x').onclick=hide;lb.querySelector('.pv').onclick=function(e){e.stopPropagation();show(i-1)};lb.querySelector('.nx').onclick=function(e){e.stopPropagation();show(i+1)};
+lb.addEventListener('click',function(e){if(e.target===lb||e.target===im)hide()});
+document.addEventListener('keydown',function(e){if(!lb.classList.contains('on'))return;if(e.key==='Escape')hide();if(e.key==='ArrowLeft')show(i-1);if(e.key==='ArrowRight')show(i+1)});})();</script><script>(function(){document.querySelectorAll('thead.sortable').forEach(function(th){var tb=th.parentNode.querySelector('tbody');var ths=th.querySelectorAll('th');
+ths.forEach(function(h,ci){h.style.cursor='pointer';h.title='click to sort';h.addEventListener('click',function(){var rows=Array.prototype.slice.call(tb.querySelectorAll('tr'));var asc=!(h.dataset.asc==='1');ths.forEach(function(x){delete x.dataset.asc;x.classList.remove('asc','desc')});h.dataset.asc=asc?'1':'0';h.classList.add(asc?'asc':'desc');
+var rank={S1:0,S2:1,S3:2,S4:3,other:4,dup:5,info:6,env:7};
+function key(r){if(ci===1)return rank[r.dataset.sev]!==undefined?rank[r.dataset.sev]:9;if(ci===0)return +r.dataset.idx;var c=r.children[ci];return c?c.textContent.trim().toLowerCase():''}
+rows.sort(function(a,b){var ka=key(a),kb=key(b);if(ka<kb)return asc?-1:1;if(ka>kb)return asc?1:-1;return (+a.dataset.idx)-(+b.dataset.idx)});rows.forEach(function(r){tb.appendChild(r)})})})})})();</script></html>

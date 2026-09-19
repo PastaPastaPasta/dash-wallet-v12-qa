@@ -1,0 +1,6 @@
+SR-39 device ABI evidence  2026-09-19T11:41:48  emulator-5556 (AVD dw-qa2)
+ro.product.cpu.abilist   = arm64-v8a
+ro.product.cpu.abilist32 = 
+ro.product.cpu.abilist64 = arm64-v8a
+ro.build.version.release = 15
+ro.build.version.sdk     = 35

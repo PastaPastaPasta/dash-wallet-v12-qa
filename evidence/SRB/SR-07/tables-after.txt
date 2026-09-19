@@ -1,0 +1,35 @@
+=== transaction_metadata AFTER downgrade ===
+timestamp      value      type      taxCategory  currencyCode  rate     memo
+-------------  ---------  --------  -----------  ------------  -------  ----
+1789836363000  100000000  Received               USD           59.7146      
+
+=== transaction_metadata_cache AFTER ===
+cacheTimestamp  taxCategory  memo  id
+--------------  -----------  ----  --
+1789836929029                      1 
+
+=== room_master_table BEFORE / AFTER (identity hash) ===
+BEFORE: 42|5023599d035fb94c8b8a5481e0576d98
+AFTER : 42|abe067f8699a6e2202b3bd980a934776
+
+=== exchange_rates count / sample AFTER ===
+count(*)
+--------
+168     
+currencyCode  rate     
+------------  ---------
+AED           218.5500 
+AFN           3862.1061
+ALL           4729.6474
+
+=== blockchain_state AFTER ===
+  bestChainDate = 1789836774000
+bestChainHeight = 1556859
+      replaying = 0
+    impediments = 
+chainlockHeight = -1
+   mnlistHeight = 1556852
+ percentageSync = 100
+             id = 1
+
+=== schema diff (sqlite_master sql) ===

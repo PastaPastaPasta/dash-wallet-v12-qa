@@ -1,0 +1,67 @@
+=== transaction_metadata (memo + tax category) BEFORE ===
+txId                               timestamp      value      type      taxCategory  currencyCode  rate     memo               service  customIconId
+---------------------------------  -------------  ---------  --------  -----------  ------------  -------  -----------------  -------  ------------
+séz^[|­Î^K‡b^Zzj$^E§ÐÂ˜p^Tç^ÙÃŠ^E¸H  1789836363000  100000000  Received  TransferIn                          SRB07 faucet memo                       
+ÜÀôÅ –@7?^A›@ñEç^\Bj”é~«<È3cœ^U^Q  1789836640855  10000000   Received               USD           59.7075                                          
+®~æ}¾Ÿ±ü<OÕKö›^P.'/æŸ^UGºãõ^P¿ƒÕ’U  1789836775146  0          Sent                                                                                  
+
+=== transaction_metadata_cache BEFORE ===
+   cacheTimestamp = 1789836445526
+             txId = séz^[|­Î^K‡b^Zzj$^E§ÐÂ˜p^Tç^ÙÃŠ^E¸Hfb^F
+    sentTimestamp = 
+      taxCategory = TransferIn
+     currencyCode = 
+             rate = 
+             memo = 
+          service = 
+    customIconUrl = 
+   giftCardNumber = 
+      giftCardPin = 
+     merchantName = 
+    originalPrice = 
+     barcodeValue = 
+    barcodeFormat = 
+      merchantUrl = 
+            order = 
+giftCardChallenge = 
+            index = 
+               id = 1
+
+   cacheTimestamp = 1789836476685
+             txId = séz^[|­Î^K‡b^Zzj$^E§ÐÂ˜p^Tç^ÙÃŠ^E¸Hfb^F
+    sentTimestamp = 
+      taxCategory = 
+     currencyCode = 
+             rate = 
+             memo = SRB07 faucet memo
+          service = 
+    customIconUrl = 
+   giftCardNumber = 
+      giftCardPin = 
+     merchantName = 
+    originalPrice = 
+     barcodeValue = 
+    barcodeFormat = 
+      merchantUrl = 
+            order = 
+giftCardChallenge = 
+            index = 
+
+=== exchange_rates sample BEFORE (count=168) ===
+currencyCode  rate      
+------------  ----------
+AED           218.5235  
+AFN           3861.6371 
+ALL           4729.0730 
+AMD           21538.0962
+ANG           106.3646  
+
+=== blockchain_state BEFORE ===
+  bestChainDate = 1789836774000
+bestChainHeight = 1556859
+      replaying = 0
+    impediments = 
+chainlockHeight = 1556859
+   mnlistHeight = 1556859
+ percentageSync = 100
+             id = 1

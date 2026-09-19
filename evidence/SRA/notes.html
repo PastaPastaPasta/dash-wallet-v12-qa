@@ -1,0 +1,41 @@
+<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Stream SRA notes</title><style>body{font-family:system-ui,-apple-system,sans-serif;max-width:1400px;margin:0 auto;padding:16px 24px;line-height:1.45;background:#fff;color:#111}
+table{border-collapse:collapse;font-size:13px;margin:12px 0}th,td{border:1px solid #ddd;padding:4px 8px;vertical-align:top;text-align:left}th{background:#f3f6fa;position:sticky;top:0}
+tr:nth-child(even){background:#fafbfc}code{background:#f4f4f4;padding:1px 4px;border-radius:3px;font-size:12px}pre{background:#f4f4f4;padding:10px;overflow:auto}
+h1{border-bottom:3px solid #008de4}h2{border-bottom:1px solid #ccc;margin-top:40px}a{color:#008de4}a.ev{background:#e8f4fd;padding:0 3px;border-radius:3px;font-family:ui-monospace,monospace;font-size:12px}
+nav.top{background:#012060;color:#fff;padding:8px 24px;margin:-16px -24px 16px;position:sticky;top:0;z-index:5}nav.top a{color:#fff;margin-right:18px;text-decoration:none}nav.top a:hover{text-decoration:underline}
+.S1{color:#b00020;font-weight:bold}.S2{color:#c75000;font-weight:bold}.toc{background:#f8f9fb;border:1px solid #e3e6ea;padding:8px 16px;font-size:13px;columns:2}.toc ul{margin:2px 0;padding-left:16px}
+#lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:50;align-items:center;justify-content:center;flex-direction:column}#lb.on{display:flex}#lb img{max-width:96vw;max-height:88vh;border:2px solid #fff;box-shadow:0 0 30px #000}#lb .cap{color:#eee;font:13px ui-monospace,monospace;margin-top:8px}#lb .cap a{color:#8cf}#lb .x{position:absolute;top:10px;right:18px;color:#fff;font-size:30px;cursor:pointer}#lb .nv{position:absolute;top:50%;color:#fff;font-size:44px;cursor:pointer;padding:0 16px;user-select:none}#lb .pv{left:0}#lb .nx{right:0}a.img img{cursor:zoom-in}
+sup.more a{margin:0 2px;font-size:10px}
+thead.sortable th.asc::after{content:' \25B2';font-size:9px}thead.sortable th.desc::after{content:' \25BC';font-size:9px}
+tr[data-sev=S1] td:nth-child(2){background:#fde7e9}tr[data-sev=S2] td:nth-child(2){background:#fff1e0}
+a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:target{background:#fff3b0;outline:2px solid #f5b400}
+.note{background:#fff8e1;border-left:4px solid #f5b400;padding:8px 12px;margin:12px 0}
+</style><nav class=top><a href="../../index.html">Home</a><a href="../../QA-REPORT.html">Full report</a><a href="../../EXEC-SUMMARY.html">Executive summary</a><a href="../../STORY-MATRIX.html">User-story matrix</a><a href="../../DEFECT-LEDGER.html">Defect register</a><a href="../index.html">Evidence gallery</a><a href="../../QA-PLAN.html">Test plan</a><a href="../../streams.html">Stream reports</a></nav><h1>Stream SRA working notes</h1><h2 id="sra-notes"><a class=ev href="../SRA/notes.html">SRA notes</a></h2>
+<ul>
+<li>2026-09-19T11:41:27 emulator-5554 (dw-qa1) booted, rooted
+SRA wallet A seed: palace hint east head chronic close length brand right comic excite extra</li>
+<li>2026-09-19T11:47:36 faucet txid a0706d09e1f383216aa2d81697db2418b9e7a9495d860f98d9a442d8180999bd -&gt; yMKPQKunBcnXBDc7tk7NZEswfeUNNynDPZ</li>
+<li>2026-09-19T11:52:28 <a class=did href="../../DEFECT-LEDGER.html#SR-20">SR-20</a>: chmod restored to 700</li>
+<li>11:50 <a class=did href="../../DEFECT-LEDGER.html#SR-20">SR-20</a> run: chmod 500 files/datastore, Reset Wallet -&gt; steps failed (EACCES) but wipe marked complete, marker gone, onboarding shown. Evidence <a class=did href="../../DEFECT-LEDGER.html#SR-20">SR-20</a>/07,08,09,10.</li>
+<li>11:55 restored same seed; restored wallet came up with cutoverCommitted=true inherited from wiped wallet (<a class=did href="../../DEFECT-LEDGER.html#SR-20">SR-20</a>/17).</li>
+<li>11:58-12:02 <a class=did href="../../DEFECT-LEDGER.html#SR-36">SR-36</a> runs 1-3: chmod 555 files/ -&gt; "could not create the wallet-wipe marker" + "wipe started WITHOUT a recovery marker"; finish() then logged "destroying nothing" and NOTHING was wiped. Wallet intact after relaunch (balance 1 tDASH, same PIN). KEY FINDING.</li>
+<li>12:03 CONTROL clean reset: marker created +0.15s, gone by +0.9s; full wipe &lt; 1 s. shielded_tree_testnet.sqlite(+wal) survives a CLEAN wipe.</li>
+<li>12:09-12:20 <a class=did href="../../DEFECT-LEDGER.html#SR-21">SR-21</a> attempts a1-a5 (rescan intent, bg/fg, stopservice+0.5s, net-off+stopservice, stop/start storm). Spinner max 15 s, always recovered. a5 hit "Another onDestroy() is already running cleanup, skipping duplicate cleanup" + "CRITICAL: Cleanup did not complete within 15 seconds" yet still finished.</li>
+<li>12:23 <a class=did href="../../DEFECT-LEDGER.html#SR-25">SR-25</a>: appended 60MB urandom -&gt; 62,929,882 bytes -&gt; guard verdict RISKY at soft limit 60,397,977 (largeHeap 576MB). Parse SUCCEEDED (211ms); autosave debounce raised to 60s. No OOM.</li>
+<li>12:25 <a class=did href="../../DEFECT-LEDGER.html#SR-38">SR-38</a>/26: truncate -s 2000000001 -&gt; UNPARSEABLE, file preserved as wallet-protobuf-testnet.oversize.1789838718982, recovered from key backup, Toast "Your wallet was reset! It will take some time to recover." then a second Toast "java.io.FileNotFoundException". Funds returned (1 tDASH).</li>
+<li>12:27 NEXT LAUNCH after that recovery -&gt; ONBOARDING. Recovered wallet was never written to wallet-protobuf-testnet; key-backup still on disk, never consulted. NEW S1/S2.</li>
+<li>12:38-12:42 <a class=did href="../../DEFECT-LEDGER.html#SR-41">SR-41</a>: kill -STOP at +450ms for 21s -&gt; "wallet load exceeded its 20000ms budget"; process reaped; NEXT launch safeMode=true, WALLET_LOAD_SKIPPED_SAFE_MODE, DEGRADED_UI_SHOWN. "Try Again" -&gt; SAFE_MODE_RETRY_OK, counters cleared.</li>
+<li>12:45 session end. Perms restored (files 700, datastore 700). Two .oversize files left as <a class=did href="../../DEFECT-LEDGER.html#SR-26">SR-26</a> evidence.</li>
+</ul><div id=lb><span class=x>&times;</span><span class="nv pv">&#8249;</span><span class="nv nx">&#8250;</span><img><div class=cap></div></div>
+<script>(function(){var lb=document.getElementById('lb'),im=lb.querySelector('img'),cap=lb.querySelector('.cap'),L=[],i=0;
+function links(){return Array.prototype.slice.call(document.querySelectorAll('a[href$=".webp"],a[href$=".png"]'))}
+function show(n){L=links();if(n<0||n>=L.length)return;i=n;var a=L[i];im.src=a.href;cap.innerHTML=(a.textContent.trim()||a.href.split('/').slice(-3).join('/'))+' &nbsp;('+(i+1)+'/'+L.length+') &nbsp;<a href="'+a.href+'" target=_blank rel=noopener>open file</a>';lb.classList.add('on')}
+function hide(){lb.classList.remove('on');im.src=''}
+document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".webp"],a[href$=".png"]');if(a&&!a.closest('#lb')){e.preventDefault();show(links().indexOf(a))}});
+lb.querySelector('.x').onclick=hide;lb.querySelector('.pv').onclick=function(e){e.stopPropagation();show(i-1)};lb.querySelector('.nx').onclick=function(e){e.stopPropagation();show(i+1)};
+lb.addEventListener('click',function(e){if(e.target===lb||e.target===im)hide()});
+document.addEventListener('keydown',function(e){if(!lb.classList.contains('on'))return;if(e.key==='Escape')hide();if(e.key==='ArrowLeft')show(i-1);if(e.key==='ArrowRight')show(i+1)});})();</script><script>(function(){document.querySelectorAll('thead.sortable').forEach(function(th){var tb=th.parentNode.querySelector('tbody');var ths=th.querySelectorAll('th');
+ths.forEach(function(h,ci){h.style.cursor='pointer';h.title='click to sort';h.addEventListener('click',function(){var rows=Array.prototype.slice.call(tb.querySelectorAll('tr'));var asc=!(h.dataset.asc==='1');ths.forEach(function(x){delete x.dataset.asc;x.classList.remove('asc','desc')});h.dataset.asc=asc?'1':'0';h.classList.add(asc?'asc':'desc');
+var rank={S1:0,S2:1,S3:2,S4:3,other:4,dup:5,info:6,env:7};
+function key(r){if(ci===1)return rank[r.dataset.sev]!==undefined?rank[r.dataset.sev]:9;if(ci===0)return +r.dataset.idx;var c=r.children[ci];return c?c.textContent.trim().toLowerCase():''}
+rows.sort(function(a,b){var ka=key(a),kb=key(b);if(ka<kb)return asc?-1:1;if(ka>kb)return asc?1:-1;return (+a.dataset.idx)-(+b.dataset.idx)});rows.forEach(function(r){tb.appendChild(r)})})})})})();</script></html>

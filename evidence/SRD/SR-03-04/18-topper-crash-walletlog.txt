@@ -1,0 +1,27 @@
+17:00:05 [DefaultDispatcher-worker-3] WalletProtobufSerializer - writeWallet timing: 1ms total (1ms/100% serialization, 0ms/0% I/O) buffer=8KB
+17:00:05 [DefaultDispatcher-worker-3] WalletFiles - Save completed in 5.814 ms (19139 bytes); /data/user/0/hashengineering.darkcoin.wallet_test/files/wallet-protobuf-testnet
+17:00:05 [main] CrashReporter - crashing because of uncaught exception
+io.jsonwebtoken.io.DecodingException: Illegal base64 character: '_'
+	at io.jsonwebtoken.io.Base64.ctoi(Base64.java:221)
+	at io.jsonwebtoken.io.Base64.decodeFast(Base64.java:270)
+	at io.jsonwebtoken.io.Base64Decoder.decode(Base64Decoder.java:36)
+	at io.jsonwebtoken.io.Base64Decoder.decode(Base64Decoder.java:23)
+	at io.jsonwebtoken.io.ExceptionPropagatingDecoder.decode(ExceptionPropagatingDecoder.java:36)
+	at org.dash.wallet.integrations.uphold.api.TopperClient.getOnRampUrl(TopperClient.kt:91)
+	at de.schildbach.wallet.ui.buy_sell.BuyAndSellViewModel.topperBuyUrl(BuyAndSellViewModel.kt:272)
+	at de.schildbach.wallet.ui.buy_sell.BuyAndSellViewModel$topperBuyUrl$1.invokeSuspend(BuyAndSellViewModel.kt:0)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at android.os.Handler.handleCallback(Handler.java:959)
+	at android.os.Handler.dispatchMessage(Handler.java:100)
+	at android.os.Looper.loopOnce(Looper.java:232)
+	at android.os.Looper.loop(Looper.java:317)
+	at android.app.ActivityThread.main(ActivityThread.java:8705)
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:580)
+	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:886)
+	Suppressed: kotlinx.coroutines.internal.DiagnosticCoroutineContextException: null
+17:00:06 [DefaultDispatcher-worker-13] L1ShadowSyncService - L1 engine chainlock height 1556861 -> 1556862
+17:00:06 [DefaultDispatcher-worker-8] MainViewModel - blockchain state update: mnlist=1556861; chain=1556861; wallet=-1
+17:00:07 [DefaultDispatcher-worker-17] L1ShadowSyncService - L1Shadow phase=SYNCED 100.0% headers 1556862/1556862 filters 1556862/1556862 wallet 1556862
+17:00:07 [DefaultDispatcher-worker-12] MainViewModel - blockchain state update: mnlist=1556862; chain=1556862; wallet=-1

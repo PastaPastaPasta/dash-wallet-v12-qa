@@ -1,0 +1,20 @@
+total 4412
+drwx------  9 u0_a212 u0_a212    4096 2026-09-19 11:58 .
+drwx------ 12 u0_a212 u0_a212    4096 2026-09-19 11:58 ..
+drwx------  6 u0_a212 u0_a212    4096 2026-09-19 11:58 .com.google.firebase.crashlytics.files.v2:hashengineering.darkcoin.wallet_test
+drwx------  5 u0_a212 u0_a212    4096 2026-09-19 11:42 AFRequestCache
+-rw-------  1 u0_a212 u0_a212     114 2026-09-19 11:58 PersistedInstallation.W0RFRkFVTFRd+MTowMDAwMDAwMDAwMDA6YW5kcm9pZDowMDAwMDAwMDAwMDAwMDAx.json
+drwx------  2 u0_a212 u0_a212    4096 2026-09-19 12:00 datastore
+-rw-------  1 u0_a212 u0_a212       0 2026-09-19 11:42 generatefid.lock
+-rw-rw----  1 u0_a212 u0_a212   15328 2026-09-19 11:53 key-backup-protobuf-testnet
+drwx------  3 u0_a212 u0_a212    4096 2026-09-19 12:00 l1_shadow_spv
+drwx------  2 u0_a212 u0_a212    4096 2026-09-19 11:42 log
+drwx------  2 u0_a212 u0_a212    4096 2026-09-19 11:58 migration_flags
+drwx------  7 u0_a212 u0_a212    4096 2026-09-19 11:58 sdk-logs
+-rw-------  1 u0_a212 u0_a212  200704 2026-09-19 11:44 shielded_tree_testnet.sqlite
+-rw-------  1 u0_a212 u0_a212   32768 2026-09-19 11:58 shielded_tree_testnet.sqlite-shm
+-rw-------  1 u0_a212 u0_a212 4120032 2026-09-19 11:57 shielded_tree_testnet.sqlite-wal
+-rw-------  1 u0_a212 u0_a212     900 2026-09-19 12:00 startup.breadcrumbs
+-rw-------  1 u0_a212 u0_a212       1 2026-09-19 11:59 startup.failures
+-rw-------  1 u0_a212 u0_a212       1 2026-09-19 11:59 startup.safemoderuns
+-rw-------  1 u0_a212 u0_a212   15322 2026-09-19 11:53 wallet-protobuf-testnet

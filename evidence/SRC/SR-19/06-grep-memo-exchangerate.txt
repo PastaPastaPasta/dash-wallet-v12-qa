@@ -1,0 +1,23 @@
+16:47:15 [main] MainViewModel - Updating currency exchange rate based on country: US
+16:47:15 [DefaultDispatcher-worker-5] ExchangeRatesRepository - exchange rates updated successfully with de.schildbach.wallet.rates.DashRetailClient@8c522d9
+16:47:47 [DefaultDispatcher-worker-11] PlatformSynchronizationService - TxMetadata settings: saveToNetwork=false frequency=afterTenTransactions saveAfter=9223372036854775807 paymentCategory=false taxCategory=false exchangeRates=false memos=false giftCards=false storedDocuments=0
+16:48:45 [DefaultDispatcher-worker-7] ExchangeRatesRepository - exchange rates updated successfully with de.schildbach.wallet.rates.DashRetailClient@8c522d9
+16:49:34 [main] BlockchainServiceImpl - onTrimMemory(20) called
+16:50:00 [main] MainViewModel - Updating currency exchange rate based on country: US
+16:50:31 [DefaultDispatcher-worker-11] ExchangeRatesRepository - exchange rates updated successfully with de.schildbach.wallet.rates.DashRetailClient@8c522d9
+16:50:43 [DefaultDispatcher-worker-10] PlatformSynchronizationService - TxMetadata settings: saveToNetwork=false frequency=afterTenTransactions saveAfter=9223372036854775807 paymentCategory=false taxCategory=false exchangeRates=false memos=false giftCards=false storedDocuments=0
+16:52:44 [DefaultDispatcher-worker-9] PlatformSynchronizationService - TxMetadata settings: saveToNetwork=false frequency=afterTenTransactions saveAfter=9223372036854775807 paymentCategory=false taxCategory=false exchangeRates=false memos=false giftCards=false storedDocuments=0
+16:55:59 [DefaultDispatcher-worker-6] ExchangeRatesRepository - exchange rates updated successfully with de.schildbach.wallet.rates.DashRetailClient@8c522d9
+16:56:02 [DefaultDispatcher-worker-9] PlatformSynchronizationService - TxMetadata settings: saveToNetwork=false frequency=afterTenTransactions saveAfter=9223372036854775807 paymentCategory=false taxCategory=false exchangeRates=false memos=false giftCards=false storedDocuments=0
+16:57:01 [DefaultDispatcher-worker-1] ExchangeRatesRepository - exchange rates updated successfully with de.schildbach.wallet.rates.DashRetailClient@8c522d9
+16:57:02 [DefaultDispatcher-worker-7] WalletTransactionMetadataProvider - txmetadata: inserting TransactionMetadata(txId=aa659fc9ab82b67a6741e3e88db4fa1e3ef45de3360d33a77e9b0db872854ccc, timestamp=1789837021819, value=0, type=Sent, taxCategory=null, currencyCode=null, rate=null, memo=, service=null, customIconId=null)
+
+--- ANALYSIS ---
+Deeplink used: dash:yRjAzoyfZ7DpzLFmVGiLispLjUaYKRnL52?amount=0.01&message=SR19memo&label=Bob
+PaymentIntent.fromPaymentUri (common/src/main/java/org/dash/wallet/common/data/PaymentIntent.java:270)
+maps BIP21 `label=` -> PaymentIntent.memo, so memo should have been "Bob".
+Decisive line (from /data/data/hashengineering.darkcoin.wallet_test/files/log/wallet.log):
+16:57:02 WalletTransactionMetadataProvider - txmetadata: inserting TransactionMetadata(
+  txId=aa659fc9ab82b67a6741e3e88db4fa1e3ef45de3360d33a77e9b0db872854ccc, timestamp=1789837021819,
+  value=0, type=Sent, taxCategory=null, currencyCode=null, rate=null, memo=, service=null, customIconId=null)
+=> memo EMPTY, currencyCode/rate NULL (exchange rate at send time not recorded), and value=0.

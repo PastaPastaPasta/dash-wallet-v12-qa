@@ -1,0 +1,79 @@
+09-19 11:59:12.873  5763  5763 D AndroidRuntime: Shutting down VM
+09-19 11:59:20.006  5782  5782 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 0 <<<<<<
+09-19 11:59:20.008  5782  5782 I AndroidRuntime: Using default boot image
+09-19 11:59:20.008  5782  5782 I AndroidRuntime: Leaving lock profiling enabled
+09-19 11:59:20.045  5782  5782 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+09-19 11:59:21.084  5782  5782 D AndroidRuntime: Shutting down VM
+09-19 11:59:32.563  5813  5813 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 0 <<<<<<
+09-19 11:59:32.565  5813  5813 I AndroidRuntime: Using default boot image
+09-19 11:59:32.565  5813  5813 I AndroidRuntime: Leaving lock profiling enabled
+09-19 11:59:32.602  5813  5813 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+09-19 11:59:33.684  5813  5813 D AndroidRuntime: Shutting down VM
+09-19 11:59:43.484  5849  5849 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 0 <<<<<<
+09-19 11:59:43.486  5849  5849 I AndroidRuntime: Using default boot image
+09-19 11:59:43.486  5849  5849 I AndroidRuntime: Leaving lock profiling enabled
+09-19 11:59:43.526  5849  5849 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+09-19 11:59:44.563  5849  5849 D AndroidRuntime: Shutting down VM
+09-19 11:59:49.239  5870  5870 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 0 <<<<<<
+09-19 11:59:49.241  5870  5870 I AndroidRuntime: Using default boot image
+09-19 11:59:49.241  5870  5870 I AndroidRuntime: Leaving lock profiling enabled
+09-19 11:59:49.279  5870  5870 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+09-19 11:59:50.308  5870  5870 D AndroidRuntime: Shutting down VM
+09-19 11:59:57.471  5917  5917 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 0 <<<<<<
+09-19 11:59:57.473  5917  5917 I AndroidRuntime: Using default boot image
+09-19 11:59:57.473  5917  5917 I AndroidRuntime: Leaving lock profiling enabled
+09-19 11:59:57.509  5917  5917 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+09-19 11:59:58.558  5917  5917 D AndroidRuntime: Shutting down VM
+09-19 12:00:03.984  5937  5937 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 0 <<<<<<
+09-19 12:00:03.986  5937  5937 I AndroidRuntime: Using default boot image
+09-19 12:00:03.986  5937  5937 I AndroidRuntime: Leaving lock profiling enabled
+09-19 12:00:04.024  5937  5937 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+09-19 12:00:05.055  5937  5937 D AndroidRuntime: Shutting down VM
+09-19 12:00:05.941  3825  3825 W CrashReporter: [main] crashing because of uncaught exception
+09-19 12:00:05.941  3825  3825 W CrashReporter: io.jsonwebtoken.io.DecodingException: Illegal base64 character: '_'
+09-19 12:00:05.941  3825  3825 W CrashReporter: 	at io.jsonwebtoken.io.Base64.ctoi(Base64.java:221)
+09-19 12:00:05.941  3825  3825 W CrashReporter: 	at io.jsonwebtoken.io.Base64.decodeFast(Base64.java:270)
+09-19 12:00:05.941  3825  3825 W CrashReporter: 	at io.jsonwebtoken.io.Base64Decoder.decode(Base64Decoder.java:36)
+09-19 12:00:05.941  3825  3825 W CrashReporter: 	at io.jsonwebtoken.io.Base64Decoder.decode(Base64Decoder.java:23)
+09-19 12:00:05.941  3825  3825 W CrashReporter: 	at io.jsonwebtoken.io.ExceptionPropagatingDecoder.decode(ExceptionPropagatingDecoder.java:36)
+09-19 12:00:05.941  3825  3825 W CrashReporter: 	at org.dash.wallet.integrations.uphold.api.TopperClient.getOnRampUrl(TopperClient.kt:91)
+09-19 12:00:05.941  3825  3825 W CrashReporter: 	at de.schildbach.wallet.ui.buy_sell.BuyAndSellViewModel.topperBuyUrl(BuyAndSellViewModel.kt:272)
+09-19 12:00:05.941  3825  3825 W CrashReporter: 	at de.schildbach.wallet.ui.buy_sell.BuyAndSellViewModel$topperBuyUrl$1.invokeSuspend(BuyAndSellViewModel.kt:0)
+09-19 12:00:05.941  3825  3825 W CrashReporter: 	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+09-19 12:00:05.941  3825  3825 W CrashReporter: 	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+09-19 12:00:05.941  3825  3825 W CrashReporter: 	at android.os.Handler.handleCallback(Handler.java:959)
+09-19 12:00:05.941  3825  3825 W CrashReporter: 	at android.os.Handler.dispatchMessage(Handler.java:100)
+09-19 12:00:05.941  3825  3825 W CrashReporter: 	at android.os.Looper.loopOnce(Looper.java:232)
+09-19 12:00:05.941  3825  3825 W CrashReporter: 	at android.os.Looper.loop(Looper.java:317)
+09-19 12:00:05.941  3825  3825 W CrashReporter: 	at android.app.ActivityThread.main(ActivityThread.java:8705)
+09-19 12:00:05.941  3825  3825 W CrashReporter: 	at java.lang.reflect.Method.invoke(Native Method)
+09-19 12:00:05.941  3825  3825 W CrashReporter: 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:580)
+09-19 12:00:05.941  3825  3825 W CrashReporter: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:886)
+09-19 12:00:05.941  3825  3825 W CrashReporter: 	Suppressed: kotlinx.coroutines.internal.DiagnosticCoroutineContextException: null
+09-19 12:00:08.955  3825  3825 E AndroidRuntime: FATAL EXCEPTION: main
+09-19 12:00:08.955  3825  3825 E AndroidRuntime: Process: hashengineering.darkcoin.wallet_test, PID: 3825
+09-19 12:00:08.955  3825  3825 E AndroidRuntime: io.jsonwebtoken.io.DecodingException: Illegal base64 character: '_'
+09-19 12:00:08.955  3825  3825 E AndroidRuntime: 	at io.jsonwebtoken.io.Base64.ctoi(Base64.java:221)
+09-19 12:00:08.955  3825  3825 E AndroidRuntime: 	at io.jsonwebtoken.io.Base64.decodeFast(Base64.java:270)
+09-19 12:00:08.955  3825  3825 E AndroidRuntime: 	at io.jsonwebtoken.io.Base64Decoder.decode(Base64Decoder.java:36)
+09-19 12:00:08.955  3825  3825 E AndroidRuntime: 	at io.jsonwebtoken.io.Base64Decoder.decode(Base64Decoder.java:23)
+09-19 12:00:08.955  3825  3825 E AndroidRuntime: 	at io.jsonwebtoken.io.ExceptionPropagatingDecoder.decode(ExceptionPropagatingDecoder.java:36)
+09-19 12:00:08.955  3825  3825 E AndroidRuntime: 	at org.dash.wallet.integrations.uphold.api.TopperClient.getOnRampUrl(TopperClient.kt:91)
+09-19 12:00:08.955  3825  3825 E AndroidRuntime: 	at de.schildbach.wallet.ui.buy_sell.BuyAndSellViewModel.topperBuyUrl(BuyAndSellViewModel.kt:272)
+09-19 12:00:08.955  3825  3825 E AndroidRuntime: 	at de.schildbach.wallet.ui.buy_sell.BuyAndSellViewModel$topperBuyUrl$1.invokeSuspend(BuyAndSellViewModel.kt:0)
+09-19 12:00:08.955  3825  3825 E AndroidRuntime: 	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+09-19 12:00:08.955  3825  3825 E AndroidRuntime: 	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+09-19 12:00:08.955  3825  3825 E AndroidRuntime: 	at android.os.Handler.handleCallback(Handler.java:959)
+09-19 12:00:08.955  3825  3825 E AndroidRuntime: 	at android.os.Handler.dispatchMessage(Handler.java:100)
+09-19 12:00:08.955  3825  3825 E AndroidRuntime: 	at android.os.Looper.loopOnce(Looper.java:232)
+09-19 12:00:08.955  3825  3825 E AndroidRuntime: 	at android.os.Looper.loop(Looper.java:317)
+09-19 12:00:08.955  3825  3825 E AndroidRuntime: 	at android.app.ActivityThread.main(ActivityThread.java:8705)
+09-19 12:00:08.955  3825  3825 E AndroidRuntime: 	at java.lang.reflect.Method.invoke(Native Method)
+09-19 12:00:08.955  3825  3825 E AndroidRuntime: 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:580)
+09-19 12:00:08.955  3825  3825 E AndroidRuntime: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:886)
+09-19 12:00:08.955  3825  3825 E AndroidRuntime: 	Suppressed: kotlinx.coroutines.internal.DiagnosticCoroutineContextException: [StandaloneCoroutine{Cancelling}@44d78c5, Dispatchers.Main.immediate]
+09-19 12:00:21.993  5997  5997 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 0 <<<<<<
+09-19 12:00:21.996  5997  5997 I AndroidRuntime: Using default boot image
+09-19 12:00:21.996  5997  5997 I AndroidRuntime: Leaving lock profiling enabled
+09-19 12:00:22.037  5997  5997 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+09-19 12:00:23.096  5997  5997 D AndroidRuntime: Shutting down VM

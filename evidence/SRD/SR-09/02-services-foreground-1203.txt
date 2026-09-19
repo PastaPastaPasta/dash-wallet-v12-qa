@@ -1,0 +1,51 @@
+ACTIVITY MANAGER SERVICES (dumpsys activity services)
+  User 0 active services:
+  * ServiceRecord{4a85cc2 u0 hashengineering.darkcoin.wallet_test/de.schildbach.wallet.service.BlockchainServiceImpl c:hashengineering.darkcoin.wallet_test}
+    intent={cmp=hashengineering.darkcoin.wallet_test/de.schildbach.wallet.service.BlockchainServiceImpl}
+    packageName=hashengineering.darkcoin.wallet_test
+    processName=hashengineering.darkcoin.wallet_test
+    targetSdkVersion=35
+    baseDir=/data/app/~~Jamcw7oAlVSRRcD89DrrUg==/hashengineering.darkcoin.wallet_test-rOAvhBSdZRHwdmyahFuuRA==/base.apk
+    dataDir=/data/user/0/hashengineering.darkcoin.wallet_test
+    app=ProcessRecord{c2b61ab 6047:hashengineering.darkcoin.wallet_test/u0a208}
+    useNewWiuLogic_forCapabilities()=true
+    useNewWiuLogic_forStart()=true
+    useNewBfslLogic()=true
+    mAllowWiu_noBinding=DENIED
+    mAllowWiu_inBindService=DENIED
+    mAllowWiu_byBindings=DENIED
+    getFgsAllowWiu_legacy=DENIED
+    getFgsAllowWiu_new=DENIED
+    getFgsAllowWiu_forStart=DENIED
+    getFgsAllowWiu_forCapabilities=DENIED
+    allowUiJobScheduling=false
+    recentCallingPackage=hashengineering.darkcoin.wallet_test
+    recentCallingUid=10208
+    mAllowStart_noBinding=DENIED
+    mAllowStart_inBindService=DENIED
+    mAllowStart_byBindings=DENIED
+    getFgsAllowStart_legacy=DENIED
+    getFgsAllowStart_new=DENIED
+    getFgsAllowStart=DENIED
+    startForegroundCount=1
+    infoAllowStartForeground=null
+    createTime=-1m46s819ms startingBgTimeout=--
+    lastActivity=-1m46s814ms restartTime=-1m46s819ms createdFromFg=true
+    startRequested=true delayedStop=false stopIfKilled=true callStart=true lastStartId=2
+ startCommandResult=2
+    Bindings:
+    * IntentBindRecord{4043d43 CREATE}:
+      intent={cmp=hashengineering.darkcoin.wallet_test/de.schildbach.wallet.service.BlockchainServiceImpl}
+      binder=android.os.BinderProxy@54aafc0
+      requested=true received=true hasBound=true doRebind=false
+      * Client AppBindRecord{d984f9 ProcessRecord{c2b61ab 6047:hashengineering.darkcoin.wallet_test/u0a208}}
+        Per-process Connections:
+          ConnectionRecord{e63509 u0 CR hashengineering.darkcoin.wallet_test/de.schildbach.wallet.service.BlockchainServiceImpl:@b7ad610 flags=0x1}
+    All Connections:
+      ConnectionRecord{e63509 u0 CR hashengineering.darkcoin.wallet_test/de.schildbach.wallet.service.BlockchainServiceImpl:@b7ad610 flags=0x1}
+
+  Connection bindings to services:
+  * ConnectionRecord{e63509 u0 CR hashengineering.darkcoin.wallet_test/de.schildbach.wallet.service.BlockchainServiceImpl:@b7ad610 flags=0x1}
+    binding=AppBindRecord{d984f9 hashengineering.darkcoin.wallet_test/de.schildbach.wallet.service.BlockchainServiceImpl:hashengineering.darkcoin.wallet_test}
+    activity=ActivityRecord{5e0ac86 u0 hashengineering.darkcoin.wallet_test/de.schildbach.wallet.ui.main.MainActivity t173}
+    conn=android.os.BinderProxy@b7ad610 flags=0x1

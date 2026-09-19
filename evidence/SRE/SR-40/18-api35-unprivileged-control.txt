@@ -1,0 +1,12 @@
+### SR-40 CONTROL (apples-to-apples): API 35 / Android 15, emulator-5562, FIX 12.0.0 vc=12000000
+### SAME sender identity as the successful API-31 run (unprivileged, no permissions):
+uid=2000(shell) gid=2000(shell) groups=2000(shell),1004(input),1007(log),1011(adb),1015(sdcard_rw),1028(sdcard_r),1078(ext_data_rw),1079(ext_obb_rw),3001(net_bt_admin),3002(net_bt),3003(inet),3006(net_bw_stats),3009(readproc),3011(uhid),3012(readtracefs) context=u:r:shell:s0
+### host time: 2026-09-19T12:10:13
+
+T0 (SetPinActivity open): de.schildbach.wallet.ui.SetPinActivity t18}
+T+20s no-broadcast:       de.schildbach.wallet.ui.SetPinActivity t18}
+--- am broadcast -a InteractionAwareActivity.FORCE_FINISH_ACTION ---
+Broadcasting: Intent { act=InteractionAwareActivity.FORCE_FINISH_ACTION flg=0x400000 }
+Broadcast completed: result=0
+T+5s after broadcast:     de.schildbach.wallet.ui.SetPinActivity t18}
+T+15s after broadcast:    de.schildbach.wallet.ui.SetPinActivity t18}

@@ -1,0 +1,1297 @@
+16:42:30 [main] StartupBreadcrumbs - STARTUP breadcrumb: 1 LOGGING_INITIALIZED +4ms
+16:42:30 [main] StartupBreadcrumbs - STARTUP breadcrumb: 2 FIREBASE_INITIALIZED +4ms
+16:42:30 [process-exit-reasons] ProcessExitReasons - PROCESS EXIT REASON: none recorded (fresh install, or the history was cleared)
+16:42:30 [main] WalletApplication - STARTUP WalletApplication.onCreate()
+16:42:30 [main] StartupBreadcrumbs - STARTUP breadcrumb: 3 CONFIG_LOADED +5ms
+16:42:30 [main] StartupBreadcrumbs - STARTUP breadcrumb: 11 ONCREATE_COMPLETE +14ms
+16:42:30 [main] WalletActivityTracker - activity lifecycle: app started
+16:42:30 [main] WalletActivityTracker - activity lifecycle: activity OnboardingActivity created
+16:42:30 [main] WalletActivityTracker - activity lifecycle: current: OnboardingActivity, activities: 1 visible: 0 foreground: 0
+16:42:31 [main] AppForegroundMonitor - App moved to foreground
+16:42:31 [main] WalletActivityTracker - activity lifecycle: current: OnboardingActivity, activities: 1 visible: 1 foreground: 0
+16:42:31 [main] WalletActivityTracker - activity lifecycle: current: OnboardingActivity, activities: 1 visible: 1 foreground: 1
+16:42:31 [DefaultDispatcher-worker-5] ExploreSyncWorker - sync explore db started
+16:42:31 [DefaultDispatcher-worker-5] ExploreDataSyncStatus - sync explore data progress: 0.0
+16:42:31 [DefaultDispatcher-worker-5] GCExploreDatabase - preloading explore db from assets /data/user/0/hashengineering.darkcoin.wallet_test/cache/explore.db, test database: true
+16:42:31 [DefaultDispatcher-worker-5] GCExploreDatabase - preloading explore db from assets /data/user/0/hashengineering.darkcoin.wallet_test/cache/explore.db, test database: false
+16:42:31 [DefaultDispatcher-worker-5] GCExploreDatabase - missing preloaded database explore/explore.db
+16:42:31 [DefaultDispatcher-worker-5] ExploreSyncWorker - local data timestamp: 0 (Wed Dec 31 18:00:00 CST 1969)
+16:42:31 [DefaultDispatcher-worker-9] GCExploreDatabase - error getting remote data timestamp
+com.google.firebase.FirebaseException: An internal error has occurred. [ API key not valid. Please pass a valid API key. ]
+	at com.google.android.gms.internal.firebase-auth-api.zzaag.zza(com.google.firebase:firebase-auth@@22.0.0:4)
+	at com.google.android.gms.internal.firebase-auth-api.zzabf.zza(com.google.firebase:firebase-auth@@22.0.0:26)
+	at com.google.android.gms.internal.firebase-auth-api.zzabg.zzl(com.google.firebase:firebase-auth@@22.0.0:1)
+	at com.google.android.gms.internal.firebase-auth-api.zzabd.zzh(com.google.firebase:firebase-auth@@22.0.0:25)
+	at com.google.android.gms.internal.firebase-auth-api.zzaae.zzh(com.google.firebase:firebase-auth@@22.0.0:1)
+	at com.google.android.gms.internal.firebase-auth-api.zzyb.zza(com.google.firebase:firebase-auth@@22.0.0:2)
+	at com.google.android.gms.internal.firebase-auth-api.zzabo.zzc(com.google.firebase:firebase-auth@@22.0.0:10)
+	at com.google.android.gms.internal.firebase-auth-api.zzabo.zzb(com.google.firebase:firebase-auth@@22.0.0:14)
+	at com.google.android.gms.internal.firebase-auth-api.zzaat.zzn(com.google.firebase:firebase-auth@@22.0.0:4)
+	at com.google.android.gms.internal.firebase-auth-api.zzyh.zzz(com.google.firebase:firebase-auth@@22.0.0:2)
+	at com.google.android.gms.internal.firebase-auth-api.zzaaf.zzv(com.google.firebase:firebase-auth@@22.0.0:2)
+	at com.google.android.gms.internal.firebase-auth-api.zzzk.zzc(com.google.firebase:firebase-auth@@22.0.0:1)
+	at com.google.android.gms.internal.firebase-auth-api.zzabh.run(com.google.firebase:firebase-auth@@22.0.0:1)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+	at com.google.firebase.concurrent.CustomThreadFactory.lambda$newThread$0(CustomThreadFactory.java:47)
+	at com.google.firebase.concurrent.CustomThreadFactory.$r8$lambda$XB8AY3Hcio74byWuTzgVEC3Hiek(CustomThreadFactory.java:0)
+	at com.google.firebase.concurrent.CustomThreadFactory$$ExternalSyntheticLambda0.run(R8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:1012)
+16:42:31 [DefaultDispatcher-worker-9] ExploreSyncWorker - remote data timestamp: -1 (Wed Dec 31 17:59:59 CST 1969)
+16:42:31 [DefaultDispatcher-worker-9] ExploreSyncWorker - unable to delete /data/user/0/hashengineering.darkcoin.wallet_test/cache/explore.db
+16:42:31 [DefaultDispatcher-worker-9] ExploreSyncWorker - explore db is up to date, nothing to sync
+16:42:31 [DefaultDispatcher-worker-9] ExploreDataSyncStatus - sync explore data progress: 100.0
+16:42:31 [DefaultDispatcher-worker-9] ExploreDatabase - Open database explore-database
+16:42:31 [DefaultDispatcher-worker-9] ExploreSyncWorker - adding PiggyCards test merchants
+16:42:31 [DefaultDispatcher-worker-9] ExploreSyncWorker - PiggyCards test merchant added successfully
+16:42:54 [main] WalletActivityTracker - activity lifecycle: current: OnboardingActivity, activities: 1 visible: 1 foreground: 0
+16:42:54 [main] WalletActivityTracker - activity lifecycle: activity SelectSecurityLevelActivity created
+16:42:54 [main] WalletActivityTracker - activity lifecycle: current: SelectSecurityLevelActivity, activities: 2 visible: 1 foreground: 0
+16:42:54 [main] WalletActivityTracker - activity lifecycle: current: SelectSecurityLevelActivity, activities: 2 visible: 2 foreground: 0
+16:42:54 [main] WalletActivityTracker - activity lifecycle: current: SelectSecurityLevelActivity, activities: 2 visible: 2 foreground: 1
+16:42:55 [main] WalletActivityTracker - activity lifecycle: current: OnboardingActivity, activities: 2 visible: 1 foreground: 1
+16:43:20 [main] WalletActivityTracker - activity lifecycle: current: SelectSecurityLevelActivity, activities: 2 visible: 1 foreground: 0
+16:43:20 [main] WalletActivityTracker - activity lifecycle: current: OnboardingActivity, activities: 2 visible: 2 foreground: 0
+16:43:20 [main] WalletActivityTracker - activity lifecycle: current: OnboardingActivity, activities: 2 visible: 2 foreground: 1
+16:43:20 [DefaultDispatcher-worker-11] BLSJniLibrary - Initializing BLS JNI Library
+16:43:20 [DefaultDispatcher-worker-11] WalletApplication - === starting app using configuration: _testNet3, org.darkcoin.test
+16:43:20 [DefaultDispatcher-worker-11] MnemonicCodeExt - BIP39 wordlist loaded from: 'bip39-wordlists/english.txt', took 1.370 ms
+16:43:20 [DefaultDispatcher-worker-11] MnemonicCode - PBKDF2 took 7.958 ms
+16:43:20 [DefaultDispatcher-worker-11] OnboardingViewModel - successfully created new wallet
+16:43:20 [DefaultDispatcher-worker-5] BLSJniLibrary - Initializing BLS JNI Library
+16:43:20 [DefaultDispatcher-worker-5] TxDisplayCacheService - rebuildWrappedList: 0 raw txs → 0 wrappers → 0 sorted | getTransactions=1ms wrapAll=2ms sort=0ms total=3ms
+16:43:20 [DefaultDispatcher-worker-3] TxDisplayCacheService - updateDisplayCache: 0 rows in 2ms
+16:43:20 [DefaultDispatcher-worker-3] TxDisplayCacheService - STARTUP rebuildWrappedList DONE (_transactionsLoaded=true) at 1789836200897
+16:43:20 [DefaultDispatcher-worker-3] WalletObserver - observing transactions start de.schildbach.wallet.transactions.WalletObserver@e4907ed
+16:43:20 [DefaultDispatcher-worker-3] BLSJniLibrary - Initializing BLS JNI Library
+16:43:20 [dashj user thread] BLSJniLibrary - Initializing BLS JNI Library
+16:43:20 [DefaultDispatcher-worker-11] KeyChainGroup - Activating a new HD chain: DeterministicKeyChain{P2PKH, accountPath=[44H, 1H, 0H], lookaheadSize=100, lookaheadThreshold=33}
+16:43:20 [DefaultDispatcher-worker-11] AnyKeyChainGroup - Activating a new HD chain: AuthenticationKeyChain{BLOCKCHAIN_IDENTITY, ECDSA, P2PKH, accountPath=[9H, 1H, 5H, 0H, 0H, 0H], lookaheadSize=0, lookaheadThreshold=0}
+16:43:20 [DefaultDispatcher-worker-11] AnyKeyChainGroup - Activating a new HD chain: AuthenticationKeyChain{BLOCKCHAIN_IDENTITY_FUNDING, ECDSA, P2PKH, accountPath=[9H, 1H, 5H, 1H], lookaheadSize=5, lookaheadThreshold=5}
+16:43:20 [DefaultDispatcher-worker-11] AnyKeyChainGroup - Activating a new HD chain: AuthenticationKeyChain{MASTERNODE_OWNER, ECDSA, P2PKH, accountPath=[9H, 1H, 3H, 2H], lookaheadSize=5, lookaheadThreshold=5}
+16:43:20 [main] WalletActivityTracker - activity lifecycle: current: SelectSecurityLevelActivity, activities: 2 visible: 1 foreground: 1
+16:43:20 [main] WalletActivityTracker - activity lifecycle: activity SelectSecurityLevelActivity destroyed
+16:43:20 [main] WalletActivityTracker - activity lifecycle: current: SelectSecurityLevelActivity, activities: 1 visible: 1 foreground: 1
+16:43:20 [DefaultDispatcher-worker-11] BLSJniLibrary - Initializing BLS JNI Library
+16:43:20 [DefaultDispatcher-worker-11] AnyKeyChainGroup - Activating a new HD chain: AuthenticationKeyChain{MASTERNODE_OPERATOR, BLS, P2PKH, accountPath=[9H, 1H, 3H, 3H], lookaheadSize=5, lookaheadThreshold=5}
+16:43:20 [DefaultDispatcher-worker-11] AnyKeyChainGroup - Activating a new HD chain: AuthenticationKeyChain{MASTERNODE_VOTING, ECDSA, P2PKH, accountPath=[9H, 1H, 3H, 1H], lookaheadSize=5, lookaheadThreshold=5}
+16:43:20 [DefaultDispatcher-worker-11] AnyKeyChainGroup - Activating a new HD chain: AuthenticationKeyChain{BLOCKCHAIN_IDENTITY_TOPUP, ECDSA, P2PKH, accountPath=[9H, 1H, 5H, 2H], lookaheadSize=5, lookaheadThreshold=5}
+16:43:20 [DefaultDispatcher-worker-11] AnyKeyChainGroup - Activating a new HD chain: AuthenticationKeyChain{INVITATION_FUNDING, ECDSA, P2PKH, accountPath=[9H, 1H, 5H, 3H], lookaheadSize=5, lookaheadThreshold=5}
+16:43:20 [DefaultDispatcher-worker-11] AnyKeyChainGroup - Activating a new HD chain: AuthenticationKeyChain{MASTERNODE_PLATFORM_OPERATOR, EdDSA, P2PKH, accountPath=[9H, 1H, 3H, 4H], lookaheadSize=0, lookaheadThreshold=0}
+16:43:20 [DefaultDispatcher-worker-11] AnyKeyChainGroup - Activating a new HD chain: AnyDeterministicKeyChain{ECDSA, P2PKH, accountPath=[9H, 1H, 4H, 0H], lookaheadSize=100, lookaheadThreshold=33}
+16:43:21 [DefaultDispatcher-worker-5] CutoverCoordinator - cutover state DUAL_RUNNING -> CUT_OVER (fresh-wallet setup (restore/new))
+16:43:21 [main] WalletActivityTracker - activity lifecycle: current: OnboardingActivity, activities: 1 visible: 1 foreground: 0
+16:43:21 [main] WalletActivityTracker - activity lifecycle: activity SetPinActivity created
+16:43:21 [main] WalletActivityTracker - activity lifecycle: current: SetPinActivity, activities: 2 visible: 1 foreground: 0
+16:43:21 [main] SecurityGuard - loading security guard [healthy=true] with keys: [modern_encryption_migration_complete]
+16:43:21 [main] SecurityGuard - loading security guard [healthy=true] with keys: [modern_encryption_migration_complete]
+16:43:21 [main] WalletActivityTracker - activity lifecycle: current: SetPinActivity, activities: 2 visible: 2 foreground: 0
+16:43:21 [main] WalletActivityTracker - activity lifecycle: current: SetPinActivity, activities: 2 visible: 2 foreground: 1
+16:43:21 [main] WalletActivityTracker - activity lifecycle: current: OnboardingActivity, activities: 2 visible: 1 foreground: 1
+16:44:01 [main] SecurityGuard - removing security keys
+16:44:01 [main] ModernEncryptionProvider - deleting ui_pin_key
+16:44:01 [main] ModernEncryptionProvider - deleting wallet_password_key
+16:44:01 [main] SecurityGuard - Cleared DataStore backups
+16:44:01 [main] ModernEncryptionProvider - key store does not have ui_pin_key, but has android.security.keystore2.AndroidKeyStoreSpi$KeyEntriesEnumerator@88c383c, generating new key. Stack trace:
+  at dalvik.system.VMStack.getThreadStackTrace(Native Method)
+  at java.lang.Thread.getStackTrace(Thread.java:1841)
+  at de.schildbach.wallet.security.ModernEncryptionProvider.getSecretKey(ModernEncryptionProvider.kt:175)
+  at de.schildbach.wallet.security.ModernEncryptionProvider.encrypt(ModernEncryptionProvider.kt:79)
+  at de.schildbach.wallet.security.DualFallbackEncryptionProvider.encrypt(DualFallbackEncryptionProvider.kt:85)
+  at de.schildbach.wallet.security.SecurityGuard.validateKeyIntegrity(SecurityGuard.java:307)
+  at de.schildbach.wallet.security.SecurityGuard.savePin(SecurityGuard.java:262)
+  at de.schildbach.wallet.livedata.EncryptWalletLiveData.savePin(EncryptWalletLiveData.kt:106)
+  at de.schildbach.wallet.ui.SetPinViewModel.savePinAndEncrypt(SetPinViewModel.kt:74)
+  at de.schildbach.wallet.ui.SetPinViewModel.savePinAndEncrypt(SetPinViewModel.kt:65)
+  at de.schildbach.wallet.ui.SetPinActivity$nextStep$submit$1.run(SetPinActivity.kt:289)
+  at android.os.Handler.handleCallback(Handler.java:959)
+  at android.os.Handler.dispatchMessage(Handler.java:100)
+  at android.os.Looper.loopOnce(Looper.java:232)
+  at android.os.Looper.loop(Looper.java:317)
+  at android.app.ActivityThread.main(ActivityThread.java:8705)
+  at java.lang.reflect.Method.invoke(Native Method)
+  at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:580)
+  at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:886)
+16:44:01 [main] SecurityGuard - Notifying 1 health listeners of status change: HEALTHY
+16:44:01 [main] SecurityGuard - Notifying 1 health listeners of status change: HEALTHY
+16:44:01 [main] ModernEncryptionProvider - Decrypted data for alias: ui_pin_key
+16:44:01 [main] SecurityGuard - Notifying 1 health listeners of status change: HEALTHY
+16:44:01 [main] ModernEncryptionProvider - Decrypted data for alias: ui_pin_key
+16:44:01 [main] MnemonicBasedKeyProvider - Derived key from mnemonic for alias: ui_pin_key
+16:44:01 [main] SecurityGuard - Notifying 1 health listeners of status change: HEALTHY
+16:44:01 [main] DualFallbackEncryptionProvider - Added mnemonic-fallback for ui_pin_key
+16:44:01 [AsyncTask #1] BLSJniLibrary - Initializing BLS JNI Library
+16:44:01 [AsyncTask #1] KeyCrypterScrypt - Deriving key took 116.9 ms for N=65536, r=8, p=1.
+16:44:01 [AsyncTask #1] ModernEncryptionProvider - key store does not have wallet_password_key, but has android.security.keystore2.AndroidKeyStoreSpi$KeyEntriesEnumerator@fdb0b15, generating new key. Stack trace:
+  at dalvik.system.VMStack.getThreadStackTrace(Native Method)
+  at java.lang.Thread.getStackTrace(Thread.java:1841)
+  at de.schildbach.wallet.security.ModernEncryptionProvider.getSecretKey(ModernEncryptionProvider.kt:175)
+  at de.schildbach.wallet.security.ModernEncryptionProvider.encrypt(ModernEncryptionProvider.kt:79)
+  at de.schildbach.wallet.security.DualFallbackEncryptionProvider.encrypt(DualFallbackEncryptionProvider.kt:85)
+  at de.schildbach.wallet.security.SecurityGuard.validateKeyIntegrity(SecurityGuard.java:307)
+  at de.schildbach.wallet.security.SecurityGuard.savePassword(SecurityGuard.java:204)
+  at de.schildbach.wallet.livedata.EncryptWalletLiveData$EncryptWalletTask.doInBackground$lambda$0(EncryptWalletLiveData.kt:188)
+  at de.schildbach.wallet.livedata.EncryptWalletLiveData$EncryptWalletTask.$r8$lambda$0CMI4LnZeajmC7OpxOq-bClhh3o(EncryptWalletLiveData.kt:0)
+  at de.schildbach.wallet.livedata.EncryptWalletLiveData$EncryptWalletTask$$ExternalSyntheticLambda0.invoke(R8$$SyntheticClass:0)
+  at de.schildbach.wallet.livedata.EncryptWalletLiveData$Companion.encryptAndSavePassword$wallet__testNet3Release(EncryptWalletLiveData.kt:58)
+  at de.schildbach.wallet.livedata.EncryptWalletLiveData$EncryptWalletTask.doInBackground(EncryptWalletLiveData.kt:188)
+  at de.schildbach.wallet.livedata.EncryptWalletLiveData$EncryptWalletTask.doInBackground(EncryptWalletLiveData.kt:172)
+  at android.os.AsyncTask$3.call(AsyncTask.java:394)
+  at java.util.concurrent.FutureTask.run(FutureTask.java:264)
+  at android.os.AsyncTask$SerialExecutor$1.run(AsyncTask.java:305)
+  at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+  at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+  at java.lang.Thread.run(Thread.java:1012)
+16:44:01 [main] SecurityGuard - Notifying 1 health listeners of status change: HEALTHY
+16:44:01 [AsyncTask #1] ModernEncryptionProvider - Decrypted data for alias: wallet_password_key
+16:44:01 [AsyncTask #1] EncryptWalletLiveData - wallet successfully encrypted, using key derived by new spending password (65536 scrypt iterations)
+16:44:01 [main] SecurityGuard - Notifying 1 health listeners of status change: HEALTHY
+16:44:01 [main] CoinJoinExtension - CoinJoinExtension serialization: 0ms total (keys:0ms[8], cache:0ms[0], salt:0ms, io:0ms, size:1431bytes, buffer:64KB)
+16:44:01 [main] WalletProtobufSerializer - walletToProto (serial=8) timing: 23ms total, init=0ms, tx=0ms[0], keys=2ms, scripts=0ms[0], metadata=0ms, ext=19ms, friendRecv=0ms, friendSend=0ms, build=0ms
+16:44:01 [main] WalletProtobufSerializer - writeWallet timing: 24ms total (22ms/91% serialization, 2ms/8% I/O) buffer=8KB
+16:44:01 [main] WalletApplication - wallet saved to: '/data/user/0/hashengineering.darkcoin.wallet_test/files/wallet-protobuf-testnet', took 30.58 ms
+16:44:01 [main] CoinJoinExtension - CoinJoinExtension serialization: 0ms total (keys:0ms[8], cache:0ms[0], salt:0ms, io:0ms, size:1431bytes, buffer:64KB)
+16:44:01 [main] WalletProtobufSerializer - walletToProto (serial=8) timing: 2ms total, init=0ms, tx=0ms[0], keys=0ms, scripts=0ms[0], metadata=0ms, ext=1ms, friendRecv=0ms, friendSend=0ms, build=0ms
+16:44:01 [main] WalletApplication - wallet backed up to: 'key-backup-protobuf-testnet', took 3.522 ms
+16:44:01 [main] StartupBreadcrumbs - STARTUP breadcrumb: 7 FINALIZE_INIT_BEGIN +90445ms
+16:44:01 [main] SecurityGuard - loading security guard [healthy=true] with keys: [keystore_healthy, modern_encryption_migration_complete, primary_ui_pin_key, primary_wallet_password_key, fallback_mnemonic_ui_pin_key]
+16:44:01 [main] SecurityGuard - loading security guard [healthy=true] with keys: [keystore_healthy, modern_encryption_migration_complete, primary_ui_pin_key, primary_wallet_password_key, fallback_mnemonic_ui_pin_key]
+16:44:01 [main] ModernEncryptionProvider - Decrypted data for alias: wallet_password_key
+16:44:01 [main] KeyCrypterScrypt - Deriving key took 136.6 ms for N=65536, r=8, p=1.
+16:44:01 [main] ModernEncryptionProvider - Decrypted data for alias: wallet_password_key
+16:44:01 [main] MnemonicBasedKeyProvider - Derived key from mnemonic for alias: wallet_password_key
+16:44:01 [main] SecurityGuard - Notifying 1 health listeners of status change: HEALTHY
+16:44:01 [main] DualFallbackEncryptionProvider - Added mnemonic-fallback for wallet_password_key
+16:44:01 [main] SecurityGuard - Mnemonic-based fallbacks ensured for PIN and wallet password
+16:44:01 [main] WalletApplication - Mnemonic-based fallbacks ensured
+16:44:01 [main] ModernEncryptionProvider - Decrypted data for alias: ui_pin_key
+16:44:01 [main] ModernEncryptionProvider - Decrypted data for alias: wallet_password_key
+16:44:01 [main] SecurityGuard - Notifying 1 health listeners of status change: HEALTHY_WITH_FALLBACKS
+16:44:01 [main] DualFallbackEncryptionProvider - Added PIN-fallback for wallet_password_key
+16:44:01 [main] SecurityGuard - PIN-based fallback ensured for wallet password
+16:44:01 [main] WalletApplication - PIN-based fallback added successfully
+16:44:01 [main] WalletApplication - STARTUP finalizeInit: securityGuard done in 263ms
+16:44:01 [main] WalletApplication - STARTUP finalizeInit: initDash done in 9ms
+16:44:01 [main] StartupBreadcrumbs - STARTUP breadcrumb: 8 INIT_DASH_DONE +90717ms
+16:44:01 [main] Configuration - detected app upgrade: 0 -> 12000000
+16:44:01 [main] WalletApplication - STARTUP finalizeInit: afterLoadWallet done in 2ms
+16:44:01 [main] StartupBreadcrumbs - STARTUP breadcrumb: 9 AFTER_LOAD_WALLET_DONE +90719ms
+16:44:01 [main] StartupBreadcrumbs - STARTUP breadcrumb: 20 SDK_BIND_KICKED +90724ms
+16:44:01 [main] PlatformSynchronizationService - Starting the platform sync job
+16:44:01 [main] StartupBreadcrumbs - STARTUP breadcrumb: 10 PLATFORM_INIT_KICKED +90725ms
+16:44:01 [main] WalletApplication - STARTUP finalizeInit: initPlatform+channels done in 6ms
+16:44:01 [DefaultDispatcher-worker-11] SecurityGuard - loading security guard [healthy=true] with keys: [keystore_healthy, fallback_pin_wallet_password_key, primary_ui_pin_key, modern_encryption_migration_complete, fallback_mnemonic_wallet_password_key, primary_wallet_password_key, fallback_mnemonic_ui_pin_key]
+16:44:01 [DefaultDispatcher-worker-1] BlockchainIdentityData - creation: BlockchainIdentityData(NONE, null, null, null, null, null)
+16:44:01 [DefaultDispatcher-worker-11] ModernEncryptionProvider - Decrypted data for alias: wallet_password_key
+16:44:01 [main] WalletApplication - STARTUP finalizeInit: integrations done in 63ms
+16:44:01 [main] WalletActivityTracker - activity lifecycle: current: SetPinActivity, activities: 2 visible: 1 foreground: 0
+16:44:01 [main] WalletActivityTracker - activity lifecycle: activity OnboardingActivity destroyed
+16:44:01 [main] WalletActivityTracker - activity lifecycle: current: SetPinActivity, activities: 1 visible: 1 foreground: 0
+16:44:01 [main] WalletActivityTracker - activity lifecycle: activity VerifySeedActivity created
+16:44:01 [main] WalletActivityTracker - activity lifecycle: current: VerifySeedActivity, activities: 2 visible: 1 foreground: 0
+16:44:01 [main] SecurityGuard - loading security guard [healthy=true] with keys: [keystore_healthy, fallback_pin_wallet_password_key, primary_ui_pin_key, modern_encryption_migration_complete, fallback_mnemonic_wallet_password_key, primary_wallet_password_key, fallback_mnemonic_ui_pin_key]
+16:44:01 [main] SecurityGuard - loading security guard [healthy=true] with keys: [keystore_healthy, fallback_pin_wallet_password_key, primary_ui_pin_key, modern_encryption_migration_complete, fallback_mnemonic_wallet_password_key, primary_wallet_password_key, fallback_mnemonic_ui_pin_key]
+16:44:01 [main] WalletActivityTracker - activity lifecycle: current: VerifySeedActivity, activities: 2 visible: 2 foreground: 0
+16:44:01 [main] WalletActivityTracker - activity lifecycle: current: VerifySeedActivity, activities: 2 visible: 2 foreground: 1
+16:44:01 [DefaultDispatcher-worker-11] KeyCrypterScrypt - Deriving key took 200.0 ms for N=65536, r=8, p=1.
+16:44:01 [DefaultDispatcher-worker-1] DashSdkServiceImpl - bootstrapping Dash Platform SDK for network=testnet (flavor=_testNet3)
+16:44:01 [DefaultDispatcher-worker-1] DashSdkServiceImpl - SDK tracing file logging (INFO) at /data/user/0/hashengineering.darkcoin.wallet_test/files/sdk-logs/platform_wallet/run.log: NOT installed (subscriber already set or dir unwritable)
+16:44:01 [DefaultDispatcher-worker-11] DashSdkServiceImpl - Dash Platform SDK started: version=4.2.0-dev.8, restored 0 wallet(s)
+16:44:01 [DefaultDispatcher-worker-11] CheckpointManager - Read 2440 checkpoints up to time 2026-01-20T11:13:46Z, hash is 64631969817a1892a432d246a7c17a63d5c57d76d2ddf0404b48486637fe32a0
+16:44:01 [DefaultDispatcher-worker-11] BirthHeightResolver - resolved birth time 1789836200 to SDK birth height 1401408 (checkpoint height 1405440, margin 4032 blocks)
+16:44:01 [main] WalletActivityTracker - activity lifecycle: current: SetPinActivity, activities: 2 visible: 1 foreground: 1
+16:44:01 [main] WalletActivityTracker - activity lifecycle: activity SetPinActivity destroyed
+16:44:01 [main] WalletActivityTracker - activity lifecycle: current: SetPinActivity, activities: 1 visible: 1 foreground: 1
+16:44:02 [DefaultDispatcher-worker-11] DashSdkServiceImpl - app wallet bound to new SDK wallet f8a16bd9… (birthHeight=1401408 via checkpoint mapping; 0 = full scan from genesis)
+16:44:02 [DefaultDispatcher-worker-11] DashSdkServiceImpl - widenAddressWindows: BIP44 account 0 gap -> 1000 on f8a16bd9…
+16:44:02 [DefaultDispatcher-worker-11] DashSdkServiceImpl - widenAddressWindows: BIP32 account 0 gap -> 1000 on f8a16bd9…
+16:44:02 [DefaultDispatcher-worker-11] DashSdkServiceImpl - widenAddressWindows: COIN_JOIN account 0 gap -> 1000 on f8a16bd9…
+16:44:02 [DefaultDispatcher-worker-11] CheckpointManager - Read 2440 checkpoints up to time 2026-01-20T11:13:46Z, hash is 64631969817a1892a432d246a7c17a63d5c57d76d2ddf0404b48486637fe32a0
+16:44:02 [DefaultDispatcher-worker-11] BirthHeightResolver - resolved birth time 1789836200 to SDK birth height 1401408 (checkpoint height 1405440, margin 4032 blocks)
+16:44:02 [DefaultDispatcher-worker-11] DashSdkServiceImpl - armSpvRescan: filter watermark rewind to 1401408 armed on f8a16bd9…
+16:44:02 [DefaultDispatcher-worker-9] SdkWalletBinder - address-window heal v2 applied on f8a16bd9…: gaps widened, backfill coverage invalidated — next gate pass rewinds with the widened script set
+16:44:02 [DefaultDispatcher-worker-9] SdkWalletBinder - SDK wallet bound; identity not yet registered — discovery deferred
+16:44:02 [DefaultDispatcher-worker-8] SdkBindRetryService - SDK bind established — clearing the pending state (no blocker recorded in this process)
+16:44:02 [DefaultDispatcher-worker-5] PlatformSynchronizationService - SDK L1 engine not started from Application init — it starts from the foreground blockchain service (resume())
+16:44:02 [DefaultDispatcher-worker-5] StartupBreadcrumbs - STARTUP breadcrumb: 23 CUTOVER_SERVICES_STARTED +91436ms
+16:44:02 [DefaultDispatcher-worker-1] SdkBlockchainStateService - cutover committed — deriving BlockchainState from the SDK SPV feed
+16:44:02 [DefaultDispatcher-worker-9] CutoverTxSeamService - cutover committed — priming the SDK seam tx feed
+16:44:02 [DefaultDispatcher-worker-6] CutoverUiDataService - cutover committed — serving home-screen data from the SDK
+16:44:02 [DefaultDispatcher-worker-6] CutoverUiDataService - cutover UI active but the engine wallet-event tap is not running (USE_KOTLIN_SDK_L1_SHADOW off, or L1ShadowSyncService not started) — instant receives degrade to the Room-snapshot/block cadence
+16:44:02 [DefaultDispatcher-worker-1] CutoverUiDataService - SDK balance published: 0 duffs (was none) | l1Synced=false rescanArmedHold=true dashPayBackfill(armed=false,replaying=false) deferredContactBuilds=0 (unchangedReads=1) persistedAsLastKnown=false lastKnown=none
+16:44:02 [DefaultDispatcher-worker-9] CutoverTxSeamService - seam tx feed primed (0 recent records, 0 in the priming window); serving seam tx reads from the SDK store
+16:44:02 [DefaultDispatcher-worker-2] TxDisplayCacheService - Sync complete (cutoverCommitted=true): SDK=0 records | dashj wallet=0 txs | group cache=0 txs/0 groups | display=0 rows — cache is complete (SDK holds 0 records, display has 0 rows)
+16:44:02 [DefaultDispatcher-worker-3] ShieldedBalanceServiceImpl - shielded runtime ready on SDK wallet f8a16bd9… (account 0, sync loop running)
+16:45:34 [main] WalletActivityTracker - activity lifecycle: current: VerifySeedActivity, activities: 1 visible: 1 foreground: 0
+16:45:34 [main] WalletActivityTracker - activity lifecycle: activity MainActivity created
+16:45:34 [main] WalletActivityTracker - activity lifecycle: current: MainActivity, activities: 2 visible: 1 foreground: 0
+16:45:34 [main] SecurityGuard - loading security guard [healthy=true] with keys: [keystore_healthy, fallback_pin_wallet_password_key, primary_ui_pin_key, modern_encryption_migration_complete, fallback_mnemonic_wallet_password_key, primary_wallet_password_key, fallback_mnemonic_ui_pin_key]
+16:45:34 [main] SecurityGuard - loading security guard [healthy=true] with keys: [keystore_healthy, fallback_pin_wallet_password_key, primary_ui_pin_key, modern_encryption_migration_complete, fallback_mnemonic_wallet_password_key, primary_wallet_password_key, fallback_mnemonic_ui_pin_key]
+16:45:34 [main] ModernEncryptionProvider - Decrypted data for alias: wallet_password_key
+16:45:34 [main] ModernEncryptionProvider - Decrypted data for alias: ui_pin_key
+16:45:34 [main] DashPaymentIntentParser - network parameters = org.darkcoin.test
+16:45:34 [main] DashPaymentIntentParser - network parameters = org.darkcoin.test
+16:45:34 [main] MainViewModel - STARTUP MainViewModel init at 1789836334804
+16:45:34 [main] StartupBreadcrumbs - STARTUP breadcrumb: 12 MAIN_UI_SHOWN +183900ms
+16:45:34 [main] Configuration - just being used - last used 29830605 minutes ago
+16:45:34 [DefaultDispatcher-worker-6] DapiClient - getDocuments(contractId=GWRSAVFMjXx8HpQFaNJMqBV7MBgMK4br5UESsB4S31Ec, type=domain, {limit=5, where=[]})
+16:45:34 [DefaultDispatcher-worker-4] MainViewModel - blockchain state update: mnlist=0; chain=0; wallet=0
+16:45:34 [main] WalletActivityTracker - activity lifecycle: current: MainActivity, activities: 2 visible: 2 foreground: 0
+16:45:34 [DefaultDispatcher-worker-10] DapiClient - getDocuments(contractId=GWRSAVFMjXx8HpQFaNJMqBV7MBgMK4br5UESsB4S31Ec, type=domain, {limit=5, where=[]})
+16:45:34 [DefaultDispatcher-worker-1] DapiClient - getDocuments(contractId=GWRSAVFMjXx8HpQFaNJMqBV7MBgMK4br5UESsB4S31Ec, type=domain, {limit=5, where=[]})
+16:45:34 [DefaultDispatcher-worker-7] CrowdNodeApiAggregator - restoring CrowdNode status
+16:45:34 [DefaultDispatcher-worker-7] BLSJniLibrary - Initializing BLS JNI Library
+16:45:34 [main] WalletTransactionsFragment - STARTUP WalletTransactionsFragment.onViewCreated at 1789836334827
+16:45:34 [main] HistoryHeaderAdapter - set invite, synced = false
+16:45:34 [DefaultDispatcher-worker-5] BLSJniLibrary - Initializing BLS JNI Library
+16:45:34 [main] HistoryHeaderAdapter - set invite = null
+16:45:34 [main] HistoryHeaderAdapter - set invite, synced = false
+16:45:34 [main] SecurityGuard - loading security guard [healthy=true] with keys: [keystore_healthy, fallback_pin_wallet_password_key, primary_ui_pin_key, modern_encryption_migration_complete, fallback_mnemonic_wallet_password_key, primary_wallet_password_key, fallback_mnemonic_ui_pin_key]
+16:45:34 [main] SecurityGuard - loading security guard [healthy=true] with keys: [keystore_healthy, fallback_pin_wallet_password_key, primary_ui_pin_key, modern_encryption_migration_complete, fallback_mnemonic_wallet_password_key, primary_wallet_password_key, fallback_mnemonic_ui_pin_key]
+16:45:34 [main] LockScreenActivity - show lock screen false = ![keepUnlocked=false] && autologout=true && (keepUnlockedUntilPenEntered=false || shouldLogout=false) || isHealthy=true
+16:45:34 [main] MainActivity - updateTrigger => rateStale: RateRetrievalState(lastAttemptFailed=false, staleRates=false, volatile=false)
+16:45:34 [main] WalletActivityTracker - activity lifecycle: current: MainActivity, activities: 2 visible: 2 foreground: 1
+16:45:34 [main] BlockchainIdentityData - creation: BlockchainIdentityData(NONE, null, null, null, null, null)
+16:45:34 [main] BlockchainIdentityData - creation: BlockchainIdentityData(NONE, null, null, null, null, null)
+16:45:34 [main] BlockchainServiceImpl - .onCreate()
+16:45:34 [main] DashPaymentIntentParser - network parameters = org.darkcoin.test
+16:45:34 [main] BlockchainServiceImpl - start foreground service
+16:45:34 [DefaultDispatcher-worker-5] BlockchainServiceImpl - onCreate() serviceScope waiting for cleanup null
+16:45:34 [main] BlockchainServiceImpl - .onStartCommand(Intent { cmp=hashengineering.darkcoin.wallet_test/de.schildbach.wallet.service.BlockchainServiceImpl })
+16:45:34 [DefaultDispatcher-worker-5] BLSJniLibrary - Initializing BLS JNI Library
+16:45:34 [DefaultDispatcher-worker-5] BlockchainServiceImpl - Phase 5d cutover gate: dashjEngineMayStart=false (coordinatorAllowsDashj=false, dashjHeldByCutover=true, dashjSyncDiagnostic=false)
+16:45:34 [DefaultDispatcher-worker-2] BlockchainServiceImpl - onStartCommand waiting for onCreate to complete...
+16:45:34 [DefaultDispatcher-worker-5] BlockchainServiceImpl - cannot load the bootstrap stream: mnlistdiff-testnet.dat
+16:45:34 [DefaultDispatcher-worker-5] BlockchainServiceImpl - cannot load the bootstrap stream: qrinfo-testnet.dat
+16:45:34 [DefaultDispatcher-worker-5] BLSJniLibrary - Initializing BLS JNI Library
+16:45:34 [DefaultDispatcher-worker-5] BlockchainServiceImpl - blockchain does not exist, resetting wallet
+16:45:34 [Wallet autosave thread] BLSJniLibrary - Initializing BLS JNI Library
+16:45:34 [DefaultDispatcher-worker-5] AbstractQuorumState - resetting masternode list; force: true, requestFreshList: false
+16:45:34 [DefaultDispatcher-worker-2] BLSJniLibrary - Initializing BLS JNI Library
+16:45:34 [DefaultDispatcher-worker-5] AbstractQuorumState - resetting masternode list; force: true, requestFreshList: false
+16:45:34 [main] WalletTransactionsFragment - STARTUP submitData called on thread=main at 1789836334939
+16:45:34 [DefaultDispatcher-worker-5] SPVBlockStore - Creating new SPV block chain file /data/user/0/hashengineering.darkcoin.wallet_test/app_blockstore/blockchain-testnet
+16:45:34 [main] WalletActivityTracker - activity lifecycle: current: MainActivity, activities: 2 visible: 2 foreground: 0
+16:45:34 [DefaultDispatcher-worker-5] SPVBlockStore - Creating new SPV block chain file /data/user/0/hashengineering.darkcoin.wallet_test/app_blockstore/headers-testnet
+16:45:34 [main] BlockchainServiceImpl - .onStartCommand(Intent { act=de.schildbach.wallet.service.cancel_coins_received cmp=hashengineering.darkcoin.wallet_test/de.schildbach.wallet.service.BlockchainServiceImpl })
+16:45:34 [DefaultDispatcher-worker-5] BlockchainServiceImpl - verifying backupBlockStore
+16:45:34 [DefaultDispatcher-worker-5] BlockchainServiceImpl - verifying headerStore
+16:45:34 [DefaultDispatcher-worker-9] BlockchainServiceImpl - onStartCommand waiting for onCreate to complete...
+16:45:34 [main] MainViewModel - platform available: false; no identity creation is progress: true
+16:45:34 [main] DeviceInfoProvider - Detecting currency based on device, mobile network or locale:
+16:45:34 [main] DeviceInfoProvider - Device Sim Country: us
+16:45:34 [main] MainViewModel - Updating currency exchange rate based on country: US
+16:45:35 [main] MainViewModel - Using default Country: US
+16:45:35 [main] MainViewModel - Using default currency: USD
+16:45:35 [DefaultDispatcher-worker-3] Constants - --> GET https://rates.ctx.com/rates?source=ctx
+16:45:35 [pool-48-thread-1] BlockchainServiceImpl - verify blockstore: 172.8 μs, 0 loaded
+16:45:35 [DefaultDispatcher-worker-5] BlockchainServiceImpl - verifying blockStore
+16:45:35 [DefaultDispatcher-worker-10] DapiClient - searching for quorum: 6, 0000004ad90f6f1bbf369d9c803c4d8bd7953f3dfe232ebdd270d1f90324160b, 1556854
+16:45:35 [DefaultDispatcher-worker-6] DapiClient - searching for quorum: 6, 0000004ad90f6f1bbf369d9c803c4d8bd7953f3dfe232ebdd270d1f90324160b, 1556854
+16:45:35 [DefaultDispatcher-worker-1] DapiClient - searching for quorum: 6, 0000004ad90f6f1bbf369d9c803c4d8bd7953f3dfe232ebdd270d1f90324160b, 1556854
+16:45:35 [pool-48-thread-1] BlockchainServiceImpl - verify blockstore: 155.9 μs, 0 loaded
+16:45:35 [DefaultDispatcher-worker-5] BlockchainServiceImpl - blockstore files verified: true, true
+16:45:35 [DefaultDispatcher-worker-5] CheckpointManager - Attempting to initialize a new block store with a checkpoint for time 1789231400 (2026-09-12T16:43:20Z)
+16:45:35 [DefaultDispatcher-worker-5] CheckpointManager - Read 2440 checkpoints up to time 2026-01-20T11:13:46Z, hash is 64631969817a1892a432d246a7c17a63d5c57d76d2ddf0404b48486637fe32a0
+16:45:35 [DefaultDispatcher-worker-5] CheckpointManager - Attempting to initialize a new block store with a checkpoint for time 1789231535 (2026-09-12T16:45:35Z)
+16:45:35 [main] WalletActivityTracker - activity lifecycle: current: VerifySeedActivity, activities: 2 visible: 1 foreground: 0
+16:45:35 [main] WalletActivityTracker - activity lifecycle: activity VerifySeedActivity destroyed
+16:45:35 [main] WalletActivityTracker - activity lifecycle: current: VerifySeedActivity, activities: 1 visible: 1 foreground: 0
+16:45:35 [DefaultDispatcher-worker-5] CheckpointManager - Read 2440 checkpoints up to time 2026-01-20T11:13:46Z, hash is 64631969817a1892a432d246a7c17a63d5c57d76d2ddf0404b48486637fe32a0
+16:45:35 [DefaultDispatcher-worker-5] BlockchainServiceImpl - checkpoints loaded from 'checkpoints-testnet.txt', took 73.40 ms
+16:45:35 [DefaultDispatcher-worker-5] BLSJniLibrary - Initializing BLS JNI Library
+16:45:35 [DefaultDispatcher-worker-5] AbstractBlockChain - chain head is at height 1405440:
+ block: 
+   hash: 000000173e6c9dd4ca8a5a75699fbb5dc4713bc238d2ce98aec7fe3a77febfeb
+   version: 536870912 (0x20000000) (BIP34, BIP66, BIP65)
+   previous block: 000000773d05044b4db27c023a9a12bc59eaf1f396ad7e5180ef4cb14d366150
+   merkle root: ea3165fb830ba2267ad050760183eb5b8241c694406868382bdf6c2307c8e936
+   time: 1768907626 (2026-01-20T11:13:46Z)
+   difficulty target (nBits): 503367276
+   nonce: 128740
+
+16:45:35 [DefaultDispatcher-worker-5] AbstractBlockChain - chain head is at height 1405440:
+ block: 
+   hash: 000000173e6c9dd4ca8a5a75699fbb5dc4713bc238d2ce98aec7fe3a77febfeb
+   version: 536870912 (0x20000000) (BIP34, BIP66, BIP65)
+   previous block: 000000773d05044b4db27c023a9a12bc59eaf1f396ad7e5180ef4cb14d366150
+   merkle root: ea3165fb830ba2267ad050760183eb5b8241c694406868382bdf6c2307c8e936
+   time: 1768907626 (2026-01-20T11:13:46Z)
+   difficulty target (nBits): 503367276
+   nonce: 128740
+
+16:45:35 [main] SecurityGuard - loading security guard [healthy=true] with keys: [keystore_healthy, fallback_pin_wallet_password_key, primary_ui_pin_key, modern_encryption_migration_complete, fallback_mnemonic_wallet_password_key, primary_wallet_password_key, fallback_mnemonic_ui_pin_key]
+16:45:35 [main] BlockchainServiceImpl - network callback registered with NetworkRequest: de.schildbach.wallet.service.BlockchainServiceImpl$NetworkCallbackImpl@8febaaf
+16:45:35 [DefaultDispatcher-worker-8] BlockchainServiceImpl - monitoring 0 old transactions
+16:45:35 [DefaultDispatcher-worker-5] BlockchainServiceImpl - network available: 101, hasInternet: true, validated: true, type: WiFi
+16:45:35 [DefaultDispatcher-worker-9] BlockchainServiceImpl - network capabilities changed: 101, hasInternet: true, validated: true
+16:45:35 [main] BlockchainServiceImpl - receiver register: tickReceiver, de.schildbach.wallet.service.BlockchainServiceImpl$tickReceiver$1@ba9a99a
+16:45:35 [DefaultDispatcher-worker-8] BlockchainServiceImpl - cutover committed — Platform quorum lookups wired to the SDK-sourced quorum list
+16:45:35 [DefaultDispatcher-worker-8] StartupBreadcrumbs - STARTUP breadcrumb: 20 SDK_BIND_KICKED +184336ms
+16:45:35 [DefaultDispatcher-worker-2] BlockchainServiceImpl - onCreate completed, processing onStartCommand
+16:45:35 [DefaultDispatcher-worker-2] BLSJniLibrary - Initializing BLS JNI Library
+16:45:35 [DefaultDispatcher-worker-2] BlockchainServiceImpl - service start command: Intent { cmp=hashengineering.darkcoin.wallet_test/de.schildbach.wallet.service.BlockchainServiceImpl }
+16:45:35 [DefaultDispatcher-worker-2] BlockchainServiceImpl - .onStartCommand(Intent { cmp=hashengineering.darkcoin.wallet_test/de.schildbach.wallet.service.BlockchainServiceImpl }) finished
+16:45:35 [DefaultDispatcher-worker-2] BlockchainServiceImpl - onCreate completed, processing onStartCommand
+16:45:35 [DefaultDispatcher-worker-2] BLSJniLibrary - Initializing BLS JNI Library
+16:45:35 [DefaultDispatcher-worker-2] BlockchainServiceImpl - service start command: Intent { act=de.schildbach.wallet.service.cancel_coins_received cmp=hashengineering.darkcoin.wallet_test/de.schildbach.wallet.service.BlockchainServiceImpl }
+16:45:35 [DefaultDispatcher-worker-2] BlockchainServiceImpl - .onStartCommand(Intent { act=de.schildbach.wallet.service.cancel_coins_received cmp=hashengineering.darkcoin.wallet_test/de.schildbach.wallet.service.BlockchainServiceImpl }) finished
+16:45:35 [DefaultDispatcher-worker-13] BlockchainServiceImpl - acquiring check() mutex
+16:45:35 [DefaultDispatcher-worker-13] BlockchainServiceImpl - check()
+16:45:35 [DefaultDispatcher-worker-13] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+16:45:35 [DefaultDispatcher-worker-13] BlockchainServiceImpl - releasing check() mutex
+16:45:35 [DefaultDispatcher-worker-13] BlockchainServiceImpl - acquiring check() mutex
+16:45:35 [DefaultDispatcher-worker-13] BlockchainServiceImpl - check()
+16:45:35 [DefaultDispatcher-worker-13] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+16:45:35 [DefaultDispatcher-worker-13] BlockchainServiceImpl - releasing check() mutex
+16:45:35 [DefaultDispatcher-worker-8] BlockchainServiceImpl - .onCreate() finished
+16:45:35 [DefaultDispatcher-worker-8] BlockchainServiceImpl - acquiring check() mutex
+16:45:35 [DefaultDispatcher-worker-8] BlockchainServiceImpl - check()
+16:45:35 [DefaultDispatcher-worker-8] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+16:45:35 [DefaultDispatcher-worker-8] BlockchainServiceImpl - releasing check() mutex
+16:45:35 [DefaultDispatcher-worker-15] SdkWalletBinder - SDK wallet bound; identity not yet registered — discovery deferred
+16:45:35 [DefaultDispatcher-worker-15] StartupBreadcrumbs - STARTUP breadcrumb: 21 SDK_L1_ENGINE_STARTING +184341ms
+16:45:35 [DefaultDispatcher-worker-3] Constants - <-- 200 https://rates.ctx.com/rates?source=ctx (266ms, unknown-length body)
+16:45:35 [DefaultDispatcher-worker-3] ExchangeRatesRepository - exchange rates updated successfully with de.schildbach.wallet.rates.DashRetailClient@d9ad9f
+16:45:35 [DefaultDispatcher-worker-10] DapiClient - searching for quorum: 6, 0000004ad90f6f1bbf369d9c803c4d8bd7953f3dfe232ebdd270d1f90324160b, 1556854
+16:45:35 [DefaultDispatcher-worker-3] ExchangeRatesRepository - updateTrigger
+16:45:35 [DefaultDispatcher-worker-1] DapiClient - searching for quorum: 6, 0000004ad90f6f1bbf369d9c803c4d8bd7953f3dfe232ebdd270d1f90324160b, 1556854
+16:45:35 [DefaultDispatcher-worker-6] DapiClient - searching for quorum: 6, 0000004ad90f6f1bbf369d9c803c4d8bd7953f3dfe232ebdd270d1f90324160b, 1556854
+16:45:35 [DefaultDispatcher-worker-10] SdkQuorumDataSource - SDK quorum keys refreshed: 24 fetched, 24 cached
+16:45:35 [DefaultDispatcher-worker-1] DapiClient - searching for quorum: result: 95f2339b8d65205a58ded0b968173b5779d787a637dfd154ec1d2d3dd7ad1350f75b66aacf436aa6ff7e92c0bb38591b
+16:45:35 [DefaultDispatcher-worker-6] DapiClient - searching for quorum: result: 95f2339b8d65205a58ded0b968173b5779d787a637dfd154ec1d2d3dd7ad1350f75b66aacf436aa6ff7e92c0bb38591b
+16:45:35 [DefaultDispatcher-worker-10] DapiClient - searching for quorum: result: 95f2339b8d65205a58ded0b968173b5779d787a637dfd154ec1d2d3dd7ad1350f75b66aacf436aa6ff7e92c0bb38591b
+16:45:35 [DefaultDispatcher-worker-15] L1ShadowSyncService - DashPay bring-up before SPV: status=NO_IDENTITY discovery=1 dashPaySyncRan=false drained=0 pending=0 elapsedMs=302
+16:45:35 [DefaultDispatcher-worker-4] L1ShadowSyncService - L1Shadow phase=CONNECTING 66.7% headers 1400000/1400000 filters 1401407/1400000 wallet 0
+16:45:35 [DefaultDispatcher-worker-7] L1ShadowSyncService - L1Parity probing suspended: the cutover is committed and the dashj engine is held, so its balance is frozen at the cutover snapshot — any comparison against it is a guaranteed MISMATCH that measures nothing. Turn on the Tools 'dashj sync (diagnostic)' toggle to un-hold dashj and resume probing.
+16:45:35 [DefaultDispatcher-worker-9] L1ShadowSyncService - L1Parity cadence relaxing 10000ms -> 60000ms (cutover already committed)
+16:45:35 [DefaultDispatcher-worker-14] L1ShadowSyncService - L1 shadow SPV started for SDK wallet f8a16bd9… (dataDir=/data/user/0/hashengineering.darkcoin.wallet_test/files/l1_shadow_spv/testnet, default peer discovery); debug-only instrumentation — two SPV engines are now running
+16:45:35 [DefaultDispatcher-worker-14] StartupBreadcrumbs - STARTUP breadcrumb: 22 SDK_L1_ENGINE_STARTED +184659ms
+16:45:35 [DefaultDispatcher-worker-14] StartupBreadcrumbs - STARTUP breadcrumb: 23 CUTOVER_SERVICES_STARTED +184659ms
+16:45:35 [main] HistoryHeaderAdapter - set invite, synced = true
+16:45:35 [DefaultDispatcher-worker-17] L1ShadowSyncService - WalletBalanceFacts: total=0 accounts={bip44:0, bip32:0, coinjoin:0, identityRegistration:0, identityTopUpUnbound:0, identityInvitation:0, assetLockTopUp:0, assetLockShieldedTopUp:0, providerVoting:0, providerOwner:0, providerOperator:0, providerPlatform:0} confirmed=0 unconfirmed=0 txCount=0
+16:45:35 [DefaultDispatcher-worker-8] L1ShadowSyncService - WalletHistoryFacts: displayDbEmpty count=0 dashjEarliestKeyTime=2026-09-19T16:43:20Z (real line follows at first sync settle)
+16:45:35 [DefaultDispatcher-worker-16] MainViewModel - blockchain state update: mnlist=0; chain=1400000; wallet=-1
+16:45:35 [DefaultDispatcher-worker-9] MainViewModel - blockchain state update: mnlist=0; chain=1400000; wallet=-1
+16:45:35 [DefaultDispatcher-worker-1] Platform - platform check: 820.0 ms
+16:45:35 [DefaultDispatcher-worker-10] Platform - platform check: 820.1 ms
+16:45:35 [DefaultDispatcher-worker-6] Platform - platform check: 820.1 ms
+16:45:35 [DefaultDispatcher-worker-10] PlatformServiceImplementation - platform available 3 of 3: true
+16:45:35 [main] MainViewModel - platform available: true; no identity creation is progress: true
+16:45:36 [DefaultDispatcher-worker-11] L1ShadowSyncService - ReplayMemTelemetry phase=HEADERS nativeHeapAllocated=106054480 nativeHeapSize=122843136 jvmUsed=22163520 jvmMax=603979776 headers 1400000/1556855 filters 1401407 wallet 0
+16:45:36 [main] HistoryHeaderAdapter - set invite, synced = false
+16:45:37 [DefaultDispatcher-worker-3] BlockchainServiceImpl - network available: 100, hasInternet: true, validated: true, type: Cellular
+16:45:37 [DefaultDispatcher-worker-3] BlockchainServiceImpl - acquiring check() mutex
+16:45:37 [DefaultDispatcher-worker-3] BlockchainServiceImpl - check()
+16:45:37 [DefaultDispatcher-worker-3] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+16:45:37 [DefaultDispatcher-worker-3] BlockchainServiceImpl - releasing check() mutex
+16:45:37 [DefaultDispatcher-worker-3] BlockchainServiceImpl - network capabilities changed: 100, hasInternet: true, validated: true
+16:45:37 [DefaultDispatcher-worker-3] BlockchainServiceImpl - acquiring check() mutex
+16:45:37 [DefaultDispatcher-worker-3] BlockchainServiceImpl - check()
+16:45:37 [DefaultDispatcher-worker-3] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+16:45:37 [DefaultDispatcher-worker-3] BlockchainServiceImpl - releasing check() mutex
+16:45:39 [Wallet autosave thread] WalletFiles - Background saving wallet; last seen block is height -1, date unknown, hash null
+16:45:39 [Wallet autosave thread] CoinJoinExtension - CoinJoinExtension serialization: 0ms total (keys:0ms[8], cache:0ms[0], salt:0ms, io:0ms, size:1431bytes, buffer:64KB)
+16:45:39 [Wallet autosave thread] WalletProtobufSerializer - walletToProto (serial=8) timing: 6ms total, init=0ms, tx=0ms[0], keys=0ms, scripts=0ms[0], metadata=0ms, ext=6ms, friendRecv=0ms, friendSend=0ms, build=0ms
+16:45:39 [Wallet autosave thread] WalletProtobufSerializer - writeWallet timing: 6ms total (6ms/100% serialization, 0ms/0% I/O) buffer=8KB
+16:45:39 [Wallet autosave thread] WalletFiles - Save completed in 9.331 ms (15322 bytes); /data/user/0/hashengineering.darkcoin.wallet_test/files/wallet-protobuf-testnet
+16:45:54 [main] WalletActivityTracker - activity lifecycle: current: MainActivity, activities: 1 visible: 1 foreground: 1
+16:45:54 [DefaultDispatcher-worker-6] TimeUtils - timeskew: 1228; using last value
+16:45:54 [main] BlockchainServiceImpl - .onStartCommand(Intent { act=de.schildbach.wallet.service.cancel_coins_received cmp=hashengineering.darkcoin.wallet_test/de.schildbach.wallet.service.BlockchainServiceImpl })
+16:45:54 [DefaultDispatcher-worker-6] BlockchainServiceImpl - onStartCommand waiting for onCreate to complete...
+16:45:54 [DefaultDispatcher-worker-6] BlockchainServiceImpl - onCreate completed, processing onStartCommand
+16:45:54 [DefaultDispatcher-worker-6] BLSJniLibrary - Initializing BLS JNI Library
+16:45:54 [DefaultDispatcher-worker-6] BlockchainServiceImpl - service start command: Intent { act=de.schildbach.wallet.service.cancel_coins_received cmp=hashengineering.darkcoin.wallet_test/de.schildbach.wallet.service.BlockchainServiceImpl }
+16:45:54 [DefaultDispatcher-worker-6] BlockchainServiceImpl - .onStartCommand(Intent { act=de.schildbach.wallet.service.cancel_coins_received cmp=hashengineering.darkcoin.wallet_test/de.schildbach.wallet.service.BlockchainServiceImpl }) finished
+16:45:54 [main] DeviceInfoProvider - Detecting currency based on device, mobile network or locale:
+16:45:54 [main] DeviceInfoProvider - Device Sim Country: us
+16:45:54 [main] MainViewModel - Updating currency exchange rate based on country: US
+16:45:59 [DefaultDispatcher-worker-16] BlockchainServiceImpl - network capabilities changed: 101, hasInternet: true, validated: true
+16:45:59 [DefaultDispatcher-worker-16] BlockchainServiceImpl - acquiring check() mutex
+16:45:59 [DefaultDispatcher-worker-16] BlockchainServiceImpl - check()
+16:45:59 [DefaultDispatcher-worker-16] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+16:45:59 [DefaultDispatcher-worker-16] BlockchainServiceImpl - releasing check() mutex
+16:46:00 [main] BlockchainServiceImpl - MEM pss=271MB nativeHeap=142/157MB jvm=25/576MB
+16:46:01 [native-log-bridge] DashSdkNative - --------- beginning of main
+16:46:01 [native-log-bridge] DashSdkNative - 09-19 11:45:48.359  4081  4684 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(1401999) synced_height_frozen=None synced_height_rejected=None faulted=0
+16:46:01 [native-log-bridge] DashSdkNative - 09-19 11:45:50.888  4081  4685 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(1403999) synced_height_frozen=None synced_height_rejected=None faulted=0
+16:46:01 [native-log-bridge] DashSdkNative - 09-19 11:45:50.890  4081  4685 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(1405999) synced_height_frozen=None synced_height_rejected=None faulted=0
+16:46:01 [native-log-bridge] DashSdkNative - 09-19 11:45:53.527  4081  4685 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(1408000) synced_height_frozen=None synced_height_rejected=None faulted=0
+16:46:01 [native-log-bridge] DashSdkNative - 09-19 11:45:54.458  4081  4686 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(1413000) synced_height_frozen=None synced_height_rejected=None faulted=0
+16:46:01 [native-log-bridge] DashSdkNative - 09-19 11:45:55.918  4081  4686 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(1418000) synced_height_frozen=None synced_height_rejected=None faulted=0
+16:46:01 [native-log-bridge] DashSdkNative - 09-19 11:45:56.674  4081  4684 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(1423000) synced_height_frozen=None synced_height_rejected=None faulted=0
+16:46:01 [native-log-bridge] DashSdkNative - 09-19 11:45:57.664  4081  4685 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(1428000) synced_height_frozen=None synced_height_rejected=None faulted=0
+16:46:01 [native-log-bridge] DashSdkNative - 09-19 11:45:58.750  4081  4685 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(1433000) synced_height_frozen=None synced_height_rejected=None faulted=0
+16:46:01 [native-log-bridge] DashSdkNative - 09-19 11:45:59.002  4081  4686 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(1438000) synced_height_frozen=None synced_height_rejected=None faulted=0
+16:46:02 [DefaultDispatcher-worker-11] BlockchainServiceImpl - network capabilities changed: 101, hasInternet: true, validated: true
+16:46:02 [DefaultDispatcher-worker-11] BlockchainServiceImpl - acquiring check() mutex
+16:46:02 [DefaultDispatcher-worker-11] BlockchainServiceImpl - check()
+16:46:02 [DefaultDispatcher-worker-11] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+16:46:02 [DefaultDispatcher-worker-11] BlockchainServiceImpl - releasing check() mutex
+16:46:04 [main] StartupBreadcrumbs - STARTUP breadcrumb: 13 LAUNCH_SURVIVED +213955ms
+16:46:05 [DefaultDispatcher-worker-15] L1ShadowSyncService - L1Shadow phase=FILTER_HEADERS 96.3% headers 1556855/1556855 filters 1448000/1556855 wallet 1448000
+16:46:06 [DefaultDispatcher-worker-14] L1ShadowSyncService - ReplayMemTelemetry phase=FILTER_HEADERS nativeHeapAllocated=165921296 nativeHeapSize=183480320 jvmUsed=26993696 jvmMax=603979776 headers 1556855/1556855 filters 1448000 wallet 1448000
+16:46:15 [DefaultDispatcher-worker-10] BlockchainServiceImpl - network capabilities changed: 101, hasInternet: true, validated: true
+16:46:15 [DefaultDispatcher-worker-10] BlockchainServiceImpl - acquiring check() mutex
+16:46:15 [DefaultDispatcher-worker-10] BlockchainServiceImpl - check()
+16:46:15 [DefaultDispatcher-worker-10] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+16:46:15 [DefaultDispatcher-worker-10] BlockchainServiceImpl - releasing check() mutex
+16:46:16 [main] WalletActivityTracker - activity lifecycle: current: MainActivity, activities: 1 visible: 1 foreground: 0
+16:46:17 [DefaultDispatcher-worker-6] L1ShadowSyncService - L1 engine chainlock height 0 -> 1556856
+16:46:18 [DefaultDispatcher-worker-15] BlockchainServiceImpl - network capabilities changed: 101, hasInternet: true, validated: true
+16:46:18 [DefaultDispatcher-worker-15] BlockchainServiceImpl - acquiring check() mutex
+16:46:18 [DefaultDispatcher-worker-15] BlockchainServiceImpl - check()
+16:46:18 [DefaultDispatcher-worker-15] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+16:46:18 [DefaultDispatcher-worker-15] BlockchainServiceImpl - releasing check() mutex
+16:46:18 [DefaultDispatcher-worker-13] L1ShadowSyncService - L1Shadow phase=SYNCED 100.0% headers 1556855/1556855 filters 1556855/1556855 wallet 1556855
+16:46:18 [DefaultDispatcher-worker-13] L1ShadowSyncService - ReplayMemTelemetry phase=SYNCED nativeHeapAllocated=171108576 nativeHeapSize=192970752 jvmUsed=20589248 jvmMax=603979776 headers 1556855/1556855 filters 1556855 wallet 1556855 SETTLED
+16:46:18 [DefaultDispatcher-worker-10] L1ShadowSyncService - WalletHistoryFacts: displayDbEmpty count=0 dashjEarliestKeyTime=2026-09-19T16:43:20Z (real line follows at first sync settle)
+16:46:18 [DefaultDispatcher-worker-10] L1ShadowSyncService - WalletBalanceFacts: total=0 accounts={bip44:0, bip32:0, coinjoin:0, identityRegistration:0, identityTopUpUnbound:0, identityInvitation:0, assetLockTopUp:0, assetLockShieldedTopUp:0, providerVoting:0, providerOwner:0, providerOperator:0, providerPlatform:0} confirmed=0 unconfirmed=0 txCount=0
+16:46:18 [DefaultDispatcher-worker-11] MainViewModel - blockchain state update: mnlist=1556855; chain=1556855; wallet=-1
+16:46:18 [DefaultDispatcher-worker-15] TxDisplayCacheService - Sync complete (cutoverCommitted=true): SDK=0 records | dashj wallet=0 txs | group cache=0 txs/0 groups | display=0 rows — cache is complete (SDK holds 0 records, display has 0 rows)
+16:46:18 [main] HistoryHeaderAdapter - set invite, synced = true
+16:46:18 [main] BlockchainServiceImpl - cutover committed and SDK L1 scan synced — triggering identity/contacts discovery
+16:46:18 [DefaultDispatcher-worker-15] BlockchainIdentityData - creation: BlockchainIdentityData(NONE, null, null, null, null, null)
+16:46:18 [DefaultDispatcher-worker-15] PlatformSynchronizationService - discoverAndRecoverIdentity: checking for existing associated identity
+16:46:18 [DefaultDispatcher-worker-15] SecurityGuard - loading security guard [healthy=true] with keys: [keystore_healthy, fallback_pin_wallet_password_key, primary_ui_pin_key, modern_encryption_migration_complete, fallback_mnemonic_wallet_password_key, primary_wallet_password_key, fallback_mnemonic_ui_pin_key]
+16:46:18 [DefaultDispatcher-worker-15] ModernEncryptionProvider - Decrypted data for alias: wallet_password_key
+16:46:19 [DefaultDispatcher-worker-15] KeyCrypterScrypt - Deriving key took 143.2 ms for N=65536, r=8, p=1.
+16:46:19 [DefaultDispatcher-worker-15] DapiClient - getIdentityByFirstPublicKey(5c99ca4c7781bba1b969306b1a1df424bb03f708)
+16:46:19 [DefaultDispatcher-worker-15] PlatformSynchronizationService - discoverAndRecoverIdentity: no existing identity found
+16:46:19 [DefaultDispatcher-worker-15] PlatformSynchronizationService - identity-discovery guard released (no identity found) — a later discovery may run again
+16:46:19 [DefaultDispatcher-worker-2] PlatformSynchronizationService - TxMetadata publish: not publishing — saveToNetwork is OFF (per-device setting; the default for a new or restored install, and it does NOT travel with the wallet)
+16:46:19 [DefaultDispatcher-worker-15] BlockchainServiceImpl - post-cutover identity discovery found nothing and the wallet has no identity — re-arming; next attempt no sooner than 120000 ms from now
+16:46:19 [DefaultDispatcher-worker-1] PlatformSynchronizationService - TxMetadata settings: saveToNetwork=false frequency=afterTenTransactions saveAfter=9223372036854775807 paymentCategory=false taxCategory=false exchangeRates=false memos=false giftCards=false storedDocuments=0
+16:46:19 [DefaultDispatcher-worker-18] MainViewModel - blockchain state update: mnlist=1556856; chain=1556856; wallet=-1
+16:46:20 [DefaultDispatcher-worker-7] L1ShadowSyncService - L1Shadow phase=SYNCED 100.0% headers 1556856/1556856 filters 1556856/1556856 wallet 1556856
+16:46:20 [DefaultDispatcher-worker-16] MainViewModel - blockchain state update: mnlist=1556856; chain=1556856; wallet=-1
+16:46:27 [DefaultDispatcher-worker-10] BlockchainServiceImpl - network capabilities changed: 101, hasInternet: true, validated: true
+16:46:27 [DefaultDispatcher-worker-10] BlockchainServiceImpl - acquiring check() mutex
+16:46:27 [DefaultDispatcher-worker-10] BlockchainServiceImpl - check()
+16:46:27 [DefaultDispatcher-worker-10] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+16:46:27 [DefaultDispatcher-worker-10] BlockchainServiceImpl - releasing check() mutex
+16:46:31 [native-log-bridge] DashSdkNative - 09-19 11:46:04.738  4081  4686 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(1443000) synced_height_frozen=None synced_height_rejected=None faulted=0
+16:46:31 [native-log-bridge] DashSdkNative - 09-19 11:46:05.589  4081  4684 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(1448000) synced_height_frozen=None synced_height_rejected=None faulted=0
+16:46:31 [native-log-bridge] DashSdkNative - 09-19 11:46:08.501  4081  4684 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(1450000) synced_height_frozen=None synced_height_rejected=None faulted=0
+16:46:31 [native-log-bridge] DashSdkNative - 09-19 11:46:10.295  4081  4686 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(1455000) synced_height_frozen=None synced_height_rejected=None faulted=0
+16:46:31 [native-log-bridge] DashSdkNative - 09-19 11:46:12.590  4081  4686 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(1460000) synced_height_frozen=None synced_height_rejected=None faulted=0
+16:46:31 [native-log-bridge] DashSdkNative - 09-19 11:46:12.928  4081  4686 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(1465000) synced_height_frozen=None synced_height_rejected=None faulted=0
+16:46:31 [native-log-bridge] DashSdkNative - 09-19 11:46:13.222  4081  4684 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(1470000) synced_height_frozen=None synced_height_rejected=None faulted=0
+16:46:31 [native-log-bridge] DashSdkNative - 09-19 11:46:13.536  4081  4685 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(1475000) synced_height_frozen=None synced_height_rejected=None faulted=0
+16:46:31 [native-log-bridge] DashSdkNative - 09-19 11:46:13.855  4081  4687 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(1480000) synced_height_frozen=None synced_height_rejected=None faulted=0
+16:46:31 [native-log-bridge] DashSdkNative - 09-19 11:46:14.344  4081  4687 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(1485000) synced_height_frozen=None synced_height_rejected=None faulted=0
+16:46:31 [native-log-bridge] DashSdkNative - 09-19 11:46:14.348  4081  4687 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(1490000) synced_height_frozen=None synced_height_rejected=None faulted=0
+16:46:31 [native-log-bridge] DashSdkNative - 09-19 11:46:14.693  4081  4687 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(1495000) synced_height_frozen=None synced_height_rejected=None faulted=0
+16:46:31 [native-log-bridge] DashSdkNative - 09-19 11:46:14.947  4081  4685 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(1500000) synced_height_frozen=None synced_height_rejected=None faulted=0
+16:46:31 [native-log-bridge] DashSdkNative - 09-19 11:46:15.242  4081  4685 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(1505000) synced_height_frozen=None synced_height_rejected=None faulted=0
+16:46:31 [native-log-bridge] DashSdkNative - 09-19 11:46:15.502  4081  4684 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(1510000) synced_height_frozen=None synced_height_rejected=None faulted=0
+16:46:31 [native-log-bridge] DashSdkNative - 09-19 11:46:15.793  4081  4685 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(1515000) synced_height_frozen=None synced_height_rejected=None faulted=0
+16:46:31 [native-log-bridge] DashSdkNative - 09-19 11:46:16.074  4081  4685 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(1520000) synced_height_frozen=None synced_height_rejected=None faulted=0
+16:46:31 [native-log-bridge] DashSdkNative - 09-19 11:46:16.382  4081  4686 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(1525000) synced_height_frozen=None synced_height_rejected=None faulted=0
+16:46:31 [native-log-bridge] DashSdkNative - 09-19 11:46:16.580  4081  4686 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(1530000) synced_height_frozen=None synced_height_rejected=None faulted=0
+16:46:31 [native-log-bridge] DashSdkNative - 09-19 11:46:16.956  4081  4684 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(1535000) synced_height_frozen=None synced_height_rejected=None faulted=0
+16:46:31 [native-log-bridge] DashSdkNative - 09-19 11:46:17.431  4081  4685 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(1540000) synced_height_frozen=None synced_height_rejected=None faulted=0
+16:46:31 [native-log-bridge] DashSdkNative - 09-19 11:46:17.671  4081  4686 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(1545000) synced_height_frozen=None synced_height_rejected=None faulted=0
+16:46:31 [native-log-bridge] DashSdkNative - 09-19 11:46:17.677  4081  4684 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(1550000) synced_height_frozen=None synced_height_rejected=None faulted=0
+16:46:31 [native-log-bridge] DashSdkNative - 09-19 11:46:17.840  4081  4685 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(1555000) synced_height_frozen=None synced_height_rejected=None faulted=0
+16:46:31 [native-log-bridge] DashSdkNative - 09-19 11:46:17.893  4081  4687 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(1556855) synced_height_frozen=None synced_height_rejected=None faulted=0
+16:46:31 [native-log-bridge] DashSdkNative - 09-19 11:46:17.894  4081  4686 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=None synced_height_frozen=None synced_height_rejected=None faulted=0
+16:46:31 [native-log-bridge] DashSdkNative - 09-19 11:46:19.872  4081  4686 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(1556856) synced_height_frozen=None synced_height_rejected=None faulted=0
+16:46:33 [DefaultDispatcher-worker-3] BlockchainServiceImpl - network capabilities changed: 101, hasInternet: true, validated: true
+16:46:33 [DefaultDispatcher-worker-3] BlockchainServiceImpl - acquiring check() mutex
+16:46:33 [DefaultDispatcher-worker-3] BlockchainServiceImpl - check()
+16:46:33 [DefaultDispatcher-worker-3] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+16:46:33 [DefaultDispatcher-worker-3] BlockchainServiceImpl - releasing check() mutex
+16:46:33 [DefaultDispatcher-worker-3] BlockchainServiceImpl - network lost: 100, remaining networks: 1
+16:46:34 [main] WalletActivityTracker - activity lifecycle: current: MainActivity, activities: 1 visible: 1 foreground: 1
+16:46:34 [DefaultDispatcher-worker-10] TimeUtils - timeskew: 1228; using last value
+16:46:34 [main] DeviceInfoProvider - Detecting currency based on device, mobile network or locale:
+16:46:34 [main] DeviceInfoProvider - Device Sim Country: us
+16:46:34 [main] MainViewModel - Updating currency exchange rate based on country: US
+16:46:34 [main] BlockchainServiceImpl - .onStartCommand(Intent { act=de.schildbach.wallet.service.cancel_coins_received cmp=hashengineering.darkcoin.wallet_test/de.schildbach.wallet.service.BlockchainServiceImpl })
+16:46:34 [DefaultDispatcher-worker-3] BlockchainServiceImpl - onStartCommand waiting for onCreate to complete...
+16:46:34 [DefaultDispatcher-worker-3] BlockchainServiceImpl - onCreate completed, processing onStartCommand
+16:46:34 [DefaultDispatcher-worker-3] BLSJniLibrary - Initializing BLS JNI Library
+16:46:34 [DefaultDispatcher-worker-3] BlockchainServiceImpl - service start command: Intent { act=de.schildbach.wallet.service.cancel_coins_received cmp=hashengineering.darkcoin.wallet_test/de.schildbach.wallet.service.BlockchainServiceImpl }
+16:46:34 [DefaultDispatcher-worker-3] BlockchainServiceImpl - .onStartCommand(Intent { act=de.schildbach.wallet.service.cancel_coins_received cmp=hashengineering.darkcoin.wallet_test/de.schildbach.wallet.service.BlockchainServiceImpl }) finished
+16:46:56 [DefaultDispatcher-worker-13] BLSJniLibrary - Initializing BLS JNI Library
+16:46:56 [DefaultDispatcher-worker-13] DeterministicKeyChain - 1 keys needed for M/44H/1H/0H/0 = 1 issued + 0 lookahead size + 0 lookahead threshold - 0 num children
+16:46:56 [DefaultDispatcher-worker-13] DeterministicKeyChain - Took 691.8 μs
+16:46:56 [main] BlockchainIdentityData - creation: BlockchainIdentityData(NONE, null, null, null, null, null)
+16:47:00 [main] BlockchainServiceImpl - MEM pss=278MB nativeHeap=153/177MB jvm=20/576MB
+16:47:00 [main] BlockchainServiceImpl - History of transactions/blocks/headers/mnlistdiff (sdk): 0/118856/1/1556856
+16:47:03 [DefaultDispatcher-worker-12] BlockchainServiceImpl - network capabilities changed: 101, hasInternet: true, validated: true
+16:47:03 [DefaultDispatcher-worker-12] BlockchainServiceImpl - acquiring check() mutex
+16:47:03 [DefaultDispatcher-worker-12] BlockchainServiceImpl - check()
+16:47:03 [DefaultDispatcher-worker-12] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+16:47:03 [DefaultDispatcher-worker-12] BlockchainServiceImpl - releasing check() mutex
+16:47:06 [DefaultDispatcher-worker-10] BlockchainServiceImpl - network capabilities changed: 101, hasInternet: true, validated: true
+16:47:06 [DefaultDispatcher-worker-10] BlockchainServiceImpl - acquiring check() mutex
+16:47:06 [DefaultDispatcher-worker-10] BlockchainServiceImpl - check()
+16:47:06 [DefaultDispatcher-worker-10] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+16:47:06 [DefaultDispatcher-worker-10] BlockchainServiceImpl - releasing check() mutex
+16:47:23 [DefaultDispatcher-worker-4] L1ShadowSyncService - L1 engine chainlock height 1556856 -> 1556857
+16:47:23 [DefaultDispatcher-worker-7] MainViewModel - blockchain state update: mnlist=1556856; chain=1556856; wallet=-1
+16:47:23 [DefaultDispatcher-worker-1] L1ShadowSyncService - L1Shadow phase=SYNCED 100.0% headers 1556857/1556857 filters 1556857/1556857 wallet 1556857
+16:47:23 [DefaultDispatcher-worker-12] MainViewModel - blockchain state update: mnlist=1556857; chain=1556857; wallet=-1
+16:47:24 [DefaultDispatcher-worker-13] BlockchainServiceImpl - network capabilities changed: 101, hasInternet: true, validated: true
+16:47:24 [DefaultDispatcher-worker-13] BlockchainServiceImpl - acquiring check() mutex
+16:47:24 [DefaultDispatcher-worker-13] BlockchainServiceImpl - check()
+16:47:24 [DefaultDispatcher-worker-13] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+16:47:24 [DefaultDispatcher-worker-13] BlockchainServiceImpl - releasing check() mutex
+16:47:30 [DefaultDispatcher-worker-8] BlockchainServiceImpl - network capabilities changed: 101, hasInternet: true, validated: true
+16:47:30 [DefaultDispatcher-worker-8] BlockchainServiceImpl - acquiring check() mutex
+16:47:30 [DefaultDispatcher-worker-8] BlockchainServiceImpl - check()
+16:47:30 [DefaultDispatcher-worker-8] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+16:47:30 [DefaultDispatcher-worker-8] BlockchainServiceImpl - releasing check() mutex
+16:47:30 [DefaultDispatcher-worker-7] L1ShadowSyncService - L1 engine tx event: Detected(txidHex=a0706d09e1f383216aa2d81697db2418b9e7a9495d860f98d9a442d8180999bd, netAmountDuffs=100000000, feeDuffs=null, contextCode=1, directionCode=0)
+16:47:30 [DefaultDispatcher-worker-3] CutoverUiDataService - SDK balance published: 100000000 duffs (was 0) | l1Synced=true rescanArmedHold=true dashPayBackfill(armed=false,replaying=false) deferredContactBuilds=0 (unchangedReads=3) persistedAsLastKnown=false lastKnown=none
+16:47:30 [DefaultDispatcher-worker-5] CutoverUiDataService - engine detected tx a0706d09e1f383216aa2d81697db2418b9e7a9495d860f98d9a442d8180999bd pre-block (context=1, net=100000000 duffs) — syncing display row now
+16:47:30 [DefaultDispatcher-worker-4] CutoverUiDataService - cutover UI display sync: 1 SDK records → 1 inserts, 0 status updates
+16:47:30 [DefaultDispatcher-worker-4] CutoverUiDataService - engine-detected receive a0706d09e1f383216aa2d81697db2418b9e7a9495d860f98d9a442d8180999bd (100000000 duffs) — notifying in 2000ms unless an outgoing sibling classifies it internal
+16:47:31 [native-log-bridge] DashSdkNative - 09-19 11:47:23.468  4081  4684 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=None synced_height_frozen=None synced_height_rejected=None faulted=0
+16:47:31 [native-log-bridge] DashSdkNative - 09-19 11:47:23.471  4081  4686 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=Some(1556857) synced_height_frozen=None synced_height_rejected=None faulted=0
+16:47:31 [native-log-bridge] DashSdkNative - 09-19 11:47:30.736  4081  4685 I DashSDK : platform_wallet::changeset::core_bridge: wallet-event batch: folded=1 wallets=1 synced_height_persisted=None synced_height_frozen=None synced_height_rejected=None faulted=0
+16:47:33 [DefaultDispatcher-worker-12] BlockchainServiceImpl - network capabilities changed: 101, hasInternet: true, validated: true
+16:47:33 [DefaultDispatcher-worker-12] BlockchainServiceImpl - acquiring check() mutex
+16:47:33 [DefaultDispatcher-worker-12] BlockchainServiceImpl - check()
+16:47:33 [DefaultDispatcher-worker-12] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+16:47:33 [DefaultDispatcher-worker-12] BlockchainServiceImpl - releasing check() mutex
+16:47:37 [main] WalletTransactionsFragment - STARTUP WalletTransactionsFragment.onViewCreated at 1789836457047
+16:47:37 [main] HistoryHeaderAdapter - set invite, synced = true
+16:47:37 [main] WalletTransactionsFragment - STARTUP submitData called on thread=main at 1789836457048
+16:47:37 [DefaultDispatcher-worker-4] BLSJniLibrary - Initializing BLS JNI Library
+16:47:37 [main] HistoryHeaderAdapter - set invite = null
+16:47:37 [main] HistoryHeaderAdapter - set invite, synced = true
+16:47:37 [main] WalletTransactionsFragment - STARTUP swapping to live adapter: 2 items at 1789836457107
+16:48:00 [main] BlockchainServiceImpl - MEM pss=286MB nativeHeap=160/183MB jvm=21/576MB
+16:48:00 [main] BlockchainServiceImpl - History of transactions/blocks/headers/mnlistdiff (sdk): 1/1/1/1, 0/118856/1/1556856
+16:48:32 [main] BiometricHelper - No biometric credentials
+16:48:32 [main] LockScreenActivity - fingerprint was disabled
+16:48:32 [main] LockScreenActivity - LockState = ENTER_PIN
+16:49:00 [main] BlockchainServiceImpl - MEM pss=279MB nativeHeap=153/177MB jvm=18/576MB
+16:49:00 [main] BlockchainServiceImpl - History of transactions/blocks/headers/mnlistdiff (sdk): 0/0/0/0, 1/1/1/1, 0/118856/1/1556856
+16:49:02 [DefaultDispatcher-worker-1] Constants - --> GET https://rates.ctx.com/rates?source=ctx
+16:49:02 [DefaultDispatcher-worker-1] Constants - <-- 200 https://rates.ctx.com/rates?source=ctx (86ms, unknown-length body)
+16:49:02 [DefaultDispatcher-worker-7] ExchangeRatesRepository - exchange rates updated successfully with de.schildbach.wallet.rates.DashRetailClient@d9ad9f
+16:49:02 [DefaultDispatcher-worker-7] ExchangeRatesRepository - updateTrigger
+16:49:07 [DefaultDispatcher-worker-7] BlockchainServiceImpl - network capabilities changed: 101, hasInternet: true, validated: true
+16:49:07 [DefaultDispatcher-worker-7] BlockchainServiceImpl - acquiring check() mutex
+16:49:07 [DefaultDispatcher-worker-7] BlockchainServiceImpl - check()
+16:49:07 [DefaultDispatcher-worker-7] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+16:49:07 [DefaultDispatcher-worker-7] BlockchainServiceImpl - releasing check() mutex
+16:49:07 [main] BlockchainServiceImpl - cutover committed and SDK L1 scan synced — triggering identity/contacts discovery
+16:49:07 [DefaultDispatcher-worker-9] BlockchainIdentityData - creation: BlockchainIdentityData(NONE, null, null, null, null, null)
+16:49:07 [DefaultDispatcher-worker-9] PlatformSynchronizationService - discoverAndRecoverIdentity: checking for existing associated identity
+16:49:07 [DefaultDispatcher-worker-9] SecurityGuard - loading security guard [healthy=true] with keys: [keystore_healthy, fallback_pin_wallet_password_key, primary_ui_pin_key, modern_encryption_migration_complete, fallback_mnemonic_wallet_password_key, primary_wallet_password_key, fallback_mnemonic_ui_pin_key]
+16:49:07 [DefaultDispatcher-worker-9] ModernEncryptionProvider - Decrypted data for alias: wallet_password_key
+16:49:07 [DefaultDispatcher-worker-9] KeyCrypterScrypt - Deriving key took 114.5 ms for N=65536, r=8, p=1.
+16:49:07 [DefaultDispatcher-worker-9] DapiClient - getIdentityByFirstPublicKey(5c99ca4c7781bba1b969306b1a1df424bb03f708)
+16:49:07 [DefaultDispatcher-worker-9] PlatformSynchronizationService - discoverAndRecoverIdentity: no existing identity found
+16:49:07 [DefaultDispatcher-worker-9] PlatformSynchronizationService - identity-discovery guard released (no identity found) — a later discovery may run again
+16:49:07 [DefaultDispatcher-worker-10] PlatformSynchronizationService - TxMetadata settings: saveToNetwork=false frequency=afterTenTransactions saveAfter=9223372036854775807 paymentCategory=false taxCategory=false exchangeRates=false memos=false giftCards=false storedDocuments=0
+16:49:07 [DefaultDispatcher-worker-9] BlockchainServiceImpl - post-cutover identity discovery found nothing and the wallet has no identity — re-arming; next attempt no sooner than 120000 ms from now
+16:49:10 [DefaultDispatcher-worker-2] BlockchainServiceImpl - network capabilities changed: 101, hasInternet: true, validated: true
+16:49:10 [DefaultDispatcher-worker-2] BlockchainServiceImpl - acquiring check() mutex
+16:49:10 [DefaultDispatcher-worker-2] BlockchainServiceImpl - check()
+16:49:10 [DefaultDispatcher-worker-2] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+16:49:10 [DefaultDispatcher-worker-2] BlockchainServiceImpl - releasing check() mutex
+16:49:35 [main] SecurityGuard - loading security guard [healthy=true] with keys: [keystore_healthy, fallback_pin_wallet_password_key, primary_ui_pin_key, modern_encryption_migration_complete, fallback_mnemonic_wallet_password_key, primary_wallet_password_key, fallback_mnemonic_ui_pin_key]
+16:49:35 [main] ModernEncryptionProvider - Decrypted data for alias: ui_pin_key
+16:49:35 [main] BiometricHelper - No biometric credentials
+16:49:50 [main] BlockchainIdentityData - creation: BlockchainIdentityData(NONE, null, null, null, null, null)
+16:49:50 [main] BlockchainIdentityData - creation: BlockchainIdentityData(NONE, null, null, null, null, null)
+16:49:50 [main] BlockchainIdentityData - creation: BlockchainIdentityData(NONE, null, null, null, null, null)
+16:49:58 [DefaultDispatcher-worker-9] BlockchainServiceImpl - network capabilities changed: 101, hasInternet: true, validated: true
+16:49:58 [DefaultDispatcher-worker-9] BlockchainServiceImpl - acquiring check() mutex
+16:49:58 [DefaultDispatcher-worker-9] BlockchainServiceImpl - check()
+16:49:58 [DefaultDispatcher-worker-9] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+16:49:58 [DefaultDispatcher-worker-9] BlockchainServiceImpl - releasing check() mutex
+16:50:00 [main] BlockchainServiceImpl - MEM pss=289MB nativeHeap=163/185MB jvm=21/576MB
+16:50:00 [main] BlockchainServiceImpl - History of transactions/blocks/headers/mnlistdiff (sdk): 0/0/0/0, 0/0/0/0, 1/1/1/1, 0/118856/1/1556856
+16:50:01 [DefaultDispatcher-worker-10] BlockchainServiceImpl - network capabilities changed: 101, hasInternet: true, validated: true
+16:50:01 [DefaultDispatcher-worker-10] BlockchainServiceImpl - acquiring check() mutex
+16:50:01 [DefaultDispatcher-worker-10] BlockchainServiceImpl - check()
+16:50:01 [DefaultDispatcher-worker-10] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+16:50:01 [DefaultDispatcher-worker-10] BlockchainServiceImpl - releasing check() mutex
+16:50:02 [main] BiometricHelper - No biometric credentials
+16:50:02 [main] BiometricHelper - No biometric credentials
+16:50:02 [main] BiometricHelper - No biometric credentials
+16:50:02 [main] BlockchainIdentityData - creation: BlockchainIdentityData(NONE, null, null, null, null, null)
+16:50:02 [DefaultDispatcher-worker-8] Constants - --> GET https://rates.ctx.com/rates?source=ctx
+16:50:02 [DefaultDispatcher-worker-8] Constants - <-- 200 https://rates.ctx.com/rates?source=ctx (74ms, unknown-length body)
+16:50:02 [DefaultDispatcher-worker-10] ExchangeRatesRepository - exchange rates updated successfully with de.schildbach.wallet.rates.DashRetailClient@d9ad9f
+16:50:02 [DefaultDispatcher-worker-13] ExchangeRatesRepository - updateTrigger
+16:50:13 [DefaultDispatcher-worker-6] BlockchainServiceImpl - network capabilities changed: 101, hasInternet: true, validated: true
+16:50:13 [DefaultDispatcher-worker-6] BlockchainServiceImpl - acquiring check() mutex
+16:50:13 [DefaultDispatcher-worker-6] BlockchainServiceImpl - check()
+16:50:13 [DefaultDispatcher-worker-6] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+16:50:13 [DefaultDispatcher-worker-6] BlockchainServiceImpl - releasing check() mutex
+16:50:16 [DefaultDispatcher-worker-5] BlockchainServiceImpl - network capabilities changed: 101, hasInternet: true, validated: true
+16:50:16 [DefaultDispatcher-worker-5] BlockchainServiceImpl - acquiring check() mutex
+16:50:16 [DefaultDispatcher-worker-5] BlockchainServiceImpl - check()
+16:50:16 [DefaultDispatcher-worker-5] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+16:50:16 [DefaultDispatcher-worker-5] BlockchainServiceImpl - releasing check() mutex
+16:50:19 [DefaultDispatcher-worker-3] BlockchainServiceImpl - network capabilities changed: 101, hasInternet: true, validated: true
+16:50:19 [DefaultDispatcher-worker-3] BlockchainServiceImpl - acquiring check() mutex
+16:50:19 [DefaultDispatcher-worker-3] BlockchainServiceImpl - check()
+16:50:19 [DefaultDispatcher-worker-3] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+16:50:19 [DefaultDispatcher-worker-3] BlockchainServiceImpl - releasing check() mutex
+16:50:25 [DefaultDispatcher-worker-2] BlockchainServiceImpl - network capabilities changed: 101, hasInternet: true, validated: true
+16:50:25 [DefaultDispatcher-worker-2] BlockchainServiceImpl - acquiring check() mutex
+16:50:25 [DefaultDispatcher-worker-2] BlockchainServiceImpl - check()
+16:50:25 [DefaultDispatcher-worker-2] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+16:50:25 [DefaultDispatcher-worker-2] BlockchainServiceImpl - releasing check() mutex
+16:50:42 [main] WalletApplication - Removing all the data and restarting the app.
+16:50:42 [main] AppRestartService - perform restart on application context: true
+16:50:42 [main] WalletActivityTracker - activity lifecycle: current: MainActivity, activities: 1 visible: 1 foreground: 0
+16:50:42 [main] BlockchainServiceImpl - .onStartCommand(Intent { act=de.schildbach.wallet.service.wipe_wallet cmp=hashengineering.darkcoin.wallet_test/de.schildbach.wallet.service.BlockchainServiceImpl })
+16:50:42 [DefaultDispatcher-worker-3] BlockchainServiceImpl - onStartCommand waiting for onCreate to complete...
+16:50:42 [DefaultDispatcher-worker-3] BlockchainServiceImpl - onCreate completed, processing onStartCommand
+16:50:42 [DefaultDispatcher-worker-3] BLSJniLibrary - Initializing BLS JNI Library
+16:50:42 [DefaultDispatcher-worker-3] BlockchainServiceImpl - service start command: Intent { act=de.schildbach.wallet.service.wipe_wallet cmp=hashengineering.darkcoin.wallet_test/de.schildbach.wallet.service.BlockchainServiceImpl }
+16:50:42 [DefaultDispatcher-worker-3] BlockchainServiceImpl - will remove blockchain and delete walletFile on service shutdown
+16:50:43 [DefaultDispatcher-worker-3] BlockchainServiceImpl - .onStartCommand(Intent { act=de.schildbach.wallet.service.wipe_wallet cmp=hashengineering.darkcoin.wallet_test/de.schildbach.wallet.service.BlockchainServiceImpl }) finished
+16:50:43 [main] WalletActivityTracker - activity lifecycle: activity OnboardingActivity created
+16:50:43 [main] WalletActivityTracker - activity lifecycle: current: OnboardingActivity, activities: 2 visible: 1 foreground: 0
+16:50:43 [main] OnboardingActivity - reset in progress — holding onboarding until the wipe finishes
+16:50:43 [main] WalletActivityTracker - activity lifecycle: current: OnboardingActivity, activities: 2 visible: 2 foreground: 0
+16:50:43 [main] WalletActivityTracker - activity lifecycle: current: OnboardingActivity, activities: 2 visible: 2 foreground: 1
+16:50:43 [main] BlockchainServiceImpl - .onDestroy()
+16:50:43 [main] BlockchainServiceImpl - receivers unregistered, Now starting coroutine to finish the rest of the cleanup
+16:50:43 [main] BlockchainServiceImpl - service was up for 5 minutes
+16:50:43 [DefaultDispatcher-worker-3] BlockchainServiceImpl - The onCreateCompleted is active: false
+16:50:43 [DefaultDispatcher-worker-3] BlockchainServiceImpl - The check() mutex is locked: false
+16:50:43 [DefaultDispatcher-worker-3] BlockchainServiceImpl - Created new cleanupDeferred for coordination (previous was null)
+16:50:43 [DefaultDispatcher-worker-3] BlockchainServiceImpl - detaching from wallet
+16:50:43 [DefaultDispatcher-worker-3] WalletApplication - last used 5 minutes ago, rescheduling blockchain sync in roughly 15 minutes
+16:50:43 [DefaultDispatcher-worker-3] WalletApplication - ALARM-DIAG armed reason=periodic-15min firstFireInMinutes=15 repeat=1440min exact=false batteryOptimisationExempt=true - if no matching 'started by alarm' line follows, the background FGS start was refused
+16:50:43 [DefaultDispatcher-worker-7] BlockchainServiceImpl - stop monitoring 0 old transactions
+16:50:43 [DefaultDispatcher-worker-11] L1ShadowSyncService - L1Shadow progress monitor cancelled (StandaloneCoroutine was cancelled)
+16:50:43 [DefaultDispatcher-worker-3] L1ShadowSyncService - L1Shadow parity probe loop cancelled (StandaloneCoroutine was cancelled)
+16:50:43 [DefaultDispatcher-worker-3] L1ShadowSyncService - L1Shadow probe watchdog cancelled (StandaloneCoroutine was cancelled)
+16:50:43 [DefaultDispatcher-worker-3] L1ShadowSyncService - L1Shadow wallet-event tap cancelled (StandaloneCoroutine was cancelled)
+16:50:43 [DefaultDispatcher-worker-7] L1ShadowSyncService - L1ShadowLifecycle watermark at stop: durable syncedHeight 1556857 covers the committed cursor 1556857 (filter 1556857)
+16:50:43 [DefaultDispatcher-worker-7] L1ShadowSyncService - L1ShadowLifecycle STOPPED after 5m7s up; all four loops torn down (progress monitor, parity probe, watchdog, wallet-event tap); teardown #1 this process. Nothing runs until the next startIfEnabled().
+16:50:43 [DefaultDispatcher-worker-7] BlockchainServiceImpl - CLEANUP STEP 5: About to stop peerConnectivityListener
+16:50:43 [DefaultDispatcher-worker-7] BlockchainServiceImpl - CLEANUP STEP 5: peerConnectivityListener stopped
+16:50:43 [DefaultDispatcher-worker-7] BlockchainServiceImpl - CLEANUP STEP 6: delayHandler callbacks cleared
+16:50:43 [DefaultDispatcher-worker-7] BlockchainServiceImpl - closing blockchain stores
+16:50:43 [DefaultDispatcher-worker-7] BlockchainServiceImpl - removing blockchain
+16:50:43 [DefaultDispatcher-worker-7] AbstractQuorumState - resetting masternode list; force: true, requestFreshList: false
+16:50:43 [DefaultDispatcher-worker-7] AbstractQuorumState - resetting masternode list; force: true, requestFreshList: false
+16:50:43 [DefaultDispatcher-worker-7] BlockchainServiceImpl - removing wallet file and app data
+16:50:43 [main] WalletApplication - removing wallet from memory during wipe
+16:50:43 [DefaultDispatcher-worker-6] WalletObserver - observing transactions stop: de.schildbach.wallet.transactions.WalletObserver@e4907ed
+16:50:43 [DefaultDispatcher-worker-6] WalletObserver - Error setting up transaction observation
+kotlinx.coroutines.flow.internal.ChildCancelledException: Child of the scoped flow was cancelled
+16:50:43 [DefaultDispatcher-worker-6] WalletApplication - last used 5 minutes ago, rescheduling blockchain sync in roughly 15 minutes
+16:50:43 [DefaultDispatcher-worker-6] WalletApplication - ALARM-DIAG armed reason=periodic-15min firstFireInMinutes=15 repeat=1440min exact=false batteryOptimisationExempt=true - if no matching 'started by alarm' line follows, the background FGS start was refused
+16:50:43 [DefaultDispatcher-worker-6] BaseConfig - failed to clear live config 'dashpay.preferences_pb' via API
+java.io.FileNotFoundException: /data/data/hashengineering.darkcoin.wallet_test/files/datastore/dashpay.preferences_pb.tmp: open failed: EACCES (Permission denied)
+	at libcore.io.IoBridge.open(IoBridge.java:574)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:259)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:208)
+	at androidx.datastore.core.FileWriteScope.writeData(FileStorage.kt:199)
+	at androidx.datastore.core.DataStoreImpl$writeData$2.invokeSuspend(DataStoreImpl.kt:353)
+	at androidx.datastore.core.DataStoreImpl$writeData$2.invoke(DataStoreImpl.kt:0)
+	at androidx.datastore.core.DataStoreImpl$writeData$2.invoke(DataStoreImpl.kt:0)
+	at androidx.datastore.core.FileStorageConnection.writeScope(FileStorage.kt:118)
+	at androidx.datastore.core.DataStoreImpl.writeData$datastore_core_release(DataStoreImpl.kt:348)
+	at androidx.datastore.core.DataStoreImpl$transformAndWrite$2.invokeSuspend(DataStoreImpl.kt:337)
+	at androidx.datastore.core.DataStoreImpl$transformAndWrite$2.invoke(DataStoreImpl.kt:0)
+	at androidx.datastore.core.DataStoreImpl$transformAndWrite$2.invoke(DataStoreImpl.kt:0)
+	at androidx.datastore.core.SingleProcessCoordinator.lock(SingleProcessCoordinator.kt:41)
+	at androidx.datastore.core.DataStoreImpl.transformAndWrite(DataStoreImpl.kt:329)
+	at androidx.datastore.core.DataStoreImpl.handleUpdate(DataStoreImpl.kt:237)
+	at androidx.datastore.core.DataStoreImpl.access$handleUpdate(DataStoreImpl.kt:48)
+	at androidx.datastore.core.DataStoreImpl$writeActor$3.invokeSuspend(DataStoreImpl.kt:207)
+	at androidx.datastore.core.DataStoreImpl$writeActor$3.invoke(DataStoreImpl.kt:0)
+	at androidx.datastore.core.DataStoreImpl$writeActor$3.invoke(DataStoreImpl.kt:0)
+	at androidx.datastore.core.SimpleActor$offer$2.invokeSuspend(SimpleActor.kt:121)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.internal.LimitedDispatcher$Worker.run(LimitedDispatcher.kt:124)
+	at kotlinx.coroutines.scheduling.TaskImpl.run(Tasks.kt:89)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:586)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:820)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:717)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:704)
+Caused by: android.system.ErrnoException: open failed: EACCES (Permission denied)
+	at libcore.io.Linux.open(Native Method)
+	at libcore.io.ForwardingOs.open(ForwardingOs.java:563)
+	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:274)
+	at libcore.io.ForwardingOs.open(ForwardingOs.java:563)
+	at android.app.ActivityThread$AndroidOs.open(ActivityThread.java:8591)
+	at libcore.io.IoBridge.open(IoBridge.java:560)
+	... 27 common frames omitted
+16:50:43 [DefaultDispatcher-worker-11] BaseConfig - failed to clear live config 'coinbase.preferences_pb' via API
+java.io.FileNotFoundException: /data/data/hashengineering.darkcoin.wallet_test/files/datastore/coinbase.preferences_pb.tmp: open failed: EACCES (Permission denied)
+	at libcore.io.IoBridge.open(IoBridge.java:574)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:259)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:208)
+	at androidx.datastore.core.FileWriteScope.writeData(FileStorage.kt:199)
+	at androidx.datastore.core.DataStoreImpl$writeData$2.invokeSuspend(DataStoreImpl.kt:353)
+	at androidx.datastore.core.DataStoreImpl$writeData$2.invoke(DataStoreImpl.kt:0)
+	at androidx.datastore.core.DataStoreImpl$writeData$2.invoke(DataStoreImpl.kt:0)
+	at androidx.datastore.core.FileStorageConnection.writeScope(FileStorage.kt:118)
+	at androidx.datastore.core.DataStoreImpl.writeData$datastore_core_release(DataStoreImpl.kt:348)
+	at androidx.datastore.core.DataStoreImpl$transformAndWrite$2.invokeSuspend(DataStoreImpl.kt:337)
+	at androidx.datastore.core.DataStoreImpl$transformAndWrite$2.invoke(DataStoreImpl.kt:0)
+	at androidx.datastore.core.DataStoreImpl$transformAndWrite$2.invoke(DataStoreImpl.kt:0)
+	at androidx.datastore.core.SingleProcessCoordinator.lock(SingleProcessCoordinator.kt:41)
+	at androidx.datastore.core.DataStoreImpl.transformAndWrite(DataStoreImpl.kt:329)
+	at androidx.datastore.core.DataStoreImpl.handleUpdate(DataStoreImpl.kt:237)
+	at androidx.datastore.core.DataStoreImpl.access$handleUpdate(DataStoreImpl.kt:48)
+	at androidx.datastore.core.DataStoreImpl$writeActor$3.invokeSuspend(DataStoreImpl.kt:207)
+	at androidx.datastore.core.DataStoreImpl$writeActor$3.invoke(DataStoreImpl.kt:0)
+	at androidx.datastore.core.DataStoreImpl$writeActor$3.invoke(DataStoreImpl.kt:0)
+	at androidx.datastore.core.SimpleActor$offer$2.invokeSuspend(SimpleActor.kt:121)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.internal.LimitedDispatcher$Worker.run(LimitedDispatcher.kt:124)
+	at kotlinx.coroutines.scheduling.TaskImpl.run(Tasks.kt:89)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:586)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:820)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:717)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:704)
+Caused by: android.system.ErrnoException: open failed: EACCES (Permission denied)
+	at libcore.io.Linux.open(Native Method)
+	at libcore.io.ForwardingOs.open(ForwardingOs.java:563)
+	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:274)
+	at libcore.io.ForwardingOs.open(ForwardingOs.java:563)
+	at android.app.ActivityThread$AndroidOs.open(ActivityThread.java:8591)
+	at libcore.io.IoBridge.open(IoBridge.java:560)
+	... 27 common frames omitted
+16:50:43 [DefaultDispatcher-worker-2] BaseConfig - failed to clear live config 'wallet_ui.preferences_pb' via API
+java.io.FileNotFoundException: /data/data/hashengineering.darkcoin.wallet_test/files/datastore/wallet_ui.preferences_pb.tmp: open failed: EACCES (Permission denied)
+	at libcore.io.IoBridge.open(IoBridge.java:574)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:259)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:208)
+	at androidx.datastore.core.FileWriteScope.writeData(FileStorage.kt:199)
+	at androidx.datastore.core.DataStoreImpl$writeData$2.invokeSuspend(DataStoreImpl.kt:353)
+	at androidx.datastore.core.DataStoreImpl$writeData$2.invoke(DataStoreImpl.kt:0)
+	at androidx.datastore.core.DataStoreImpl$writeData$2.invoke(DataStoreImpl.kt:0)
+	at androidx.datastore.core.FileStorageConnection.writeScope(FileStorage.kt:118)
+	at androidx.datastore.core.DataStoreImpl.writeData$datastore_core_release(DataStoreImpl.kt:348)
+	at androidx.datastore.core.DataStoreImpl$transformAndWrite$2.invokeSuspend(DataStoreImpl.kt:337)
+	at androidx.datastore.core.DataStoreImpl$transformAndWrite$2.invoke(DataStoreImpl.kt:0)
+	at androidx.datastore.core.DataStoreImpl$transformAndWrite$2.invoke(DataStoreImpl.kt:0)
+	at androidx.datastore.core.SingleProcessCoordinator.lock(SingleProcessCoordinator.kt:41)
+	at androidx.datastore.core.DataStoreImpl.transformAndWrite(DataStoreImpl.kt:329)
+	at androidx.datastore.core.DataStoreImpl.handleUpdate(DataStoreImpl.kt:237)
+	at androidx.datastore.core.DataStoreImpl.access$handleUpdate(DataStoreImpl.kt:48)
+	at androidx.datastore.core.DataStoreImpl$writeActor$3.invokeSuspend(DataStoreImpl.kt:207)
+	at androidx.datastore.core.DataStoreImpl$writeActor$3.invoke(DataStoreImpl.kt:0)
+	at androidx.datastore.core.DataStoreImpl$writeActor$3.invoke(DataStoreImpl.kt:0)
+	at androidx.datastore.core.SimpleActor$offer$2.invokeSuspend(SimpleActor.kt:121)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.internal.LimitedDispatcher$Worker.run(LimitedDispatcher.kt:124)
+	at kotlinx.coroutines.scheduling.TaskImpl.run(Tasks.kt:89)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:586)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:820)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:717)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:704)
+Caused by: android.system.ErrnoException: open failed: EACCES (Permission denied)
+	at libcore.io.Linux.open(Native Method)
+	at libcore.io.ForwardingOs.open(ForwardingOs.java:563)
+	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:274)
+	at libcore.io.ForwardingOs.open(ForwardingOs.java:563)
+	at android.app.ActivityThread$AndroidOs.open(ActivityThread.java:8591)
+	at libcore.io.IoBridge.open(IoBridge.java:560)
+	... 27 common frames omitted
+16:50:43 [DefaultDispatcher-worker-3] BaseConfig - failed to clear live config 'uphold.preferences_pb' via API
+java.io.FileNotFoundException: /data/data/hashengineering.darkcoin.wallet_test/files/datastore/uphold.preferences_pb.tmp: open failed: EACCES (Permission denied)
+	at libcore.io.IoBridge.open(IoBridge.java:574)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:259)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:208)
+	at androidx.datastore.core.FileWriteScope.writeData(FileStorage.kt:199)
+	at androidx.datastore.core.DataStoreImpl$writeData$2.invokeSuspend(DataStoreImpl.kt:353)
+	at androidx.datastore.core.DataStoreImpl$writeData$2.invoke(DataStoreImpl.kt:0)
+	at androidx.datastore.core.DataStoreImpl$writeData$2.invoke(DataStoreImpl.kt:0)
+	at androidx.datastore.core.FileStorageConnection.writeScope(FileStorage.kt:118)
+	at androidx.datastore.core.DataStoreImpl.writeData$datastore_core_release(DataStoreImpl.kt:348)
+	at androidx.datastore.core.DataStoreImpl$transformAndWrite$2.invokeSuspend(DataStoreImpl.kt:337)
+	at androidx.datastore.core.DataStoreImpl$transformAndWrite$2.invoke(DataStoreImpl.kt:0)
+	at androidx.datastore.core.DataStoreImpl$transformAndWrite$2.invoke(DataStoreImpl.kt:0)
+	at androidx.datastore.core.SingleProcessCoordinator.lock(SingleProcessCoordinator.kt:41)
+	at androidx.datastore.core.DataStoreImpl.transformAndWrite(DataStoreImpl.kt:329)
+	at androidx.datastore.core.DataStoreImpl.handleUpdate(DataStoreImpl.kt:237)
+	at androidx.datastore.core.DataStoreImpl.access$handleUpdate(DataStoreImpl.kt:48)
+	at androidx.datastore.core.DataStoreImpl$writeActor$3.invokeSuspend(DataStoreImpl.kt:207)
+	at androidx.datastore.core.DataStoreImpl$writeActor$3.invoke(DataStoreImpl.kt:0)
+	at androidx.datastore.core.DataStoreImpl$writeActor$3.invoke(DataStoreImpl.kt:0)
+	at androidx.datastore.core.SimpleActor$offer$2.invokeSuspend(SimpleActor.kt:121)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.internal.LimitedDispatcher$Worker.run(LimitedDispatcher.kt:124)
+	at kotlinx.coroutines.scheduling.TaskImpl.run(Tasks.kt:89)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:586)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:820)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:717)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:704)
+Caused by: android.system.ErrnoException: open failed: EACCES (Permission denied)
+	at libcore.io.Linux.open(Native Method)
+	at libcore.io.ForwardingOs.open(ForwardingOs.java:563)
+	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:274)
+	at libcore.io.ForwardingOs.open(ForwardingOs.java:563)
+	at android.app.ActivityThread$AndroidOs.open(ActivityThread.java:8591)
+	at libcore.io.IoBridge.open(IoBridge.java:560)
+	... 27 common frames omitted
+16:50:43 [DefaultDispatcher-worker-3] BaseConfig - failed to clear live config 'exchange_rates_config.preferences_pb' via API
+java.io.FileNotFoundException: /data/data/hashengineering.darkcoin.wallet_test/files/datastore/exchange_rates_config.preferences_pb.tmp: open failed: EACCES (Permission denied)
+	at libcore.io.IoBridge.open(IoBridge.java:574)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:259)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:208)
+	at androidx.datastore.core.FileWriteScope.writeData(FileStorage.kt:199)
+	at androidx.datastore.core.DataStoreImpl$writeData$2.invokeSuspend(DataStoreImpl.kt:353)
+	at androidx.datastore.core.DataStoreImpl$writeData$2.invoke(DataStoreImpl.kt:0)
+	at androidx.datastore.core.DataStoreImpl$writeData$2.invoke(DataStoreImpl.kt:0)
+	at androidx.datastore.core.FileStorageConnection.writeScope(FileStorage.kt:118)
+	at androidx.datastore.core.DataStoreImpl.writeData$datastore_core_release(DataStoreImpl.kt:348)
+	at androidx.datastore.core.DataStoreImpl$transformAndWrite$2.invokeSuspend(DataStoreImpl.kt:337)
+	at androidx.datastore.core.DataStoreImpl$transformAndWrite$2.invoke(DataStoreImpl.kt:0)
+	at androidx.datastore.core.DataStoreImpl$transformAndWrite$2.invoke(DataStoreImpl.kt:0)
+	at androidx.datastore.core.SingleProcessCoordinator.lock(SingleProcessCoordinator.kt:41)
+	at androidx.datastore.core.DataStoreImpl.transformAndWrite(DataStoreImpl.kt:329)
+	at androidx.datastore.core.DataStoreImpl.handleUpdate(DataStoreImpl.kt:237)
+	at androidx.datastore.core.DataStoreImpl.access$handleUpdate(DataStoreImpl.kt:48)
+	at androidx.datastore.core.DataStoreImpl$writeActor$3.invokeSuspend(DataStoreImpl.kt:207)
+	at androidx.datastore.core.DataStoreImpl$writeActor$3.invoke(DataStoreImpl.kt:0)
+	at androidx.datastore.core.DataStoreImpl$writeActor$3.invoke(DataStoreImpl.kt:0)
+	at androidx.datastore.core.SimpleActor$offer$2.invokeSuspend(SimpleActor.kt:121)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.internal.LimitedDispatcher$Worker.run(LimitedDispatcher.kt:124)
+	at kotlinx.coroutines.scheduling.TaskImpl.run(Tasks.kt:89)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:586)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:820)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:717)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:704)
+Caused by: android.system.ErrnoException: open failed: EACCES (Permission denied)
+	at libcore.io.Linux.open(Native Method)
+	at libcore.io.ForwardingOs.open(ForwardingOs.java:563)
+	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:274)
+	at libcore.io.ForwardingOs.open(ForwardingOs.java:563)
+	at android.app.ActivityThread$AndroidOs.open(ActivityThread.java:8591)
+	at libcore.io.IoBridge.open(IoBridge.java:560)
+	... 27 common frames omitted
+16:50:43 [DefaultDispatcher-worker-10] BaseConfig - failed to clear live config 'explore.preferences_pb' via API
+java.io.FileNotFoundException: /data/data/hashengineering.darkcoin.wallet_test/files/datastore/explore.preferences_pb.tmp: open failed: EACCES (Permission denied)
+	at libcore.io.IoBridge.open(IoBridge.java:574)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:259)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:208)
+	at androidx.datastore.core.FileWriteScope.writeData(FileStorage.kt:199)
+	at androidx.datastore.core.DataStoreImpl$writeData$2.invokeSuspend(DataStoreImpl.kt:353)
+	at androidx.datastore.core.DataStoreImpl$writeData$2.invoke(DataStoreImpl.kt:0)
+	at androidx.datastore.core.DataStoreImpl$writeData$2.invoke(DataStoreImpl.kt:0)
+	at androidx.datastore.core.FileStorageConnection.writeScope(FileStorage.kt:118)
+	at androidx.datastore.core.DataStoreImpl.writeData$datastore_core_release(DataStoreImpl.kt:348)
+	at androidx.datastore.core.DataStoreImpl$transformAndWrite$2.invokeSuspend(DataStoreImpl.kt:337)
+	at androidx.datastore.core.DataStoreImpl$transformAndWrite$2.invoke(DataStoreImpl.kt:0)
+	at androidx.datastore.core.DataStoreImpl$transformAndWrite$2.invoke(DataStoreImpl.kt:0)
+	at androidx.datastore.core.SingleProcessCoordinator.lock(SingleProcessCoordinator.kt:41)
+	at androidx.datastore.core.DataStoreImpl.transformAndWrite(DataStoreImpl.kt:329)
+	at androidx.datastore.core.DataStoreImpl.handleUpdate(DataStoreImpl.kt:237)
+	at androidx.datastore.core.DataStoreImpl.access$handleUpdate(DataStoreImpl.kt:48)
+	at androidx.datastore.core.DataStoreImpl$writeActor$3.invokeSuspend(DataStoreImpl.kt:207)
+	at androidx.datastore.core.DataStoreImpl$writeActor$3.invoke(DataStoreImpl.kt:0)
+	at androidx.datastore.core.DataStoreImpl$writeActor$3.invoke(DataStoreImpl.kt:0)
+	at androidx.datastore.core.SimpleActor$offer$2.invokeSuspend(SimpleActor.kt:121)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.internal.LimitedDispatcher$Worker.run(LimitedDispatcher.kt:124)
+	at kotlinx.coroutines.scheduling.TaskImpl.run(Tasks.kt:89)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:586)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:820)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:717)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:704)
+Caused by: android.system.ErrnoException: open failed: EACCES (Permission denied)
+	at libcore.io.Linux.open(Native Method)
+	at libcore.io.ForwardingOs.open(ForwardingOs.java:563)
+	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:274)
+	at libcore.io.ForwardingOs.open(ForwardingOs.java:563)
+	at android.app.ActivityThread$AndroidOs.open(ActivityThread.java:8591)
+	at libcore.io.IoBridge.open(IoBridge.java:560)
+	... 27 common frames omitted
+16:50:43 [DefaultDispatcher-worker-10] WalletApplication - failed to delete datastore preferences file: 'dashpay.preferences_pb'
+16:50:43 [DefaultDispatcher-worker-10] WalletApplication - failed to delete datastore preferences file: 'explore.preferences_pb'
+16:50:43 [DefaultDispatcher-worker-10] WalletApplication - failed to delete datastore preferences file: 'coinbase.preferences_pb'
+16:50:43 [DefaultDispatcher-worker-10] WalletApplication - failed to delete datastore preferences file: 'uphold.preferences_pb'
+16:50:43 [DefaultDispatcher-worker-10] WalletApplication - failed to delete datastore preferences file: 'wallet_ui.preferences_pb'
+16:50:43 [DefaultDispatcher-worker-10] WalletApplication - failed to delete datastore preferences file: 'org.dashfoundation.wallet.secrets.preferences_pb'
+16:50:43 [DefaultDispatcher-worker-10] WalletApplication - failed to delete datastore preferences file: 'exchange_rates_config.preferences_pb'
+16:50:43 [DefaultDispatcher-worker-10] WalletApplication - datastore preferences cleared; api-cleared: [crowdnode.preferences_pb, security_backup.preferences_pb, platform-identity.preferences_pb, maya.preferences_pb, blockchain_service.preferences_pb], file-deleted: []
+16:50:43 [DefaultDispatcher-worker-10] WalletApplicationExt - wallet-wipe listener failed
+java.io.FileNotFoundException: /data/data/hashengineering.darkcoin.wallet_test/files/datastore/dashpay.preferences_pb.tmp: open failed: EACCES (Permission denied)
+	at libcore.io.IoBridge.open(IoBridge.java:574)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:259)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:208)
+	at androidx.datastore.core.FileWriteScope.writeData(FileStorage.kt:199)
+	at androidx.datastore.core.DataStoreImpl$writeData$2.invokeSuspend(DataStoreImpl.kt:353)
+	at androidx.datastore.core.DataStoreImpl$writeData$2.invoke(DataStoreImpl.kt:0)
+	at androidx.datastore.core.DataStoreImpl$writeData$2.invoke(DataStoreImpl.kt:0)
+	at androidx.datastore.core.FileStorageConnection.writeScope(FileStorage.kt:118)
+	at androidx.datastore.core.DataStoreImpl.writeData$datastore_core_release(DataStoreImpl.kt:348)
+	at androidx.datastore.core.DataStoreImpl$transformAndWrite$2.invokeSuspend(DataStoreImpl.kt:337)
+	at androidx.datastore.core.DataStoreImpl$transformAndWrite$2.invoke(DataStoreImpl.kt:0)
+	at androidx.datastore.core.DataStoreImpl$transformAndWrite$2.invoke(DataStoreImpl.kt:0)
+	at androidx.datastore.core.SingleProcessCoordinator.lock(SingleProcessCoordinator.kt:41)
+	at androidx.datastore.core.DataStoreImpl.transformAndWrite(DataStoreImpl.kt:329)
+	at androidx.datastore.core.DataStoreImpl.handleUpdate(DataStoreImpl.kt:237)
+	at androidx.datastore.core.DataStoreImpl.access$handleUpdate(DataStoreImpl.kt:48)
+	at androidx.datastore.core.DataStoreImpl$writeActor$3.invokeSuspend(DataStoreImpl.kt:207)
+	at androidx.datastore.core.DataStoreImpl$writeActor$3.invoke(DataStoreImpl.kt:0)
+	at androidx.datastore.core.DataStoreImpl$writeActor$3.invoke(DataStoreImpl.kt:0)
+	at androidx.datastore.core.SimpleActor$offer$2.invokeSuspend(SimpleActor.kt:121)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.internal.LimitedDispatcher$Worker.run(LimitedDispatcher.kt:124)
+	at kotlinx.coroutines.scheduling.TaskImpl.run(Tasks.kt:89)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:586)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:820)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:717)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:704)
+Caused by: android.system.ErrnoException: open failed: EACCES (Permission denied)
+	at libcore.io.Linux.open(Native Method)
+	at libcore.io.ForwardingOs.open(ForwardingOs.java:563)
+	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:274)
+	at libcore.io.ForwardingOs.open(ForwardingOs.java:563)
+	at android.app.ActivityThread$AndroidOs.open(ActivityThread.java:8591)
+	at libcore.io.IoBridge.open(IoBridge.java:560)
+	... 27 common frames omitted
+16:50:43 [DefaultDispatcher-worker-10] WalletApplicationExt - wallet-wipe listener failed
+java.io.FileNotFoundException: /data/data/hashengineering.darkcoin.wallet_test/files/datastore/exchange_rates_config.preferences_pb.tmp: open failed: EACCES (Permission denied)
+	at libcore.io.IoBridge.open(IoBridge.java:574)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:259)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:208)
+	at androidx.datastore.core.FileWriteScope.writeData(FileStorage.kt:199)
+	at androidx.datastore.core.DataStoreImpl$writeData$2.invokeSuspend(DataStoreImpl.kt:353)
+	at androidx.datastore.core.DataStoreImpl$writeData$2.invoke(DataStoreImpl.kt:0)
+	at androidx.datastore.core.DataStoreImpl$writeData$2.invoke(DataStoreImpl.kt:0)
+	at androidx.datastore.core.FileStorageConnection.writeScope(FileStorage.kt:118)
+	at androidx.datastore.core.DataStoreImpl.writeData$datastore_core_release(DataStoreImpl.kt:348)
+	at androidx.datastore.core.DataStoreImpl$transformAndWrite$2.invokeSuspend(DataStoreImpl.kt:337)
+	at androidx.datastore.core.DataStoreImpl$transformAndWrite$2.invoke(DataStoreImpl.kt:0)
+	at androidx.datastore.core.DataStoreImpl$transformAndWrite$2.invoke(DataStoreImpl.kt:0)
+	at androidx.datastore.core.SingleProcessCoordinator.lock(SingleProcessCoordinator.kt:41)
+	at androidx.datastore.core.DataStoreImpl.transformAndWrite(DataStoreImpl.kt:329)
+	at androidx.datastore.core.DataStoreImpl.handleUpdate(DataStoreImpl.kt:237)
+	at androidx.datastore.core.DataStoreImpl.access$handleUpdate(DataStoreImpl.kt:48)
+	at androidx.datastore.core.DataStoreImpl$writeActor$3.invokeSuspend(DataStoreImpl.kt:207)
+	at androidx.datastore.core.DataStoreImpl$writeActor$3.invoke(DataStoreImpl.kt:0)
+	at androidx.datastore.core.DataStoreImpl$writeActor$3.invoke(DataStoreImpl.kt:0)
+	at androidx.datastore.core.SimpleActor$offer$2.invokeSuspend(SimpleActor.kt:121)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.internal.LimitedDispatcher$Worker.run(LimitedDispatcher.kt:124)
+	at kotlinx.coroutines.scheduling.TaskImpl.run(Tasks.kt:89)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:586)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:820)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:717)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:704)
+Caused by: android.system.ErrnoException: open failed: EACCES (Permission denied)
+	at libcore.io.Linux.open(Native Method)
+	at libcore.io.ForwardingOs.open(ForwardingOs.java:563)
+	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:274)
+	at libcore.io.ForwardingOs.open(ForwardingOs.java:563)
+	at android.app.ActivityThread$AndroidOs.open(ActivityThread.java:8591)
+	at libcore.io.IoBridge.open(IoBridge.java:560)
+	... 27 common frames omitted
+16:50:43 [DefaultDispatcher-worker-11] WalletApplicationExt - wallet-wipe listener failed
+java.io.FileNotFoundException: /data/data/hashengineering.darkcoin.wallet_test/files/datastore/wallet_ui.preferences_pb.tmp: open failed: EACCES (Permission denied)
+	at libcore.io.IoBridge.open(IoBridge.java:574)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:259)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:208)
+	at androidx.datastore.core.FileWriteScope.writeData(FileStorage.kt:199)
+	at androidx.datastore.core.DataStoreImpl$writeData$2.invokeSuspend(DataStoreImpl.kt:353)
+	at androidx.datastore.core.DataStoreImpl$writeData$2.invoke(DataStoreImpl.kt:0)
+	at androidx.datastore.core.DataStoreImpl$writeData$2.invoke(DataStoreImpl.kt:0)
+	at androidx.datastore.core.FileStorageConnection.writeScope(FileStorage.kt:118)
+	at androidx.datastore.core.DataStoreImpl.writeData$datastore_core_release(DataStoreImpl.kt:348)
+	at androidx.datastore.core.DataStoreImpl$transformAndWrite$2.invokeSuspend(DataStoreImpl.kt:337)
+	at androidx.datastore.core.DataStoreImpl$transformAndWrite$2.invoke(DataStoreImpl.kt:0)
+	at androidx.datastore.core.DataStoreImpl$transformAndWrite$2.invoke(DataStoreImpl.kt:0)
+	at androidx.datastore.core.SingleProcessCoordinator.lock(SingleProcessCoordinator.kt:41)
+	at androidx.datastore.core.DataStoreImpl.transformAndWrite(DataStoreImpl.kt:329)
+	at androidx.datastore.core.DataStoreImpl.handleUpdate(DataStoreImpl.kt:237)
+	at androidx.datastore.core.DataStoreImpl.access$handleUpdate(DataStoreImpl.kt:48)
+	at androidx.datastore.core.DataStoreImpl$writeActor$3.invokeSuspend(DataStoreImpl.kt:207)
+	at androidx.datastore.core.DataStoreImpl$writeActor$3.invoke(DataStoreImpl.kt:0)
+	at androidx.datastore.core.DataStoreImpl$writeActor$3.invoke(DataStoreImpl.kt:0)
+	at androidx.datastore.core.SimpleActor$offer$2.invokeSuspend(SimpleActor.kt:121)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.internal.LimitedDispatcher$Worker.run(LimitedDispatcher.kt:124)
+	at kotlinx.coroutines.scheduling.TaskImpl.run(Tasks.kt:89)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:586)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:820)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:717)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:704)
+Caused by: android.system.ErrnoException: open failed: EACCES (Permission denied)
+	at libcore.io.Linux.open(Native Method)
+	at libcore.io.ForwardingOs.open(ForwardingOs.java:563)
+	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:274)
+	at libcore.io.ForwardingOs.open(ForwardingOs.java:563)
+	at android.app.ActivityThread$AndroidOs.open(ActivityThread.java:8591)
+	at libcore.io.IoBridge.open(IoBridge.java:560)
+	... 27 common frames omitted
+16:50:43 [DefaultDispatcher-worker-12] WalletApplicationExt - wallet-wipe listener failed
+java.io.FileNotFoundException: /data/data/hashengineering.darkcoin.wallet_test/files/datastore/uphold.preferences_pb.tmp: open failed: EACCES (Permission denied)
+	at libcore.io.IoBridge.open(IoBridge.java:574)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:259)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:208)
+	at androidx.datastore.core.FileWriteScope.writeData(FileStorage.kt:199)
+	at androidx.datastore.core.DataStoreImpl$writeData$2.invokeSuspend(DataStoreImpl.kt:353)
+	at androidx.datastore.core.DataStoreImpl$writeData$2.invoke(DataStoreImpl.kt:0)
+	at androidx.datastore.core.DataStoreImpl$writeData$2.invoke(DataStoreImpl.kt:0)
+	at androidx.datastore.core.FileStorageConnection.writeScope(FileStorage.kt:118)
+	at androidx.datastore.core.DataStoreImpl.writeData$datastore_core_release(DataStoreImpl.kt:348)
+	at androidx.datastore.core.DataStoreImpl$transformAndWrite$2.invokeSuspend(DataStoreImpl.kt:337)
+	at androidx.datastore.core.DataStoreImpl$transformAndWrite$2.invoke(DataStoreImpl.kt:0)
+	at androidx.datastore.core.DataStoreImpl$transformAndWrite$2.invoke(DataStoreImpl.kt:0)
+	at androidx.datastore.core.SingleProcessCoordinator.lock(SingleProcessCoordinator.kt:41)
+	at androidx.datastore.core.DataStoreImpl.transformAndWrite(DataStoreImpl.kt:329)
+	at androidx.datastore.core.DataStoreImpl.handleUpdate(DataStoreImpl.kt:237)
+	at androidx.datastore.core.DataStoreImpl.access$handleUpdate(DataStoreImpl.kt:48)
+	at androidx.datastore.core.DataStoreImpl$writeActor$3.invokeSuspend(DataStoreImpl.kt:207)
+	at androidx.datastore.core.DataStoreImpl$writeActor$3.invoke(DataStoreImpl.kt:0)
+	at androidx.datastore.core.DataStoreImpl$writeActor$3.invoke(DataStoreImpl.kt:0)
+	at androidx.datastore.core.SimpleActor$offer$2.invokeSuspend(SimpleActor.kt:121)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.internal.LimitedDispatcher$Worker.run(LimitedDispatcher.kt:124)
+	at kotlinx.coroutines.scheduling.TaskImpl.run(Tasks.kt:89)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:586)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:820)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:717)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:704)
+Caused by: android.system.ErrnoException: open failed: EACCES (Permission denied)
+	at libcore.io.Linux.open(Native Method)
+	at libcore.io.ForwardingOs.open(ForwardingOs.java:563)
+	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:274)
+	at libcore.io.ForwardingOs.open(ForwardingOs.java:563)
+	at android.app.ActivityThread$AndroidOs.open(ActivityThread.java:8591)
+	at libcore.io.IoBridge.open(IoBridge.java:560)
+	... 27 common frames omitted
+16:50:43 [DefaultDispatcher-worker-12] WalletApplicationExt - wallet-wipe listener failed
+java.io.FileNotFoundException: /data/data/hashengineering.darkcoin.wallet_test/files/datastore/coinbase.preferences_pb.tmp: open failed: EACCES (Permission denied)
+	at libcore.io.IoBridge.open(IoBridge.java:574)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:259)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:208)
+	at androidx.datastore.core.FileWriteScope.writeData(FileStorage.kt:199)
+	at androidx.datastore.core.DataStoreImpl$writeData$2.invokeSuspend(DataStoreImpl.kt:353)
+	at androidx.datastore.core.DataStoreImpl$writeData$2.invoke(DataStoreImpl.kt:0)
+	at androidx.datastore.core.DataStoreImpl$writeData$2.invoke(DataStoreImpl.kt:0)
+	at androidx.datastore.core.FileStorageConnection.writeScope(FileStorage.kt:118)
+	at androidx.datastore.core.DataStoreImpl.writeData$datastore_core_release(DataStoreImpl.kt:348)
+	at androidx.datastore.core.DataStoreImpl$transformAndWrite$2.invokeSuspend(DataStoreImpl.kt:337)
+	at androidx.datastore.core.DataStoreImpl$transformAndWrite$2.invoke(DataStoreImpl.kt:0)
+	at androidx.datastore.core.DataStoreImpl$transformAndWrite$2.invoke(DataStoreImpl.kt:0)
+	at androidx.datastore.core.SingleProcessCoordinator.lock(SingleProcessCoordinator.kt:41)
+	at androidx.datastore.core.DataStoreImpl.transformAndWrite(DataStoreImpl.kt:329)
+	at androidx.datastore.core.DataStoreImpl.handleUpdate(DataStoreImpl.kt:237)
+	at androidx.datastore.core.DataStoreImpl.access$handleUpdate(DataStoreImpl.kt:48)
+	at androidx.datastore.core.DataStoreImpl$writeActor$3.invokeSuspend(DataStoreImpl.kt:207)
+	at androidx.datastore.core.DataStoreImpl$writeActor$3.invoke(DataStoreImpl.kt:0)
+	at androidx.datastore.core.DataStoreImpl$writeActor$3.invoke(DataStoreImpl.kt:0)
+	at androidx.datastore.core.SimpleActor$offer$2.invokeSuspend(SimpleActor.kt:121)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.internal.LimitedDispatcher$Worker.run(LimitedDispatcher.kt:124)
+	at kotlinx.coroutines.scheduling.TaskImpl.run(Tasks.kt:89)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:586)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:820)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:717)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:704)
+Caused by: android.system.ErrnoException: open failed: EACCES (Permission denied)
+	at libcore.io.Linux.open(Native Method)
+	at libcore.io.ForwardingOs.open(ForwardingOs.java:563)
+	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:274)
+	at libcore.io.ForwardingOs.open(ForwardingOs.java:563)
+	at android.app.ActivityThread$AndroidOs.open(ActivityThread.java:8591)
+	at libcore.io.IoBridge.open(IoBridge.java:560)
+	... 27 common frames omitted
+16:50:43 [DefaultDispatcher-worker-12] WalletApplicationExt - wallet-wipe listener failed
+java.io.FileNotFoundException: /data/data/hashengineering.darkcoin.wallet_test/files/datastore/explore.preferences_pb.tmp: open failed: EACCES (Permission denied)
+	at libcore.io.IoBridge.open(IoBridge.java:574)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:259)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:208)
+	at androidx.datastore.core.FileWriteScope.writeData(FileStorage.kt:199)
+	at androidx.datastore.core.DataStoreImpl$writeData$2.invokeSuspend(DataStoreImpl.kt:353)
+	at androidx.datastore.core.DataStoreImpl$writeData$2.invoke(DataStoreImpl.kt:0)
+	at androidx.datastore.core.DataStoreImpl$writeData$2.invoke(DataStoreImpl.kt:0)
+	at androidx.datastore.core.FileStorageConnection.writeScope(FileStorage.kt:118)
+	at androidx.datastore.core.DataStoreImpl.writeData$datastore_core_release(DataStoreImpl.kt:348)
+	at androidx.datastore.core.DataStoreImpl$transformAndWrite$2.invokeSuspend(DataStoreImpl.kt:337)
+	at androidx.datastore.core.DataStoreImpl$transformAndWrite$2.invoke(DataStoreImpl.kt:0)
+	at androidx.datastore.core.DataStoreImpl$transformAndWrite$2.invoke(DataStoreImpl.kt:0)
+	at androidx.datastore.core.SingleProcessCoordinator.lock(SingleProcessCoordinator.kt:41)
+	at androidx.datastore.core.DataStoreImpl.transformAndWrite(DataStoreImpl.kt:329)
+	at androidx.datastore.core.DataStoreImpl.handleUpdate(DataStoreImpl.kt:237)
+	at androidx.datastore.core.DataStoreImpl.access$handleUpdate(DataStoreImpl.kt:48)
+	at androidx.datastore.core.DataStoreImpl$writeActor$3.invokeSuspend(DataStoreImpl.kt:207)
+	at androidx.datastore.core.DataStoreImpl$writeActor$3.invoke(DataStoreImpl.kt:0)
+	at androidx.datastore.core.DataStoreImpl$writeActor$3.invoke(DataStoreImpl.kt:0)
+	at androidx.datastore.core.SimpleActor$offer$2.invokeSuspend(SimpleActor.kt:121)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.internal.LimitedDispatcher$Worker.run(LimitedDispatcher.kt:124)
+	at kotlinx.coroutines.scheduling.TaskImpl.run(Tasks.kt:89)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:586)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:820)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:717)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:704)
+Caused by: android.system.ErrnoException: open failed: EACCES (Permission denied)
+	at libcore.io.Linux.open(Native Method)
+	at libcore.io.ForwardingOs.open(ForwardingOs.java:563)
+	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:274)
+	at libcore.io.ForwardingOs.open(ForwardingOs.java:563)
+	at android.app.ActivityThread$AndroidOs.open(ActivityThread.java:8591)
+	at libcore.io.IoBridge.open(IoBridge.java:560)
+	... 27 common frames omitted
+16:50:43 [DefaultDispatcher-worker-12] CrowdNodeApiAggregator - reset is triggered
+16:50:43 [DefaultDispatcher-worker-5] MayaApiAggregator - reset is triggered
+16:50:43 [main] WalletActivityTracker - activity lifecycle: current: MainActivity, activities: 2 visible: 1 foreground: 1
+16:50:43 [main] WalletActivityTracker - activity lifecycle: activity MainActivity destroyed
+16:50:43 [main] WalletActivityTracker - activity lifecycle: current: MainActivity, activities: 1 visible: 1 foreground: 1
+16:50:43 [DefaultDispatcher-worker-12] SecurityGuard - loading security guard [healthy=true] with keys: [keystore_healthy, fallback_pin_wallet_password_key, primary_ui_pin_key, modern_encryption_migration_complete, fallback_mnemonic_wallet_password_key, primary_wallet_password_key, fallback_mnemonic_ui_pin_key]
+16:50:43 [DefaultDispatcher-worker-12] SecurityGuard - removing security keys
+16:50:43 [DefaultDispatcher-worker-12] ModernEncryptionProvider - deleting ui_pin_key
+16:50:43 [DefaultDispatcher-worker-12] ModernEncryptionProvider - deleting wallet_password_key
+16:50:43 [main] SecurityGuard - Notifying 4 health listeners of status change: HEALTHY
+16:50:43 [main] SecurityGuard - Notifying 4 health listeners of status change: HEALTHY
+16:50:43 [main] SecurityGuard - Notifying 4 health listeners of status change: HEALTHY
+16:50:43 [main] SecurityGuard - Notifying 4 health listeners of status change: HEALTHY
+16:50:43 [main] SecurityGuard - Notifying 4 health listeners of status change: HEALTHY
+16:50:43 [DefaultDispatcher-worker-12] SecurityGuard - Cleared DataStore backups
+16:50:43 [DefaultDispatcher-worker-12] PlatformSynchronizationService - stopping the platform sync machinery for a wallet reset/rescan
+16:50:43 [DefaultDispatcher-worker-12] PlatformSynchronizationService - platform sync machinery stopped
+16:50:43 [DefaultDispatcher-worker-10] L1ShadowSyncService - wallet-wipe SDK cleanup for wallet f8a16bd9: stopping shadow + shielded sync, removing the SDK wallet (full cascade), deleting the SPV dataDir, clearing the binder latch — NO rebind (the next wallet setup binds fresh). SDK-side state only; dashj is untouched
+16:50:43 [DefaultDispatcher-worker-10] DashSdkServiceImpl - removing SDK wallet f8a16bd9… — full persistence cascade (Room wallet/identity/TXO/address/shielded rows, Keystore-backed identity keys and mnemonic, native wallet handle); dashj state is untouched and the next bind re-creates the same deterministic wallet id from the app seed
+16:50:43 [DefaultDispatcher-worker-2] L1ShadowSyncService - wipe cleanup: removeSdkWallet failed; continuing
+java.io.FileNotFoundException: /data/data/hashengineering.darkcoin.wallet_test/files/datastore/org.dashfoundation.wallet.secrets.preferences_pb.tmp: open failed: EACCES (Permission denied)
+	at libcore.io.IoBridge.open(IoBridge.java:574)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:259)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:208)
+	at androidx.datastore.core.FileWriteScope.writeData(FileStorage.kt:199)
+	at androidx.datastore.core.DataStoreImpl$writeData$2.invokeSuspend(DataStoreImpl.kt:353)
+	at androidx.datastore.core.DataStoreImpl$writeData$2.invoke(DataStoreImpl.kt:0)
+	at androidx.datastore.core.DataStoreImpl$writeData$2.invoke(DataStoreImpl.kt:0)
+	at androidx.datastore.core.FileStorageConnection.writeScope(FileStorage.kt:118)
+	at androidx.datastore.core.DataStoreImpl.writeData$datastore_core_release(DataStoreImpl.kt:348)
+	at androidx.datastore.core.DataStoreImpl$transformAndWrite$2.invokeSuspend(DataStoreImpl.kt:337)
+	at androidx.datastore.core.DataStoreImpl$transformAndWrite$2.invoke(DataStoreImpl.kt:0)
+	at androidx.datastore.core.DataStoreImpl$transformAndWrite$2.invoke(DataStoreImpl.kt:0)
+	at androidx.datastore.core.SingleProcessCoordinator.lock(SingleProcessCoordinator.kt:41)
+	at androidx.datastore.core.DataStoreImpl.transformAndWrite(DataStoreImpl.kt:329)
+	at androidx.datastore.core.DataStoreImpl.handleUpdate(DataStoreImpl.kt:237)
+	at androidx.datastore.core.DataStoreImpl.access$handleUpdate(DataStoreImpl.kt:48)
+	at androidx.datastore.core.DataStoreImpl$writeActor$3.invokeSuspend(DataStoreImpl.kt:207)
+	at androidx.datastore.core.DataStoreImpl$writeActor$3.invoke(DataStoreImpl.kt:0)
+	at androidx.datastore.core.DataStoreImpl$writeActor$3.invoke(DataStoreImpl.kt:0)
+	at androidx.datastore.core.SimpleActor$offer$2.invokeSuspend(SimpleActor.kt:121)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.internal.LimitedDispatcher$Worker.run(LimitedDispatcher.kt:124)
+	at kotlinx.coroutines.scheduling.TaskImpl.run(Tasks.kt:89)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:586)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:820)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:717)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:704)
+Caused by: android.system.ErrnoException: open failed: EACCES (Permission denied)
+	at libcore.io.Linux.open(Native Method)
+	at libcore.io.ForwardingOs.open(ForwardingOs.java:563)
+	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:274)
+	at libcore.io.ForwardingOs.open(ForwardingOs.java:563)
+	at android.app.ActivityThread$AndroidOs.open(ActivityThread.java:8591)
+	at libcore.io.IoBridge.open(IoBridge.java:560)
+	... 27 common frames omitted
+16:50:43 [DefaultDispatcher-worker-12] DashSdkCutoverUiSource - native balance read on txos change failed; emission skipped
+java.lang.IllegalStateException: SDK wallet not loaded for native balance read
+	at de.schildbach.wallet.service.platform.sdk.DashSdkCutoverUiSource.currentBalanceSplitDuffs(CutoverUiDataService.kt:1401)
+	at de.schildbach.wallet.service.platform.sdk.DashSdkCutoverUiSource$observeTotalDuffs$1$invokeSuspend$$inlined$mapNotNull$1$2.emit(Emitters.kt:52)
+	at androidx.room.coroutines.FlowUtil$createFlow$$inlined$map$1$2.emit(Emitters.kt:223)
+	at androidx.room.coroutines.FlowUtil$createFlow$$inlined$map$1$2$1.invokeSuspend(Emitters.kt:0)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:586)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:829)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:717)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:704)
+16:50:43 [DefaultDispatcher-worker-2] L1ShadowSyncService - L1 shadow hard reset: deleted SPV dataDir /data/user/0/hashengineering.darkcoin.wallet_test/files/l1_shadow_spv/testnet (21 files) — header store and scan watermark gone; the restart re-scans from the wallet's birth height
+16:50:43 [DefaultDispatcher-worker-2] SdkWalletBinder - binder state reset for SDK wallet re-creation: bound wallet id and success latch cleared — the next binding trigger runs a full bind + discovery pass
+16:50:43 [DefaultDispatcher-worker-2] L1ShadowSyncService - wallet-wipe SDK cleanup complete for wallet f8a16bd9: the next wallet binds fresh
+16:50:43 [DefaultDispatcher-worker-1] CutoverCoordinator - cutover state persist failed (CUT_OVER -> DUAL_RUNNING, wallet wipe); keeping CUT_OVER
+java.io.FileNotFoundException: /data/data/hashengineering.darkcoin.wallet_test/files/datastore/dashpay.preferences_pb.tmp: open failed: EACCES (Permission denied)
+	at libcore.io.IoBridge.open(IoBridge.java:574)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:259)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:208)
+	at androidx.datastore.core.FileWriteScope.writeData(FileStorage.kt:199)
+	at androidx.datastore.core.DataStoreImpl$writeData$2.invokeSuspend(DataStoreImpl.kt:353)
+	at androidx.datastore.core.DataStoreImpl$writeData$2.invoke(DataStoreImpl.kt:0)
+	at androidx.datastore.core.DataStoreImpl$writeData$2.invoke(DataStoreImpl.kt:0)
+	at androidx.datastore.core.FileStorageConnection.writeScope(FileStorage.kt:118)
+	at androidx.datastore.core.DataStoreImpl.writeData$datastore_core_release(DataStoreImpl.kt:348)
+	at androidx.datastore.core.DataStoreImpl$transformAndWrite$2.invokeSuspend(DataStoreImpl.kt:337)
+	at androidx.datastore.core.DataStoreImpl$transformAndWrite$2.invoke(DataStoreImpl.kt:0)
+	at androidx.datastore.core.DataStoreImpl$transformAndWrite$2.invoke(DataStoreImpl.kt:0)
+	at androidx.datastore.core.SingleProcessCoordinator.lock(SingleProcessCoordinator.kt:41)
+	at androidx.datastore.core.DataStoreImpl.transformAndWrite(DataStoreImpl.kt:329)
+	at androidx.datastore.core.DataStoreImpl.handleUpdate(DataStoreImpl.kt:237)
+	at androidx.datastore.core.DataStoreImpl.access$handleUpdate(DataStoreImpl.kt:48)
+	at androidx.datastore.core.DataStoreImpl$writeActor$3.invokeSuspend(DataStoreImpl.kt:207)
+	at androidx.datastore.core.DataStoreImpl$writeActor$3.invoke(DataStoreImpl.kt:0)
+	at androidx.datastore.core.DataStoreImpl$writeActor$3.invoke(DataStoreImpl.kt:0)
+	at androidx.datastore.core.SimpleActor$offer$2.invokeSuspend(SimpleActor.kt:121)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.internal.LimitedDispatcher$Worker.run(LimitedDispatcher.kt:124)
+	at kotlinx.coroutines.scheduling.TaskImpl.run(Tasks.kt:89)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:586)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:820)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:717)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:704)
+Caused by: android.system.ErrnoException: open failed: EACCES (Permission denied)
+	at libcore.io.Linux.open(Native Method)
+	at libcore.io.ForwardingOs.open(ForwardingOs.java:563)
+	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:274)
+	at libcore.io.ForwardingOs.open(ForwardingOs.java:563)
+	at android.app.ActivityThread$AndroidOs.open(ActivityThread.java:8591)
+	at libcore.io.IoBridge.open(IoBridge.java:560)
+	... 27 common frames omitted
+16:50:43 [DefaultDispatcher-worker-1] IdentityRepository - clearing databases (includeInvitations = true)
+16:50:43 [DefaultDispatcher-worker-1] BlockchainIdentityConfig - clearing data
+16:50:43 [DefaultDispatcher-worker-4] DashPayConfig - debug SDK flag seeding: seeded ON = [], already set (skipped) = [use_kotlin_sdk_dpns_reads, use_kotlin_sdk_dashpay_writes, use_kotlin_sdk_shielded, use_kotlin_sdk_l1_invite, use_kotlin_sdk_l1_shadow]
+16:50:43 [DefaultDispatcher-worker-4] WalletApplicationExt - databases cleared (isWalletWipe = true)
+16:50:43 [main] OnboardingActivity - reset finished — re-running the onboarding routing
+16:50:43 [DefaultDispatcher-worker-4] BlockchainServiceImpl - closing bootstrap streams
+16:50:43 [DefaultDispatcher-worker-4] BlockchainServiceImpl - serviceJob cancelled after 5 minutes
+16:50:43 [main] WalletActivityTracker - activity lifecycle: current: OnboardingActivity, activities: 1 visible: 1 foreground: 0
+16:50:43 [main] WalletActivityTracker - activity lifecycle: OnboardingActivity stopped for a configuration change — not treating it as background
+16:50:43 [main] WalletActivityTracker - activity lifecycle: current: OnboardingActivity, activities: 1 visible: 0 foreground: 0
+16:50:43 [main] WalletActivityTracker - activity lifecycle: activity OnboardingActivity destroyed
+16:50:43 [main] WalletActivityTracker - activity lifecycle: current: OnboardingActivity, activities: 0 visible: 0 foreground: 0
+16:50:43 [main] WalletActivityTracker - activity lifecycle: app closed
+16:50:43 [main] WalletActivityTracker - activity lifecycle: app started
+16:50:43 [main] WalletActivityTracker - activity lifecycle: activity OnboardingActivity created
+16:50:43 [main] WalletActivityTracker - activity lifecycle: current: OnboardingActivity, activities: 1 visible: 0 foreground: 0
+16:50:43 [main] WalletActivityTracker - activity lifecycle: current: OnboardingActivity, activities: 1 visible: 1 foreground: 0
+16:50:43 [main] WalletActivityTracker - activity lifecycle: current: OnboardingActivity, activities: 1 visible: 1 foreground: 1
+16:51:02 [DefaultDispatcher-worker-12] CutoverUiDataService - SDK balance snapshot re-read failed
+java.lang.IllegalStateException: SDK wallet not loaded for native balance read
+	at de.schildbach.wallet.service.platform.sdk.DashSdkCutoverUiSource.currentBalanceSplitDuffs(CutoverUiDataService.kt:1401)
+	at de.schildbach.wallet.service.platform.sdk.CutoverUiDataService.refreshNativeSplit(CutoverUiDataService.kt:2659)
+	at de.schildbach.wallet.service.platform.sdk.CutoverUiDataService.access$refreshNativeSplit(CutoverUiDataService.kt:1732)
+	at de.schildbach.wallet.service.platform.sdk.CutoverUiDataService$balancePipeline$2$5$2.emit(CutoverUiDataService.kt:2592)
+	at de.schildbach.wallet.service.platform.sdk.CutoverUiDataService$balancePipeline$2$5$2.emit(CutoverUiDataService.kt:2583)
+	at kotlinx.coroutines.flow.FlowKt__ChannelsKt.emitAllImpl$FlowKt__ChannelsKt(Channels.kt:33)
+	at kotlinx.coroutines.flow.FlowKt__ChannelsKt.access$emitAllImpl$FlowKt__ChannelsKt(Channels.kt:1)
+	at kotlinx.coroutines.flow.FlowKt__ChannelsKt$emitAllImpl$1.invokeSuspend(Channels.kt:0)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:586)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:829)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:717)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:704)

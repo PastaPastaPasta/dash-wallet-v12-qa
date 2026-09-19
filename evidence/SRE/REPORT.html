@@ -1,0 +1,362 @@
+<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Stream SRE report</title><style>body{font-family:system-ui,-apple-system,sans-serif;max-width:1400px;margin:0 auto;padding:16px 24px;line-height:1.45;background:#fff;color:#111}
+table{border-collapse:collapse;font-size:13px;margin:12px 0}th,td{border:1px solid #ddd;padding:4px 8px;vertical-align:top;text-align:left}th{background:#f3f6fa;position:sticky;top:0}
+tr:nth-child(even){background:#fafbfc}code{background:#f4f4f4;padding:1px 4px;border-radius:3px;font-size:12px}pre{background:#f4f4f4;padding:10px;overflow:auto}
+h1{border-bottom:3px solid #008de4}h2{border-bottom:1px solid #ccc;margin-top:40px}a{color:#008de4}a.ev{background:#e8f4fd;padding:0 3px;border-radius:3px;font-family:ui-monospace,monospace;font-size:12px}
+nav.top{background:#012060;color:#fff;padding:8px 24px;margin:-16px -24px 16px;position:sticky;top:0;z-index:5}nav.top a{color:#fff;margin-right:18px;text-decoration:none}nav.top a:hover{text-decoration:underline}
+.S1{color:#b00020;font-weight:bold}.S2{color:#c75000;font-weight:bold}.toc{background:#f8f9fb;border:1px solid #e3e6ea;padding:8px 16px;font-size:13px;columns:2}.toc ul{margin:2px 0;padding-left:16px}
+#lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:50;align-items:center;justify-content:center;flex-direction:column}#lb.on{display:flex}#lb img{max-width:96vw;max-height:88vh;border:2px solid #fff;box-shadow:0 0 30px #000}#lb .cap{color:#eee;font:13px ui-monospace,monospace;margin-top:8px}#lb .cap a{color:#8cf}#lb .x{position:absolute;top:10px;right:18px;color:#fff;font-size:30px;cursor:pointer}#lb .nv{position:absolute;top:50%;color:#fff;font-size:44px;cursor:pointer;padding:0 16px;user-select:none}#lb .pv{left:0}#lb .nx{right:0}a.img img{cursor:zoom-in}
+sup.more a{margin:0 2px;font-size:10px}
+thead.sortable th.asc::after{content:' \25B2';font-size:9px}thead.sortable th.desc::after{content:' \25BC';font-size:9px}
+tr[data-sev=S1] td:nth-child(2){background:#fde7e9}tr[data-sev=S2] td:nth-child(2){background:#fff1e0}
+a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:target{background:#fff3b0;outline:2px solid #f5b400}
+.note{background:#fff8e1;border-left:4px solid #f5b400;padding:8px 12px;margin:12px 0}
+</style><nav class=top><a href="../../index.html">Home</a><a href="../../QA-REPORT.html">Full report</a><a href="../../EXEC-SUMMARY.html">Executive summary</a><a href="../../STORY-MATRIX.html">User-story matrix</a><a href="../../DEFECT-LEDGER.html">Defect register</a><a href="../index.html">Evidence gallery</a><a href="../../QA-PLAN.html">Test plan</a><a href="../../streams.html">Stream reports</a></nav><h1 id="qa-stream-sre-device-reproduction-of-sr-01-sr-15-sr-35-sr-40">QA stream SRE — device reproduction of SR-01 / SR-15 / SR-35 / SR-40</h1>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Emulators</td>
+<td><strong>emulator-5562</strong> (<code>dw-qa5</code>, Android 15 / API 35) — <a class=did href="../../DEFECT-LEDGER.html#SR-01">SR-01</a>/15/35; <strong>emulator-5564</strong> (<code>dw-api31</code>, Android 12 / API 31) — <a class=did href="../../DEFECT-LEDGER.html#SR-40">SR-40</a></td>
+</tr>
+<tr>
+<td>Build under test</td>
+<td><code>fix-12.0.0-testnet3-release-signed.apk</code>, versionName 12.0.0, <strong>versionCode 12000000</strong>, minSdk 29, targetSdk 35</td>
+</tr>
+<tr>
+<td>Baseline</td>
+<td><code>master-11.9.0-testnet3-release-signed.apk</code>, <strong>versionCode 11090002</strong></td>
+</tr>
+<tr>
+<td>Package / uid</td>
+<td><code>hashengineering.darkcoin.wallet_test</code>, app uid 10208 on 5562</td>
+</tr>
+<tr>
+<td>Seeds</td>
+<td>5562: reference seed <code>job flower agree lyrics industry note boost finger buddy dog exact fat</code> — <strong>READ-ONLY, nothing sent, no username, no shield</strong>. 5564: two throwaway on-device wallets. PIN 1234.</td>
+</tr>
+<tr>
+<td>Start / end</td>
+<td>2026-09-19 11:37 → 12:30 host (America/Chicago)</td>
+</tr>
+<tr>
+<td>Clock note</td>
+<td><strong>5562's device clock runs host + 5 h</strong> (host 11:54 = <a class=ev href="../SRE/SR-01/logs-final/files/log/wallet.log">wallet.log</a> 16:54). <a class=ev href="../SRE/SR-01/logs-final/files/log/wallet.log">wallet.log</a> quotes are device time; narrative is host time. 5564 matches host.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="summary-table">Summary table</h2>
+<table>
+<thead>
+<tr>
+<th>SR-id</th>
+<th>Verdict</th>
+<th>What I did</th>
+<th>Decisive evidence</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><a class=did href="../../DEFECT-LEDGER.html#SR-01">SR-01</a></strong></td>
+<td><strong>REPRODUCED (S1)</strong></td>
+<td>Fresh-restored the reference seed on API 35, let the filter scan reach 99.3 %, froze the cursor <strong>behind target</strong> with <code>iptables -m owner --uid-owner 10208 -j DROP</code>, held 8 m 30 s → watchdog fired → restored the network and watched 20 more min.</td>
+<td><a class=ev href="../SRE/SR-01/20-watchdog-fire-context.txt">SR-01/20-watchdog-fire-context.txt</a>, <a class=ev href="../SRE/SR-01/timeline.txt">SR-01/timeline.txt</a>, <a class=ev href="../SRE/SR-01/26-revival-attempts.txt">SR-01/26-revival-attempts.txt</a>, <a class=ev href="../SRE/SR-01/28-home-header-frozen-final.webp">SR-01/28-home-header-frozen-final.png</a>, <a class=ev href="../SRE/SR-01/logs-final/files/log/wallet.log">SR-01/logs-final/files/log/wallet.log</a></td>
+<td>Confirmed, and <strong>worse than <a class=did href="../../DEFECT-LEDGER.html#SR-01">SR-01</a> described</strong>: <code>stop()</code> itself fails, the restart is <em>declined</em>, the watchdog loop dies permanently. Only force-stop recovers.</td>
+</tr>
+<tr>
+<td><strong><a class=did href="../../DEFECT-LEDGER.html#SR-15">SR-15</a></strong></td>
+<td><strong>PARTIAL</strong></td>
+<td>Measured filter height at stop vs. next start.</td>
+<td><a class=ev href="../SRE/SR-15/01-rewalk.txt">SR-15/01-rewalk.txt</a></td>
+<td>Watchdog path unmeasurable (it never starts anything). On the process-relaunch path: stop at <strong>1,555,000</strong>, resume at <strong>1,532,170</strong> → <strong>22,830 blocks re-walked</strong>, caught up in <strong>19 s</strong>. Not 155,000 here, but real. The stop-time WARN that was meant to quantify this printed <code>durable syncedHeight=unknown</code>.</td>
+</tr>
+<tr>
+<td><strong><a class=did href="../../DEFECT-LEDGER.html#SR-35">SR-35</a></strong></td>
+<td><strong>REPRODUCED, differently — raise S3 → S2</strong></td>
+<td>Held the stall 22 min past the first watchdog fire, counted watchdog lines.</td>
+<td><a class=ev href="../SRE/SR-35/07-no-exhausted.txt">SR-35/07-no-exhausted.txt</a>, <a class=ev href="../SRE/SR-35/06-network-monitor.webp">SR-35/06-network-monitor.png</a></td>
+<td><code>EXHAUSTED</code> is <strong>unreachable</strong>: <strong>2</strong> <code>filter-stall watchdog</code> lines, <strong>0</strong> <code>standing down</code> lines in the whole log. Restarts #2/#3 and the EXHAUSTED log can never happen.</td>
+</tr>
+<tr>
+<td><strong><a class=did href="../../DEFECT-LEDGER.html#SR-40">SR-40</a></strong></td>
+<td><strong>REPRODUCED (API ≤ 32 only) — PRE-EXISTING</strong></td>
+<td><code>am broadcast -a InteractionAwareActivity.FORCE_FINISH_ACTION</code> from <strong>unprivileged uid 2000</strong> vs <code>VerifySeedActivity</code> on API 31, each with a 20 s no-broadcast baseline; then same on API 35 and on master 11.9.0.</td>
+<td><a class=ev href="../SRE/SR-40/11-api31-unprivileged-uid2000.txt">SR-40/11-api31-unprivileged-uid2000.txt</a>, <a class=ev href="../SRE/SR-40/18-api35-unprivileged-control.txt">SR-40/18-api35-unprivileged-control.txt</a>, <a class=ev href="../SRE/SR-40/15-api31-MASTER-11.9.0.txt">SR-40/15-api31-MASTER-11.9.0.txt</a>, <a class=ev href="../SRE/SR-40/sr40-api31-unpriv.mp4">SR-40/sr40-api31-unpriv.mp4</a></td>
+<td>API 31: activity <strong>finished</strong>. API 35, same sender: <strong>survives</strong>. Master on API 31: finished → pre-existing. <strong>Impact statement needs correcting — see below.</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="sr-01-the-watchdog-stops-the-engine-and-can-never-restart-it">SR-01 — the watchdog stops the engine and can never restart it</h2>
+<p><strong>How the stall was produced (no code changes).</strong> Fresh install; restored the reference seed with <strong>no creation date</strong> so the SDK scans the full chain. The scan ran <code>filters 5999 → 100000 → 395000 → 1070000 → 1350000 → 1525000</code> in ~4 min.</p>
+<ul>
+<li><strong>What did NOT work:</strong> <code>iptables -A OUTPUT -p tcp --dport 19999 -j DROP</code> at 11:50:01 — the cursor kept climbing 395,000 → 1,350,000. Record this for the next agent.</li>
+<li><strong>What did work</strong> (11:53:01) — leaves every socket ESTABLISHED and does not flip Android's connectivity state:
+  <code>iptables  -I OUTPUT 1 -m owner --uid-owner 10208 -j DROP
+  ip6tables -I OUTPUT 1 -m owner --uid-owner 10208 -j DROP</code></li>
+<li>Last advance: <code>16:54:34 … L1Shadow phase=CONNECTING 100.0% headers 1556859/1556859 filters 1555000/1556858 wallet 1555000</code> — <strong>1,858 blocks short</strong>, exactly the 99 %-forever shape.</li>
+</ul>
+<p><strong>The watchdog fired and self-destructed.</strong> Host 12:03:04 / device 17:03:04, verbatim from <a class=ev href="../SRE/SR-01/logs-final/files/log/wallet.log">SR-01/logs-final/files/log/wallet.log</a> lines 3347-3358:</p>
+<pre><code>17:03:04 L1ShadowSyncService - L1Shadow filter-stall watchdog: the filter cursor has sat at 1555000 of 1556858 (1858 blocks short) for over 10 minutes while the engine is running — restarting the SPV engine. Known shape (MO-1022): every filter stored, a few matched blocks never delivered, the download coordinator out of retries.
+17:03:04 L1ShadowSyncService - failed to stop the shadow SPV client
+kotlinx.coroutines.JobCancellationException: StandaloneCoroutine was cancelled
+17:03:04 L1ShadowSyncService - L1Shadow wallet-event tap cancelled (StandaloneCoroutine was cancelled)
+17:03:04 L1ShadowSyncService - L1Shadow progress monitor cancelled (StandaloneCoroutine was cancelled)
+17:03:04 L1ShadowSyncService - L1Shadow parity probe loop cancelled (StandaloneCoroutine was cancelled)
+17:03:04 L1ShadowSyncService - L1ShadowLifecycle watermark at stop: durable syncedHeight=unknown committed cursor=1555000 filter=1555000
+17:03:04 L1ShadowSyncService - L1ShadowLifecycle STOPPED after 15m0s up; all four loops torn down (progress monitor, parity probe, watchdog, wallet-event tap); teardown #1 this process. Nothing runs until the next startIfEnabled().
+17:03:04 L1ShadowSyncService - failed to read USE_KOTLIN_SDK_L1_SHADOW; treating as off
+kotlinx.coroutines.JobCancellationException: StandaloneCoroutine was cancelled
+17:03:04 L1ShadowSyncService - L1Shadow filter-stall watchdog: engine restart declined to start (was stuck at 1555000)
+17:03:04 L1ShadowSyncService - L1Shadow probe watchdog cancelled (StandaloneCoroutine was cancelled)
+</code></pre>
+<p>Three independent confirmations, all caused by <code>watchdogJob?.cancel()</code> in <code>stop()</code> (<code>wt-fix/wallet/src/de/schildbach/wallet/service/platform/sdk/L1ShadowSyncService.kt:2320-2333</code>) cancelling the very coroutine <code>checkFilterStall()</code> (<code>:2778-2814</code>, driven by <code>watchdogLoop()</code> <code>:2713-2724</code>) is running on:</p>
+<ol>
+<li><strong><code>failed to stop the shadow SPV client</code></strong> — <code>source.stopSpv()</code> threw on the cancelled coroutine, so the native SPV client was <em>not</em> cleanly torn down even though the service marked itself STOPPED.</li>
+<li><strong><code>failed to read USE_KOTLIN_SDK_L1_SHADOW; treating as off</code></strong> — the restart <em>did</em> reach <code>startIfEnabled()</code>, but its first statement is <code>isEnabled()</code> (<code>:3396-3401</code>):
+   <code>kotlin
+   private suspend fun isEnabled(): Boolean = try {
+       dashPayConfig.get(DashPayConfig.USE_KOTLIN_SDK_L1_SHADOW) == true
+   } catch (e: Exception) {
+       log.warn("failed to read USE_KOTLIN_SDK_L1_SHADOW; treating as off", e)
+       false
+   }</code>
+   <code>CancellationException</code> <strong>is</strong> an <code>Exception</code>, so the cancellation is swallowed and becomes <em>"the feature is off"</em> → <code>startIfEnabled()</code> returns <code>false</code> → <code>"declined to start"</code>.</li>
+<li><strong><code>L1Shadow probe watchdog cancelled</code></strong> — the loop itself is gone.</li>
+</ol>
+<p>So <a class=did href="../../DEFECT-LEDGER.html#SR-01">SR-01</a>'s predicted <em>outcome</em> is exactly right; the precise mechanism is that <code>stop()</code> poisons the coroutine and <code>isEnabled()</code>'s broad catch converts the poison into a silent, INFO-level "declined to start". Nothing in the log says the wallet just lost its sync engine for the process lifetime.</p>
+<p><strong>After the network came back — nothing.</strong> Restored 12:05:52 (all rules deleted, <code>ping</code> OK, the red banner disappeared). <strong>Zero</strong> <code>L1Shadow</code>/<code>L1 shadow</code> lines between 17:03:04 and the force-stop at 12:22 — 19 minutes, healthy network for the last 16.</p>
+<table>
+<thead>
+<tr>
+<th>Revival attempt</th>
+<th>Host time</th>
+<th>Restarted?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Auto-logout → lock screen → PIN unlock</td>
+<td>12:15–12:16</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Settings › Security › Change PIN (<code>SetPinActivity</code>), full PIN re-auth</td>
+<td>12:10, 12:19</td>
+<td>No</td>
+</tr>
+<tr>
+<td>HOME (background) 20 s → foreground</td>
+<td>12:16:26</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Screen off 15 s → on → PIN unlock</td>
+<td>12:17:13</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Tools › Network monitor / Settings / About browsing</td>
+<td>12:20–12:21</td>
+<td>No</td>
+</tr>
+<tr>
+<td><strong><code>am force-stop</code> + relaunch + PIN</strong></td>
+<td><strong>12:22–12:25</strong></td>
+<td><strong>Yes</strong> — <code>17:24:36 L1 shadow SPV started …</code>; <code>17:24:55 phase=SYNCED 100.0% … 1556870/1556870</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="minute-by-minute-watchdog-timeline">Minute-by-minute watchdog timeline</h3>
+<p>Sampled every 60 s into <a class=ev href="../SRE/SR-01/timeline.txt">SR-01/timeline.txt</a>, one screenshot per sample in <a class=ev href="../index.html#SRE-SR-01">SR-01/shots/</a> (37 + 37).</p>
+<table>
+<thead>
+<tr>
+<th>Host time</th>
+<th>filters / target</th>
+<th>Event</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>11:50:01</td>
+<td>395,000 / 1,556,857</td>
+<td>DROP tcp/19999 applied — <strong>no stall</strong>, cursor keeps climbing</td>
+</tr>
+<tr>
+<td>11:52:02</td>
+<td>1,070,000 / 1,556,858</td>
+<td>still climbing</td>
+</tr>
+<tr>
+<td>11:53:01</td>
+<td>—</td>
+<td><strong>per-uid DROP applied (10208)</strong></td>
+</tr>
+<tr>
+<td>11:53:03</td>
+<td>1,525,000 / 1,556,858</td>
+<td>99.3 %</td>
+</tr>
+<tr>
+<td>11:54:34</td>
+<td><strong>1,555,000 / 1,556,858</strong></td>
+<td><strong>last advance — 1,858 short. Stall clock starts.</strong></td>
+</tr>
+<tr>
+<td>11:55–12:02</td>
+<td>1,555,000 / 1,556,858</td>
+<td>frozen (8 samples)</td>
+</tr>
+<tr>
+<td><strong>12:03:09</strong></td>
+<td>1,555,000 / 1,556,858</td>
+<td><strong>watchdog fires</strong> → <code>STOPPED</code> → <code>engine restart declined to start</code></td>
+</tr>
+<tr>
+<td>12:04–12:05</td>
+<td>1,555,000 / 1,556,858</td>
+<td>frozen, no engine</td>
+</tr>
+<tr>
+<td><strong>12:05:52</strong></td>
+<td>—</td>
+<td><strong>network fully restored</strong></td>
+</tr>
+<tr>
+<td>12:06–12:08</td>
+<td>1,555,000 / 1,556,858</td>
+<td>no restart, no watchdog tick</td>
+</tr>
+<tr>
+<td>12:09–12:10</td>
+<td>(blank)</td>
+<td><code>adb unroot</code> window for the <a class=did href="../../DEFECT-LEDGER.html#SR-40">SR-40</a> API-35 control; app untouched, log empty in this window too</td>
+</tr>
+<tr>
+<td>12:11–12:16</td>
+<td>1,555,000 / 1,556,858</td>
+<td>bg/fg, lock/unlock, PIN auth all fail to revive</td>
+</tr>
+<tr>
+<td>12:17–12:24</td>
+<td>1,555,000 / 1,556,858</td>
+<td>still dead, 18 min after network returned</td>
+</tr>
+<tr>
+<td>12:22:11</td>
+<td>—</td>
+<td><strong>force-stop + relaunch</strong></td>
+</tr>
+<tr>
+<td>12:25:22</td>
+<td><strong>1,556,870 / 1,556,870</strong></td>
+<td>SYNCED</td>
+</tr>
+</tbody>
+</table>
+<p><strong>What the user sees</strong> (<a class=ev href="../SRE/SR-01/28-home-header-frozen-final.webp">SR-01/28-home-header-frozen-final.png</a>, 12:21, network healthy for 15 min): a normal-looking wallet with <strong>no error banner</strong>, showing <strong>"Syncing balance"</strong>, <strong>"Syncing…"</strong>, and <strong>107.081735 tDASH</strong>, frozen forever. No warning, no in-app control that restarts the engine. The only escape is knowing to force-stop from Android Settings. <strong>S1.</strong></p>
+<h2 id="sr-15-cost-of-a-restart">SR-15 — cost of a restart</h2>
+<p>From <a class=ev href="../SRE/SR-15/01-rewalk.txt">SR-15/01-rewalk.txt</a>:</p>
+<pre><code>17:03:04 L1ShadowLifecycle watermark at stop: durable syncedHeight=unknown committed cursor=1555000 filter=1555000
+17:24:36 L1 shadow SPV started for SDK wallet b7118ed5… (dataDir=…/l1_shadow_spv/testnet, default peer discovery)
+17:24:36 L1Shadow phase=CONNECTING 99.5% headers 1556868/1556865 filters 1532170/1556868 wallet 1556868
+17:24:55 L1Shadow phase=SYNCED 100.0% headers 1556870/1556870 filters 1556870/1556870 wallet 1556870
+</code></pre>
+<p>Re-walk <strong>22,830 blocks</strong> (1,555,000 → 1,532,170), caught up in <strong>19 s</strong> on a warm store. Real, but an order of magnitude below <a class=did href="../../DEFECT-LEDGER.html#SR-15">SR-15</a>'s 155,000 on this wallet. Supporting point for <a class=did href="../../DEFECT-LEDGER.html#SR-15">SR-15</a>'s diagnostic complaint: the watermark line printed <code>durable syncedHeight=unknown</code> because <code>sdkWalletSyncedHeight()</code> was also called on the cancelled coroutine — <strong>the one diagnostic meant to quantify this cost is silently disabled by the <a class=did href="../../DEFECT-LEDGER.html#SR-01">SR-01</a> bug.</strong></p>
+<h2 id="sr-35-the-exhausted-stand-down-is-unreachable">SR-35 — the EXHAUSTED stand-down is unreachable</h2>
+<p>After 22 min of continuous stall past the first fire (<a class=ev href="../SRE/SR-35/07-no-exhausted.txt">SR-35/07-no-exhausted.txt</a>):</p>
+<pre><code>grep -c 'filter-stall watchdog' wallet.log  -&gt;  2
+grep -c 'standing down'         wallet.log  -&gt;  0
+</code></pre>
+<p>The two hits are the single RESTART line and the single "declined to start" line. <code>watchdogLoop()</code> never ticks again, so <code>FilterStallWatchdogDecider.onCheck</code> is never called a second time, <code>FILTER_STALL_MAX_RESTARTS = 3</code> can never be consumed, and the EXHAUSTED branch (<code>:2806-2814</code>) is <strong>dead code on this path</strong>.</p>
+<p>UI surface: home header says only "Syncing balance" / "Syncing…". <code>Tools › Network monitor</code> (<a class=ev href="../SRE/SR-35/06-network-monitor.webp">SR-35/06-network-monitor.png</a>) is the only place that admits it — <strong>"Not started"</strong>, <strong>"Network engine not started"</strong>, <strong>99 %</strong>, <code>Block filters —</code> — buried three levels deep in diagnostics with no restart action. <strong>Raise S3 → S2</strong>: the give-up path doesn't merely go unsurfaced, it doesn't run at all, which is what makes <a class=did href="../../DEFECT-LEDGER.html#SR-01">SR-01</a> permanent.</p>
+<h2 id="sr-40-exported-force-finish-receiver-on-api-32">SR-40 — exported force-finish receiver on API ≤ 32</h2>
+<p><strong>Correction to the impact statement.</strong> The SR row says "any app can force-finish <em>the wallet activity</em>". The receiver is registered in <code>InteractionAwareActivity.onCreate</code> (<code>wt-fix/common/src/main/java/org/dash/wallet/common/InteractionAwareActivity.java:36-42</code>) and only <strong>three</strong> activities extend it:
+- <code>wallet/src/de/schildbach/wallet/ui/SetPinActivity.kt:54</code>
+- <code>wallet/src/de/schildbach/wallet/ui/verify/VerifySeedActivity.kt:35</code>
+- <code>integrations/uphold/src/main/java/org/dash/wallet/integrations/uphold/ui/UpholdTransferActivity.kt:55</code></p>
+<p><code>MainActivity</code> does <strong>not</strong> (<code>MainActivity : AbstractBindServiceActivity</code> → … → <code>LockScreenActivity : SecureActivity</code>, a <em>sibling</em> of <code>InteractionAwareActivity</code>). Verified on device: broadcasting with the home screen resumed did nothing (<a class=ev href="../SRE/SR-40/06-broadcast-home.txt">SR-40/06-broadcast-home.txt</a>). <strong>The home screen, the Send screen and the lock screen are not affected.</strong> The reachable targets are the set-PIN screen, the recovery-phrase screen and the Uphold transfer screen — narrower than stated, but those are the three security/money-sensitive flows.</p>
+<p><strong>API 31 — reproduced from an unprivileged uid</strong> (<a class=ev href="../SRE/SR-40/11-api31-unprivileged-uid2000.txt">SR-40/11-api31-unprivileged-uid2000.txt</a>, video <a class=ev href="../SRE/SR-40/sr40-api31-unpriv.mp4">SR-40/sr40-api31-unpriv.mp4</a>):</p>
+<pre><code>uid=2000(shell) gid=2000(shell) … context=u:r:shell:s0
+=== BEFORE ===  mResumedActivity: …/de.schildbach.wallet.ui.verify.VerifySeedActivity t13
+                  * Hist #1: …VerifySeedActivity t13
+                  * Hist #0: …MainActivity t13
+=== am broadcast -a InteractionAwareActivity.FORCE_FINISH_ACTION ===
+Broadcasting: Intent { act=InteractionAwareActivity.FORCE_FINISH_ACTION flg=0x400000 }
+Broadcast completed: result=0
+=== AFTER ===   mResumedActivity: …/de.schildbach.wallet.ui.main.MainActivity t13
+                  * Hist #0: …MainActivity t13
+</code></pre>
+<p>Every run first waited 20 s with <strong>no</strong> broadcast and confirmed the activity was still resumed, excluding auto-logout.</p>
+<p><strong>API 35 — control passes, same sender</strong> (<a class=ev href="../SRE/SR-40/18-api35-unprivileged-control.txt">SR-40/18-api35-unprivileged-control.txt</a>): <code>SetPinActivity</code> still resumed at T+5 s and T+15 s after the broadcast. The platform enforces <code>RECEIVER_NOT_EXPORTED</code> from API 33, so the API-26 gate is the only thing missing on 29–32.</p>
+<p><strong>Methodology warning.</strong> My first API-35 attempt used a <strong>rooted</strong> shell (uid 0) and the activity <em>did</em> finish (<a class=ev href="../SRE/SR-40/13-api35-control.txt">SR-40/13-api35-control.txt</a>). Shell/root broadcasts carry <code>FLAG_RECEIVER_FROM_SHELL</code> (<code>flg=0x400000</code>) and bypass the not-exported check, producing a <strong>false positive on every API level</strong>. <code>adb unroot</code> first; the dumpsys record shows <code>caller=null null pid=6425 uid=0</code>.</p>
+<p><strong>Master 11.9.0 — pre-existing</strong> (<a class=ev href="../SRE/SR-40/15-api31-MASTER-11.9.0.txt">SR-40/15-api31-MASTER-11.9.0.txt</a>): identical result on API 31 with the same unprivileged sender. <code>wt-master/…/InteractionAwareActivity.java</code> has the same <code>SDK_INT &gt;= Build.VERSION_CODES.O</code> gate. <strong>Not a 12.0.0 regression.</strong></p>
+<p>Severity <strong>S3</strong>. minSdk is 29, so API 29–32 is in scope. A permissionless installed app can repeatedly dismiss the recovery-phrase backup screen, the set/change-PIN screen and the Uphold transfer screen — denial of the backup and PIN-change flows plus a way to interrupt an Uphold transfer at a chosen moment. No data disclosure. Fix is a one-line gate change to <code>Build.VERSION_CODES.TIRAMISU</code> (33).</p>
+<h2 id="new-findings">New findings</h2>
+<table>
+<thead class=sortable>
+<tr>
+<th>ID</th>
+<th>Sev</th>
+<th>Finding</th>
+<th>Evidence</th>
+</tr>
+</thead>
+<tbody><tr data-sev="S2" data-idx="0">
+<td>SRE-N1</td>
+<td><strong>S2</strong></td>
+<td><code>isEnabled()</code> (<code>L1ShadowSyncService.kt:3396-3401</code>) catches <code>Exception</code>, which includes <code>CancellationException</code>, converting a cancelled coroutine into <strong>"the L1 SDK engine feature is off"</strong>. Proximate cause of <a class=did href="../../DEFECT-LEDGER.html#SR-01">SR-01</a>'s "declined to start". Fix: rethrow <code>CancellationException</code> (the codebase already does this correctly in <code>startIfEnabled</code>'s outer catch and in <code>watchdogLoop</code>).</td>
+<td><a class=ev href="../SRE/SR-01/20-watchdog-fire-context.txt">SR-01/20-watchdog-fire-context.txt</a></td>
+</tr>
+<tr data-sev="S2" data-idx="1">
+<td>SRE-N2</td>
+<td><strong>S2</strong></td>
+<td><code>stop()</code> logs <code>failed to stop the shadow SPV client</code> + <code>JobCancellationException</code> — the native Rust SPV client's teardown was skipped while the service marked itself STOPPED, so lifecycle state diverges from reality.</td>
+<td>same file, lines 3348-3349</td>
+</tr>
+<tr data-sev="S3" data-idx="2">
+<td>SRE-N3</td>
+<td>S3</td>
+<td>Reference wallet settles at <strong>107.081735 tDASH</strong> after a full fresh restore and confirmed <code>phase=SYNCED 100.0%</code>, not the <strong>107.43173749</strong> in the brief. Difference 0.35000249 matches a visible "Sent −0.350002 / 05 September" row. Possibly a stale expected value rather than an app defect — flagging for another stream to reconcile. I did not spend from this wallet.</td>
+<td><a class=ev href="../SRE/SR-01/29-after-forcestop-synced.webp">SR-01/29-after-forcestop-synced.png</a></td>
+</tr>
+<tr data-sev="S4" data-idx="3">
+<td>SRE-N4</td>
+<td>S4</td>
+<td>History content <strong>changes</strong> between the stalled and synced renders: 12:21 shows "15 August: Sent −0.012302 / Received +0.001", 12:26 shows "Received +0.987708" for the same date. Probably input merging, but the intermediate render is misleading.</td>
+<td><code>SR-01/28-…png</code> vs <code>SR-01/29-…png</code></td>
+</tr>
+<tr data-sev="info" data-idx="4">
+<td>SRE-N5</td>
+<td>info</td>
+<td><strong>Contradicts <a class=did href="../../DEFECT-LEDGER.html#D-070">D-070</a>:</strong> offline <em>is</em> surfaced while the engine runs — a red "Unable to connect to the Dash network / Check your connection" banner appeared during the cut. But once the watchdog kills the engine the banner <strong>disappears</strong> (network is back) and the permanently-dead state looks perfectly healthy. That is what makes <a class=did href="../../DEFECT-LEDGER.html#SR-01">SR-01</a> invisible to users.</td>
+<td><a class=ev href="../SRE/SR-01/15-home-stalled.webp">SR-01/15-home-stalled.png</a></td>
+</tr></tbody>
+</table>
+<h2 id="environment-problems-harness-notes">Environment problems / harness notes</h2>
+<ul>
+<li><strong>Both assigned emulators were not running at hand-off</strong> (<code>dw-qa5</code>, <code>dw-api31</code> absent from <code>adb devices</code>); I started them headless myself.</li>
+<li><code>$APP &lt;serial&gt; text 1234</code> does not drive the app's PIN pad — tap digits by resource-id (matches SRB's 12:15 note).</li>
+<li><code>$APP &lt;serial&gt; launch</code> (monkey) frequently fails to start the app; <code>am start -n &lt;pkg&gt;/de.schildbach.wallet.ui.OnboardingActivity</code> works.</li>
+<li>Piping <code>adb shell dumpsys activity activities</code> into a host-side <code>grep</code> truncates with "Broken pipe" on API 35 — run the <code>grep</code> <strong>inside</strong> the <code>adb shell</code> string.</li>
+<li><code>iptables -m owner --uid-owner &lt;uid&gt; -j DROP</code> is the reliable way to freeze the SDK SPV engine while leaving Android's connectivity state untouched. Blocking tcp/19999 alone does <strong>not</strong> stall it.</li>
+<li>5562 left rooted, iptables/ip6tables clean, app synced. 5564 currently has master 11.9.0 installed with a throwaway wallet.</li>
+</ul><div id=lb><span class=x>&times;</span><span class="nv pv">&#8249;</span><span class="nv nx">&#8250;</span><img><div class=cap></div></div>
+<script>(function(){var lb=document.getElementById('lb'),im=lb.querySelector('img'),cap=lb.querySelector('.cap'),L=[],i=0;
+function links(){return Array.prototype.slice.call(document.querySelectorAll('a[href$=".webp"],a[href$=".png"]'))}
+function show(n){L=links();if(n<0||n>=L.length)return;i=n;var a=L[i];im.src=a.href;cap.innerHTML=(a.textContent.trim()||a.href.split('/').slice(-3).join('/'))+' &nbsp;('+(i+1)+'/'+L.length+') &nbsp;<a href="'+a.href+'" target=_blank rel=noopener>open file</a>';lb.classList.add('on')}
+function hide(){lb.classList.remove('on');im.src=''}
+document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".webp"],a[href$=".png"]');if(a&&!a.closest('#lb')){e.preventDefault();show(links().indexOf(a))}});
+lb.querySelector('.x').onclick=hide;lb.querySelector('.pv').onclick=function(e){e.stopPropagation();show(i-1)};lb.querySelector('.nx').onclick=function(e){e.stopPropagation();show(i+1)};
+lb.addEventListener('click',function(e){if(e.target===lb||e.target===im)hide()});
+document.addEventListener('keydown',function(e){if(!lb.classList.contains('on'))return;if(e.key==='Escape')hide();if(e.key==='ArrowLeft')show(i-1);if(e.key==='ArrowRight')show(i+1)});})();</script><script>(function(){document.querySelectorAll('thead.sortable').forEach(function(th){var tb=th.parentNode.querySelector('tbody');var ths=th.querySelectorAll('th');
+ths.forEach(function(h,ci){h.style.cursor='pointer';h.title='click to sort';h.addEventListener('click',function(){var rows=Array.prototype.slice.call(tb.querySelectorAll('tr'));var asc=!(h.dataset.asc==='1');ths.forEach(function(x){delete x.dataset.asc;x.classList.remove('asc','desc')});h.dataset.asc=asc?'1':'0';h.classList.add(asc?'asc':'desc');
+var rank={S1:0,S2:1,S3:2,S4:3,other:4,dup:5,info:6,env:7};
+function key(r){if(ci===1)return rank[r.dataset.sev]!==undefined?rank[r.dataset.sev]:9;if(ci===0)return +r.dataset.idx;var c=r.children[ci];return c?c.textContent.trim().toLowerCase():''}
+rows.sort(function(a,b){var ka=key(a),kb=key(b);if(ka<kb)return asc?-1:1;if(ka>kb)return asc?1:-1;return (+a.dataset.idx)-(+b.dataset.idx)});rows.forEach(function(r){tb.appendChild(r)})})})})})();</script></html>

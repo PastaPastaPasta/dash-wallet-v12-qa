@@ -1,0 +1,52 @@
+07:55:10 [DefaultDispatcher-worker-6] DashSdkServiceImpl - SDK tracing file logging (INFO) at /data/user/0/hashengineering.darkcoin.wallet_test/files/sdk-logs/platform_wallet/run.log: NOT installed (subscriber already set or dir unwritable)
+07:55:10 [DefaultDispatcher-worker-13] PlatformSynchronizationService - SDK L1 engine not started from Application init — it starts from the foreground blockchain service (resume())
+07:56:54 [DefaultDispatcher-worker-4] DashSdkServiceImpl - SDK tracing file logging (INFO) at /data/user/0/hashengineering.darkcoin.wallet_test/files/sdk-logs/platform_wallet/run.log: NOT installed (subscriber already set or dir unwritable)
+07:56:54 [DefaultDispatcher-worker-1] PlatformSynchronizationService - SDK L1 engine not started from Application init — it starts from the foreground blockchain service (resume())
+07:57:01 [DefaultDispatcher-worker-16] L1ShadowSyncService - L1Parity probing suspended: the cutover is committed and the dashj engine is held, so its balance is frozen at the cutover snapshot — any comparison against it is a guaranteed MISMATCH that measures nothing. Turn on the Tools 'dashj sync (diagnostic)' toggle to un-hold dashj and resume probing.
+07:57:03 [DefaultDispatcher-worker-1] PlatformSynchronizationService - TxMetadata publish: not publishing — saveToNetwork is OFF (per-device setting; the default for a new or restored install, and it does NOT travel with the wallet)
+08:01:00 [DefaultDispatcher-worker-11] L1ShadowSyncService - L1Shadow probe watchdog cancelled (StandaloneCoroutine was cancelled)
+08:01:00 [DefaultDispatcher-worker-4] L1ShadowSyncService - L1ShadowLifecycle STOPPED after 3m58s up; all four loops torn down (progress monitor, parity probe, watchdog, wallet-event tap); teardown #1 this process. Nothing runs until the next startIfEnabled().
+08:09:40 [bootstrap] BootstrapReceiver - post-boot sync not attempted on Android 15+: a dataSync foreground service cannot be started from BOOT_COMPLETED. Syncing resumes when the app is opened.
+08:09:40 [DefaultDispatcher-worker-2] DashSdkServiceImpl - SDK tracing file logging (INFO) at /data/user/0/hashengineering.darkcoin.wallet_test/files/sdk-logs/platform_wallet/run.log: NOT installed (subscriber already set or dir unwritable)
+08:09:41 [DefaultDispatcher-worker-2] PlatformSynchronizationService - SDK L1 engine not started from Application init — it starts from the foreground blockchain service (resume())
+08:09:44 [DefaultDispatcher-worker-12] L1ShadowSyncService - L1Parity probing suspended: the cutover is committed and the dashj engine is held, so its balance is frozen at the cutover snapshot — any comparison against it is a guaranteed MISMATCH that measures nothing. Turn on the Tools 'dashj sync (diagnostic)' toggle to un-hold dashj and resume probing.
+08:09:45 [DefaultDispatcher-worker-16] PlatformSynchronizationService - TxMetadata publish: not publishing — saveToNetwork is OFF (per-device setting; the default for a new or restored install, and it does NOT travel with the wallet)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+08:12:20 [DefaultDispatcher-worker-6] ShieldedTransferExecutor - max shield auto-adjusting for L1 asset-lock fee: requested 0.99999096, reserve 2080 duffs (5 UTXOs), retrying once with 0.99997016
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+08:20:56 [DefaultDispatcher-worker-5] PlatformSynchronizationService - contact update failed 4 consecutive times — retry budget exhausted; waiting for the next external trigger (ticker/resume/contacts screen)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+08:20:56 [DefaultDispatcher-worker-4] PlatformSynchronizationService - contact update failed 5 consecutive times — retry budget exhausted; waiting for the next external trigger (ticker/resume/contacts screen)
+08:24:43 [DefaultDispatcher-worker-7] L1ShadowSyncService - L1Shadow probe watchdog cancelled (StandaloneCoroutine was cancelled)
+08:24:44 [DefaultDispatcher-worker-15] L1ShadowSyncService - L1ShadowLifecycle STOPPED after 14m59s up; all four loops torn down (progress monitor, parity probe, watchdog, wallet-event tap); teardown #1 this process. Nothing runs until the next startIfEnabled().
+08:25:57 [DefaultDispatcher-worker-4] PlatformSynchronizationService - SDK L1 engine not started from Application init — it starts from the foreground blockchain service (resume())
+08:26:16 [DefaultDispatcher-worker-3] L1ShadowSyncService - L1Parity probing suspended: the cutover is committed and the dashj engine is held, so its balance is frozen at the cutover snapshot — any comparison against it is a guaranteed MISMATCH that measures nothing. Turn on the Tools 'dashj sync (diagnostic)' toggle to un-hold dashj and resume probing.
+16:43:39 [bootstrap] BootstrapReceiver - post-boot sync not attempted on Android 15+: a dataSync foreground service cannot be started from BOOT_COMPLETED. Syncing resumes when the app is opened.
+16:43:39 [DefaultDispatcher-worker-8] DashSdkServiceImpl - SDK tracing file logging (INFO) at /data/user/0/hashengineering.darkcoin.wallet_test/files/sdk-logs/platform_wallet/run.log: NOT installed (subscriber already set or dir unwritable)
+16:43:39 [DefaultDispatcher-worker-1] PlatformSynchronizationService - SDK L1 engine not started from Application init — it starts from the foreground blockchain service (resume())
+16:44:51 [DefaultDispatcher-worker-15] L1ShadowSyncService - L1Parity probing suspended: the cutover is committed and the dashj engine is held, so its balance is frozen at the cutover snapshot — any comparison against it is a guaranteed MISMATCH that measures nothing. Turn on the Tools 'dashj sync (diagnostic)' toggle to un-hold dashj and resume probing.
+16:44:53 [DefaultDispatcher-worker-19] PlatformSynchronizationService - TxMetadata publish: not publishing — saveToNetwork is OFF (per-device setting; the default for a new or restored install, and it does NOT travel with the wallet)
+		kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+16:57:36 [DefaultDispatcher-worker-4] ShieldedTransferExecutor - shielded transfer has no outcome after 40000 ms — surfacing Stalled (the spend keeps running; a terminal result will supersede)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+7331:07:55:04 [DefaultDispatcher-worker-4] CutoverUiDataService - SDK balance published: 99999096 duffs (was none) | l1Synced=false rescanArmedHold=false dashPayBackfill(armed=false,replaying=false) deferredContactBuilds=0 (unchangedReads=1) persistedAsLastKnown=false lastKnown=99999096
+7646:07:55:10 [DefaultDispatcher-worker-14] CutoverUiDataService - SDK balance published: 99999096 duffs (was none) | l1Synced=false rescanArmedHold=false dashPayBackfill(armed=false,replaying=false) deferredContactBuilds=0 (unchangedReads=1) persistedAsLastKnown=false lastKnown=99999096
+7919:07:56:54 [DefaultDispatcher-worker-12] CutoverUiDataService - SDK balance published: 99999096 duffs (was none) | l1Synced=false rescanArmedHold=false dashPayBackfill(armed=false,replaying=false) deferredContactBuilds=0 (unchangedReads=1) persistedAsLastKnown=false lastKnown=99999096
+8491:08:09:41 [DefaultDispatcher-worker-13] CutoverUiDataService - SDK balance published: 99999096 duffs (was none) | l1Synced=false rescanArmedHold=false dashPayBackfill(armed=false,replaying=false) deferredContactBuilds=0 (unchangedReads=1) persistedAsLastKnown=false lastKnown=99999096
+8833:08:12:20 [DefaultDispatcher-worker-6] ShieldedTransferExecutor - max shield auto-adjusting for L1 asset-lock fee: requested 0.99999096, reserve 2080 duffs (5 UTXOs), retrying once with 0.99997016
+8836:08:12:20 [DefaultDispatcher-worker-6] CutoverUiDataService - SDK balance published: 1225 duffs (was 99999096) | l1Synced=true rescanArmedHold=false dashPayBackfill(armed=false,replaying=false) deferredContactBuilds=0 (unchangedReads=3) persistedAsLastKnown=true lastKnown=99999096
+11478:08:26:01 [DefaultDispatcher-worker-4] CutoverUiDataService - SDK balance published: 0 duffs (was none) | l1Synced=false rescanArmedHold=true dashPayBackfill(armed=false,replaying=false) deferredContactBuilds=0 (unchangedReads=3) persistedAsLastKnown=false lastKnown=none
+12707:16:43:39 [DefaultDispatcher-worker-2] CutoverUiDataService - SDK balance published: 0 duffs (was none) | l1Synced=false rescanArmedHold=false dashPayBackfill(armed=false,replaying=false) deferredContactBuilds=0 (unchangedReads=1) persistedAsLastKnown=false lastKnown=0
+13005:16:46:14 [DefaultDispatcher-worker-3] CutoverUiDataService - SDK balance published: 100000000 duffs (was 0) | l1Synced=true rescanArmedHold=false dashPayBackfill(armed=false,replaying=false) deferredContactBuilds=0 (unchangedReads=3) persistedAsLastKnown=true lastKnown=0
+13221:16:51:20 [DefaultDispatcher-worker-14] CutoverUiDataService - SDK balance published: 9999737 duffs (was 100000000) | l1Synced=true rescanArmedHold=false dashPayBackfill(armed=false,replaying=false) deferredContactBuilds=0 (unchangedReads=3) persistedAsLastKnown=true lastKnown=0
+14342:16:57:36 [DefaultDispatcher-worker-4] ShieldedTransferExecutor - shielded transfer has no outcome after 40000 ms — surfacing Stalled (the spend keeps running; a terminal result will supersede)
+14463:17:00:02 [DefaultDispatcher-worker-11] CutoverUiDataService - SDK balance published: 19999737 duffs (was 9999737) | l1Synced=true rescanArmedHold=false dashPayBackfill(armed=false,replaying=false) deferredContactBuilds=0 (unchangedReads=3) persistedAsLastKnown=true lastKnown=0

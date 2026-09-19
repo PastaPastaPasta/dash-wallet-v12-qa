@@ -1,0 +1,29 @@
+### SR-40 API 31 (emulator-5564, Android 12, sdk=31) — FIX 12.0.0 (versionCode 12000000)
+### host time: 2026-09-19T11:55:58
+
+=== BEFORE broadcast: resumed activity ===
+    mResumedActivity: ActivityRecord{c40f7c1 u0 hashengineering.darkcoin.wallet_test/de.schildbach.wallet.ui.verify.VerifySeedActivity t13}
+      * Hist #1: ActivityRecord{c40f7c1 u0 hashengineering.darkcoin.wallet_test/de.schildbach.wallet.ui.verify.VerifySeedActivity t13}
+      * Hist #0: ActivityRecord{932ff58 u0 hashengineering.darkcoin.wallet_test/de.schildbach.wallet.ui.main.MainActivity t13}
+  ResumedActivity: ActivityRecord{c40f7c1 u0 hashengineering.darkcoin.wallet_test/de.schildbach.wallet.ui.verify.VerifySeedActivity t13}
+
+=== am broadcast from the adb shell uid (a DIFFERENT app/uid than the wallet) ===
+Broadcasting: Intent { act=InteractionAwareActivity.FORCE_FINISH_ACTION flg=0x400000 }
+Broadcast completed: result=0
+
+=== AFTER broadcast: resumed activity ===
+    mResumedActivity: ActivityRecord{932ff58 u0 hashengineering.darkcoin.wallet_test/de.schildbach.wallet.ui.main.MainActivity t13}
+      * Hist #0: ActivityRecord{932ff58 u0 hashengineering.darkcoin.wallet_test/de.schildbach.wallet.ui.main.MainActivity t13}
+  ResumedActivity: ActivityRecord{932ff58 u0 hashengineering.darkcoin.wallet_test/de.schildbach.wallet.ui.main.MainActivity t13}
+resource-id="hashengineering.darkcoin.wallet_test:id/action_bar_root"
+resource-id="android:id/content"
+resource-id="hashengineering.darkcoin.wallet_test:id/root_view_switcher"
+resource-id="hashengineering.darkcoin.wallet_test:id/regular_content"
+resource-id="hashengineering.darkcoin.wallet_test:id/nav_host_fragment"
+resource-id="hashengineering.darkcoin.wallet_test:id/nav_host_fragment"
+resource-id="hashengineering.darkcoin.wallet_test:id/home_content"
+resource-id="hashengineering.darkcoin.wallet_test:id/app_bar"
+resource-id="hashengineering.darkcoin.wallet_test:id/home_toolbar"
+resource-id="hashengineering.darkcoin.wallet_test:id/dash_logo"
+resource-id="hashengineering.darkcoin.wallet_test:id/wallet_balance_fragment"
+resource-id="hashengineering.darkcoin.wallet_test:id/dash_icon"

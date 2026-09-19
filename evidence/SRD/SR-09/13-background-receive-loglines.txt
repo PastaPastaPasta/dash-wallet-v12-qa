@@ -1,0 +1,20 @@
+4019:17:11:42 [DefaultDispatcher-worker-12] BlockchainServiceImpl - network capabilities changed: 101, hasInternet: true, validated: true
+4020:17:11:42 [DefaultDispatcher-worker-12] BlockchainServiceImpl - acquiring check() mutex
+4021:17:11:42 [DefaultDispatcher-worker-12] BlockchainServiceImpl - check()
+4022:17:11:42 [DefaultDispatcher-worker-12] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+4023:17:11:42 [DefaultDispatcher-worker-12] BlockchainServiceImpl - releasing check() mutex
+4024:17:11:45 [DefaultDispatcher-worker-10] BlockchainServiceImpl - network capabilities changed: 101, hasInternet: true, validated: true
+4025:17:11:45 [DefaultDispatcher-worker-10] BlockchainServiceImpl - acquiring check() mutex
+4026:17:11:45 [DefaultDispatcher-worker-10] BlockchainServiceImpl - check()
+4027:17:11:45 [DefaultDispatcher-worker-10] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+4028:17:11:45 [DefaultDispatcher-worker-10] BlockchainServiceImpl - releasing check() mutex
+4029:17:11:49 [DefaultDispatcher-worker-9] L1ShadowSyncService - L1 engine tx event: Detected(txidHex=61dd9f06d875526f683a62e754bdb171d40044a2bae674468d57789a73f79aef, netAmountDuffs=98999390, feeDuffs=null, contextCode=1, directionCode=0)
+4030:17:11:49 [DefaultDispatcher-worker-8] CutoverUiDataService - engine detected tx 61dd9f06d875526f683a62e754bdb171d40044a2bae674468d57789a73f79aef pre-block (context=1, net=98999390 duffs) — syncing display row now
+4031:17:11:49 [DefaultDispatcher-worker-6] CutoverUiDataService - SDK balance published: 193397454 duffs (was 94398064) | l1Synced=true rescanArmedHold=false dashPayBackfill(armed=false,replaying=false) deferredContactBuilds=0 (unchangedReads=3) persistedAsLastKnown=true lastKnown=94398064
+4032:17:11:49 [DefaultDispatcher-worker-7] CutoverUiDataService - cutover UI display sync: 1 SDK records → 1 inserts, 0 status updates
+4033:17:11:49 [DefaultDispatcher-worker-7] CutoverUiDataService - engine-detected receive 61dd9f06d875526f683a62e754bdb171d40044a2bae674468d57789a73f79aef (98999390 duffs) — notifying in 2000ms unless an outgoing sibling classifies it internal
+4034:17:11:49 [DefaultDispatcher-worker-9] Constants - --> GET https://rates.ctx.com/rates?source=ctx
+4035:17:11:49 [main] WalletTransactionsFragment - STARTUP submitData called on thread=main at 1789837909785
+4036:17:11:49 [DefaultDispatcher-worker-9] Constants - <-- 200 https://rates.ctx.com/rates?source=ctx (195ms, unknown-length body)
+4037:17:11:49 [DefaultDispatcher-worker-9] ExchangeRatesRepository - exchange rates updated successfully with de.schildbach.wallet.rates.DashRetailClient@6796e86
+4038:17:11:49 [DefaultDispatcher-worker-9] ExchangeRatesRepository - updateTrigger

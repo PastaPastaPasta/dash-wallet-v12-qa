@@ -1,0 +1,16 @@
+1,2c1,2
+< dash-wallet-database BEFORE downgrade (FIX 12.0.0, versionCode 12000000)  2026-09-19T11:54:47
+< pragma user_version = 22
+---
+> dash-wallet-database AFTER downgrade to MASTER 11.9.0 (versionCode 11090002)  2026-09-19T11:56:33
+> pragma user_version = 21
+19,20c19,20
+< transaction_metadata               3
+< transaction_metadata_cache         3
+---
+> transaction_metadata               1
+> transaction_metadata_cache         1
+23c23
+< tx_group_cache                     1
+---
+> tx_group_cache                     3

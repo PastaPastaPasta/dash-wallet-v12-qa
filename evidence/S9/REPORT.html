@@ -266,7 +266,7 @@ Videos: <a class=ev href="../S9/X1/x1-cycle1-send.mp4">X1/x1-cycle1-send.mp4</a>
 <td>Safe-mode screen is hidden behind the generic ACRA crash sheet; the user must Cancel a "send a crash report?" prompt before seeing <code>safe_mode_startup_message</code> and "Try Again"</td>
 <td>Two pre-milestone launch deaths (or equivalent breadcrumb state) -&gt; launch</td>
 <td><a class=ev href="../S9/X5/07-safemode-screen.webp">X5/07</a> then <a class=ev href="../S9/X5/09-safemode-message.webp">X5/09</a></td>
-<td><code>StartupBreadcrumbs</code> / crash-report dialog ordering (relates to <a class=did href="../../DEFECT-LEDGER.html#SR-35">SR-41</a>)</td>
+<td><code>StartupBreadcrumbs</code> / crash-report dialog ordering (relates to <a class=did href="../../DEFECT-LEDGER.html#SR-41">SR-41</a>)</td>
 </tr>
 <tr data-sev="S3" data-idx="4">
 <td>S9-D5</td>
@@ -274,7 +274,7 @@ Videos: <a class=ev href="../S9/X1/x1-cycle1-send.mp4">X1/x1-cycle1-send.mp4</a>
 <td>Shielded transfer screen stuck on "Shielded balance is syncing - transfers will be available shortly" for &gt;8 min, blocking Continue; only a force-stop + relaunch cleared it</td>
 <td>Fresh wallet with 1 tDASH -&gt; Join DashPay &gt; Continue &gt; Shield your funds first &gt; Max &gt; Continue</td>
 <td><a class=ev href="../S9/X7/09-shield-confirm.webp">X7/09</a>, <a class=ev href="../S9/X7/12-shield-after-continue.webp">X7/12</a>, <a class=ev href="../S9/X7/14-shield-still-syncing.webp">X7/14</a>, then <a class=ev href="../S9/X7/19-shield-continue3.webp">X7/19</a> after relaunch; log only repeats <code>ShieldedBalanceServiceImpl - shielded runtime ready ... (sync loop running)</code> every ~60 s</td>
-<td><code>ui/shielded/*</code> gating flow / <code>ShieldedBalanceServiceImpl</code> readiness signal (adjacent to <a class=did href="../../DEFECT-LEDGER.html#SR-12">SR-12</a>/<a class=did href="../SR/REPORT.html#SR-14">SR-14</a>)</td>
+<td><code>ui/shielded/*</code> gating flow / <code>ShieldedBalanceServiceImpl</code> readiness signal (adjacent to <a class=did href="../../DEFECT-LEDGER.html#SR-12">SR-12</a>/<a class=did href="../../DEFECT-LEDGER.html#SR-14">SR-14</a>)</td>
 </tr>
 <tr data-sev="S3" data-idx="5">
 <td>S9-D6</td>

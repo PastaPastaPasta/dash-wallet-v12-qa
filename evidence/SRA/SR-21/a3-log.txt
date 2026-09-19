@@ -1,0 +1,7 @@
+3:17:14:01 [main] WalletApplication - Removing all the data and restarting the app.
+13:17:14:01 [DefaultDispatcher-worker-2] BlockchainServiceImpl - Created new cleanupDeferred for coordination (previous was completed)
+31:17:14:01 [main] OnboardingActivity - reset in progress — holding onboarding until the wipe finishes
+115:17:14:02 [DefaultDispatcher-worker-9] BlockchainServiceImpl - Created new cleanupDeferred for coordination (previous was completed)
+142:17:14:02 [main] WalletApplication - removing wallet from memory during wipe
+191:17:14:04 [DefaultDispatcher-worker-7] WalletApplicationExt - databases cleared (isWalletWipe = true)
+192:17:14:04 [main] OnboardingActivity - reset finished — re-running the onboarding routing

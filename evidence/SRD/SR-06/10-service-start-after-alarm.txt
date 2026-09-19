@@ -1,0 +1,12 @@
+17:16:41 [DefaultDispatcher-worker-13] BlockchainServiceImpl - .onStartCommand(Intent { cmp=hashengineering.darkcoin.wallet_test/de.schildbach.wallet.service.BlockchainServiceImpl }) finished
+17:16:41 [main] BlockchainServiceImpl - .onStartCommand(Intent { act=de.schildbach.wallet.service.cancel_coins_received cmp=hashengineering.darkcoin.wallet_test/de.schildbach.wallet.service.BlockchainServiceImpl })
+17:16:41 [DefaultDispatcher-worker-8] BlockchainServiceImpl - onStartCommand waiting for onCreate to complete...
+17:16:41 [DefaultDispatcher-worker-8] BlockchainServiceImpl - onCreate completed, processing onStartCommand
+17:16:41 [DefaultDispatcher-worker-8] BlockchainServiceImpl - service start command: Intent { act=de.schildbach.wallet.service.cancel_coins_received cmp=hashengineering.darkcoin.wallet_test/de.schildbach.wallet.service.BlockchainServiceImpl }
+17:16:41 [DefaultDispatcher-worker-8] BlockchainServiceImpl - .onStartCommand(Intent { act=de.schildbach.wallet.service.cancel_coins_received cmp=hashengineering.darkcoin.wallet_test/de.schildbach.wallet.service.BlockchainServiceImpl }) finished
+17:40:43 [main] BlockchainServiceImpl - .onStartCommand(Intent { cmp=hashengineering.darkcoin.wallet_test/de.schildbach.wallet.service.BlockchainServiceImpl (has extras) })
+17:40:43 [DefaultDispatcher-worker-3] BlockchainServiceImpl - onStartCommand waiting for onCreate to complete...
+17:40:43 [DefaultDispatcher-worker-3] BlockchainServiceImpl - onCreate completed, processing onStartCommand
+17:40:43 [DefaultDispatcher-worker-3] BlockchainServiceImpl - service start command: Intent { cmp=hashengineering.darkcoin.wallet_test/de.schildbach.wallet.service.BlockchainServiceImpl (has extras) }
+17:40:43 [DefaultDispatcher-worker-3] BlockchainServiceImpl - .onStartCommand(Intent { cmp=hashengineering.darkcoin.wallet_test/de.schildbach.wallet.service.BlockchainServiceImpl (has extras) }) finished
+17:40:45 [DefaultDispatcher-worker-3] L1ShadowSyncService - L1 shadow SPV started for SDK wallet 27653cb6… (dataDir=/data/user/0/hashengineering.darkcoin.wallet_test/files/l1_shadow_spv/testnet, default peer discovery); debug-only instrumentation — two SPV engines are now running

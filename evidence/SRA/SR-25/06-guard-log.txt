@@ -1,0 +1,3 @@
+17:17:23:52 [main] WalletApplication - wallet file size guard: 62929882 bytes, largeHeap 576MB, soft limit 60397977 bytes -> RISKY
+53:17:23:53 [main] WalletApplication - wallet loaded from: '/data/user/0/hashengineering.darkcoin.wallet_test/files/wallet-protobuf-testnet', took 211.3 ms (0 DashPay friend chains deferred)
+74:17:23:53 [main] WalletApplication - wallet autosave debounce raised to 60000 ms for a 62929882 byte wallet file

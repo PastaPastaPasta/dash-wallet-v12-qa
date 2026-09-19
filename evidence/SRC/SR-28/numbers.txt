@@ -1,0 +1,21 @@
+SR-28 numbers (emulator-5558, FIX 12.0.0 vc12000000, cutover committed)
+
+A. Fee shown vs real fee, plain send of 0.01 DASH
+   confirm sheet "Network fee"      : 0.0001      DASH (10,000 duffs)   [01-confirm-0.01-fee-shown.png]
+   confirm sheet "Total"            : 0.0101      DASH
+   actual on-chain fee (insight)    : 0.00000226  DASH (226 duffs)      [03-explorer-tx-0.01.json]
+   overstatement                    : 44.25x      (10,000 / 226)
+   tx size 225 bytes, txid aa659fc9ab82b67a6741e3e88db4fa1e3ef45de3360d33a77e9b0db872854ccc
+
+B. Same 10,000 duffs used as the affordability gate (SendCoinsViewModel.kt:482,519)
+   spendable (Max button)           : 0.98999774  DASH   [09-max-value.png / 11-after-auth.png]
+   typed 0.98994774 (bal - 0.00005) -> field silently becomes 0.98989774   [13-typed-98994774.png]
+   typed 0.9899                     -> 0.98989774
+   typed 0.98999774 (full balance)  -> 0.98989774
+   typed 0.9899999                  -> 0.98989774
+   => every typed amount above (balance - 0.0001) is auto-adjusted DOWN to exactly
+      balance - 10,000 duffs. NO error text and NO dialog is shown; the Send button
+      stays enabled with the quietly reduced amount.
+   Mechanism: SendCoinsViewModel.kt:519 throws InsufficientMoneyException(amount+10000-maxOutput)
+      and :345-346 `val adjusted = currentAmount.subtract(missing)` lands on maxOutput-10000.
+   Funds stranded from a typed send: 10,000 - 226 = 9,774 duffs (43x the real fee).

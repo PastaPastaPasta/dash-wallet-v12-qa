@@ -97,7 +97,7 @@ CoinJoin still enabled — the state the migration detector is written for.</p>
   and the fix build re-classifies members correctly (1 CreateDenomination, 3 MakeCollateralInputs). No "Sent D 0"
   rows (<a class=did href="../../DEFECT-LEDGER.html#D-020">D-020</a> not reproduced here).
 - Settings on the fix build no longer has a CoinJoin row (<a class=ev href="../S12/CJ1/post-upgrade/06-settings-fix-no-coinjoin.webp">post-upgrade/06-settings-fix-no-coinjoin.png</a>).
-- <strong><a class=did href="../SR/REPORT.html#SR-27">SR-27</a> check.</strong> Before: <code>files/datastore/coinjoin.preferences_pb</code> = <code>coinjoin_mode=INTERMEDIATE</code>,
+- <strong><a class=did href="../../DEFECT-LEDGER.html#SR-27">SR-27</a> check.</strong> Before: <code>files/datastore/coinjoin.preferences_pb</code> = <code>coinjoin_mode=INTERMEDIATE</code>,
   <code>first_time_info_shown</code>, <code>last_mixing_progress</code>; nothing CoinJoin/privacy-related in
   <code>shared_prefs/..._preferences.xml</code>. After the upgrade the file is identical — the persisted mode is neither
   read, migrated nor cleared, simply orphaned. <code>dashpay.preferences_pb</code> contains <code>cutover_state CUT_OVER</code> but
@@ -111,7 +111,7 @@ CoinJoin still enabled — the state the migration detector is written for.</p>
 | Ex-CoinJoin coins spendable | 0.001 send succeeds | "Insufficient funds", Send disabled, on-screen "Balance: DASH 0.00", Max = 0 <strong>FAIL</strong> |
 | Ex-CoinJoin coins shieldable | shield succeeds | "This transfer was not sent" <strong>FAIL</strong> |
 | Settings CoinJoin row removed | removed | removed OK |
-| Persisted CoinJoin mode handled | migrated or cleared | orphaned <code>coinjoin_mode=INTERMEDIATE</code> <strong>FAIL</strong> (<a class=did href="../SR/REPORT.html#SR-27">SR-27</a> confirmed) |
+| Persisted CoinJoin mode handled | migrated or cleared | orphaned <code>coinjoin_mode=INTERMEDIATE</code> <strong>FAIL</strong> (<a class=did href="../../DEFECT-LEDGER.html#SR-27">SR-27</a> confirmed) |
 | Prompt reappears on relaunch | n/a | no prompt, home renders normally (<a class=ev href="../S12/CJ1/post-upgrade/22-relaunch-no-migration-prompt.webp">22-relaunch-no-migration-prompt.png</a>) OK |</p>
 <p><strong>Log excerpts.</strong></p>
 <pre><code>07:38:57 [main] SendCoinsFragment - dryRunException:
@@ -324,7 +324,7 @@ Four defects below, none fund-losing.</p>
 <tr data-sev="S4" data-idx="2">
 <td id="D-068b"><a href="#D-068b">D-068b</a></td>
 <td>S4</td>
-<td>Persisted <code>coinjoin_mode=INTERMEDIATE</code> survives the upgrade in <code>files/datastore/coinjoin.preferences_pb</code>, orphaned — never read, never migrated, never cleared (confirms <a class=did href="../SR/REPORT.html#SR-27">SR-27</a>)</td>
+<td>Persisted <code>coinjoin_mode=INTERMEDIATE</code> survives the upgrade in <code>files/datastore/coinjoin.preferences_pb</code>, orphaned — never read, never migrated, never cleared (confirms <a class=did href="../../DEFECT-LEDGER.html#SR-27">SR-27</a>)</td>
 <td>dump the datastore before and after <code>install -r</code></td>
 <td><code>CJ1/pre-upgrade/coinjoin-datastore-master-mixing-on.bin</code> vs <code>CJ1/post-upgrade/coinjoin-datastore-fix-after.bin</code></td>
 <td>CoinJoin removal commit left <code>CoinJoinConfig</code>'s datastore behind</td>

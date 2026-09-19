@@ -1,0 +1,2 @@
+17:52:40 [DefaultDispatcher-worker-11] SdkShieldedInviteCreation - shielded invite funding rejected pre-broadcast
+17:52:40 [main] ConfirmInviteDialogFragment - invite creation failed: kind=REJECTED attempt=1 retryAllowed=false

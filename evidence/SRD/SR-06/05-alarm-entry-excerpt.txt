@@ -1,0 +1,7 @@
+    RTC_WAKEUP #7: Alarm{a069021 type 0 origWhen 1789839380673 whenElapsed 3263215 hashengineering.darkcoin.wallet_test}
+      tag=*walarm*:hashengineering.darkcoin.wallet_test/de.schildbach.wallet.service.BlockchainServiceImpl
+      type=RTC_WAKEUP origWhen=2026-09-19 12:36:20.673 window=+18h0m0s0ms repeatInterval=86400000 count=0 flags=0x8
+      policyWhenElapsed: requester=+12m48s764ms app_standby=-2m11s236ms device_idle=-- battery_saver=--
+      whenElapsed=+12m48s764ms maxWhenElapsed=+18h12m48s764ms
+      operation=PendingIntent{f3b9c46: PendingIntentRecord{a230e07 hashengineering.darkcoin.wallet_test startForegroundService}}
+    ELAPSED #8: Alarm{f9d4b34 type 3 origWhen 3614051 whenElapsed 3614051 android}

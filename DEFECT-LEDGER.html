@@ -32,27 +32,27 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 </tr>
 <tr data-sev="S1" data-idx="23">
 <td id="SR-01"><a href="#SR-01">SR-01</a></td>
-<td class=S1>S1</td>
-<td>SR</td>
+<td class=S1><strong>S1 — CONFIRMED ON DEVICE (SRE)</strong></td>
+<td>SR, SRE</td>
 <td>Filter-stall watchdog (616ac58ff) cancels its own coroutine inside stop(); engine stopped and never restarted → stall becomes permanent</td>
-<td>static; device repro requires forcing the threshold (ctor param) — not reproducible on emulator without a code change</td>
-<td><a class=ev href="evidence/SR/REPORT.html">evidence/SR/REPORT.md</a></td>
+<td><strong>REPRODUCED on device (SRE)</strong>: filter cursor frozen at 1555000/1556858 with a per-uid iptables DROP; after 10 min the watchdog logged "restarting the SPV engine", stop() threw JobCancellationException ("failed to stop the shadow SPV client"), isEnabled() swallowed the cancellation as "treating as off" and the restart was "declined to start"; zero engine activity for 19 min after the network returned; bg/fg, lock/unlock, PIN re-auth did not revive it, only force-stop did. UI shows "Syncing…" with no banner</td>
+<td><a class=ev href="evidence/SRE/SR-01/20-watchdog-fire-context.txt">SRE/SR-01/20-watchdog-fire-context.txt</a>, <a class=ev href="evidence/SRE/SR-01/timeline.txt">SRE/SR-01/timeline.txt</a>, <a class=ev href="evidence/SRE/SR-01/26-revival-attempts.txt">SRE/SR-01/26-revival-attempts.txt</a>, <a class=ev href="evidence/SRE/SR-01/28-home-header-frozen-final.webp">SRE/SR-01/28-home-header-frozen-final.png</a>, <a class=ev href="evidence/SRE/SR-01/logs-final/files/log/wallet.log">SRE/SR-01/logs-final/files/log/wallet.log</a></td>
 </tr>
 <tr data-sev="S1" data-idx="24">
 <td id="SR-02"><a href="#SR-02">SR-02</a></td>
-<td class=S1>S1</td>
-<td>SR</td>
+<td class=S1>S1 (static; not reproduced in 3+1 attempts)</td>
+<td>SR, SRF</td>
 <td>Shielded-invite one-time spending key discarded if flow cancelled after note funded → silent fund loss</td>
-<td>static; S5 asked to probe (cancel mid-invite)</td>
-<td><a class=ev href="evidence/SR/REPORT.html">evidence/SR/REPORT.md</a></td>
+<td><strong>NOT REPRODUCED (SRF, S5)</strong>: 3 invite creations force-stopped at T+2/4/6 s after the PIN: at 2 s and 4 s nothing was spent; at 6 s 0.032 was spent AND the invite is in Invitations History with a working Copy Invitation Link (one-time key persisted). Total lost 0. The key-gen → fund → persist window is milliseconds wide on this device; the static hazard stands but could not be hit</td>
+<td><a class=ev href="evidence/SRF/SR-02/timeline.txt">SRF/SR-02/timeline.txt</a>, <a class=ev href="evidence/SRF/SR-02/rA-04-balances.webp">SRF/SR-02/rA-04-balances.png</a>, <a class=ev href="evidence/SRF/SR-02/rB-04-balances.webp">SRF/SR-02/rB-04-balances.png</a>, <a class=ev href="evidence/SRF/SR-02/rC-05-balances.webp">SRF/SR-02/rC-05-balances.png</a>, <a class=ev href="evidence/SRF/SR-02/rC-06-invites-history.webp">SRF/SR-02/rC-06-invites-history.png</a>, <a class=ev href="evidence/SRF/SR-02/rC-07-invite-detail.webp">SRF/SR-02/rC-07-invite-detail.png</a></td>
 </tr>
 <tr data-sev="S1" data-idx="25">
 <td id="SR-03"><a href="#SR-03">SR-03/04</a></td>
-<td class=S1>S1</td>
-<td>SR</td>
+<td class=S1><strong>S1 — <a class=did href="DEFECT-LEDGER.html#SR-03">SR-03</a> CONFIRMED ON DEVICE (SRD, S2, S7, S12); <a class=did href="DEFECT-LEDGER.html#SR-03">SR-04</a> blocked</strong></td>
+<td>SR, SRD</td>
 <td>Receive screen and freshReceiveAddress() pinned to external key #0 forever (root cause of <a class=did href="DEFECT-LEDGER.html#D-003">D-003</a>); Topper/Coinbase/sweep also hit</td>
-<td>static root cause; S7 asked to confirm rotation after use</td>
-<td><a class=ev href="evidence/SR/REPORT.html">evidence/SR/REPORT.md</a></td>
+<td><strong><a class=did href="DEFECT-LEDGER.html#SR-03">SR-03</a> REPRODUCED (SRD)</strong>: Receive tab and home quick-Receive show m/44'/1'/0'/0/0 (txApperances=5) while #5–#11 are pristine; after a receive landed on #0 it advanced to #1 (also used), i.e. it walks the used range from #0 instead of skipping it. <strong><a class=did href="DEFECT-LEDGER.html#SR-03">SR-04</a> BLOCKED</strong>: Topper crashes before a URL exists (<a class=did href="DEFECT-LEDGER.html#D-116">D-116</a>), sweep is camera-QR only, Uphold/Coinbase have no keys</td>
+<td><a class=ev href="evidence/SRD/SR-03-04/10-receive-tab.webp">SRD/SR-03-04/10-receive-tab.png</a>, <a class=ev href="evidence/SRD/SR-03-04/13-payments.webp">SRD/SR-03-04/13-payments.png</a>, <a class=ev href="evidence/SRD/SR-03-04/20-derived-external-addrs.txt">SRD/SR-03-04/20-derived-external-addrs.txt</a>, <a class=ev href="evidence/SRD/SR-03-04/21-explorer-txapperances.txt">SRD/SR-03-04/21-explorer-txapperances.txt</a>, <a class=ev href="evidence/SRD/SR-03-04/11-addr-quickreceive.json">SRD/SR-03-04/11-addr-quickreceive.json</a></td>
 </tr>
 <tr data-sev="S1" data-idx="26">
 <td id="SR-05"><a href="#SR-05">SR-05</a></td>
@@ -62,29 +62,21 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>confirmed; <a class=ev href="evidence/S4/SR05/01-before-marker.webp">S4/SR05/01-03</a><sup class=more><a href="evidence/S4/SR05/02-after-marker-launch.webp" title="S4/SR05/02-after-marker-launch.webp">2</a> <a href="evidence/S4/SR05/03-after-40s.webp" title="S4/SR05/03-after-40s.webp">3</a></sup>, <a class=ev href="evidence/S4/SR05/sr05.mp4">S4/SR05/sr05.mp4</a></td>
 <td><a class=ev href="evidence/SR/REPORT.html">evidence/SR/REPORT.md</a></td>
 </tr>
-<tr data-sev="S1" data-idx="27">
-<td id="SR-06"><a href="#SR-06">SR-06</a></td>
-<td class=S1>S1</td>
-<td>SR</td>
-<td>Background-sync alarm repeats with INTERVAL_DAY so 15-min backoff never delivered → no dependable background sync</td>
-<td>static (docs §32 acknowledges)</td>
-<td><a class=ev href="evidence/SR/REPORT.html">evidence/SR/REPORT.md</a></td>
-</tr>
 <tr data-sev="S1" data-idx="28">
 <td id="SR-07"><a href="#SR-07">SR-07</a></td>
-<td class=S1>S1</td>
-<td>SR</td>
+<td class=S1><strong>S1 — CONFIRMED ON DEVICE (SRB)</strong></td>
+<td>SR, SRB</td>
 <td>fallbackToDestructiveMigration() global → all tables dropped on any downgrade from schema 22</td>
-<td>static</td>
-<td><a class=ev href="evidence/SR/REPORT.html">evidence/SR/REPORT.md</a></td>
+<td><strong>REPRODUCED on device (SRB)</strong>: in-place downgrade 12.0.0→11.9.0 opens the wallet with funds/history intact but Room is rebuilt (user_version 22→21), every tx memo and tax category is destroyed and NOT restored on re-upgrade; exchange_rates emptied. Correction: address book is a separate SQLite file and survives</td>
+<td><a class=ev href="evidence/SRB/SR-07/DECISIVE.txt">SRB/SR-07/DECISIVE.txt</a>, <a class=ev href="evidence/SRB/SR-07/rowcounts-diff.txt">SRB/SR-07/rowcounts-diff.txt</a>, <a class=ev href="evidence/SRB/SR-07/32-master-tx-detail.webp">SRB/SR-07/32-master-tx-detail.png</a>, <a class=ev href="evidence/SRB/SR-07/srb07-downgrade.mp4">SRB/SR-07/srb07-downgrade.mp4</a></td>
 </tr>
 <tr data-sev="S1" data-idx="29">
 <td id="SR-08"><a href="#SR-08">SR-08</a></td>
-<td class=S1>S1 (release gate)</td>
-<td>SR</td>
+<td class=S1><strong>S1 (release gate) — CONFIRMED ON DEVICE (SRB)</strong></td>
+<td>SR, SRB</td>
 <td>prodRelease seeds all USE_KOTLIN_SDK_* flags on first launch after upgrade</td>
-<td>static</td>
-<td><a class=ev href="evidence/SR/REPORT.html">evidence/SR/REPORT.md</a></td>
+<td><strong>REPRODUCED on device (SRB)</strong>: mainnet prodRelease upgrade over an empty 11.9.0 wallet writes dashpay.preferences_pb with all five use_kotlin_sdk_* = true and cutover_state=CUT_OVER with zero user action; prodRelease Tools exposes NO toggle to opt out (see <a class=did href="DEFECT-LEDGER.html#D-099">D-099</a>)</td>
+<td><a class=ev href="evidence/SRB/SR-08/DECISIVE.txt">SRB/SR-08/DECISIVE.txt</a>, SRB/<a class=did href="DEFECT-LEDGER.html#SR-08">SR-08</a>/datastore-after/dashpay.preferences_pb, <a class=ev href="evidence/SRB/SR-08/13-tools-screen.webp">SRB/SR-08/13-tools-screen.png</a></td>
 </tr>
 <tr data-sev="S1" data-idx="35">
 <td id="SR-22"><a href="#SR-22">SR-22</a></td>
@@ -94,7 +86,15 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>confirmed; <a class=ev href="evidence/S4/SR22/01-datepicker-default.webp">S4/SR22/01-07</a><sup class=more><a href="evidence/index.html#S4-SR22" title="13 files, open gallery">+12</a></sup></td>
 <td></td>
 </tr>
-<tr data-sev="S1" data-idx="49">
+<tr data-sev="S1" data-idx="56">
+<td id="SR-38"><a href="#SR-38">SR-38</a></td>
+<td class=S1><strong>S1 (raised from S3) — CONFIRMED ON DEVICE (SRA)</strong></td>
+<td>SR, SRA</td>
+<td>Oversize/OOM recovery renames the wallet aside and depends on restoreWalletFromBackup(); null result drops the user to onboarding needing the seed</td>
+<td><strong>REPRODUCED, mechanism worse (SRA)</strong>: (b1) with the key backup present the wallet is recovered and funds show, but the recovered wallet is never written to wallet-protobuf-testnet, so the NEXT launch goes to onboarding with the key backup unread (<a class=did href="DEFECT-LEDGER.html#D-106">D-106</a>, S1); (b2) with no key backup the degraded "restore from seed" screen appears exactly as described</td>
+<td><a class=ev href="evidence/SRA/SR-38/16-guard-log.txt">SRA/SR-38/16-guard-log.txt</a>, <a class=ev href="evidence/SRA/SR-38/17-breadcrumbs.txt">SRA/SR-38/17-breadcrumbs.txt</a>, <a class=ev href="evidence/SRA/SR-38/22-relaunch-log.txt">SRA/SR-38/22-relaunch-log.txt</a>, <a class=ev href="evidence/SRA/SR-38/34-null-degraded.webp">SRA/SR-38/34-null-degraded.png</a>, <a class=ev href="evidence/SRA/SR-38/sr38-relaunch.mp4">SRA/SR-38/sr38-relaunch.mp4</a></td>
+</tr>
+<tr data-sev="S1" data-idx="70">
 <td id="D-031"><a href="#D-031">D-031</a></td>
 <td class=S1><strong>S1</strong></td>
 <td>S7, S1 (<a class=ev href="evidence/index.html#S1-C1">C1</a> FAIL); S9 non-repro clarifies trigger</td>
@@ -102,7 +102,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>confirmed on two wallets, trigger characterised</td>
 <td><a class=ev href="evidence/S1/C1/08-after-confirm.webp">S1/C1/08-after-confirm.png</a>, <a class=ev href="evidence/S1/C1/09-send-blocked-log.txt">S1/C1/09-send-blocked-log.txt</a> (06:01:00 → 06:01:26), <a class=ev href="evidence/S7/TX1/SR29-05-problem-sending.webp">S7/TX1/SR29-05..09</a><sup class=more><a href="evidence/S7/TX1/SR29-06-after-dismiss.webp" title="S7/TX1/SR29-06-after-dismiss.webp">2</a> <a href="evidence/S7/TX1/SR29-07-retry-result.webp" title="S7/TX1/SR29-07-retry-result.webp">3</a> <a href="evidence/S7/TX1/SR29-08-normal-send-in-enginedown.webp" title="S7/TX1/SR29-08-normal-send-in-enginedown.webp">4</a> <a href="evidence/S7/TX1/SR29-09-after-bg-fg.webp" title="S7/TX1/SR29-09-after-bg-fg.webp">5</a></sup>, S7 <a class=ev href="evidence/S7/E8/pre-upgrade/files/log/wallet.log">wallet.log</a> 06:07:00–06:10:17, <a class=ev href="evidence/S9/notes.html">S9 notes</a> cycles 1–4</td>
 </tr>
-<tr data-sev="S1" data-idx="55">
+<tr data-sev="S1" data-idx="76">
 <td id="D-037"><a href="#D-037">D-037</a></td>
 <td class=S1><strong>S1</strong></td>
 <td>S8</td>
@@ -110,7 +110,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>ROOT-CAUSED, confirmed on two wallets. RACY and size-dependent (S8 <a class=ev href="evidence/index.html#S8-L6">L6</a>): second restore of the same (now 3,001-tx) wallet lost 458 rows (15.3%) vs 111 (9.8%) at 1,132 txs; only 65 of the original 111 recur, 393 are new; the funding receive is missing in both restores. Balance stays exact to the duff (97,444,140 duffs = explorer UTXO sum over 5,204 utxos). <strong>CONFIRMED on the reference wallet by S11 with explorer cross-check</strong>: of 166 pure-incoming txs on the first 20 receive addresses, 0 are missing from <code>transactions</code>, 41 are missing from the txos-union, 2 have no display row (30d25cfa…5a16 +0.2 and 301d24c9…ce12 +0.33848582, block 1123983, 2024-10-19) → 0.53848582 tDASH of receives invisible in the history; the wallet's first 2019 receive IS present. Rescan blockchain is NOT a workaround: it recovered 64 of 111 rows and re-latched on the remaining 47 (all txos-absent), funding receive still missing (<a class=ev href="evidence/S8/L1/rescan-test.txt">S8/L1/rescan-test.txt</a>, <a class=ev href="evidence/S8/L1/missing-post-rescan.txt">missing-post-rescan.txt</a>)</td>
 <td><a class=ev href="evidence/S8/L1/missing-from-display-cache.txt">S8/L1/missing-from-display-cache.txt</a>, <a class=ev href="evidence/S8/L1/missing-by-height.txt">S8/L1/missing-by-height.txt</a>, <a class=ev href="evidence/S8/L1/planner-log.txt">S8/L1/planner-log.txt</a>, <a class=ev href="evidence/S8/L1/txdisplaycache-lines.txt">S8/L1/txdisplaycache-lines.txt</a>, <a class=ev href="evidence/S8/L1/logs-isolation/files/log/wallet.log">S8/L1/logs-isolation/files/log/wallet.log:927-929</a></td>
 </tr>
-<tr data-sev="S1" data-idx="59">
+<tr data-sev="S1" data-idx="80">
 <td id="D-041"><a href="#D-041">D-041</a></td>
 <td class=S1><strong>S1</strong></td>
 <td class=S2>S2</td>
@@ -118,7 +118,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>confirmed on device; tx history itself correct</td>
 <td><a class=ev href="evidence/S2/B2/11-BALANCE-after-kills.webp">S2/B2/11-BALANCE-after-kills.png</a>, S2 <a class=ev href="evidence/S2/final-walletlog/files/log/wallet.log">wallet.log</a> 06:19:20-06:19:25</td>
 </tr>
-<tr data-sev="S1" data-idx="74">
+<tr data-sev="S1" data-idx="95">
 <td id="D-056"><a href="#D-056">D-056</a></td>
 <td class=S1><strong>S1</strong></td>
 <td>S3</td>
@@ -126,13 +126,21 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>confirmed on device + source</td>
 <td><a class=ev href="evidence/S3/A3b/15-home.webp">S3/A3b/15-home.png</a>, <a class=ev href="evidence/S3/A3b/grep-engine-never-started.txt">S3/A3b/grep-engine-never-started.txt</a>, <a class=ev href="evidence/S3/A3b/grep-unlock-bind.txt">S3/A3b/grep-unlock-bind.txt</a>, <a class=ev href="evidence/S3/A3b/a3b-unlock.mp4">S3/A3b/a3b-unlock.mp4</a></td>
 </tr>
-<tr data-sev="S1" data-idx="86">
+<tr data-sev="S1" data-idx="107">
 <td id="D-068"><a href="#D-068">D-068</a></td>
 <td class=S1><strong>S1 (funds stranded)</strong></td>
 <td>S12</td>
 <td><strong>Ex-CoinJoin funds are unspendable after the upgrade.</strong> Wallet created on master 11.9.0 with CoinJoin enabled (4 mixing txs: CreateDenomination + MakeCollateralInputs), upgraded in place: the header shows 0.999971 and the log confirms <code>WalletBalanceFacts total=99997138 accounts={bip44:0, coinjoin:99997138}</code>, but Send shows "Insufficient funds", "Balance: DASH 0.00", Max fills 0, dry run throws <code>InsufficientMoneyException: missing 0.0011 DASH</code> (SendCoinsFragment 07:38:57). The send engine counts only bip44; the coinjoin bucket is display-only. With the mixed-funds migration prompt hard-suppressed (<a class=did href="DEFECT-LEDGER.html#D-063">D-063</a>) there is NO in-app way to move the coins; the Settings CoinJoin row is gone. Any user who ever mixed will upgrade into a wallet whose balance they cannot spend. ESCAPE HATCHES PROBED (S12): Send Max/send-all → 0; Shield Max → 0; dashj diagnostic toggle ON then send → still 0; reset + restore on the fix build → same <code>accounts={bip44:0, coinjoin:99997138}</code>, still unspendable; downgrade to master 11.9.0 WORKS (funds spendable there; S12 then moved the coins to a bip44 address on master, upgraded again and the same wallet came up as <code>accounts={bip44:99987927, coinjoin:0}</code> and behaved normally) → the stranding is specific to coins sitting in the CoinJoin m/9' account at the moment of cutover</td>
 <td>confirmed on device; only escape is a downgrade</td>
 <td><a class=ev href="evidence/index.html#S12-CJ1">S12/CJ1/*</a><sup class=more><a href="evidence/index.html#S12-CJ1" title="S12/CJ1/post-upgrade">2</a> <a href="evidence/index.html#S12-CJ1" title="S12/CJ1/pre-upgrade">3</a> <a href="evidence/index.html#S12-CJ1" title="S12/CJ1/restore">4</a></sup> (screens + <a class=ev href="evidence/S12/CJ1/pre-upgrade/logs/files/log/wallet.log">wallet.log</a> 07:38:57)</td>
+</tr>
+<tr data-sev="S1" data-idx="145">
+<td id="D-106"><a href="#D-106">D-106</a></td>
+<td class=S1><strong>S1</strong></td>
+<td>SRA</td>
+<td>After an oversize/OOM key-backup recovery the recovered wallet is never persisted to wallet-protobuf-testnet: the next launch finds no wallet file and shows ONBOARDING while key-backup-protobuf-testnet sits unread on disk; recovery lasts exactly one session and the user must restore from seed</td>
+<td>confirmed</td>
+<td><a class=ev href="evidence/SRA/SR-38/19-autosave-log.txt">SRA/SR-38/19-autosave-log.txt</a>, <a class=ev href="evidence/SRA/SR-38/22-relaunch-log.txt">SRA/SR-38/22-relaunch-log.txt</a>, <a class=ev href="evidence/SRA/SR-38/21-relaunch-t8s.webp">SRA/SR-38/21-relaunch-t8s.png</a>, <a class=ev href="evidence/SRA/SR-38/sr38-relaunch.mp4">SRA/SR-38/sr38-relaunch.mp4</a></td>
 </tr>
 <tr data-sev="S2" data-idx="1">
 <td id="D-002"><a href="#D-002">D-002</a></td>
@@ -158,55 +166,167 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>confirmed by <code>git log HEAD..master</code></td>
 <td>orchestrator notes</td>
 </tr>
+<tr data-sev="S2" data-idx="27">
+<td id="SR-06"><a href="#SR-06">SR-06</a></td>
+<td><strong>S2 (downgraded from S1) — PARTIAL ON DEVICE (SRD)</strong></td>
+<td>SR, SRD</td>
+<td>Background-sync alarm repeats with INTERVAL_DAY so 15-min backoff never delivered → no dependable background sync</td>
+<td><strong>PARTIAL (SRD)</strong>: code defect confirmed on device: on API 35 only the alarm branch runs (JobScheduler gated to API 26/27, no job ever appears); the alarm is armed only from BlockchainServiceImpl.onDestroy; dumpsys shows <code>repeatInterval=86400000 window=+18h</code> for a "15 min" backoff. "Never delivered" DISPROVED on an awake, battery-exempt emulator: it fired 4 m 23 s late, restarted the service with the UI closed, then re-armed for +24 h. Delivery is unbounded within an 18 h window; force-stop cancels it for good (<a class=did href="DEFECT-LEDGER.html#D-118">D-118</a>)</td>
+<td><a class=ev href="evidence/SRD/SR-06/05-alarm-entry-excerpt.txt">SRD/SR-06/05-alarm-entry-excerpt.txt</a>, <a class=ev href="evidence/SRD/SR-06/08-alarm-still-pending-excerpt.txt">SRD/SR-06/08-alarm-still-pending-excerpt.txt</a>, <a class=ev href="evidence/SRD/SR-06/09-alarm-fired-loglines.txt">SRD/SR-06/09-alarm-fired-loglines.txt</a>, <a class=ev href="evidence/SRD/SR-06/11-dumpsys-alarm-after-fire-next-is-24h.txt">SRD/SR-06/11-dumpsys-alarm-after-fire-next-is-24h.txt</a>, <a class=ev href="evidence/SRD/SR-06/13-dumpsys-alarm-after-forcestop.txt">SRD/SR-06/13-dumpsys-alarm-after-forcestop.txt</a></td>
+</tr>
 <tr data-sev="S2" data-idx="30">
 <td id="SR-23"><a href="#SR-23">SR-23</a></td>
 <td class=S2>S2 (release blocker)</td>
-<td>SR + orchestrator</td>
+<td>SR + orchestrator, SRB</td>
 <td>targetSdk/compileSdk regressed 36 → 35 in every module (master has 36); Play requires 36 from 2026-08-31</td>
-<td>CONFIRMED by orchestrator: wallet/build.gradle:287 targetSdkVersion 35 vs master:252 = 36</td>
-<td><a class=ev href="evidence/SR/REPORT.html">evidence/SR/REPORT.md</a></td>
+<td>CONFIRMED by orchestrator (gradle) and <strong>at artefact level by SRB</strong> (aapt badging: master targetSdk 36, fix targetSdk 35). SRB also found minSdk 24→29 (<a class=did href="DEFECT-LEDGER.html#D-098">D-098</a>)</td>
+<td><a class=ev href="evidence/SRB/SR-23/SUMMARY-badging.txt">SRB/SR-23/SUMMARY-badging.txt</a>, <a class=ev href="evidence/SRB/SR-23/badging-fix-12.0.0-prod-release-signed.txt">SRB/SR-23/badging-*.txt</a><sup class=more><a href="evidence/SRB/SR-23/badging-fix-12.0.0-testnet3-release-signed.txt" title="SRB/SR-23/badging-fix-12.0.0-testnet3-release-signed.txt">2</a> <a href="evidence/SRB/SR-23/badging-master-11.9.0-prod-release-signed.txt" title="SRB/SR-23/badging-master-11.9.0-prod-release-signed.txt">3</a> <a href="evidence/SRB/SR-23/badging-master-11.9.0-testnet3-release-signed.txt" title="SRB/SR-23/badging-master-11.9.0-testnet3-release-signed.txt">4</a></sup></td>
 </tr>
 <tr data-sev="S2" data-idx="31">
 <td id="SR-09"><a href="#SR-09">SR-09</a></td>
-<td class=S2>S2</td>
-<td>SR</td>
+<td><strong>S2 — CONFIRMED ON DEVICE (SRD)</strong></td>
+<td>SR, SRD</td>
 <td>Root cause of <a class=did href="DEFECT-LEDGER.html#D-004">D-004</a>: stopSelf() from TIME_TICK cannot destroy a bound service but latches the stop; service dies on first onPause and <a class=did href="DEFECT-LEDGER.html#SR-06">SR-06</a> never brings it back</td>
-<td>static; S2 characterisation matches</td>
-<td><a class=ev href="evidence/SR/REPORT.html">evidence/SR/REPORT.md</a></td>
+<td><strong>REPRODUCED (SRD)</strong>: idle verdict while MainActivity was foreground+bound → "idling detected, stopping service", service survived while bound, then 0 service records within 10 s of HOME with onDestroy logged; happened twice (forced and spontaneous); control without the latch stayed alive 10+ min. Corrections: only 4 idle verdicts in 49 tick-minutes (<a class=did href="DEFECT-LEDGER.html#D-004">D-004</a> "every minute forever" overstated) and a backgrounded receive WAS notified while the service was alive</td>
+<td><a class=ev href="evidence/SRD/SR-09/09-latch-set.txt">SRD/SR-09/09-latch-set.txt</a>, <a class=ev href="evidence/SRD/SR-09/11-service-after-latched-home.txt">SRD/SR-09/11-service-after-latched-home.txt</a>, <a class=ev href="evidence/SRD/SR-09/13-background-receive-loglines.txt">SRD/SR-09/13-background-receive-loglines.txt</a>, <a class=ev href="evidence/SRD/SR-06/03-alarm-armed-loglines.txt">SRD/SR-06/03-alarm-armed-loglines.txt</a></td>
 </tr>
 <tr data-sev="S2" data-idx="32">
 <td id="SR-10"><a href="#SR-10">SR-10</a></td>
-<td class=S2>S2</td>
-<td>SR</td>
+<td><strong>S2 — CONFIRMED ON DEVICE (SRC)</strong></td>
+<td>SR, SRC</td>
 <td>Root cause of <a class=did href="DEFECT-LEDGER.html#D-002">D-002</a>: "hold last known balance" inert on created/restored wallets (lastKnown null)</td>
-<td>static; matches S2 log line</td>
-<td><a class=ev href="evidence/SR/REPORT.html">evidence/SR/REPORT.md</a></td>
+<td><strong>REPRODUCED (SRC)</strong>: reset+restore of a 1 tDASH wallet twice; header read 0 / $0 at 15/32/44/54 % while the wallet held 1 tDASH; log shows lastKnown=0 → falls through to the live partial, and persistedAsLastKnown stays false because rescanArmedHold remains true, so the hold is never armed for the next launch either</td>
+<td><a class=ev href="evidence/SRC/SR-10/restore2-timeline.txt">SRC/SR-10/restore2-timeline.txt</a>, <a class=ev href="evidence/SRC/SR-10/02-grep-published-after-restore2.txt">SRC/SR-10/02-grep-published-after-restore2.txt</a>, <a class=ev href="evidence/SRC/SR-10/r01-header.webp">SRC/SR-10/r01-header.png</a>, <a class=ev href="evidence/SRC/SR-10/r04-header.webp">SRC/SR-10/r04-header.png</a>, <a class=ev href="evidence/SRC/SR-10/r99-final.webp">SRC/SR-10/r99-final.png</a></td>
 </tr>
 <tr data-sev="S2" data-idx="33">
 <td id="SR-11"><a href="#SR-11">SR-11</a></td>
-<td class=S2>S2</td>
-<td>SR</td>
+<td><strong>S2 — CONFIRMED ON DEVICE (SRF, S1, S5)</strong></td>
+<td>SR, SRF</td>
 <td>Root cause of <a class=did href="DEFECT-LEDGER.html#D-007">D-007</a>: Type-20 create-from-pool writes no history row; observeShieldedActivity() has no consumers</td>
-<td>static</td>
-<td><a class=ev href="evidence/SR/REPORT.html">evidence/SR/REPORT.md</a></td>
+<td><strong>REPRODUCED (SRF)</strong>: username created from the shielded pool, shielded 0.992 → 0.962, Home History has no row for the 0.03 (confirms <a class=did href="DEFECT-LEDGER.html#D-007">D-007</a> root cause)</td>
+<td><a class=ev href="evidence/SRF/SR-11/10-home-history.webp">SRF/SR-11/10-home-history.png</a>, <a class=ev href="evidence/SRF/SR-11/12-more-after.webp">SRF/SR-11/12-more-after.png</a>, <a class=ev href="evidence/SRF/SR-11/grep.txt">SRF/SR-11/grep.txt</a>, <a class=ev href="evidence/SRF/SR-11/srf-sr11.mp4">SRF/SR-11/srf-sr11.mp4</a></td>
 </tr>
 <tr data-sev="S2" data-idx="34">
 <td id="SR-12"><a href="#SR-12">SR-12</a></td>
-<td class=S2>S2</td>
-<td>SR</td>
+<td class=S2>S2 — PARTIAL ON DEVICE (SRF)</td>
+<td>SR, SRF</td>
 <td>Shielded stall watchdog fires at 40 s on healthy ~30 s proofs and permanently bricks the transfer screen once fired</td>
-<td>static; S5/S1 asked to watch for it</td>
-<td><a class=ev href="evidence/SR/REPORT.html">evidence/SR/REPORT.md</a></td>
+<td><strong>PARTIAL (SRF)</strong>: with DAPI ports dropped 2 s into an unshield, the 40 s watchdog fired and locked the whole transfer screen (keypad dead, Continue stuck on "Sending your transfer…") across leaving and re-entering; NOT permanent: when the underlying op finally terminated the transfer completed, balance moved and the screen freed itself. Never fired on a healthy network (transfers &lt; 8 s)</td>
+<td><a class=ev href="evidence/SRF/SR-12/t041.webp">SRF/SR-12/t041.png</a>, <a class=ev href="evidence/SRF/SR-12/22-reenter.webp">SRF/SR-12/22-reenter.png</a>, <a class=ev href="evidence/SRF/SR-12/r030.webp">SRF/SR-12/r030.png</a>, <a class=ev href="evidence/SRF/SR-12/grep-stall.txt">SRF/SR-12/grep-stall.txt</a>, <a class=ev href="evidence/SRF/SR-12/timeline.txt">SRF/SR-12/timeline.txt</a>, <a class=ev href="evidence/SRF/SR-12/srf-sr12b.mp4">SRF/SR-12/srf-sr12b.mp4</a></td>
 </tr>
 <tr data-sev="S2" data-idx="36">
-<td><a class=did href="evidence/SR/REPORT.html#SR-13">SR-13</a>..<a class=did href="evidence/SR/REPORT.html#SR-21">SR-21</a>, <a class=did href="evidence/SR/REPORT.html#SR-24">SR-24</a>..<a class=did href="evidence/SR/REPORT.html#SR-27">SR-27</a></td>
+<td id="SR-13"><a href="#SR-13">SR-13</a></td>
+<td><strong>S2 — CONFIRMED ON DEVICE (SRF)</strong></td>
+<td>SR, SRF</td>
+<td>Shielded Send runs in viewModelScope; on VM clear the outcome is lost while the proof still broadcasts, and the screen resets to re-submittable</td>
+<td><strong>REPRODUCED (SRF)</strong>: shielded send 0.05 to own address, BACK 3 s after the PIN (VM cleared, process alive), waited 65 s: the spend still went out (shielded 0.778 → 0.776) while the outcome was lost completely (no screen state, toast, notification, or log line); re-entry gives an Idle, immediately re-submittable screen</td>
+<td><a class=ev href="evidence/SRF/SR-13/timeline.txt">SRF/SR-13/timeline.txt</a>, <a class=ev href="evidence/SRF/SR-13/grep.txt">SRF/SR-13/grep.txt</a>, <a class=ev href="evidence/SRF/SR-13/21-balances-after.webp">SRF/SR-13/21-balances-after.png</a>, <a class=ev href="evidence/SRF/SR-13/20-reenter.webp">SRF/SR-13/20-reenter.png</a>, <a class=ev href="evidence/SRF/SR-13/srf-sr13.mp4">SRF/SR-13/srf-sr13.mp4</a></td>
+</tr>
+<tr data-sev="S2" data-idx="37">
+<td id="SR-14"><a href="#SR-14">SR-14</a></td>
+<td class=S2>S2</td>
+<td>SR, SRF</td>
+<td>Shielded username/invite creation has no stall watchdog; single-flight gate refuses retries</td>
+<td><strong>NOT REPRODUCED as written (SRF)</strong>: an invite with the network cut at T+3 s terminated in ~22 s (no forever-Proving) and "submit refused" never appeared; instead it terminated with a WRONG permanent-failure message and permanently disabled Confirm (<a class=did href="DEFECT-LEDGER.html#D-122">D-122</a>)</td>
+<td><a class=ev href="evidence/SRF/SR-14/timeline.txt">SRF/SR-14/timeline.txt</a>, <a class=ev href="evidence/SRF/SR-14/grep1.txt">SRF/SR-14/grep1.txt</a>, <a class=ev href="evidence/SRF/SR-14/grep2.txt">SRF/SR-14/grep2.txt</a>, <a class=ev href="evidence/SRF/SR-14/n030.webp">SRF/SR-14/n030.png</a>, <a class=ev href="evidence/SRF/SR-14/21-retry-online.webp">SRF/SR-14/21-retry-online.png</a></td>
+</tr>
+<tr data-sev="S2" data-idx="38">
+<td id="SR-24"><a href="#SR-24">SR-24</a></td>
 <td class=S2>S2</td>
 <td>SR</td>
-<td>See SR report: shielded send VM-scope loss, no watchdog on username/invite proving, 155k-block re-scan on watchdog restart, send-all drain guard inert, seam lock registry no release, Coinbase estimateNetworkFee on dashj, memo/exchange-rate dropped on SDK sends, wipe marks complete on failure, reset spinner can hang, restore date picker defaults to today, autosave 60 s no flush, RISKY threshold ~26 MB, preserved wallet copies never reclaimed, CoinJoin privacyMode dropped without migration</td>
+<td>Autosave debounce stretched to 60 s on wallets ≥ soft limit with no forced flush after a send or on background (SRA confirmed the 60 s tier engages on a 62 MB file; flush behaviour not tested)</td>
 <td>static</td>
 <td><a class=ev href="evidence/SR/REPORT.html">evidence/SR/REPORT.md</a></td>
 </tr>
+<tr data-sev="S2" data-idx="39">
+<td id="SR-16"><a href="#SR-16">SR-16/17</a></td>
+<td class=S2>S2</td>
+<td>SR, SRC</td>
+<td>Send-all drain guard: dashj half inert post-cutover, seam half has no live producer; SeamOutputLockRegistry has no release API</td>
+<td><strong>PARTIAL (SRC)</strong>: a 0.005 send and a Send-Max on still-unconfirmed change both succeeded with no pending/locked error and zero <code>drain guard|hasAnyLocks|SeamOutputLock</code> log lines in 814 KB of <a class=ev href="evidence/S2/final-walletlog/files/log/wallet.log">wallet.log</a>: the guard neither blocked nor logged (inert half confirmed). No-release API confirmed at code level; a lock producer needs CrowdNode</td>
+<td><a class=ev href="evidence/SRC/SR-16-17/07-grep-locks.txt">SRC/SR-16-17/07-grep-locks.txt</a>, <a class=ev href="evidence/SRC/SR-16-17/timeline.txt">SRC/SR-16-17/timeline.txt</a>, <a class=ev href="evidence/SRC/SR-16-17/sr1617.mp4">SRC/SR-16-17/sr1617.mp4</a></td>
+</tr>
+<tr data-sev="S2" data-idx="40">
+<td id="SR-18"><a href="#SR-18">SR-18</a></td>
+<td class=S2>S2</td>
+<td>SR, SRC</td>
+<td>Coinbase estimateNetworkFee still calls completeTx on the held dashj wallet → false "insufficient funds"</td>
+<td><strong>BLOCKED (SRC)</strong>: build has no Coinbase keys ("Keys are missing for these services"); TransferDashFragment unreachable</td>
+<td><a class=ev href="evidence/SRC/SR-18/VERDICT.txt">SRC/SR-18/VERDICT.txt</a>, <a class=ev href="evidence/SRC/SR-18/02-buysell.webp">SRC/SR-18/02-buysell.png</a>, <a class=ev href="evidence/SRC/SR-18/05-oauth.webp">SRC/SR-18/05-oauth.png</a></td>
+</tr>
+<tr data-sev="S2" data-idx="41">
+<td id="SR-19"><a href="#SR-19">SR-19</a></td>
+<td><strong>S2 — CONFIRMED ON DEVICE (SRC)</strong></td>
+<td>SR, SRC, S10</td>
+<td>Memo and exchange rate silently dropped on every SDK-routed send</td>
+<td><strong>REPRODUCED (SRC)</strong>: 5/5 sends stored <code>memo=, currencyCode=null, rate=null</code> (and value=0, <a class=did href="DEFECT-LEDGER.html#D-111">D-111</a>); BIP21 label/message lost; a hand-typed note IS stored so the store works and the send funnel (sendViaSdkBridged carries only address/amount/emptyWallet) drops them</td>
+<td><a class=ev href="evidence/SRC/SR-19/06-grep-memo-exchangerate.txt">SRC/SR-19/06-grep-memo-exchangerate.txt</a>, <a class=ev href="evidence/SRC/SR-19/17-grep-txmetadata-all.txt">SRC/SR-19/17-grep-txmetadata-all.txt</a>, <a class=ev href="evidence/SRC/SR-19/05-txdetail-no-memo-no-fiat.webp">SRC/SR-19/05-txdetail-no-memo-no-fiat.png</a></td>
+</tr>
+<tr data-sev="S2" data-idx="42">
+<td id="SR-20"><a href="#SR-20">SR-20</a></td>
+<td><strong>S2 — CONFIRMED ON DEVICE (SRA)</strong></td>
+<td>SR, SRA</td>
+<td>WalletWipeSequence.finish() calls markComplete() even when most wipe steps failed; every step swallows its own exception</td>
+<td><strong>REPRODUCED (SRA)</strong>: with files/datastore read-only, 13 wipe steps failed with EACCES (all swallowed), the marker was still removed, no "wipe destruction failed" logged, onboarding shown; all 7 datastore files incl. the secrets store survived byte-identical and the next restored wallet inherited the old CUT_OVER cutover state</td>
+<td><a class=ev href="evidence/SRA/SR-20/08-decisive-grep.txt">SRA/SR-20/08-decisive-grep.txt</a>, <a class=ev href="evidence/SRA/SR-20/09-files-after.txt">SRA/SR-20/09-files-after.txt</a>, <a class=ev href="evidence/SRA/SR-20/13-datastore-md5-before-restore.txt">SRA/SR-20/13-datastore-md5-before-restore.txt</a>, <a class=ev href="evidence/SRA/SR-20/17-cutover-leak.txt">SRA/SR-20/17-cutover-leak.txt</a>, <a class=ev href="evidence/SRA/SR-20/sr20-reset.mp4">SRA/SR-20/sr20-reset.mp4</a></td>
+</tr>
 <tr data-sev="S2" data-idx="43">
+<td id="SR-21"><a href="#SR-21">SR-21</a></td>
+<td class=S2>S2</td>
+<td>SR, SRA</td>
+<td>Reset can hang on the "resetting…" spinner (wipeInProgress.first{!it} with no timeout)</td>
+<td><strong>PARTIAL (SRA)</strong>: 5 timed races produced spinners of 1/1/4/13/15 s; attempt 5 hit "CRITICAL: Cleanup did not complete within 15 seconds" + "Another onDestroy() is already running cleanup" yet still finished; no permanent hang in 5 attempts</td>
+<td><a class=ev href="evidence/SRA/SR-21/a3-log.txt">SRA/SR-21/a3-log.txt</a>, <a class=ev href="evidence/SRA/SR-21/a4-log.txt">SRA/SR-21/a4-log.txt</a>, <a class=ev href="evidence/SRA/SR-21/a5-log.txt">SRA/SR-21/a5-log.txt</a>, SRA/<a class=did href="DEFECT-LEDGER.html#SR-21">SR-21</a>/sr21-a5.mp4</td>
+</tr>
+<tr data-sev="S2" data-idx="44">
+<td id="SR-25"><a href="#SR-25">SR-25</a></td>
+<td class=S2>S2 (threshold confirmed)</td>
+<td>SR, SRA</td>
+<td>RISKY size threshold is ~26 MB (fallback heap) / ~58 MB (576 MB heap), far below the KDoc; OOM there routes to a destructive key-backup recovery announced by one Toast</td>
+<td><strong>REPRODUCED threshold / NOT REPRODUCED OOM routing (SRA)</strong>: 62,929,882-byte file → "soft limit 60397977 bytes -&gt; RISKY", autosave debounce raised to 60 s; parse still succeeded in 211 ms (junk tail ignored) so the .oomed path could not be exercised. Single-Toast recovery confirmed via the UNPARSEABLE run</td>
+<td><a class=ev href="evidence/SRA/SR-25/06-guard-log.txt">SRA/SR-25/06-guard-log.txt</a>, <a class=ev href="evidence/SRA/SR-25/07-risky-loaded-ok.webp">SRA/SR-25/07-risky-loaded-ok.png</a>, <a class=ev href="evidence/SRA/SR-25/sr25-risky.mp4">SRA/SR-25/sr25-risky.mp4</a></td>
+</tr>
+<tr data-sev="S2" data-idx="45">
+<td id="SR-26"><a href="#SR-26">SR-26</a></td>
+<td class=S2>S2 — CONFIRMED ON DEVICE (SRA)</td>
+<td>SR, SRA</td>
+<td>Preserved-aside wallet copies (.oversize/.oomed/.pre-seed-restore) are never reclaimed</td>
+<td><strong>REPRODUCED (SRA)</strong>: two wallet-protobuf-testnet.oversize.* copies (2,000,000,001 B each) survived a restore-from-seed AND a full Reset Wallet; cleanupFiles() patterns never match them</td>
+<td><a class=ev href="evidence/SRA/SR-26/01-after-restore.txt">SRA/SR-26/01-after-restore.txt</a>, <a class=ev href="evidence/SRA/SR-26/03-after-reset-files.txt">SRA/SR-26/03-after-reset-files.txt</a></td>
+</tr>
+<tr data-sev="S2" data-idx="46">
+<td id="SR-15"><a href="#SR-15">SR-15</a></td>
+<td class=S2>S2</td>
+<td>SR, SRE</td>
+<td>Filter-stall watchdog restart re-scans a large window; 10-min threshold sits inside the legitimate no-advance window</td>
+<td><strong>PARTIAL (SRE)</strong>: the watchdog path never restarts anything (<a class=did href="DEFECT-LEDGER.html#SR-01">SR-01</a>), so its cost is unmeasurable; on the force-stop relaunch path the engine resumed at 1532170 after stopping at 1555000 = 22,830 blocks re-walked, caught up in 19 s. The stop-time watermark printed <code>durable syncedHeight=unknown</code> because it too ran on the cancelled coroutine</td>
+<td><a class=ev href="evidence/SRE/SR-15/01-rewalk.txt">SRE/SR-15/01-rewalk.txt</a></td>
+</tr>
+<tr data-sev="S2" data-idx="47">
+<td id="SR-27"><a href="#SR-27">SR-27</a></td>
+<td><strong>S2 — CONFIRMED ON DEVICE (SRB)</strong></td>
+<td>SR, SRB</td>
+<td>CoinJoin mixing removed and the persisted privacyMode/coinjoin_mode dropped with no migration: a silent privacy-posture downgrade on upgrade</td>
+<td><strong>REPRODUCED (SRB)</strong>: CoinJoin=Intermediate enabled and mixing on 11.9.0; after the in-place upgrade the CoinJoin row is gone from Settings, coinjoin_mode=INTERMEDIATE sits orphaned in coinjoin.preferences_pb, CoinJoinFundsMigrationService never logs; funds intact</td>
+<td><a class=ev href="evidence/SRB/SR-27/09-settings-coinjoin-on.webp">SRB/SR-27/09-settings-coinjoin-on.png</a>, <a class=ev href="evidence/SRB/SR-27/11-fix-settings.webp">SRB/SR-27/11-fix-settings.png</a>, <a class=ev href="evidence/SRB/SR-27/BEFORE.txt">SRB/SR-27/BEFORE.txt</a>, <a class=ev href="evidence/SRB/SR-27/AFTER.txt">SRB/SR-27/AFTER.txt</a>, <a class=ev href="evidence/SRB/SR-27/srb27-upgrade.mp4">SRB/SR-27/srb27-upgrade.mp4</a></td>
+</tr>
+<tr data-sev="S2" data-idx="55">
+<td id="SR-36"><a href="#SR-36">SR-36</a></td>
+<td><strong>S2 (raised from S3) — CONFIRMED ON DEVICE, opposite consequence (SRA)</strong></td>
+<td>SR, SRA</td>
+<td>WalletWipeSequence.begin() continues after failing to write its recovery marker</td>
+<td><strong>REPRODUCED with the OPPOSITE outcome (SRA)</strong>: "wipe started WITHOUT a recovery marker" is logged and the UI goes to onboarding, but finish() then reads pending()==false and logs "destroying nothing": Reset Wallet becomes a silent NO-OP; relaunch restores the wallet with the same PIN and balance after the user was told it was reset (see <a class=did href="DEFECT-LEDGER.html#D-107">D-107</a>)</td>
+<td><a class=ev href="evidence/SRA/SR-36/03-wipe-grep.txt">SRA/SR-36/03-wipe-grep.txt</a>, <a class=ev href="evidence/SRA/SR-36/12-destroying-nothing.txt">SRA/SR-36/12-destroying-nothing.txt</a>, <a class=ev href="evidence/SRA/SR-36/06-run1-wallet-alive.webp">SRA/SR-36/06-run1-wallet-alive.png</a>, <a class=ev href="evidence/SRA/SR-36/11-run3-files.txt">SRA/SR-36/11-run3-files.txt</a>, <a class=ev href="evidence/SRA/SR-36/sr36-run3.mp4">SRA/SR-36/sr36-run3.mp4</a></td>
+</tr>
+<tr data-sev="S2" data-idx="58">
+<td id="SR-35"><a href="#SR-35">SR-35</a></td>
+<td><strong>S2 (raised from S3) — CONFIRMED ON DEVICE (SRE)</strong></td>
+<td>SR, SRE</td>
+<td>Filter-stall watchdog EXHAUSTED stand-down is unreachable and there is no user surface</td>
+<td><strong>REPRODUCED differently (SRE)</strong>: 22 min past the first fire the log has exactly 2 <code>filter-stall watchdog</code> lines and 0 <code>standing down</code>; the loop is dead after the first fire so restarts 2/3 and the EXHAUSTED branch never run. Only Tools › Network monitor admits "Network engine not started"</td>
+<td><a class=ev href="evidence/SRE/SR-35/07-no-exhausted.txt">SRE/SR-35/07-no-exhausted.txt</a>, <a class=ev href="evidence/SRE/SR-35/06-network-monitor.webp">SRE/SR-35/06-network-monitor.png</a></td>
+</tr>
+<tr data-sev="S2" data-idx="64">
 <td id="D-025"><a href="#D-025">D-025</a></td>
 <td class=S2>S2 (memory)</td>
 <td>S6</td>
@@ -214,7 +334,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>confirmed on device (<a class=ev href="evidence/S2/mem.csv">mem.csv</a>)</td>
 <td><a class=ev href="evidence/S6/mem.csv">S6/mem.csv</a>, <a class=ev href="evidence/S6/M2/01-more.webp">S6/M2/*</a><sup class=more><a href="evidence/index.html#S6-M2" title="24 files, open gallery">+23</a></sup></td>
 </tr>
-<tr data-sev="S2" data-idx="53">
+<tr data-sev="S2" data-idx="74">
 <td id="D-035"><a href="#D-035">D-035</a></td>
 <td class=S2>S2 (memory)</td>
 <td>S6</td>
@@ -222,7 +342,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>confirmed on device</td>
 <td><a class=ev href="evidence/S6/mem.csv">S6/mem.csv</a>, <a class=ev href="evidence/S6/M3/01-master-first-launch.webp">S6/M3/*</a><sup class=more><a href="evidence/index.html#S6-M3" title="30 files, open gallery">+29</a></sup></td>
 </tr>
-<tr data-sev="S2" data-idx="70">
+<tr data-sev="S2" data-idx="91">
 <td id="D-052"><a href="#D-052">D-052</a></td>
 <td class=S2>S2</td>
 <td>S5</td>
@@ -230,7 +350,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>confirmed in log</td>
 <td><a class=ev href="evidence/S5/logs/grep-watchlist-final.txt">S5/logs/grep-watchlist-final.txt</a></td>
 </tr>
-<tr data-sev="S2" data-idx="88">
+<tr data-sev="S2" data-idx="109">
 <td id="D-070"><a href="#D-070">D-070</a></td>
 <td class=S2>S2</td>
 <td>S9</td>
@@ -238,7 +358,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>confirmed</td>
 <td><a class=ev href="evidence/index.html#S9-X2">S9/X2</a>, <a class=ev href="evidence/index.html#S9-X3">S9/X3</a></td>
 </tr>
-<tr data-sev="S2" data-idx="97">
+<tr data-sev="S2" data-idx="118">
 <td id="D-079"><a href="#D-079">D-079</a></td>
 <td class=S2>S2</td>
 <td>S9</td>
@@ -246,7 +366,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>confirmed</td>
 <td><a class=ev href="evidence/S9/X3/02-home-no-net.webp">S9/X3/02,03</a><sup class=more><a href="evidence/S9/X3/03-home-no-net-30s.webp" title="S9/X3/03-home-no-net-30s.webp">2</a></sup></td>
 </tr>
-<tr data-sev="S2" data-idx="100">
+<tr data-sev="S2" data-idx="121">
 <td id="D-082"><a href="#D-082">D-082</a></td>
 <td class=S2>S2</td>
 <td>S10</td>
@@ -254,13 +374,93 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>confirmed</td>
 <td><a class=ev href="evidence/S10/T6/06-txlist-contact-row-before.webp">S10/T6/06</a> vs <a class=ev href="evidence/S10/T6/22-txlist-bottom-after.webp">S10/T6/22</a></td>
 </tr>
-<tr data-sev="S2" data-idx="101">
+<tr data-sev="S2" data-idx="122">
 <td id="D-083"><a href="#D-083">D-083</a></td>
 <td class=S2>S2</td>
 <td>S10</td>
 <td>After reset + restore a 0.001 payment to a DashPay contact re-renders as −0.000007 (fee only): the cache row's valueSatoshis went −100737 → −737 because the contact's DIP-15 sending-chain head is now watched as an own address</td>
 <td>confirmed</td>
 <td><a class=ev href="evidence/S10/T6/06-txlist-contact-row-before.webp">S10/T6/06</a> vs <a class=ev href="evidence/S10/T6/22-txlist-bottom-after.webp">S10/T6/22</a></td>
+</tr>
+<tr data-sev="S2" data-idx="137">
+<td id="D-098"><a href="#D-098">D-098</a></td>
+<td class=S2>S2 (release gate)</td>
+<td>SRB</td>
+<td>minSdk regressed 24 → 29 between 11.9.0 and 12.0.0: every Android 7.0–9 device silently loses updates, on top of the armeabi-v7a cut (<a class=did href="DEFECT-LEDGER.html#SR-39">SR-39</a>); not covered by any SR row</td>
+<td>confirmed (aapt badging)</td>
+<td><a class=ev href="evidence/SRB/SR-23/SUMMARY-badging.txt">SRB/SR-23/SUMMARY-badging.txt</a></td>
+</tr>
+<tr data-sev="S2" data-idx="138">
+<td id="D-099"><a href="#D-099">D-099</a></td>
+<td class=S2>S2 (release gate)</td>
+<td>SRB</td>
+<td>prodRelease mainnet build has NO UI to disable the five seeded USE_KOTLIN_SDK_* flags (Tools shows only "dashj sync (diagnostic)"); a mainnet user is opted into the SDK paths with real funds and cannot opt out</td>
+<td>confirmed</td>
+<td><a class=ev href="evidence/SRB/SR-08/13-tools-screen.webp">SRB/SR-08/13-tools-screen.png</a>, SRB/<a class=did href="DEFECT-LEDGER.html#SR-08">SR-08</a>/datastore-after/dashpay.preferences_pb</td>
+</tr>
+<tr data-sev="S2" data-idx="141">
+<td id="D-102"><a href="#D-102">D-102</a></td>
+<td><strong>S2</strong></td>
+<td>SRE</td>
+<td><code>L1ShadowSyncService.isEnabled()</code> catches <code>Exception</code> (which includes <code>CancellationException</code>) and reports "failed to read USE_KOTLIN_SDK_L1_SHADOW; treating as off": a cancelled coroutine is converted into "feature disabled", the proximate cause of <a class=did href="DEFECT-LEDGER.html#SR-01">SR-01</a>'s "engine restart declined to start"</td>
+<td>confirmed (log)</td>
+<td><a class=ev href="evidence/SRE/SR-01/20-watchdog-fire-context.txt">SRE/SR-01/20-watchdog-fire-context.txt</a></td>
+</tr>
+<tr data-sev="S2" data-idx="142">
+<td id="D-103"><a href="#D-103">D-103</a></td>
+<td><strong>S2</strong></td>
+<td>SRE</td>
+<td><code>stop()</code> logs "failed to stop the shadow SPV client" with a JobCancellationException: the native SPV client teardown is skipped while the service marks itself STOPPED, so lifecycle state diverges from reality</td>
+<td>confirmed (log)</td>
+<td><a class=ev href="evidence/SRE/SR-01/20-watchdog-fire-context.txt">SRE/SR-01/20-watchdog-fire-context.txt</a></td>
+</tr>
+<tr data-sev="S2" data-idx="146">
+<td id="D-107"><a href="#D-107">D-107</a></td>
+<td><strong>S2</strong></td>
+<td>SRA</td>
+<td>Reset Wallet silently no-ops when filesDir is unwritable: begin() warns, UI goes to onboarding, finish() logs "destroying nothing"; wallet file, key backup, keystore secrets and databases all survive and the wallet is usable again with the same PIN after the user was told it was reset (<a class=did href="DEFECT-LEDGER.html#SR-36">SR-36</a> consequence)</td>
+<td>confirmed</td>
+<td><a class=ev href="evidence/SRA/SR-36/03-wipe-grep.txt">SRA/SR-36/03-wipe-grep.txt</a>, <a class=ev href="evidence/SRA/SR-36/12-destroying-nothing.txt">SRA/SR-36/12-destroying-nothing.txt</a>, <a class=ev href="evidence/SRA/SR-36/06-run1-wallet-alive.webp">SRA/SR-36/06-run1-wallet-alive.png</a></td>
+</tr>
+<tr data-sev="S2" data-idx="150">
+<td id="D-111"><a href="#D-111">D-111</a></td>
+<td><strong>S2</strong></td>
+<td>SRC</td>
+<td>Every SDK-routed send is stored with value=0 in the tx metadata store (amount lost, independent of <a class=did href="DEFECT-LEDGER.html#SR-19">SR-19</a>); tax categorisation, CSV/ZenLedger and Platform tx-metadata sync see 0</td>
+<td>confirmed (5/5 sends)</td>
+<td><a class=ev href="evidence/SRC/SR-19/17-grep-txmetadata-all.txt">SRC/SR-19/17-grep-txmetadata-all.txt</a></td>
+</tr>
+<tr data-sev="S2" data-idx="151">
+<td id="D-112"><a href="#D-112">D-112</a></td>
+<td><strong>S2</strong></td>
+<td>SRC</td>
+<td>Typed send amount silently reduced: any value within 10,000 duffs of the spendable balance is rewritten to balance − 0.0001 with no error, toast or dialog; Send stays enabled (<a class=did href="DEFECT-LEDGER.html#SR-28">SR-28</a> gate; extends <a class=did href="DEFECT-LEDGER.html#D-032">D-032</a>)</td>
+<td>confirmed</td>
+<td><a class=ev href="evidence/SRC/SR-28/13-typed-98994774.webp">SRC/SR-28/13-typed-98994774.png</a>, <a class=ev href="evidence/SRC/SR-28/numbers.txt">SRC/SR-28/numbers.txt</a></td>
+</tr>
+<tr data-sev="S2" data-idx="155">
+<td id="D-116"><a href="#D-116">D-116</a></td>
+<td><strong>S2</strong></td>
+<td>SRD</td>
+<td>More › Buy &amp; Sell › Topper crashes the whole app: <code>io.jsonwebtoken.io.DecodingException: Illegal base64 character</code> from TopperClient.getOnRampUrl on Dispatchers.Main.immediate, uncaught; TopperClient.hasValidCredentials exists but is never checked, and Topper stays tappable while Uphold/Coinbase are greyed out for missing keys</td>
+<td>confirmed (crash)</td>
+<td><a class=ev href="evidence/SRD/SR-03-04/18-topper-crash-walletlog.txt">SRD/SR-03-04/18-topper-crash-walletlog.txt</a>, <a class=ev href="evidence/SRD/SR-03-04/18-topper-crash-logcat.txt">SRD/SR-03-04/18-topper-crash-logcat.txt</a>, <a class=ev href="evidence/SRD/SR-03-04/19-crash-dialog.webp">SRD/SR-03-04/19-crash-dialog.png</a></td>
+</tr>
+<tr data-sev="S2" data-idx="159">
+<td id="D-120"><a href="#D-120">D-120</a></td>
+<td><strong>S2</strong></td>
+<td>SRF</td>
+<td>Confirm + PIN on the shielded transfer screen is a silent no-op when the shielded runtime is momentarily not READY: onConfirm() returns early on !canContinue with no error, spinner or log line; happened twice in a row after a PIN entry</td>
+<td>confirmed</td>
+<td><a class=ev href="evidence/SRF/notes.html">SRF/notes.md</a>, <a class=ev href="evidence/SRF/SR-31/grep.txt">SRF/SR-31/grep.txt</a></td>
+</tr>
+<tr data-sev="S2" data-idx="160">
+<td id="D-121"><a href="#D-121">D-121</a></td>
+<td><strong>S2</strong></td>
+<td>SRF</td>
+<td>Invite entry point is gated on the TRANSPARENT balance (observeTotalBalance ≥ 0.03), so a user who shielded everything loses More › Invitations even though private invites fund themselves from the shielded pool (0.000008 transparent / 0.962 shielded → hidden)</td>
+<td>confirmed</td>
+<td><a class=ev href="evidence/SRF/SR-14/03-more-scrolled.webp">SRF/SR-14/03-more-scrolled.png</a></td>
 </tr>
 <tr data-sev="S3" data-idx="4">
 <td id="D-005"><a href="#D-005">D-005</a></td>
@@ -302,47 +502,87 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>candidate; S1 to re-check in <a class=ev href="evidence/index.html#S1-C5">C5</a> (memo persistence)</td>
 <td class=S1>S1 <a class=ev href="evidence/S3/A3b/final/files/log/wallet.log">wallet.log</a> 05:18:23</td>
 </tr>
-<tr data-sev="S3" data-idx="37">
+<tr data-sev="S3" data-idx="48">
 <td id="SR-28"><a href="#SR-28">SR-28</a></td>
-<td>S3</td>
-<td>SR</td>
+<td>S3 — CONFIRMED ON DEVICE (SRC, S7)</td>
+<td>SR, SRC</td>
 <td>Send confirm dialog shows flat 0.0001 DASH fee (~44× real) and gates affordability on it</td>
-<td>static; S7 asked to confirm on device</td>
-<td><a class=ev href="evidence/SR/REPORT.html">evidence/SR/REPORT.md</a></td>
+<td><strong>REPRODUCED (SRC)</strong>: confirm sheet shows 0.0001 vs 0.00000226 real (44×) on 5/5 sends; any typed amount within 10,000 duffs of the spendable balance is silently rewritten to balance − 0.0001 with no error (<a class=did href="DEFECT-LEDGER.html#D-112">D-112</a>); Max is exempt</td>
+<td><a class=ev href="evidence/SRC/SR-28/numbers.txt">SRC/SR-28/numbers.txt</a>, <a class=ev href="evidence/SRC/SR-28/01-confirm-0.01-fee-shown.webp">SRC/SR-28/01-confirm-0.01-fee-shown.png</a>, <a class=ev href="evidence/SRC/SR-28/03-explorer-tx-0.01.json">SRC/SR-28/03-explorer-tx-0.01.json</a>, <a class=ev href="evidence/SRC/SR-28/13-typed-98994774.webp">SRC/SR-28/13-typed-98994774.png</a></td>
 </tr>
-<tr data-sev="S3" data-idx="38">
+<tr data-sev="S3" data-idx="49">
 <td id="SR-29"><a href="#SR-29">SR-29</a></td>
-<td>S3</td>
-<td>SR</td>
+<td>S3 — CONFIRMED ON DEVICE (SRC, S7, S1)</td>
+<td>SR, SRC</td>
 <td>Send-all reserve 1.5 duffs/B vs drain at 2 duffs/B → every send-max fails first attempt, relies on string-matched retry</td>
-<td>static; S1 <a class=ev href="evidence/index.html#S1-C2">C2</a> / S7 asked to grep log for the retry</td>
-<td><a class=ev href="evidence/SR/REPORT.html">evidence/SR/REPORT.md</a></td>
+<td><strong>REPRODUCED twice (SRC)</strong>: both send-max runs logged "floor … not deliverable at fee; retrying engine-authoritatively" with CoreInsufficientFunds available N required N+45; reserve 339 duffs (1.5 duffs/B) vs real fee 384 (2 duffs/B), identical arithmetic on independent UTXOs; completes only via the string-matched retry</td>
+<td><a class=ev href="evidence/SRC/SR-29/05-grep-sendall.txt">SRC/SR-29/05-grep-sendall.txt</a>, <a class=ev href="evidence/SRC/SR-29/11-grep-both-max.txt">SRC/SR-29/11-grep-both-max.txt</a>, <a class=ev href="evidence/SRC/SR-29/ANALYSIS.txt">SRC/SR-29/ANALYSIS.txt</a>, <a class=ev href="evidence/SRC/SR-29/12-explorer-fees.txt">SRC/SR-29/12-explorer-fees.txt</a>, <a class=ev href="evidence/SRC/SR-29/sr29-max1.mp4">SRC/SR-29/sr29-max1.mp4</a></td>
 </tr>
-<tr data-sev="S3" data-idx="39">
-<td id="SR-30"><a href="#SR-30">SR-30/31</a></td>
+<tr data-sev="S3" data-idx="50">
+<td id="SR-30"><a href="#SR-30">SR-30</a></td>
+<td>S3 — CONFIRMED ON DEVICE (SRF, S1)</td>
+<td>SR, SRF</td>
+<td>Shielded "Max" on the send-to-address screen can never succeed: no fee reserve and the fee-adjust retry is not wired to that screen</td>
+<td><strong>REPRODUCED (SRF)</strong>: Max 0.77828183 → Continue → Confirm → PIN fails pre-broadcast with <code>Insufficient shielded balance: available 77828183400, required 77991034200</code> (fee 162850800 credits, no reserve, no retry); the transfer screen's DASH Max on the same balance auto-adjusts and succeeds</td>
+<td><a class=ev href="evidence/SRF/SR-30/grep.txt">SRF/SR-30/grep.txt</a>, <a class=ev href="evidence/SRF/SR-30/m070.webp">SRF/SR-30/m070.png</a>, <a class=ev href="evidence/SRF/SR-30/20-max.webp">SRF/SR-30/20-max.png</a>, <a class=ev href="evidence/SRF/SR-30/srf-sr30.mp4">SRF/SR-30/srf-sr30.mp4</a></td>
+</tr>
+<tr data-sev="S3" data-idx="51">
+<td id="SR-31"><a href="#SR-31">SR-31</a></td>
+<td>S3 — CONFIRMED ON DEVICE (SRF)</td>
+<td>SR, SRF</td>
+<td>Fiat-mode "Max" on the transfer screen loses max-spend handling via a lossy fiat→DASH round trip</td>
+<td><strong>REPRODUCED (SRF)</strong>: fiat Max ($11.8751 = 0.19999663) → "This transfer was not sent / Nothing left your balance" in ~8 s; DASH-mode Max on the same screen and balance immediately after → auto-adjust retry → succeeds (isMaxSpend = amount == availableBalance fails after the round trip)</td>
+<td><a class=ev href="evidence/SRF/SR-31/w008.webp">SRF/SR-31/w008.png</a>, <a class=ev href="evidence/SRF/SR-31/d008.webp">SRF/SR-31/d008.png</a>, <a class=ev href="evidence/SRF/SR-31/grep.txt">SRF/SR-31/grep.txt</a>, <a class=ev href="evidence/SRF/SR-31/srf-sr31.mp4">SRF/SR-31/srf-sr31.mp4</a></td>
+</tr>
+<tr data-sev="S3" data-idx="52">
+<td id="SR-32"><a href="#SR-32">SR-32</a></td>
 <td>S3</td>
-<td>SR</td>
-<td>Shielded "Max" send-to-address can never succeed; fiat-mode Max loses max handling</td>
-<td>static; S1 <a class=ev href="evidence/index.html#S1-C4">C4</a> asked to try</td>
-<td><a class=ev href="evidence/SR/REPORT.html">evidence/SR/REPORT.md</a></td>
+<td>SR, SRC</td>
+<td>Send screen "Max" has no replay hold: overlayMaxSendableBalance has no l1Synced term, so it publishes the live partial while the header holds last-known</td>
+<td><strong>PARTIAL (SRC)</strong>: code confirmed; the divergence is masked on a restored wallet because the header hold is inert too (<a class=did href="DEFECT-LEDGER.html#SR-10">SR-10</a>): both read 0 then 1. Needs a wallet with a positive persisted last-known balance plus an l1Synced=false window (an upgraded long-lived wallet)</td>
+<td><a class=ev href="evidence/SRC/SR-32/timeline.txt">SRC/SR-32/timeline.txt</a>, <a class=ev href="evidence/SRC/SR-32/08-max-after-auth.webp">SRC/SR-32/08-max-after-auth.png</a></td>
 </tr>
-<tr data-sev="S3" data-idx="40">
+<tr data-sev="S3" data-idx="53">
 <td id="SR-33"><a href="#SR-33">SR-33/34</a></td>
 <td>S3</td>
-<td>SR</td>
+<td>SR, SRD</td>
 <td>Root cause of <a class=did href="DEFECT-LEDGER.html#D-001">D-001</a>: default auto_logout_minutes = 1, timer reset only by touch; PRE-EXISTING in 11.9.0. New: 0-minute mode now live via WalletActivityTracker.onStoppedLast</td>
-<td>static; S3 baseline check requested; recommend downgrading <a class=did href="DEFECT-LEDGER.html#D-001">D-001</a></td>
-<td><a class=ev href="evidence/SR/REPORT.html">evidence/SR/REPORT.md</a></td>
+<td><strong>REPRODUCED, pre-existing (SRD)</strong>: 12.0.0 and master 11.9.0 both default to Auto Logout ON / "Logout after 1 min" (Configuration.java byte-identical); the app locked ~40 s into the initial sync. "Immediately" locks on HOME→return. Rotation never locks: MainActivity is screenOrientation=portrait and rotatable screens log "stopped for a configuration change — not treating it as background"</td>
+<td><a class=ev href="evidence/SRD/SR-33-34/07-advanced-security-default.webp">SRD/SR-33-34/07-advanced-security-default.png</a>, <a class=ev href="evidence/SRD/SR-33-master/04-master-advanced-security-default.webp">SRD/SR-33-master/04-master-advanced-security-default.png</a>, <a class=ev href="evidence/SRD/SR-33-34/10-after-return-from-home.webp">SRD/SR-33-34/10-after-return-from-home.png</a>, <a class=ev href="evidence/SRD/SR-33-34/16-rotate-guard-loglines.txt">SRD/SR-33-34/16-rotate-guard-loglines.txt</a></td>
 </tr>
-<tr data-sev="S3" data-idx="41">
-<td id="SR-35"><a href="#SR-35">SR-35..SR-43</a></td>
+<tr data-sev="S3" data-idx="54">
+<td id="SR-37"><a href="#SR-37">SR-37</a></td>
 <td>S3/S4</td>
 <td>SR</td>
-<td>See SR report (watchdog EXHAUSTED latch, wipe proceeds without marker, CrowdNode ISE, oversize recovery, armeabi-v7a dropped, exported receiver on API 29–32, 20 s load budget, contact handlers on own sends, compileSdk inside defaultConfig)</td>
+<td>CrowdNode account locking throws IllegalStateException mid-flow when the tx seam has not primed (latent; needs CrowdNode credentials)</td>
 <td>static</td>
 <td><a class=ev href="evidence/SR/REPORT.html">evidence/SR/REPORT.md</a></td>
 </tr>
-<tr data-sev="S3" data-idx="42">
+<tr data-sev="S3" data-idx="57">
+<td id="SR-41"><a href="#SR-41">SR-41</a></td>
+<td>S3 — CONFIRMED ON DEVICE (SRA)</td>
+<td>SR, SRA</td>
+<td>20 s wallet-load budget can strand a slow launch on the safe-mode crash-report screen</td>
+<td><strong>REPRODUCED (SRA)</strong>: SIGSTOP 450 ms into the parse for 21 s → "wallet load exceeded its 20000ms budget — arming safe mode"; ONE over-budget load plus ONE pre-milestone death is enough (armSafeModeOnNextDeath pre-loads the counter) → next launch WALLET_LOAD_SKIPPED_SAFE_MODE → degraded UI; "Try Again" recovers. Normal loads measured 211–257 ms</td>
+<td><a class=ev href="evidence/SRA/SR-41/06-attempt3-log.txt">SRA/SR-41/06-attempt3-log.txt</a>, <a class=ev href="evidence/SRA/SR-41/08-safemode-screen.webp">SRA/SR-41/08-safemode-screen.png</a>, <a class=ev href="evidence/SRA/SR-41/09-safemode-log.txt">SRA/SR-41/09-safemode-log.txt</a>, <a class=ev href="evidence/SRA/SR-41/11-retry-log.txt">SRA/SR-41/11-retry-log.txt</a></td>
+</tr>
+<tr data-sev="S3" data-idx="59">
+<td id="SR-40"><a href="#SR-40">SR-40</a></td>
+<td>S3 (pre-existing) — CONFIRMED ON DEVICE (SRE)</td>
+<td>SR, SRE</td>
+<td>Force-finish receiver effectively exported on API 29–32 (RECEIVER_NOT_EXPORTED gated at API 26, enforced by the platform only from 33)</td>
+<td><strong>REPRODUCED on API 31 from an unprivileged uid 2000 (SRE)</strong>: broadcast finishes VerifySeedActivity / SetPinActivity; API 35 control survives; master 11.9.0 identical → pre-existing. Correction: only SetPinActivity, VerifySeedActivity and UpholdTransferActivity extend InteractionAwareActivity; MainActivity/Send/lock screen are NOT affected. Root/shell broadcasts bypass the check on every API (false positive)</td>
+<td><a class=ev href="evidence/SRE/SR-40/11-api31-unprivileged-uid2000.txt">SRE/SR-40/11-api31-unprivileged-uid2000.txt</a>, <a class=ev href="evidence/SRE/SR-40/18-api35-unprivileged-control.txt">SRE/SR-40/18-api35-unprivileged-control.txt</a>, <a class=ev href="evidence/SRE/SR-40/15-api31-MASTER-11.9.0.txt">SRE/SR-40/15-api31-MASTER-11.9.0.txt</a>, <a class=ev href="evidence/SRE/SR-40/sr40-api31-unpriv.mp4">SRE/SR-40/sr40-api31-unpriv.mp4</a></td>
+</tr>
+<tr data-sev="S3" data-idx="60">
+<td id="SR-39"><a href="#SR-39">SR-39</a></td>
+<td>S3 — CONFIRMED (SRB, artefact)</td>
+<td>SR, SRB</td>
+<td>Default abiFilters drop armeabi-v7a (and x86); with minSdk 29 those users silently stop receiving updates</td>
+<td><strong>REPRODUCED (SRB)</strong>: aapt badging master native-code arm64-v8a armeabi-v7a x86 x86_64 vs fix arm64-v8a x86_64 only</td>
+<td><a class=ev href="evidence/SRB/SR-39/SUMMARY-badging.txt">SRB/SR-39/SUMMARY-badging.txt</a>, <a class=ev href="evidence/SRB/SR-39/device-abilist.txt">SRB/SR-39/device-abilist.txt</a></td>
+</tr>
+<tr data-sev="S3" data-idx="63">
 <td id="D-024"><a href="#D-024">D-024</a></td>
 <td>S3</td>
 <td>S3, S7</td>
@@ -350,7 +590,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>confirmed by two streams + source</td>
 <td><a class=ev href="evidence/S3/A3/06-restart/dashpay-datastore-strings.txt">S3/A3/06-restart/dashpay-datastore-strings.txt</a>; <a class=ev href="evidence/S7/notes.html">S7 notes</a></td>
 </tr>
-<tr data-sev="S3" data-idx="44">
+<tr data-sev="S3" data-idx="65">
 <td id="D-026"><a href="#D-026">D-026</a></td>
 <td>S3</td>
 <td>S6</td>
@@ -358,7 +598,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>confirmed (S6 REPORT S6-D4)</td>
 <td><a class=ev href="evidence/S6/M2/15-txdetail-received-2018.webp">S6/M2/15,16-txdetail*.png</a><sup class=more><a href="evidence/S6/M2/16-txdetail-scrolled.webp" title="S6/M2/16-txdetail-scrolled.webp">2</a></sup></td>
 </tr>
-<tr data-sev="S3" data-idx="45">
+<tr data-sev="S3" data-idx="66">
 <td id="D-027"><a href="#D-027">D-027</a></td>
 <td>S3</td>
 <td class=S1>S1</td>
@@ -366,7 +606,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>candidate</td>
 <td><a class=ev href="evidence/S1/A1/03-shield/14-shield-tx-detail.webp">S1/A1/03-shield/14-shield-tx-detail.png</a></td>
 </tr>
-<tr data-sev="S3" data-idx="51">
+<tr data-sev="S3" data-idx="72">
 <td id="D-033"><a href="#D-033">D-033</a></td>
 <td>S3</td>
 <td>S7, S1</td>
@@ -374,7 +614,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>confirmed</td>
 <td>S7 <a class=ev href="evidence/S3/A3b/final/files/log/wallet.log">wallet.log</a> 06:11:28</td>
 </tr>
-<tr data-sev="S3" data-idx="54">
+<tr data-sev="S3" data-idx="75">
 <td id="D-036"><a href="#D-036">D-036</a></td>
 <td>S3</td>
 <td>S6</td>
@@ -382,7 +622,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>confirmed</td>
 <td><a class=ev href="evidence/S6/M3/07-master-after-20min.webp">S6/M3/07-master-after-20min.png</a> vs <a class=ev href="evidence/S6/M2/14-SYNCED-home.webp">S6/M2/14-SYNCED-home.png</a></td>
 </tr>
-<tr data-sev="S3" data-idx="56">
+<tr data-sev="S3" data-idx="77">
 <td id="D-038"><a href="#D-038">D-038</a></td>
 <td>S3</td>
 <td>S5</td>
@@ -390,7 +630,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>confirmed</td>
 <td><a class=ev href="evidence/S5/D2b/20-after-create2.webp">S5/D2b/20</a>, <a class=ev href="evidence/S5/D2b/22-invitation-error-dialog.webp">S5/D2b/22</a></td>
 </tr>
-<tr data-sev="S3" data-idx="60">
+<tr data-sev="S3" data-idx="81">
 <td id="D-042"><a href="#D-042">D-042</a></td>
 <td>S3</td>
 <td class=S1>S1</td>
@@ -398,7 +638,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>confirmed</td>
 <td><a class=ev href="evidence/S1/SR30/01-max-shielded-to-wallet.webp">S1/SR30/*</a><sup class=more><a href="evidence/S1/SR30/02-confirm.webp" title="S1/SR30/02-confirm.webp">2</a> <a href="evidence/S1/SR30/03-after-pin.webp" title="S1/SR30/03-after-pin.webp">3</a> <a href="evidence/S1/SR30/04-after-wait.webp" title="S1/SR30/04-after-wait.webp">4</a> <a href="evidence/S1/SR30/s1-sr30-max.mp4" title="S1/SR30/s1-sr30-max.mp4">5</a></sup>, <a class=ev href="evidence/S1/C2/07-drain-max.webp">S1/C2/07-11</a><sup class=more><a href="evidence/S1/C2/08-after-drain.webp" title="S1/C2/08-after-drain.webp">2</a> <a href="evidence/S1/C2/09-home-drained.webp" title="S1/C2/09-home-drained.webp">3</a> <a href="evidence/S1/C2/10-exact-after-drain.webp" title="S1/C2/10-exact-after-drain.webp">4</a> <a href="evidence/S1/C2/11-drain-log.txt" title="S1/C2/11-drain-log.txt">5</a></sup>, S1 <a class=ev href="evidence/S1/final-logs/files/log/wallet.log">wallet.log</a> 06:10:44, 06:25:17</td>
 </tr>
-<tr data-sev="S3" data-idx="63">
+<tr data-sev="S3" data-idx="84">
 <td id="D-045"><a href="#D-045">D-045</a></td>
 <td>S3</td>
 <td>S7</td>
@@ -406,7 +646,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>confirmed</td>
 <td><a class=ev href="evidence/S7/N1/01-receive-addr5.webp">S7/N1/*</a><sup class=more><a href="evidence/S7/N1/02-specify-amount.webp" title="S7/N1/02-specify-amount.webp">2</a> <a href="evidence/S7/N1/03-specify-amount-qr.webp" title="S7/N1/03-specify-amount-qr.webp">3</a> <a href="evidence/S7/N1/04-state.webp" title="S7/N1/04-state.webp">4</a> <a href="evidence/S7/N1/05-receive-tab.webp" title="S7/N1/05-receive-tab.webp">5</a> <a href="evidence/S7/N1/06-notification-shade.webp" title="S7/N1/06-notification-shade.webp">6</a> <a href="evidence/S7/N1/07-notification-expanded.webp" title="S7/N1/07-notification-expanded.webp">7</a></sup>, <a class=ev href="evidence/S7/E8/pre-upgrade/files/log/wallet.log">wallet.log</a> 06:04:46</td>
 </tr>
-<tr data-sev="S3" data-idx="65">
+<tr data-sev="S3" data-idx="86">
 <td id="D-047"><a href="#D-047">D-047</a></td>
 <td>S3</td>
 <td class=S1>S1</td>
@@ -414,7 +654,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>confirmed</td>
 <td><a class=ev href="evidence/S1/C4/07-unshield-tx-detail.webp">S1/C4/07-unshield-tx-detail.png</a></td>
 </tr>
-<tr data-sev="S3" data-idx="66">
+<tr data-sev="S3" data-idx="87">
 <td id="D-048"><a href="#D-048">D-048</a></td>
 <td>S3</td>
 <td class=S1>S1</td>
@@ -422,7 +662,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>confirmed</td>
 <td><a class=ev href="evidence/S1/C1/13-after-retry2.webp">S1/C1/13-after-retry2.png</a>, <a class=ev href="evidence/S1/C1/15-tax-explainer.webp">S1/C1/15-tax-explainer.png</a></td>
 </tr>
-<tr data-sev="S3" data-idx="67">
+<tr data-sev="S3" data-idx="88">
 <td id="D-049"><a href="#D-049">D-049</a></td>
 <td>S3</td>
 <td class=S1>S1</td>
@@ -430,7 +670,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>confirmed</td>
 <td><a class=ev href="evidence/S1/C7/06-export.csv">S1/C7/06-export.csv</a></td>
 </tr>
-<tr data-sev="S3" data-idx="68">
+<tr data-sev="S3" data-idx="89">
 <td id="D-050"><a href="#D-050">D-050</a></td>
 <td>S3</td>
 <td class=S1>S1</td>
@@ -438,7 +678,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>confirmed</td>
 <td><a class=ev href="evidence/S1/A1/03-shield/08-confirm.webp">S1/A1/03-shield/08-confirm.png</a>, <a class=ev href="evidence/S1/A1/03-shield/15-shielded-screen-after.webp">15-shielded-screen-after.png</a></td>
 </tr>
-<tr data-sev="S3" data-idx="75">
+<tr data-sev="S3" data-idx="96">
 <td id="D-057"><a href="#D-057">D-057</a></td>
 <td>S3</td>
 <td>S7, S9</td>
@@ -446,7 +686,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>confirmed on two wallets</td>
 <td><a class=ev href="evidence/S7/BK1/15-SR03-send-result.webp">S7/BK1/15-SR03-send-result.png</a>, <a class=ev href="evidence/S7/BK1/17-state.webp">S7/BK1/17</a></td>
 </tr>
-<tr data-sev="S3" data-idx="79">
+<tr data-sev="S3" data-idx="100">
 <td id="D-061"><a href="#D-061">D-061</a></td>
 <td>S3</td>
 <td>S10</td>
@@ -454,7 +694,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>candidate; awaiting S10 report</td>
 <td><a class=ev href="evidence/S10/notes.html">S10 notes</a></td>
 </tr>
-<tr data-sev="S3" data-idx="82">
+<tr data-sev="S3" data-idx="103">
 <td id="D-064"><a href="#D-064">D-064</a></td>
 <td>S3</td>
 <td>S8</td>
@@ -462,7 +702,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>confirmed</td>
 <td><a class=ev href="evidence/S8/L7/12-max-synced.webp">S8/L7/12-max-synced.png</a>, <a class=ev href="evidence/S8/L7/13-max-synced-repeat.webp">13-max-synced-repeat.png</a>, <a class=ev href="evidence/S8/L6/logs-final/files/log/wallet.log">wallet.log</a> 06:49:38–46</td>
 </tr>
-<tr data-sev="S3" data-idx="84">
+<tr data-sev="S3" data-idx="105">
 <td id="D-066"><a href="#D-066">D-066</a></td>
 <td>S3</td>
 <td>S10</td>
@@ -470,7 +710,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>confirmed</td>
 <td><a class=ev href="evidence/S10/notes.html">S10 notes</a> T1d, tx c5e87e95… (block 1556596)</td>
 </tr>
-<tr data-sev="S3" data-idx="89">
+<tr data-sev="S3" data-idx="110">
 <td id="D-071"><a href="#D-071">D-071</a></td>
 <td>S3</td>
 <td>S10</td>
@@ -478,7 +718,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>confirmed</td>
 <td><a class=ev href="evidence/S10/T5/01-a11y-home.webp">S10/T5/01..10</a><sup class=more><a href="evidence/index.html#S10-T5" title="11 files, open gallery">+10</a></sup></td>
 </tr>
-<tr data-sev="S3" data-idx="92">
+<tr data-sev="S3" data-idx="113">
 <td id="D-074"><a href="#D-074">D-074</a></td>
 <td>S3</td>
 <td>S11</td>
@@ -486,7 +726,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>confirmed on device</td>
 <td><a class=ev href="evidence/S11/P4/11-replay-4.webp">S11/P4/11-replay-4.png</a> .. <a class=ev href="evidence/S11/P4/11-replay-12.webp">11-replay-12.png</a> vs <a class=ev href="evidence/S11/P4/14-txdetail-post-sync.webp">S11/P4/14-txdetail-post-sync.png</a></td>
 </tr>
-<tr data-sev="S3" data-idx="93">
+<tr data-sev="S3" data-idx="114">
 <td id="D-075"><a href="#D-075">D-075</a></td>
 <td>S3</td>
 <td>S9</td>
@@ -494,7 +734,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>confirmed</td>
 <td><a class=ev href="evidence/S9/X7/01-home.webp">S9/X7/*</a><sup class=more><a href="evidence/index.html#S9-X7" title="53 files, open gallery">+52</a></sup></td>
 </tr>
-<tr data-sev="S3" data-idx="96">
+<tr data-sev="S3" data-idx="117">
 <td id="D-078"><a href="#D-078">D-078</a></td>
 <td>S3</td>
 <td>S10</td>
@@ -502,7 +742,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>confirmed</td>
 <td><a class=ev href="evidence/S10/T8/11-invite-error-delayed.webp">S10/T8/11-invite-error-delayed.png</a></td>
 </tr>
-<tr data-sev="S3" data-idx="98">
+<tr data-sev="S3" data-idx="119">
 <td id="D-080"><a href="#D-080">D-080</a></td>
 <td>S3</td>
 <td>S9</td>
@@ -510,7 +750,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>confirmed</td>
 <td><a class=ev href="evidence/S9/X7/44-request-airplane.webp">S9/X7/44,45</a><sup class=more><a href="evidence/S9/X7/45-request-airplane-2.webp" title="S9/X7/45-request-airplane-2.webp">2</a></sup></td>
 </tr>
-<tr data-sev="S3" data-idx="102">
+<tr data-sev="S3" data-idx="123">
 <td id="D-084"><a href="#D-084">D-084</a></td>
 <td>S3</td>
 <td>S10</td>
@@ -518,7 +758,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>confirmed</td>
 <td><a class=ev href="evidence/S10/T4/28-txlist-with-label.webp">S10/T4/28</a> vs 29</td>
 </tr>
-<tr data-sev="S3" data-idx="103">
+<tr data-sev="S3" data-idx="124">
 <td id="D-085"><a href="#D-085">D-085</a></td>
 <td>S3</td>
 <td>S10</td>
@@ -526,7 +766,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>confirmed</td>
 <td><a class=ev href="evidence/S10/T6/30-ar-home.webp">S10/T6/30..37</a><sup class=more><a href="evidence/S10/T6/31-ar-txdetail.webp" title="S10/T6/31-ar-txdetail.webp">2</a> <a href="evidence/S10/T6/32-ar-payments.webp" title="S10/T6/32-ar-payments.webp">3</a> <a href="evidence/S10/T6/33-ar-receive.webp" title="S10/T6/33-ar-receive.webp">4</a> <a href="evidence/S10/T6/34-ar-internal-tab.webp" title="S10/T6/34-ar-internal-tab.webp">5</a> <a href="evidence/S10/T6/35-ar-shielded.webp" title="S10/T6/35-ar-shielded.webp">6</a> <a href="evidence/S10/T6/36-ar-send-amount.webp" title="S10/T6/36-ar-send-amount.webp">7</a> <a href="evidence/S10/T6/37-ar-contacts.webp" title="S10/T6/37-ar-contacts.webp">8</a></sup></td>
 </tr>
-<tr data-sev="S3" data-idx="104">
+<tr data-sev="S3" data-idx="125">
 <td id="D-086"><a href="#D-086">D-086</a></td>
 <td>S3</td>
 <td>S10</td>
@@ -534,7 +774,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>confirmed</td>
 <td><a class=ev href="evidence/S10/T4/07-bip21-label-message.webp">S10/T4/07..14</a><sup class=more><a href="evidence/S10/T4/08-bip21-confirm.webp" title="S10/T4/08-bip21-confirm.webp">2</a> <a href="evidence/S10/T4/09-bip21-txdetail.webp" title="S10/T4/09-bip21-txdetail.webp">3</a> <a href="evidence/S10/T4/10-bip21-txdetail-scrolled.webp" title="S10/T4/10-bip21-txdetail-scrolled.webp">4</a> <a href="evidence/S10/T4/11-bip21-over-balance.webp" title="S10/T4/11-bip21-over-balance.webp">5</a> <a href="evidence/S10/T4/12-bip21-IS.webp" title="S10/T4/12-bip21-IS.webp">6</a> <a href="evidence/S10/T4/13-bip21-reqIS.webp" title="S10/T4/13-bip21-reqIS.webp">7</a> <a href="evidence/S10/T4/14-bip21-unknown-req.webp" title="S10/T4/14-bip21-unknown-req.webp">8</a></sup></td>
 </tr>
-<tr data-sev="S3" data-idx="105">
+<tr data-sev="S3" data-idx="126">
 <td id="D-087"><a href="#D-087">D-087</a></td>
 <td>S3</td>
 <td>S10</td>
@@ -542,7 +782,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>confirmed</td>
 <td><a class=ev href="evidence/S10/T1/07e-shielded-shows-zero.webp">S10/T1/07e..07h</a><sup class=more><a href="evidence/S10/T1/07f-shielded-zero-3min.webp" title="S10/T1/07f-shielded-zero-3min.webp">2</a> <a href="evidence/S10/T1/07g-more-shielded.webp" title="S10/T1/07g-more-shielded.webp">3</a> <a href="evidence/S10/T1/07h-transfer-screen-reopened.webp" title="S10/T1/07h-transfer-screen-reopened.webp">4</a></sup></td>
 </tr>
-<tr data-sev="S3" data-idx="108">
+<tr data-sev="S3" data-idx="129">
 <td id="D-090"><a href="#D-090">D-090</a></td>
 <td>S3</td>
 <td>S10</td>
@@ -550,7 +790,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>confirmed</td>
 <td><a class=ev href="evidence/S10/T1/01c-confirm.webp">S10/T1/01c</a></td>
 </tr>
-<tr data-sev="S3" data-idx="111">
+<tr data-sev="S3" data-idx="132">
 <td id="D-093"><a href="#D-093">D-093</a></td>
 <td>S3</td>
 <td>S12</td>
@@ -558,7 +798,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>confirmed</td>
 <td><a class=ev href="evidence/S12/CJ1/escape-hatches/02-shield-max.webp">S12/CJ1/escape-hatches/02-shield-max*</a>, 03-05</td>
 </tr>
-<tr data-sev="S3" data-idx="113">
+<tr data-sev="S3" data-idx="134">
 <td id="D-095"><a href="#D-095">D-095</a></td>
 <td>S3</td>
 <td>S12</td>
@@ -566,13 +806,93 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>confirmed</td>
 <td><a class=ev href="evidence/S12/BC1/31-buy-progress-1.webp">S12/BC1/31-buy-progress-1.png</a>, 33-after-unlock*</td>
 </tr>
-<tr data-sev="S3" data-idx="114">
+<tr data-sev="S3" data-idx="135">
 <td id="D-096"><a href="#D-096">D-096</a></td>
 <td>S3</td>
 <td>S12</td>
 <td>A credit top-up that hits <code>Dapi client error: no available addresses to use</code> broadcasts the asset lock anyway and tells the user "Your top-up may have gone through. Please don't try again" — funds locked on L1 with no in-UI progress until a background worker recovers it 91 s later</td>
 <td>confirmed</td>
 <td><a class=ev href="evidence/S12/BC1/01-fix-launch.webp">S12/BC1/*</a><sup class=more><a href="evidence/index.html#S12-BC1" title="61 files, open gallery">+60</a></sup> + <a class=ev href="evidence/S12/CJ1/pre-upgrade/logs/files/log/wallet.log">wallet.log</a></td>
+</tr>
+<tr data-sev="S3" data-idx="139">
+<td id="D-100"><a href="#D-100">D-100</a></td>
+<td>S3</td>
+<td>SRB</td>
+<td>Self-send tx detail shows an internal change address as "Sent to" instead of the address the user typed (cf. <a class=did href="DEFECT-LEDGER.html#D-057">D-057</a>)</td>
+<td>confirmed</td>
+<td>SRB/<a class=did href="DEFECT-LEDGER.html#SR-42">SR-42</a>/09-selfsend-detail.png, <a class=ev href="evidence/SRB/SR-42/grep-coins-callbacks.txt">SRB/SR-42/grep-coins-callbacks.txt</a></td>
+</tr>
+<tr data-sev="S3" data-idx="147">
+<td id="D-108"><a href="#D-108">D-108</a></td>
+<td>S3</td>
+<td>SRA</td>
+<td>Catastrophic wallet recovery shows a raw Java class-name Toast ("java.io.FileNotFoundException"); the wallet load and restoreWalletFromBackup() also run twice per launch</td>
+<td>confirmed</td>
+<td><a class=ev href="evidence/SRA/SR-38/11-t4s.webp">SRA/SR-38/11-t4s.png</a>, <a class=ev href="evidence/SRA/SR-38/17-breadcrumbs.txt">SRA/SR-38/17-breadcrumbs.txt</a></td>
+</tr>
+<tr data-sev="S3" data-idx="148">
+<td id="D-109"><a href="#D-109">D-109</a></td>
+<td>S3</td>
+<td>SRA</td>
+<td>shielded_tree_testnet.sqlite (+-shm/-wal, ~4.3 MB) survives a clean Reset Wallet: the previous wallet's shielded note-commitment tree outlived four resets; not covered by destroyWalletFiles()/cleanupFiles()</td>
+<td>confirmed</td>
+<td><a class=ev href="evidence/SRA/CONTROL/04-files-after-clean-wipe.txt">SRA/CONTROL/04-files-after-clean-wipe.txt</a>, <a class=ev href="evidence/SRA/SR-26/03-after-reset-files.txt">SRA/SR-26/03-after-reset-files.txt</a></td>
+</tr>
+<tr data-sev="S3" data-idx="149">
+<td id="D-110"><a href="#D-110">D-110</a></td>
+<td>S3</td>
+<td>SRA</td>
+<td>After a Reset Wallet in a process where the degraded path had latched, onboarding shows the degraded screen with no "Create new wallet" option (walletRecoveryFromSeedNeeded is a process-lifetime latch that triggerWipe() does not clear); relaunch fixes it</td>
+<td>confirmed</td>
+<td><a class=ev href="evidence/SRA/SR-26/02-after-reset.webp">SRA/SR-26/02-after-reset.png</a>, <a class=ev href="evidence/SRA/SR-26/04-degraded-after-reset.webp">SRA/SR-26/04-degraded-after-reset.png</a>, <a class=ev href="evidence/SRA/SR-26/05-relaunch-after-reset.webp">SRA/SR-26/05-relaunch-after-reset.png</a></td>
+</tr>
+<tr data-sev="S3" data-idx="152">
+<td id="D-113"><a href="#D-113">D-113</a></td>
+<td>S3</td>
+<td>SRC</td>
+<td>CSV export writes an empty Fee column and has no memo/fiat columns (cf. <a class=did href="DEFECT-LEDGER.html#D-049">D-049</a>/<a class=did href="DEFECT-LEDGER.html#D-062">D-062</a>/<a class=did href="DEFECT-LEDGER.html#D-081">D-081</a>)</td>
+<td>confirmed</td>
+<td><a class=ev href="evidence/SRC/SR-19/16-csv-export.csv">SRC/SR-19/16-csv-export.csv</a></td>
+</tr>
+<tr data-sev="S3" data-idx="153">
+<td id="D-114"><a href="#D-114">D-114</a></td>
+<td>S3</td>
+<td>SRC</td>
+<td>Plain-send tx detail shows no Network fee row and no fiat, while a drain tx detail shows both</td>
+<td>confirmed</td>
+<td><a class=ev href="evidence/SRC/SR-19/05-txdetail-no-memo-no-fiat.webp">SRC/SR-19/05-txdetail-no-memo-no-fiat.png</a>, <a class=ev href="evidence/SRC/SR-29/10-max2-result.webp">SRC/SR-29/10-max2-result.png</a></td>
+</tr>
+<tr data-sev="S3" data-idx="156">
+<td id="D-117"><a href="#D-117">D-117</a></td>
+<td>S3</td>
+<td>SRD</td>
+<td>The re-armed +24 h background-sync alarm is never cancelled when the service comes back (cancel() only runs inside scheduleStartBlockchainService, only from onDestroy); the startForegroundService PendingIntent stays armed against a live service</td>
+<td>confirmed</td>
+<td><a class=ev href="evidence/SRD/SR-06/11-dumpsys-alarm-after-fire-next-is-24h.txt">SRD/SR-06/11-dumpsys-alarm-after-fire-next-is-24h.txt</a></td>
+</tr>
+<tr data-sev="S3" data-idx="157">
+<td id="D-118"><a href="#D-118">D-118</a></td>
+<td>S3</td>
+<td>SRD</td>
+<td><code>am force-stop</code> (or the OS killing the app) cancels the background-sync alarm permanently (Reason=pi_cancelled) and no job exists, so background sync never resumes until the user opens the app or reboots</td>
+<td>confirmed</td>
+<td><a class=ev href="evidence/SRD/SR-06/13-dumpsys-alarm-after-forcestop.txt">SRD/SR-06/13-dumpsys-alarm-after-forcestop.txt</a></td>
+</tr>
+<tr data-sev="S3" data-idx="161">
+<td id="D-122"><a href="#D-122">D-122</a></td>
+<td>S3</td>
+<td>SRF</td>
+<td>Offline invite creation is reported as a permanent network rejection ("The Dash network rejected this invitation, so trying again will not help", kind=REJECTED retryAllowed=false) and Confirm stays disabled even after connectivity returns; the device was merely offline</td>
+<td>confirmed</td>
+<td><a class=ev href="evidence/SRF/SR-14/n030.webp">SRF/SR-14/n030.png</a>, <a class=ev href="evidence/SRF/SR-14/21-retry-online.webp">SRF/SR-14/21-retry-online.png</a>, <a class=ev href="evidence/SRF/SR-14/grep2.txt">SRF/SR-14/grep2.txt</a></td>
+</tr>
+<tr data-sev="S3" data-idx="162">
+<td id="D-123"><a href="#D-123">D-123</a></td>
+<td>S3</td>
+<td>SRF</td>
+<td>The parked shielded send-to-address screen's balance sticks at 0 after any shielded operation in the same process (Max returns 0, every amount "Insufficient funds") while the More card shows 0.778; survives re-entry, only force-stop restores it; ShieldedSendViewModel consumes observeShieldedBalance() raw without the last-known fallback MoreFragment has</td>
+<td>confirmed</td>
+<td><a class=ev href="evidence/SRF/SR-30/20-max.webp">SRF/SR-30/20-max.png</a>, <a class=ev href="evidence/SRF/notes.html">SRF/notes.md</a></td>
 </tr>
 <tr data-sev="S4" data-idx="0">
 <td id="D-001"><a href="#D-001">D-001</a></td>
@@ -678,7 +998,23 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>candidate (design?)</td>
 <td><a class=ev href="evidence/S4/E3/20-balance-hidden.webp">S4/E3/20</a></td>
 </tr>
-<tr data-sev="S4" data-idx="46">
+<tr data-sev="S4" data-idx="61">
+<td id="SR-42"><a href="#SR-42">SR-42</a></td>
+<td>S4</td>
+<td>SR, SRB</td>
+<td>CrowdNode/contact handlers still run on the received path for our own bridged sends</td>
+<td><strong>PARTIAL (SRB)</strong>: log proves onCoinsReceived fires for the wallet's own self-send (then "was authored by this wallet — not a receive"), so handleContactPayments and the CrowdNode matchers run on it; the frequent-contacts pollution is not observable without a DashPay identity</td>
+<td><a class=ev href="evidence/SRB/SR-42/grep-coins-callbacks.txt">SRB/SR-42/grep-coins-callbacks.txt</a>, <a class=ev href="evidence/SRB/SR-42/15-send-screen-after-both-sends.webp">SRB/SR-42/15-send-screen-after-both-sends.png</a>, <a class=ev href="evidence/SRB/SR-42/srb42-sends.mp4">SRB/SR-42/srb42-sends.mp4</a></td>
+</tr>
+<tr data-sev="S4" data-idx="62">
+<td id="SR-43"><a href="#SR-43">SR-43</a></td>
+<td>S4 — CONFIRMED (SRB, artefact)</td>
+<td>SR, SRB</td>
+<td>compileSdk declared inside defaultConfig {} in 6 modules; only resolves via a Groovy closure-owner fallthrough</td>
+<td><strong>REPRODUCED (SRB)</strong>: gradle lines quoted for six modules; APK still reports compileSdkVersion=35 so it is fragile, not broken</td>
+<td><a class=ev href="evidence/SRB/SR-43/gradle-compileSdk-placement.txt">SRB/SR-43/gradle-compileSdk-placement.txt</a></td>
+</tr>
+<tr data-sev="S4" data-idx="67">
 <td id="D-028"><a href="#D-028">D-028</a></td>
 <td>S4</td>
 <td class=S1>S1</td>
@@ -686,7 +1022,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>confirmed in log</td>
 <td class=S1>S1 <a class=ev href="evidence/S4/walletlog-final/files/log/wallet.log">wallet.log</a> 05:21:58</td>
 </tr>
-<tr data-sev="S4" data-idx="48">
+<tr data-sev="S4" data-idx="69">
 <td id="D-030"><a href="#D-030">D-030</a></td>
 <td>S4</td>
 <td>S4</td>
@@ -694,7 +1030,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>candidate (UX)</td>
 <td><a class=ev href="evidence/S4/E7/02-address-book.webp">S4/E7/02</a>, <a class=ev href="evidence/S4/E7/08-scan-private-key.webp">S4/E7/08-11</a><sup class=more><a href="evidence/S4/E7/09-scan-camera-denied.webp" title="S4/E7/09-scan-camera-denied.webp">2</a> <a href="evidence/S4/E7/10-scan-escaped.webp" title="S4/E7/10-scan-escaped.webp">3</a> <a href="evidence/S4/E7/11-scan-escaped-2.webp" title="S4/E7/11-scan-escaped-2.webp">4</a></sup></td>
 </tr>
-<tr data-sev="S4" data-idx="50">
+<tr data-sev="S4" data-idx="71">
 <td id="D-032"><a href="#D-032">D-032</a></td>
 <td>S4</td>
 <td>S7</td>
@@ -702,7 +1038,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>confirmed</td>
 <td><a class=ev href="evidence/S7/TX1/SR28-02-amount-entered.webp">S7/TX1/SR28-02,03</a><sup class=more><a href="evidence/S7/TX1/SR28-03-clamped-to-balance-minus-0.0001.webp" title="S7/TX1/SR28-03-clamped-to-balance-minus-0.0001.webp">2</a></sup></td>
 </tr>
-<tr data-sev="S4" data-idx="52">
+<tr data-sev="S4" data-idx="73">
 <td id="D-034"><a href="#D-034">D-034</a></td>
 <td>S4 (i18n)</td>
 <td>S5</td>
@@ -710,7 +1046,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>confirmed</td>
 <td><a class=ev href="evidence/S5/D7/01-de-lock.webp">S5/D7/*</a><sup class=more><a href="evidence/index.html#S5-D7" title="14 files, open gallery">+13</a></sup></td>
 </tr>
-<tr data-sev="S4" data-idx="57">
+<tr data-sev="S4" data-idx="78">
 <td id="D-039"><a href="#D-039">D-039</a></td>
 <td>S4</td>
 <td>S5</td>
@@ -718,7 +1054,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>candidate (UX/design?)</td>
 <td><a class=ev href="evidence/S5/D2b/01-walletB-backup.webp">S5/D2b/*</a><sup class=more><a href="evidence/index.html#S5-D2b" title="29 files, open gallery">+28</a></sup></td>
 </tr>
-<tr data-sev="S4" data-idx="58">
+<tr data-sev="S4" data-idx="79">
 <td id="D-040"><a href="#D-040">D-040</a></td>
 <td>S4</td>
 <td>S7</td>
@@ -726,7 +1062,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>confirmed</td>
 <td><a class=ev href="evidence/S7/R1/01-security.webp">S7/R1/01-security.png</a></td>
 </tr>
-<tr data-sev="S4" data-idx="61">
+<tr data-sev="S4" data-idx="82">
 <td id="D-043"><a href="#D-043">D-043</a></td>
 <td>S4</td>
 <td>S7</td>
@@ -734,7 +1070,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>confirmed</td>
 <td><a class=ev href="evidence/S7/TX1/13-duplicate-address-rows.webp">S7/TX1/13-duplicate-address-rows.png</a></td>
 </tr>
-<tr data-sev="S4" data-idx="62">
+<tr data-sev="S4" data-idx="83">
 <td id="D-044"><a href="#D-044">D-044</a></td>
 <td>S4</td>
 <td>S7</td>
@@ -742,7 +1078,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>confirmed</td>
 <td><a class=ev href="evidence/S7/TX1/06-pull-to-refresh.webp">S7/TX1/06</a> vs 07</td>
 </tr>
-<tr data-sev="S4" data-idx="64">
+<tr data-sev="S4" data-idx="85">
 <td id="D-046"><a href="#D-046">D-046</a></td>
 <td>S4</td>
 <td>S7</td>
@@ -750,7 +1086,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>confirmed</td>
 <td><a class=ev href="evidence/S7/TX1/06-pull-to-refresh.webp">S7/TX1/06-09</a><sup class=more><a href="evidence/S7/TX1/07-txdetail-received.webp" title="S7/TX1/07-txdetail-received.webp">2</a> <a href="evidence/S7/TX1/08-explorer.webp" title="S7/TX1/08-explorer.webp">3</a> <a href="evidence/S7/TX1/09-explorer-opened.webp" title="S7/TX1/09-explorer-opened.webp">4</a></sup></td>
 </tr>
-<tr data-sev="S4" data-idx="69">
+<tr data-sev="S4" data-idx="90">
 <td id="D-051"><a href="#D-051">D-051</a></td>
 <td>S4</td>
 <td class=S1>S1</td>
@@ -758,7 +1094,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>candidate (UX)</td>
 <td><a class=ev href="evidence/S1/A1/03-shield/01-more-tab.webp">S1/A1/03-shield/*</a><sup class=more><a href="evidence/index.html#S1-A1" title="16 files, open gallery">+15</a></sup></td>
 </tr>
-<tr data-sev="S4" data-idx="71">
+<tr data-sev="S4" data-idx="92">
 <td id="D-053"><a href="#D-053">D-053</a></td>
 <td>S4</td>
 <td>S5</td>
@@ -766,7 +1102,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>confirmed</td>
 <td><a class=ev href="evidence/S5/D0/01-home-zero-balance.webp">S5/D0/01</a> vs <a class=ev href="evidence/S5/D0/03-home-funded.webp">D0/03</a>, <a class=ev href="evidence/S5/D0/05-more-tab-funded.webp">D0/05</a></td>
 </tr>
-<tr data-sev="S4" data-idx="72">
+<tr data-sev="S4" data-idx="93">
 <td id="D-054"><a href="#D-054">D-054</a></td>
 <td>S4</td>
 <td>S5</td>
@@ -774,7 +1110,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>confirmed</td>
 <td><a class=ev href="evidence/S5/D1/11-criteria-invalid-chars-underscore.webp">S5/D1/11,12,14</a><sup class=more><a href="evidence/S5/D1/12-criteria-too-long.webp" title="S5/D1/12-criteria-too-long.webp">2</a> <a href="evidence/S5/D1/14-criteria-leading-hyphen.webp" title="S5/D1/14-criteria-leading-hyphen.webp">3</a></sup></td>
 </tr>
-<tr data-sev="S4" data-idx="73">
+<tr data-sev="S4" data-idx="94">
 <td id="D-055"><a href="#D-055">D-055</a></td>
 <td>S4</td>
 <td>S5</td>
@@ -782,7 +1118,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>confirmed</td>
 <td><a class=ev href="evidence/S5/D1/24-verify-identity-screen.webp">S5/D1/24</a>, <a class=ev href="evidence/S5/D2/03-invite-screen.webp">S5/D2/03</a>, <a class=ev href="evidence/S5/setup/02-after-create-new.webp">S5/setup/02</a></td>
 </tr>
-<tr data-sev="S4" data-idx="76">
+<tr data-sev="S4" data-idx="97">
 <td id="D-058"><a href="#D-058">D-058</a></td>
 <td>S4</td>
 <td>S7</td>
@@ -790,7 +1126,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>confirmed</td>
 <td><a class=ev href="evidence/S7/TX1/03-filter-sent.webp">S7/TX1/03</a> vs <a class=ev href="evidence/S7/E8/13-master-home.webp">S7/E8/13</a></td>
 </tr>
-<tr data-sev="S4" data-idx="77">
+<tr data-sev="S4" data-idx="98">
 <td id="D-059"><a href="#D-059">D-059</a></td>
 <td>S4</td>
 <td>S3</td>
@@ -798,7 +1134,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>confirmed</td>
 <td><a class=ev href="evidence/S3/A3b/08-shade-on-lockscreen.webp">S3/A3b/08-shade-on-lockscreen.png</a></td>
 </tr>
-<tr data-sev="S4" data-idx="78">
+<tr data-sev="S4" data-idx="99">
 <td id="D-060"><a href="#D-060">D-060</a></td>
 <td>S4</td>
 <td>S8</td>
@@ -806,7 +1142,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>confirmed</td>
 <td><a class=ev href="evidence/S8/L1/rescan-01-dialog.webp">S8/L1/rescan-01..04.png</a><sup class=more><a href="evidence/S8/L1/rescan-02-started.webp" title="S8/L1/rescan-02-started.webp">2</a> <a href="evidence/S8/L1/rescan-03-progress.webp" title="S8/L1/rescan-03-progress.webp">3</a> <a href="evidence/S8/L1/rescan-04-home-during.webp" title="S8/L1/rescan-04-home-during.webp">4</a></sup></td>
 </tr>
-<tr data-sev="S4" data-idx="80">
+<tr data-sev="S4" data-idx="101">
 <td id="D-062"><a href="#D-062">D-062</a></td>
 <td>S4</td>
 <td>S8</td>
@@ -814,7 +1150,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>confirmed + source</td>
 <td><a class=ev href="evidence/S8/L8/01-more.webp">S8/L8/*</a><sup class=more><a href="evidence/index.html#S8-L8" title="11 files, open gallery">+10</a></sup></td>
 </tr>
-<tr data-sev="S4" data-idx="83">
+<tr data-sev="S4" data-idx="104">
 <td id="D-065"><a href="#D-065">D-065</a></td>
 <td>S4</td>
 <td>S8</td>
@@ -822,7 +1158,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>confirmed</td>
 <td><a class=ev href="evidence/S8/L5/01-files.txt">S8/L5/01-03</a><sup class=more><a href="evidence/S8/L5/02-sizeguard-grep.txt" title="S8/L5/02-sizeguard-grep.txt">2</a> <a href="evidence/S8/L5/03-files-final.txt" title="S8/L5/03-files-final.txt">3</a></sup></td>
 </tr>
-<tr data-sev="S4" data-idx="85">
+<tr data-sev="S4" data-idx="106">
 <td id="D-067"><a href="#D-067">D-067</a></td>
 <td>S4 (i18n)</td>
 <td>S10</td>
@@ -830,15 +1166,15 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>confirmed</td>
 <td><a class=ev href="evidence/S10/T3/20-de-internal-transfer.webp">S10/T3/20</a></td>
 </tr>
-<tr data-sev="S4" data-idx="87">
+<tr data-sev="S4" data-idx="108">
 <td id="D-069"><a href="#D-069">D-069</a></td>
 <td>S4</td>
 <td>S12</td>
-<td>After the upgrade, <code>files/datastore/coinjoin.preferences_pb</code> still holds <code>coinjoin_mode=INTERMEDIATE</code>, <code>first_time_info_shown</code>, <code>last_mixing_progress</code> (orphaned, never read or cleared); no <code>mixed_funds_migration_done/_in_flight</code> key ever written (<a class=did href="evidence/SR/REPORT.html#SR-27">SR-27</a> confirmed as orphaned state, not data loss)</td>
+<td>After the upgrade, <code>files/datastore/coinjoin.preferences_pb</code> still holds <code>coinjoin_mode=INTERMEDIATE</code>, <code>first_time_info_shown</code>, <code>last_mixing_progress</code> (orphaned, never read or cleared); no <code>mixed_funds_migration_done/_in_flight</code> key ever written (<a class=did href="DEFECT-LEDGER.html#SR-27">SR-27</a> confirmed as orphaned state, not data loss)</td>
 <td>confirmed</td>
 <td><a class=ev href="evidence/S12/notes.html">S12 notes</a></td>
 </tr>
-<tr data-sev="S4" data-idx="90">
+<tr data-sev="S4" data-idx="111">
 <td id="D-072"><a href="#D-072">D-072</a></td>
 <td>S4</td>
 <td>S10</td>
@@ -846,7 +1182,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>confirmed</td>
 <td><a class=ev href="evidence/S10/T5/23-dark-shielded.webp">S10/T5/23</a> vs 25, <a class=ev href="evidence/S10/T5/20-dark-home.webp">S10/T5/20</a></td>
 </tr>
-<tr data-sev="S4" data-idx="91">
+<tr data-sev="S4" data-idx="112">
 <td id="D-073"><a href="#D-073">D-073</a></td>
 <td>S4</td>
 <td>S10</td>
@@ -854,7 +1190,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>confirmed</td>
 <td><a class=ev href="evidence/S10/T4/25-paste-from-clipboard.webp">S10/T4/25..35</a><sup class=more><a href="evidence/index.html#S10-T4" title="11 files, open gallery">+10</a></sup></td>
 </tr>
-<tr data-sev="S4" data-idx="94">
+<tr data-sev="S4" data-idx="115">
 <td id="D-076"><a href="#D-076">D-076</a></td>
 <td>S4</td>
 <td>S9</td>
@@ -862,7 +1198,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>confirmed</td>
 <td><a class=ev href="evidence/S9/X5/01-launch1-chmod000.webp">S9/X5/*</a><sup class=more><a href="evidence/index.html#S9-X5" title="12 files, open gallery">+11</a></sup></td>
 </tr>
-<tr data-sev="S4" data-idx="95">
+<tr data-sev="S4" data-idx="116">
 <td id="D-077"><a href="#D-077">D-077</a></td>
 <td>S4 (security policy)</td>
 <td>S10</td>
@@ -870,7 +1206,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>confirmed</td>
 <td><a class=ev href="evidence/S10/T8/04-normal-launch-pin.webp">S10/T8/04</a> vs 05</td>
 </tr>
-<tr data-sev="S4" data-idx="99">
+<tr data-sev="S4" data-idx="120">
 <td id="D-081"><a href="#D-081">D-081</a></td>
 <td>S4</td>
 <td>S9</td>
@@ -878,7 +1214,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>confirmed + source</td>
 <td><a class=ev href="evidence/S9/X4/dash-wallet-transactions-2026-09-19.csv">S9/X4/*.csv</a></td>
 </tr>
-<tr data-sev="S4" data-idx="106">
+<tr data-sev="S4" data-idx="127">
 <td id="D-088"><a href="#D-088">D-088</a></td>
 <td>S4</td>
 <td>S10</td>
@@ -886,7 +1222,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>confirmed</td>
 <td><a class=ev href="evidence/S10/T3/02-dust.webp">S10/T3/02,05</a><sup class=more><a href="evidence/S10/T3/05-dust-result.webp" title="S10/T3/05-dust-result.webp">2</a></sup></td>
 </tr>
-<tr data-sev="S4" data-idx="107">
+<tr data-sev="S4" data-idx="128">
 <td id="D-089"><a href="#D-089">D-089</a></td>
 <td>S4</td>
 <td>S10</td>
@@ -894,7 +1230,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>confirmed</td>
 <td><a class=ev href="evidence/S10/T3/16-de-amount-comma.webp">S10/T3/16..19</a><sup class=more><a href="evidence/S10/T3/17-de-confirm.webp" title="S10/T3/17-de-confirm.webp">2</a> <a href="evidence/S10/T3/18-de-txdetail.webp" title="S10/T3/18-de-txdetail.webp">3</a> <a href="evidence/S10/T3/19-de-home-txlist.webp" title="S10/T3/19-de-home-txlist.webp">4</a></sup>, <a class=ev href="evidence/S10/T2/08-balances-after.webp">S10/T2/08</a></td>
 </tr>
-<tr data-sev="S4" data-idx="109">
+<tr data-sev="S4" data-idx="130">
 <td id="D-091"><a href="#D-091">D-091</a></td>
 <td>S4 (i18n)</td>
 <td>S4</td>
@@ -902,7 +1238,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>confirmed</td>
 <td><a class=ev href="evidence/index.html#S4-E10">S4/E10/</a><locale>/*</td>
 </tr>
-<tr data-sev="S4" data-idx="110">
+<tr data-sev="S4" data-idx="131">
 <td id="D-092"><a href="#D-092">D-092</a></td>
 <td>S4</td>
 <td>S4</td>
@@ -910,7 +1246,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>confirmed</td>
 <td><a class=ev href="evidence/S4/E10/en-US/00-lockscreen.txt">S4/E10/en-US/00</a><sup class=more><a href="evidence/S4/E10/en-US/00-lockscreen.webp" title="S4/E10/en-US/00-lockscreen.webp">2</a></sup>, <a class=ev href="evidence/S4/E7/13-masternode-keys-screen.webp">S4/E7/13</a>, <a class=ev href="evidence/S4/E7/18-zenledger.webp">S4/E7/18-20</a><sup class=more><a href="evidence/S4/E7/19-zenledger-export.webp" title="S4/E7/19-zenledger-export.webp">2</a> <a href="evidence/S4/E7/20-zenledger-after-allow.webp" title="S4/E7/20-zenledger-after-allow.webp">3</a></sup>, <a class=ev href="evidence/S4/E10/fontscale-2.0/01-home.txt">S4/E10/fontscale-2.0/01,05</a><sup class=more><a href="evidence/S4/E10/fontscale-2.0/01-home.webp" title="S4/E10/fontscale-2.0/01-home.webp">2</a> <a href="evidence/S4/E10/fontscale-2.0/05-more.txt" title="S4/E10/fontscale-2.0/05-more.txt">3</a> <a href="evidence/S4/E10/fontscale-2.0/05-more.webp" title="S4/E10/fontscale-2.0/05-more.webp">4</a></sup></td>
 </tr>
-<tr data-sev="S4" data-idx="112">
+<tr data-sev="S4" data-idx="133">
 <td id="D-094"><a href="#D-094">D-094</a></td>
 <td>S4</td>
 <td>S12</td>
@@ -918,7 +1254,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>confirmed</td>
 <td><a class=ev href="evidence/S12/NM1/07-network-monitor-during-replay.webp">S12/NM1/07-network-monitor-during-replay.png</a></td>
 </tr>
-<tr data-sev="S4" data-idx="115">
+<tr data-sev="S4" data-idx="136">
 <td id="D-097"><a href="#D-097">D-097</a></td>
 <td>S4</td>
 <td>S12</td>
@@ -926,7 +1262,55 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>confirmed</td>
 <td><a class=ev href="evidence/S12/BC1/23-tools-credits.webp">S12/BC1/23</a>, 36 vs 42, 29</td>
 </tr>
-<tr data-sev="dup" data-idx="47">
+<tr data-sev="S4" data-idx="140">
+<td id="D-101"><a href="#D-101">D-101</a></td>
+<td>S4</td>
+<td>SRB</td>
+<td>Result sheet of a freshly SENT tx shows Tax Category "Income"; settles to "Expense" only after the list refreshes</td>
+<td>confirmed</td>
+<td><a class=ev href="evidence/SRB/SR-42/07-selfsend-after-pin.webp">SRB/SR-42/07-selfsend-after-pin.png</a>, <a class=ev href="evidence/SRB/SR-42/14-normalsend-result.webp">SRB/SR-42/14-normalsend-result.png</a></td>
+</tr>
+<tr data-sev="S4" data-idx="143">
+<td id="D-104"><a href="#D-104">D-104</a></td>
+<td>S4</td>
+<td>SRE</td>
+<td>History rows for the same date differ between the stalled render ("Sent −0.012302 / Received +0.001") and the synced render ("Received +0.987708"); the intermediate render is misleading</td>
+<td>confirmed</td>
+<td><a class=ev href="evidence/SRE/SR-01/28-home-header-frozen-final.webp">SRE/SR-01/28-home-header-frozen-final.png</a>, <a class=ev href="evidence/SRE/SR-01/29-after-forcestop-synced.webp">SRE/SR-01/29-after-forcestop-synced.png</a></td>
+</tr>
+<tr data-sev="S4" data-idx="154">
+<td id="D-115"><a href="#D-115">D-115</a></td>
+<td>S4</td>
+<td>SRC</td>
+<td>Max re-prompts for the PIN on every new Send screen even with Autohide Balance OFF (triggers the reveal-balance auth path)</td>
+<td>confirmed</td>
+<td><a class=ev href="evidence/SRC/setup/23-autohide.webp">SRC/setup/23-autohide.png</a>, <a class=ev href="evidence/SRC/SR-32/08-max-after-auth.webp">SRC/SR-32/08-max-after-auth.png</a></td>
+</tr>
+<tr data-sev="S4" data-idx="158">
+<td id="D-119"><a href="#D-119">D-119</a></td>
+<td>S4</td>
+<td>SRD</td>
+<td>Republishing key #0 on every restore makes wallets collide with per-address rate limits (faucet refused "already received 1 tDASH today" for the displayed address) and leaks receive-address history (user-visible consequence of <a class=did href="DEFECT-LEDGER.html#SR-03">SR-03</a>)</td>
+<td>confirmed</td>
+<td><a class=ev href="evidence/SRD/SR-03-04/21-explorer-txapperances.txt">SRD/SR-03-04/21-explorer-txapperances.txt</a></td>
+</tr>
+<tr data-sev="S4" data-idx="163">
+<td id="D-124"><a href="#D-124">D-124</a></td>
+<td>S4</td>
+<td>SRF</td>
+<td>A transparent y… address on the shielded send-to-address screen is rejected with no message; Continue simply never enables</td>
+<td>confirmed</td>
+<td><a class=ev href="evidence/SRF/SR-30/02-addr.webp">SRF/SR-30/02-addr.png</a></td>
+</tr>
+<tr data-sev="S4" data-idx="164">
+<td id="D-125"><a href="#D-125">D-125</a></td>
+<td>S4</td>
+<td>SRF</td>
+<td>The 1-minute auto-logout default locks the app while a shielded transfer overlay is on screen, hiding the 40 s stall notice behind the PIN pad 5 s after it appears</td>
+<td>confirmed</td>
+<td><a class=ev href="evidence/SRF/SR-12/t045.webp">SRF/SR-12/t045.png</a></td>
+</tr>
+<tr data-sev="dup" data-idx="68">
 <td id="D-029"><a href="#D-029">D-029</a></td>
 <td>dup of <a class=did href="DEFECT-LEDGER.html#D-031">D-031</a></td>
 <td class=S1>S1</td>
@@ -942,13 +1326,21 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>resolved (not a defect)</td>
 <td><a class=ev href="evidence/S2/A2/17-SYNCED-balance.webp">S2/A2/17-SYNCED-balance.png</a>, <a class=ev href="evidence/S2/A2/18-txdetail-sent-0.35.webp">S2/A2/18-txdetail-sent-0.35.png</a></td>
 </tr>
-<tr data-sev="info" data-idx="81">
+<tr data-sev="info" data-idx="102">
 <td id="D-063"><a href="#D-063">D-063</a></td>
 <td>info (release gate)</td>
 <td>orchestrator</td>
 <td>Mixed-funds (CoinJoin) migration prompt is HARD-SUPPRESSED: <code>CoinJoinFundsMigrationService.shouldPrompt()</code> returns false via <code>MIXED_FUNDS_PROMPT_HARD_SUPPRESSED</code> (comment 2026-08-11: the COMBINE drain produced a committed-but-never-propagated mainnet tx, ~75.6 DASH stuck on a permanent "Sending" row). Catalogue item #15 therefore cannot be QA'd on this build; upgraded wallets with mixed funds get no prompt. Shipping decision needed</td>
 <td>source</td>
 <td>wt-fix CoinJoinFundsMigrationService.kt:414-425</td>
+</tr>
+<tr data-sev="info" data-idx="144">
+<td id="D-105"><a href="#D-105">D-105</a></td>
+<td>info</td>
+<td>SRE</td>
+<td>Partially contradicts <a class=did href="DEFECT-LEDGER.html#D-070">D-070</a>: a red "Unable to connect to the Dash network" banner IS shown while the engine is running and offline; once the watchdog kills the engine the banner disappears and the permanently dead state looks healthy</td>
+<td>confirmed</td>
+<td><a class=ev href="evidence/SRE/SR-01/15-home-stalled.webp">SRE/SR-01/15-home-stalled.png</a>, <a class=ev href="evidence/SRE/SR-01/28-home-header-frozen-final.webp">SRE/SR-01/28-home-header-frozen-final.png</a></td>
 </tr></tbody>
 </table>
 <h3 id="environment-harness-not-product">Environment / harness (not product)</h3>
@@ -1020,6 +1412,22 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td></td>
 </tr>
 <tr data-sev="env" data-idx="7">
+<td id="ENV-9"><a href="#ENV-9">ENV-9</a></td>
+<td>env</td>
+<td>SRA–SRF</td>
+<td>Emulators started from a foreground shell die when that shell is killed; macOS has no setsid. Start them from a script run as a background task (nohup … &amp;) and poll boot in a loop</td>
+<td>fixed</td>
+<td>/tmp/start-emus.sh (see SR-REPRO-BRIEF.md)</td>
+</tr>
+<tr data-sev="env" data-idx="8">
+<td id="ENV-10"><a href="#ENV-10">ENV-10</a></td>
+<td>env</td>
+<td>SRA–SRF</td>
+<td><code>qa-app.sh text 1234</code> does not drive the app PIN pad; tap btn_N by resource-id with ≥ 1.2 s gaps (fast taps under 7 emulators drop input and trip the wallet-disabled lockout)</td>
+<td>documented</td>
+<td>SR-REPRO-BRIEF.md harness notes</td>
+</tr>
+<tr data-sev="env" data-idx="9">
 <td id="ENV-8"><a href="#ENV-8">ENV-8</a></td>
 <td>env</td>
 <td>S12</td>
@@ -1062,7 +1470,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 - S8 L2 gap limit PASS through index 399 on both chains (balance = explorer UTXO sum to the duff); L6 second restore 3 m 12 s on 3,001 txs; 2 GB device peak PSS 561 MB / native 405 MB, no LMK.
 - S9 X1: forced the idle teardown via Network monitor (MainActivity paused): <code>idling detected</code> → <code>onDestroy</code> on leaving the monitor → <code>RESUMING after 0s down</code>; a send right after SUCCEEDED (the engine restarts on resume). So <a class=did href="DEFECT-LEDGER.html#D-031">D-031</a> needs the teardown to happen while the user is NOT about to trigger a resume; S1/S7 evidence stands (send attempted while the engine was down, 3m17s).
 - Massive-wallet growth finished: 3,000 self-transfer txs across 800 addresses.
-- S8 REPORT complete: L1 sync/memory PASS on 2 GB (3 m 27 s; no LMK), history FAIL (<a class=did href="DEFECT-LEDGER.html#D-037">D-037</a>); L2 gap limit PASS to the duff; L3 live growth PASS (instant-receive path, PSS flat 400–431 MB); L4 kill/bg/lowmem/force-stop PASS (relaunch to home in 3 s, wallet load 244–303 ms); L6 second restore 3 m 12 s on 3,001 txs (<a class=did href="DEFECT-LEDGER.html#D-037">D-037</a> worse: 458 missing); L7 <a class=did href="evidence/SR/REPORT.html#SR-32">SR-32</a> (send screen shows partial during replay) does NOT reproduce (send screen shows 0.00 and blocks during replay). Mapped: S8-D1→<a class=did href="DEFECT-LEDGER.html#D-037">D-037</a>, S8-D2→<a class=did href="DEFECT-LEDGER.html#D-062">D-062</a>, S8-D3→<a class=did href="DEFECT-LEDGER.html#D-064">D-064</a>, S8-D4→<a class=did href="DEFECT-LEDGER.html#D-065">D-065</a>, S8-D5→<a class=did href="DEFECT-LEDGER.html#D-060">D-060</a>.
+- S8 REPORT complete: L1 sync/memory PASS on 2 GB (3 m 27 s; no LMK), history FAIL (<a class=did href="DEFECT-LEDGER.html#D-037">D-037</a>); L2 gap limit PASS to the duff; L3 live growth PASS (instant-receive path, PSS flat 400–431 MB); L4 kill/bg/lowmem/force-stop PASS (relaunch to home in 3 s, wallet load 244–303 ms); L6 second restore 3 m 12 s on 3,001 txs (<a class=did href="DEFECT-LEDGER.html#D-037">D-037</a> worse: 458 missing); L7 <a class=did href="DEFECT-LEDGER.html#SR-32">SR-32</a> (send screen shows partial during replay) does NOT reproduce (send screen shows 0.00 and blocks during replay). Mapped: S8-D1→<a class=did href="DEFECT-LEDGER.html#D-037">D-037</a>, S8-D2→<a class=did href="DEFECT-LEDGER.html#D-062">D-062</a>, S8-D3→<a class=did href="DEFECT-LEDGER.html#D-064">D-064</a>, S8-D4→<a class=did href="DEFECT-LEDGER.html#D-065">D-065</a>, S8-D5→<a class=did href="DEFECT-LEDGER.html#D-060">D-060</a>.
 - S10: after 6 shields + 1 killed unshield + 2 sends the ledger balances to the duff (1 duff rounding) — no funds lost under interruption (rotate/HOME/kill/airplane); the pending/resume path also rescued a force-stop-interrupted shield (5ae2c47b…).
 - S12 CJ1: CoinJoin mixing on master produced 4 mixing txs in the 15-min window; upgrade cutover clean; the "Mixing Transactions" group row survives and re-classifies sanely; no migration sheet (hard-suppressed, <a class=did href="DEFECT-LEDGER.html#D-063">D-063</a>).
 - S11 P3: replay under RUNNING_CRITICAL every 60 s on a 1.5 GB AVD survived (pid unchanged, exit-info empty), balance exact; PSS ~570–610 MB same as unconstrained, so a real 1.5 GB phone remains an LMK risk (emulator trims are advisory).

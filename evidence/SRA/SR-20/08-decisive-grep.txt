@@ -1,0 +1,19 @@
+683:16:50:43 [DefaultDispatcher-worker-7] BlockchainServiceImpl - removing wallet file and app data
+918:16:50:43 [DefaultDispatcher-worker-10] WalletApplication - failed to delete datastore preferences file: 'dashpay.preferences_pb'
+919:16:50:43 [DefaultDispatcher-worker-10] WalletApplication - failed to delete datastore preferences file: 'explore.preferences_pb'
+920:16:50:43 [DefaultDispatcher-worker-10] WalletApplication - failed to delete datastore preferences file: 'coinbase.preferences_pb'
+921:16:50:43 [DefaultDispatcher-worker-10] WalletApplication - failed to delete datastore preferences file: 'uphold.preferences_pb'
+922:16:50:43 [DefaultDispatcher-worker-10] WalletApplication - failed to delete datastore preferences file: 'wallet_ui.preferences_pb'
+923:16:50:43 [DefaultDispatcher-worker-10] WalletApplication - failed to delete datastore preferences file: 'org.dashfoundation.wallet.secrets.preferences_pb'
+924:16:50:43 [DefaultDispatcher-worker-10] WalletApplication - failed to delete datastore preferences file: 'exchange_rates_config.preferences_pb'
+925:16:50:43 [DefaultDispatcher-worker-10] WalletApplication - datastore preferences cleared; api-cleared: [crowdnode.preferences_pb, security_backup.preferences_pb, platform-identity.preferences_pb, maya.preferences_pb, blockchain_service.preferences_pb], file-deleted: []
+926:16:50:43 [DefaultDispatcher-worker-10] WalletApplicationExt - wallet-wipe listener failed
+964:16:50:43 [DefaultDispatcher-worker-10] WalletApplicationExt - wallet-wipe listener failed
+1002:16:50:43 [DefaultDispatcher-worker-11] WalletApplicationExt - wallet-wipe listener failed
+1040:16:50:43 [DefaultDispatcher-worker-12] WalletApplicationExt - wallet-wipe listener failed
+1078:16:50:43 [DefaultDispatcher-worker-12] WalletApplicationExt - wallet-wipe listener failed
+1116:16:50:43 [DefaultDispatcher-worker-12] WalletApplicationExt - wallet-wipe listener failed
+1173:16:50:43 [DefaultDispatcher-worker-2] L1ShadowSyncService - wipe cleanup: removeSdkWallet failed; continuing
+1226:16:50:43 [DefaultDispatcher-worker-1] CutoverCoordinator - cutover state persist failed (CUT_OVER -> DUAL_RUNNING, wallet wipe); keeping CUT_OVER
+1267:16:50:43 [DefaultDispatcher-worker-4] WalletApplicationExt - databases cleared (isWalletWipe = true)
+1268:16:50:43 [main] OnboardingActivity - reset finished — re-running the onboarding routing

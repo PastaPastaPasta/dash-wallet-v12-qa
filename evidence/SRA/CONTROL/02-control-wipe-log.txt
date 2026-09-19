@@ -1,0 +1,7 @@
+2:17:03:18 [main] WalletApplication - Removing all the data and restarting the app.
+41:17:03:18 [main] WalletApplication - removing wallet from memory during wipe
+51:17:03:18 [DefaultDispatcher-worker-5] WalletApplication - datastore preferences cleared; api-cleared: [uphold.preferences_pb, crowdnode.preferences_pb
+66:17:03:18 [DefaultDispatcher-worker-14] L1ShadowSyncService - wallet-wipe SDK cleanup for wallet f8a16bd9: stopping shadow + shielded sync, removing th
+71:17:03:18 [DefaultDispatcher-worker-14] L1ShadowSyncService - wallet-wipe SDK cleanup complete for wallet f8a16bd9: the next wallet binds fresh
+75:17:03:18 [DefaultDispatcher-worker-6] WalletApplicationExt - databases cleared (isWalletWipe = true)
+76:17:03:18 [main] OnboardingActivity - reset finished — re-running the onboarding routing

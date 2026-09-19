@@ -1,0 +1,401 @@
+<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Stream SRD report</title><style>body{font-family:system-ui,-apple-system,sans-serif;max-width:1400px;margin:0 auto;padding:16px 24px;line-height:1.45;background:#fff;color:#111}
+table{border-collapse:collapse;font-size:13px;margin:12px 0}th,td{border:1px solid #ddd;padding:4px 8px;vertical-align:top;text-align:left}th{background:#f3f6fa;position:sticky;top:0}
+tr:nth-child(even){background:#fafbfc}code{background:#f4f4f4;padding:1px 4px;border-radius:3px;font-size:12px}pre{background:#f4f4f4;padding:10px;overflow:auto}
+h1{border-bottom:3px solid #008de4}h2{border-bottom:1px solid #ccc;margin-top:40px}a{color:#008de4}a.ev{background:#e8f4fd;padding:0 3px;border-radius:3px;font-family:ui-monospace,monospace;font-size:12px}
+nav.top{background:#012060;color:#fff;padding:8px 24px;margin:-16px -24px 16px;position:sticky;top:0;z-index:5}nav.top a{color:#fff;margin-right:18px;text-decoration:none}nav.top a:hover{text-decoration:underline}
+.S1{color:#b00020;font-weight:bold}.S2{color:#c75000;font-weight:bold}.toc{background:#f8f9fb;border:1px solid #e3e6ea;padding:8px 16px;font-size:13px;columns:2}.toc ul{margin:2px 0;padding-left:16px}
+#lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:50;align-items:center;justify-content:center;flex-direction:column}#lb.on{display:flex}#lb img{max-width:96vw;max-height:88vh;border:2px solid #fff;box-shadow:0 0 30px #000}#lb .cap{color:#eee;font:13px ui-monospace,monospace;margin-top:8px}#lb .cap a{color:#8cf}#lb .x{position:absolute;top:10px;right:18px;color:#fff;font-size:30px;cursor:pointer}#lb .nv{position:absolute;top:50%;color:#fff;font-size:44px;cursor:pointer;padding:0 16px;user-select:none}#lb .pv{left:0}#lb .nx{right:0}a.img img{cursor:zoom-in}
+sup.more a{margin:0 2px;font-size:10px}
+thead.sortable th.asc::after{content:' \25B2';font-size:9px}thead.sortable th.desc::after{content:' \25BC';font-size:9px}
+tr[data-sev=S1] td:nth-child(2){background:#fde7e9}tr[data-sev=S2] td:nth-child(2){background:#fff1e0}
+a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:target{background:#fff3b0;outline:2px solid #f5b400}
+.note{background:#fff8e1;border-left:4px solid #f5b400;padding:8px 12px;margin:12px 0}
+</style><nav class=top><a href="../../index.html">Home</a><a href="../../QA-REPORT.html">Full report</a><a href="../../EXEC-SUMMARY.html">Executive summary</a><a href="../../STORY-MATRIX.html">User-story matrix</a><a href="../../DEFECT-LEDGER.html">Defect register</a><a href="../index.html">Evidence gallery</a><a href="../../QA-PLAN.html">Test plan</a><a href="../../streams.html">Stream reports</a></nav><h1 id="srd-sr-device-reproduction-report">SRD — SR device-reproduction report</h1>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Emulator</td>
+<td><code>emulator-5560</code> (AVD <strong>dw-qa4</strong>, Android 15 / API 35, 1080x2400). The AVD was <strong>not running</strong> at task start; I booted it (<code>emulator -avd dw-qa4 -port 5560 -no-snapshot -no-boot-anim -no-audio -gpu swiftshader_indirect -no-window</code>).</td>
+</tr>
+<tr>
+<td>Build under test</td>
+<td><code>apks/fix-12.0.0-testnet3-release-signed.apk</code> — versionCode <strong>12000000</strong>, versionName 12.0.0, minSdk 29, targetSdk 35</td>
+</tr>
+<tr>
+<td>Baseline (end of session only)</td>
+<td><code>apks/master-11.9.0-testnet3-release-signed.apk</code> — versionCode <strong>11090002</strong>, versionName 11.9.0</td>
+</tr>
+<tr>
+<td>Package</td>
+<td><code>hashengineering.darkcoin.wallet_test</code></td>
+</tr>
+<tr>
+<td>Seed used</td>
+<td class=S1>S1 throwaway <code>swamp dad rent tower dumb cart dust vocal often today chimney amazing</code> (PIN 1234). Reference seed NOT touched.</td>
+</tr>
+<tr>
+<td>Throwaway paper key created</td>
+<td>WIF <code>cN8KqavRd5T2gzgxRhwg8oLu2Ks18ERNZVuGL45uJ1tjHU25NLnn</code> -&gt; <code>ygbXcPBBUPXPwSbST711hEKdtgVmv9bPbB</code>, holds 0.01 tDASH (<a class=ev href="../SRD/SR-03-04/26-paperwallet-key.txt">SR-03-04/26-paperwallet-key.txt</a>)</td>
+</tr>
+<tr>
+<td>Session</td>
+<td>start <strong>2026-09-19 11:42</strong>, end <strong>13:12</strong> local. <strong><a class=ev href="../SRD/logs-final/files/log/wallet.log">wallet.log</a> timestamps are local + 5 h</strong> (log <code>17:21:20</code> = 12:21:20).</td>
+</tr>
+<tr>
+<td>Permissions granted at onboarding</td>
+<td>notifications = Allow, <strong>battery-optimisation exemption = Allow</strong> (<code>dumpsys deviceidle whitelist</code> -&gt; <code>user,hashengineering.darkcoin.wallet_test,10208</code>)</td>
+</tr>
+<tr>
+<td>Evidence root</td>
+<td><code>/Users/dcg/workspace/dash-wallet-qa/evidence/SRD/</code> (123 files)</td>
+</tr>
+<tr>
+<td>Running journal</td>
+<td><code>/Users/dcg/workspace/dash-wallet-qa/evidence/SRD/notes.md</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="verdicts">Verdicts</h2>
+<table>
+<thead>
+<tr>
+<th>SR-id</th>
+<th>Verdict</th>
+<th>What I did</th>
+<th>Decisive evidence</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><a class=did href="../../DEFECT-LEDGER.html#SR-06">SR-06</a></strong></td>
+<td><strong>PARTIAL — code defect CONFIRMED, "never delivered" DISPROVED</strong></td>
+<td>Determined which scheduler branch runs on API 35 (alarm, never JobScheduler); forced a service teardown so <code>onDestroy</code> would arm the alarm; captured <code>dumpsys alarm</code> at arm time, 3 min past due, after delivery and after <code>force-stop</code>; polled service records every 60 s from 12:24 to 12:41</td>
+<td><a class=ev href="../SRD/SR-06/05-alarm-entry-excerpt.txt">SR-06/05-alarm-entry-excerpt.txt</a>, <a class=ev href="../SRD/SR-06/08-alarm-still-pending-excerpt.txt">SR-06/08-alarm-still-pending-excerpt.txt</a>, <a class=ev href="../SRD/SR-06/09-alarm-fired-loglines.txt">SR-06/09-alarm-fired-loglines.txt</a>, <a class=ev href="../SRD/SR-06/11-dumpsys-alarm-after-fire-next-is-24h.txt">SR-06/11-dumpsys-alarm-after-fire-next-is-24h.txt</a>, <a class=ev href="../SRD/SR-06/06-alarm-delivery-watch.txt">SR-06/06-alarm-delivery-watch.txt</a>, <a class=ev href="../SRD/SR-06/13-dumpsys-alarm-after-forcestop.txt">SR-06/13-dumpsys-alarm-after-forcestop.txt</a></td>
+<td>The alarm IS armed with an <strong>18-hour delivery window</strong> and a <strong>24-hour repeat</strong>, exactly as <code>WalletApplication.java:1818</code> predicts. It missed its nominal 15-min time by 4 m 23 s, then re-armed for <strong>+24 h</strong>. It <em>was</em> delivered and the background FGS start <em>was</em> permitted (battery-exempt emulator).</td>
+</tr>
+<tr>
+<td><strong><a class=did href="../../DEFECT-LEDGER.html#SR-09">SR-09</a></strong></td>
+<td><strong>REPRODUCED</strong></td>
+<td>Reached an idle verdict while MainActivity was foregrounded+bound, then pressed HOME and polled <code>dumpsys activity services</code> every 10 s</td>
+<td><a class=ev href="../SRD/SR-09/09-latch-set.txt">SR-09/09-latch-set.txt</a>, <a class=ev href="../SRD/SR-09/11-service-after-latched-home.txt">SR-09/11-service-after-latched-home.txt</a>, <a class=ev href="../SRD/SR-06/03-alarm-armed-loglines.txt">SR-06/03-alarm-armed-loglines.txt</a></td>
+<td>Service survived <code>stopSelf()</code> while bound, then <strong>died within 10 s</strong> of HOME. Happened <strong>twice</strong> (12:21:20 forced, 12:55:42 spontaneous). But "<code>idling detected</code> every minute forever" (<a class=did href="../../DEFECT-LEDGER.html#D-004">D-004</a>) is <strong>not</strong> what happens — 4 verdicts in 49 tick-minutes — and a receive <strong>was</strong> noticed and notified while backgrounded.</td>
+</tr>
+<tr>
+<td><strong><a class=did href="../../DEFECT-LEDGER.html#SR-03">SR-03</a></strong></td>
+<td><strong>REPRODUCED</strong></td>
+<td>Restored the S1 seed, let it sync, read the address off the Receive tab and the home quick-Receive; derived the seed's BIP44 external chain offline and checked every address on Insight</td>
+<td><a class=ev href="../SRD/SR-03-04/10-receive-tab.webp">SR-03-04/10-receive-tab.png</a>, <a class=ev href="../SRD/SR-03-04/13-payments.webp">SR-03-04/13-payments.png</a>, <a class=ev href="../SRD/SR-03-04/20-derived-external-addrs.txt">SR-03-04/20-derived-external-addrs.txt</a>, <a class=ev href="../SRD/SR-03-04/21-explorer-txapperances.txt">SR-03-04/21-explorer-txapperances.txt</a>, <a class=ev href="../SRD/SR-03-04/11-addr-quickreceive.json">SR-03-04/11-addr-quickreceive.json</a></td>
+<td>The displayed address is <strong>exactly <code>m/44'/1'/0'/0/0</code> (external key #0)</strong> with <code>txApperances=5</code>. After a new receive landed on #0 it advanced to <strong>#1</strong>, itself <code>txApperances=2</code>. Not "pinned to #0 forever" — it walks the chain from #0 and re-publishes the whole used range.</td>
+</tr>
+<tr>
+<td><strong><a class=did href="../../DEFECT-LEDGER.html#SR-03">SR-04</a></strong></td>
+<td><strong>PARTIAL / BLOCKED</strong></td>
+<td>Tried both reachable <code>freshReceiveAddress()</code> consumers: Topper and the paper-wallet sweep</td>
+<td><a class=ev href="../SRD/SR-03-04/18-topper-crash-walletlog.txt">SR-03-04/18-topper-crash-walletlog.txt</a>, <a class=ev href="../SRD/SR-03-04/17-topper.webp">SR-03-04/17-topper.png</a>, <a class=ev href="../SRD/SR-04-sweep/09-import-key.webp">SR-04-sweep/09-import-key.png</a>, <a class=ev href="../SRD/SR-04-sweep/11-scanner.webp">SR-04-sweep/11-scanner.png</a></td>
+<td>Topper <strong>hard-crashes the app</strong> before producing a URL (stub key — NEW-1). The sweep is camera-QR only and <code>SweepWalletActivity.INTENT_EXTRA_KEY</code> is a <code>Serializable</code>, so it cannot be injected over adb. No fresh address observable on device.</td>
+</tr>
+<tr>
+<td><strong><a class=did href="../../DEFECT-LEDGER.html#SR-33">SR-33</a></strong></td>
+<td><strong>REPRODUCED (default confirmed, pre-existing)</strong></td>
+<td>Read More &gt; Security &gt; Advanced Security on a fresh 12.0.0 restore and again on a brand-new wallet under master 11.9.0</td>
+<td><a class=ev href="../SRD/SR-33-34/07-advanced-security-default.webp">SR-33-34/07-advanced-security-default.png</a>, <a class=ev href="../SRD/SR-33-master/04-master-advanced-security-default.webp">SR-33-master/04-master-advanced-security-default.png</a>, <a class=ev href="../SRD/SR-33-34/02-autologout-loglines.txt">SR-33-34/02-autologout-loglines.txt</a></td>
+<td>Both builds: Auto Logout ON, <strong>"Logout after 1 min"</strong>, Security Level High. Observed live: the app locked ~40 s after reaching the home screen during the initial sync.</td>
+</tr>
+<tr>
+<td><strong><a class=did href="../../DEFECT-LEDGER.html#SR-33">SR-34</a></strong></td>
+<td><strong>REPRODUCED (Immediately works) / rotation hazard NOT REPRODUCED</strong></td>
+<td>Set Auto-logout to "Immediately" (<code>auto_logout_minutes=0</code>), pressed HOME and returned; then rotated</td>
+<td><a class=ev href="../SRD/SR-33-34/08-immediately-set.webp">SR-33-34/08-immediately-set.png</a>, <a class=ev href="../SRD/SR-33-34/10-after-return-from-home.webp">SR-33-34/10-after-return-from-home.png</a>, <a class=ev href="../SRD/SR-33-34/15-networkmonitor-landscape.webp">SR-33-34/15-networkmonitor-landscape.png</a>, <a class=ev href="../SRD/SR-33-34/16-rotate-guard-loglines.txt">SR-33-34/16-rotate-guard-loglines.txt</a></td>
+<td>HOME-&gt;return locks instantly. Rotation does <strong>not</strong> lock. <code>MainActivity</code> is <code>android:screenOrientation="portrait"</code> so it cannot rotate; on a rotatable screen (NetworkMonitorActivity) the <code>isChangingConfigurations</code> guard fires and logs <code>stopped for a configuration change — not treating it as background</code>.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="detail">Detail</h2>
+<h3 id="sr-06-periodic-background-sync-alarm">SR-06 — periodic background-sync alarm</h3>
+<p><strong>Which branch runs.</strong> <code>WalletApplication.scheduleStartBlockchainService</code> only uses JobScheduler when
+<code>SDK_INT == O || SDK_INT == O_MR1</code> (API 26/27). On API 35 the <code>else if (!cancelOnly)</code> branch runs:
+<code>alarmManager.setInexactRepeating(RTC_WAKEUP, now + alarmInterval, AlarmManager.INTERVAL_DAY, alarmIntent)</code>.
+Confirmed on device: <code>dumpsys jobscheduler</code> never showed a job for the package
+(<a class=ev href="../SRD/SR-06/02-dumpsys-jobscheduler-before-home.txt">SR-06/02-dumpsys-jobscheduler-before-home.txt</a>), and <code>scheduling blockchain sync job</code> / <code>already scheduled</code>
+never appear in <a class=ev href="../SRD/logs-final/files/log/wallet.log">wallet.log</a>.</p>
+<p><strong>Who arms it.</strong> Exactly one call site in the app: <code>BlockchainServiceImpl.kt:2909</code>, inside the service teardown
+(<code>WalletApplication.java:1887</code> only cancels). Same in <code>wt-master</code> (<code>BlockchainServiceImpl.kt:1909</code>) — not a
+regression. Consequence: <strong>while the app is in the foreground and the service is alive there is no alarm and no
+job at all</strong> — verified at 12:06 (<a class=ev href="../SRD/SR-06/01-dumpsys-alarm-before-home.txt">SR-06/01-dumpsys-alarm-before-home.txt</a>: the only <code>darkcoin</code> hit in the whole
+dump is the deviceidle whitelist line).</p>
+<p><strong>Timeline (local; <a class=ev href="../SRD/logs-final/files/log/wallet.log">wallet.log</a> = +5 h):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Time</th>
+<th>Event</th>
+<th>Evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>12:06:48</td>
+<td>HOME pressed, app backgrounded</td>
+<td><a class=ev href="../SRD/SR-09/05-service-after-home.txt">SR-09/05-service-after-home.txt</a></td>
+</tr>
+<tr>
+<td>12:06:48-12:16</td>
+<td>Service stays alive, <strong>no alarm, no job</strong> for ~10 min</td>
+<td><a class=ev href="../SRD/SR-09/05-service-after-home.txt">SR-09/05-service-after-home.txt</a></td>
+</tr>
+<tr>
+<td>12:16:47</td>
+<td><code>net off</code> to force an idle verdict</td>
+<td><a class=ev href="../SRD/notes.html">notes.md</a></td>
+</tr>
+<tr>
+<td>12:21:00</td>
+<td><code>idling detected, stopping service</code> (app still foreground/bound)</td>
+<td><a class=ev href="../SRD/logs-final/files/log/wallet.log">wallet.log:5292</a></td>
+</tr>
+<tr>
+<td>12:21:21</td>
+<td>HOME pressed</td>
+<td></td>
+</tr>
+<tr>
+<td>12:21:20</td>
+<td><code>.onDestroy()</code> -&gt; alarm armed</td>
+<td><a class=ev href="../SRD/logs-final/files/log/wallet.log">wallet.log:5447-5455</a></td>
+</tr>
+<tr>
+<td>12:24-12:39</td>
+<td><code>ServiceRecords=0 pendingAlarms=1</code> every 60 s</td>
+<td><a class=ev href="../SRD/SR-06/06-alarm-delivery-watch.txt">SR-06/06-alarm-delivery-watch.txt</a></td>
+</tr>
+<tr>
+<td>12:36:20</td>
+<td>nominal fire time — <strong>nothing happens</strong></td>
+<td><a class=ev href="../SRD/SR-06/08-alarm-still-pending-excerpt.txt">SR-06/08-alarm-still-pending-excerpt.txt</a> (<code>whenElapsed=-3m14s</code>, <code>count=0</code>)</td>
+</tr>
+<tr>
+<td><strong>12:40:43</strong></td>
+<td>alarm finally delivered, FGS start permitted, service restarted</td>
+<td><a class=ev href="../SRD/SR-06/09-alarm-fired-loglines.txt">SR-06/09-alarm-fired-loglines.txt</a></td>
+</tr>
+<tr>
+<td>12:40:45</td>
+<td><code>L1 shadow SPV started ...</code> — background sync resumed, UI still closed</td>
+<td><a class=ev href="../SRD/SR-06/10-service-start-after-alarm.txt">SR-06/10-service-start-after-alarm.txt</a></td>
+</tr>
+<tr>
+<td>12:41:47</td>
+<td><code>am force-stop</code> -&gt; alarm <strong>cancelled</strong> (<code>Reason=pi_cancelled</code>), <code>procs=0</code></td>
+<td><a class=ev href="../SRD/SR-06/13-dumpsys-alarm-after-forcestop.txt">SR-06/13-dumpsys-alarm-after-forcestop.txt:588-590</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>The app's own log</strong> (<a class=ev href="../SRD/SR-06/14-all-alarm-diag-lines.txt">SR-06/14-all-alarm-diag-lines.txt</a>):</p>
+<pre><code>17:21:20 [DefaultDispatcher-worker-4] WalletApplication - last used 4 minutes ago, rescheduling blockchain sync in roughly 15 minutes
+17:21:20 [DefaultDispatcher-worker-4] WalletApplication - ALARM-DIAG armed reason=periodic-15min firstFireInMinutes=15 repeat=1440min exact=false batteryOptimisationExempt=true - if no matching 'started by alarm' line follows, the background FGS start was refused
+17:40:43 [main] BlockchainServiceImpl - ALARM-DIAG service started by alarm (reason=periodic-15min) — a background FGS start WAS permitted
+</code></pre>
+<p><strong>What <code>dumpsys alarm</code> shows right after arming</strong> (<a class=ev href="../SRD/SR-06/05-alarm-entry-excerpt.txt">SR-06/05-alarm-entry-excerpt.txt</a>):</p>
+<pre><code>RTC_WAKEUP #7: Alarm{a069021 type 0 origWhen 1789839380673 whenElapsed 3263215 hashengineering.darkcoin.wallet_test}
+  tag=*walarm*:hashengineering.darkcoin.wallet_test/de.schildbach.wallet.service.BlockchainServiceImpl
+  type=RTC_WAKEUP origWhen=2026-09-19 12:36:20.673 window=+18h0m0s0ms repeatInterval=86400000 count=0 flags=0x8
+  whenElapsed=+12m48s764ms maxWhenElapsed=+18h12m48s764ms
+  operation=PendingIntent{f3b9c46: PendingIntentRecord{a230e07 hashengineering.darkcoin.wallet_test startForegroundService}}
+</code></pre>
+<p><code>window=+18h0m0s0ms</code> / <code>maxWhenElapsed=+18h12m48s</code> is the bug made visible: because <code>INTERVAL_DAY</code> is passed as
+the repeat interval, AlarmManager derives an <strong>18-hour</strong> window for an alarm the code believes it scheduled for
+15 minutes. <strong>After the single delivery it re-arms for +24 h</strong>
+(<a class=ev href="../SRD/SR-06/11-dumpsys-alarm-after-fire-next-is-24h.txt">SR-06/11-dumpsys-alarm-after-fire-next-is-24h.txt</a>):</p>
+<pre><code>type=RTC_WAKEUP origWhen=2026-09-20 12:36:20.673 window=+18h0m0s0ms repeatInterval=86400000 count=0 flags=0x8
+whenElapsed=+23h55m12s343ms maxWhenElapsed=+1d17h55m12s343ms
+</code></pre>
+<p><strong>Verdict nuance.</strong> The SR row says "the alarm is never delivered". On this device — screen on, no doze, network
+up, battery-optimisation exemption granted, process still cached — it <em>was</em> delivered 4 m 23 s late and the
+background FGS start was permitted. What is unambiguously reproduced:</p>
+<ol>
+<li>the computed backoff (15 min / 12 h / 24 h) applies <strong>only to the first fire</strong>; every subsequent background
+   sync is a <strong>day</strong> apart (<code>repeatInterval=86400000</code>) regardless of the chosen backoff;</li>
+<li>every occurrence carries an <strong>18-hour</strong> inexact window, so delivery time is effectively unbounded — on a
+   dozing, non-exempt handset the SR claim is very likely to hold and this lab is not the worst case;</li>
+<li>the alarm is armed <strong>only</strong> from <code>BlockchainServiceImpl.onDestroy()</code>, so a process killed without teardown
+   leaves nothing armed, and an explicit <code>force-stop</code> <strong>cancels</strong> the armed alarm (<code>Reason=pi_cancelled</code>), after
+   which only opening the app or a reboot (<code>BootstrapReceiver</code>, <code>AndroidManifest.xml:396-405</code>) restarts sync.</li>
+</ol>
+<p><strong>What the user would see:</strong> a wallet left in the background refreshes roughly once a day at an unpredictable
+hour instead of every 15 minutes after recent use.</p>
+<h3 id="sr-09-idle-stopself-latches-service-dies-on-leaving-mainactivity">SR-09 — idle <code>stopSelf()</code> latches; service dies on leaving MainActivity</h3>
+<p><strong>Part 1 — "idling detected every minute forever" (<a class=did href="../../DEFECT-LEDGER.html#D-004">D-004</a>): NOT reproduced.</strong> Across 49 idle-detector ticks in
+<a class=ev href="../SRD/logs-final/files/log/wallet.log">logs-final/files/log/wallet.log</a> there were <strong>4</strong> verdicts (log 16:56:00, 16:57:00, 17:21:00, 17:55:00). Testnet
+blocks keep <code>blocksDownloaded/headersDownloaded/mnListDiffs</code> non-zero inside the 2-minute recency window most
+minutes, so the rule mostly does not trip; I had to cut the network (12:16:47) to get one on demand.</p>
+<p><strong>Part 2 — the latch: REPRODUCED.</strong></p>
+<pre><code>17:21:00 [main] BlockchainServiceImpl - idling detected, stopping service      &lt;- app FOREGROUND and bound
+</code></pre>
+<p>Immediately after (<a class=ev href="../SRD/SR-09/09-latch-set.txt">SR-09/09-latch-set.txt</a>, 12:21:11) the service was still alive — <code>stopSelf()</code> cannot destroy
+a bound service. 10 s after HOME it was gone (<a class=ev href="../SRD/SR-09/11-service-after-latched-home.txt">SR-09/11-service-after-latched-home.txt</a>):</p>
+<pre><code>12:21:21 t+0s  ServiceRecords=1 app_procs=1
+12:21:31 t+10s ServiceRecords=0 app_procs=1
+... (0 for the full 2 minutes)
+</code></pre>
+<p>with <code>17:21:20 [main] BlockchainServiceImpl - .onDestroy()</code> in <a class=ev href="../SRD/logs-final/files/log/wallet.log">wallet.log</a>. The <strong>same sequence recurred
+spontaneously</strong> at 17:55:00 / 17:55:42 when I backed out of Advanced Security — not an artefact of the network cut.</p>
+<p>Control: pressing HOME <strong>without</strong> a pending latch (12:06:48) left the service running for the full 2-minute poll
+and another ~10 minutes (<a class=ev href="../SRD/SR-09/05-service-after-home.txt">SR-09/05-service-after-home.txt</a>).</p>
+<p><strong>Part 3 — does a backgrounded app notice incoming funds? YES, while the service is alive.</strong> A faucet payment of
+0.98999390 tDASH (tx <code>61dd9f06d875526f683a62e754bdb171d40044a2bae674468d57789a73f79aef</code>) landed while the app had
+been backgrounded since 12:06:48 (<a class=ev href="../SRD/SR-09/13-background-receive-loglines.txt">SR-09/13-background-receive-loglines.txt</a>):</p>
+<pre><code>17:11:49 [DefaultDispatcher-worker-9] L1ShadowSyncService - L1 engine tx event: Detected(txidHex=61dd9f06…, netAmountDuffs=98999390, …)
+17:11:49 [DefaultDispatcher-worker-6] CutoverUiDataService - SDK balance published: 193397454 duffs (was 94398064) | l1Synced=true …
+17:11:49 [DefaultDispatcher-worker-7] CutoverUiDataService - engine-detected receive 61dd9f06… (98999390 duffs) — notifying in 2000ms unless an outgoing sibling classifies it internal
+</code></pre>
+<p><a class=ev href="../SRD/logcat.txt">logcat.txt:34992</a> at <code>12:11:52.050</code> shows the notification actually posting with sound
+(<code>requestAudioFocus() ... AA=USAGE_NOTIFICATION ... callingPack=com.android.systemui</code>, channel
+<code>dash.notifications.transactions</code>). The "user learns nothing until they reopen" half of the story only applies
+once the latch has killed the service.</p>
+<p><strong>Part 4 — reopening.</strong> After <code>force-stop</code> at 12:41:47, <code>am start</code> at 12:42:15 had MainActivity focused and
+<code>BlockchainServiceImpl</code> running by 12:42:21 (&lt;= 6 s); the correct balance was on screen as soon as the PIN was
+entered (<a class=ev href="../SRD/SR-09/12-reopened.webp">SR-09/12-reopened.png</a>, 1.943975 tDASH).</p>
+<h3 id="sr-03-sr-04-receive-address-on-a-restored-keychain">SR-03 / SR-04 — receive address on a restored keychain</h3>
+<p>Offline derivation of the S1 seed (<code>SR-03-04/derive.py</code>, pure-stdlib BIP39-&gt;BIP32-&gt;Dash-testnet P2PKH) plus
+Insight lookups (<a class=ev href="../SRD/SR-03-04/21-explorer-txapperances.txt">SR-03-04/21-explorer-txapperances.txt</a>, one JSON per address in <a class=ev href="../SRD/SR-03-04/22-addr-idx0-yRjAzoyfZ7DpzLFmVGiLispLjUaYKRnL52.json">SR-03-04/22-addr-idx*.json</a><sup class=more><a href="../index.html#SRD-SR-03-04" title="12 files, open gallery">+11</a></sup>),
+taken <strong>before</strong> any new funds arrived:</p>
+<pre><code>m/44'/1'/0'/0/0   yRjAzoyfZ7DpzLFmVGiLispLjUaYKRnL52   txApperances=5  totalReceived=1.02        &lt;- shown by the app
+m/44'/1'/0'/0/1   ygUWAkqbnKURkJ1mMEEh5FPKAfQmMdSUH9   txApperances=2  totalReceived=0.001
+m/44'/1'/0'/0/2   ydpETkGNb856diaqJoPiUptbVVPEpx5aVW   txApperances=2  totalReceived=1
+m/44'/1'/0'/0/3   ySu3d1VcumES35pzwPHWNuTPFZE4AghPNj   txApperances=0
+m/44'/1'/0'/0/4   yMknkjqmb8M2gxwB1V4uDSoWVbLN2SsZq3   txApperances=2  totalReceived=0.95235766
+m/44'/1'/0'/0/5..11                                    txApperances=0
+</code></pre>
+<ul>
+<li><strong>Receive tab</strong> (bottom-nav Payments &gt; Receive) -&gt; <code>yRjAzoyfZ7DpzLFmVGiLispLjUaYKRnL52</code> (<a class=ev href="../SRD/SR-03-04/13-payments.webp">SR-03-04/13-payments.png</a>)</li>
+<li><strong>Home shortcut "Receive" / quick receive</strong> -&gt; the same address (<a class=ev href="../SRD/SR-03-04/10-receive-tab.webp">SR-03-04/10-receive-tab.png</a>)</li>
+</ul>
+<p>Both are external key <strong>#0</strong> with five prior on-chain appearances, chosen even though #5 onwards are pristine.
+Side effect worth calling out: the faucet refused that address with <em>"That address already received 1 tDASH
+today"</em> — handing out #0 to every restore makes wallets collide with per-address rate limits and destroys
+receive-address privacy.</p>
+<p>After a new payment landed on #0, the Receive tab moved to <strong>#1</strong> — <code>ygUWAkqbnKURkJ1mMEEh5FPKAfQmMdSUH9</code>,
+<code>txApperances=2</code> (<a class=ev href="../SRD/SR-03-04/24-receive-after-3-receives.webp">SR-03-04/24-receive-after-3-receives.png</a>, <a class=ev href="../SRD/SR-03-04/25-addr-idx1-now.json">SR-03-04/25-addr-idx1-now.json</a>). Accurate
+statement: <em>the restored keychain starts at index 0 and advances one index per receive observed by this
+installation, re-publishing the seed's whole used range</em> — not "pinned to #0 forever".</p>
+<p><strong><a class=did href="../../DEFECT-LEDGER.html#SR-03">SR-04</a></strong> could not be observed on device:
+* <code>More &gt; Buy &amp; Sell &gt; Topper</code> kills the process before any URL exists (NEW-1). The address never reaches a
+  screen, and would not be readable in the URL anyway: <code>TopperClient.getOnRampUrl</code> returns <code>...?bt=&lt;signed JWT&gt;</code>
+  with the receiver address inside the token.
+* <code>Receive &gt; Import Private Key</code> offers only <strong>"Scan Private Key"</strong> (camera QR). I created and funded a paper
+  wallet for it (0.01 tDASH, tx confirmed) but there is no way to present a QR to the emulator, and
+  <code>SweepWalletActivity.INTENT_EXTRA_KEY</code> is a <code>Serializable PrefixedChecksummedBytes</code>, so <code>am start --es</code> cannot
+  supply it.
+* Uphold/Coinbase are unusable in this build ("Keys are missing for these services").</p>
+<p>Code-wise the SR row is accurate: <code>BuyAndSellViewModel.kt:271-278</code>, <code>ShortcutsViewModel.kt:211-218</code> and
+<code>SweepWalletFragment.java:621</code> all go through <code>freshReceiveAddress()</code> /
+<code>WalletDataProviderExt.freshReceiveAddressStringOffMain()</code>, i.e. the same keychain whose pointer <a class=did href="../../DEFECT-LEDGER.html#SR-03">SR-03</a> shows at #0.</p>
+<h3 id="sr-33-sr-34-auto-lock-defaults">SR-33 / SR-34 — auto-lock defaults</h3>
+<ul>
+<li><strong>Default (12.0.0):</strong> <a class=ev href="../SRD/SR-33-34/07-advanced-security-default.webp">SR-33-34/07-advanced-security-default.png</a> — Security Level <strong>High</strong>, Auto Logout <strong>on</strong>,
+  <strong>"Logout after 1 min"</strong>, slider one notch from "Immediately". <code>shared_prefs</code> contains <strong>no</strong> <code>auto_logout_*</code>
+  key on a fresh restore, so the value comes from <code>Configuration.java:164,172</code> (<code>true</code>, <code>1</code>).</li>
+<li><strong>Default (master 11.9.0, brand-new wallet):</strong> identical — <a class=ev href="../SRD/SR-33-master/04-master-advanced-security-default.webp">SR-33-master/04-master-advanced-security-default.png</a>;
+  master additionally writes <code>auto_logout_minutes=1</code> into prefs explicitly. <code>Configuration.java:164,172</code> is
+  byte-identical in <code>wt-master</code>. <strong><a class=did href="../../DEFECT-LEDGER.html#SR-33">SR-33</a> is pre-existing, not a 12.0.0 regression.</strong></li>
+<li><strong>Observed live:</strong> at 11:47:47 (log <code>17:47:47 LockScreenActivity - LockState = ENTER_PIN</code>) the app locked itself
+  ~40 s after reaching the home screen while the initial sync was still running, with no user input in between
+  (<a class=ev href="../SRD/SR-33-34/01-after-idle-9min.webp">SR-33-34/01-after-idle-9min.png</a>). During a 9-minute unattended sync poll every <code>uiautomator</code> sample showed
+  the PIN pad.</li>
+<li><strong>"Immediately" (<a class=did href="../../DEFECT-LEDGER.html#SR-33">SR-34</a>):</strong> slider to the far left -&gt; <code>auto_logout_minutes=0</code>, Security Level becomes "Very High"
+  (<a class=ev href="../SRD/SR-33-34/08-immediately-set.webp">SR-33-34/08-immediately-set.png</a>). HOME at 12:50:24, return 4 s later -&gt; <strong>Enter PIN</strong>
+  (<a class=ev href="../SRD/SR-33-34/10-after-return-from-home.webp">SR-33-34/10-after-return-from-home.png</a>). Works as designed.</li>
+<li><strong>Rotation:</strong> does <strong>not</strong> lock. <code>MainActivity</code> is <code>android:screenOrientation="portrait"</code>
+  (<code>wallet/AndroidManifest.xml:117</code>), so <code>$APP rotate 1</code> is a no-op there — the <a class=did href="../../DEFECT-LEDGER.html#SR-33">SR-34</a> source comment listing
+  MainActivity among the unpinned activities refers to the legacy <code>de.schildbach.wallet.MainActivity</code> alias, not
+  <code>de.schildbach.wallet.ui.main.MainActivity</code>. On a genuinely rotatable screen (NetworkMonitorActivity, confirmed
+  <code>mDisplayRotation=ROTATION_90</code>, <a class=ev href="../SRD/SR-33-34/15-networkmonitor-landscape.webp">SR-33-34/15-networkmonitor-landscape.png</a>) with <code>Immediately</code> set the guard
+  holds (<a class=ev href="../SRD/SR-33-34/16-rotate-guard-loglines.txt">SR-33-34/16-rotate-guard-loglines.txt</a>):
+  <code>17:52:34 [main] WalletActivityTracker - activity lifecycle: NetworkMonitorActivity stopped for a configuration change — not treating it as background</code>
+  Unpinned, unhandled activities: <code>de.schildbach.wallet.MainActivity</code> (alias), <code>AddressBookActivity</code>,
+  <code>NetworkMonitorActivity</code>, <code>BlockInfoActivity</code>, <code>ScanActivity</code>, <code>SweepWalletActivity</code>, <code>WalletUriHandlerActivity</code>,
+  <code>InviteHandlerActivity</code>, <code>ImportSharedImageActivity</code> — none locked on rotation.</li>
+</ul>
+<hr />
+<h2 id="new-findings">New findings</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Severity</th>
+<th>Finding</th>
+<th>Repro</th>
+<th>Evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>NEW-1</strong></td>
+<td><strong>S2</strong></td>
+<td><strong>Topper crashes the whole app with an uncaught exception when its API key is unusable.</strong> <code>BuyAndSellViewModel.topperBuyUrl</code> calls <code>TopperClient.getOnRampUrl</code> on <code>Dispatchers.Main.immediate</code> with no guard; <code>Decoders.BASE64.decode(privateKey)</code> throws <code>io.jsonwebtoken.io.DecodingException: Illegal base64 character: '_'</code> and the process dies. <code>TopperClient.hasValidCredentials</code> exists but is never consulted, and the Buy &amp; Sell list greys out Uphold/Coinbase for missing keys while leaving Topper tappable.</td>
+<td>More &gt; Buy &amp; Sell &gt; tap <strong>Topper</strong></td>
+<td><a class=ev href="../SRD/SR-03-04/17-topper.webp">SR-03-04/17-topper.png</a>, <a class=ev href="../SRD/SR-03-04/18-topper-crash-walletlog.txt">SR-03-04/18-topper-crash-walletlog.txt</a>, <a class=ev href="../SRD/SR-03-04/18-topper-crash-logcat.txt">SR-03-04/18-topper-crash-logcat.txt</a>, <a class=ev href="../SRD/SR-03-04/19-crash-dialog.webp">SR-03-04/19-crash-dialog.png</a>; <code>TopperClient.kt:91</code>, <code>BuyAndSellViewModel.kt:272</code></td>
+</tr>
+<tr>
+<td><strong>NEW-2</strong></td>
+<td>S3</td>
+<td><strong>A stale periodic alarm is never cancelled when the service comes back.</strong> <code>alarmManager.cancel()</code> only runs inside <code>scheduleStartBlockchainService</code>, which only runs from <code>onDestroy</code>. After the 12:40:43 delivery the app re-armed for +24 h and kept it armed while the app was foreground with the service already running, so the <code>startForegroundService</code> PendingIntent can fire against a live service.</td>
+<td>Background the app until teardown, reopen it, read <code>dumpsys alarm</code></td>
+<td><a class=ev href="../SRD/SR-06/11-dumpsys-alarm-after-fire-next-is-24h.txt">SR-06/11-dumpsys-alarm-after-fire-next-is-24h.txt</a>, <a class=ev href="../SRD/SR-06/14-all-alarm-diag-lines.txt">SR-06/14-all-alarm-diag-lines.txt</a></td>
+</tr>
+<tr>
+<td><strong>NEW-3</strong></td>
+<td>S3</td>
+<td><strong><code>force-stop</code> cancels the background-sync alarm permanently.</strong> After <code>am force-stop</code> the alarm is gone (<code>Reason=pi_cancelled</code>) and no job exists, so background sync never resumes until the user opens the app or reboots.</td>
+<td><code>am force-stop hashengineering.darkcoin.wallet_test</code> then <code>dumpsys alarm</code></td>
+<td><a class=ev href="../SRD/SR-06/13-dumpsys-alarm-after-forcestop.txt">SR-06/13-dumpsys-alarm-after-forcestop.txt:587-590</a></td>
+</tr>
+<tr>
+<td><strong>NEW-4</strong></td>
+<td>S4</td>
+<td><strong>Restored wallets collide on the faucet / on-chain privacy because every restore republishes key #0.</strong> Requesting testnet coins for the address the app displayed was refused with <em>"That address already received 1 tDASH today"</em> — a direct user-visible consequence of <a class=did href="../../DEFECT-LEDGER.html#SR-03">SR-03</a>.</td>
+<td>Restore any previously-used seed, open Receive, request from a per-address rate-limited service</td>
+<td><a class=ev href="../SRD/SR-03-04/21-explorer-txapperances.txt">SR-03-04/21-explorer-txapperances.txt</a>, <a class=ev href="../SRD/notes.html">notes.md</a> 12:09</td>
+</tr>
+</tbody>
+</table>
+<h2 id="environment-problems">Environment problems</h2>
+<ul>
+<li>AVD <code>dw-qa4</code> was <strong>not booted</strong> at task start and had to be launched manually; it also carried a <strong>pre-existing
+  wallet</strong> from an earlier session, so I ran <code>pm clear</code> before restoring the S1 seed.</li>
+<li><code>$APP &lt;serial&gt; text 1234</code> does not drive the PIN pad (matches SRB's note). Tapping by <code>resource-id</code> also failed
+  intermittently — three fast taps produced "Wrong PIN" three times and tripped the "Wallet disabled — try again
+  in 1 minute" lockout (5 of 8 attempts consumed). Reliable recipe: <code>adb shell input tap &lt;center&gt;</code> per digit with<blockquote>
+<p>= 1.2 s between taps.</p>
+</blockquote>
+</li>
+<li>The shared faucet's <strong>hourly limit (10/h) was exhausted</strong> by other streams for most of the session, and its
+  "already received today" message is emitted even for addresses that then do receive — two of my three requests
+  landed several minutes after the UI claimed they were refused.</li>
+<li>Topper/Uphold/Coinbase keys are stubs in the QA build (<code>service.properties</code>), which is what surfaces NEW-1 and
+  blocks the <a class=did href="../../DEFECT-LEDGER.html#SR-03">SR-04</a> consumers.</li>
+<li>The paper-wallet test key <code>cN8KqavRd5T2gzgxRhwg8oLu2Ks18ERNZVuGL45uJ1tjHU25NLnn</code> still holds <strong>0.01 tDASH</strong>.</li>
+<li>12.0.0 was <strong>uninstalled at 13:05</strong> and master 11.9.0 installed for the <a class=did href="../../DEFECT-LEDGER.html#SR-33">SR-33</a> baseline, so the device now holds a
+  brand-new empty 11.9.0 wallet, not the S1 restore.</li>
+</ul><div id=lb><span class=x>&times;</span><span class="nv pv">&#8249;</span><span class="nv nx">&#8250;</span><img><div class=cap></div></div>
+<script>(function(){var lb=document.getElementById('lb'),im=lb.querySelector('img'),cap=lb.querySelector('.cap'),L=[],i=0;
+function links(){return Array.prototype.slice.call(document.querySelectorAll('a[href$=".webp"],a[href$=".png"]'))}
+function show(n){L=links();if(n<0||n>=L.length)return;i=n;var a=L[i];im.src=a.href;cap.innerHTML=(a.textContent.trim()||a.href.split('/').slice(-3).join('/'))+' &nbsp;('+(i+1)+'/'+L.length+') &nbsp;<a href="'+a.href+'" target=_blank rel=noopener>open file</a>';lb.classList.add('on')}
+function hide(){lb.classList.remove('on');im.src=''}
+document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".webp"],a[href$=".png"]');if(a&&!a.closest('#lb')){e.preventDefault();show(links().indexOf(a))}});
+lb.querySelector('.x').onclick=hide;lb.querySelector('.pv').onclick=function(e){e.stopPropagation();show(i-1)};lb.querySelector('.nx').onclick=function(e){e.stopPropagation();show(i+1)};
+lb.addEventListener('click',function(e){if(e.target===lb||e.target===im)hide()});
+document.addEventListener('keydown',function(e){if(!lb.classList.contains('on'))return;if(e.key==='Escape')hide();if(e.key==='ArrowLeft')show(i-1);if(e.key==='ArrowRight')show(i+1)});})();</script><script>(function(){document.querySelectorAll('thead.sortable').forEach(function(th){var tb=th.parentNode.querySelector('tbody');var ths=th.querySelectorAll('th');
+ths.forEach(function(h,ci){h.style.cursor='pointer';h.title='click to sort';h.addEventListener('click',function(){var rows=Array.prototype.slice.call(tb.querySelectorAll('tr'));var asc=!(h.dataset.asc==='1');ths.forEach(function(x){delete x.dataset.asc;x.classList.remove('asc','desc')});h.dataset.asc=asc?'1':'0';h.classList.add(asc?'asc':'desc');
+var rank={S1:0,S2:1,S3:2,S4:3,other:4,dup:5,info:6,env:7};
+function key(r){if(ci===1)return rank[r.dataset.sev]!==undefined?rank[r.dataset.sev]:9;if(ci===0)return +r.dataset.idx;var c=r.children[ci];return c?c.textContent.trim().toLowerCase():''}
+rows.sort(function(a,b){var ka=key(a),kb=key(b);if(ka<kb)return asc?-1:1;if(ka>kb)return asc?1:-1;return (+a.dataset.idx)-(+b.dataset.idx)});rows.forEach(function(r){tb.appendChild(r)})})})})})();</script></html>

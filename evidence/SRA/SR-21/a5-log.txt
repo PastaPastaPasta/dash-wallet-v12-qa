@@ -1,0 +1,11 @@
+39:17:18:30 [main] WalletApplication - Removing all the data and restarting the app.
+69:17:18:30 [main] OnboardingActivity - reset in progress — holding onboarding until the wipe finishes
+102:17:18:31 [DefaultDispatcher-worker-12] WalletApplicationExt - databases cleared (isWalletWipe = false)
+11310:17:18:45 [DefaultDispatcher-worker-3] BlockchainServiceImpl - CRITICAL: Cleanup did not complete within 15 seconds
+11332:17:18:45 [main] WalletApplication - removing wallet from memory during wipe
+12476:17:18:45 [DefaultDispatcher-worker-16] BlockchainServiceImpl - CRITICAL: Cleanup did not complete within 15 seconds
+12485:17:18:45 [DefaultDispatcher-worker-4] BlockchainServiceImpl - Another onDestroy() is already running cleanup, skipping duplicate cleanup
+12495:17:18:45 [DefaultDispatcher-worker-16] WalletApplicationExt - databases cleared (isWalletWipe = true)
+12496:17:18:45 [main] OnboardingActivity - reset finished — re-running the onboarding routing
+12510:17:18:46 [DefaultDispatcher-worker-2] BlockchainServiceImpl - CRITICAL: Cleanup did not complete within 15 seconds
+12545:17:18:46 [DefaultDispatcher-worker-3] BlockchainServiceImpl - CRITICAL: Cleanup did not complete within 15 seconds

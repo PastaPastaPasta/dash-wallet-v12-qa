@@ -1,0 +1,381 @@
+<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Stream SRF report</title><style>body{font-family:system-ui,-apple-system,sans-serif;max-width:1400px;margin:0 auto;padding:16px 24px;line-height:1.45;background:#fff;color:#111}
+table{border-collapse:collapse;font-size:13px;margin:12px 0}th,td{border:1px solid #ddd;padding:4px 8px;vertical-align:top;text-align:left}th{background:#f3f6fa;position:sticky;top:0}
+tr:nth-child(even){background:#fafbfc}code{background:#f4f4f4;padding:1px 4px;border-radius:3px;font-size:12px}pre{background:#f4f4f4;padding:10px;overflow:auto}
+h1{border-bottom:3px solid #008de4}h2{border-bottom:1px solid #ccc;margin-top:40px}a{color:#008de4}a.ev{background:#e8f4fd;padding:0 3px;border-radius:3px;font-family:ui-monospace,monospace;font-size:12px}
+nav.top{background:#012060;color:#fff;padding:8px 24px;margin:-16px -24px 16px;position:sticky;top:0;z-index:5}nav.top a{color:#fff;margin-right:18px;text-decoration:none}nav.top a:hover{text-decoration:underline}
+.S1{color:#b00020;font-weight:bold}.S2{color:#c75000;font-weight:bold}.toc{background:#f8f9fb;border:1px solid #e3e6ea;padding:8px 16px;font-size:13px;columns:2}.toc ul{margin:2px 0;padding-left:16px}
+#lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:50;align-items:center;justify-content:center;flex-direction:column}#lb.on{display:flex}#lb img{max-width:96vw;max-height:88vh;border:2px solid #fff;box-shadow:0 0 30px #000}#lb .cap{color:#eee;font:13px ui-monospace,monospace;margin-top:8px}#lb .cap a{color:#8cf}#lb .x{position:absolute;top:10px;right:18px;color:#fff;font-size:30px;cursor:pointer}#lb .nv{position:absolute;top:50%;color:#fff;font-size:44px;cursor:pointer;padding:0 16px;user-select:none}#lb .pv{left:0}#lb .nx{right:0}a.img img{cursor:zoom-in}
+sup.more a{margin:0 2px;font-size:10px}
+thead.sortable th.asc::after{content:' \25B2';font-size:9px}thead.sortable th.desc::after{content:' \25BC';font-size:9px}
+tr[data-sev=S1] td:nth-child(2){background:#fde7e9}tr[data-sev=S2] td:nth-child(2){background:#fff1e0}
+a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:target{background:#fff3b0;outline:2px solid #f5b400}
+.note{background:#fff8e1;border-left:4px solid #f5b400;padding:8px 12px;margin:12px 0}
+</style><nav class=top><a href="../../index.html">Home</a><a href="../../QA-REPORT.html">Full report</a><a href="../../EXEC-SUMMARY.html">Executive summary</a><a href="../../STORY-MATRIX.html">User-story matrix</a><a href="../../DEFECT-LEDGER.html">Defect register</a><a href="../index.html">Evidence gallery</a><a href="../../QA-PLAN.html">Test plan</a><a href="../../streams.html">Stream reports</a></nav><h1 id="srf-sr-device-reproduction-report-shielded-platform-side">SRF — SR device-reproduction report (shielded / Platform side)</h1>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Emulator</td>
+<td><code>emulator-5566</code> (AVD <strong>dw-qa6</strong>, Android 15 / API 35). It was <strong>not running</strong> at task start; I started it myself (<code>emulator -avd dw-qa6 -port 5566 …</code>, booted 11:43 CDT).</td>
+</tr>
+<tr>
+<td>Build under test</td>
+<td><code>fix-12.0.0-testnet3-release-signed.apk</code> — <code>versionCode=12000000 versionName=12.0.0</code> (already installed on the AVD)</td>
+</tr>
+<tr>
+<td>Baseline</td>
+<td>not used (all items are fix-build-only shielded flows)</td>
+</tr>
+<tr>
+<td>Package</td>
+<td><code>hashengineering.darkcoin.wallet_test</code></td>
+</tr>
+<tr>
+<td>Wallet</td>
+<td>pre-existing throwaway wallet on the AVD (SDK wallet <code>846c2698…</code>), PIN 1234. <strong>Reference seed not touched.</strong></td>
+</tr>
+<tr>
+<td>Funding</td>
+<td>1 tDASH from faucet.thepasta.org -&gt; <code>yThkc1p6c3w2KPPwaSZiNgnWL3KiHsewWU</code>, txid <code>d2ae1885fd47a0d69fbb3135a5cf4e6354dca83d293534320ebd706814626e54</code>. A 2nd drop was <strong>refused</strong> ("that address already received 1 tDASH today"), so the whole stream ran on 1 tDASH.</td>
+</tr>
+<tr>
+<td>Username created</td>
+<td><code>srfqa5566test9</code> (non-contested, 0.03, funded from the shielded pool), identity <code>8HeVCaGd…</code></td>
+</tr>
+<tr>
+<td>Own shielded address</td>
+<td><code>tdash1zzr4ry25kum2f3m24ddcly5weg6tddwpqe9tkku45j06hnwl69zrt580ju0sf5rddtp8crq788jx9</code></td>
+</tr>
+<tr>
+<td>Start / end</td>
+<td>2026-09-19 11:40 – 14:10 CDT (<a class=ev href="../SRF/logs/files/log/wallet.log">wallet.log</a> timestamps are <strong>UTC</strong>, i.e. CDT+5)</td>
+</tr>
+<tr>
+<td>Evidence root</td>
+<td><code>/Users/dcg/workspace/dash-wallet-qa/evidence/SRF/</code></td>
+</tr>
+</tbody>
+</table>
+<p>Balance ledger (full running ledger in <a class=ev href="../SRF/notes.html">notes.md</a>): 0 -&gt; +1.0 faucet -&gt; shield 0.9 -&gt; unshield 0.1 -&gt; DASH-max shield -&gt;
+username -0.03 -&gt; unshield 0.15 -&gt; invite -0.032 -&gt; shielded self-send fee. <strong>Final: transparent 0.150008 / shielded 0.776
+(sum 0.926 of 1.0; every 0.074 accounted for). No unexplained loss.</strong></p>
+<hr />
+<h2 id="summary">Summary</h2>
+<table>
+<thead>
+<tr>
+<th>SR-id</th>
+<th>Verdict</th>
+<th>What I did</th>
+<th>Decisive evidence</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td id="SR-12"><a href="#SR-12">SR-12</a></td>
+<td><strong>PARTIAL</strong></td>
+<td>Unshield 0.1; at T+2 s <code>iptables -A OUTPUT -p tcp --dport 1443/443 -j DROP</code> + <code>emu network speed gsm/delay gprs</code>. Watched to T+130 s, then restored the network.</td>
+<td><a class=ev href="../SRF/SR-12/t041.webp">SR-12/t041.png</a>, <a class=ev href="../SRF/SR-12/22-reenter.webp">SR-12/22-reenter.png</a>, <a class=ev href="../SRF/SR-12/r030.webp">SR-12/r030.png</a>, <a class=ev href="../SRF/SR-12/grep-stall.txt">SR-12/grep-stall.txt</a>, <a class=ev href="../SRF/SR-12/srf-sr12b.mp4">SR-12/srf-sr12b.mp4</a>, <a class=ev href="../SRF/SR-12/timeline.txt">SR-12/timeline.txt</a></td>
+<td>Watchdog <strong>does</strong> fire at 40 s and <strong>does</strong> lock the whole screen out (keypad dead, Continue = "Sending your transfer…") across leaving and re-entering. It is <strong>not</strong> permanent: when the underlying op finally terminated the transfer completed, balance moved and the screen freed itself. Never fired on a healthy network (shield/unshield complete in &lt; 8 s here).</td>
+</tr>
+<tr>
+<td id="SR-13"><a href="#SR-13">SR-13</a></td>
+<td><strong>REPRODUCED</strong></td>
+<td>Shielded send 0.05 -&gt; own shielded address; BACK 3 s after the PIN (VM clear, process alive); waited 65 s; re-entered.</td>
+<td><a class=ev href="../SRF/SR-13/timeline.txt">SR-13/timeline.txt</a>, <a class=ev href="../SRF/SR-13/grep.txt">SR-13/grep.txt</a>, <a class=ev href="../SRF/SR-13/21-balances-after.webp">SR-13/21-balances-after.png</a>, <a class=ev href="../SRF/SR-13/20-reenter.webp">SR-13/20-reenter.png</a>, <a class=ev href="../SRF/SR-13/srf-sr13.mp4">SR-13/srf-sr13.mp4</a></td>
+<td>The spend <strong>still went out</strong> (shielded 0.778 -&gt; 0.776, fee consumed) while the outcome was <strong>lost completely</strong>: no screen state, no toast, no notification, and <strong>no log line at all</strong> for the result. Re-entry gives a fully Idle, immediately re-submittable screen. Rotation / "don't keep activities" variants NOT run (time).</td>
+</tr>
+<tr>
+<td id="SR-14"><a href="#SR-14">SR-14</a></td>
+<td><strong>NOT REPRODUCED (as written) / NEW defect found</strong></td>
+<td>Invite (private, non-contested 0.03) from the shielded pool; wifi+data off at T+3 s; watched 3 min; retried offline and after restoring.</td>
+<td><a class=ev href="../SRF/SR-14/timeline.txt">SR-14/timeline.txt</a>, <a class=ev href="../SRF/SR-14/grep1.txt">SR-14/grep1.txt</a>, <a class=ev href="../SRF/SR-14/grep2.txt">SR-14/grep2.txt</a>, <a class=ev href="../SRF/SR-14/n030.webp">SR-14/n030.png</a>, <a class=ev href="../SRF/SR-14/21-retry-online.webp">SR-14/21-retry-online.png</a></td>
+<td>No forever-<code>Proving</code>: it terminated in ~22 s. But it terminated with a <strong>wrong</strong> permanent-failure message and then <strong>permanently disabled the Confirm button</strong> (<code>enabled="false"</code>) for that dialog, even after the network came back. <code>submit refused</code> never appeared.</td>
+</tr>
+<tr>
+<td id="SR-30"><a href="#SR-30">SR-30</a></td>
+<td><strong>REPRODUCED</strong></td>
+<td>Parked Send-to-address screen (<code>--ei screen 1</code>), Max = 0.77828183 -&gt; Continue -&gt; Confirm -&gt; PIN.</td>
+<td><a class=ev href="../SRF/SR-30/grep.txt">SR-30/grep.txt</a>, <a class=ev href="../SRF/SR-30/m070.webp">SR-30/m070.png</a>, <a class=ev href="../SRF/SR-30/20-max.webp">SR-30/20-max.png</a>, <a class=ev href="../SRF/SR-30/srf-sr30.mp4">SR-30/srf-sr30.mp4</a></td>
+<td>Fails pre-broadcast: <code>Insufficient shielded balance: available 77828183400, required 77991034200</code> (fee 162850800 credits, no reserve, no fee-adjust retry). Compared with the transfer screen, whose DASH Max <strong>does</strong> auto-adjust and succeed.</td>
+</tr>
+<tr>
+<td id="SR-31"><a href="#SR-31">SR-31</a></td>
+<td><strong>REPRODUCED</strong></td>
+<td>Transfer screen, toggle to fiat, Max ($11.8751 = 0.19999663), Continue, Confirm, PIN. Ran the DASH-mode Max control immediately after with the same balance.</td>
+<td><a class=ev href="../SRF/SR-31/w008.webp">SR-31/w008.png</a>, <a class=ev href="../SRF/SR-31/d008.webp">SR-31/d008.png</a>, <a class=ev href="../SRF/SR-31/grep.txt">SR-31/grep.txt</a>, <a class=ev href="../SRF/SR-31/srf-sr31.mp4">SR-31/srf-sr31.mp4</a></td>
+<td>Fiat Max -&gt; "This transfer was not sent / Nothing left your balance" in ~8 s. DASH Max on the same screen/balance -&gt; auto-adjust retry -&gt; succeeds. Exactly the <code>isMaxSpend = amount == availableBalance</code> round-trip loss the SR predicts.</td>
+</tr>
+<tr>
+<td id="SR-02"><a href="#SR-02">SR-02</a></td>
+<td><strong>NOT REPRODUCED</strong></td>
+<td>3 invite creations, <code>am force-stop</code> at T+2 s, T+4 s, T+6 s after the PIN. Relaunched and checked shielded balance + Invitations History each time.</td>
+<td><a class=ev href="../SRF/SR-02/timeline.txt">SR-02/timeline.txt</a>, <a class=ev href="../SRF/SR-02/rA-04-balances.webp">SR-02/rA-04-balances.png</a>, <a class=ev href="../SRF/SR-02/rB-04-balances.webp">SR-02/rB-04-balances.png</a>, <a class=ev href="../SRF/SR-02/rC-05-balances.webp">SR-02/rC-05-balances.png</a>, <a class=ev href="../SRF/SR-02/rC-06-invites-history.webp">SR-02/rC-06-invites-history.png</a>, <a class=ev href="../SRF/SR-02/rC-07-invite-detail.webp">SR-02/rC-07-invite-detail.png</a></td>
+<td>2 s / 4 s: nothing spent (0.810 unchanged). 6 s: 0.810 -&gt; 0.778 <strong>and</strong> the invite is in Invitations History with a working "Copy Invitation Link" — the one-time key was persisted. <strong>Total lost: 0.</strong> The whole key-gen -&gt; fund -&gt; persist pipeline finishes in &lt; 6 s here, so the :359…:413 window is milliseconds wide.</td>
+</tr>
+<tr>
+<td id="SR-11"><a href="#SR-11">SR-11</a></td>
+<td><strong>REPRODUCED</strong></td>
+<td>Created <code>srfqa5566test9</code> from the shielded pool (0.03, non-contested).</td>
+<td><a class=ev href="../SRF/SR-11/10-home-history.webp">SR-11/10-home-history.png</a>, <a class=ev href="../SRF/SR-11/12-more-after.webp">SR-11/12-more-after.png</a>, <a class=ev href="../SRF/SR-11/grep.txt">SR-11/grep.txt</a>, <a class=ev href="../SRF/SR-11/srf-sr11.mp4">SR-11/srf-sr11.mp4</a></td>
+<td>Shielded 0.992 -&gt; 0.962 and the Home History contains <strong>no row</strong> for the 0.03. Confirms <a class=did href="../../DEFECT-LEDGER.html#D-007">D-007</a>'s root cause on device.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="detail">Detail</h2>
+<h3 id="sr-12-shielded-stall-watchdog-partial">SR-12 — shielded stall watchdog (PARTIAL)</h3>
+<p>Setup: transparent 0.09999737 / shielded 0.89787148. Transfer screen, direction reversed to
+Shielded -&gt; Dash Wallet, amount 0.1.</p>
+<ul>
+<li>11:56:56 CDT — PIN entered (T0). <a class=ev href="../SRF/SR-12/03-pin.webp">SR-12/03-pin.png</a></li>
+<li>T+2 s — <code>adb -s emulator-5566 shell iptables -A OUTPUT -p tcp --dport 1443 -j DROP</code> (and <code>--dport 443</code>), plus
+  <code>emu network speed gsm</code> / <code>emu network delay gprs</code>. Android still reported <code>hasInternet: true, validated: true</code>.</li>
+<li>T+5…T+36 s — modal "Sending your transfer… / This could take up to 10 minutes to complete. We will notify you
+  when it's done." with a "Hide" action.</li>
+<li><strong>T+41 s — the stall overlay fires</strong>, plus a heads-up system notification (<a class=ev href="../SRF/SR-12/t041.webp">SR-12/t041.png</a>):<blockquote>
+<p><strong>Still finishing your transfer</strong>
+This is taking a little longer than usual. Your transfer is still in progress and will finish in the background — your shielded balance updates automatically when it completes. … Not done yet, but it's safe to leave this screen.
+[ Continue in the background ]</p>
+</blockquote>
+</li>
+</ul>
+<p>Strings are <code>shielded_transfer_stalled_title</code> / <code>_message</code> in
+  <code>/Users/dcg/workspace/dash-wallet-qa/wt-fix/wallet/res/values/strings-dashpay.xml:714</code> (they are <strong>not</strong> in
+  <code>values/strings.xml</code>, which is where the SR points).</p>
+<p><a class=ev href="../SRF/logs/files/log/wallet.log">…/SRF/SR-12/logs/files/log/wallet.log:14342</a>:
+  <code>16:57:36 [DefaultDispatcher-worker-4] ShieldedTransferExecutor - shielded transfer has no outcome after 40000 ms — surfacing Stalled (the spend keeps running; a terminal result will supersede)</code>
+* 16:57:41 (5 s later) the app <strong>auto-locked</strong> and hid the overlay behind the PIN screen
+  (<a class=ev href="../SRF/logs/files/log/wallet.log">wallet.log</a> <code>LockScreenActivity - LockState = ENTER_PIN</code>). Cause: Security &gt; Advanced Security &gt;
+  Auto Logout default <strong>"1 min"</strong>. Unlocking restored the overlay intact. I set it to 24 h afterwards to stop it
+  interfering with the rest of the session (environment change, noted).
+* "Continue in the background" <strong>finishes the activity</strong> (back to Payments &gt; Internal) — <a class=ev href="../SRF/SR-12/21-after-ack.webp">SR-12/21-after-ack.png</a>.
+* <strong>Re-entering the screen does not give you a working screen</strong>: the button reads "Sending your transfer…", the
+  keypad is inert (the amount stays "0" however many digits you tap) and the From row shows a "0.10 pending" badge.
+  <a class=ev href="../SRF/SR-12/22-reenter.webp">SR-12/22-reenter.png</a>, <a class=ev href="../SRF/SR-12/23-amount-entered.webp">23-amount-entered.png</a>, <a class=ev href="../SRF/SR-12/24-after-cont.webp">24-after-cont.png</a>.
+* Network restored 12:01:05. <strong>12:01:37 the transfer completed by itself</strong>, the app navigated to More and the
+  balances moved to transparent 0.199 / shielded 0.795 (<a class=ev href="../SRF/SR-12/r030.webp">SR-12/r030.png</a>). <a class=ev href="../SRF/logs/files/log/wallet.log">wallet.log:14463</a>
+  <code>17:00:02 CutoverUiDataService - SDK balance published: 19999737 duffs (was 9999737)</code>.</p>
+<p>What the user sees: a soft, correctly-worded "still working" notice at 40 s, then a screen that refuses any further
+transfer until the first one resolves. <strong>The "permanently bricks the screen … cannot be used again in this process"
+part of <a class=did href="../../DEFECT-LEDGER.html#SR-12">SR-12</a> did not hold</strong> — the lockout lasts exactly as long as the operation does. It would only be permanent if
+the FFI call itself never returned, which I could not produce (the op survived a ~4-minute DAPI blackout and resolved).
+Also <strong>not</strong> reproduced: "fires on healthy transfers" — on this emulator a shield completes in &lt; 8 s, so the watchdog
+never fired without fault injection.</p>
+<h3 id="sr-13-shielded-send-runs-in-viewmodelscope-reproduced">SR-13 — shielded Send runs in viewModelScope (REPRODUCED)</h3>
+<p>Send screen, 0.05 -&gt; my own shielded address, shielded balance 0.77828183 before.</p>
+<ul>
+<li>13:15:06 PIN (T0). T+3 s: <code>input keyevent KEYCODE_BACK</code>. The activity is destroyed immediately
+  (<a class=ev href="../SRF/logs/files/log/wallet.log">wallet.log</a> <code>18:15:06 WalletActivityTracker - activity lifecycle: activity ShieldedBalanceActivity destroyed</code>)
+  and the user lands on Home with <strong>no indication anything is in flight</strong> (<a class=ev href="../SRF/SR-13/12-after-back.webp">SR-13/12-after-back.png</a>).</li>
+<li>Waited 65 s on Home: no toast, no system notification, no banner (<a class=ev href="../SRF/SR-13/b065.webp">SR-13/b065.png</a>).</li>
+<li><strong>The log contains no outcome line for this send at all.</strong> <code>grep -E 'ShieldedSend|transferShielded'</code> after 18:15:06
+  is empty (<a class=ev href="../SRF/SR-13/grep.txt">SR-13/grep.txt</a>) — contrast with the app-scoped transfer executor, which always logs and notifies.</li>
+<li><strong>The spend nevertheless went through</strong>: shielded 0.778 -&gt; <strong>0.776</strong> (<a class=ev href="../SRF/SR-13/21-balances-after.webp">SR-13/21-balances-after.png</a>). It was a
+  self-send, so only the fee (~0.0016) actually left; against a third-party address the full 0.05 would have gone
+  with the user never being told.</li>
+<li>Re-entering the screen: address blank, amount 0, <strong>Continue live, fully re-submittable</strong> (<a class=ev href="../SRF/SR-13/20-reenter.webp">SR-13/20-reenter.png</a>).</li>
+</ul>
+<p>Not covered (ran out of time): the rotation variant, the <code>always_finish_activities 1</code> variant, and actually firing a
+second submit to prove the double spend. <code>always_finish_activities</code> was reset to 0 at the end regardless.</p>
+<h3 id="sr-14-no-watchdog-on-invite-creation-not-reproduced-as-written">SR-14 — no watchdog on invite creation (NOT REPRODUCED as written)</h3>
+<ul>
+<li>Getting to the flow at all required unshielding first — see <strong>D-SRF-2</strong> below.</li>
+<li>Invitations &gt; "Create a private invitation" &gt; Non-contested 0.03 &gt; Confirm and pay &gt; PIN at 12:52:12; wifi+data
+  disabled at T+3 s.</li>
+<li>T+15 s: "This could take about 30 seconds. We will notify you when it's done."</li>
+<li><strong>T+30 s</strong> (measured; the log line is at T+22 s) the dialog shows a terminal error — there is no endless spinner:<blockquote>
+<p>The Dash network rejected this invitation, so trying again will not help. Please try a different invitation type, or update the app if the problem continues.</p>
+</blockquote>
+</li>
+</ul>
+<p><code>17:52:40 [DefaultDispatcher-worker-11] SdkShieldedInviteCreation - shielded invite funding rejected pre-broadcast
+  17:52:40 [main] ConfirmInviteDialogFragment - invite creation failed: kind=REJECTED attempt=1 retryAllowed=false</code>
+* Tapping Confirm again while offline: nothing. After re-enabling wifi+data and waiting 20 s: still nothing —
+  <code>confirm_btn</code> reports <code>enabled="false"</code>. The only way forward is to back all the way out of the flow (which then
+  works). <code>submit refused: an operation is …</code> never appeared, so the single-flight gate is not what blocks the retry;
+  the dialog's own <code>retryAllowed=false</code> is.
+* No funds were consumed (shielded stayed 0.810).</p>
+<p>I did not separately exercise the <strong>username</strong> creation path under a network cut; the username I created (<a class=did href="../../DEFECT-LEDGER.html#SR-11">SR-11</a>)
+completed in 8 s on a healthy network. So <code>SdkShieldedUsernameCreation</code>'s missing watchdog is <strong>untested</strong> — <a class=did href="../../DEFECT-LEDGER.html#SR-14">SR-14</a>
+is disproved only for the invite path.</p>
+<h3 id="sr-30-shielded-max-to-an-address-can-never-succeed-reproduced">SR-30 — shielded Max to an address can never succeed (REPRODUCED)</h3>
+<p>The Send-to-address screen has <strong>no UI entry point</strong> (<code>ShieldedBalanceActivity.SCREEN_SEND</code> is parked); I reached it with
+<code>am start -n &lt;pkg&gt;/de.schildbach.wallet.ui.shielded.ShieldedBalanceActivity --ei screen 1 --ez LockScreenActivity.keep_unlocked true</code>.</p>
+<ul>
+<li>Max -&gt; 0.77828183 (the whole pool, no reserve). Continue -&gt; Confirm -&gt; PIN.</li>
+<li>Fails; the screen returns to composing with "Insufficient funds" (<a class=ev href="../SRF/SR-30/m070.webp">SR-30/m070.png</a>).
+  <code>18:08:48 [DefaultDispatcher-worker-9] ShieldedBalanceServiceImpl - shielded transferShielded rejected pre-broadcast (notes released)
+  18:08:48 [main] ShieldedSendViewModel - shielded send not sent: pre-broadcast shielded note-selection failure
+  Caused by: org.dashfoundation.dashsdk.ffi.DashSDKException: shielded transfer failed: Insufficient shielded balance: available 77828183400, required 77991034200</code>
+  The shortfall is exactly the fee, 162 850 800 credits.</li>
+<li>Comparison asked for in the brief — the <strong>transfer</strong> screen's DASH Max on the same build does have the retry:
+  <code>17:25:19 [DefaultDispatcher-worker-8] ShieldedTransferExecutor - max shield auto-adjusting for L1 asset-lock fee: requested 0.19999737, reserve 1192 duffs (2 UTXOs), retrying once with 0.19998545</code>
+  and it succeeded. The send screen has no equivalent.</li>
+<li>Max-minus-a-little: a manual 0.05 on the same screen <strong>does</strong> work (that is the <a class=did href="../../DEFECT-LEDGER.html#SR-13">SR-13</a> run above), so the failure is
+  specific to spending the full balance.</li>
+<li>Two extra observations on this screen: a transparent <code>y…</code> address is silently rejected (Continue just stays dead,
+  no validation message — <a class=ev href="../SRF/SR-30/02-addr.webp">SR-30/02-addr.png</a>), and after any completed/failed shielded op the screen's balance sticks
+  at 0 for the rest of the process; only a force-stop restores it (verified: restart -&gt; Max = 0.77828183 again).</li>
+</ul>
+<h3 id="sr-31-fiat-mode-max-reproduced">SR-31 — fiat-mode Max (REPRODUCED)</h3>
+<p>The currency toggle is the <strong>"USD"/"DASH" label to the right of the amount</strong> (tap 995,556 at 1080x2400), not the
+chevron under it.</p>
+<ul>
+<li>The lossy round trip is visible immediately: 0.05 DASH -&gt; $2.9816 -&gt; <strong>0.04999932</strong> DASH (-68 duffs).</li>
+<li>With transparent 0.19999737, fiat Max shows <strong>$11.8751 / 0.19999663 DASH</strong> — 74 duffs short of the balance, so
+  <code>amount != availableBalance</code> and <code>isMaxSpend</code> is false.</li>
+<li>Confirm + PIN -&gt; fails in ~8 s: <strong>"This transfer was not sent — Nothing left your balance. Check the details and
+  try again."</strong> Balance unchanged. <a class=ev href="../SRF/SR-31/w008.webp">SR-31/w008.png</a>
+  <code>17:23:16 [DefaultDispatcher-worker-5] ShieldedBalanceServiceImpl - shielded shieldFromWallet rejected pre-broadcast (no lock tracked)
+  17:23:16 [DefaultDispatcher-worker-5] ShieldedTransferExecutor - shielded transfer not sent: pre-broadcast asset-lock coin-selection failure</code></li>
+<li><strong>Control, same screen, same balance, DASH-mode Max:</strong> succeeds in &lt; 8 s (transparent 0.19999737 -&gt; 0.000008),
+  because <code>isMaxSpend</code> is true and the executor runs the fee-adjust retry (log line quoted under <a class=did href="../../DEFECT-LEDGER.html#SR-30">SR-30</a>).
+  <a class=ev href="../SRF/SR-31/20-dashmax.webp">SR-31/20-dashmax.png</a>, <a class=ev href="../SRF/SR-31/d008.webp">SR-31/d008.png</a></li>
+</ul>
+<h3 id="sr-02-invite-cancel-after-funding-not-reproduced">SR-02 — invite cancel after funding (NOT REPRODUCED)</h3>
+<table>
+<thead>
+<tr>
+<th>run</th>
+<th>kill at</th>
+<th>shielded before -&gt; after</th>
+<th>invite in history?</th>
+<th>lost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>T+2 s</td>
+<td>0.810 -&gt; 0.810</td>
+<td>no</td>
+<td>0</td>
+</tr>
+<tr>
+<td>B</td>
+<td>T+4 s</td>
+<td>0.810 -&gt; 0.810</td>
+<td>no</td>
+<td>0</td>
+</tr>
+<tr>
+<td>C</td>
+<td>T+6 s</td>
+<td>0.810 -&gt; <strong>0.778</strong></td>
+<td><strong>yes</strong> — "Invitation 1, Sep 19 01:04 pm", detail screen offers "Copy Invitation Link"</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p><code>am force-stop</code> was issued from adb at the stated delay after the PIN, then the app was relaunched, unlocked and the
+More card + Invitations History read. <a class=ev href="../SRF/SR-02/timeline.txt">SR-02/timeline.txt</a> has the exact timestamps.</p>
+<p>On this emulator the whole <code>generateOneTimeOrchardKey</code> -&gt; <code>fundNotesToRaw43</code> -&gt; <code>persistTracking</code> pipeline runs in under
+6 s, so the window the SR describes (key at :350, spend at :359, persist at :413) is a few milliseconds wide and I
+could not land inside it with process kills. <strong>The finding is not disproved in principle — it is a genuine
+write-ordering hazard in the code — but it is not reachable by a user cancelling or by a kill at human timescales on
+this hardware.</strong> A device where the Halo 2 proof takes the documented ~30 s would widen the window proportionally.</p>
+<h3 id="sr-11-username-from-the-shielded-pool-writes-no-history-row-reproduced">SR-11 — username from the shielded pool writes no history row (REPRODUCED)</h3>
+<ul>
+<li>More &gt; Join DashPay &gt; payment option <strong>"Shielded balance"</strong> &gt; <code>srfqa5566test9</code> (non-contested) &gt; 0.03 from
+  shielded balance &gt; I accept &gt; Confirm &gt; PIN at 12:40:35.
+  <code>17:40:34 [main] RequestUserNameViewModel - routing username creation to the shielded-funded SDK path
+  17:40:42 [DefaultDispatcher-worker-14] SdkShieldedUsernameCreation - shielded-funded identity created at index 0 (8HeVCaGd…) — 0.03 denomination, contested=false
+  17:40:47 [DefaultDispatcher-worker-15] CreateIdentityService - SDK username creation broadcast — restore worker will advance the identity tile</code></li>
+<li>Shielded card: <strong>0.992 -&gt; 0.962</strong> (<a class=ev href="../SRF/SR-11/12-more-after.webp">SR-11/12-more-after.png</a>).</li>
+<li>Home History (<a class=ev href="../SRF/SR-11/10-home-history.webp">SR-11/10-home-history.png</a>) contains exactly four rows — Shielded -0.19999 (12:25),
+  Unshielded +0.1 (12:00), Shielded -0.900003 (11:51), Received +1 (11:46) — and <strong>nothing for the 0.03</strong>.</li>
+</ul>
+<hr />
+<h2 id="new-defects-found-along-the-way">New defects found along the way</h2>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>Sev</th>
+<th>Defect</th>
+<th>Repro</th>
+<th>Evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>D-SRF-1</strong></td>
+<td><strong>S2</strong></td>
+<td><strong>Confirm + PIN on the shielded transfer screen is a silent no-op when the shielded runtime is momentarily not READY.</strong> <code>ShieldedTransferViewModel.onConfirm()</code> starts with <code>if (!state.canContinue || !state.showConfirm) return</code> and <code>canContinue</code> requires <code>ready</code>; the user authenticates with their PIN and nothing happens — no error, no spinner, no log line. Happened twice in a row.</td>
+<td>Transfer screen; wait until the To row shows "0.00" instead of the shielded balance; Continue -&gt; Confirm -&gt; PIN.</td>
+<td><a class=ev href="../SRF/SR-31/07-stuck-sheet.webp">SR-31/07-stuck-sheet.png</a>; <a class=ev href="../SRF/logs/files/log/wallet.log">wallet.log</a> <code>17:15:16</code> and <code>17:17:39</code> <code>ModernEncryptionProvider - Decrypted data for alias: ui_pin_key</code> (PIN verified) with no transfer afterwards. <code>wt-fix/…/ui/shielded/ShieldedTransferViewModel.kt</code> <code>onConfirm()</code></td>
+</tr>
+<tr>
+<td><strong>D-SRF-2</strong></td>
+<td><strong>S2</strong></td>
+<td><strong>The invite entry point is gated on the TRANSPARENT balance, so shielding everything locks you out of shielded invites.</strong> <code>CreateInviteViewModel.combineLatestData</code> requires <code>walletData.observeTotalBalance() &gt;= Constants.DASH_PAY_FEE</code> (0.03). With 0.000008 transparent and 0.962 shielded, More &gt; Invitations is <strong>hidden</strong> — even though the private-invite path funds itself entirely from the shielded pool.</td>
+<td>Shield the whole L1 balance, create a username, open More.</td>
+<td><a class=ev href="../SRF/SR-14/03-more-scrolled.webp">SR-14/03-more-scrolled.png</a> (no Invitations) vs <a class=ev href="../SRF/SR-02/00-balances-before.webp">SR-02/00-balances-before.png</a> (present after unshielding 0.15); <code>wt-fix/…/ui/invite/CreateInviteViewModel.kt:82-86</code></td>
+</tr>
+<tr>
+<td><strong>D-SRF-3</strong></td>
+<td><strong>S3</strong></td>
+<td><strong>An offline invite creation is reported as a permanent network rejection and permanently disables retry.</strong> Airplane mode during the funding step produces <code>kind=REJECTED … retryAllowed=false</code> and "The Dash network rejected this invitation, so trying again will not help" — the network rejected nothing, the device was offline. Confirm stays <code>enabled="false"</code> even after connectivity returns.</td>
+<td>Invite &gt; private &gt; non-contested &gt; Confirm &gt; PIN, then <code>svc wifi disable; svc data disable</code> 3 s later.</td>
+<td><a class=ev href="../SRF/SR-14/n030.webp">SR-14/n030.png</a>, <a class=ev href="../SRF/SR-14/21-retry-online.webp">SR-14/21-retry-online.png</a>, <a class=ev href="../SRF/SR-14/grep2.txt">SR-14/grep2.txt</a></td>
+</tr>
+<tr>
+<td><strong>D-SRF-4</strong></td>
+<td><strong>S3</strong></td>
+<td><strong>The parked Send-to-address screen's shielded balance sticks at 0 after any shielded operation in the same process.</strong> Max returns 0 and every amount shows "Insufficient funds" while the More card correctly shows 0.778. Survives leaving and re-entering; only <code>am force-stop</code> + relaunch restores it. <code>ShieldedSendViewModel</code> consumes <code>observeShieldedBalance()</code> raw, without the last-known/stale fallback MoreFragment has.</td>
+<td>Do any shielded send/transfer, then open <code>--ei screen 1</code> and tap Max.</td>
+<td><a class=ev href="../SRF/SR-30/10-max.webp">SR-30/10-max.png</a> (Max = 0) vs <a class=ev href="../SRF/SR-30/08-more-balances.webp">SR-30/08-more-balances.png</a> (0.992 on the card) vs <a class=ev href="../SRF/SR-30/20-max.webp">SR-30/20-max.png</a> (correct after restart)</td>
+</tr>
+<tr>
+<td><strong>D-SRF-5</strong></td>
+<td><strong>S4</strong></td>
+<td>A transparent <code>y…</code> address on the Send-to-address screen is rejected with <strong>no message at all</strong> — Continue simply never enables.</td>
+<td><code>--ei screen 1</code>, paste a transparent address, enter an amount, tap Continue.</td>
+<td><a class=ev href="../SRF/SR-30/02-addr.webp">SR-30/02-addr.png</a></td>
+</tr>
+<tr>
+<td><strong>D-SRF-6</strong></td>
+<td><strong>S4</strong></td>
+<td>The <strong>1-minute Auto Logout default</strong> locks the app while a shielded transfer overlay is on screen, hiding the 40 s stall notice behind the PIN pad 5 s after it appears.</td>
+<td>Start a slow shielded transfer, do not touch the screen.</td>
+<td><a class=ev href="../SRF/logs/files/log/wallet.log">wallet.log</a> <code>16:57:36</code> (Stalled) then <code>16:57:41 LockScreenActivity - LockState = ENTER_PIN</code>; <a class=ev href="../SRF/SR-12/t045.webp">SR-12/t045.png</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="environment-harness-notes">Environment / harness notes</h2>
+<ul>
+<li><strong>dw-qa6 was not running</strong> when the task started; I started it. With seven emulators live the host is saturated and
+  <code>adb shell input tap</code> events are dropped fairly often — PIN entry needs <strong>&gt;= 1.2 s between digits</strong> and should be
+  verified (three wrong PINs briefly disabled the wallet for 1 minute). <code>$APP &lt;serial&gt; text 1234</code> does not drive the
+  PIN pad at all.</li>
+<li>The keypad geometries differ: lock screen <code>btn_1</code> at (208,1898), in-app Authenticate dialog at (208,1836).
+  Helpers are in the evidence dir: <a class=ev href="../SRF/pin.sh">SRF/pin.sh</a> (bounds-based PIN entry) and <a class=ev href="../SRF/k.sh">SRF/k.sh</a> (shielded keypad).</li>
+<li>Layout on the Send screen shifts once the address field is filled — the Max button moves from y=848 to y=936.</li>
+<li><code>am start -n &lt;pkg&gt;/de.schildbach.wallet.ui.shielded.ShieldedBalanceActivity --ei screen {0,1,2} --ez LockScreenActivity.keep_unlocked true</code>
+  is a reliable way into the transfer / parked send / parked receive screens; the bottom-nav route was flaky.</li>
+<li>Faucet: one drop per address per UTC day, so a second drop needs a second (unused) receive address; the wallet did
+  not rotate its address after the first unconfirmed deposit.</li>
+<li>All fault injection was undone: iptables rules deleted (<code>iptables -L OUTPUT -n | grep -c DROP</code> -&gt; 0),
+  <code>emu network speed full</code> / <code>delay none</code>, wifi+data re-enabled, <code>always_finish_activities 0</code>. Auto Logout was left at
+  24 hours (changed by me at 12:10 CDT to stop the 1-minute lock interfering).</li>
+<li><a class=ev href="../SRF/logcat.txt">logcat.txt</a>, <a class=ev href="../SRF/mem.csv">mem.csv</a> and a full <a class=ev href="../SRF/logs/files/log/wallet.log">wallet.log</a> snapshot are in <a class=ev href="../index.html#SRF">SRF/</a> and <a class=ev href="../SRF/logs/files/log/wallet.log">SRF/logs/files/log/</a>.</li>
+</ul><div id=lb><span class=x>&times;</span><span class="nv pv">&#8249;</span><span class="nv nx">&#8250;</span><img><div class=cap></div></div>
+<script>(function(){var lb=document.getElementById('lb'),im=lb.querySelector('img'),cap=lb.querySelector('.cap'),L=[],i=0;
+function links(){return Array.prototype.slice.call(document.querySelectorAll('a[href$=".webp"],a[href$=".png"]'))}
+function show(n){L=links();if(n<0||n>=L.length)return;i=n;var a=L[i];im.src=a.href;cap.innerHTML=(a.textContent.trim()||a.href.split('/').slice(-3).join('/'))+' &nbsp;('+(i+1)+'/'+L.length+') &nbsp;<a href="'+a.href+'" target=_blank rel=noopener>open file</a>';lb.classList.add('on')}
+function hide(){lb.classList.remove('on');im.src=''}
+document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".webp"],a[href$=".png"]');if(a&&!a.closest('#lb')){e.preventDefault();show(links().indexOf(a))}});
+lb.querySelector('.x').onclick=hide;lb.querySelector('.pv').onclick=function(e){e.stopPropagation();show(i-1)};lb.querySelector('.nx').onclick=function(e){e.stopPropagation();show(i+1)};
+lb.addEventListener('click',function(e){if(e.target===lb||e.target===im)hide()});
+document.addEventListener('keydown',function(e){if(!lb.classList.contains('on'))return;if(e.key==='Escape')hide();if(e.key==='ArrowLeft')show(i-1);if(e.key==='ArrowRight')show(i+1)});})();</script><script>(function(){document.querySelectorAll('thead.sortable').forEach(function(th){var tb=th.parentNode.querySelector('tbody');var ths=th.querySelectorAll('th');
+ths.forEach(function(h,ci){h.style.cursor='pointer';h.title='click to sort';h.addEventListener('click',function(){var rows=Array.prototype.slice.call(tb.querySelectorAll('tr'));var asc=!(h.dataset.asc==='1');ths.forEach(function(x){delete x.dataset.asc;x.classList.remove('asc','desc')});h.dataset.asc=asc?'1':'0';h.classList.add(asc?'asc':'desc');
+var rank={S1:0,S2:1,S3:2,S4:3,other:4,dup:5,info:6,env:7};
+function key(r){if(ci===1)return rank[r.dataset.sev]!==undefined?rank[r.dataset.sev]:9;if(ci===0)return +r.dataset.idx;var c=r.children[ci];return c?c.textContent.trim().toLowerCase():''}
+rows.sort(function(a,b){var ka=key(a),kb=key(b);if(ka<kb)return asc?-1:1;if(ka>kb)return asc?1:-1;return (+a.dataset.idx)-(+b.dataset.idx)});rows.forEach(function(r){tb.appendChild(r)})})})})})();</script></html>

@@ -1,0 +1,9 @@
+16:58:07 [DefaultDispatcher-worker-7] BlockchainServiceImpl - acquiring check() mutex
+16:58:07 [DefaultDispatcher-worker-7] BlockchainServiceImpl - check()
+16:58:07 [DefaultDispatcher-worker-7] BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch
+16:58:07 [DefaultDispatcher-worker-7] BlockchainServiceImpl - releasing check() mutex
+16:58:08 [main] WalletApplication - Removing all the data and restarting the app.
+16:58:08 [main] WalletWipeState - could not create the wallet-wipe marker
+java.io.IOException: Permission denied
+16:58:08 [main] WalletWipeSequence - wipe started WITHOUT a recovery marker — a process death mid-wipe will not be repaired
+16:58:08 [main] AppRestartService - perform restart on application context: true

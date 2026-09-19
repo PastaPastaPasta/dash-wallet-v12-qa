@@ -1,0 +1,4 @@
+17:08:49 [main] WalletProtobufSerializer - Loading wallet extension org.dashj.wallet.coinjoin
+17:08:49 [DefaultDispatcher-worker-2] CoinJoinMixingTxSet - coinjoin grouping 985a668ee30c2366d37cb581ad4c97839890251966ddf3bed74d23d920abecb6 as CreateDenomination (inputs=1 outputs=29 dashjCoinJoinBalance=0)
+17:08:49 [DefaultDispatcher-worker-2] CoinJoinMixingTxSet - coinjoin grouping ab3797d459d58a70a8db5b709707b9caaa75351cbc72fa2a57a4e26f77accbed as MakeCollateralInputs (inputs=1 outputs=2 dashjCoinJoinBalance=0)
+17:08:56 [DefaultDispatcher-worker-13] L1ShadowSyncService - WalletBalanceFacts: total=79999548 accounts={bip44:79999548, bip32:0, coinjoin:0, identityRegistration:0, identityTopUpUnbound:0, identityInvitation:0, assetLockTopUp:0, assetLockShieldedTopUp:0, providerVoting:0, providerOwner:0, providerOperator:0, providerPlatform:0} confirmed=79999548 unconfirmed=0 txCount=3

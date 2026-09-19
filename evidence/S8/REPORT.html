@@ -66,7 +66,7 @@ Device log clock runs <strong>host + 5 h</strong> (log <code>06:09:54</code> = h
 <td><a class=ev href="../index.html#S8-L7">L7</a> Send screen (never sent)</td>
 <td><strong>PASS during replay / FAIL after 100 %</strong></td>
 <td><a class=ev href="../S8/L7/05-max-during-replay.webp">S8/L7/05-max-during-replay.png</a>, <a class=ev href="../S8/L7/12-max-synced.webp">S8/L7/12-max-synced.png</a>, <a class=ev href="../S8/L7/13-max-synced-repeat.webp">S8/L7/13-max-synced-repeat.png</a></td>
-<td><a class=did href="../SR/REPORT.html#SR-32">SR-32</a> does <strong>not</strong> reproduce during replay (send screen shows 0.00 and blocks). After 100 %, <strong>Max always fills an amount larger than the balance on the same screen</strong> (S8-D3)</td>
+<td><a class=did href="../../DEFECT-LEDGER.html#SR-32">SR-32</a> does <strong>not</strong> reproduce during replay (send screen shows 0.00 and blocks). After 100 %, <strong>Max always fills an amount larger than the balance on the same screen</strong> (S8-D3)</td>
 </tr>
 <tr>
 <td><a class=ev href="../index.html#S8-L8">L8</a> CSV export + Network monitor</td>
@@ -352,7 +352,7 @@ An earlier mid-test comparison matched too (01:12:42 explorer 98,754,950 vs app 
 <h3 id="l7-send-screen-sending-forbidden-never-confirmed"><a class=ev href="../index.html#S8-L7">L7</a> — Send screen (sending FORBIDDEN, never confirmed)</h3>
 <p><strong>(a) During replay</strong> (01:08-01:10; log shows <code>SDK balance published: 98980110 duffs ... l1Synced=false rescanArmedHold=true</code>):
 Send -&gt; Send to Address -&gt; own ext-0 address -&gt; Continue. Screen showed <code>Balance: DASH 0.00 ~ $ 0.00</code>, amount <code>0</code>, and a blocking error <em>"Currently payments are not possible because the wallet is not fully synced with the network"</em>. Tapping <strong>Max</strong> did nothing (amount stayed 0), twice. <a class=ev href="../S8/L7/04-amount-screen-during-replay.webp">S8/L7/04,05,06</a><sup class=more><a href="../S8/L7/05-max-during-replay.webp" title="S8/L7/05-max-during-replay.webp">2</a> <a href="../S8/L7/06-max-during-replay-2.webp" title="S8/L7/06-max-during-replay-2.webp">3</a></sup>.
-=&gt; <strong><a class=did href="../SR/REPORT.html#SR-32">SR-32</a> did not reproduce</strong>: the send screen does not publish the untrusted partial; it shows 0.00 and refuses. Note for <a class=did href="../../DEFECT-LEDGER.html#D-002">D-002</a>/<a class=did href="../../DEFECT-LEDGER.html#SR-10">SR-10</a>: the <em>home header</em> did show the moving partial during replay, because on a freshly restored wallet <code>persistedAsLastKnown=false lastKnown=0</code>, so there is no last-known to hold.</p>
+=&gt; <strong><a class=did href="../../DEFECT-LEDGER.html#SR-32">SR-32</a> did not reproduce</strong>: the send screen does not publish the untrusted partial; it shows 0.00 and refuses. Note for <a class=did href="../../DEFECT-LEDGER.html#D-002">D-002</a>/<a class=did href="../../DEFECT-LEDGER.html#SR-10">SR-10</a>: the <em>home header</em> did show the moving partial during replay, because on a freshly restored wallet <code>persistedAsLastKnown=false lastKnown=0</code>, so there is no last-known to hold.</p>
 <p><strong>(b) After 100 %</strong> (01:48-01:50, <a class=ev href="../S8/L7/12-max-synced.webp">S8/L7/12-max-synced.png</a>, <a class=ev href="../S8/L7/13-max-synced-repeat.webp">13-max-synced-repeat.png</a>):</p>
 <table>
 <thead>

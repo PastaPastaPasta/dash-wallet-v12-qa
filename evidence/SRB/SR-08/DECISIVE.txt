@@ -1,0 +1,114 @@
+SR-08 DECISIVE: prodRelease (mainnet, package hashengineering.darkcoin.wallet) seeds all five USE_KOTLIN_SDK_* flags
+date: 2026-09-19T12:03:42  emulator-5556
+APKs: master-11.9.0-prod-release-signed.apk (11090002) -> fix-12.0.0-prod-release-signed.apk (12000000)
+Wallet: created fresh on 11.9.0 mainnet, NEVER funded, no user action beyond PIN entry.
+
+--- BEFORE upgrade: /data/data/hashengineering.darkcoin.wallet/files/datastore/ (no dashpay.preferences_pb) ---
+total 64
+drwx------ 2 u0_a210 u0_a210 4096 2026-09-19 12:00 .
+drwxrwx--x 6 u0_a210 u0_a210 4096 2026-09-19 12:01 ..
+-rw------- 1 u0_a210 u0_a210   30 2026-09-19 11:59 coinbase.preferences_pb
+-rw------- 1 u0_a210 u0_a210   35 2026-09-19 12:00 coinjoin.preferences_pb
+-rw------- 1 u0_a210 u0_a210  126 2026-09-19 12:00 exchange_rates_config.preferences_pb
+-rw------- 1 u0_a210 u0_a210  141 2026-09-19 11:58 explore.preferences_pb
+-rw------- 1 u0_a210 u0_a210   30 2026-09-19 11:59 uphold.preferences_pb
+-rw------- 1 u0_a210 u0_a210  111 2026-09-19 12:00 wallet_ui.preferences_pb
+
+--- AFTER upgrade: dashpay.preferences_pb appears (479 bytes) ---
+total 80
+drwx------ 2 u0_a210 u0_a210 4096 2026-09-19 12:02 .
+drwxrwx--x 9 u0_a210 u0_a210 4096 2026-09-19 12:02 ..
+-rw------- 1 u0_a210 u0_a210   30 2026-09-19 11:59 coinbase.preferences_pb
+-rw------- 1 u0_a210 u0_a210   35 2026-09-19 12:00 coinjoin.preferences_pb
+-rw------- 1 u0_a210 u0_a210  479 2026-09-19 12:02 dashpay.preferences_pb
+-rw------- 1 u0_a210 u0_a210  131 2026-09-19 12:02 exchange_rates_config.preferences_pb
+-rw------- 1 u0_a210 u0_a210  141 2026-09-19 11:58 explore.preferences_pb
+-rw------- 1 u0_a210 u0_a210  220 2026-09-19 12:02 org.dashfoundation.wallet.secrets.preferences_pb
+-rw------- 1 u0_a210 u0_a210   30 2026-09-19 11:59 uphold.preferences_pb
+-rw------- 1 u0_a210 u0_a210  111 2026-09-19 12:00 wallet_ui.preferences_pb
+
+--- protoc --decode_raw of dashpay.preferences_pb (2{1:1} == bool true) ---
+1 {
+  1: "use_kotlin_sdk_dpns_reads"
+  2 {
+    1: 1
+  }
+}
+1 {
+  1: "use_kotlin_sdk_dashpay_writes"
+  2 {
+    1: 1
+  }
+}
+1 {
+  1: "use_kotlin_sdk_shielded"
+  2 {
+    1: 1
+  }
+}
+1 {
+  1: "use_kotlin_sdk_l1_invite"
+  2 {
+    1: 1
+  }
+}
+1 {
+  1: "use_kotlin_sdk_l1_shadow"
+  2 {
+    1: 1
+  }
+}
+1 {
+  1: "cutover_upgrade_boundary_crossed"
+  2 {
+    1: 1
+  }
+}
+1 {
+  1: "cutover_state"
+  2 {
+    5: "CUT_OVER"
+  }
+}
+1 {
+  1: "cutover_upgrade_notice_ever_armed"
+  2 {
+    1: 1
+  }
+}
+1 {
+  1: "cutover_upgrade_notice_pending"
+  2 {
+    1: 1
+  }
+}
+1 {
+  1: "sdk_gap_widened_version"
+  2 {
+    3: 2
+  }
+}
+1 {
+  1: "sdk_bind_blocker"
+  2 {
+    5: "NONE"
+  }
+}
+1 {
+  1: "sdk_bind_ever_succeeded"
+  2 {
+    1: 1
+  }
+}
+1 {
+  1: "last_shielded_balance_duffs"
+  2 {
+    4: 0
+  }
+}
+1 {
+  1: "transaction_metadata_remerge_done"
+  2 {
+    1: 1
+  }
+}

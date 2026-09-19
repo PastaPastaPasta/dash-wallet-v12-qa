@@ -1,0 +1,3 @@
+23:17:01:43 [main] WalletApplication - Removing all the data and restarting the app.
+24:17:01:43 [main] WalletWipeState - could not create the wallet-wipe marker
+26:17:01:43 [main] WalletWipeSequence - wipe started WITHOUT a recovery marker — a process death mid-wipe will not be repaired

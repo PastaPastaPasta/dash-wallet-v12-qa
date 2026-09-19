@@ -1,0 +1,11 @@
+SR-18 (Coinbase estimateNetworkFee dead-ends) -- BLOCKED
+Reached: More > Buy & Sell > Coinbase > "Link your Coinbase account" > auth-limit explainer > "I got it"
+       -> app launches Chrome for the Coinbase OAuth consent page.
+Blocker 1: this QA APK is built WITHOUT Coinbase API keys. The Buy & Sell list itself states:
+  "Keys are missing for these services. See CONFIGURATION FOR UPHOLD AND COINBASE in README.md"
+  (evidence: 02-buysell.png)
+Blocker 2: reaching TransferDashFragment (the screen that calls estimateNetworkFee) requires a
+  linked Coinbase account with a DASH balance. No credentials available in QA.
+Therefore SR-18 cannot be exercised on device. The static finding
+  (payments/SendCoinsTaskRunner.kt:580-623, :602 -> wallet.completeTx on the HELD dashj wallet)
+  stands unverified on device but un-refuted.

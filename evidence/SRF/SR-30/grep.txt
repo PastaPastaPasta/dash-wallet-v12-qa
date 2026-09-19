@@ -1,0 +1,3 @@
+17:23:16 [DefaultDispatcher-worker-5] ShieldedTransferExecutor - shielded transfer not sent: pre-broadcast asset-lock coin-selection failure
+18:08:48 [DefaultDispatcher-worker-9] ShieldedBalanceServiceImpl - shielded transferShielded rejected pre-broadcast (notes released)
+18:08:48 [main] ShieldedSendViewModel - shielded send not sent: pre-broadcast shielded note-selection failure

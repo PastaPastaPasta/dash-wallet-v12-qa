@@ -1,0 +1,2 @@
+26989:17:40:43 [wallet-load-budget] WalletApplication - wallet load exceeded its 20000ms budget (0 DashPay friend chains still deriving) — arming safe mode for the next launch
+27006:17:41:17 [main] StartupBreadcrumbs - STARTUP breadcrumb: 91 WALLET_LOAD_SKIPPED_SAFE_MODE +10ms

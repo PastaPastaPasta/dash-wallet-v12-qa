@@ -1,0 +1,7 @@
+17:33:18 [main] WalletActivityTracker - activity lifecycle: activity ShieldedBalanceActivity destroyed
+17:37:05 [main] WalletActivityTracker - activity lifecycle: activity ShieldedBalanceActivity destroyed
+17:46:10 [main] WalletActivityTracker - activity lifecycle: activity ShieldedBalanceActivity destroyed
+17:50:11 [main] WalletActivityTracker - activity lifecycle: activity ShieldedBalanceActivity destroyed
+18:08:48 [DefaultDispatcher-worker-9] ShieldedBalanceServiceImpl - shielded transferShielded rejected pre-broadcast (notes released)
+18:08:48 [main] ShieldedSendViewModel - shielded send not sent: pre-broadcast shielded note-selection failure
+18:15:06 [main] WalletActivityTracker - activity lifecycle: activity ShieldedBalanceActivity destroyed

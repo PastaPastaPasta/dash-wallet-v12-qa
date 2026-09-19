@@ -1,0 +1,42 @@
+<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Stream SRC notes</title><style>body{font-family:system-ui,-apple-system,sans-serif;max-width:1400px;margin:0 auto;padding:16px 24px;line-height:1.45;background:#fff;color:#111}
+table{border-collapse:collapse;font-size:13px;margin:12px 0}th,td{border:1px solid #ddd;padding:4px 8px;vertical-align:top;text-align:left}th{background:#f3f6fa;position:sticky;top:0}
+tr:nth-child(even){background:#fafbfc}code{background:#f4f4f4;padding:1px 4px;border-radius:3px;font-size:12px}pre{background:#f4f4f4;padding:10px;overflow:auto}
+h1{border-bottom:3px solid #008de4}h2{border-bottom:1px solid #ccc;margin-top:40px}a{color:#008de4}a.ev{background:#e8f4fd;padding:0 3px;border-radius:3px;font-family:ui-monospace,monospace;font-size:12px}
+nav.top{background:#012060;color:#fff;padding:8px 24px;margin:-16px -24px 16px;position:sticky;top:0;z-index:5}nav.top a{color:#fff;margin-right:18px;text-decoration:none}nav.top a:hover{text-decoration:underline}
+.S1{color:#b00020;font-weight:bold}.S2{color:#c75000;font-weight:bold}.toc{background:#f8f9fb;border:1px solid #e3e6ea;padding:8px 16px;font-size:13px;columns:2}.toc ul{margin:2px 0;padding-left:16px}
+#lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:50;align-items:center;justify-content:center;flex-direction:column}#lb.on{display:flex}#lb img{max-width:96vw;max-height:88vh;border:2px solid #fff;box-shadow:0 0 30px #000}#lb .cap{color:#eee;font:13px ui-monospace,monospace;margin-top:8px}#lb .cap a{color:#8cf}#lb .x{position:absolute;top:10px;right:18px;color:#fff;font-size:30px;cursor:pointer}#lb .nv{position:absolute;top:50%;color:#fff;font-size:44px;cursor:pointer;padding:0 16px;user-select:none}#lb .pv{left:0}#lb .nx{right:0}a.img img{cursor:zoom-in}
+sup.more a{margin:0 2px;font-size:10px}
+thead.sortable th.asc::after{content:' \25B2';font-size:9px}thead.sortable th.desc::after{content:' \25BC';font-size:9px}
+tr[data-sev=S1] td:nth-child(2){background:#fde7e9}tr[data-sev=S2] td:nth-child(2){background:#fff1e0}
+a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:target{background:#fff3b0;outline:2px solid #f5b400}
+.note{background:#fff8e1;border-left:4px solid #f5b400;padding:8px 12px;margin:12px 0}
+</style><nav class=top><a href="../../index.html">Home</a><a href="../../QA-REPORT.html">Full report</a><a href="../../EXEC-SUMMARY.html">Executive summary</a><a href="../../STORY-MATRIX.html">User-story matrix</a><a href="../../DEFECT-LEDGER.html">Defect register</a><a href="../index.html">Evidence gallery</a><a href="../../QA-PLAN.html">Test plan</a><a href="../../streams.html">Stream reports</a></nav><h1>Stream SRC working notes</h1><h2 id="src-notes"><a class=ev href="../SRC/notes.html">SRC notes</a></h2>
+<ul>
+<li>2026-09-19T11:42:04 emulator-5558 (dw-qa3) booted+rooted; started by me (was not running)</li>
+<li>2026-09-19T11:43:55 found stale wallet 'qa12s12mixedfunds4821' bal 0.197871 on dw-qa3 (screenshot <a class=ev href="../SRC/setup/04-home.webp">setup/04-home.png</a>); uninstalling for a clean transparent-send wallet</li>
+<li>2026-09-19T11:46:05 created fresh wallet, PIN 1234, seed saved to <a class=ev href="../SRC/setup/SEED.txt">setup/SEED.txt</a></li>
+<li>2026-09-19T11:50:07 <a class=did href="../../DEFECT-LEDGER.html#SR-18">SR-18</a> BLOCKED (no Coinbase keys in build; OAuth opens Chrome)</li>
+<li>2026-09-19T11:50:17 faucet sent 1 tDASH to yVuNuykoLNRt4X4WpmyvyF47LNqEKn83Df txid=057b1808741470e8f084aeee2fa377934366d9d06e80477cd2f1ff8a3574410b</li>
+<li>2026-09-19T11:55:58 <a class=did href="../../DEFECT-LEDGER.html#SR-19">SR-19</a>: deeplink dash:yRjAzoyfZ7DpzLFmVGiLispLjUaYKRnL52?amount=0.01&amp;message=SR19memo&amp;label=Bob</li>
+<li>2026-09-19T12:08:49 WARNING: app auto-locks; a digit-trace leaked into the PIN pad =&gt; 'Wrong PIN! 6 attempts remaining'. Recovered.</li>
+<li>2026-09-19T12:10:51 <a class=did href="../../DEFECT-LEDGER.html#SR-28">SR-28</a> REPRODUCED; numbers in <a class=ev href="../SRC/SR-28/numbers.txt">SR-28/numbers.txt</a></li>
+<li>2026-09-19T12:16:46 faucet #2: 1 tDASH to yQJ66b2xF2EzXpiyYGYzQ8P8vP4RBp3Bic txid=c6fe82fdebc597c9061c11afeb64ba40df841f5de11a77e0ef24eb7404f97e41</li>
+<li>2026-09-19T12:52 SESSION END. Verdicts: <a class=did href="../../DEFECT-LEDGER.html#SR-19">SR-19</a> REPRODUCED, <a class=did href="../../DEFECT-LEDGER.html#SR-28">SR-28</a> REPRODUCED, <a class=did href="../../DEFECT-LEDGER.html#SR-29">SR-29</a> REPRODUCED x2,
+  <a class=did href="../../DEFECT-LEDGER.html#SR-32">SR-32</a> PARTIAL (code confirmed, divergence masked by <a class=did href="../../DEFECT-LEDGER.html#SR-10">SR-10</a>), <a class=did href="../../DEFECT-LEDGER.html#SR-10">SR-10</a> REPRODUCED, <a class=did href="../../DEFECT-LEDGER.html#SR-16">SR-16</a>/17 PARTIAL
+  (inert half confirmed, 0 guard log lines all session), <a class=did href="../../DEFECT-LEDGER.html#SR-18">SR-18</a> BLOCKED (no Coinbase keys in build).
+  Per-item evidence: <a class=ev href="../SRC/SR-28/numbers.txt">SR-28/numbers.txt</a>, <a class=ev href="../SRC/SR-29/ANALYSIS.txt">SR-29/ANALYSIS.txt</a>, <a class=ev href="../SRC/SR-18/VERDICT.txt">SR-18/VERDICT.txt</a>, <a class=ev href="../SRC/SR-10/restore2-timeline.txt">SR-10/restore2-timeline.txt</a>,
+  <a class=did href="../../DEFECT-LEDGER.html#SR-19">SR-19</a>/06+17+19 greps, <a class=ev href="../SRC/SR-16-17/07-grep-locks.txt">SR-16-17/07-grep-locks.txt</a> (0 matches), <a class=ev href="../SRC/SR-29/12-explorer-fees.txt">SR-29/12-explorer-fees.txt</a>.
+  NOTE: the harness blocked me from writing <a class=ev href="../SRC/REPORT.html">REPORT.md</a>; the full report was returned to the orchestrator as text.</li>
+</ul><div id=lb><span class=x>&times;</span><span class="nv pv">&#8249;</span><span class="nv nx">&#8250;</span><img><div class=cap></div></div>
+<script>(function(){var lb=document.getElementById('lb'),im=lb.querySelector('img'),cap=lb.querySelector('.cap'),L=[],i=0;
+function links(){return Array.prototype.slice.call(document.querySelectorAll('a[href$=".webp"],a[href$=".png"]'))}
+function show(n){L=links();if(n<0||n>=L.length)return;i=n;var a=L[i];im.src=a.href;cap.innerHTML=(a.textContent.trim()||a.href.split('/').slice(-3).join('/'))+' &nbsp;('+(i+1)+'/'+L.length+') &nbsp;<a href="'+a.href+'" target=_blank rel=noopener>open file</a>';lb.classList.add('on')}
+function hide(){lb.classList.remove('on');im.src=''}
+document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".webp"],a[href$=".png"]');if(a&&!a.closest('#lb')){e.preventDefault();show(links().indexOf(a))}});
+lb.querySelector('.x').onclick=hide;lb.querySelector('.pv').onclick=function(e){e.stopPropagation();show(i-1)};lb.querySelector('.nx').onclick=function(e){e.stopPropagation();show(i+1)};
+lb.addEventListener('click',function(e){if(e.target===lb||e.target===im)hide()});
+document.addEventListener('keydown',function(e){if(!lb.classList.contains('on'))return;if(e.key==='Escape')hide();if(e.key==='ArrowLeft')show(i-1);if(e.key==='ArrowRight')show(i+1)});})();</script><script>(function(){document.querySelectorAll('thead.sortable').forEach(function(th){var tb=th.parentNode.querySelector('tbody');var ths=th.querySelectorAll('th');
+ths.forEach(function(h,ci){h.style.cursor='pointer';h.title='click to sort';h.addEventListener('click',function(){var rows=Array.prototype.slice.call(tb.querySelectorAll('tr'));var asc=!(h.dataset.asc==='1');ths.forEach(function(x){delete x.dataset.asc;x.classList.remove('asc','desc')});h.dataset.asc=asc?'1':'0';h.classList.add(asc?'asc':'desc');
+var rank={S1:0,S2:1,S3:2,S4:3,other:4,dup:5,info:6,env:7};
+function key(r){if(ci===1)return rank[r.dataset.sev]!==undefined?rank[r.dataset.sev]:9;if(ci===0)return +r.dataset.idx;var c=r.children[ci];return c?c.textContent.trim().toLowerCase():''}
+rows.sort(function(a,b){var ka=key(a),kb=key(b);if(ka<kb)return asc?-1:1;if(ka>kb)return asc?1:-1;return (+a.dataset.idx)-(+b.dataset.idx)});rows.forEach(function(r){tb.appendChild(r)})})})})})();</script></html>

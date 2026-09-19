@@ -1,0 +1,8 @@
+08:13:47 [main] RequestUserNameViewModel - checkUsername('qa9s9zkrmvtpqwxnb3d7'): exists=false contested=false blocked=false
+08:15:34 [main] RequestUserNameViewModel - routing username creation to the shielded-funded SDK path
+08:15:38 [DefaultDispatcher-worker-14] SdkShieldedUsernameCreation - shielded-funded identity created at index 0 (DHP9CGTq…) — 0.03 denomination, contested=false
+08:15:43 [DefaultDispatcher-worker-7] CreateIdentityService - SDK username creation broadcast — restore worker will advance the identity tile
+17:39:25 [main] RequestUserNameViewModel - checkUsername('srfqa5566test9'): exists=false contested=false blocked=false
+17:40:34 [main] RequestUserNameViewModel - routing username creation to the shielded-funded SDK path
+17:40:42 [DefaultDispatcher-worker-14] SdkShieldedUsernameCreation - shielded-funded identity created at index 0 (8HeVCaGd…) — 0.03 denomination, contested=false
+17:40:47 [DefaultDispatcher-worker-15] CreateIdentityService - SDK username creation broadcast — restore worker will advance the identity tile

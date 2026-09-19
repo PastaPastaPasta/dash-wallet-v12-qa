@@ -1,0 +1,200 @@
+17:06:21 [DefaultDispatcher-worker-3] CoinJoinMixingService - coinjoin: anonymizable balance 0.00 DASH, denominatedBalance: 0.00 DASH
+17:06:21 [DefaultDispatcher-worker-3] CoinJoinMixingService - timing: denominatedBalance 178.2 μs
+17:06:21 [DefaultDispatcher-worker-3] CoinJoinMixingService - timing: denominatedBalance 17.13 μs
+17:06:21 [DefaultDispatcher-worker-3] CoinJoinMixingService - timing: coinJoinBalance 1.128 ms
+17:06:21 [DefaultDispatcher-worker-3] CoinJoinMixingService - coinjoin: can mix balance: true = balance: (false && canDenominate: true) || partially-mixed: false
+17:06:21 [DefaultDispatcher-worker-3] CoinJoinMixingService - coinjoin-state: NONE, 995 ms, true, CONNECTED, synced: true, true
+17:06:21 [DefaultDispatcher-worker-3] CoinJoinMixingService - coinjoin-state-mixing: NOT_STARTED -> NOT_STARTED
+17:06:26 [Wallet autosave thread] CoinJoinExtension - CoinJoinExtension serialization: 4ms total (keys:2ms[1074], cache:0ms[0], salt:0ms, io:2ms, size:112039bytes, buffer:64KB)
+17:06:43 [DefaultDispatcher-worker-1] CoinJoinMixingService - coinjoin: preparing for shutdown - blocking new refreshUnusedKeys and awaiting any in-progress call
+17:06:43 [DefaultDispatcher-worker-9] CoinJoinMixingService - coinjoin-state: NONE, 995 ms, true, DISCONNECTING, synced: true, true
+17:06:43 [DefaultDispatcher-worker-9] CoinJoinMixingService - coinjoin-state-mixing: NOT_STARTED -> NOT_STARTED
+17:06:43 [PeerGroup Thread] CoinJoinManager - CoinJoinManager stopping...
+17:06:43 [DefaultDispatcher-worker-2] CoinJoinMixingService - coinjoin-state: NONE, 995 ms, true, STOPPED, synced: true, true
+17:06:43 [DefaultDispatcher-worker-2] CoinJoinMixingService - coinjoin-state-mixing: NOT_STARTED -> NOT_STARTED
+17:06:46 [DefaultDispatcher-worker-1] DashSystem - Closing CoinJoin mixing manager
+17:06:46 [DefaultDispatcher-worker-3] CoinJoinMixingService - setting blockchain in clientManager to null
+17:06:46 [DefaultDispatcher-worker-3] CoinJoinMixingService - coinjoin-state: NONE, 995 ms, true, STOPPED, synced: true, false
+17:06:46 [DefaultDispatcher-worker-3] CoinJoinMixingService - coinjoin-state-mixing: NOT_STARTED -> NOT_STARTED
+17:06:46 [DefaultDispatcher-worker-1] CoinJoinExtension - CoinJoinExtension serialization: 3ms total (keys:2ms[1074], cache:0ms[0], salt:0ms, io:1ms, size:112039bytes, buffer:64KB)
+17:07:00 [DefaultDispatcher-worker-7] CoinJoinMixingService - coinjoin-state: NONE, 726 ms, true, STOPPED, synced: true, false
+17:07:00 [DefaultDispatcher-worker-7] CoinJoinMixingService - coinjoin-state-mixing: NOT_STARTED -> NOT_STARTED
+17:07:00 [DefaultDispatcher-worker-7] CoinJoinMixingService - setting blockchain in clientManager to 1556866
+17:07:00 [DefaultDispatcher-worker-7] CoinJoinMixingService - coinjoin-state: NONE, 726 ms, true, STOPPED, synced: true, true
+17:07:00 [DefaultDispatcher-worker-7] CoinJoinMixingService - coinjoin-state-mixing: NOT_STARTED -> NOT_STARTED
+17:07:00 [DefaultDispatcher-worker-10] CoinJoinMixingService - coinjoin-state: NONE, 726 ms, true, CONNECTING, synced: true, true
+17:07:00 [DefaultDispatcher-worker-10] CoinJoinMixingService - coinjoin-state-mixing: NOT_STARTED -> NOT_STARTED
+17:07:02 [DefaultDispatcher-worker-5] CoinJoinMixingService - coinjoin-state: NONE, 726 ms, true, CONNECTED, synced: true, true
+17:07:02 [DefaultDispatcher-worker-5] CoinJoinMixingService - coinjoin-state-mixing: NOT_STARTED -> NOT_STARTED
+17:07:02 [DefaultDispatcher-worker-6] CoinJoinMixingService - coinjoin-state: NONE, 726 ms, true, CONNECTED, synced: false, true
+17:07:02 [DefaultDispatcher-worker-6] CoinJoinMixingService - coinjoin-state-mixing: NOT_STARTED -> NOT_STARTED
+17:07:02 [DefaultDispatcher-worker-12] CoinJoinMixingService - coinjoin-state: NONE, 726 ms, true, CONNECTED, synced: true, true
+17:07:02 [DefaultDispatcher-worker-12] CoinJoinMixingService - coinjoin-state-mixing: NOT_STARTED -> NOT_STARTED
+17:07:02 [DefaultDispatcher-worker-12] CoinJoinMixingService - coinjoin: new block: 1556866
+17:07:02 [DefaultDispatcher-worker-12] CoinJoinMixingService - coinjoin: anonymizable balance 0.00 DASH, denominatedBalance: 0.00 DASH
+17:07:02 [DefaultDispatcher-worker-12] CoinJoinMixingService - timing: denominatedBalance 628.3 μs
+17:07:02 [DefaultDispatcher-worker-12] CoinJoinMixingService - timing: denominatedBalance 6.500 μs
+17:07:02 [DefaultDispatcher-worker-12] CoinJoinMixingService - timing: coinJoinBalance 18.58 μs
+17:07:02 [DefaultDispatcher-worker-12] CoinJoinMixingService - coinjoin: can mix balance: true = balance: (false && canDenominate: true) || partially-mixed: false
+17:07:02 [DefaultDispatcher-worker-12] CoinJoinMixingService - coinjoin-state: NONE, 726 ms, true, CONNECTED, synced: true, true
+17:07:02 [DefaultDispatcher-worker-12] CoinJoinMixingService - coinjoin-state-mixing: NOT_STARTED -> NOT_STARTED
+17:07:31 [DefaultDispatcher-worker-2] CoinJoinMixingService - coinjoin: anonymizable balance 0.00 DASH, denominatedBalance: 0.00 DASH
+17:07:31 [DefaultDispatcher-worker-2] CoinJoinMixingService - timing: denominatedBalance 210.0 μs
+17:07:31 [DefaultDispatcher-worker-2] CoinJoinMixingService - timing: denominatedBalance 9.750 μs
+17:07:31 [DefaultDispatcher-worker-2] CoinJoinMixingService - timing: coinJoinBalance 27.75 μs
+17:07:31 [DefaultDispatcher-worker-2] CoinJoinMixingService - coinjoin: can mix balance: true = balance: (false && canDenominate: true) || partially-mixed: false
+17:07:31 [DefaultDispatcher-worker-2] CoinJoinMixingService - coinjoin-state: NONE, 726 ms, true, CONNECTED, synced: true, true
+17:07:31 [DefaultDispatcher-worker-2] CoinJoinMixingService - coinjoin-state-mixing: NOT_STARTED -> NOT_STARTED
+17:07:31 [DefaultDispatcher-worker-2] CoinJoinMixingService - coinjoin-state: NONE, 726 ms, true, CONNECTED, synced: true, true
+17:07:31 [DefaultDispatcher-worker-2] CoinJoinMixingService - coinjoin-state-mixing: NOT_STARTED -> NOT_STARTED
+17:07:31 [main] WalletActivityTracker - activity lifecycle: activity CoinJoinActivity created
+17:07:31 [main] WalletActivityTracker - activity lifecycle: current: CoinJoinActivity, activities: 2 visible: 1 foreground: 0
+17:07:31 [main] WalletActivityTracker - activity lifecycle: current: CoinJoinActivity, activities: 2 visible: 2 foreground: 0
+17:07:31 [main] WalletActivityTracker - activity lifecycle: current: CoinJoinActivity, activities: 2 visible: 2 foreground: 1
+17:08:03 [DefaultDispatcher-worker-11] CoinJoinMixingService - coinjoin-state: NONE, 1181 ms, true, CONNECTED, synced: true, true
+17:08:03 [DefaultDispatcher-worker-11] CoinJoinMixingService - coinjoin-state-mixing: NOT_STARTED -> NOT_STARTED
+17:08:05 [DefaultDispatcher-worker-1] CoinJoinMixingService - mixing configuration:  { rounds: 4, sessions: 6, amount: 0.79999548 DASH, multisession: false}
+17:08:05 [DefaultDispatcher-worker-1] CoinJoinMixingService - coinjoin: anonymizable balance 0.00 DASH, denominatedBalance: 0.00 DASH
+17:08:05 [DefaultDispatcher-worker-1] CoinJoinMixingService - timing: denominatedBalance 55.04 μs
+17:08:05 [DefaultDispatcher-worker-1] CoinJoinMixingService - timing: denominatedBalance 6.417 μs
+17:08:05 [DefaultDispatcher-worker-1] CoinJoinMixingService - timing: coinJoinBalance 21.13 μs
+17:08:05 [DefaultDispatcher-worker-1] CoinJoinMixingService - coinjoin: can mix balance: true = balance: (false && canDenominate: true) || partially-mixed: false
+17:08:05 [DefaultDispatcher-worker-1] CoinJoinMixingService - coinjoin-state: INTERMEDIATE, 1181 ms, true, CONNECTED, synced: true, true
+17:08:05 [DefaultDispatcher-worker-1] CoinJoinMixingService - mixing configuration:  { rounds: 4, sessions: 6, amount: 0.79999548 DASH, multisession: false}
+17:08:05 [DefaultDispatcher-worker-1] CoinJoinMixingService - coinjoin-state-mixing: NOT_STARTED -> MIXING
+17:08:05 [DefaultDispatcher-worker-1] CoinJoinMixingService - coinjoin: Mixing preparation began
+17:08:05 [DefaultDispatcher-worker-1] CoinJoinMixingService - coinjoin: mixing preparation finished
+17:08:05 [DefaultDispatcher-worker-1] CoinJoinManager - CoinJoinManager starting...
+17:08:05 [DefaultDispatcher-worker-1] CoinJoinMixingService - starting refreshUnusedKeys
+17:08:05 [DefaultDispatcher-worker-1] CoinJoinMixingService - refreshUnusedKeys: 774.1 μs
+17:08:05 [main] WalletActivityTracker - activity lifecycle: current: CoinJoinActivity, activities: 2 visible: 1 foreground: 0
+17:08:05 [main] WalletActivityTracker - activity lifecycle: current: CoinJoinActivity, activities: 2 visible: 1 foreground: 1
+17:08:05 [main] WalletActivityTracker - activity lifecycle: activity CoinJoinActivity destroyed
+17:08:05 [main] WalletActivityTracker - activity lifecycle: current: CoinJoinActivity, activities: 1 visible: 1 foreground: 1
+17:08:05 [DefaultDispatcher-worker-1] CoinJoinClientManager - creating new session: 0: 
+17:08:05 [DefaultDispatcher-worker-1] CoinJoinMixingService - Decrypting key took 0
+17:08:05 [DefaultDispatcher-worker-1] CoinJoinClientSession - coinjoin: Start TransactionBuilder(Amount initial: 0.10 DASH, Amount left: 0.09999801 DASH, Bytes base: 199, Bytes output: 34, Bytes total: 199, Amount used: 0.10 DASH, Outputs: 0, Fee rate: 0.00000001 DASH, Discard fee rate: 0.00001 DASH, Fee: 0.00000199 DASH)
+17:08:05 [DefaultDispatcher-worker-1] CoinJoinExtension - CoinJoinExtension serialization: 3ms total (keys:2ms[1074], cache:0ms[2], salt:0ms, io:1ms, size:112139bytes, buffer:64KB)
+17:08:05 [DefaultDispatcher-worker-1] CoinJoinExtension - CoinJoinExtension serialization: 2ms total (keys:1ms[1074], cache:0ms[2], salt:0ms, io:1ms, size:112139bytes, buffer:64KB)
+17:08:05 [DefaultDispatcher-worker-1] CoinJoinClientSession - coinjoin: 1 - 0.00100001 DASH, toDenominate: 0.79899547 DASH, outputs: 1, TransactionBuilder(Amount initial: 0.10 DASH, Amount left: 0.09859732 DASH, Bytes base: 199, Bytes output: 34, Bytes total: 267, Amount used: 0.10 DASH, Outputs: 2, Fee rate: 0.00000001 DASH, Discard fee rate: 0.00001 DASH, Fee: 0.00000267 DASH)
+17:08:05 [DefaultDispatcher-worker-1] CoinJoinExtension - CoinJoinExtension serialization: 2ms total (keys:1ms[1074], cache:0ms[2], salt:0ms, io:1ms, size:112139bytes, buffer:64KB)
+17:08:05 [DefaultDispatcher-worker-1] CoinJoinClientSession - coinjoin: 1 - 0.00100001 DASH, toDenominate: 0.79799546 DASH, outputs: 2, TransactionBuilder(Amount initial: 0.10 DASH, Amount left: 0.09759697 DASH, Bytes base: 199, Bytes output: 34, Bytes total: 301, Amount used: 0.10 DASH, Outputs: 3, Fee rate: 0.00000001 DASH, Discard fee rate: 0.00001 DASH, Fee: 0.00000301 DASH)
+17:08:05 [DefaultDispatcher-worker-1] CoinJoinExtension - CoinJoinExtension serialization: 2ms total (keys:1ms[1074], cache:0ms[2], salt:0ms, io:0ms, size:112139bytes, buffer:64KB)
+17:08:05 [DefaultDispatcher-worker-1] CoinJoinClientSession - coinjoin: 1 - 0.00100001 DASH, toDenominate: 0.79699545 DASH, outputs: 3, TransactionBuilder(Amount initial: 0.10 DASH, Amount left: 0.09659662 DASH, Bytes base: 199, Bytes output: 34, Bytes total: 335, Amount used: 0.10 DASH, Outputs: 4, Fee rate: 0.00000001 DASH, Discard fee rate: 0.00001 DASH, Fee: 0.00000335 DASH)
+17:08:05 [DefaultDispatcher-worker-1] CoinJoinExtension - CoinJoinExtension serialization: 2ms total (keys:1ms[1074], cache:0ms[2], salt:0ms, io:0ms, size:112139bytes, buffer:64KB)
+17:08:05 [DefaultDispatcher-worker-1] CoinJoinClientSession - coinjoin: 1 - 0.00100001 DASH, toDenominate: 0.79599544 DASH, outputs: 4, TransactionBuilder(Amount initial: 0.10 DASH, Amount left: 0.09559627 DASH, Bytes base: 199, Bytes output: 34, Bytes total: 369, Amount used: 0.10 DASH, Outputs: 5, Fee rate: 0.00000001 DASH, Discard fee rate: 0.00001 DASH, Fee: 0.00000369 DASH)
+17:08:05 [DefaultDispatcher-worker-1] CoinJoinExtension - CoinJoinExtension serialization: 2ms total (keys:1ms[1074], cache:0ms[2], salt:0ms, io:1ms, size:112139bytes, buffer:64KB)
+17:08:05 [DefaultDispatcher-worker-1] CoinJoinClientSession - coinjoin: 1 - 0.00100001 DASH, toDenominate: 0.79499543 DASH, outputs: 5, TransactionBuilder(Amount initial: 0.10 DASH, Amount left: 0.09459592 DASH, Bytes base: 199, Bytes output: 34, Bytes total: 403, Amount used: 0.10 DASH, Outputs: 6, Fee rate: 0.00000001 DASH, Discard fee rate: 0.00001 DASH, Fee: 0.00000403 DASH)
+17:08:05 [DefaultDispatcher-worker-1] CoinJoinExtension - CoinJoinExtension serialization: 1ms total (keys:1ms[1074], cache:0ms[2], salt:0ms, io:0ms, size:112139bytes, buffer:64KB)
+17:08:05 [DefaultDispatcher-worker-1] CoinJoinClientSession - coinjoin: 1 - 0.00100001 DASH, toDenominate: 0.79399542 DASH, outputs: 6, TransactionBuilder(Amount initial: 0.10 DASH, Amount left: 0.09359557 DASH, Bytes base: 199, Bytes output: 34, Bytes total: 437, Amount used: 0.10 DASH, Outputs: 7, Fee rate: 0.00000001 DASH, Discard fee rate: 0.00001 DASH, Fee: 0.00000437 DASH)
+17:08:05 [DefaultDispatcher-worker-1] CoinJoinExtension - CoinJoinExtension serialization: 1ms total (keys:1ms[1074], cache:0ms[2], salt:0ms, io:0ms, size:112139bytes, buffer:64KB)
+17:08:05 [DefaultDispatcher-worker-1] CoinJoinClientSession - coinjoin: 1 - 0.00100001 DASH, toDenominate: 0.79299541 DASH, outputs: 7, TransactionBuilder(Amount initial: 0.10 DASH, Amount left: 0.09259522 DASH, Bytes base: 199, Bytes output: 34, Bytes total: 471, Amount used: 0.10 DASH, Outputs: 8, Fee rate: 0.00000001 DASH, Discard fee rate: 0.00001 DASH, Fee: 0.00000471 DASH)
+17:08:05 [DefaultDispatcher-worker-1] CoinJoinExtension - CoinJoinExtension serialization: 1ms total (keys:0ms[1074], cache:0ms[2], salt:0ms, io:0ms, size:112139bytes, buffer:64KB)
+17:08:05 [DefaultDispatcher-worker-1] CoinJoinClientSession - coinjoin: 1 - 0.00100001 DASH, toDenominate: 0.7919954 DASH, outputs: 8, TransactionBuilder(Amount initial: 0.10 DASH, Amount left: 0.09159487 DASH, Bytes base: 199, Bytes output: 34, Bytes total: 505, Amount used: 0.10 DASH, Outputs: 9, Fee rate: 0.00000001 DASH, Discard fee rate: 0.00001 DASH, Fee: 0.00000505 DASH)
+17:08:05 [DefaultDispatcher-worker-1] CoinJoinExtension - CoinJoinExtension serialization: 1ms total (keys:0ms[1074], cache:0ms[2], salt:0ms, io:0ms, size:112139bytes, buffer:64KB)
+17:08:05 [DefaultDispatcher-worker-1] CoinJoinClientSession - coinjoin: 1 - 0.00100001 DASH, toDenominate: 0.79099539 DASH, outputs: 9, TransactionBuilder(Amount initial: 0.10 DASH, Amount left: 0.09059452 DASH, Bytes base: 199, Bytes output: 34, Bytes total: 539, Amount used: 0.10 DASH, Outputs: 10, Fee rate: 0.00000001 DASH, Discard fee rate: 0.00001 DASH, Fee: 0.00000539 DASH)
+17:08:05 [DefaultDispatcher-worker-1] CoinJoinExtension - CoinJoinExtension serialization: 1ms total (keys:0ms[1074], cache:0ms[2], salt:0ms, io:0ms, size:112139bytes, buffer:64KB)
+17:08:05 [DefaultDispatcher-worker-1] CoinJoinClientSession - coinjoin: 1 - 0.00100001 DASH, toDenominate: 0.78999538 DASH, outputs: 10, TransactionBuilder(Amount initial: 0.10 DASH, Amount left: 0.08959417 DASH, Bytes base: 199, Bytes output: 34, Bytes total: 573, Amount used: 0.10 DASH, Outputs: 11, Fee rate: 0.00000001 DASH, Discard fee rate: 0.00001 DASH, Fee: 0.00000573 DASH)
+17:08:05 [DefaultDispatcher-worker-1] CoinJoinExtension - CoinJoinExtension serialization: 2ms total (keys:1ms[1074], cache:0ms[2], salt:0ms, io:1ms, size:112139bytes, buffer:64KB)
+17:08:05 [DefaultDispatcher-worker-1] CoinJoinClientSession - coinjoin: 1 - 0.00100001 DASH, toDenominate: 0.78899537 DASH, outputs: 11, TransactionBuilder(Amount initial: 0.10 DASH, Amount left: 0.08859382 DASH, Bytes base: 199, Bytes output: 34, Bytes total: 607, Amount used: 0.10 DASH, Outputs: 12, Fee rate: 0.00000001 DASH, Discard fee rate: 0.00001 DASH, Fee: 0.00000607 DASH)
+17:08:05 [DefaultDispatcher-worker-1] CoinJoinExtension - CoinJoinExtension serialization: 2ms total (keys:1ms[1074], cache:0ms[2], salt:0ms, io:1ms, size:112139bytes, buffer:64KB)
+17:08:05 [DefaultDispatcher-worker-1] CoinJoinClientSession - coinjoin: 1 - 0.0100001 DASH, toDenominate: 0.77899527 DASH, outputs: 1, TransactionBuilder(Amount initial: 0.10 DASH, Amount left: 0.07859338 DASH, Bytes base: 199, Bytes output: 34, Bytes total: 641, Amount used: 0.10 DASH, Outputs: 13, Fee rate: 0.00000001 DASH, Discard fee rate: 0.00001 DASH, Fee: 0.00000641 DASH)
+17:08:05 [DefaultDispatcher-worker-1] CoinJoinExtension - CoinJoinExtension serialization: 1ms total (keys:0ms[1074], cache:0ms[2], salt:0ms, io:0ms, size:112139bytes, buffer:64KB)
+17:08:05 [DefaultDispatcher-worker-1] CoinJoinClientSession - coinjoin: 1 - 0.0100001 DASH, toDenominate: 0.76899517 DASH, outputs: 2, TransactionBuilder(Amount initial: 0.10 DASH, Amount left: 0.06859294 DASH, Bytes base: 199, Bytes output: 34, Bytes total: 675, Amount used: 0.10 DASH, Outputs: 14, Fee rate: 0.00000001 DASH, Discard fee rate: 0.00001 DASH, Fee: 0.00000675 DASH)
+17:08:05 [DefaultDispatcher-worker-1] CoinJoinExtension - CoinJoinExtension serialization: 2ms total (keys:1ms[1074], cache:0ms[2], salt:0ms, io:1ms, size:112139bytes, buffer:64KB)
+17:08:05 [DefaultDispatcher-worker-1] CoinJoinClientSession - coinjoin: 1 - 0.0100001 DASH, toDenominate: 0.75899507 DASH, outputs: 3, TransactionBuilder(Amount initial: 0.10 DASH, Amount left: 0.0585925 DASH, Bytes base: 199, Bytes output: 34, Bytes total: 709, Amount used: 0.10 DASH, Outputs: 15, Fee rate: 0.00000001 DASH, Discard fee rate: 0.00001 DASH, Fee: 0.00000709 DASH)
+17:08:05 [DefaultDispatcher-worker-1] CoinJoinExtension - CoinJoinExtension serialization: 1ms total (keys:0ms[1074], cache:0ms[2], salt:0ms, io:0ms, size:112139bytes, buffer:64KB)
+17:08:05 [DefaultDispatcher-worker-1] CoinJoinClientSession - coinjoin: 1 - 0.0100001 DASH, toDenominate: 0.74899497 DASH, outputs: 4, TransactionBuilder(Amount initial: 0.10 DASH, Amount left: 0.04859206 DASH, Bytes base: 199, Bytes output: 34, Bytes total: 743, Amount used: 0.10 DASH, Outputs: 16, Fee rate: 0.00000001 DASH, Discard fee rate: 0.00001 DASH, Fee: 0.00000743 DASH)
+17:08:05 [DefaultDispatcher-worker-1] CoinJoinExtension - CoinJoinExtension serialization: 1ms total (keys:0ms[1074], cache:0ms[2], salt:0ms, io:0ms, size:112139bytes, buffer:64KB)
+17:08:05 [DefaultDispatcher-worker-1] CoinJoinClientSession - coinjoin: 1 - 0.0100001 DASH, toDenominate: 0.73899487 DASH, outputs: 5, TransactionBuilder(Amount initial: 0.10 DASH, Amount left: 0.03859162 DASH, Bytes base: 199, Bytes output: 34, Bytes total: 777, Amount used: 0.10 DASH, Outputs: 17, Fee rate: 0.00000001 DASH, Discard fee rate: 0.00001 DASH, Fee: 0.00000777 DASH)
+17:08:05 [DefaultDispatcher-worker-1] CoinJoinExtension - CoinJoinExtension serialization: 1ms total (keys:0ms[1074], cache:0ms[2], salt:0ms, io:0ms, size:112139bytes, buffer:64KB)
+17:08:05 [DefaultDispatcher-worker-1] CoinJoinClientSession - coinjoin: 1 - 0.0100001 DASH, toDenominate: 0.72899477 DASH, outputs: 6, TransactionBuilder(Amount initial: 0.10 DASH, Amount left: 0.02859118 DASH, Bytes base: 199, Bytes output: 34, Bytes total: 811, Amount used: 0.10 DASH, Outputs: 18, Fee rate: 0.00000001 DASH, Discard fee rate: 0.00001 DASH, Fee: 0.00000811 DASH)
+17:08:05 [DefaultDispatcher-worker-1] CoinJoinExtension - CoinJoinExtension serialization: 1ms total (keys:0ms[1074], cache:0ms[2], salt:0ms, io:0ms, size:112139bytes, buffer:64KB)
+17:08:06 [DefaultDispatcher-worker-1] CoinJoinClientSession - coinjoin: 1 - 0.0100001 DASH, toDenominate: 0.71899467 DASH, outputs: 7, TransactionBuilder(Amount initial: 0.10 DASH, Amount left: 0.01859074 DASH, Bytes base: 199, Bytes output: 34, Bytes total: 845, Amount used: 0.10 DASH, Outputs: 19, Fee rate: 0.00000001 DASH, Discard fee rate: 0.00001 DASH, Fee: 0.00000845 DASH)
+17:08:06 [DefaultDispatcher-worker-1] CoinJoinExtension - CoinJoinExtension serialization: 2ms total (keys:0ms[1074], cache:0ms[2], salt:0ms, io:1ms, size:112139bytes, buffer:64KB)
+17:08:06 [DefaultDispatcher-worker-1] CoinJoinClientSession - coinjoin: 1 - 0.0100001 DASH, toDenominate: 0.70899457 DASH, outputs: 8, TransactionBuilder(Amount initial: 0.10 DASH, Amount left: 0.0085903 DASH, Bytes base: 199, Bytes output: 34, Bytes total: 879, Amount used: 0.10 DASH, Outputs: 20, Fee rate: 0.00000001 DASH, Discard fee rate: 0.00001 DASH, Fee: 0.00000879 DASH)
+17:08:06 [DefaultDispatcher-worker-1] CoinJoinClientSession - coinjoin: 1 - NOT finished - denomValue: 0.00100001 DASH, count: 11, toDenominate: 0.70899457 DASH, TransactionBuilder(Amount initial: 0.10 DASH, Amount left: 0.0085903 DASH, Bytes base: 199, Bytes output: 34, Bytes total: 879, Amount used: 0.10 DASH, Outputs: 20, Fee rate: 0.00000001 DASH, Discard fee rate: 0.00001 DASH, Fee: 0.00000879 DASH)
+17:08:06 [DefaultDispatcher-worker-1] CoinJoinExtension - CoinJoinExtension serialization: 1ms total (keys:0ms[1074], cache:0ms[2], salt:0ms, io:0ms, size:112139bytes, buffer:64KB)
+17:08:06 [DefaultDispatcher-worker-1] CoinJoinClientSession - coinjoin: 1 - 0.00100001 DASH, toDenominate: 0.70799456 DASH, outputs: 1, TransactionBuilder(Amount initial: 0.10 DASH, Amount left: 0.00758995 DASH, Bytes base: 199, Bytes output: 34, Bytes total: 913, Amount used: 0.10 DASH, Outputs: 21, Fee rate: 0.00000001 DASH, Discard fee rate: 0.00001 DASH, Fee: 0.00000913 DASH)
+17:08:06 [DefaultDispatcher-worker-1] CoinJoinExtension - CoinJoinExtension serialization: 1ms total (keys:0ms[1074], cache:0ms[2], salt:0ms, io:0ms, size:112139bytes, buffer:64KB)
+17:08:06 [DefaultDispatcher-worker-1] CoinJoinClientSession - coinjoin: 1 - 0.00100001 DASH, toDenominate: 0.70699455 DASH, outputs: 2, TransactionBuilder(Amount initial: 0.10 DASH, Amount left: 0.0065896 DASH, Bytes base: 199, Bytes output: 34, Bytes total: 947, Amount used: 0.10 DASH, Outputs: 22, Fee rate: 0.00000001 DASH, Discard fee rate: 0.00001 DASH, Fee: 0.00000947 DASH)
+17:08:06 [DefaultDispatcher-worker-1] CoinJoinExtension - CoinJoinExtension serialization: 1ms total (keys:0ms[1074], cache:0ms[2], salt:0ms, io:0ms, size:112139bytes, buffer:64KB)
+17:08:06 [DefaultDispatcher-worker-1] CoinJoinClientSession - coinjoin: 1 - 0.00100001 DASH, toDenominate: 0.70599454 DASH, outputs: 3, TransactionBuilder(Amount initial: 0.10 DASH, Amount left: 0.00558925 DASH, Bytes base: 199, Bytes output: 34, Bytes total: 981, Amount used: 0.10 DASH, Outputs: 23, Fee rate: 0.00000001 DASH, Discard fee rate: 0.00001 DASH, Fee: 0.00000981 DASH)
+17:08:06 [DefaultDispatcher-worker-1] CoinJoinExtension - CoinJoinExtension serialization: 1ms total (keys:0ms[1074], cache:0ms[2], salt:0ms, io:0ms, size:112139bytes, buffer:64KB)
+17:08:06 [DefaultDispatcher-worker-1] CoinJoinClientSession - coinjoin: 1 - 0.00100001 DASH, toDenominate: 0.70499453 DASH, outputs: 4, TransactionBuilder(Amount initial: 0.10 DASH, Amount left: 0.0045889 DASH, Bytes base: 199, Bytes output: 34, Bytes total: 1015, Amount used: 0.10 DASH, Outputs: 24, Fee rate: 0.00000001 DASH, Discard fee rate: 0.00001 DASH, Fee: 0.00001015 DASH)
+17:08:06 [DefaultDispatcher-worker-1] CoinJoinExtension - CoinJoinExtension serialization: 1ms total (keys:0ms[1074], cache:0ms[2], salt:0ms, io:0ms, size:112139bytes, buffer:64KB)
+17:08:06 [DefaultDispatcher-worker-1] CoinJoinClientSession - coinjoin: 1 - 0.00100001 DASH, toDenominate: 0.70399452 DASH, outputs: 5, TransactionBuilder(Amount initial: 0.10 DASH, Amount left: 0.00358855 DASH, Bytes base: 199, Bytes output: 34, Bytes total: 1049, Amount used: 0.10 DASH, Outputs: 25, Fee rate: 0.00000001 DASH, Discard fee rate: 0.00001 DASH, Fee: 0.00001049 DASH)
+17:08:06 [DefaultDispatcher-worker-1] CoinJoinExtension - CoinJoinExtension serialization: 1ms total (keys:0ms[1074], cache:0ms[2], salt:0ms, io:0ms, size:112139bytes, buffer:64KB)
+17:08:06 [DefaultDispatcher-worker-1] CoinJoinClientSession - coinjoin: 1 - 0.00100001 DASH, toDenominate: 0.70299451 DASH, outputs: 6, TransactionBuilder(Amount initial: 0.10 DASH, Amount left: 0.0025882 DASH, Bytes base: 199, Bytes output: 34, Bytes total: 1083, Amount used: 0.10 DASH, Outputs: 26, Fee rate: 0.00000001 DASH, Discard fee rate: 0.00001 DASH, Fee: 0.00001083 DASH)
+17:08:06 [DefaultDispatcher-worker-1] CoinJoinExtension - CoinJoinExtension serialization: 1ms total (keys:0ms[1074], cache:0ms[2], salt:0ms, io:0ms, size:112139bytes, buffer:64KB)
+17:08:06 [DefaultDispatcher-worker-1] CoinJoinClientSession - coinjoin: 1 - 0.00100001 DASH, toDenominate: 0.7019945 DASH, outputs: 7, TransactionBuilder(Amount initial: 0.10 DASH, Amount left: 0.00158785 DASH, Bytes base: 199, Bytes output: 34, Bytes total: 1117, Amount used: 0.10 DASH, Outputs: 27, Fee rate: 0.00000001 DASH, Discard fee rate: 0.00001 DASH, Fee: 0.00001117 DASH)
+17:08:06 [DefaultDispatcher-worker-1] CoinJoinExtension - CoinJoinExtension serialization: 1ms total (keys:0ms[1074], cache:0ms[2], salt:0ms, io:0ms, size:112139bytes, buffer:64KB)
+17:08:06 [DefaultDispatcher-worker-1] CoinJoinClientSession - coinjoin: 1 - 0.00100001 DASH, toDenominate: 0.70099449 DASH, outputs: 8, TransactionBuilder(Amount initial: 0.10 DASH, Amount left: 0.0005875 DASH, Bytes base: 199, Bytes output: 34, Bytes total: 1151, Amount used: 0.10 DASH, Outputs: 28, Fee rate: 0.00000001 DASH, Discard fee rate: 0.00001 DASH, Fee: 0.00001151 DASH)
+17:08:06 [DefaultDispatcher-worker-1] CoinJoinClientSession - coinjoin: 1 - FINISHED - 0.00100001 DASH, count: 19, toDenominate: 0.70099449 DASH, TransactionBuilder(Amount initial: 0.10 DASH, Amount left: 0.0005875 DASH, Bytes base: 199, Bytes output: 34, Bytes total: 1151, Amount used: 0.10 DASH, Outputs: 28, Fee rate: 0.00000001 DASH, Discard fee rate: 0.00001 DASH, Fee: 0.00001151 DASH)
+17:08:06 [DefaultDispatcher-worker-1] CoinJoinClientSession - coinjoin: 1 - FINISHED - 0.0100001 DASH, count: 8, toDenominate: 0.70099449 DASH, TransactionBuilder(Amount initial: 0.10 DASH, Amount left: 0.0005875 DASH, Bytes base: 199, Bytes output: 34, Bytes total: 1151, Amount used: 0.10 DASH, Outputs: 28, Fee rate: 0.00000001 DASH, Discard fee rate: 0.00001 DASH, Fee: 0.00001151 DASH)
+17:08:06 [DefaultDispatcher-worker-1] CoinJoinClientSession - coinjoin: 1 - FINISHED - 10.0001 DASH, count: 0, toDenominate: 0.70099449 DASH, TransactionBuilder(Amount initial: 0.10 DASH, Amount left: 0.0005875 DASH, Bytes base: 199, Bytes output: 34, Bytes total: 1151, Amount used: 0.10 DASH, Outputs: 28, Fee rate: 0.00000001 DASH, Discard fee rate: 0.00001 DASH, Fee: 0.00001151 DASH)
+17:08:06 [DefaultDispatcher-worker-1] CoinJoinClientSession - coinjoin: 1 - FINISHED - 0.100001 DASH, count: 0, toDenominate: 0.70099449 DASH, TransactionBuilder(Amount initial: 0.10 DASH, Amount left: 0.0005875 DASH, Bytes base: 199, Bytes output: 34, Bytes total: 1151, Amount used: 0.10 DASH, Outputs: 28, Fee rate: 0.00000001 DASH, Discard fee rate: 0.00001 DASH, Fee: 0.00001151 DASH)
+17:08:06 [DefaultDispatcher-worker-1] CoinJoinClientSession - coinjoin: 1 - FINISHED - 1.00001 DASH, count: 0, toDenominate: 0.70099449 DASH, TransactionBuilder(Amount initial: 0.10 DASH, Amount left: 0.0005875 DASH, Bytes base: 199, Bytes output: 34, Bytes total: 1151, Amount used: 0.10 DASH, Outputs: 28, Fee rate: 0.00000001 DASH, Discard fee rate: 0.00001 DASH, Fee: 0.00001151 DASH)
+17:08:06 [DefaultDispatcher-worker-1] CoinJoinClientSession - coinjoin: 3 - toDenominate: 0.70099449 DASH, TransactionBuilder(Amount initial: 0.10 DASH, Amount left: 0.0005875 DASH, Bytes base: 199, Bytes output: 34, Bytes total: 1151, Amount used: 0.10 DASH, Outputs: 28, Fee rate: 0.00000001 DASH, Discard fee rate: 0.00001 DASH, Fee: 0.00001151 DASH)
+17:08:06 [DefaultDispatcher-worker-1] CoinJoinClientSession - coinjoin: 3 - DONE - 0.00100001 DASH, count: 19
+17:08:06 [DefaultDispatcher-worker-1] CoinJoinClientSession - coinjoin: 3 - DONE - 0.0100001 DASH, count: 8
+17:08:06 [DefaultDispatcher-worker-1] CoinJoinClientSession - coinjoin: 3 - DONE - 10.0001 DASH, count: 0
+17:08:06 [DefaultDispatcher-worker-1] CoinJoinClientSession - coinjoin: 3 - DONE - 0.100001 DASH, count: 0
+17:08:06 [DefaultDispatcher-worker-1] CoinJoinClientSession - coinjoin: 3 - DONE - 1.00001 DASH, count: 0
+17:08:06 [DefaultDispatcher-worker-1] CoinJoinExtension - CoinJoinExtension serialization: 1ms total (keys:1ms[1074], cache:0ms[2], salt:0ms, io:0ms, size:112139bytes, buffer:64KB)
+17:08:06 [DefaultDispatcher-worker-1] CoinJoinClientSession - coinjoin: txid: 985a668ee30c2366d37cb581ad4c97839890251966ddf3bed74d23d920abecb6
+17:08:06 [DefaultDispatcher-worker-1] CoinJoinMixingService - Decrypting key took 0
+17:08:06 [DefaultDispatcher-worker-1] CoinJoinClientSession - coinjoin: Start TransactionBuilder(Amount initial: 0.69999548 DASH, Amount left: 0.6999935 DASH, Bytes base: 198, Bytes output: 34, Bytes total: 198, Amount used: 0.69999548 DASH, Outputs: 0, Fee rate: 0.00000001 DASH, Discard fee rate: 0.00001 DASH, Fee: 0.00000198 DASH)
+17:08:06 [DefaultDispatcher-worker-1] CoinJoinExtension - CoinJoinExtension serialization: 2ms total (keys:1ms[1074], cache:0ms[29], salt:0ms, io:1ms, size:113220bytes, buffer:64KB)
+17:08:06 [DefaultDispatcher-worker-4] CoinJoinExtension - getMixingProgress: 0.0 = 0.0 / 51
+17:08:06 [DefaultDispatcher-worker-7] CoinJoinMixingService - coinjoin: anonymizable balance 0.69999548 DASH, denominatedBalance: 0.00 DASH
+17:08:06 [DefaultDispatcher-worker-7] CoinJoinMixingService - timing: denominatedBalance 92.38 μs
+17:08:06 [DefaultDispatcher-worker-4] CoinJoinMixingService - timing: getMixingProgress: 10.85 ms
+17:08:06 [DefaultDispatcher-worker-7] CoinJoinMixingService - timing: denominatedBalance 34.21 μs
+17:08:06 [DefaultDispatcher-worker-7] CoinJoinMixingService - timing: coinJoinBalance 45.75 μs
+17:08:06 [DefaultDispatcher-worker-7] CoinJoinClientManager - creating new session: 1: 
+17:08:06 [DefaultDispatcher-worker-1] CoinJoinExtension - CoinJoinExtension serialization: 1ms total (keys:0ms[1074], cache:0ms[30], salt:0ms, io:0ms, size:113269bytes, buffer:64KB)
+17:08:06 [DefaultDispatcher-worker-1] CoinJoinClientSession - coinjoin: Done with case 1: TransactionBuilder(Amount initial: 0.69999548 DASH, Amount left: 0.00 DASH, Bytes base: 198, Bytes output: 34, Bytes total: 266, Amount used: 0.69999548 DASH, Outputs: 2, Fee rate: 0.00000001 DASH, Discard fee rate: 0.00001 DASH, Fee: 0.00000266 DASH)
+17:08:06 [DefaultDispatcher-worker-1] CoinJoinExtension - CoinJoinExtension serialization: 1ms total (keys:0ms[1074], cache:0ms[30], salt:0ms, io:0ms, size:113269bytes, buffer:64KB)
+17:08:06 [DefaultDispatcher-worker-1] CoinJoinClientSession - coinjoin: txid: ab3797d459d58a70a8db5b709707b9caaa75351cbc72fa2a57a4e26f77accbed
+17:08:06 [DefaultDispatcher-worker-13] CoinJoinMixingService - Mixing started successfully
+17:08:06 [DefaultDispatcher-worker-7] CoinJoinClientSession - coinjoin: balance too low: dryRun: true
+17:08:06 [DefaultDispatcher-worker-7] CoinJoinMixingService - coinjoin: can mix balance: true = balance: (true && canDenominate: false) || partially-mixed: false
+17:08:06 [DefaultDispatcher-worker-4] CoinJoinExtension - getMixingProgress: 0.0 = 0.0 / 27
+17:08:06 [DefaultDispatcher-worker-4] CoinJoinMixingService - timing: getMixingProgress: 153.5 μs
+17:08:06 [DefaultDispatcher-worker-12] CoinJoinMixingService - coinjoin-state: INTERMEDIATE, 1181 ms, true, CONNECTED, synced: true, true
+17:08:06 [DefaultDispatcher-worker-12] CoinJoinMixingService - mixing configuration:  { rounds: 4, sessions: 6, amount: 0.79998403 DASH, multisession: false}
+17:08:06 [DefaultDispatcher-worker-12] CoinJoinMixingService - coinjoin-state-mixing: MIXING -> MIXING
+17:08:06 [DefaultDispatcher-worker-6] CoinJoinMixingService - coinjoin-state: INTERMEDIATE, 1181 ms, true, CONNECTED, synced: true, true
+17:08:06 [DefaultDispatcher-worker-6] CoinJoinMixingService - mixing configuration:  { rounds: 4, sessions: 6, amount: 0.79998403 DASH, multisession: false}
+17:08:06 [DefaultDispatcher-worker-6] CoinJoinMixingService - coinjoin-state-mixing: MIXING -> MIXING
+17:08:06 [DefaultDispatcher-worker-1] CoinJoinMixingService - coinjoin-state: INTERMEDIATE, 1181 ms, true, CONNECTED, synced: true, true
+17:08:06 [DefaultDispatcher-worker-1] CoinJoinMixingService - mixing configuration:  { rounds: 4, sessions: 6, amount: 0.79998403 DASH, multisession: false}
+17:08:06 [DefaultDispatcher-worker-1] CoinJoinMixingService - coinjoin-state-mixing: MIXING -> MIXING
+17:08:06 [DefaultDispatcher-worker-1] CoinJoinMixingService - coinjoin: anonymizable balance 0.00 DASH, denominatedBalance: 0.00 DASH
+17:08:06 [DefaultDispatcher-worker-1] CoinJoinMixingService - timing: denominatedBalance 99.00 μs
+17:08:06 [DefaultDispatcher-worker-1] CoinJoinMixingService - timing: denominatedBalance 40.04 μs
+17:08:06 [DefaultDispatcher-worker-1] CoinJoinMixingService - timing: coinJoinBalance 55.38 μs
+17:08:06 [DefaultDispatcher-worker-1] CoinJoinClientManager - creating new session: 2: 
+17:08:06 [DefaultDispatcher-worker-1] CoinJoinClientSession - coinjoin: balance too low: dryRun: true
+17:08:06 [DefaultDispatcher-worker-1] CoinJoinClientSession - coinjoin: balance too low: dryRun: true
+17:08:06 [DefaultDispatcher-worker-1] CoinJoinClientSession - coinjoin: balance too low: dryRun: true
+17:08:06 [DefaultDispatcher-worker-1] CoinJoinMixingService - coinjoin: can mix balance: false = balance: (false && canDenominate: false) || partially-mixed: false
+17:08:06 [DefaultDispatcher-worker-1] CoinJoinMixingService - coinjoin-state: INTERMEDIATE, 1181 ms, false, CONNECTED, synced: true, true
+17:08:06 [DefaultDispatcher-worker-1] CoinJoinMixingService - mixing configuration:  { rounds: 4, sessions: 6, amount: 0.79998137 DASH, multisession: false}
+17:08:06 [DefaultDispatcher-worker-1] CoinJoinMixingService - coinjoin-state-mixing: MIXING -> FINISHING
+17:08:06 [DefaultDispatcher-worker-1] CoinJoinMixingService - coinjoin-state stopping, active sessions = 0
+17:08:06 [DefaultDispatcher-worker-1] CoinJoinMixingService - Mixing process will stop...
+17:08:06 [DefaultDispatcher-worker-1] CoinJoinManager - CoinJoinManager stopping...
+17:08:06 [DefaultDispatcher-worker-1] CoinJoinClientSession - session zeroed out POOL_STATE_IDLE; WARMUP
+17:08:06 [dashj user thread] CoinJoinMixingService - Mixing complete.
+17:08:06 [DefaultDispatcher-worker-1] CoinJoinClientSession - session zeroed out POOL_STATE_IDLE; WARMUP
+17:08:06 [DefaultDispatcher-worker-1] CoinJoinClientSession - session zeroed out POOL_STATE_IDLE; WARMUP
+17:08:06 [DefaultDispatcher-worker-7] CoinJoinExtension - getMixingProgress: 0.0 = 0.0 / 27
+17:08:06 [DefaultDispatcher-worker-7] CoinJoinMixingService - timing: getMixingProgress: 133.4 μs
+17:08:06 [DefaultDispatcher-worker-1] CoinJoinMixingService - coinjoin-state-mixing: FINISHED -> PAUSED
+17:08:11 [Wallet autosave thread] CoinJoinExtension - CoinJoinExtension serialization: 2ms total (keys:1ms[1074], cache:0ms[32], salt:0ms, io:0ms, size:113367bytes, buffer:64KB)
+17:08:49 [main] WalletProtobufSerializer - Loading wallet extension org.dashj.wallet.coinjoin
+17:08:49 [DefaultDispatcher-worker-2] CoinJoinMixingTxSet - coinjoin grouping 985a668ee30c2366d37cb581ad4c97839890251966ddf3bed74d23d920abecb6 as CreateDenomination (inputs=1 outputs=29 dashjCoinJoinBalance=0)
+17:08:49 [DefaultDispatcher-worker-2] CoinJoinMixingTxSet - coinjoin grouping ab3797d459d58a70a8db5b709707b9caaa75351cbc72fa2a57a4e26f77accbed as MakeCollateralInputs (inputs=1 outputs=2 dashjCoinJoinBalance=0)
+17:08:56 [DefaultDispatcher-worker-13] L1ShadowSyncService - WalletBalanceFacts: total=79999548 accounts={bip44:79999548, bip32:0, coinjoin:0, identityRegistration:0, identityTopUpUnbound:0, identityInvitation:0, assetLockTopUp:0, assetLockShieldedTopUp:0, providerVoting:0, providerOwner:0, providerOperator:0, providerPlatform:0} confirmed=79999548 unconfirmed=0 txCount=3

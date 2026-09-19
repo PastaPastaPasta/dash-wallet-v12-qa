@@ -1,0 +1,11 @@
+total 80
+drwx------ 2 u0_a209 u0_a209 4096 2026-09-19 12:08 .
+drwxrwx--x 9 u0_a209 u0_a209 4096 2026-09-19 12:08 ..
+-rw------- 1 u0_a209 u0_a209   30 2026-09-19 11:43 coinbase.preferences_pb
+-rw------- 1 u0_a209 u0_a209   97 2026-09-19 12:08 coinjoin.preferences_pb
+-rw------- 1 u0_a209 u0_a209  400 2026-09-19 11:57 dashpay.preferences_pb
+-rw------- 1 u0_a209 u0_a209  131 2026-09-19 12:08 exchange_rates_config.preferences_pb
+-rw------- 1 u0_a209 u0_a209  141 2026-09-19 11:41 explore.preferences_pb
+-rw------- 1 u0_a209 u0_a209  228 2026-09-19 11:43 org.dashfoundation.wallet.secrets.preferences_pb
+-rw------- 1 u0_a209 u0_a209   30 2026-09-19 11:43 uphold.preferences_pb
+-rw------- 1 u0_a209 u0_a209  114 2026-09-19 12:08 wallet_ui.preferences_pb

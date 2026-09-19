@@ -1,0 +1,15 @@
+3344-17:03:00 [main] WalletActivityTracker - activity lifecycle: activity SetPinActivity destroyed
+3345-17:03:00 [main] WalletActivityTracker - activity lifecycle: current: SetPinActivity, activities: 1 visible: 1 foreground: 1
+3346-17:03:00 [OkHttp https://www.dash.org/...] Constants - --> HEAD https://www.dash.org/
+3347:17:03:04 [DefaultDispatcher-worker-4] L1ShadowSyncService - L1Shadow filter-stall watchdog: the filter cursor has sat at 1555000 of 1556858 (1858 blocks short) for over 10 minutes while the engine is running — restarting the SPV engine. Known shape (MO-1022): every filter stored, a few matched blocks never delivered, the download coordinator out of retries.
+3348-17:03:04 [DefaultDispatcher-worker-4] L1ShadowSyncService - failed to stop the shadow SPV client
+3349-kotlinx.coroutines.JobCancellationException: StandaloneCoroutine was cancelled
+3350-17:03:04 [DefaultDispatcher-worker-8] L1ShadowSyncService - L1Shadow wallet-event tap cancelled (StandaloneCoroutine was cancelled)
+--
+3354-17:03:04 [DefaultDispatcher-worker-1] L1ShadowSyncService - L1ShadowLifecycle STOPPED after 15m0s up; all four loops torn down (progress monitor, parity probe, watchdog, wallet-event tap); teardown #1 this process. Nothing runs until the next startIfEnabled().
+3355-17:03:04 [DefaultDispatcher-worker-2] L1ShadowSyncService - failed to read USE_KOTLIN_SDK_L1_SHADOW; treating as off
+3356-kotlinx.coroutines.JobCancellationException: StandaloneCoroutine was cancelled
+3357:17:03:04 [DefaultDispatcher-worker-2] L1ShadowSyncService - L1Shadow filter-stall watchdog: engine restart declined to start (was stuck at 1555000)
+3358-17:03:04 [DefaultDispatcher-worker-2] L1ShadowSyncService - L1Shadow probe watchdog cancelled (StandaloneCoroutine was cancelled)
+3359-17:03:22 [DefaultDispatcher-worker-9] BlockchainServiceImpl - network capabilities changed: 101, hasInternet: true, validated: true
+3360-17:03:22 [DefaultDispatcher-worker-9] BlockchainServiceImpl - acquiring check() mutex

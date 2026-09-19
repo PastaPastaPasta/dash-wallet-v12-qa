@@ -1,0 +1,293 @@
+<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Stream SRB report</title><style>body{font-family:system-ui,-apple-system,sans-serif;max-width:1400px;margin:0 auto;padding:16px 24px;line-height:1.45;background:#fff;color:#111}
+table{border-collapse:collapse;font-size:13px;margin:12px 0}th,td{border:1px solid #ddd;padding:4px 8px;vertical-align:top;text-align:left}th{background:#f3f6fa;position:sticky;top:0}
+tr:nth-child(even){background:#fafbfc}code{background:#f4f4f4;padding:1px 4px;border-radius:3px;font-size:12px}pre{background:#f4f4f4;padding:10px;overflow:auto}
+h1{border-bottom:3px solid #008de4}h2{border-bottom:1px solid #ccc;margin-top:40px}a{color:#008de4}a.ev{background:#e8f4fd;padding:0 3px;border-radius:3px;font-family:ui-monospace,monospace;font-size:12px}
+nav.top{background:#012060;color:#fff;padding:8px 24px;margin:-16px -24px 16px;position:sticky;top:0;z-index:5}nav.top a{color:#fff;margin-right:18px;text-decoration:none}nav.top a:hover{text-decoration:underline}
+.S1{color:#b00020;font-weight:bold}.S2{color:#c75000;font-weight:bold}.toc{background:#f8f9fb;border:1px solid #e3e6ea;padding:8px 16px;font-size:13px;columns:2}.toc ul{margin:2px 0;padding-left:16px}
+#lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:50;align-items:center;justify-content:center;flex-direction:column}#lb.on{display:flex}#lb img{max-width:96vw;max-height:88vh;border:2px solid #fff;box-shadow:0 0 30px #000}#lb .cap{color:#eee;font:13px ui-monospace,monospace;margin-top:8px}#lb .cap a{color:#8cf}#lb .x{position:absolute;top:10px;right:18px;color:#fff;font-size:30px;cursor:pointer}#lb .nv{position:absolute;top:50%;color:#fff;font-size:44px;cursor:pointer;padding:0 16px;user-select:none}#lb .pv{left:0}#lb .nx{right:0}a.img img{cursor:zoom-in}
+sup.more a{margin:0 2px;font-size:10px}
+thead.sortable th.asc::after{content:' \25B2';font-size:9px}thead.sortable th.desc::after{content:' \25BC';font-size:9px}
+tr[data-sev=S1] td:nth-child(2){background:#fde7e9}tr[data-sev=S2] td:nth-child(2){background:#fff1e0}
+a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:target{background:#fff3b0;outline:2px solid #f5b400}
+.note{background:#fff8e1;border-left:4px solid #f5b400;padding:8px 12px;margin:12px 0}
+</style><nav class=top><a href="../../index.html">Home</a><a href="../../QA-REPORT.html">Full report</a><a href="../../EXEC-SUMMARY.html">Executive summary</a><a href="../../STORY-MATRIX.html">User-story matrix</a><a href="../../DEFECT-LEDGER.html">Defect register</a><a href="../index.html">Evidence gallery</a><a href="../../QA-PLAN.html">Test plan</a><a href="../../streams.html">Stream reports</a></nav><h1 id="qa-stream-srb-sr-device-reproduction-report">QA stream SRB — SR device-reproduction report</h1>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Emulator</td>
+<td><code>emulator-5556</code> (AVD <code>dw-qa2</code>, Android 15 / API 35, <code>ro.product.cpu.abilist=arm64-v8a</code>)</td>
+</tr>
+<tr>
+<td>Builds</td>
+<td>FIX <code>fix-12.0.0-testnet3-release-signed.apk</code> versionCode <strong>12000000</strong>; MASTER <code>master-11.9.0-testnet3-release-signed.apk</code> versionCode <strong>11090002</strong>; mainnet pair <code>fix-12.0.0-prod-release-signed.apk</code> / <code>master-11.9.0-prod-release-signed.apk</code> (same versionCodes)</td>
+</tr>
+<tr>
+<td>Packages</td>
+<td>testnet <code>hashengineering.darkcoin.wallet_test</code>; mainnet <code>hashengineering.darkcoin.wallet</code> (created + <strong>uninstalled</strong> at 12:05)</td>
+</tr>
+<tr>
+<td>Wallets</td>
+<td>testnet throwaway, 12-word, PIN 1234, receive addr <code>yhwrtTL9rpH2B8Er71psqZGFqpZiyGUrkC</code>, funded 1 tDASH by faucet tx <code>73e97a1b7cadce0b87621a7a6a2405a7d0c2987014e75ed9c38a05b848666206</code>. Mainnet throwaway, <strong>never funded</strong>. Reference seed NOT touched.</td>
+</tr>
+<tr>
+<td>Start / end</td>
+<td>2026-09-19 11:40 – 12:12 local (16:40 – 17:12 in <a class=ev href="../SRB/logs-final/files/log/wallet.log">wallet.log</a> UTC timestamps)</td>
+</tr>
+<tr>
+<td>Evidence root</td>
+<td><code>/Users/dcg/workspace/dash-wallet-qa/evidence/SRB/</code></td>
+</tr>
+</tbody>
+</table>
+<p>Note: the emulator <code>dw-qa2</code> was <strong>not running</strong> at session start (only <code>dw-qa1</code>/5554 existed). I launched it myself (<code>emulator -avd dw-qa2 -port 5556 …</code>). No other serial was touched.</p>
+<hr />
+<h2 id="summary-table">Summary table</h2>
+<table>
+<thead>
+<tr>
+<th>SR-id</th>
+<th>Verdict</th>
+<th>What I did</th>
+<th>Decisive evidence</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td id="SR-07"><a href="#SR-07">SR-07</a></td>
+<td><strong>REPRODUCED (S1)</strong> — with one correction</td>
+<td>Created + funded a FIX wallet, set memo + tax category, snapshotted Room DB, downgraded in place (<code>install -r -d</code>) to 11.9.0, relaunched, re-snapshotted, then re-upgraded to FIX</td>
+<td><a class=ev href="../SRB/SR-07/DECISIVE.txt">SR-07/DECISIVE.txt</a>, <a class=ev href="../SRB/SR-07/rowcounts-diff.txt">SR-07/rowcounts-diff.txt</a>, <a class=ev href="../SRB/SR-07/tables-before.txt">SR-07/tables-before.txt</a> vs <a class=ev href="../SRB/SR-07/tables-after.txt">tables-after.txt</a>, <a class=ev href="../SRB/SR-07/32-master-tx-detail.webp">SR-07/32-master-tx-detail.png</a>, <a class=ev href="../SRB/SR-07/srb07-downgrade.mp4">SR-07/srb07-downgrade.mp4</a></td>
+<td>Wallet opens, <strong>funds and history survive</strong>. Room DB is rebuilt (user_version 22→21, identity hash changes) and <strong>all user-set tx metadata is permanently destroyed</strong> — re-upgrading does NOT restore it. Correction to the SR row: the <strong>address book is not a Room table</strong> (separate <code>address_book</code> SQLite DB via <code>AddressBookProvider</code>), so it is not affected.</td>
+</tr>
+<tr>
+<td id="SR-08"><a href="#SR-08">SR-08</a></td>
+<td><strong>REPRODUCED (S1)</strong></td>
+<td>Installed mainnet MASTER prod-release, created an <strong>empty</strong> mainnet wallet, let it idle 60 s, captured DataStore (no <code>dashpay.preferences_pb</code>), upgraded in place to mainnet FIX prod-release, unlocked, re-captured DataStore</td>
+<td><a class=ev href="../SRB/SR-08/DECISIVE.txt">SR-08/DECISIVE.txt</a>, <code>SR-08/datastore-after/dashpay.preferences_pb</code>, <a class=ev href="../SRB/SR-08/05-datastore-ls-before.txt">SR-08/05-datastore-ls-before.txt</a>, <a class=ev href="../SRB/SR-08/09-datastore-ls-after.txt">SR-08/09-datastore-ls-after.txt</a>, <a class=ev href="../SRB/SR-08/13-tools-screen.webp">SR-08/13-tools-screen.png</a></td>
+<td>All <strong>five</strong> <code>use_kotlin_sdk_*</code> keys present and <strong>true</strong> on a <strong>prodRelease mainnet</strong> build, zero user action. Worse than the SR row states: the Tools screen on prodRelease exposes <strong>no toggle</strong> for them — a mainnet user cannot opt out.</td>
+</tr>
+<tr>
+<td id="SR-27"><a href="#SR-27">SR-27</a></td>
+<td><strong>REPRODUCED (S2)</strong></td>
+<td>On MASTER testnet with a funded wallet, enabled CoinJoin → Intermediate → Start Mixing; screenshotted Settings; pulled <code>coinjoin.preferences_pb</code> + Room DB; upgraded to FIX; re-checked Settings and DataStore</td>
+<td><a class=ev href="../SRB/SR-27/09-settings-coinjoin-on.webp">SR-27/09-settings-coinjoin-on.png</a> vs <a class=ev href="../SRB/SR-27/11-fix-settings.webp">SR-27/11-fix-settings.png</a>, <a class=ev href="../SRB/SR-27/BEFORE.txt">SR-27/BEFORE.txt</a>, <a class=ev href="../SRB/SR-27/AFTER.txt">SR-27/AFTER.txt</a>, <a class=ev href="../SRB/SR-27/13-grep-coinjoin.txt">SR-27/13-grep-coinjoin.txt</a>, <a class=ev href="../SRB/SR-27/srb27-upgrade.mp4">SR-27/srb27-upgrade.mp4</a></td>
+<td>CoinJoin row <strong>gone from Settings</strong> on FIX. <code>coinjoin_mode = INTERMEDIATE</code> is still on disk, orphaned, with no UI to read/change/stop it. Mixing does not resume on FIX. Funds survive.</td>
+</tr>
+<tr>
+<td id="SR-23"><a href="#SR-23">SR-23</a></td>
+<td><strong>REPRODUCED (release blocker, S2)</strong></td>
+<td><code>aapt dump badging</code> on all four shipped APKs</td>
+<td><a class=ev href="../SRB/SR-23/SUMMARY-badging.txt">SR-23/SUMMARY-badging.txt</a>, <a class=ev href="../SRB/SR-23/badging-fix-12.0.0-prod-release-signed.txt">SR-23/badging-*.txt</a><sup class=more><a href="../SRB/SR-23/badging-fix-12.0.0-testnet3-release-signed.txt" title="SRB/SR-23/badging-fix-12.0.0-testnet3-release-signed.txt">2</a> <a href="../SRB/SR-23/badging-master-11.9.0-prod-release-signed.txt" title="SRB/SR-23/badging-master-11.9.0-prod-release-signed.txt">3</a> <a href="../SRB/SR-23/badging-master-11.9.0-testnet3-release-signed.txt" title="SRB/SR-23/badging-master-11.9.0-testnet3-release-signed.txt">4</a></sup></td>
+<td>Artefact-level proof: master targetSdk <strong>36</strong>, fix targetSdk <strong>35</strong>. Plus an unlisted regression: <strong>minSdk 24 → 29</strong>.</td>
+</tr>
+<tr>
+<td id="SR-39"><a href="#SR-39">SR-39</a></td>
+<td><strong>REPRODUCED (S3)</strong></td>
+<td>Same badging output + device ABI list</td>
+<td><a class=ev href="../SRB/SR-39/SUMMARY-badging.txt">SR-39/SUMMARY-badging.txt</a>, <a class=ev href="../SRB/SR-39/device-abilist.txt">SR-39/device-abilist.txt</a></td>
+<td>master ships <code>arm64-v8a armeabi-v7a x86 x86_64</code>; fix ships only <code>arm64-v8a x86_64</code>. Combined with minSdk 29, a large device class is cut off.</td>
+</tr>
+<tr>
+<td id="SR-43"><a href="#SR-43">SR-43</a></td>
+<td><strong>REPRODUCED (S4)</strong></td>
+<td>Quoted the gradle lines for wallet + 5 other modules, cross-checked against the built artefacts</td>
+<td><a class=ev href="../SRB/SR-43/gradle-compileSdk-placement.txt">SR-43/gradle-compileSdk-placement.txt</a>, <a class=ev href="../SRB/SR-23/badging-fix-12.0.0-prod-release-signed.txt">SR-23/badging-*.txt</a><sup class=more><a href="../SRB/SR-23/badging-fix-12.0.0-testnet3-release-signed.txt" title="SRB/SR-23/badging-fix-12.0.0-testnet3-release-signed.txt">2</a> <a href="../SRB/SR-23/badging-master-11.9.0-prod-release-signed.txt" title="SRB/SR-23/badging-master-11.9.0-prod-release-signed.txt">3</a> <a href="../SRB/SR-23/badging-master-11.9.0-testnet3-release-signed.txt" title="SRB/SR-23/badging-master-11.9.0-testnet3-release-signed.txt">4</a></sup></td>
+<td><code>compileSdk 35</code> sits <strong>inside</strong> <code>defaultConfig {}</code> in 6 modules; master has it at <code>android {}</code> level. The APK really does report <code>compileSdkVersion='35'</code>, so the Groovy owner-fallthrough works today — fragile, not broken.</td>
+</tr>
+<tr>
+<td id="SR-42"><a href="#SR-42">SR-42</a></td>
+<td><strong>PARTIAL</strong></td>
+<td>On FIX with a funded wallet: one self-send (0.1 tDASH to own receive address) and one external send (0.2 tDASH), then inspected the Send screen and <a class=ev href="../SRB/logs-final/files/log/wallet.log">wallet.log</a></td>
+<td><a class=ev href="../SRB/SR-42/grep-coins-callbacks.txt">SR-42/grep-coins-callbacks.txt</a>, <a class=ev href="../SRB/SR-42/15-send-screen-after-both-sends.webp">SR-42/15-send-screen-after-both-sends.png</a>, <a class=ev href="../SRB/SR-42/srb42-sends.mp4">SR-42/srb42-sends.mp4</a></td>
+<td>The <strong>code path is confirmed</strong>: <code>onCoinsReceived</code> fires for our own bridged self-send, so <code>handleContactPayments(tx)</code> and the CrowdNode matchers run on it. The <strong>user-visible symptom is NOT observable</strong> here — with no DashPay identity the Send screen renders no frequent-contacts row at all (<code>contacts_pane</code> is empty before and after). Needs a DashPay-registered wallet to confirm the ordering pollution.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="detail">Detail</h2>
+<h3 id="sr-07-global-fallbacktodestructivemigration-wipes-tx-metadata-on-downgrade-reproduced-s1">SR-07 — global <code>fallbackToDestructiveMigration()</code> wipes tx metadata on downgrade — <strong>REPRODUCED, S1</strong></h3>
+<p>Source under test: <code>wt-fix/wallet/src/de/schildbach/wallet/di/DatabaseModule.kt:55-56</code></p>
+<pre><code>            // destructive migrations are used from versions 1 to 11
+            .fallbackToDestructiveMigration()
+</code></pre>
+<p><code>wt-fix/.../database/AppDatabase.kt:72</code> → <code>version = 22</code>; <code>wt-master/.../database/AppDatabase.kt:70</code> → <code>version = 21</code>.</p>
+<p>Steps / timestamps (local time; <a class=ev href="../SRB/logs-final/files/log/wallet.log">wallet.log</a> is UTC+5h):
+1. 11:42 installed FIX, created 12-word wallet, PIN 1234 (<a class=ev href="../SRB/SR-07/01-fix-first-launch.webp">SR-07/01..09</a><sup class=more><a href="../index.html#SRB-SR-07" title="10 files, open gallery">+9</a></sup>).
+2. 11:45 receive address <code>yhwrtTL9rpH2B8Er71psqZGFqpZiyGUrkC</code>, faucet 1 tDASH, txid <code>73e97a1b…6206</code> (<a class=ev href="../SRB/SR-07/11-faucet-sent.webp">SR-07/11-faucet-sent.png</a>). Confirmed in-app 11:46, balance 1 (<a class=ev href="../SRB/SR-07/14-home-balance.webp">SR-07/14-home-balance.png</a>).
+3. 11:47 set <strong>Tax Category → Transfer-in</strong> (<a class=ev href="../SRB/SR-07/17-tax-transferin.webp">SR-07/17-tax-transferin.png</a>); 11:48 set <strong>Private Note → "SRB07 faucet memo"</strong> (<a class=ev href="../SRB/SR-07/20-note-saved.webp">SR-07/20-note-saved.png</a>).
+4. 11:49–11:52 two sends (see <a class=did href="../../DEFECT-LEDGER.html#SR-42">SR-42</a>) so three metadata rows exist.
+5. 11:54 snapshot <a class=ev href="../index.html#SRB-SR-07">SR-07/db-before/</a> — <code>pragma user_version = 22</code>, <code>transaction_metadata</code> 3 rows, <code>transaction_metadata_cache</code> 3 rows, <code>exchange_rates</code> 168.
+6. 11:55 <strong>downgrade in place</strong>: <code>adb -s emulator-5556 install -r -d master-11.9.0-testnet3-release-signed.apk</code> → <code>Success</code>. Video <a class=ev href="../SRB/SR-07/srb07-downgrade.mp4">SR-07/srb07-downgrade.mp4</a>.
+7. 11:55 launched 11.9.0 → <strong>PIN screen appears, wallet opens</strong>, balance <code>0.799995</code>, all 3 transactions in History (<a class=ev href="../SRB/SR-07/31-master-home.webp">SR-07/31-master-home.png</a>). Funds and wallet file are fine.
+8. 11:56 opened the faucet transaction: <strong>Tax Category back to "Income", Private Note back to "Add Note"</strong> (<a class=ev href="../SRB/SR-07/32-master-tx-detail.webp">SR-07/32-master-tx-detail.png</a>).
+9. 11:56 snapshot <a class=ev href="../index.html#SRB-SR-07">SR-07/db-after/</a>.
+10. 11:57 re-upgraded to FIX (<code>install -r</code>) → snapshot <a class=ev href="../index.html#SRB-SR-07">SR-07/db-reupgrade/</a>.</p>
+<p>Decisive evidence (<a class=ev href="../SRB/SR-07/DECISIVE.txt">SR-07/DECISIVE.txt</a>):</p>
+<p><a class=ev href="../SRB/logs-final/files/log/wallet.log">wallet.log</a>, <code>/data/data/hashengineering.darkcoin.wallet_test/files/log/wallet.log</code>:</p>
+<pre><code>16:55:07 [main] Configuration - detected app downgrade: 12000000 -&gt; 11090002
+</code></pre>
+<p>(also in logcat: <code>09-19 11:55:07.259  8933  8933 W Configuration: [main] detected app downgrade: 12000000 -&gt; 11090002</code>, <a class=ev href="../SRB/SR-07/grep-logcat-migration.txt">SR-07/grep-logcat-migration.txt</a>)</p>
+<pre><code>Room DB version          BEFORE 22      AFTER 21
+room identity_hash       BEFORE 5023599d035fb94c8b8a5481e0576d98
+                         AFTER  abe067f8699a6e2202b3bd980a934776
+</code></pre>
+<p><code>transaction_metadata</code>:</p>
+<pre><code>BEFORE:  type      taxCategory  memo
+         Received  TransferIn   SRB07 faucet memo
+         Received
+         Sent
+AFTER :  type      taxCategory  memo
+         Received               (empty)
+</code></pre>
+<p>Row-count diff (<a class=ev href="../SRB/SR-07/rowcounts-diff.txt">SR-07/rowcounts-diff.txt</a>), before → after:</p>
+<pre><code>transaction_metadata            3 -&gt; 1
+transaction_metadata_cache      3 -&gt; 1
+tx_group_cache                  1 -&gt; 3
+user_version                   22 -&gt; 21
+</code></pre>
+<p><code>exchange_rates</code> still shows 168 rows but with <strong>different values</strong> (<code>AED 218.5235</code> → <code>218.5500</code>, <a class=ev href="../SRB/SR-07/tables-after.txt">SR-07/tables-after.txt</a>) — i.e. the table was emptied and 11.9.0 re-fetched it, not preserved. <code>blockchain_state.chainlockHeight</code> reset <code>1556859 → -1</code>.</p>
+<p>After re-upgrading to FIX (<a class=ev href="../SRB/SR-07/rowcounts-reupgrade.txt">SR-07/rowcounts-reupgrade.txt</a>): <code>user_version = 22</code>, identity hash back to <code>5023599d…</code>, but <code>transaction_metadata</code> still has the single empty row — <strong>the memo and tax category are gone for good</strong>.</p>
+<p>What a user sees: the wallet still opens and the money is still there, but every private note, every manual tax classification, cached gift-card/merchant metadata and the local exchange-rate cache are silently erased, and re-installing 12.0.0 does not bring them back.</p>
+<p><strong>Correction to the SR row:</strong> the claim "every Room table is dropped" is right, but the <em>address book is not in this database</em>. <code>wt-fix/wallet/src/de/schildbach/wallet/data/AddressBookProvider.java:182</code> uses its own <code>DATABASE_NAME = "address_book"</code> SQLite file, so address-book entries are NOT lost. The 21↔22 schema is also SQL-identical for this dataset (<code>diff</code> of <code>sqlite_master</code> is empty, <a class=ev href="../SRB/SR-07/tables-after.txt">SR-07/tables-after.txt</a>) — the data loss is entirely gratuitous.</p>
+<h3 id="sr-08-prodrelease-seeds-all-five-sdk-flags-on-a-mainnet-wallet-reproduced-s1">SR-08 — <code>prodRelease</code> seeds all five SDK flags on a mainnet wallet — <strong>REPRODUCED, S1</strong></h3>
+<p>Steps: 11:45 installed <code>master-11.9.0-prod-release-signed.apk</code> (package <code>hashengineering.darkcoin.wallet</code>). 11:58–12:00 created a 12-word mainnet wallet, PIN 1234, <strong>never funded, balance 0, zero transactions</strong> (<a class=ev href="../SRB/SR-08/04-mainnet-home.webp">SR-08/04-mainnet-home.png</a>). Idled 60 s. 12:02 <code>install -r fix-12.0.0-prod-release-signed.apk</code>, launched, entered PIN.</p>
+<p>Before (<a class=ev href="../SRB/SR-08/05-datastore-ls-before.txt">SR-08/05-datastore-ls-before.txt</a>) — <code>/data/data/hashengineering.darkcoin.wallet/files/datastore/</code> contains coinbase / coinjoin / exchange_rates_config / explore / uphold / wallet_ui only. <strong>No <code>dashpay.preferences_pb</code>.</strong></p>
+<p>After (<a class=ev href="../SRB/SR-08/09-datastore-ls-after.txt">SR-08/09-datastore-ls-after.txt</a>) — <code>dashpay.preferences_pb</code> appears, 479 bytes, mtime 12:02.</p>
+<p><code>protoc --decode_raw &lt; SR-08/datastore-after/dashpay.preferences_pb</code> (<code>2 { 1: 1 }</code> is boolean <strong>true</strong>):</p>
+<pre><code>1 { 1: &quot;use_kotlin_sdk_dpns_reads&quot;        2 { 1: 1 } }
+1 { 1: &quot;use_kotlin_sdk_dashpay_writes&quot;    2 { 1: 1 } }
+1 { 1: &quot;use_kotlin_sdk_shielded&quot;          2 { 1: 1 } }
+1 { 1: &quot;use_kotlin_sdk_l1_invite&quot;         2 { 1: 1 } }
+1 { 1: &quot;use_kotlin_sdk_l1_shadow&quot;         2 { 1: 1 } }
+1 { 1: &quot;cutover_state&quot;                    2 { 5: &quot;CUT_OVER&quot; } }
+1 { 1: &quot;sdk_bind_ever_succeeded&quot;          2 { 1: 1 } }
+</code></pre>
+<p><a class=ev href="../SRB/logs-final/files/log/wallet.log">wallet.log</a> (<code>/data/data/hashengineering.darkcoin.wallet/files/log/wallet.log</code>, <a class=ev href="../SRB/SR-08/10-grep-walletlog.txt">SR-08/10-grep-walletlog.txt</a>):</p>
+<pre><code>17:02:12 [DefaultDispatcher-worker-7] CutoverCoordinator - cutover state DUAL_RUNNING -&gt; CUT_OVER (upgraded-wallet launch)
+17:02:12 [DefaultDispatcher-worker-1] CutoverCoordinator - upgrade cutover: one-time sync explainer armed (upgraded-wallet launch)
+17:02:12 [DefaultDispatcher-worker-1] CutoverCoordinator - upgrade cutover: replay marked as started for the SDK takeover
+</code></pre>
+<p>Source confirms it is intentional (<code>wt-fix/wallet/src/de/schildbach/wallet/ui/dashpay/utils/DashPayConfig.kt</code>, KDoc above <code>debugSeedFlags</code>): <em>"as of 2026-07-30 all variants seed (the BuildConfig.DEBUG gate was removed) … This means prodRelease exposes the SDK paths to REAL funds by default"</em>.</p>
+<p><strong>New, worse than the SR row:</strong> the FIX <strong>prodRelease</strong> Tools screen (<a class=ev href="../SRB/SR-08/13-tools-screen.webp">SR-08/13-tools-screen.png</a>) lists only Address book / Import private key / Network monitor / Extended public key / Masternode keys / CSV export / ZenLedger / "dashj sync (diagnostic)". There is <strong>no UI to turn any <code>USE_KOTLIN_SDK_*</code> flag off</strong> on a store build. A mainnet user is put on the unreviewed SDK paths with no opt-out.</p>
+<p>What the user sees first: an unskippable modal — <em>"A one-time sync is needed / DashPay needs to complete a full sync before you can send any funds."</em> (<a class=ev href="../SRB/SR-08/08-fix-prod-home.webp">SR-08/08-fix-prod-home.png</a>).</p>
+<p>Mainnet package uninstalled at 12:05.</p>
+<h3 id="sr-27-coinjoin-removed-persisted-mode-orphaned-reproduced-s2">SR-27 — CoinJoin removed, persisted mode orphaned — <strong>REPRODUCED, S2</strong></h3>
+<p>On MASTER 11.9.0 testnet (funded, 0.799995 tDASH): More → Settings shows <strong>"CoinJoin — Turned off"</strong> (<a class=ev href="../SRB/SR-27/04a-settings-coinjoin-off.webp">SR-27/04a-settings-coinjoin-off.png</a>). Enabled it → Continue → <strong>Intermediate</strong> → Start Mixing. Settings then reads <strong>"CoinJoin — Paused — 0.000 of 0.800"</strong> (<a class=ev href="../SRB/SR-27/09-settings-coinjoin-on.webp">SR-27/09-settings-coinjoin-on.png</a>).</p>
+<p>Persisted state before upgrade, <code>/data/data/…_test/files/datastore/coinjoin.preferences_pb</code> (<a class=ev href="../SRB/SR-27/BEFORE.txt">SR-27/BEFORE.txt</a>):</p>
+<pre><code>1 { 1: &quot;last_mixing_progress&quot;  2 { 7: 0x0000000000000000 } }
+1 { 1: &quot;first_time_info_shown&quot; 2 { 1: 1 } }
+1 { 1: &quot;coinjoin_mode&quot;         2 { 5: &quot;INTERMEDIATE&quot; } }
+</code></pre>
+<p>There is <strong>no <code>blockchain_identity</code> Room table</strong> in either schema 21 or 22 (<a class=ev href="../SRB/SR-27/BEFORE.txt">SR-27/BEFORE.txt</a>) — <code>privacyMode</code> lives on <code>BlockchainIdentityData</code> (<code>wt-master/.../database/entity/BlockchainIdentityData.kt:102</code>, serialised to prefs at <code>:313</code>), and that field <strong>does not exist at all in wt-fix</strong> (grep for <code>privacyMode</code> in the fix entity returns nothing).</p>
+<p>Mixing actually started on master (<a class=ev href="../SRB/logs-final/files/log/wallet.log">wallet.log</a>, <a class=ev href="../SRB/SR-27/13-grep-coinjoin.txt">SR-27/13-grep-coinjoin.txt</a>):</p>
+<pre><code>17:08:06 [DefaultDispatcher-worker-1] CoinJoinMixingService - coinjoin-state: INTERMEDIATE, 1181 ms, true, CONNECTED, synced: true, true
+17:08:06 [DefaultDispatcher-worker-1] CoinJoinMixingService - mixing configuration:  { rounds: 4, sessions: 6, amount: 0.79998403 DASH, multisession: false}
+17:08:06 [DefaultDispatcher-worker-1] CoinJoinMixingService - coinjoin-state-mixing: FINISHED -&gt; PAUSED
+</code></pre>
+<p>12:08 upgraded in place to FIX (<code>install -r</code>, video <a class=ev href="../SRB/SR-27/srb27-upgrade.mp4">SR-27/srb27-upgrade.mp4</a>). Settings now shows only Local currency / Rescan blockchain / About Dash / Notifications / Battery optimization — <strong>the CoinJoin row is gone entirely</strong> (<a class=ev href="../SRB/SR-27/11-fix-settings.webp">SR-27/11-fix-settings.png</a>, re-confirmed after a full relaunch in <a class=ev href="../SRB/SR-27/15-fix-home-after-mixing.webp">SR-27/15-fix-home-after-mixing.png</a>).</p>
+<p><code>coinjoin.preferences_pb</code> is still on disk, unchanged, <code>coinjoin_mode = INTERMEDIATE</code> (<a class=ev href="../SRB/SR-27/AFTER.txt">SR-27/AFTER.txt</a>) — orphaned with no reader/writer in the UI.</p>
+<p>After the upgrade FIX still <em>parses</em> the CoinJoin state but never mixes (<a class=ev href="../SRB/SR-27/14-post-upgrade-coinjoin.txt">SR-27/14-post-upgrade-coinjoin.txt</a>):</p>
+<pre><code>17:08:49 [main] WalletProtobufSerializer - Loading wallet extension org.dashj.wallet.coinjoin
+17:08:49 [DefaultDispatcher-worker-2] CoinJoinMixingTxSet - coinjoin grouping 985a668e… as CreateDenomination (inputs=1 outputs=29 dashjCoinJoinBalance=0)
+17:08:49 [DefaultDispatcher-worker-2] CoinJoinMixingTxSet - coinjoin grouping ab3797d4… as MakeCollateralInputs (inputs=1 outputs=2 dashjCoinJoinBalance=0)
+17:08:56 [DefaultDispatcher-worker-13] L1ShadowSyncService - WalletBalanceFacts: total=79999548 accounts={bip44:79999548, …, coinjoin:0, …}
+</code></pre>
+<p><code>CoinJoinFundsMigrationService</code> never appears in the log.</p>
+<p><strong>What a user loses:</strong> a user who had mixing switched on loses (a) the setting and any way to see it, change it or turn it off — the stored <code>INTERMEDIATE</code> value just sits there; (b) all future mixing — their newly received coins stop being mixed silently, a privacy downgrade they are never told about; (c) the "only spend mixed Dash" guarantee they opted into. Funds are intact (balance <code>0.799981</code>, <a class=ev href="../SRB/SR-27/16-fix-home-balance.webp">SR-27/16-fix-home-balance.png</a>) and the already-created mixing transactions still render in History as "Mixing Transactions — 2 transactions".</p>
+<h3 id="sr-23-sr-39-sr-43-build-configuration-reproduced-from-the-artefacts">SR-23 / SR-39 / SR-43 — build configuration — <strong>REPRODUCED from the artefacts</strong></h3>
+<p><code>aapt dump badging</code> (<code>/opt/homebrew/share/android-commandlinetools/build-tools/36.0.0/aapt</code>), full output per APK in <a class=ev href="../SRB/SR-23/badging-fix-12.0.0-prod-release-signed.txt">SR-23/badging-*.txt</a><sup class=more><a href="../SRB/SR-23/badging-fix-12.0.0-testnet3-release-signed.txt" title="SRB/SR-23/badging-fix-12.0.0-testnet3-release-signed.txt">2</a> <a href="../SRB/SR-23/badging-master-11.9.0-prod-release-signed.txt" title="SRB/SR-23/badging-master-11.9.0-prod-release-signed.txt">3</a> <a href="../SRB/SR-23/badging-master-11.9.0-testnet3-release-signed.txt" title="SRB/SR-23/badging-master-11.9.0-testnet3-release-signed.txt">4</a></sup>; table in <a class=ev href="../SRB/SR-23/SUMMARY-badging.txt">SR-23/SUMMARY-badging.txt</a>:</p>
+<pre><code>APK                                      versionCode  minSdk  targetSdk  compileSdk  native-code
+fix-12.0.0-prod-release-signed           12000000     29      35         35          arm64-v8a x86_64
+fix-12.0.0-testnet3-release-signed       12000000     29      35         35          arm64-v8a x86_64
+master-11.9.0-prod-release-signed        11090002     24      36         36          arm64-v8a armeabi-v7a x86 x86_64
+master-11.9.0-testnet3-release-signed    11090002     24      36         36          arm64-v8a armeabi-v7a x86 x86_64
+</code></pre>
+<ul>
+<li><strong><a class=did href="../../DEFECT-LEDGER.html#SR-23">SR-23</a></strong>: targetSdk regressed 36 → 35 in the shipped artefacts. Play rejects new releases below target 36 as of 31 Aug 2026 → release blocker, confirmed without reading the source.</li>
+<li><strong><a class=did href="../../DEFECT-LEDGER.html#SR-39">SR-39</a></strong>: <code>armeabi-v7a</code> and <code>x86</code> are both dropped. <a class=ev href="../SRB/SR-39/device-abilist.txt">SR-39/device-abilist.txt</a> — this emulator reports <code>ro.product.cpu.abilist = arm64-v8a</code>, <code>abilist32 = (empty)</code>, so it can only exercise the arm64 path; the shipped <code>x86_64</code> lib is never run by any QA device in this fleet, and the 32-bit path is gone entirely. Excluded devices: every 32-bit-only ARM phone (armeabi-v7a, e.g. Moto E/G budget lines, older Samsung A-series) and every x86 device (some tablets, Chromebook Android containers, x86 emulators). They keep the installed 11.9.0 forever and never see an update.</li>
+<li><strong>Unlisted regression found alongside <a class=did href="../../DEFECT-LEDGER.html#SR-39">SR-39</a></strong>: <code>minSdk</code> also went <strong>24 → 29</strong>, so Android 7.0/7.1/8.0/8.1/9 devices are additionally cut off. That is not in the <a class=did href="../../DEFECT-LEDGER.html#SR-39">SR-39</a> row and is a separate, larger user-reach loss.</li>
+<li><strong><a class=did href="../../DEFECT-LEDGER.html#SR-43">SR-43</a></strong>: <a class=ev href="../SRB/SR-43/gradle-compileSdk-placement.txt">SR-43/gradle-compileSdk-placement.txt</a> quotes <code>wt-fix/wallet/build.gradle:280-306</code> (<code>compileSdk 35</code> on line 282, <strong>inside</strong> <code>defaultConfig {</code>, opened on line 281) against <code>wt-master/wallet/build.gradle:248</code> (<code>compileSdk 36</code> at <code>android {}</code> level, <code>defaultConfig {</code> opens on line 250). The same misplacement is in <code>common</code>, <code>features/exploredash</code>, <code>integrations/uphold</code>, <code>integrations/coinbase</code>, <code>integrations/crowdnode</code>. The built APK does report <code>compileSdkVersion='35'</code>, so with this AGP the Groovy closure-owner fallthrough resolves — it works, it is just undocumented and AGP-version-fragile. S4 confirmed.</li>
+</ul>
+<h3 id="sr-42-received-path-handlers-on-our-own-bridged-sends-partial">SR-42 — received-path handlers on our own bridged sends — <strong>PARTIAL</strong></h3>
+<p>Setup: FIX testnet, funded wallet. 11:49 self-send 0.1 tDASH to own receive address <code>yhwrtTL9rpH2B8Er71psqZGFqpZiyGUrkC</code> (<a class=ev href="../SRB/SR-42/srb42-sends.mp4">SR-42/srb42-sends.mp4</a>, <a class=ev href="../SRB/SR-42/05-selfsend-amount-0.1.webp">SR-42/05..08</a><sup class=more><a href="../SRB/SR-42/06-selfsend-confirm.webp" title="SRB/SR-42/06-selfsend-confirm.webp">2</a> <a href="../SRB/SR-42/07-selfsend-after-pin.webp" title="SRB/SR-42/07-selfsend-after-pin.webp">3</a> <a href="../SRB/SR-42/08-selfsend-result.webp" title="SRB/SR-42/08-selfsend-result.webp">4</a> <a href="../SRB/SR-42/08b-selfsend-detail.webp" title="SRB/SR-42/08b-selfsend-detail.webp">5</a></sup>). 11:52 external send 0.2 tDASH to <code>yPrynRN6ViX2rCcRL5SoSi8ntcWgdHSEaS</code> (<a class=ev href="../SRB/SR-42/srb42-normalsend.mp4">SR-42/srb42-normalsend.mp4</a>, <a class=ev href="../SRB/SR-42/12-normalsend-amount.webp">SR-42/12..14</a><sup class=more><a href="../SRB/SR-42/13-normalsend-confirm.webp" title="SRB/SR-42/13-normalsend-confirm.webp">2</a> <a href="../SRB/SR-42/14-normalsend-result.webp" title="SRB/SR-42/14-normalsend-result.webp">3</a></sup>).</p>
+<p><a class=ev href="../SRB/logs-final/files/log/wallet.log">wallet.log</a> (<a class=ev href="../SRB/SR-42/grep-coins-callbacks.txt">SR-42/grep-coins-callbacks.txt</a>):</p>
+<pre><code>16:50:40 [DefaultDispatcher-worker-15] BlockchainServiceImpl - onCoinsReceived: dcc0f4c5a09640373f019b40f145e71c426a94e97eab3cc83363819c151140fd; rate: null; replaying: true; inside: false, config: PENDING; will update true
+16:50:40 [main] BlockchainServiceImpl - tx dcc0f4c5… was authored by this wallet — not a receive, no notification
+16:50:40 [DefaultDispatcher-worker-15] SdkBridgedTransactionFactory - bridged SDK tx dcc0f4c5… into the dashj wallet (committed)
+16:52:55 [DefaultDispatcher-worker-1] SdkBridgedTransactionFactory - bridged SDK tx ae7ee67d… into the dashj wallet (committed)
+</code></pre>
+<p><code>dcc0f4c5…</code> is the self-send. <strong><code>onCoinsReceived</code> runs on our own bridged send.</strong> In <code>wt-fix/wallet/src/de/schildbach/wallet/service/BlockchainServiceImpl.kt</code> only the notification is gated by <code>passFilters</code>/<code>shouldAnnounceCoinsReceived</code> (<code>:718</code>, <code>:777</code>); the following run unconditionally on that path:
+- <code>:704</code> <code>depositReceivedResponse.matches(tx.toTxInfo(…))</code> — CrowdNode deposit matcher
+- <code>:713-717</code> <code>apiConfirmationHandler!!.matches(…)</code> / <code>.handle(…)</code>
+- <code>:730</code> <code>handleContactPayments(tx)</code></p>
+<p>So <a class=did href="../../DEFECT-LEDGER.html#SR-42">SR-42</a>'s mechanism is confirmed on device. The external send <code>ae7ee67d…</code> produced no <code>onCoinsReceived</code> line.</p>
+<p><strong>Not reproduced: the user-visible symptom.</strong> <a class=ev href="../SRB/SR-42/01-send-screen-before.webp">SR-42/01-send-screen-before.png</a> (before any send) and <a class=ev href="../SRB/SR-42/15-send-screen-after-both-sends.webp">SR-42/15-send-screen-after-both-sends.png</a> (after both) are identical — the Send sheet shows only "Scan QR" and "Send to Address"; <code>contacts_pane</code> is an empty <code>LinearLayout</code> in both dumps. Frequent contacts require a registered DashPay identity, which this wallet does not have (0.8 tDASH &lt; the 0.25+ needed plus the username flow was out of budget). <code>dashpay_contact_request</code> and <code>dashpay_profile</code> are 0 rows before and after (<a class=ev href="../SRB/SR-07/rowcounts-before.txt">SR-07/rowcounts-before.txt</a>). Confirming the ordering pollution needs a DashPay-registered wallet — handing that back as unfinished.</p>
+<hr />
+<h2 id="new-defects-found-along-the-way">New defects found along the way</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Severity</th>
+<th>Defect</th>
+<th>Repro</th>
+<th>Evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SRB-D01</td>
+<td><strong>S2</strong></td>
+<td><code>minSdk</code> regressed <strong>24 → 29</strong> between 11.9.0 and 12.0.0 (not covered by <a class=did href="../../DEFECT-LEDGER.html#SR-23">SR-23</a> or <a class=did href="../../DEFECT-LEDGER.html#SR-39">SR-39</a>). Every Android 7.0–9 device loses updates permanently, on top of the ABI cut. Combined reach loss is much larger than <a class=did href="../../DEFECT-LEDGER.html#SR-39">SR-39</a> alone states.</td>
+<td><code>aapt dump badging</code> on the four APKs</td>
+<td><a class=ev href="../SRB/SR-23/SUMMARY-badging.txt">SR-23/SUMMARY-badging.txt</a></td>
+</tr>
+<tr>
+<td>SRB-D02</td>
+<td><strong>S2</strong></td>
+<td>On a <strong>prodRelease mainnet</strong> build there is no UI anywhere to disable the five seeded <code>USE_KOTLIN_SDK_*</code> flags. Tools exposes only "dashj sync (diagnostic)". A mainnet user is opted in to the SDK paths with real funds and cannot opt out.</td>
+<td>Install mainnet fix APK → More → Tools</td>
+<td><a class=ev href="../SRB/SR-08/13-tools-screen.webp">SR-08/13-tools-screen.png</a>, <code>SR-08/datastore-after/dashpay.preferences_pb</code></td>
+</tr>
+<tr>
+<td>SRB-D03</td>
+<td>S3</td>
+<td>Self-send transaction detail shows the wrong destination. After sending 0.1 tDASH to my own address <code>yhwrtTL9…</code>, the detail sheet reads "Sent to <strong>yhuxhoTjG4RB2JsegSfzYu7GEitdh1NuCc</strong>" — an internal change address, not the address the user typed. (Confirmed <code>yhuxho…</code> is ours: it is the "Sent from" address of the next transaction.)</td>
+<td>FIX, send to own receive address, open the resulting tx</td>
+<td><a class=ev href="../SRB/SR-42/08-selfsend-result.webp">SR-42/08-selfsend-result.png</a>, <a class=ev href="../SRB/SR-42/08b-selfsend-detail.webp">SR-42/08b-selfsend-detail.png</a>, <a class=ev href="../SRB/SR-42/14-normalsend-result.webp">SR-42/14-normalsend-result.png</a></td>
+</tr>
+<tr>
+<td>SRB-D04</td>
+<td>S4</td>
+<td>On the FIX build a newly received transaction defaults to Tax Category "Income" but a <strong>sent</strong> transaction's detail sheet also showed "Income" immediately after sending (it settles to "Expense" only after the tx list refreshes).</td>
+<td>FIX, make a send, read the result sheet</td>
+<td><a class=ev href="../SRB/SR-42/07-selfsend-after-pin.webp">SR-42/07-selfsend-after-pin.png</a> vs <a class=ev href="../SRB/SR-42/14-normalsend-result.webp">SR-42/14-normalsend-result.png</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="environment-problems">Environment problems</h2>
+<ul>
+<li><code>emulator-5556</code> / AVD <code>dw-qa2</code> was <strong>not running</strong> when this stream started — only <code>dw-qa1</code> on 5554. I started it myself. A third serial <code>emulator-5558</code> appeared <code>offline</code> mid-session (another stream's); untouched.</li>
+<li><code>qa-app.sh &lt;serial&gt; text 1234</code> does <strong>not</strong> drive the app's PIN pad (the digits never register). Tapping <code>btn_1</code>…<code>btn_4</code> by resource-id works. Worth fixing in the helper — every stream will hit it.</li>
+<li><code>qa-app.sh tapon 'text="Confirm"'</code> matches the screen <em>title</em> before the button on the payment-confirm sheet. Use <code>resource-id="…:id/confirm_payment"</code>.</li>
+<li>The faucet web flow worked first try (<code>https://faucet.thepasta.org/</code> → "Get tDASH" → address → Send → txid in ~10 s). Funds landed in-app in under 60 s.</li>
+</ul><div id=lb><span class=x>&times;</span><span class="nv pv">&#8249;</span><span class="nv nx">&#8250;</span><img><div class=cap></div></div>
+<script>(function(){var lb=document.getElementById('lb'),im=lb.querySelector('img'),cap=lb.querySelector('.cap'),L=[],i=0;
+function links(){return Array.prototype.slice.call(document.querySelectorAll('a[href$=".webp"],a[href$=".png"]'))}
+function show(n){L=links();if(n<0||n>=L.length)return;i=n;var a=L[i];im.src=a.href;cap.innerHTML=(a.textContent.trim()||a.href.split('/').slice(-3).join('/'))+' &nbsp;('+(i+1)+'/'+L.length+') &nbsp;<a href="'+a.href+'" target=_blank rel=noopener>open file</a>';lb.classList.add('on')}
+function hide(){lb.classList.remove('on');im.src=''}
+document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".webp"],a[href$=".png"]');if(a&&!a.closest('#lb')){e.preventDefault();show(links().indexOf(a))}});
+lb.querySelector('.x').onclick=hide;lb.querySelector('.pv').onclick=function(e){e.stopPropagation();show(i-1)};lb.querySelector('.nx').onclick=function(e){e.stopPropagation();show(i+1)};
+lb.addEventListener('click',function(e){if(e.target===lb||e.target===im)hide()});
+document.addEventListener('keydown',function(e){if(!lb.classList.contains('on'))return;if(e.key==='Escape')hide();if(e.key==='ArrowLeft')show(i-1);if(e.key==='ArrowRight')show(i+1)});})();</script><script>(function(){document.querySelectorAll('thead.sortable').forEach(function(th){var tb=th.parentNode.querySelector('tbody');var ths=th.querySelectorAll('th');
+ths.forEach(function(h,ci){h.style.cursor='pointer';h.title='click to sort';h.addEventListener('click',function(){var rows=Array.prototype.slice.call(tb.querySelectorAll('tr'));var asc=!(h.dataset.asc==='1');ths.forEach(function(x){delete x.dataset.asc;x.classList.remove('asc','desc')});h.dataset.asc=asc?'1':'0';h.classList.add(asc?'asc':'desc');
+var rank={S1:0,S2:1,S3:2,S4:3,other:4,dup:5,info:6,env:7};
+function key(r){if(ci===1)return rank[r.dataset.sev]!==undefined?rank[r.dataset.sev]:9;if(ci===0)return +r.dataset.idx;var c=r.children[ci];return c?c.textContent.trim().toLowerCase():''}
+rows.sort(function(a,b){var ka=key(a),kb=key(b);if(ka<kb)return asc?-1:1;if(ka>kb)return asc?1:-1;return (+a.dataset.idx)-(+b.dataset.idx)});rows.forEach(function(r){tb.appendChild(r)})})})})})();</script></html>

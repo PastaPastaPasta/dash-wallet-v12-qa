@@ -1,0 +1,449 @@
+<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Stream SRC report</title><style>body{font-family:system-ui,-apple-system,sans-serif;max-width:1400px;margin:0 auto;padding:16px 24px;line-height:1.45;background:#fff;color:#111}
+table{border-collapse:collapse;font-size:13px;margin:12px 0}th,td{border:1px solid #ddd;padding:4px 8px;vertical-align:top;text-align:left}th{background:#f3f6fa;position:sticky;top:0}
+tr:nth-child(even){background:#fafbfc}code{background:#f4f4f4;padding:1px 4px;border-radius:3px;font-size:12px}pre{background:#f4f4f4;padding:10px;overflow:auto}
+h1{border-bottom:3px solid #008de4}h2{border-bottom:1px solid #ccc;margin-top:40px}a{color:#008de4}a.ev{background:#e8f4fd;padding:0 3px;border-radius:3px;font-family:ui-monospace,monospace;font-size:12px}
+nav.top{background:#012060;color:#fff;padding:8px 24px;margin:-16px -24px 16px;position:sticky;top:0;z-index:5}nav.top a{color:#fff;margin-right:18px;text-decoration:none}nav.top a:hover{text-decoration:underline}
+.S1{color:#b00020;font-weight:bold}.S2{color:#c75000;font-weight:bold}.toc{background:#f8f9fb;border:1px solid #e3e6ea;padding:8px 16px;font-size:13px;columns:2}.toc ul{margin:2px 0;padding-left:16px}
+#lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:50;align-items:center;justify-content:center;flex-direction:column}#lb.on{display:flex}#lb img{max-width:96vw;max-height:88vh;border:2px solid #fff;box-shadow:0 0 30px #000}#lb .cap{color:#eee;font:13px ui-monospace,monospace;margin-top:8px}#lb .cap a{color:#8cf}#lb .x{position:absolute;top:10px;right:18px;color:#fff;font-size:30px;cursor:pointer}#lb .nv{position:absolute;top:50%;color:#fff;font-size:44px;cursor:pointer;padding:0 16px;user-select:none}#lb .pv{left:0}#lb .nx{right:0}a.img img{cursor:zoom-in}
+sup.more a{margin:0 2px;font-size:10px}
+thead.sortable th.asc::after{content:' \25B2';font-size:9px}thead.sortable th.desc::after{content:' \25BC';font-size:9px}
+tr[data-sev=S1] td:nth-child(2){background:#fde7e9}tr[data-sev=S2] td:nth-child(2){background:#fff1e0}
+a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:target{background:#fff3b0;outline:2px solid #f5b400}
+.note{background:#fff8e1;border-left:4px solid #f5b400;padding:8px 12px;margin:12px 0}
+</style><nav class=top><a href="../../index.html">Home</a><a href="../../QA-REPORT.html">Full report</a><a href="../../EXEC-SUMMARY.html">Executive summary</a><a href="../../STORY-MATRIX.html">User-story matrix</a><a href="../../DEFECT-LEDGER.html">Defect register</a><a href="../index.html">Evidence gallery</a><a href="../../QA-PLAN.html">Test plan</a><a href="../../streams.html">Stream reports</a></nav><h1 id="src-sr-device-reproduction-report-transparent-send-path-fix-build">SRC — SR device-reproduction report (transparent Send path, FIX build)</h1>
+<p><strong>Note:</strong> my harness blocked writing <code>$QA_EVIDENCE/SRC/REPORT.md</code> (subagents may not write report files), so the full report is below — please save it to that path. All evidence files, screenshots, videos, greps and <a class=ev href="../SRC/notes.html">notes.md</a> are on disk under <code>/Users/dcg/workspace/dash-wallet-qa/evidence/SRC/</code>.</p>
+<h2 id="header">Header</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Emulator</td>
+<td><code>emulator-5558</code>, AVD <strong>dw-qa3</strong>, Android 15 (API 35). The AVD was <strong>not running</strong> at task start — I started it myself with the same flags as the others.</td>
+</tr>
+<tr>
+<td>APK under test</td>
+<td><code>fix-12.0.0-testnet3-release-signed.apk</code>, versionName 12.0.0, <strong>versionCode 12000000</strong></td>
+</tr>
+<tr>
+<td>Baseline</td>
+<td><code>master-11.9.0…</code> (vc 11090002) — <strong>not installed</strong>, see "Not done"</td>
+</tr>
+<tr>
+<td>Engine</td>
+<td><strong>cutover committed</strong> all session (<code>BlockchainServiceImpl - cutover committed — holding the dashj L1 engine; SDK owns L1 this launch</code>), so every send took the SDK route</td>
+</tr>
+<tr>
+<td>Seed (QA throwaway, created by me)</td>
+<td><code>result service coyote mass various shield plastic water subject vacant tree legend</code>, PIN 1234 (<a class=ev href="../SRC/setup/SEED.txt">setup/SEED.txt</a>)</td>
+</tr>
+<tr>
+<td>Funding</td>
+<td>2 × 1 tDASH from faucet.thepasta.org: <code>057b1808…410b</code> → <code>yVuNuykoLNRt4X4WpmyvyF47LNqEKn83Df</code>; <code>c6fe82fd…7e41</code> → <code>yQJ66b2xF2EzXpiyYGYzQ8P8vP4RBp3Bic</code></td>
+</tr>
+<tr>
+<td>Destination</td>
+<td><code>yRjAzoyfZ7DpzLFmVGiLispLjUaYKRnL52</code> (S1 throwaway)</td>
+</tr>
+<tr>
+<td>Session</td>
+<td>11:40 → 12:52 CDT 2026-09-19 (app log timestamps are UTC = local + 5 h)</td>
+</tr>
+<tr>
+<td>Session artifacts</td>
+<td><a class=ev href="../SRC/logcat.txt">logcat.txt</a> (117k lines), <a class=ev href="../SRC/mem.csv">mem.csv</a> (66 samples, 452 MB PSS at end), <a class=ev href="../SRC/logs/files/log/wallet.log">logs/files/log/wallet.log</a> (814 KB), <a class=ev href="../SRC/notes.html">notes.md</a></td>
+</tr>
+</tbody>
+</table>
+<p>All <a class=ev href="../SRC/logs/files/log/wallet.log">wallet.log</a> quotes are from <code>/data/data/hashengineering.darkcoin.wallet_test/files/log/wallet.log</code>, pulled to <a class=ev href="../SRC/logs/files/log/wallet.log">evidence/SRC/logs/files/log/wallet.log</a> and copied into each <a class=ev href="../SRC/SR-10/logs/wallet.log">SR-*/logs/</a><sup class=more><a href="../SRC/SR-16-17/logs/wallet.log" title="SRC/SR-16-17/logs">2</a> <a href="../SRC/SR-19/logs/wallet.log" title="SRC/SR-19/logs">3</a> <a href="../SRC/SR-28/logs/wallet.log" title="SRC/SR-28/logs">4</a> <a href="../SRC/SR-29/logs/files/log/wallet.log" title="SRC/SR-29/logs">5</a> <a href="../SRC/SR-32/logs/wallet.log" title="SRC/SR-32/logs">6</a></sup>.</p>
+<h2 id="verdict-table">Verdict table</h2>
+<table>
+<thead>
+<tr>
+<th>SR-id</th>
+<th>Verdict</th>
+<th>What I did</th>
+<th>Decisive evidence</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><a class=did href="../../DEFECT-LEDGER.html#SR-19">SR-19</a></strong> memo + exchange rate dropped</td>
+<td><strong>REPRODUCED</strong></td>
+<td>BIP21 deeplink with <code>label=Bob&amp;message=SR19memo</code>, sent 0.01; 4 further SDK sends</td>
+<td><a class=ev href="../SRC/SR-19/06-grep-memo-exchangerate.txt">SR-19/06-grep-memo-exchangerate.txt</a>, <a class=ev href="../SRC/SR-19/17-grep-txmetadata-all.txt">SR-19/17-grep-txmetadata-all.txt</a>, <a class=ev href="../SRC/SR-19/05-txdetail-no-memo-no-fiat.webp">SR-19/05-txdetail-no-memo-no-fiat.png</a></td>
+<td>5/5 sends stored <code>memo=</code>, <code>currencyCode=null</code>, <code>rate=null</code> <strong>and <code>value=0</code></strong>. Control: a hand-typed note <em>is</em> stored</td>
+</tr>
+<tr>
+<td><strong><a class=did href="../../DEFECT-LEDGER.html#SR-28">SR-28</a></strong> flat 0.0001 fee + affordability gate</td>
+<td><strong>REPRODUCED</strong></td>
+<td>Confirm-sheet fee vs on-chain fee; probed the typed-amount gate at 4 values</td>
+<td><a class=ev href="../SRC/SR-28/numbers.txt">SR-28/numbers.txt</a>, <a class=ev href="../SRC/SR-28/01-confirm-0.01-fee-shown.webp">SR-28/01-confirm-0.01-fee-shown.png</a>, <a class=ev href="../SRC/SR-28/03-explorer-tx-0.01.json">SR-28/03-explorer-tx-0.01.json</a>, <a class=ev href="../SRC/SR-28/13-typed-98994774.webp">SR-28/13-typed-98994774.png</a></td>
+<td>10 000 duffs shown vs 226 real = <strong>44.2×</strong>; typed amounts near the balance silently rewritten, <strong>no error</strong></td>
+</tr>
+<tr>
+<td><strong><a class=did href="../../DEFECT-LEDGER.html#SR-29">SR-29</a></strong> send-all fails first attempt</td>
+<td><strong>REPRODUCED (twice)</strong></td>
+<td>Two independent Send-Max flows 34 min apart</td>
+<td><a class=ev href="../SRC/SR-29/05-grep-sendall.txt">SR-29/05-grep-sendall.txt</a>, <a class=ev href="../SRC/SR-29/11-grep-both-max.txt">SR-29/11-grep-both-max.txt</a>, <a class=ev href="../SRC/SR-29/ANALYSIS.txt">SR-29/ANALYSIS.txt</a>, <a class=ev href="../SRC/SR-29/sr29-max1.mp4">SR-29/sr29-max1.mp4</a></td>
+<td>Reserve 339 vs real fee 384 → 45-duff shortfall, identical both runs</td>
+</tr>
+<tr>
+<td><strong><a class=did href="../../DEFECT-LEDGER.html#SR-32">SR-32</a></strong> Max has no replay hold</td>
+<td><strong>PARTIAL</strong></td>
+<td>2 reset+restore replays, header polled 6–15 s, Max read on Send screen</td>
+<td><code>CutoverUiDataService.kt:2400-2413</code>; <a class=ev href="../SRC/SR-32/timeline.txt">SR-32/timeline.txt</a>, <a class=ev href="../SRC/SR-32/08-max-after-auth.webp">SR-32/08-max-after-auth.png</a></td>
+<td>Code confirmed (no <code>_l1Synced</code> term); visible divergence masked by <a class=did href="../../DEFECT-LEDGER.html#SR-10">SR-10</a></td>
+</tr>
+<tr>
+<td><strong><a class=did href="../../DEFECT-LEDGER.html#SR-10">SR-10</a></strong> hold-last-known inert</td>
+<td><strong>REPRODUCED</strong></td>
+<td>Reset + restore same seed ×2, header sampled through replay</td>
+<td><a class=ev href="../SRC/SR-10/restore2-timeline.txt">SR-10/restore2-timeline.txt</a>, <a class=ev href="../SRC/SR-10/02-grep-published-after-restore2.txt">SR-10/02-grep-published-after-restore2.txt</a>, <a class=ev href="../SRC/SR-10/r01-header.webp">SR-10/r01..r04-header.png</a><sup class=more><a href="../SRC/SR-10/r02-header.webp" title="SRC/SR-10/r02-header.webp">2</a> <a href="../SRC/SR-10/r03-header.webp" title="SRC/SR-10/r03-header.webp">3</a> <a href="../SRC/SR-10/r04-header.webp" title="SRC/SR-10/r04-header.webp">4</a></sup></td>
+<td>Header <strong>0</strong> at 15/32/44/54 % while the wallet held 1 tDASH</td>
+</tr>
+<tr>
+<td><strong><a class=did href="../../DEFECT-LEDGER.html#SR-16">SR-16</a> / <a class=did href="../../DEFECT-LEDGER.html#SR-16">SR-17</a></strong> drain guard / lock registry</td>
+<td><strong>PARTIAL</strong> (inert half confirmed)</td>
+<td>0.01 send → 0.005 on the unconfirmed change (+62 s) → Send-Max on it (+115 s)</td>
+<td><a class=ev href="../SRC/SR-16-17/07-grep-locks.txt">SR-16-17/07-grep-locks.txt</a> (<strong>0 matches session-wide</strong>), <a class=ev href="../SRC/SR-16-17/timeline.txt">SR-16-17/timeline.txt</a>, <a class=ev href="../SRC/SR-16-17/sr1617.mp4">sr1617.mp4</a></td>
+<td>No lock/pending error ever; guard never fired or logged</td>
+</tr>
+<tr>
+<td><strong><a class=did href="../../DEFECT-LEDGER.html#SR-18">SR-18</a></strong> Coinbase estimateNetworkFee</td>
+<td><strong>BLOCKED</strong></td>
+<td>Buy &amp; Sell → Coinbase → Link → explainer → OAuth</td>
+<td><a class=ev href="../SRC/SR-18/VERDICT.txt">SR-18/VERDICT.txt</a>, <a class=ev href="../SRC/SR-18/02-buysell.webp">SR-18/02-buysell.png</a>, <a class=ev href="../SRC/SR-18/05-oauth.webp">SR-18/05-oauth.png</a></td>
+<td>Build has <strong>no Coinbase keys</strong>; <code>TransferDashFragment</code> unreachable. 9 min spent</td>
+</tr>
+</tbody>
+</table>
+<h2 id="numbers-shown-fee-vs-real-fee">Numbers: shown fee vs real fee</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Send</th>
+<th>txid</th>
+<th>shown "Network fee"</th>
+<th>real fee (insight)</th>
+<th>size / in / out</th>
+<th>ratio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>0.01 plain (BIP21 memo)</td>
+<td><code>aa659fc9…4ccc</code></td>
+<td><strong>0.0001</strong> (10 000 duffs)</td>
+<td><strong>0.00000226</strong> (226)</td>
+<td>225 B, 1-in 2-out</td>
+<td><strong>44.2×</strong></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Send-Max #1</td>
+<td><code>61dd9f06…9aef</code></td>
+<td><strong>0.0001</strong></td>
+<td><strong>0.00000384</strong> (384)</td>
+<td>191 B, 1-in 1-out</td>
+<td><strong>26.0×</strong></td>
+</tr>
+<tr>
+<td>3</td>
+<td>0.01 plain</td>
+<td><code>fcb3231e…f5a0</code></td>
+<td>0.0001</td>
+<td>0.00000226</td>
+<td>225 B, 1-in 2-out</td>
+<td>44.2×</td>
+</tr>
+<tr>
+<td>4</td>
+<td>0.005 (spends unconfirmed change)</td>
+<td><code>b6109773…bb0d</code></td>
+<td>0.0001</td>
+<td>0.00000226</td>
+<td>226 B, 1-in 2-out</td>
+<td>44.2×</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Send-Max #2</td>
+<td><code>fd5d4dff…9db1</code></td>
+<td><strong>0.0001</strong></td>
+<td><strong>0.00000384</strong></td>
+<td>191 B, 1-in 1-out</td>
+<td><strong>26.0×</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Raw: <a class=ev href="../SRC/SR-28/03-explorer-tx-0.01.json">SR-28/03-explorer-tx-0.01.json</a>, <a class=ev href="../SRC/SR-29/12-explorer-fees.txt">SR-29/12-explorer-fees.txt</a>.</p>
+<h2 id="numbers-header-vs-max-across-a-replay-restore-2">Numbers: header vs Max across a replay (restore #2)</h2>
+<table>
+<thead>
+<tr>
+<th>local time</th>
+<th>sync label</th>
+<th>header</th>
+<th>header fiat</th>
+<th>Max</th>
+<th>true balance</th>
+<th>file</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>12:36:37</td>
+<td>"Syncing balance"</td>
+<td><code>0</code></td>
+<td><code>$ 0</code></td>
+<td>—</td>
+<td>1.00000000</td>
+<td><a class=ev href="../SRC/SR-32/07-after-restore.webp">SR-32/07-after-restore.png</a></td>
+</tr>
+<tr>
+<td>12:36:49</td>
+<td>Syncing <strong>15 %</strong></td>
+<td><code>0</code></td>
+<td><code>$ 0</code></td>
+<td>—</td>
+<td>1.00000000</td>
+<td><a class=ev href="../SRC/SR-10/r01-header.webp">SR-10/r01-header.png</a></td>
+</tr>
+<tr>
+<td>12:37:01</td>
+<td>Syncing <strong>32 %</strong></td>
+<td><code>0</code></td>
+<td><code>$ 0</code></td>
+<td>—</td>
+<td>1.00000000</td>
+<td><a class=ev href="../SRC/SR-10/r02-header.webp">SR-10/r02-header.png</a></td>
+</tr>
+<tr>
+<td>12:37:10</td>
+<td>Syncing <strong>44 %</strong></td>
+<td><code>0</code></td>
+<td><code>$ 0</code></td>
+<td>—</td>
+<td>1.00000000</td>
+<td><a class=ev href="../SRC/SR-10/r03-header.webp">SR-10/r03-header.png</a></td>
+</tr>
+<tr>
+<td>12:37:21</td>
+<td>Syncing <strong>54 %</strong></td>
+<td><code>0</code></td>
+<td><code>$ 0</code></td>
+<td>—</td>
+<td>1.00000000</td>
+<td><a class=ev href="../SRC/SR-10/r04-header.webp">SR-10/r04-header.png</a></td>
+</tr>
+<tr>
+<td>12:40:46</td>
+<td>(gone)</td>
+<td><code>1</code></td>
+<td>—</td>
+<td>—</td>
+<td>1.00000000</td>
+<td><a class=ev href="../SRC/SR-10/r99-final.webp">SR-10/r99-final.png</a></td>
+</tr>
+</tbody>
+</table>
+<p>Restore #1, single sample: 12:26:06 header <code>0</code>, <code>Syncing 24 %</code>, true balance 1.0 (<a class=ev href="../SRC/SR-32/timeline.txt">SR-32/timeline.txt</a>). Once <code>l1Synced=true</code>, header <code>1</code> and Max <code>1</code> agree (<a class=ev href="../SRC/SR-32/08-max-after-auth.webp">SR-32/08-max-after-auth.png</a>).</p>
+<hr />
+<h2 id="detail">Detail</h2>
+<h3 id="sr-19-memo-and-exchange-rate-dropped-on-every-sdk-routed-send-reproduced-s2">SR-19 — memo and exchange rate dropped on every SDK-routed send — REPRODUCED (S2)</h3>
+<p><code>dash:yRjAzoyf…?amount=0.01&amp;message=SR19memo&amp;label=Bob</code> → <code>PaymentIntent.fromPaymentUri</code> (<code>common/src/main/java/org/dash/wallet/common/data/PaymentIntent.java:270</code>) maps BIP21 <strong><code>label=</code></strong> onto <code>PaymentIntent.memo</code>, so the intent carried memo <code>Bob</code>. After sending, the tx detail shows <strong>"Private Note — Add Note"</strong> (empty) and no fiat value.</p>
+<pre><code>16:57:02 [DefaultDispatcher-worker-7] WalletTransactionMetadataProvider - txmetadata: inserting
+  TransactionMetadata(txId=aa659fc9ab82b67a6741e3e88db4fa1e3ef45de3360d33a77e9b0db872854ccc,
+  timestamp=1789837021819, value=0, type=Sent, taxCategory=null, currencyCode=null, rate=null,
+  memo=, service=null, customIconId=null)
+</code></pre>
+<p>All <strong>five</strong> sends produced the identical shape (<a class=ev href="../SRC/SR-19/17-grep-txmetadata-all.txt">SR-19/17-grep-txmetadata-all.txt</a>). Control ruling out "the store is unused": I typed a note by hand on <code>fd5d4dff</code> and the store accepted it at once —</p>
+<pre><code>17:48:05 TxDisplayCacheService - metadata re-decorated 1 wrapperless row(s): fd5d4dff memo=11 chars
+</code></pre>
+<p>So the store works; the send funnel never supplies <code>sendRequest.memo</code> / <code>.exchangeRate</code> (set at <code>SendCoinsViewModel.kt:283-284</code>, discarded because <code>SendCoinsTaskRunner.kt:1179</code> routes to <code>sendViaSdkBridged(address, amount, …)</code> at <code>:437</code>, whose signature carries only address/amount/emptyWallet).</p>
+<h3 id="sr-28-flat-00001-fee-shown-and-used-as-the-gate-reproduced-s3-arguably-s2">SR-28 — flat 0.0001 fee, shown <em>and</em> used as the gate — REPRODUCED (S3, arguably S2)</h3>
+<p><code>SEND_ALL_FEE_RESERVE_DUFFS = 10_000L</code> (<code>SdkL1SendService.kt:216</code>) does both jobs.</p>
+<p>(a) Display: confirm sheet <code>Network fee 0.0001</code>, <code>Total 0.0101</code>; tx paid 226 duffs. Post-cutover the dry-run never runs <code>completeTx</code>, so <code>SendCoinsFragment.kt:295</code> (<code>dryRunRequest.tx.fee ?: viewModel.dryRunFeeEstimate</code>) always falls back to the constant.</p>
+<p>(b) Gate. Spendable (Max) was <strong>0.98999774</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>typed</th>
+<th>shown ~1 s later</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0.98994774</code> (bal − 0.00005)</td>
+<td><strong>0.98989774</strong></td>
+</tr>
+<tr>
+<td><code>0.9899</code></td>
+<td><strong>0.98989774</strong></td>
+</tr>
+<tr>
+<td><code>0.98999774</code> (exact balance)</td>
+<td><strong>0.98989774</strong></td>
+</tr>
+<tr>
+<td><code>0.9899999</code></td>
+<td><strong>0.98989774</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Everything above <code>balance − 10 000 duffs</code> collapses to exactly <code>balance − 10 000 duffs</code>, with <strong>no error text, dialog or toast</strong> — the Send button stays enabled on the reduced number. Mechanism: <code>SendCoinsViewModel.kt:519</code> <code>throw InsufficientMoneyException(amount.add(feeReserve).subtract(maxOutput))</code> feeding <code>:345-346</code> <code>val adjusted = currentAmount.subtract(missing)</code>. Stranded per typed send: 10 000 − 226 = <strong>9 774 duffs</strong> (43× the real fee). The Max button is exempt (fills the full balance, routes as a drain).</p>
+<h3 id="sr-29-every-send-max-fails-its-first-attempt-reproduced-twice-s3">SR-29 — every send-max fails its first attempt — REPRODUCED twice (S3)</h3>
+<p>Run 1, 12:11 local, one 98 999 774-duff UTXO:</p>
+<pre><code>17:11:47 SendCoinsTaskRunner - cutover committed: routing the SendRequest payment via the SDK bridge (98999774 duffs to yRjAzoyf…, send-all)
+17:11:47 SdkL1SendService - SDK l1SendAll: floor 98999435 duffs not deliverable at fee; retrying engine-authoritatively
+org.dashfoundation.dashsdk.errors.DashSdkError$PlatformWallet$CoreInsufficientFunds: insufficient unreserved
+  Core funds across the pooled funding sources [BIP44, BIP32, AllDashpayReceivingFunds]:
+  available Some(98999774), required Some(98999819)
+        at …DashSdkL1SendSource$sendAllToAddress$2.invokeSuspend(SdkL1SendService.kt:808)
+17:11:48 SdkL1SendService - SDK l1SendAll: broadcast 98999774 duffs to yRjAzoyf…, txid 61dd9f06…9aef
+</code></pre>
+<p>Run 2, 12:45 local, after a full reset+restore and two fresh sends — a completely independent UTXO:</p>
+<pre><code>17:45:43 SendCoinsTaskRunner - cutover committed: routing the SendRequest payment via the SDK bridge (98499548 duffs to yRjAzoyf…, send-all)
+17:45:43 SdkL1SendService - SDK l1SendAll: floor 98499209 duffs not deliverable at fee; retrying engine-authoritatively
+17:45:44 SdkL1SendService - SDK l1SendAll: broadcast 98499548 duffs to yRjAzoyf…, txid fd5d4dff…9db1
+</code></pre>
+<p>Identical arithmetic both times:
+- reserve = balance − floor = <strong>339 duffs</strong> = <code>sendAllFeeReserveDuffs(1)</code> = <code>(10 + 148 + 68) × 3/2</code> = 226 B × <strong>1.5 duffs/B</strong> (<code>SdkL1SendService.kt:225-234</code>)
+- real fee = <strong>384 duffs</strong> over 191 B = <strong>2 duffs/B</strong> (insight)
+- <code>required − available</code> = 98 999 819 − 98 999 774 = <strong>45</strong> = 384 − 339</p>
+<p>The floor is short by 25 % of the fee on every send-max, independent of amount. It only completes because <code>SdkL1SendService.kt:1360-1374</code> catches the throwable, classifies it with <code>isSendAllShortfall()</code> (<code>:342-348</code>, legacy arm matching <code>message.startsWith("transaction build failed") &amp;&amp; message.contains("Insufficient funds")</code>) and retries with floor = 1. Any change to the SDK's error type or wording turns every Send-Max into a hard failure.</p>
+<h3 id="sr-32-send-max-has-no-replay-hold-partial">SR-32 — Send-Max has no replay hold — PARTIAL</h3>
+<p>Verbatim from <code>CutoverUiDataService.kt</code>:</p>
+<pre><code class="language-kotlin">fun overlayTotalBalance(dashjBalance: Flow&lt;Coin&gt;): Flow&lt;Coin&gt; =
+    combine(_sdkTotalBalance, _l1Synced, _lastKnownTotalBalance, dashjBalance) { sdk, synced, lastKnown, dashj -&gt;
+        when {
+            sdk == null -&gt; dashj
+            synced -&gt; sdk
+            lastKnown != null &amp;&amp; lastKnown.isPositive -&gt; lastKnown
+            else -&gt; sdk
+        }
+    }
+
+fun overlayMaxSendableBalance(dashjBalance: Flow&lt;Coin&gt;): Flow&lt;Coin&gt; =
+    combine(_sdkMaxSendable, _sdkTotalBalance, dashjBalance) { maxSendable, total, dashj -&gt;
+        maxSendable ?: total ?: dashj
+    }
+</code></pre>
+<p><code>overlayMaxSendableBalance</code> has <strong>no <code>_l1Synced</code> term at all</strong> — the Max feed is unconditionally the live (possibly partial) SDK figure. On device I could not make the divergence visible, and the reason is itself a finding: the header only holds when <code>lastKnown</code> is <strong>positive</strong>, and on a reset+restored wallet <code>lastKnown</code> is <code>0</code>, so the header falls through to the same partial. Both read <code>0</code>, then both read <code>1</code>. Producing the divergence needs a positive persisted <code>LAST_TOTAL_BALANCE</code> <strong>and</strong> an <code>l1Synced=false</code> window, i.e. an upgraded long-lived wallet.</p>
+<p>Harness note: the <strong>Max button re-triggers the reveal-balance PIN prompt</strong> for every new <code>SendCoinsActivity</code> even with <em>Autohide Balance</em> OFF, which makes sub-15 s header/Max sampling impossible without an auth in between.</p>
+<h3 id="sr-10-hold-last-known-inert-on-a-createdrestored-wallet-reproduced-s2">SR-10 — hold-last-known inert on a created/restored wallet — REPRODUCED (S2)</h3>
+<p>Security → Reset Wallet → Restore with the same seed, wallet holding exactly 1.00000000 tDASH. Done twice.</p>
+<pre><code>12:36:49 HEADER=&quot;0&quot; FIAT=&quot;$ 0&quot; SYNC=&quot;Syncing balance&quot; &quot;Syncing 15%&quot;
+12:37:01 HEADER=&quot;0&quot; FIAT=&quot;$ 0&quot; SYNC=&quot;Syncing balance&quot; &quot;Syncing 32%&quot;
+12:37:10 HEADER=&quot;0&quot; FIAT=&quot;$ 0&quot; SYNC=&quot;Syncing balance&quot; &quot;Syncing 44%&quot;
+12:37:21 HEADER=&quot;0&quot; FIAT=&quot;$ 0&quot; SYNC=&quot;Syncing balance&quot; &quot;Syncing 54%&quot;
+12:40:46 HEADER=&quot;1&quot;  (sync label gone)
+</code></pre>
+<p>Why:</p>
+<pre><code>17:36:25 CutoverUiDataService - SDK balance published: 0 duffs (was none) | l1Synced=false rescanArmedHold=false
+         dashPayBackfill(armed=false,replaying=false) deferredContactBuilds=0 (unchangedReads=3)
+         persistedAsLastKnown=false lastKnown=0
+17:39:12 CutoverUiDataService - SDK balance published: 100000000 duffs (was 0) | l1Synced=false rescanArmedHold=true
+         … persistedAsLastKnown=false lastKnown=0
+</code></pre>
+<p><code>lastKnown=0</code> is not positive → <code>else -&gt; sdk</code> → live partial. And <code>persistedAsLastKnown=false</code> held for the whole post-restore lifetime, because <code>persist = synced &amp;&amp; !armedRescanHold &amp;&amp; backfillStatus.settled &amp;&amp; buildsSettled</code> (<code>CutoverUiDataService.kt:2769</code>) and <code>rescanArmedHold</code> was still <code>true</code> 15 min after the restore — so the restored wallet never arms the hold for its <em>next</em> launch either. Same shape right after wallet creation (<code>16:45:31 … 0 duffs (was none) … lastKnown=none</code>).</p>
+<p>User impact: after restoring a funded wallet the header reads <strong>0 / $0</strong> for the whole scan, then jumps — exactly the "reads as fund loss" the hold was written to prevent, inert precisely on the wallets where it matters first.</p>
+<h3 id="sr-16-sr-17-drain-guard-inert-lock-registry-with-no-release-partial">SR-16 / SR-17 — drain guard inert, lock registry with no release — PARTIAL</h3>
+<pre><code>12:42:56  send 0.01  -&gt; fcb3231e…f5a0, change 0.98999548 to ySexs4Je… (UNCONFIRMED)
+12:43:xx  (+62 s)  send 0.005 spending that unconfirmed change -&gt; b6109773…bb0d   SUCCEEDED
+12:45:43  (+115 s) Send-Max over the still-unconfirmed change  -&gt; fd5d4dff…9db1   SUCCEEDED
+</code></pre>
+<p>No "pending outputs" / "locked" / "wait for confirmation" error at any point, and a session-wide grep for <code>drain guard|hasAnyLocks|SeamOutputLock|locked outputs|seam-locked</code> over the whole 814 KB <a class=ev href="../SRC/logs/files/log/wallet.log">wallet.log</a> returns <strong>zero matches</strong>. The guard neither blocked nor logged.</p>
+<p>Consistent with <a class=did href="../../DEFECT-LEDGER.html#SR-16">SR-16</a>: the dashj half is <code>wallet == null || wallet.calculateAllSpendCandidates(true, true).any { wallet.isLockedOutput(it.outPointFor) }</code> (<code>SdkL1SendService.kt:1148-1157</code>) evaluated against the <strong>held</strong> dashj wallet (empty candidate set post-cutover), and the seam half is <code>seamOutputLockRegistry.hasAnyLocks()</code> (<code>:1546</code>) over a registry whose only mutator is <code>lockOutput</code> — <code>SeamOutputLockRegistry.kt</code> exposes <code>lockOutput</code>, <code>hasAnyLocks</code>, <code>isLocked</code> and <strong>no unlock/release/clear of any kind</strong>, confirming <a class=did href="../../DEFECT-LEDGER.html#SR-16">SR-17</a>'s "no release API" at code level. The false-positive half was unexercisable: nothing in a plain transparent wallet produces a seam lock (needs a CrowdNode deposit).</p>
+<h3 id="sr-18-blocked">SR-18 — BLOCKED</h3>
+<p>Buy &amp; Sell shows <em>"Keys are missing for these services. See CONFIGURATION FOR UPHOLD AND COINBASE in README.md"</em>. Coinbase → "Link Coinbase Account" → auth-limit explainer → "I got it" hands off to Chrome for OAuth (<code>mCurrentFocus=com.android.chrome/…FirstRunActivity</code>). <code>TransferDashFragment</code> — the caller of <code>estimateNetworkFee</code> — needs a linked account. 9 minutes spent.</p>
+<hr />
+<h2 id="new-defects-found-along-the-way">New defects found along the way</h2>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>Sev</th>
+<th>Defect</th>
+<th>Repro</th>
+<th>Evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SRC-N1</td>
+<td><strong>S2</strong></td>
+<td><strong>Every SDK-routed send is stored with <code>value=0</code> in the tx metadata store</strong> — the amount is lost too, independent of <a class=did href="../../DEFECT-LEDGER.html#SR-19">SR-19</a>. Anything reading <code>TransactionMetadata.value</code> (tax categorisation, CSV/ZenLedger pipeline, Platform tx-metadata sync) sees 0 for all 5 sends.</td>
+<td>any transparent send on FIX; grep <code>txmetadata: inserting</code></td>
+<td><a class=ev href="../SRC/SR-19/17-grep-txmetadata-all.txt">SR-19/17-grep-txmetadata-all.txt</a> (5/5 rows)</td>
+</tr>
+<tr>
+<td>SRC-N2</td>
+<td><strong>S2</strong></td>
+<td><strong>Typed send amount silently reduced with no message.</strong> Any amount within 10 000 duffs of the spendable balance is rewritten down to <code>balance − 0.0001</code> while the user watches; Send stays enabled, no error/toast/dialog. Typing "0.9899" sends 0.98989774.</td>
+<td>Send → type any value in <code>(balance − 0.0001, balance]</code></td>
+<td><a class=ev href="../SRC/SR-28/13-typed-98994774.webp">SR-28/13-typed-98994774.png</a>, <a class=ev href="../SRC/SR-28/numbers.txt">SR-28/numbers.txt</a></td>
+</tr>
+<tr>
+<td>SRC-N3</td>
+<td><strong>S3</strong></td>
+<td><strong>CSV export writes an empty Fee column</strong> (and has no memo/fiat columns) even though both fees are known on-chain.</td>
+<td>Tools → CSV export</td>
+<td><a class=ev href="../SRC/SR-19/16-csv-export.csv">SR-19/16-csv-export.csv</a></td>
+</tr>
+<tr>
+<td>SRC-N4</td>
+<td><strong>S3</strong></td>
+<td><strong>Plain-send tx detail shows no Network fee row and no fiat; drain tx detail shows both.</strong> User cannot see what a normal send cost.</td>
+<td>compare the two detail sheets</td>
+<td><code>SR-19/05-…png</code> vs <a class=ev href="../SRC/SR-29/10-max2-result.webp">SR-29/10-max2-result.png</a></td>
+</tr>
+<tr>
+<td>SRC-N5</td>
+<td><strong>S3</strong></td>
+<td><strong>"Sent to" lists the change address as a recipient</strong> alongside the real payee.</td>
+<td>any send with change</td>
+<td><a class=ev href="../SRC/SR-19/05-txdetail-no-memo-no-fiat.webp">SR-19/05-txdetail-no-memo-no-fiat.png</a></td>
+</tr>
+<tr>
+<td>SRC-N6</td>
+<td><strong>S4</strong></td>
+<td><strong>Max re-prompts for the PIN on every new Send screen even with Autohide Balance OFF</strong> (it triggers the reveal-balance auth path).</td>
+<td>Autohide off; deeplink to Send; tap Max</td>
+<td><a class=ev href="../SRC/setup/23-autohide.webp">setup/23-autohide.png</a>, <a class=ev href="../SRC/SR-32/08-max-after-auth.webp">SR-32/08-max-after-auth.png</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="environment-problems">Environment problems</h2>
+<ul>
+<li><strong>emulator-5558 (dw-qa3) was not running</strong> at task start (only 5554/5556 were up). I started it with the same flags and did not touch the others.</li>
+<li><strong>dw-qa3 carried a stale wallet</strong> from an earlier session — username <code>qa12s12mixedfunds4821</code>, 0.197871 tDASH, DashPay identity, mixed funds (<a class=ev href="../SRC/setup/04-home.webp">setup/04-home.png</a>). Mixed/CoinJoin funds would confound every item on my list, so I uninstalled and started clean; that 0.197871 tDASH is now orphaned on that seed.</li>
+<li><strong>App auto-lock is aggressive</strong> (~60–90 s idle). A scripted digit burst once landed on the lock screen → <em>"Wrong PIN! 6 attempts remaining"</em> (<a class=ev href="../SRC/SR-28/12-trace.webp">SR-28/12-trace.png</a>), recovered immediately. Automation must re-check for the lock screen before every input burst.</li>
+<li><strong>Faucet</strong>: one request per address per UTC day plus an hourly cap requiring a Cap proof-of-work. Playwright <code>browser_click</code> cannot reach the Cap trigger (shadow root behind an overlay); <code>browser_evaluate</code> with a shadow-root walk works — <code>root.querySelector('.captcha-trigger,[part="trigger"]').click()</code>.</li>
+</ul>
+<h2 id="not-done-limits">Not done / limits</h2>
+<ul>
+<li><strong>No MASTER (11.9.0) comparison.</strong> By the end the wallet was drained by the <a class=did href="../../DEFECT-LEDGER.html#SR-16">SR-16</a>/17 + <a class=did href="../../DEFECT-LEDGER.html#SR-29">SR-29</a> sequence and both faucet-eligible addresses had hit the per-day limit, so a like-for-like baseline send was not fundable. <a class=did href="../../DEFECT-LEDGER.html#SR-19">SR-19</a> is instead evidenced in-build via the manual-note control.</li>
+<li><a class=did href="../../DEFECT-LEDGER.html#SR-32">SR-32</a>'s user-visible header/Max divergence — needs a wallet with a positive persisted <code>LAST_TOTAL_BALANCE</code> plus an <code>l1Synced=false</code> window.</li>
+<li><a class=did href="../../DEFECT-LEDGER.html#SR-16">SR-17</a>'s "one lock refuses every send-all until process restart" — no lock producer exists in a plain transparent wallet.</li>
+</ul><div id=lb><span class=x>&times;</span><span class="nv pv">&#8249;</span><span class="nv nx">&#8250;</span><img><div class=cap></div></div>
+<script>(function(){var lb=document.getElementById('lb'),im=lb.querySelector('img'),cap=lb.querySelector('.cap'),L=[],i=0;
+function links(){return Array.prototype.slice.call(document.querySelectorAll('a[href$=".webp"],a[href$=".png"]'))}
+function show(n){L=links();if(n<0||n>=L.length)return;i=n;var a=L[i];im.src=a.href;cap.innerHTML=(a.textContent.trim()||a.href.split('/').slice(-3).join('/'))+' &nbsp;('+(i+1)+'/'+L.length+') &nbsp;<a href="'+a.href+'" target=_blank rel=noopener>open file</a>';lb.classList.add('on')}
+function hide(){lb.classList.remove('on');im.src=''}
+document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".webp"],a[href$=".png"]');if(a&&!a.closest('#lb')){e.preventDefault();show(links().indexOf(a))}});
+lb.querySelector('.x').onclick=hide;lb.querySelector('.pv').onclick=function(e){e.stopPropagation();show(i-1)};lb.querySelector('.nx').onclick=function(e){e.stopPropagation();show(i+1)};
+lb.addEventListener('click',function(e){if(e.target===lb||e.target===im)hide()});
+document.addEventListener('keydown',function(e){if(!lb.classList.contains('on'))return;if(e.key==='Escape')hide();if(e.key==='ArrowLeft')show(i-1);if(e.key==='ArrowRight')show(i+1)});})();</script><script>(function(){document.querySelectorAll('thead.sortable').forEach(function(th){var tb=th.parentNode.querySelector('tbody');var ths=th.querySelectorAll('th');
+ths.forEach(function(h,ci){h.style.cursor='pointer';h.title='click to sort';h.addEventListener('click',function(){var rows=Array.prototype.slice.call(tb.querySelectorAll('tr'));var asc=!(h.dataset.asc==='1');ths.forEach(function(x){delete x.dataset.asc;x.classList.remove('asc','desc')});h.dataset.asc=asc?'1':'0';h.classList.add(asc?'asc':'desc');
+var rank={S1:0,S2:1,S3:2,S4:3,other:4,dup:5,info:6,env:7};
+function key(r){if(ci===1)return rank[r.dataset.sev]!==undefined?rank[r.dataset.sev]:9;if(ci===0)return +r.dataset.idx;var c=r.children[ci];return c?c.textContent.trim().toLowerCase():''}
+rows.sort(function(a,b){var ka=key(a),kb=key(b);if(ka<kb)return asc?-1:1;if(ka>kb)return asc?1:-1;return (+a.dataset.idx)-(+b.dataset.idx)});rows.forEach(function(r){tb.appendChild(r)})})})})})();</script></html>

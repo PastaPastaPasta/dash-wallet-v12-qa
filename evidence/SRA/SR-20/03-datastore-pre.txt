@@ -1,0 +1,11 @@
+PRE md5: 53a31a60cfc38852b00ec4fc8e1479de  /data/data/hashengineering.darkcoin.wallet_test/files/datastore/dashpay.preferences_pb
+total 72
+dr-x------ 2 u0_a212 u0_a212 4096 2026-09-19 11:50 .
+drwxrwx--x 8 u0_a212 u0_a212 4096 2026-09-19 11:45 ..
+-rw------- 1 u0_a212 u0_a212   30 2026-09-19 11:44 coinbase.preferences_pb
+-rw------- 1 u0_a212 u0_a212  360 2026-09-19 11:46 dashpay.preferences_pb
+-rw------- 1 u0_a212 u0_a212  131 2026-09-19 11:50 exchange_rates_config.preferences_pb
+-rw------- 1 u0_a212 u0_a212  141 2026-09-19 11:42 explore.preferences_pb
+-rw------- 1 u0_a212 u0_a212  220 2026-09-19 11:44 org.dashfoundation.wallet.secrets.preferences_pb
+-rw------- 1 u0_a212 u0_a212   30 2026-09-19 11:44 uphold.preferences_pb
+-rw------- 1 u0_a212 u0_a212   88 2026-09-19 11:49 wallet_ui.preferences_pb

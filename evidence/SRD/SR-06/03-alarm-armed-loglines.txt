@@ -1,0 +1,4 @@
+17:21:20 [main] BlockchainServiceImpl - .onDestroy()
+17:21:20 [DefaultDispatcher-worker-4] BlockchainServiceImpl - detaching from wallet
+17:21:20 [DefaultDispatcher-worker-4] WalletApplication - last used 4 minutes ago, rescheduling blockchain sync in roughly 15 minutes
+17:21:20 [DefaultDispatcher-worker-4] WalletApplication - ALARM-DIAG armed reason=periodic-15min firstFireInMinutes=15 repeat=1440min exact=false batteryOptimisationExempt=true - if no matching 'started by alarm' line follows, the background FGS start was refused

@@ -1,0 +1,24 @@
+SR-07 decisive evidence  2026-09-19T11:57:12
+
+--- wallet.log (/data/data/hashengineering.darkcoin.wallet_test/files/log/wallet.log) ---
+16:55:07 [main] Configuration - detected app downgrade: 12000000 -> 11090002
+
+--- Room DB version (sqlite3 pragma user_version) ---
+BEFORE (FIX 12.0.0): 22
+AFTER  (MASTER 11.9.0): 21
+
+--- Room identity hash (room_master_table) ---
+BEFORE: 5023599d035fb94c8b8a5481e0576d98
+AFTER : abe067f8699a6e2202b3bd980a934776
+
+--- transaction_metadata: the memo + tax category the user set ---
+BEFORE:
+type      taxCategory  memo             
+--------  -----------  -----------------
+Received  TransferIn   SRB07 faucet memo
+Received                                
+Sent                                    
+AFTER :
+type      taxCategory  memo
+--------  -----------  ----
+Received                   

@@ -1,0 +1,10 @@
+17:52:26 [main] WalletActivityTracker - activity lifecycle: current: MainActivity, activities: 3 visible: 1 foreground: 1
+17:52:34 [main] WalletActivityTracker - activity lifecycle: current: NetworkMonitorActivity, activities: 3 visible: 1 foreground: 0
+17:52:34 [main] WalletActivityTracker - activity lifecycle: NetworkMonitorActivity stopped for a configuration change — not treating it as background
+17:52:34 [main] WalletActivityTracker - activity lifecycle: current: NetworkMonitorActivity, activities: 3 visible: 0 foreground: 0
+17:52:34 [main] WalletActivityTracker - activity lifecycle: activity NetworkMonitorActivity destroyed
+17:52:34 [main] WalletActivityTracker - activity lifecycle: current: NetworkMonitorActivity, activities: 2 visible: 0 foreground: 0
+17:52:34 [main] WalletActivityTracker - activity lifecycle: activity NetworkMonitorActivity created
+17:52:34 [main] WalletActivityTracker - activity lifecycle: current: NetworkMonitorActivity, activities: 3 visible: 0 foreground: 0
+17:52:35 [main] WalletActivityTracker - activity lifecycle: current: NetworkMonitorActivity, activities: 3 visible: 1 foreground: 0
+17:52:35 [main] WalletActivityTracker - activity lifecycle: current: NetworkMonitorActivity, activities: 3 visible: 1 foreground: 1

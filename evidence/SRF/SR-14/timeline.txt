@@ -1,0 +1,7 @@
+12:52:12 PIN entered (T0)
+12:52:18 T+3s: network OFF (wifi+data disabled)
+12:52:34 T+15s: text="Confirm" text="0.03" text="$" text="1.77" text="This could take about 30 seconds. We will notify you when it’s done." text="Cancel" text="Confirm" 
+12:52:46 T+30s: text="Confirm" text="The Dash network rejected this invitation, so trying again will not help. Please try a different invitation type, or update the app if the problem continues." text="0.03" text="$" text="1.77" text="Cancel" text="Confirm" 
+12:53:19 T+60s: text="Confirm" text="The Dash network rejected this invitation, so trying again will not help. Please try a different invitation type, or update the app if the problem continues." text="0.03" text="$" text="1.77" text="Cancel" text="Confirm" 
+12:54:16 T+120s: text="Confirm" text="The Dash network rejected this invitation, so trying again will not help. Please try a different invitation type, or update the app if the problem continues." text="0.03" text="$" text="1.77" text="Cancel" text="Confirm" 
+12:55:15 T+180s: text="Confirm" text="The Dash network rejected this invitation, so trying again will not help. Please try a different invitation type, or update the app if the problem continues." text="0.03" text="$" text="1.77" text="Cancel" text="Confirm" 

@@ -1,0 +1,52 @@
+/data/data/hashengineering.darkcoin.wallet_test/databases:
+total 2004
+drwxrwx--x  2 u0_a212 u0_a212   4096 2026-09-19 11:44 .
+drwx------ 12 u0_a212 u0_a212   4096 2026-09-19 12:02 ..
+-rw-rw----  1 u0_a212 u0_a212  57344 2026-09-19 11:42 com.google.android.datatransport.events
+-rw-rw----  1 u0_a212 u0_a212      0 2026-09-19 11:42 com.google.android.datatransport.events-journal
+-rw-rw----  1 u0_a212 u0_a212 626688 2026-09-19 11:58 dash-sdk.db
+-rw-------  1 u0_a212 u0_a212  32768 2026-09-19 12:03 dash-sdk.db-shm
+-rw-------  1 u0_a212 u0_a212 524288 2026-09-19 12:03 dash-sdk.db-wal
+-rw-rw----  1 u0_a212 u0_a212 184320 2026-09-19 11:58 dash-wallet-database
+-rw-------  1 u0_a212 u0_a212  32768 2026-09-19 12:03 dash-wallet-database-shm
+-rw-------  1 u0_a212 u0_a212 412032 2026-09-19 12:03 dash-wallet-database-wal
+-rw-rw----  1 u0_a212 u0_a212  98304 2026-09-19 12:02 explore-database
+-rw-rw----  1 u0_a212 u0_a212      0 2026-09-19 12:02 explore-database-journal
+-rw-rw----  1 u0_a212 u0_a212  16384 2026-09-19 12:03 google_app_measurement_local.db
+-rw-rw----  1 u0_a212 u0_a212      0 2026-09-19 12:03 google_app_measurement_local.db-journal
+
+/data/data/hashengineering.darkcoin.wallet_test/files:
+total 4372
+drwx------  9 u0_a212 u0_a212    4096 2026-09-19 12:03 .
+drwx------ 12 u0_a212 u0_a212    4096 2026-09-19 12:02 ..
+drwx------  6 u0_a212 u0_a212    4096 2026-09-19 12:02 .com.google.firebase.crashlytics.files.v2:hashengineering.darkcoin.wallet_test
+drwx------  5 u0_a212 u0_a212    4096 2026-09-19 11:42 AFRequestCache
+-rw-------  1 u0_a212 u0_a212     114 2026-09-19 12:02 PersistedInstallation.W0RFRkFVTFRd+MTowMDAwMDAwMDAwMDA6YW5kcm9pZDowMDAwMDAwMDAwMDAwMDAx.json
+drwx------  2 u0_a212 u0_a212    4096 2026-09-19 12:03 datastore
+-rw-------  1 u0_a212 u0_a212       0 2026-09-19 11:42 generatefid.lock
+drwx------  2 u0_a212 u0_a212    4096 2026-09-19 12:03 l1_shadow_spv
+drwx------  2 u0_a212 u0_a212    4096 2026-09-19 11:42 log
+drwx------  2 u0_a212 u0_a212    4096 2026-09-19 11:58 migration_flags
+drwx------  7 u0_a212 u0_a212    4096 2026-09-19 12:02 sdk-logs
+-rw-------  1 u0_a212 u0_a212  200704 2026-09-19 11:44 shielded_tree_testnet.sqlite
+-rw-------  1 u0_a212 u0_a212   32768 2026-09-19 12:03 shielded_tree_testnet.sqlite-shm
+-rw-------  1 u0_a212 u0_a212 4120032 2026-09-19 12:03 shielded_tree_testnet.sqlite-wal
+-rw-------  1 u0_a212 u0_a212     739 2026-09-19 12:02 startup.breadcrumbs
+-rw-------  1 u0_a212 u0_a212       1 2026-09-19 12:02 startup.failures
+-rw-------  1 u0_a212 u0_a212       1 2026-09-19 12:02 startup.safemoderuns
+
+/data/data/hashengineering.darkcoin.wallet_test/files/datastore:
+total 44
+drwx------ 2 u0_a212 u0_a212 4096 2026-09-19 12:03 .
+drwx------ 9 u0_a212 u0_a212 4096 2026-09-19 12:03 ..
+-rw------- 1 u0_a212 u0_a212    0 2026-09-19 12:03 coinbase.preferences_pb
+-rw------- 1 u0_a212 u0_a212  165 2026-09-19 12:03 dashpay.preferences_pb
+-rw------- 1 u0_a212 u0_a212    0 2026-09-19 12:03 exchange_rates_config.preferences_pb
+-rw------- 1 u0_a212 u0_a212    0 2026-09-19 12:03 explore.preferences_pb
+-rw------- 1 u0_a212 u0_a212    0 2026-09-19 12:03 uphold.preferences_pb
+-rw------- 1 u0_a212 u0_a212    0 2026-09-19 12:03 wallet_ui.preferences_pb
+
+/data/data/hashengineering.darkcoin.wallet_test/files/l1_shadow_spv:
+total 16
+drwx------ 2 u0_a212 u0_a212 4096 2026-09-19 12:03 .
+drwx------ 9 u0_a212 u0_a212 4096 2026-09-19 12:03 ..

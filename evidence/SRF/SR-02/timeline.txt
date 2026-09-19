@@ -1,0 +1,6 @@
+12:58:56 [runA] PIN entered (T0); will force-stop at T+2s
+12:59:01 [runA] force-stopped at T+2s
+13:01:52 [runB] PIN entered (T0); will force-stop at T+4s
+13:01:56 [runB] force-stopped at T+4s
+13:04:06 [runC] PIN entered (T0); will force-stop at T+6s
+13:04:12 [runC] force-stopped at T+6s

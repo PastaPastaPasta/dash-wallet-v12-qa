@@ -1,0 +1,348 @@
+/data/data/hashengineering.darkcoin.wallet_test/databases:
+total 2004
+drwxrwx--x  2 u0_a212 u0_a212   4096 2026-09-19 11:44 .
+drwx------ 12 u0_a212 u0_a212   4096 2026-09-19 12:02 ..
+-rw-rw----  1 u0_a212 u0_a212  57344 2026-09-19 11:42 com.google.android.datatransport.events
+-rw-rw----  1 u0_a212 u0_a212      0 2026-09-19 11:42 com.google.android.datatransport.events-journal
+-rw-rw----  1 u0_a212 u0_a212 626688 2026-09-19 11:58 dash-sdk.db
+-rw-------  1 u0_a212 u0_a212  32768 2026-09-19 12:02 dash-sdk.db-shm
+-rw-------  1 u0_a212 u0_a212 524288 2026-09-19 12:02 dash-sdk.db-wal
+-rw-rw----  1 u0_a212 u0_a212 184320 2026-09-19 11:58 dash-wallet-database
+-rw-------  1 u0_a212 u0_a212  32768 2026-09-19 12:02 dash-wallet-database-shm
+-rw-------  1 u0_a212 u0_a212 412032 2026-09-19 12:02 dash-wallet-database-wal
+-rw-rw----  1 u0_a212 u0_a212  98304 2026-09-19 12:02 explore-database
+-rw-rw----  1 u0_a212 u0_a212      0 2026-09-19 12:02 explore-database-journal
+-rw-rw----  1 u0_a212 u0_a212  16384 2026-09-19 12:02 google_app_measurement_local.db
+-rw-rw----  1 u0_a212 u0_a212      0 2026-09-19 12:02 google_app_measurement_local.db-journal
+
+/data/data/hashengineering.darkcoin.wallet_test/files:
+total 4412
+drwx------  9 u0_a212 u0_a212    4096 2026-09-19 12:02 .
+drwx------ 12 u0_a212 u0_a212    4096 2026-09-19 12:02 ..
+drwx------  6 u0_a212 u0_a212    4096 2026-09-19 12:02 .com.google.firebase.crashlytics.files.v2:hashengineering.darkcoin.wallet_test
+drwx------  5 u0_a212 u0_a212    4096 2026-09-19 11:42 AFRequestCache
+-rw-------  1 u0_a212 u0_a212     114 2026-09-19 12:02 PersistedInstallation.W0RFRkFVTFRd+MTowMDAwMDAwMDAwMDA6YW5kcm9pZDowMDAwMDAwMDAwMDAwMDAx.json
+drwx------  2 u0_a212 u0_a212    4096 2026-09-19 12:02 datastore
+-rw-------  1 u0_a212 u0_a212       0 2026-09-19 11:42 generatefid.lock
+-rw-rw----  1 u0_a212 u0_a212   15328 2026-09-19 11:53 key-backup-protobuf-testnet
+drwx------  3 u0_a212 u0_a212    4096 2026-09-19 12:01 l1_shadow_spv
+drwx------  2 u0_a212 u0_a212    4096 2026-09-19 11:42 log
+drwx------  2 u0_a212 u0_a212    4096 2026-09-19 11:58 migration_flags
+drwx------  7 u0_a212 u0_a212    4096 2026-09-19 12:02 sdk-logs
+-rw-------  1 u0_a212 u0_a212  200704 2026-09-19 11:44 shielded_tree_testnet.sqlite
+-rw-------  1 u0_a212 u0_a212   32768 2026-09-19 12:02 shielded_tree_testnet.sqlite-shm
+-rw-------  1 u0_a212 u0_a212 4120032 2026-09-19 11:57 shielded_tree_testnet.sqlite-wal
+-rw-------  1 u0_a212 u0_a212     739 2026-09-19 12:02 startup.breadcrumbs
+-rw-------  1 u0_a212 u0_a212       1 2026-09-19 12:02 startup.failures
+-rw-------  1 u0_a212 u0_a212       1 2026-09-19 12:02 startup.safemoderuns
+-rw-------  1 u0_a212 u0_a212   15322 2026-09-19 11:53 wallet-protobuf-testnet
+
+/data/data/hashengineering.darkcoin.wallet_test/files/.com.google.firebase.crashlytics.files.v2:hashengineering.darkcoin.wallet_test:
+total 48
+drwx------ 6 u0_a212 u0_a212 4096 2026-09-19 12:02 .
+drwx------ 9 u0_a212 u0_a212 4096 2026-09-19 12:02 ..
+drwx------ 2 u0_a212 u0_a212 4096 2026-09-19 11:42 native-reports
+drwx------ 3 u0_a212 u0_a212 4096 2026-09-19 12:02 open-sessions
+drwx------ 2 u0_a212 u0_a212 4096 2026-09-19 11:42 priority-reports
+drwx------ 2 u0_a212 u0_a212 4096 2026-09-19 11:58 reports
+
+/data/data/hashengineering.darkcoin.wallet_test/files/.com.google.firebase.crashlytics.files.v2:hashengineering.darkcoin.wallet_test/native-reports:
+total 16
+drwx------ 2 u0_a212 u0_a212 4096 2026-09-19 11:42 .
+drwx------ 6 u0_a212 u0_a212 4096 2026-09-19 12:02 ..
+
+/data/data/hashengineering.darkcoin.wallet_test/files/.com.google.firebase.crashlytics.files.v2:hashengineering.darkcoin.wallet_test/open-sessions:
+total 24
+drwx------ 3 u0_a212 u0_a212 4096 2026-09-19 12:02 .
+drwx------ 6 u0_a212 u0_a212 4096 2026-09-19 12:02 ..
+drwx------ 2 u0_a212 u0_a212 4096 2026-09-19 12:02 6AAEC0100360000124493DEBF1ED7BA8
+
+/data/data/hashengineering.darkcoin.wallet_test/files/.com.google.firebase.crashlytics.files.v2:hashengineering.darkcoin.wallet_test/open-sessions/6AAEC0100360000124493DEBF1ED7BA8:
+total 36
+drwx------ 2 u0_a212 u0_a212 4096 2026-09-19 12:02 .
+drwx------ 3 u0_a212 u0_a212 4096 2026-09-19 12:02 ..
+-rw------- 1 u0_a212 u0_a212   99 2026-09-19 12:02 internal-keys
+-rw------- 1 u0_a212 u0_a212  789 2026-09-19 12:02 report
+-rw------- 1 u0_a212 u0_a212    0 2026-09-19 12:02 start-time
+
+/data/data/hashengineering.darkcoin.wallet_test/files/.com.google.firebase.crashlytics.files.v2:hashengineering.darkcoin.wallet_test/priority-reports:
+total 16
+drwx------ 2 u0_a212 u0_a212 4096 2026-09-19 11:42 .
+drwx------ 6 u0_a212 u0_a212 4096 2026-09-19 12:02 ..
+
+/data/data/hashengineering.darkcoin.wallet_test/files/.com.google.firebase.crashlytics.files.v2:hashengineering.darkcoin.wallet_test/reports:
+total 28
+drwx------ 2 u0_a212 u0_a212 4096 2026-09-19 11:58 .
+drwx------ 6 u0_a212 u0_a212 4096 2026-09-19 12:02 ..
+-rw------- 1 u0_a212 u0_a212 7796 2026-09-19 11:58 6AAEBDB40303000118443DEBF1ED7BA8
+
+/data/data/hashengineering.darkcoin.wallet_test/files/AFRequestCache:
+total 40
+drwx------ 5 u0_a212 u0_a212 4096 2026-09-19 11:42 .
+drwx------ 9 u0_a212 u0_a212 4096 2026-09-19 12:02 ..
+drwx------ 2 u0_a212 u0_a212 4096 2026-09-19 11:42 AttrCache
+drwx------ 2 u0_a212 u0_a212 4096 2026-09-19 11:42 ConversionsCache
+drwx------ 2 u0_a212 u0_a212 4096 2026-09-19 11:42 OtherCache
+
+/data/data/hashengineering.darkcoin.wallet_test/files/AFRequestCache/AttrCache:
+total 16
+drwx------ 2 u0_a212 u0_a212 4096 2026-09-19 11:42 .
+drwx------ 5 u0_a212 u0_a212 4096 2026-09-19 11:42 ..
+
+/data/data/hashengineering.darkcoin.wallet_test/files/AFRequestCache/ConversionsCache:
+total 16
+drwx------ 2 u0_a212 u0_a212 4096 2026-09-19 11:42 .
+drwx------ 5 u0_a212 u0_a212 4096 2026-09-19 11:42 ..
+
+/data/data/hashengineering.darkcoin.wallet_test/files/AFRequestCache/OtherCache:
+total 16
+drwx------ 2 u0_a212 u0_a212 4096 2026-09-19 11:42 .
+drwx------ 5 u0_a212 u0_a212 4096 2026-09-19 11:42 ..
+
+/data/data/hashengineering.darkcoin.wallet_test/files/datastore:
+total 72
+drwx------ 2 u0_a212 u0_a212 4096 2026-09-19 12:02 .
+drwx------ 9 u0_a212 u0_a212 4096 2026-09-19 12:02 ..
+-rw------- 1 u0_a212 u0_a212   30 2026-09-19 11:44 coinbase.preferences_pb
+-rw------- 1 u0_a212 u0_a212  404 2026-09-19 11:52 dashpay.preferences_pb
+-rw------- 1 u0_a212 u0_a212  131 2026-09-19 12:02 exchange_rates_config.preferences_pb
+-rw------- 1 u0_a212 u0_a212  141 2026-09-19 11:42 explore.preferences_pb
+-rw------- 1 u0_a212 u0_a212  220 2026-09-19 11:53 org.dashfoundation.wallet.secrets.preferences_pb
+-rw------- 1 u0_a212 u0_a212   30 2026-09-19 11:44 uphold.preferences_pb
+-rw------- 1 u0_a212 u0_a212   85 2026-09-19 12:01 wallet_ui.preferences_pb
+
+/data/data/hashengineering.darkcoin.wallet_test/files/l1_shadow_spv:
+total 28
+drwx------ 3 u0_a212 u0_a212 4096 2026-09-19 12:01 .
+drwx------ 9 u0_a212 u0_a212 4096 2026-09-19 12:02 ..
+drwx------ 8 u0_a212 u0_a212 4096 2026-09-19 11:53 testnet
+-rw------- 1 u0_a212 u0_a212    0 2026-09-19 12:02 testnet.lock
+
+/data/data/hashengineering.darkcoin.wallet_test/files/l1_shadow_spv/testnet:
+total 64
+drwx------ 8 u0_a212 u0_a212 4096 2026-09-19 11:53 .
+drwx------ 3 u0_a212 u0_a212 4096 2026-09-19 12:01 ..
+drwx------ 2 u0_a212 u0_a212 4096 2026-09-19 12:02 block_headers
+drwx------ 2 u0_a212 u0_a212 4096 2026-09-19 11:55 blocks
+drwx------ 2 u0_a212 u0_a212 4096 2026-09-19 12:02 filter_headers
+drwx------ 2 u0_a212 u0_a212 4096 2026-09-19 12:02 filters
+drwx------ 2 u0_a212 u0_a212 4096 2026-09-19 12:02 metadata
+drwx------ 2 u0_a212 u0_a212 4096 2026-09-19 12:02 peers
+
+/data/data/hashengineering.darkcoin.wallet_test/files/l1_shadow_spv/testnet/block_headers:
+total 175248
+drwx------ 2 u0_a212 u0_a212    4096 2026-09-19 12:02 .
+drwx------ 8 u0_a212 u0_a212    4096 2026-09-19 11:53 ..
+-rw------- 1 u0_a212 u0_a212 5600000 2026-09-19 11:54 segment_0000.dat
+-rw------- 1 u0_a212 u0_a212 5600000 2026-09-19 11:54 segment_0001.dat
+-rw------- 1 u0_a212 u0_a212 5600000 2026-09-19 11:54 segment_0002.dat
+-rw------- 1 u0_a212 u0_a212 5600000 2026-09-19 11:54 segment_0003.dat
+-rw------- 1 u0_a212 u0_a212 5600000 2026-09-19 11:54 segment_0004.dat
+-rw------- 1 u0_a212 u0_a212 5600000 2026-09-19 11:54 segment_0005.dat
+-rw------- 1 u0_a212 u0_a212 5600000 2026-09-19 11:54 segment_0006.dat
+-rw------- 1 u0_a212 u0_a212 5600000 2026-09-19 11:54 segment_0007.dat
+-rw------- 1 u0_a212 u0_a212 5600000 2026-09-19 11:54 segment_0008.dat
+-rw------- 1 u0_a212 u0_a212 5600000 2026-09-19 11:54 segment_0009.dat
+-rw------- 1 u0_a212 u0_a212 5600000 2026-09-19 11:54 segment_0010.dat
+-rw------- 1 u0_a212 u0_a212 5600000 2026-09-19 11:54 segment_0011.dat
+-rw------- 1 u0_a212 u0_a212 5600000 2026-09-19 11:54 segment_0012.dat
+-rw------- 1 u0_a212 u0_a212 5600000 2026-09-19 11:54 segment_0013.dat
+-rw------- 1 u0_a212 u0_a212 5600000 2026-09-19 11:54 segment_0014.dat
+-rw------- 1 u0_a212 u0_a212 5600000 2026-09-19 11:54 segment_0015.dat
+-rw------- 1 u0_a212 u0_a212 5600000 2026-09-19 11:54 segment_0016.dat
+-rw------- 1 u0_a212 u0_a212 5600000 2026-09-19 11:54 segment_0017.dat
+-rw------- 1 u0_a212 u0_a212 5600000 2026-09-19 11:54 segment_0018.dat
+-rw------- 1 u0_a212 u0_a212 5600000 2026-09-19 11:54 segment_0019.dat
+-rw------- 1 u0_a212 u0_a212 5600000 2026-09-19 11:54 segment_0020.dat
+-rw------- 1 u0_a212 u0_a212 5600000 2026-09-19 11:54 segment_0021.dat
+-rw------- 1 u0_a212 u0_a212 5600000 2026-09-19 11:54 segment_0022.dat
+-rw------- 1 u0_a212 u0_a212 5600000 2026-09-19 11:54 segment_0023.dat
+-rw------- 1 u0_a212 u0_a212 5600000 2026-09-19 11:54 segment_0024.dat
+-rw------- 1 u0_a212 u0_a212 5600000 2026-09-19 11:54 segment_0025.dat
+-rw------- 1 u0_a212 u0_a212 5600000 2026-09-19 11:54 segment_0026.dat
+-rw------- 1 u0_a212 u0_a212 5600000 2026-09-19 11:54 segment_0027.dat
+-rw------- 1 u0_a212 u0_a212 5600000 2026-09-19 11:54 segment_0028.dat
+-rw------- 1 u0_a212 u0_a212 5600000 2026-09-19 11:54 segment_0029.dat
+-rw------- 1 u0_a212 u0_a212 5600000 2026-09-19 11:54 segment_0030.dat
+-rw------- 1 u0_a212 u0_a212 5600000 2026-09-19 12:02 segment_0031.dat
+
+/data/data/hashengineering.darkcoin.wallet_test/files/l1_shadow_spv/testnet/blocks:
+total 177700
+drwx------ 2 u0_a212 u0_a212    4096 2026-09-19 11:55 .
+drwx------ 8 u0_a212 u0_a212    4096 2026-09-19 11:53 ..
+-rw------- 1 u0_a212 u0_a212 5733760 2026-09-19 11:54 segment_0000.dat
+-rw------- 1 u0_a212 u0_a212 5742396 2026-09-19 11:54 segment_0001.dat
+-rw------- 1 u0_a212 u0_a212 5678020 2026-09-19 11:54 segment_0002.dat
+-rw------- 1 u0_a212 u0_a212 5662476 2026-09-19 11:54 segment_0003.dat
+-rw------- 1 u0_a212 u0_a212 5732834 2026-09-19 11:55 segment_0004.dat
+-rw------- 1 u0_a212 u0_a212 5764439 2026-09-19 11:54 segment_0005.dat
+-rw------- 1 u0_a212 u0_a212 5716861 2026-09-19 11:54 segment_0006.dat
+-rw------- 1 u0_a212 u0_a212 5722448 2026-09-19 11:54 segment_0007.dat
+-rw------- 1 u0_a212 u0_a212 5673353 2026-09-19 11:54 segment_0008.dat
+-rw------- 1 u0_a212 u0_a212 5667692 2026-09-19 11:54 segment_0009.dat
+-rw------- 1 u0_a212 u0_a212 5659891 2026-09-19 11:54 segment_0010.dat
+-rw------- 1 u0_a212 u0_a212 5677320 2026-09-19 11:54 segment_0011.dat
+-rw------- 1 u0_a212 u0_a212 5662650 2026-09-19 11:54 segment_0012.dat
+-rw------- 1 u0_a212 u0_a212 5659816 2026-09-19 11:54 segment_0013.dat
+-rw------- 1 u0_a212 u0_a212 5678565 2026-09-19 11:55 segment_0014.dat
+-rw------- 1 u0_a212 u0_a212 5662572 2026-09-19 11:55 segment_0015.dat
+-rw------- 1 u0_a212 u0_a212 5661496 2026-09-19 11:55 segment_0016.dat
+-rw------- 1 u0_a212 u0_a212 5678149 2026-09-19 11:55 segment_0017.dat
+-rw------- 1 u0_a212 u0_a212 5682824 2026-09-19 11:55 segment_0018.dat
+-rw------- 1 u0_a212 u0_a212 5679273 2026-09-19 11:55 segment_0019.dat
+-rw------- 1 u0_a212 u0_a212 5657367 2026-09-19 11:55 segment_0020.dat
+-rw------- 1 u0_a212 u0_a212 5660029 2026-09-19 11:55 segment_0021.dat
+-rw------- 1 u0_a212 u0_a212 5667304 2026-09-19 11:55 segment_0022.dat
+-rw------- 1 u0_a212 u0_a212 5658542 2026-09-19 11:55 segment_0023.dat
+-rw------- 1 u0_a212 u0_a212 5671340 2026-09-19 11:55 segment_0024.dat
+-rw------- 1 u0_a212 u0_a212 5668208 2026-09-19 11:55 segment_0025.dat
+-rw------- 1 u0_a212 u0_a212 5662093 2026-09-19 11:55 segment_0026.dat
+-rw------- 1 u0_a212 u0_a212 5664535 2026-09-19 11:55 segment_0027.dat
+-rw------- 1 u0_a212 u0_a212 5659981 2026-09-19 11:55 segment_0028.dat
+-rw------- 1 u0_a212 u0_a212 5663964 2026-09-19 11:55 segment_0029.dat
+-rw------- 1 u0_a212 u0_a212 5676921 2026-09-19 11:55 segment_0030.dat
+-rw------- 1 u0_a212 u0_a212 5652139 2026-09-19 11:55 segment_0031.dat
+
+/data/data/hashengineering.darkcoin.wallet_test/files/l1_shadow_spv/testnet/filter_headers:
+total 50192
+drwx------ 2 u0_a212 u0_a212    4096 2026-09-19 12:02 .
+drwx------ 8 u0_a212 u0_a212    4096 2026-09-19 11:53 ..
+-rw------- 1 u0_a212 u0_a212 1600000 2026-09-19 11:54 segment_0000.dat
+-rw------- 1 u0_a212 u0_a212 1600000 2026-09-19 11:54 segment_0001.dat
+-rw------- 1 u0_a212 u0_a212 1600000 2026-09-19 11:54 segment_0002.dat
+-rw------- 1 u0_a212 u0_a212 1600000 2026-09-19 11:54 segment_0003.dat
+-rw------- 1 u0_a212 u0_a212 1600000 2026-09-19 11:54 segment_0004.dat
+-rw------- 1 u0_a212 u0_a212 1600000 2026-09-19 11:54 segment_0005.dat
+-rw------- 1 u0_a212 u0_a212 1600000 2026-09-19 11:54 segment_0006.dat
+-rw------- 1 u0_a212 u0_a212 1600000 2026-09-19 11:54 segment_0007.dat
+-rw------- 1 u0_a212 u0_a212 1600000 2026-09-19 11:54 segment_0008.dat
+-rw------- 1 u0_a212 u0_a212 1600000 2026-09-19 11:54 segment_0009.dat
+-rw------- 1 u0_a212 u0_a212 1600000 2026-09-19 11:54 segment_0010.dat
+-rw------- 1 u0_a212 u0_a212 1600000 2026-09-19 11:54 segment_0011.dat
+-rw------- 1 u0_a212 u0_a212 1600000 2026-09-19 11:54 segment_0012.dat
+-rw------- 1 u0_a212 u0_a212 1600000 2026-09-19 11:54 segment_0013.dat
+-rw------- 1 u0_a212 u0_a212 1600000 2026-09-19 11:54 segment_0014.dat
+-rw------- 1 u0_a212 u0_a212 1600000 2026-09-19 11:54 segment_0015.dat
+-rw------- 1 u0_a212 u0_a212 1600000 2026-09-19 11:54 segment_0016.dat
+-rw------- 1 u0_a212 u0_a212 1600000 2026-09-19 11:54 segment_0017.dat
+-rw------- 1 u0_a212 u0_a212 1600000 2026-09-19 11:54 segment_0018.dat
+-rw------- 1 u0_a212 u0_a212 1600000 2026-09-19 11:54 segment_0019.dat
+-rw------- 1 u0_a212 u0_a212 1600000 2026-09-19 11:54 segment_0020.dat
+-rw------- 1 u0_a212 u0_a212 1600000 2026-09-19 11:54 segment_0021.dat
+-rw------- 1 u0_a212 u0_a212 1600000 2026-09-19 11:54 segment_0022.dat
+-rw------- 1 u0_a212 u0_a212 1600000 2026-09-19 11:54 segment_0023.dat
+-rw------- 1 u0_a212 u0_a212 1600000 2026-09-19 11:55 segment_0024.dat
+-rw------- 1 u0_a212 u0_a212 1600000 2026-09-19 11:55 segment_0025.dat
+-rw------- 1 u0_a212 u0_a212 1600000 2026-09-19 11:55 segment_0026.dat
+-rw------- 1 u0_a212 u0_a212 1600000 2026-09-19 11:55 segment_0027.dat
+-rw------- 1 u0_a212 u0_a212 1600000 2026-09-19 11:55 segment_0028.dat
+-rw------- 1 u0_a212 u0_a212 1600000 2026-09-19 11:55 segment_0029.dat
+-rw------- 1 u0_a212 u0_a212 1600000 2026-09-19 11:55 segment_0030.dat
+-rw------- 1 u0_a212 u0_a212 1600000 2026-09-19 12:02 segment_0031.dat
+
+/data/data/hashengineering.darkcoin.wallet_test/files/l1_shadow_spv/testnet/filters:
+total 59748
+drwx------ 2 u0_a212 u0_a212    4096 2026-09-19 12:02 .
+drwx------ 8 u0_a212 u0_a212    4096 2026-09-19 11:53 ..
+-rw------- 1 u0_a212 u0_a212 4175717 2026-09-19 11:54 segment_0000.dat
+-rw------- 1 u0_a212 u0_a212 4842433 2026-09-19 11:54 segment_0001.dat
+-rw------- 1 u0_a212 u0_a212 2909304 2026-09-19 11:54 segment_0002.dat
+-rw------- 1 u0_a212 u0_a212  832445 2026-09-19 11:54 segment_0003.dat
+-rw------- 1 u0_a212 u0_a212 1986426 2026-09-19 11:54 segment_0004.dat
+-rw------- 1 u0_a212 u0_a212 5964392 2026-09-19 11:54 segment_0005.dat
+-rw------- 1 u0_a212 u0_a212 7840071 2026-09-19 11:54 segment_0006.dat
+-rw------- 1 u0_a212 u0_a212 3068634 2026-09-19 11:54 segment_0007.dat
+-rw------- 1 u0_a212 u0_a212 4890196 2026-09-19 11:54 segment_0008.dat
+-rw------- 1 u0_a212 u0_a212 1814137 2026-09-19 11:54 segment_0009.dat
+-rw------- 1 u0_a212 u0_a212 1121419 2026-09-19 11:54 segment_0010.dat
+-rw------- 1 u0_a212 u0_a212 1146829 2026-09-19 11:54 segment_0011.dat
+-rw------- 1 u0_a212 u0_a212  558256 2026-09-19 11:54 segment_0012.dat
+-rw------- 1 u0_a212 u0_a212  438294 2026-09-19 11:54 segment_0013.dat
+-rw------- 1 u0_a212 u0_a212  515292 2026-09-19 11:54 segment_0014.dat
+-rw------- 1 u0_a212 u0_a212 1202639 2026-09-19 11:54 segment_0015.dat
+-rw------- 1 u0_a212 u0_a212  490523 2026-09-19 11:55 segment_0016.dat
+-rw------- 1 u0_a212 u0_a212 1307663 2026-09-19 11:55 segment_0017.dat
+-rw------- 1 u0_a212 u0_a212 3043171 2026-09-19 11:55 segment_0018.dat
+-rw------- 1 u0_a212 u0_a212 2906959 2026-09-19 11:55 segment_0019.dat
+-rw------- 1 u0_a212 u0_a212 1193826 2026-09-19 11:55 segment_0020.dat
+-rw------- 1 u0_a212 u0_a212  860826 2026-09-19 11:55 segment_0021.dat
+-rw------- 1 u0_a212 u0_a212  742407 2026-09-19 11:55 segment_0022.dat
+-rw------- 1 u0_a212 u0_a212 1016705 2026-09-19 11:55 segment_0023.dat
+-rw------- 1 u0_a212 u0_a212  711702 2026-09-19 11:55 segment_0024.dat
+-rw------- 1 u0_a212 u0_a212  434878 2026-09-19 11:55 segment_0025.dat
+-rw------- 1 u0_a212 u0_a212 1450155 2026-09-19 11:55 segment_0026.dat
+-rw------- 1 u0_a212 u0_a212 1598909 2026-09-19 11:55 segment_0027.dat
+-rw------- 1 u0_a212 u0_a212  594588 2026-09-19 11:55 segment_0028.dat
+-rw------- 1 u0_a212 u0_a212  487127 2026-09-19 11:55 segment_0029.dat
+-rw------- 1 u0_a212 u0_a212  662457 2026-09-19 11:55 segment_0030.dat
+-rw------- 1 u0_a212 u0_a212  157216 2026-09-19 12:02 segment_0031.dat
+
+/data/data/hashengineering.darkcoin.wallet_test/files/l1_shadow_spv/testnet/metadata:
+total 40
+drwx------ 2 u0_a212 u0_a212 4096 2026-09-19 12:02 .
+drwx------ 8 u0_a212 u0_a212 4096 2026-09-19 11:53 ..
+-rw------- 1 u0_a212 u0_a212  311 2026-09-19 12:02 best_chainlock.dat
+-rw------- 1 u0_a212 u0_a212    4 2026-09-19 11:55 filters_pending_sweep.dat
+-rw------- 1 u0_a212 u0_a212    7 2026-09-19 12:02 last_target_height.dat
+
+/data/data/hashengineering.darkcoin.wallet_test/files/l1_shadow_spv/testnet/peers:
+total 168
+drwx------ 2 u0_a212 u0_a212   4096 2026-09-19 12:02 .
+drwx------ 8 u0_a212 u0_a212   4096 2026-09-19 11:53 ..
+-rw------- 1 u0_a212 u0_a212   8818 2026-09-19 12:02 peers.dat
+-rw------- 1 u0_a212 u0_a212 131495 2026-09-19 12:02 reputations.json
+
+/data/data/hashengineering.darkcoin.wallet_test/files/log:
+total 548
+drwx------ 2 u0_a212 u0_a212   4096 2026-09-19 11:42 .
+drwx------ 9 u0_a212 u0_a212   4096 2026-09-19 12:02 ..
+-rw------- 1 u0_a212 u0_a212 534502 2026-09-19 12:02 wallet.log
+
+/data/data/hashengineering.darkcoin.wallet_test/files/migration_flags:
+total 20
+drwx------ 2 u0_a212 u0_a212 4096 2026-09-19 11:58 .
+drwx------ 9 u0_a212 u0_a212 4096 2026-09-19 12:02 ..
+-rw------- 1 u0_a212 u0_a212    0 2026-09-19 11:58 backup_migration_completed.flag
+
+/data/data/hashengineering.darkcoin.wallet_test/files/sdk-logs:
+total 64
+drwx------ 7 u0_a212 u0_a212 4096 2026-09-19 12:02 .
+drwx------ 9 u0_a212 u0_a212 4096 2026-09-19 12:02 ..
+-rw------- 1 u0_a212 u0_a212  286 2026-09-19 12:02 build_info.txt
+drwx------ 2 u0_a212 u0_a212 4096 2026-09-19 12:02 dash_sdk
+drwx------ 2 u0_a212 u0_a212 4096 2026-09-19 12:02 dash_spv
+drwx------ 2 u0_a212 u0_a212 4096 2026-09-19 12:02 grpc
+drwx------ 2 u0_a212 u0_a212 4096 2026-09-19 12:02 key_wallet
+drwx------ 2 u0_a212 u0_a212 4096 2026-09-19 12:02 platform_wallet
+
+/data/data/hashengineering.darkcoin.wallet_test/files/sdk-logs/dash_sdk:
+total 168
+drwx------ 2 u0_a212 u0_a212   4096 2026-09-19 12:02 .
+drwx------ 7 u0_a212 u0_a212   4096 2026-09-19 12:02 ..
+-rw------- 1 u0_a212 u0_a212      0 2026-09-19 11:44 metrics.log
+-rw------- 1 u0_a212 u0_a212 139705 2026-09-19 12:02 run.log
+
+/data/data/hashengineering.darkcoin.wallet_test/files/sdk-logs/dash_spv:
+total 5292
+drwx------ 2 u0_a212 u0_a212    4096 2026-09-19 12:02 .
+drwx------ 7 u0_a212 u0_a212    4096 2026-09-19 12:02 ..
+-rw------- 1 u0_a212 u0_a212 5392452 2026-09-19 12:02 run.log
+
+/data/data/hashengineering.darkcoin.wallet_test/files/sdk-logs/grpc:
+total 148
+drwx------ 2 u0_a212 u0_a212   4096 2026-09-19 12:02 .
+drwx------ 7 u0_a212 u0_a212   4096 2026-09-19 12:02 ..
+-rw------- 1 u0_a212 u0_a212 123965 2026-09-19 12:02 run.log
+
+/data/data/hashengineering.darkcoin.wallet_test/files/sdk-logs/key_wallet:
+total 24
+drwx------ 2 u0_a212 u0_a212 4096 2026-09-19 12:02 .
+drwx------ 7 u0_a212 u0_a212 4096 2026-09-19 12:02 ..
+-rw------- 1 u0_a212 u0_a212  507 2026-09-19 11:55 run.log
+
+/data/data/hashengineering.darkcoin.wallet_test/files/sdk-logs/platform_wallet:
+total 36
+drwx------ 2 u0_a212 u0_a212  4096 2026-09-19 12:02 .
+drwx------ 7 u0_a212 u0_a212  4096 2026-09-19 12:02 ..
+-rw------- 1 u0_a212 u0_a212     0 2026-09-19 11:44 metrics.log
+-rw------- 1 u0_a212 u0_a212 11326 2026-09-19 12:02 run.log

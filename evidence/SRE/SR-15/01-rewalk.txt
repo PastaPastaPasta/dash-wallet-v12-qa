@@ -1,0 +1,9 @@
+=== SR-15: restart re-walk ===
+383:16:48:04 [DefaultDispatcher-worker-1] L1ShadowSyncService - L1 shadow SPV started for SDK wallet b7118ed5… (dataDir=/data/user/0/hashengineering.darkcoin.wallet_test/files/l1_shadow_spv/testnet, default peer discovery); debug-only instrumentation — two SPV engines are now running
+1348:16:51:24 [DefaultDispatcher-worker-7] L1ShadowSyncService - L1Shadow phase=CONNECTING 85.6% headers 1556857/1556857 filters 885000/1556857 wallet 885000
+2887:16:54:34 [DefaultDispatcher-worker-14] L1ShadowSyncService - L1Shadow phase=CONNECTING 100.0% headers 1556859/1556859 filters 1555000/1556858 wallet 1555000
+3353:17:03:04 [DefaultDispatcher-worker-1] L1ShadowSyncService - L1ShadowLifecycle watermark at stop: durable syncedHeight=unknown committed cursor=1555000 filter=1555000
+3354:17:03:04 [DefaultDispatcher-worker-1] L1ShadowSyncService - L1ShadowLifecycle STOPPED after 15m0s up; all four loops torn down (progress monitor, parity probe, watchdog, wallet-event tap); teardown #1 this process. Nothing runs until the next startIfEnabled().
+4348:17:24:36 [DefaultDispatcher-worker-4] L1ShadowSyncService - L1 shadow SPV started for SDK wallet b7118ed5… (dataDir=/data/user/0/hashengineering.darkcoin.wallet_test/files/l1_shadow_spv/testnet, default peer discovery); debug-only instrumentation — two SPV engines are now running
+4353:17:24:36 [DefaultDispatcher-worker-14] L1ShadowSyncService - L1Shadow phase=CONNECTING 99.5% headers 1556868/1556865 filters 1532170/1556868 wallet 1556868
+4467:17:24:55 [DefaultDispatcher-worker-6] L1ShadowSyncService - L1Shadow phase=SYNCED 100.0% headers 1556870/1556870 filters 1556870/1556870 wallet 1556870

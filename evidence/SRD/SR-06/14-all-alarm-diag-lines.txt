@@ -1,0 +1,5 @@
+5454:17:21:20 [DefaultDispatcher-worker-4] WalletApplication - last used 4 minutes ago, rescheduling blockchain sync in roughly 15 minutes
+5455:17:21:20 [DefaultDispatcher-worker-4] WalletApplication - ALARM-DIAG armed reason=periodic-15min firstFireInMinutes=15 repeat=1440min exact=false batteryOptimisationExempt=true - if no matching 'started by alarm' line follows, the background FGS start was refused
+5485:17:40:43 [main] BlockchainServiceImpl - ALARM-DIAG service started by alarm (reason=periodic-15min) — a background FGS start WAS permitted
+11815:17:55:42 [DefaultDispatcher-worker-12] WalletApplication - last used 0 minutes ago, rescheduling blockchain sync in roughly 15 minutes
+11816:17:55:42 [DefaultDispatcher-worker-12] WalletApplication - ALARM-DIAG armed reason=periodic-15min firstFireInMinutes=15 repeat=1440min exact=false batteryOptimisationExempt=true - if no matching 'started by alarm' line follows, the background FGS start was refused

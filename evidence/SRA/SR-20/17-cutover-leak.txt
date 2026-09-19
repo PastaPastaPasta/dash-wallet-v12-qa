@@ -1,0 +1,2 @@
+82:16:43:21 [DefaultDispatcher-worker-5] CutoverCoordinator - cutover state DUAL_RUNNING -> CUT_OVER (fresh-wallet setup (restore/new))
+1226:16:50:43 [DefaultDispatcher-worker-1] CutoverCoordinator - cutover state persist failed (CUT_OVER -> DUAL_RUNNING, wallet wipe); keeping CUT_OVER

@@ -1,0 +1,17 @@
+### SR-40 API 31 (emulator-5564, Android 12, sdk=31), FIX 12.0.0 vc=12000000
+### sender identity (NOT root, an ordinary unprivileged uid, no permissions):
+uid=2000(shell) gid=2000(shell) groups=2000(shell),1004(input),1007(log),1011(adb),1015(sdcard_rw),1028(sdcard_r),1078(ext_data_rw),1079(ext_obb_rw),3001(net_bt_admin),3002(net_bt),3003(inet),3006(net_bw_stats),3009(readproc),3011(uhid) context=u:r:shell:s0
+### host time: 2026-09-19T11:57:24
+
+=== BEFORE ===
+    mResumedActivity: ActivityRecord{bdc3e8e u0 hashengineering.darkcoin.wallet_test/de.schildbach.wallet.ui.verify.VerifySeedActivity t13}
+      * Hist #1: ActivityRecord{bdc3e8e u0 hashengineering.darkcoin.wallet_test/de.schildbach.wallet.ui.verify.VerifySeedActivity t13}
+      * Hist #0: ActivityRecord{932ff58 u0 hashengineering.darkcoin.wallet_test/de.schildbach.wallet.ui.main.MainActivity t13}
+
+=== am broadcast -a InteractionAwareActivity.FORCE_FINISH_ACTION ===
+Broadcasting: Intent { act=InteractionAwareActivity.FORCE_FINISH_ACTION flg=0x400000 }
+Broadcast completed: result=0
+
+=== AFTER ===
+    mResumedActivity: ActivityRecord{932ff58 u0 hashengineering.darkcoin.wallet_test/de.schildbach.wallet.ui.main.MainActivity t13}
+      * Hist #0: ActivityRecord{932ff58 u0 hashengineering.darkcoin.wallet_test/de.schildbach.wallet.ui.main.MainActivity t13}

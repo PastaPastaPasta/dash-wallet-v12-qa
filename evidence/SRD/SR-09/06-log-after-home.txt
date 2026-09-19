@@ -1,0 +1,70 @@
+16:44:06 [main] WalletActivityTracker - activity lifecycle: app started
+16:44:06 [main] WalletActivityTracker - activity lifecycle: activity OnboardingActivity created
+16:44:06 [main] WalletActivityTracker - activity lifecycle: current: OnboardingActivity, activities: 1 visible: 0 foreground: 0
+16:44:06 [main] WalletActivityTracker - activity lifecycle: current: OnboardingActivity, activities: 1 visible: 1 foreground: 0
+16:44:06 [main] WalletActivityTracker - activity lifecycle: current: OnboardingActivity, activities: 1 visible: 1 foreground: 1
+16:44:26 [main] WalletActivityTracker - activity lifecycle: current: OnboardingActivity, activities: 1 visible: 1 foreground: 0
+16:44:26 [main] WalletActivityTracker - activity lifecycle: activity RestoreWalletFromSeedActivity created
+16:44:26 [main] WalletActivityTracker - activity lifecycle: current: RestoreWalletFromSeedActivity, activities: 2 visible: 1 foreground: 0
+16:44:26 [main] WalletActivityTracker - activity lifecycle: current: RestoreWalletFromSeedActivity, activities: 2 visible: 2 foreground: 0
+16:44:26 [main] WalletActivityTracker - activity lifecycle: current: RestoreWalletFromSeedActivity, activities: 2 visible: 2 foreground: 1
+16:44:26 [main] WalletActivityTracker - activity lifecycle: current: OnboardingActivity, activities: 2 visible: 1 foreground: 1
+16:44:54 [main] WalletActivityTracker - activity lifecycle: current: RestoreWalletFromSeedActivity, activities: 2 visible: 1 foreground: 0
+16:44:54 [main] WalletActivityTracker - activity lifecycle: activity SetPinActivity created
+16:44:54 [main] WalletActivityTracker - activity lifecycle: current: SetPinActivity, activities: 3 visible: 1 foreground: 0
+16:44:54 [main] WalletActivityTracker - activity lifecycle: current: SetPinActivity, activities: 3 visible: 2 foreground: 0
+16:44:54 [main] WalletActivityTracker - activity lifecycle: current: SetPinActivity, activities: 3 visible: 2 foreground: 1
+16:44:54 [main] WalletActivityTracker - activity lifecycle: current: RestoreWalletFromSeedActivity, activities: 3 visible: 1 foreground: 1
+16:46:06 [main] WalletActivityTracker - activity lifecycle: current: SetPinActivity, activities: 3 visible: 1 foreground: 0
+16:46:06 [main] WalletActivityTracker - activity lifecycle: activity RestoreWalletFromSeedActivity destroyed
+16:46:06 [main] WalletActivityTracker - activity lifecycle: current: SetPinActivity, activities: 2 visible: 1 foreground: 0
+16:46:06 [main] WalletActivityTracker - activity lifecycle: activity OnboardingActivity destroyed
+16:46:06 [main] WalletActivityTracker - activity lifecycle: current: SetPinActivity, activities: 1 visible: 1 foreground: 0
+16:46:06 [main] WalletActivityTracker - activity lifecycle: activity MainActivity created
+16:46:06 [main] WalletActivityTracker - activity lifecycle: current: MainActivity, activities: 2 visible: 1 foreground: 0
+16:46:06 [main] WalletActivityTracker - activity lifecycle: current: MainActivity, activities: 2 visible: 2 foreground: 0
+16:46:06 [main] WalletActivityTracker - activity lifecycle: current: MainActivity, activities: 2 visible: 2 foreground: 1
+16:46:06 [main] BlockchainServiceImpl - .onStartCommand(Intent { cmp=hashengineering.darkcoin.wallet_test/de.schildbach.wallet.service.BlockchainServiceImpl })
+16:46:06 [DefaultDispatcher-worker-9] BlockchainServiceImpl - onStartCommand waiting for onCreate to complete...
+16:46:06 [main] WalletActivityTracker - activity lifecycle: current: MainActivity, activities: 2 visible: 2 foreground: 0
+16:46:06 [main] BlockchainServiceImpl - .onStartCommand(Intent { act=de.schildbach.wallet.service.cancel_coins_received cmp=hashengineering.darkcoin.wallet_test/de.schildbach.wallet.service.BlockchainServiceImpl })
+16:46:06 [DefaultDispatcher-worker-11] BlockchainServiceImpl - onStartCommand waiting for onCreate to complete...
+16:46:07 [main] WalletActivityTracker - activity lifecycle: current: SetPinActivity, activities: 2 visible: 1 foreground: 0
+16:46:07 [main] WalletActivityTracker - activity lifecycle: activity SetPinActivity destroyed
+16:46:07 [main] WalletActivityTracker - activity lifecycle: current: SetPinActivity, activities: 1 visible: 1 foreground: 0
+16:46:07 [DefaultDispatcher-worker-1] BlockchainServiceImpl - onCreate completed, processing onStartCommand
+16:46:07 [DefaultDispatcher-worker-1] BlockchainServiceImpl - .onStartCommand(Intent { cmp=hashengineering.darkcoin.wallet_test/de.schildbach.wallet.service.BlockchainServiceImpl }) finished
+16:46:07 [DefaultDispatcher-worker-1] BlockchainServiceImpl - onCreate completed, processing onStartCommand
+16:46:07 [DefaultDispatcher-worker-1] BlockchainServiceImpl - .onStartCommand(Intent { act=de.schildbach.wallet.service.cancel_coins_received cmp=hashengineering.darkcoin.wallet_test/de.schildbach.wallet.service.BlockchainServiceImpl }) finished
+16:46:24 [main] WalletActivityTracker - activity lifecycle: current: MainActivity, activities: 1 visible: 1 foreground: 1
+16:46:24 [main] BlockchainServiceImpl - .onStartCommand(Intent { act=de.schildbach.wallet.service.cancel_coins_received cmp=hashengineering.darkcoin.wallet_test/de.schildbach.wallet.service.BlockchainServiceImpl })
+16:46:24 [DefaultDispatcher-worker-10] BlockchainServiceImpl - onStartCommand waiting for onCreate to complete...
+16:46:24 [DefaultDispatcher-worker-10] BlockchainServiceImpl - onCreate completed, processing onStartCommand
+16:46:24 [DefaultDispatcher-worker-10] BlockchainServiceImpl - .onStartCommand(Intent { act=de.schildbach.wallet.service.cancel_coins_received cmp=hashengineering.darkcoin.wallet_test/de.schildbach.wallet.service.BlockchainServiceImpl }) finished
+16:46:49 [main] WalletActivityTracker - activity lifecycle: current: MainActivity, activities: 1 visible: 1 foreground: 0
+16:47:08 [main] WalletActivityTracker - activity lifecycle: current: MainActivity, activities: 1 visible: 1 foreground: 1
+16:47:08 [main] BlockchainServiceImpl - .onStartCommand(Intent { act=de.schildbach.wallet.service.cancel_coins_received cmp=hashengineering.darkcoin.wallet_test/de.schildbach.wallet.service.BlockchainServiceImpl })
+16:47:08 [DefaultDispatcher-worker-10] BlockchainServiceImpl - onStartCommand waiting for onCreate to complete...
+16:47:08 [DefaultDispatcher-worker-10] BlockchainServiceImpl - onCreate completed, processing onStartCommand
+16:47:08 [DefaultDispatcher-worker-10] BlockchainServiceImpl - .onStartCommand(Intent { act=de.schildbach.wallet.service.cancel_coins_received cmp=hashengineering.darkcoin.wallet_test/de.schildbach.wallet.service.BlockchainServiceImpl }) finished
+16:56:00 [main] BlockchainServiceImpl - idling detected, stopping service
+16:57:00 [main] BlockchainServiceImpl - idling detected, stopping service
+17:01:27 [main] WalletActivityTracker - activity lifecycle: app started
+17:01:27 [main] WalletActivityTracker - activity lifecycle: activity OnboardingActivity created
+17:01:27 [main] WalletActivityTracker - activity lifecycle: current: OnboardingActivity, activities: 1 visible: 0 foreground: 0
+17:01:27 [main] WalletActivityTracker - activity lifecycle: activity MainActivity created
+17:01:27 [main] WalletActivityTracker - activity lifecycle: current: MainActivity, activities: 2 visible: 0 foreground: 0
+17:01:27 [main] WalletActivityTracker - activity lifecycle: current: MainActivity, activities: 2 visible: 1 foreground: 0
+17:01:27 [main] WalletActivityTracker - activity lifecycle: current: MainActivity, activities: 2 visible: 1 foreground: 1
+17:01:28 [main] BlockchainServiceImpl - .onStartCommand(Intent { cmp=hashengineering.darkcoin.wallet_test/de.schildbach.wallet.service.BlockchainServiceImpl })
+17:01:28 [DefaultDispatcher-worker-16] BlockchainServiceImpl - onStartCommand waiting for onCreate to complete...
+17:01:28 [main] BlockchainServiceImpl - .onStartCommand(Intent { act=de.schildbach.wallet.service.cancel_coins_received cmp=hashengineering.darkcoin.wallet_test/de.schildbach.wallet.service.BlockchainServiceImpl })
+17:01:28 [DefaultDispatcher-worker-2] BlockchainServiceImpl - onStartCommand waiting for onCreate to complete...
+17:01:28 [main] WalletActivityTracker - activity lifecycle: activity OnboardingActivity destroyed
+17:01:28 [main] WalletActivityTracker - activity lifecycle: current: MainActivity, activities: 1 visible: 1 foreground: 1
+17:01:28 [DefaultDispatcher-worker-6] BlockchainServiceImpl - onCreate completed, processing onStartCommand
+17:01:28 [DefaultDispatcher-worker-6] BlockchainServiceImpl - .onStartCommand(Intent { cmp=hashengineering.darkcoin.wallet_test/de.schildbach.wallet.service.BlockchainServiceImpl }) finished
+17:01:28 [DefaultDispatcher-worker-6] BlockchainServiceImpl - onCreate completed, processing onStartCommand
+17:01:28 [DefaultDispatcher-worker-6] BlockchainServiceImpl - .onStartCommand(Intent { act=de.schildbach.wallet.service.cancel_coins_received cmp=hashengineering.darkcoin.wallet_test/de.schildbach.wallet.service.BlockchainServiceImpl }) finished
+17:06:48 [main] WalletActivityTracker - activity lifecycle: current: MainActivity, activities: 1 visible: 1 foreground: 0
+17:06:48 [main] WalletActivityTracker - activity lifecycle: current: MainActivity, activities: 1 visible: 0 foreground: 0

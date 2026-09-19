@@ -1,0 +1,13 @@
+16:47:15 [DefaultDispatcher-worker-5] CrowdNodeApiAggregator - restoring CrowdNode status
+16:47:16 [DefaultDispatcher-worker-14] L1ShadowSyncService - WalletBalanceFacts: total=0 accounts={bip44:0, bip32:0, coinjoin:0, identityRegistration:0, identityTopUpUnbound:0, identityInvitation:0, assetLockTopUp:0, assetLockShieldedTopUp:0, providerVoting:0, providerOwner:0, providerOperator:0, providerPlatform:0} confirmed=0 unconfirmed=0 txCount=0
+16:47:47 [DefaultDispatcher-worker-4] L1ShadowSyncService - WalletBalanceFacts: total=0 accounts={bip44:0, bip32:0, coinjoin:0, identityRegistration:0, identityTopUpUnbound:0, identityInvitation:0, assetLockTopUp:0, assetLockShieldedTopUp:0, providerVoting:0, providerOwner:0, providerOperator:0, providerPlatform:0} confirmed=0 unconfirmed=0 txCount=0
+17:15:01 [DefaultDispatcher-worker-6] CrowdNodeApiAggregator - restoring CrowdNode status
+17:23:43 [DefaultDispatcher-worker-2] CrowdNodeApiAggregator - reset is triggered
+17:25:13 [DefaultDispatcher-worker-8] CrowdNodeApiAggregator - restoring CrowdNode status
+17:27:15 [DefaultDispatcher-worker-9] L1ShadowSyncService - WalletBalanceFacts: total=100000000 accounts={bip44:100000000, bip32:0, coinjoin:0, identityRegistration:0, identityTopUpUnbound:0, identityInvitation:0, assetLockTopUp:0, assetLockShieldedTopUp:0, providerVoting:0, providerOwner:0, providerOperator:0, providerPlatform:0} confirmed=100000000 unconfirmed=0 txCount=4
+17:27:44 [DefaultDispatcher-worker-2] CrowdNodeApiAggregator - restoring CrowdNode status
+17:31:43 [DefaultDispatcher-worker-9] CrowdNodeApiAggregator - restoring CrowdNode status
+17:31:47 [DefaultDispatcher-worker-1] L1ShadowSyncService - WalletBalanceFacts: total=100000000 accounts={bip44:100000000, bip32:0, coinjoin:0, identityRegistration:0, identityTopUpUnbound:0, identityInvitation:0, assetLockTopUp:0, assetLockShieldedTopUp:0, providerVoting:0, providerOwner:0, providerOperator:0, providerPlatform:0} confirmed=100000000 unconfirmed=0 txCount=4
+17:35:07 [DefaultDispatcher-worker-12] CrowdNodeApiAggregator - reset is triggered
+17:36:23 [DefaultDispatcher-worker-13] CrowdNodeApiAggregator - restoring CrowdNode status
+17:39:14 [DefaultDispatcher-worker-11] L1ShadowSyncService - WalletBalanceFacts: total=100000000 accounts={bip44:100000000, bip32:0, coinjoin:0, identityRegistration:0, identityTopUpUnbound:0, identityInvitation:0, assetLockTopUp:0, assetLockShieldedTopUp:0, providerVoting:0, providerOwner:0, providerOperator:0, providerPlatform:0} confirmed=100000000 unconfirmed=0 txCount=4

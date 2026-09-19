@@ -1,0 +1,7 @@
+  at android.os.Handler.handleCallback(Handler.java:959)
+  at android.os.Handler.dispatchMessage(Handler.java:100)
+16:43:53 [DefaultDispatcher-worker-6] CrowdNodeApiAggregator - restoring CrowdNode status
+16:44:41 [main] BlockchainServiceImpl - cutover committed and SDK L1 scan synced — triggering identity/contacts discovery
+16:47:23 [main] BlockchainServiceImpl - cutover committed and SDK L1 scan synced — triggering identity/contacts discovery
+16:49:53 [main] BlockchainServiceImpl - cutover committed and SDK L1 scan synced — triggering identity/contacts discovery
+16:51:54 [main] BlockchainServiceImpl - cutover committed and SDK L1 scan synced — triggering identity/contacts discovery

@@ -440,9 +440,254 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <tr>
 <td id="SR-01"><a href="#SR-01">SR-01</a></td>
 <td>Filter-stall watchdog restart</td>
-<td><strong>N/R</strong> on device (static S1; stall never occurred in ~40 replays)</td>
-<td><a class=ev href="evidence/SR/REPORT.html">evidence/SR/REPORT.md</a></td>
+<td><strong>FAIL</strong> (watchdog fires, engine never restarts; force-stop only)</td>
+<td><a class=ev href="evidence/SRE/SR-01/20-watchdog-fire-context.txt">SRE/SR-01/20-watchdog-fire-context.txt</a>, <a class=ev href="evidence/SRE/SR-01/timeline.txt">SRE/SR-01/timeline.txt</a>, <a class=ev href="evidence/SRE/SR-01/28-home-header-frozen-final.webp">SRE/SR-01/28-home-header-frozen-final.png</a></td>
+<td><strong><a class=did href="DEFECT-LEDGER.html#SR-01">SR-01</a> (S1)</strong>, <a class=did href="DEFECT-LEDGER.html#D-102">D-102</a>, <a class=did href="DEFECT-LEDGER.html#D-103">D-103</a>, <a class=did href="DEFECT-LEDGER.html#SR-35">SR-35</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="f-static-review-reproduction-pass-srasrf-one-row-per-sr-item-taken-to-a-device">F. Static-review reproduction pass (SRA–SRF, one row per SR item taken to a device)</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>User story (what the static review predicted)</th>
+<th>Verdict</th>
+<th>Proof</th>
+<th>Defects</th>
+</tr>
+</thead>
+<tbody>
+<tr>
 <td id="SR-01"><a href="#SR-01">SR-01</a></td>
+<td>Sync stalls at 99 %, watchdog restarts the engine</td>
+<td><strong>FAIL</strong> (engine stopped, never restarted)</td>
+<td><a class=ev href="evidence/SRE/SR-01/20-watchdog-fire-context.txt">SRE/SR-01/20-watchdog-fire-context.txt</a>, <a class=ev href="evidence/SRE/SR-01/timeline.txt">SRE/SR-01/timeline.txt</a>, <a class=ev href="evidence/SRE/SR-01/28-home-header-frozen-final.webp">SRE/SR-01/28-home-header-frozen-final.png</a></td>
+<td><a class=did href="DEFECT-LEDGER.html#SR-01">SR-01</a>, <a class=did href="DEFECT-LEDGER.html#D-102">D-102</a>, <a class=did href="DEFECT-LEDGER.html#D-103">D-103</a></td>
+</tr>
+<tr>
+<td id="SR-02"><a href="#SR-02">SR-02</a></td>
+<td>Invite cancelled after funding keeps the one-time key</td>
+<td><strong>PASS</strong> (0 lost in 3 kills at 2/4/6 s)</td>
+<td><a class=ev href="evidence/SRF/SR-02/timeline.txt">SRF/SR-02/timeline.txt</a>, <a class=ev href="evidence/SRF/SR-02/rC-06-invites-history.webp">SRF/SR-02/rC-06-invites-history.png</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td id="SR-03"><a href="#SR-03">SR-03/04</a></td>
+<td>Restored wallet hands out a fresh receive address</td>
+<td><strong>FAIL</strong> (key #0 with 5 prior uses) / <a class=did href="DEFECT-LEDGER.html#SR-03">SR-04</a> BLOCKED</td>
+<td><a class=ev href="evidence/SRD/SR-03-04/10-receive-tab.webp">SRD/SR-03-04/10-receive-tab.png</a>, <a class=ev href="evidence/SRD/SR-03-04/21-explorer-txapperances.txt">SRD/SR-03-04/21-explorer-txapperances.txt</a></td>
+<td><a class=did href="DEFECT-LEDGER.html#SR-03">SR-03</a>, <a class=did href="DEFECT-LEDGER.html#D-003">D-003</a>, <a class=did href="DEFECT-LEDGER.html#D-119">D-119</a></td>
+</tr>
+<tr>
+<td id="SR-06"><a href="#SR-06">SR-06</a></td>
+<td>Background sync alarm fires on its 15-min backoff</td>
+<td><strong>FAIL</strong> (fired once, 4 min late; re-armed +24 h / 18 h window; force-stop cancels it)</td>
+<td><a class=ev href="evidence/SRD/SR-06/08-alarm-still-pending-excerpt.txt">SRD/SR-06/08-alarm-still-pending-excerpt.txt</a>, <a class=ev href="evidence/SRD/SR-06/11-dumpsys-alarm-after-fire-next-is-24h.txt">SRD/SR-06/11-dumpsys-alarm-after-fire-next-is-24h.txt</a></td>
+<td><a class=did href="DEFECT-LEDGER.html#SR-06">SR-06</a>, <a class=did href="DEFECT-LEDGER.html#D-117">D-117</a>, <a class=did href="DEFECT-LEDGER.html#D-118">D-118</a></td>
+</tr>
+<tr>
+<td id="SR-07"><a href="#SR-07">SR-07</a></td>
+<td>Downgrade to 11.9.0 keeps tx metadata</td>
+<td><strong>FAIL</strong> (memo, tax category, rates destroyed; not restored on re-upgrade)</td>
+<td><a class=ev href="evidence/SRB/SR-07/DECISIVE.txt">SRB/SR-07/DECISIVE.txt</a>, <a class=ev href="evidence/SRB/SR-07/32-master-tx-detail.webp">SRB/SR-07/32-master-tx-detail.png</a>, <a class=ev href="evidence/SRB/SR-07/srb07-downgrade.mp4">SRB/SR-07/srb07-downgrade.mp4</a></td>
+<td id="SR-07"><a href="#SR-07">SR-07</a></td>
+</tr>
+<tr>
+<td id="SR-08"><a href="#SR-08">SR-08</a></td>
+<td>Mainnet prod build leaves SDK flags to the user</td>
+<td><strong>FAIL</strong> (all five seeded true, no opt-out UI)</td>
+<td><a class=ev href="evidence/SRB/SR-08/DECISIVE.txt">SRB/SR-08/DECISIVE.txt</a>, <a class=ev href="evidence/SRB/SR-08/13-tools-screen.webp">SRB/SR-08/13-tools-screen.png</a></td>
+<td><a class=did href="DEFECT-LEDGER.html#SR-08">SR-08</a>, <a class=did href="DEFECT-LEDGER.html#D-099">D-099</a></td>
+</tr>
+<tr>
+<td id="SR-09"><a href="#SR-09">SR-09</a></td>
+<td>Service survives leaving the home screen after an idle verdict</td>
+<td><strong>FAIL</strong> (destroyed within 10 s of HOME) / background receive IS notified while alive</td>
+<td><a class=ev href="evidence/SRD/SR-09/11-service-after-latched-home.txt">SRD/SR-09/11-service-after-latched-home.txt</a>, <a class=ev href="evidence/SRD/SR-09/13-background-receive-loglines.txt">SRD/SR-09/13-background-receive-loglines.txt</a></td>
+<td id="SR-09"><a href="#SR-09">SR-09</a></td>
+</tr>
+<tr>
+<td id="SR-10"><a href="#SR-10">SR-10</a></td>
+<td>Restored wallet header holds the last-known balance during replay</td>
+<td><strong>FAIL</strong> (0 / $0 at 15–54 %)</td>
+<td><a class=ev href="evidence/SRC/SR-10/restore2-timeline.txt">SRC/SR-10/restore2-timeline.txt</a>, <a class=ev href="evidence/SRC/SR-10/r01-header.webp">SRC/SR-10/r01-header.png</a></td>
+<td><a class=did href="DEFECT-LEDGER.html#SR-10">SR-10</a>, <a class=did href="DEFECT-LEDGER.html#D-002">D-002</a></td>
+</tr>
+<tr>
+<td id="SR-11"><a href="#SR-11">SR-11</a></td>
+<td>Username fee from the shielded pool shows in history</td>
+<td><strong>FAIL</strong></td>
+<td><a class=ev href="evidence/SRF/SR-11/10-home-history.webp">SRF/SR-11/10-home-history.png</a>, <a class=ev href="evidence/SRF/SR-11/srf-sr11.mp4">SRF/SR-11/srf-sr11.mp4</a></td>
+<td><a class=did href="DEFECT-LEDGER.html#SR-11">SR-11</a>, <a class=did href="DEFECT-LEDGER.html#D-007">D-007</a></td>
+</tr>
+<tr>
+<td id="SR-12"><a href="#SR-12">SR-12</a></td>
+<td>Shielded transfer &gt; 40 s does not brick the screen</td>
+<td><strong>PASS+</strong> (screen locked until the op ends, then frees)</td>
+<td><a class=ev href="evidence/SRF/SR-12/t041.webp">SRF/SR-12/t041.png</a>, <a class=ev href="evidence/SRF/SR-12/22-reenter.webp">SRF/SR-12/22-reenter.png</a>, <a class=ev href="evidence/SRF/SR-12/srf-sr12b.mp4">SRF/SR-12/srf-sr12b.mp4</a></td>
+<td><a class=did href="DEFECT-LEDGER.html#SR-12">SR-12</a>, <a class=did href="DEFECT-LEDGER.html#D-125">D-125</a></td>
+</tr>
+<tr>
+<td id="SR-13"><a href="#SR-13">SR-13</a></td>
+<td>Leaving the shielded send screen mid-proof keeps the outcome</td>
+<td><strong>FAIL</strong> (spend broadcast, outcome lost, screen re-submittable)</td>
+<td><a class=ev href="evidence/SRF/SR-13/timeline.txt">SRF/SR-13/timeline.txt</a>, <a class=ev href="evidence/SRF/SR-13/21-balances-after.webp">SRF/SR-13/21-balances-after.png</a>, <a class=ev href="evidence/SRF/SR-13/srf-sr13.mp4">SRF/SR-13/srf-sr13.mp4</a></td>
+<td id="SR-13"><a href="#SR-13">SR-13</a></td>
+</tr>
+<tr>
+<td id="SR-14"><a href="#SR-14">SR-14</a></td>
+<td>Offline invite creation times out and allows retry</td>
+<td><strong>FAIL</strong> (wrong "network rejected" message, Confirm permanently disabled)</td>
+<td><a class=ev href="evidence/SRF/SR-14/n030.webp">SRF/SR-14/n030.png</a>, <a class=ev href="evidence/SRF/SR-14/21-retry-online.webp">SRF/SR-14/21-retry-online.png</a></td>
+<td id="D-122"><a href="#D-122">D-122</a></td>
+</tr>
+<tr>
+<td id="SR-15"><a href="#SR-15">SR-15</a></td>
+<td>Engine restart re-scans a bounded window</td>
+<td><strong>PASS+</strong> (22,830 blocks, 19 s on the relaunch path; watchdog path unmeasurable)</td>
+<td><a class=ev href="evidence/SRE/SR-15/01-rewalk.txt">SRE/SR-15/01-rewalk.txt</a></td>
+<td id="SR-15"><a href="#SR-15">SR-15</a></td>
+</tr>
+<tr>
+<td id="SR-16"><a href="#SR-16">SR-16/17</a></td>
+<td>Send-all on unconfirmed change is guarded</td>
+<td><strong>PASS+</strong> (guard inert; sends succeed, no lock ever logged)</td>
+<td><a class=ev href="evidence/SRC/SR-16-17/07-grep-locks.txt">SRC/SR-16-17/07-grep-locks.txt</a>, <a class=ev href="evidence/SRC/SR-16-17/sr1617.mp4">SRC/SR-16-17/sr1617.mp4</a></td>
+<td id="SR-16"><a href="#SR-16">SR-16/17</a></td>
+</tr>
+<tr>
+<td id="SR-18"><a href="#SR-18">SR-18</a></td>
+<td>Coinbase transfer fee estimate</td>
+<td><strong>BLOCKED</strong> (no keys)</td>
+<td><a class=ev href="evidence/SRC/SR-18/VERDICT.txt">SRC/SR-18/VERDICT.txt</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td id="SR-19"><a href="#SR-19">SR-19</a></td>
+<td>Memo / label / fiat rate stored with an SDK send</td>
+<td><strong>FAIL</strong> (5/5 sends: memo empty, rate null, value 0)</td>
+<td><a class=ev href="evidence/SRC/SR-19/17-grep-txmetadata-all.txt">SRC/SR-19/17-grep-txmetadata-all.txt</a>, <a class=ev href="evidence/SRC/SR-19/05-txdetail-no-memo-no-fiat.webp">SRC/SR-19/05-txdetail-no-memo-no-fiat.png</a></td>
+<td><a class=did href="DEFECT-LEDGER.html#SR-19">SR-19</a>, <a class=did href="DEFECT-LEDGER.html#D-111">D-111</a>, <a class=did href="DEFECT-LEDGER.html#D-113">D-113</a>, <a class=did href="DEFECT-LEDGER.html#D-114">D-114</a></td>
+</tr>
+<tr>
+<td id="SR-20"><a href="#SR-20">SR-20</a></td>
+<td>Reset Wallet reports failure when steps fail</td>
+<td><strong>FAIL</strong> (13 EACCES failures swallowed, marked complete, old cutover state leaks)</td>
+<td><a class=ev href="evidence/SRA/SR-20/08-decisive-grep.txt">SRA/SR-20/08-decisive-grep.txt</a>, <a class=ev href="evidence/SRA/SR-20/17-cutover-leak.txt">SRA/SR-20/17-cutover-leak.txt</a>, <a class=ev href="evidence/SRA/SR-20/sr20-reset.mp4">SRA/SR-20/sr20-reset.mp4</a></td>
+<td id="SR-20"><a href="#SR-20">SR-20</a></td>
+</tr>
+<tr>
+<td id="SR-21"><a href="#SR-21">SR-21</a></td>
+<td>Reset never hangs on the spinner</td>
+<td><strong>PASS+</strong> (max 15 s in 5 races; hazard path hit, recovered)</td>
+<td><a class=ev href="evidence/SRA/SR-21/a5-log.txt">SRA/SR-21/a5-log.txt</a>, SRA/<a class=did href="DEFECT-LEDGER.html#SR-21">SR-21</a>/sr21-a5.mp4</td>
+<td id="SR-21"><a href="#SR-21">SR-21</a></td>
+</tr>
+<tr>
+<td id="SR-23"><a href="#SR-23">SR-23/39/43</a></td>
+<td>Build targets Play's current SDK, all ABIs</td>
+<td><strong>FAIL</strong> (targetSdk 35, minSdk 29, arm64+x86_64 only)</td>
+<td><a class=ev href="evidence/SRB/SR-23/SUMMARY-badging.txt">SRB/SR-23/SUMMARY-badging.txt</a>, <a class=ev href="evidence/SRB/SR-39/device-abilist.txt">SRB/SR-39/device-abilist.txt</a>, <a class=ev href="evidence/SRB/SR-43/gradle-compileSdk-placement.txt">SRB/SR-43/gradle-compileSdk-placement.txt</a></td>
+<td><a class=did href="DEFECT-LEDGER.html#SR-23">SR-23</a>, <a class=did href="DEFECT-LEDGER.html#D-098">D-098</a>, <a class=did href="DEFECT-LEDGER.html#SR-39">SR-39</a>, <a class=did href="DEFECT-LEDGER.html#SR-43">SR-43</a></td>
+</tr>
+<tr>
+<td id="SR-25"><a href="#SR-25">SR-25/26</a></td>
+<td>Oversize wallet handled without data loss, asides reclaimed</td>
+<td><strong>FAIL</strong> (RISKY at 57.6 MB confirmed; .oversize copies survive restore and reset)</td>
+<td><a class=ev href="evidence/SRA/SR-25/06-guard-log.txt">SRA/SR-25/06-guard-log.txt</a>, <a class=ev href="evidence/SRA/SR-26/03-after-reset-files.txt">SRA/SR-26/03-after-reset-files.txt</a></td>
+<td><a class=did href="DEFECT-LEDGER.html#SR-25">SR-25</a>, <a class=did href="DEFECT-LEDGER.html#SR-26">SR-26</a></td>
+</tr>
+<tr>
+<td id="SR-27"><a href="#SR-27">SR-27</a></td>
+<td>CoinJoin setting survives the upgrade</td>
+<td><strong>FAIL</strong> (row gone, mode orphaned on disk)</td>
+<td><a class=ev href="evidence/SRB/SR-27/09-settings-coinjoin-on.webp">SRB/SR-27/09-settings-coinjoin-on.png</a>, <a class=ev href="evidence/SRB/SR-27/11-fix-settings.webp">SRB/SR-27/11-fix-settings.png</a>, <a class=ev href="evidence/SRB/SR-27/srb27-upgrade.mp4">SRB/SR-27/srb27-upgrade.mp4</a></td>
+<td><a class=did href="DEFECT-LEDGER.html#SR-27">SR-27</a>, <a class=did href="DEFECT-LEDGER.html#D-069">D-069</a></td>
+</tr>
+<tr>
+<td id="SR-28"><a href="#SR-28">SR-28</a></td>
+<td>Confirm sheet shows the real fee; amounts near the balance are accepted or rejected clearly</td>
+<td><strong>FAIL</strong> (0.0001 shown vs 0.00000226 paid; amount silently rewritten)</td>
+<td><a class=ev href="evidence/SRC/SR-28/numbers.txt">SRC/SR-28/numbers.txt</a>, <a class=ev href="evidence/SRC/SR-28/13-typed-98994774.webp">SRC/SR-28/13-typed-98994774.png</a></td>
+<td><a class=did href="DEFECT-LEDGER.html#SR-28">SR-28</a>, <a class=did href="DEFECT-LEDGER.html#D-112">D-112</a></td>
+</tr>
+<tr>
+<td id="SR-29"><a href="#SR-29">SR-29</a></td>
+<td>Send-Max succeeds first time</td>
+<td><strong>FAIL</strong> (first attempt short by 45 duffs both runs; string-matched retry)</td>
+<td><a class=ev href="evidence/SRC/SR-29/ANALYSIS.txt">SRC/SR-29/ANALYSIS.txt</a>, <a class=ev href="evidence/SRC/SR-29/sr29-max1.mp4">SRC/SR-29/sr29-max1.mp4</a></td>
+<td id="SR-29"><a href="#SR-29">SR-29</a></td>
+</tr>
+<tr>
+<td id="SR-30"><a href="#SR-30">SR-30</a></td>
+<td>Shielded Max to an address succeeds</td>
+<td><strong>FAIL</strong> (Insufficient shielded balance, no reserve, no retry)</td>
+<td><a class=ev href="evidence/SRF/SR-30/grep.txt">SRF/SR-30/grep.txt</a>, <a class=ev href="evidence/SRF/SR-30/srf-sr30.mp4">SRF/SR-30/srf-sr30.mp4</a></td>
+<td><a class=did href="DEFECT-LEDGER.html#SR-30">SR-30</a>, <a class=did href="DEFECT-LEDGER.html#D-123">D-123</a></td>
+</tr>
+<tr>
+<td id="SR-31"><a href="#SR-31">SR-31</a></td>
+<td>Fiat-mode Max on the transfer screen succeeds</td>
+<td><strong>FAIL</strong> ("This transfer was not sent"; DASH Max control succeeds)</td>
+<td><a class=ev href="evidence/SRF/SR-31/w008.webp">SRF/SR-31/w008.png</a>, <a class=ev href="evidence/SRF/SR-31/d008.webp">SRF/SR-31/d008.png</a>, <a class=ev href="evidence/SRF/SR-31/srf-sr31.mp4">SRF/SR-31/srf-sr31.mp4</a></td>
+<td id="SR-31"><a href="#SR-31">SR-31</a></td>
+</tr>
+<tr>
+<td id="SR-32"><a href="#SR-32">SR-32</a></td>
+<td>Send-screen Max respects the replay hold</td>
+<td><strong>PASS+</strong> (code confirmed; masked by <a class=did href="DEFECT-LEDGER.html#SR-10">SR-10</a> on a restored wallet)</td>
+<td><a class=ev href="evidence/SRC/SR-32/timeline.txt">SRC/SR-32/timeline.txt</a></td>
+<td id="SR-32"><a href="#SR-32">SR-32</a></td>
+</tr>
+<tr>
+<td id="SR-33"><a href="#SR-33">SR-33/34</a></td>
+<td>Auto-lock defaults and "Immediately" behaviour</td>
+<td><strong>PASS</strong> (1 min default identical on master; Immediately locks on HOME; rotation never locks)</td>
+<td><a class=ev href="evidence/SRD/SR-33-34/07-advanced-security-default.webp">SRD/SR-33-34/07-advanced-security-default.png</a>, <a class=ev href="evidence/SRD/SR-33-master/04-master-advanced-security-default.webp">SRD/SR-33-master/04-master-advanced-security-default.png</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td id="SR-35"><a href="#SR-35">SR-35</a></td>
+<td>Watchdog gives up visibly after 3 restarts</td>
+<td><strong>FAIL</strong> (loop dead after the first fire; EXHAUSTED unreachable; only Network monitor admits it)</td>
+<td><a class=ev href="evidence/SRE/SR-35/07-no-exhausted.txt">SRE/SR-35/07-no-exhausted.txt</a>, <a class=ev href="evidence/SRE/SR-35/06-network-monitor.webp">SRE/SR-35/06-network-monitor.png</a></td>
+<td id="SR-35"><a href="#SR-35">SR-35</a></td>
+</tr>
+<tr>
+<td id="SR-36"><a href="#SR-36">SR-36</a></td>
+<td>Reset without a marker still wipes</td>
+<td><strong>FAIL</strong> (opposite: wipe is a silent no-op, wallet back with the same PIN)</td>
+<td><a class=ev href="evidence/SRA/SR-36/12-destroying-nothing.txt">SRA/SR-36/12-destroying-nothing.txt</a>, <a class=ev href="evidence/SRA/SR-36/06-run1-wallet-alive.webp">SRA/SR-36/06-run1-wallet-alive.png</a></td>
+<td><a class=did href="DEFECT-LEDGER.html#SR-36">SR-36</a>, <a class=did href="DEFECT-LEDGER.html#D-107">D-107</a></td>
+</tr>
+<tr>
+<td id="SR-38"><a href="#SR-38">SR-38</a></td>
+<td>Oversize wallet recovers from the key backup durably</td>
+<td><strong>FAIL</strong> (one session only; next launch onboarding)</td>
+<td><a class=ev href="evidence/SRA/SR-38/22-relaunch-log.txt">SRA/SR-38/22-relaunch-log.txt</a>, <a class=ev href="evidence/SRA/SR-38/sr38-relaunch.mp4">SRA/SR-38/sr38-relaunch.mp4</a>, <a class=ev href="evidence/SRA/SR-38/34-null-degraded.webp">SRA/SR-38/34-null-degraded.png</a></td>
+<td><a class=did href="DEFECT-LEDGER.html#SR-38">SR-38</a>, <a class=did href="DEFECT-LEDGER.html#D-106">D-106</a>, <a class=did href="DEFECT-LEDGER.html#D-108">D-108</a></td>
+</tr>
+<tr>
+<td id="SR-40"><a href="#SR-40">SR-40</a></td>
+<td>Force-finish receiver not reachable by other apps</td>
+<td><strong>FAIL on API 29–32</strong> (VerifySeed/SetPin finished from uid 2000; API 35 immune; pre-existing)</td>
+<td><a class=ev href="evidence/SRE/SR-40/11-api31-unprivileged-uid2000.txt">SRE/SR-40/11-api31-unprivileged-uid2000.txt</a>, <a class=ev href="evidence/SRE/SR-40/sr40-api31-unpriv.mp4">SRE/SR-40/sr40-api31-unpriv.mp4</a></td>
+<td id="SR-40"><a href="#SR-40">SR-40</a></td>
+</tr>
+<tr>
+<td id="SR-41"><a href="#SR-41">SR-41</a></td>
+<td>Slow wallet load does not strand the user in safe mode</td>
+<td><strong>FAIL</strong> (one 21 s stall + one death → safe mode; Try Again recovers)</td>
+<td><a class=ev href="evidence/SRA/SR-41/08-safemode-screen.webp">SRA/SR-41/08-safemode-screen.png</a>, <a class=ev href="evidence/SRA/SR-41/09-safemode-log.txt">SRA/SR-41/09-safemode-log.txt</a></td>
+<td id="SR-41"><a href="#SR-41">SR-41</a></td>
+</tr>
+<tr>
+<td id="SR-42"><a href="#SR-42">SR-42</a></td>
+<td>Own bridged sends skip the received-path handlers</td>
+<td><strong>PASS+</strong> (handlers run; UI symptom not observable without DashPay)</td>
+<td><a class=ev href="evidence/SRB/SR-42/grep-coins-callbacks.txt">SRB/SR-42/grep-coins-callbacks.txt</a></td>
+<td id="SR-42"><a href="#SR-42">SR-42</a></td>
 </tr>
 </tbody>
 </table><div id=lb><span class=x>&times;</span><span class="nv pv">&#8249;</span><span class="nv nx">&#8250;</span><img><div class=cap></div></div>
