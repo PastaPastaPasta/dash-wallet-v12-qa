@@ -5,6 +5,7 @@ h1{border-bottom:3px solid #008de4}h2{border-bottom:1px solid #ccc;margin-top:40
 nav.top{background:#012060;color:#fff;padding:8px 24px;margin:-16px -24px 16px;position:sticky;top:0;z-index:5}nav.top a{color:#fff;margin-right:18px;text-decoration:none}nav.top a:hover{text-decoration:underline}
 .S1{color:#b00020;font-weight:bold}.S2{color:#c75000;font-weight:bold}.toc{background:#f8f9fb;border:1px solid #e3e6ea;padding:8px 16px;font-size:13px;columns:2}.toc ul{margin:2px 0;padding-left:16px}
 #lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:50;align-items:center;justify-content:center;flex-direction:column}#lb.on{display:flex}#lb img{max-width:96vw;max-height:88vh;border:2px solid #fff;box-shadow:0 0 30px #000}#lb .cap{color:#eee;font:13px ui-monospace,monospace;margin-top:8px}#lb .cap a{color:#8cf}#lb .x{position:absolute;top:10px;right:18px;color:#fff;font-size:30px;cursor:pointer}#lb .nv{position:absolute;top:50%;color:#fff;font-size:44px;cursor:pointer;padding:0 16px;user-select:none}#lb .pv{left:0}#lb .nx{right:0}a.img img{cursor:zoom-in}
+sup.more a{margin:0 2px;font-size:10px}
 a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:target{background:#fff3b0;outline:2px solid #f5b400}
 .note{background:#fff8e1;border-left:4px solid #f5b400;padding:8px 12px;margin:12px 0}
 </style><nav class=top><a href="../../index.html">Home</a><a href="../../QA-REPORT.html">Full report</a><a href="../../EXEC-SUMMARY.html">Executive summary</a><a href="../../STORY-MATRIX.html">User-story matrix</a><a href="../../DEFECT-LEDGER.html">Defect register</a><a href="../index.html">Evidence gallery</a><a href="../../QA-PLAN.html">Test plan</a><a href="../../streams.html">Stream reports</a></nav><h1 id="qa-report-s6-m1-m4-mainnet-prod-build-agent-s6-emulator-5564-dw-qa6-2026-09-19">QA report: S6 / M1-M4 - MAINNET prod build (agent: S6, emulator-5564 / dw-qa6, 2026-09-19)</h1>
@@ -17,7 +18,7 @@ Helper used for every device command: <code>/Users/dcg/workspace/dash-wallet-qa/
 <p><strong>No real funds were involved.</strong> Two seeds only: a throwaway freshly generated mainnet seed (never funded)
 and the public BIP39 test vector <code>abandon ... about</code> (zero balance). Nothing was sent; no purchase, username
 or dashj-toggle action was attempted.</p>
-<p>Clock note: <code>wallet.log</code> timestamps are UTC; host <code>date</code> is UTC-5 (host 00:19 == wallet.log 05:19).</p>
+<p>Clock note: <a class=ev href="../S6/M4/walletlog-final/files/log/wallet.log">wallet.log</a> timestamps are UTC; host <code>date</code> is UTC-5 (host 00:19 == <a class=ev href="../S6/M4/walletlog-final/files/log/wallet.log">wallet.log</a> 05:19).</p>
 <h2 id="summary-table">Summary table</h2>
 <table>
 <thead>
@@ -30,39 +31,39 @@ or dashj-toggle action was attempted.</p>
 </thead>
 <tbody>
 <tr>
-<td>M1 fresh mainnet wallet sync</td>
+<td><a class=ev href="../index.html#S6-M1">M1</a> fresh mainnet wallet sync</td>
 <td><strong>PASS</strong></td>
 <td><a class=ev href="../S6/M1/15-home-synced.webp">evidence/S6/M1/15-home-synced.png</a>, <a class=ev href="../S6/M1/walletlog/files/log/wallet.log">evidence/S6/M1/walletlog/files/log/wallet.log</a>, <a class=ev href="../S6/mem.csv">evidence/S6/mem.csv</a></td>
 <td>Reaches <code>phase=SYNCED 100.0%</code> 42 s after the L1 engine starts (3 m 29 s from wallet creation), balance 0, zero engine restarts, peak 444 MB PSS.</td>
 </tr>
 <tr>
-<td>M2 BIP39 test-vector seed</td>
+<td><a class=ev href="../index.html#S6-M2">M2</a> BIP39 test-vector seed</td>
 <td><strong>PASS</strong></td>
 <td><a class=ev href="../S6/M2/14-SYNCED-home.webp">evidence/S6/M2/14-SYNCED-home.png</a>, <a class=ev href="../S6/M2/17-txdetail-sent-2018.webp">evidence/S6/M2/17-txdetail-sent-2018.png</a>, <a class=ev href="../S6/M2/walletlog/files/log/wallet.log">evidence/S6/M2/walletlog/files/log/wallet.log</a></td>
 <td>Full mainnet rescan in 5 m 45 s; balance 0.00; all 4 historical appearances on <code>XoJA8qE3N2Y3jMLEtZ3vcN42qseZ8LvFf5</code> present and matching insight; replay peaks at 995 MB PSS / 847 MB native.</td>
 </tr>
 <tr>
-<td>M3 mainnet upgrade path</td>
+<td><a class=ev href="../index.html#S6-M3">M3</a> mainnet upgrade path</td>
 <td><strong>PASS</strong></td>
 <td><a class=ev href="../S6/M3/upgrade-launch.mp4">evidence/S6/M3/upgrade-launch.mp4</a>, <a class=ev href="../S6/M3/10-explainer.webp">evidence/S6/M3/10-explainer.png</a>, <a class=ev href="../S6/M3/12-SYNCED-home.webp">evidence/S6/M3/12-SYNCED-home.png</a>, <a class=ev href="../S6/M3/exitinfo.txt">evidence/S6/M3/exitinfo.txt</a></td>
 <td>All A3 assertions hold: <code>CUT_OVER (upgraded-wallet launch)</code>, exactly one <code>L1 shadow SPV started</code>, zero <code>starting peergroup</code> after upgrade, explainer once, no <code>OverlappingFileLockException</code>, 100 % in 5 m 13 s, balance 0, 4 tx visible, no OOM/LMK kill.</td>
 </tr>
 <tr>
-<td>M4 mainnet UI sanity</td>
+<td><a class=ev href="../index.html#S6-M4">M4</a> mainnet UI sanity</td>
 <td><strong>PASS</strong> (3 findings)</td>
-<td><code>evidence/S6/M4/*.png</code></td>
+<td><a class=ev href="../S6/M4/01-home.webp">evidence/S6/M4/*.png</a><sup class=more><a href="../index.html#S6-M4" title="17 files, open gallery">+16</a></sup></td>
 <td>Receive address starts with <code>X</code>; testnet address rejected; Explore / Buy&amp;Sell / More / Settings / Security / Tools / Network monitor / About all open. Findings: used receive address, <code>12.0.0 (0)</code> build number, tx-detail missing fee/addresses.</td>
 </tr>
 </tbody>
 </table>
 <h2 id="per-test-detail">Per-test detail</h2>
-<h3 id="m1-fresh-mainnet-wallet-create-sync">M1 - fresh mainnet wallet, create + sync</h3>
+<h3 id="m1-fresh-mainnet-wallet-create-sync"><a class=ev href="../index.html#S6-M1">M1</a> - fresh mainnet wallet, create + sync</h3>
 <ul>
 <li>Build: <code>fix-12.0.0-prod-release-signed.apk</code> (12000000), clean install on a device with no prior package.</li>
 <li>Steps (host clock): 00:19:39 install - 00:20 launch - 00:21 Create new wallet -&gt; 12-word -&gt; PIN 1234 -&gt;
   phrase shown + verified - 00:24:07 notifications/background dialogs - 00:25:30 home.</li>
-<li>Throwaway seed recorded in <a class=ev href="../S6/notes.md">notes.md</a> (never funded, never will be).</li>
-<li>Observations (<a class=ev href="../S6/M1/walletlog/files/log/wallet.log">M1/walletlog/files/log/wallet.log</a>):</li>
+<li>Throwaway seed recorded in <a class=ev href="../S6/notes.html">notes.md</a> (never funded, never will be).</li>
+<li>Observations (<a class=ev href="../S6/M4/walletlog-final/files/log/wallet.log">M1/walletlog/files/log/wallet.log</a>):</li>
 <li><code>05:21:23 CutoverCoordinator - cutover state DUAL_RUNNING -&gt; CUT_OVER (fresh-wallet setup (restore/new))</code></li>
 <li><code>05:22:07 DashSdkServiceImpl - armSpvRescan: filter watermark rewind to 2404800 armed on ee230719...</code></li>
 <li><code>05:22:07 CutoverUiDataService - cutover UI active but the engine wallet-event tap is not running
@@ -77,11 +78,11 @@ or dashj-toggle action was attempted.</p>
 <li>Memory (<a class=ev href="../S6/mem.csv">evidence/S6/mem.csv</a>): peak TOTAL PSS 454,639 kB, Native Heap 322,864 kB, Dalvik 32,010 kB
   @00:24:37; settles ~350 MB PSS / ~217 MB native. <code>exit-info</code> empty (<a class=ev href="../S6/M1/exitinfo.txt">M1/exitinfo.txt</a>).</li>
 <li>Screenshots: <code>/Users/dcg/workspace/dash-wallet-qa/evidence/S6/M1/01-first-launch.png</code> ...
-  <a class=ev href="../S6/M1/15-home-synced.webp">.../M1/15-home-synced.png</a> (plus <code>sync-*.png</code> samples).</li>
+  <a class=ev href="../S6//M1/15-home-synced.webp">.../M1/15-home-synced.png</a> (plus <a class=ev href="../S6/M1/sync-002605.webp">sync-*.png</a><sup class=more><a href="../S6/M1/sync-002835.webp" title="S6/M1/sync-002835.webp">2</a></sup> samples).</li>
 <li>Verdict <strong>PASS</strong>. Onboarding has no mainnet-specific screen and no testnet chrome, correct for prod.</li>
-<li>Oddity: the home header never rendered a sync-progress pane during M1 (sync finished in 42 s).</li>
+<li>Oddity: the home header never rendered a sync-progress pane during <a class=ev href="../index.html#S6-M1">M1</a> (sync finished in 42 s).</li>
 </ul>
-<h3 id="m2-restore-the-bip39-test-vector-seed">M2 - restore the BIP39 test-vector seed</h3>
+<h3 id="m2-restore-the-bip39-test-vector-seed"><a class=ev href="../index.html#S6-M2">M2</a> - restore the BIP39 test-vector seed</h3>
 <ul>
 <li>Steps: 00:31:29 More &gt; Security &gt; Reset Wallet (confirmed) -&gt; onboarding;
   00:32:36 Restore wallet with <code>abandon abandon ... about</code>, no creation date (full rescan), PIN 1234.</li>
@@ -108,11 +109,11 @@ or dashj-toggle action was attempted.</p>
   ~690 MB PSS / ~540 MB native and does not return to the fresh-wallet ~350 MB.</li>
 <li>Verdict <strong>PASS</strong> on correctness; see defect S6-D1 for the memory profile.</li>
 </ul>
-<h3 id="m3-mainnet-upgrade-path-master-1190-prod-fix-1200-prod">M3 - mainnet upgrade path (master 11.9.0 prod -&gt; fix 12.0.0 prod)</h3>
+<h3 id="m3-mainnet-upgrade-path-master-1190-prod-fix-1200-prod"><a class=ev href="../index.html#S6-M3">M3</a> - mainnet upgrade path (master 11.9.0 prod -&gt; fix 12.0.0 prod)</h3>
 <ul>
 <li>00:42:14 uninstall fix - 00:42:18 install master prod - 00:43:11 restore the same seed, PIN 1234 -
   00:44:53 home shows <code>Syncing balance</code> / <code>Syncing 35%</code>.</li>
-<li>Master baseline over 20 min (<a class=ev href="../S6/M3/master-samples.txt">M3/master-samples.txt</a>, <code>M3/master-sync-*.png</code>):
+<li>Master baseline over 20 min (<a class=ev href="../S6/M3/master-samples.txt">M3/master-samples.txt</a>, <a class=ev href="../S6/M3/master-sync-005009.webp">M3/master-sync-*.png</a><sup class=more><a href="../S6/M3/master-sync-005512.webp" title="S6/M3/master-sync-005512.webp">2</a> <a href="../S6/M3/master-sync-010015.webp" title="S6/M3/master-sync-010015.webp">3</a> <a href="../S6/M3/master-sync-010517.webp" title="S6/M3/master-sync-010517.webp">4</a></sup>):
   real dashj peer group on mainnet (<code>Peer{...subVer=/Dash Core:23.1.8/, height=2541281}</code>), ~1000-1500 blocks/s,
   chain height 239040 -&gt; 1216108 of 2541289 (<code>Syncing 64%</code> at 01:05, <a class=ev href="../S6/M3/07-master-after-20min.webp">M3/07-master-after-20min.png</a>).
   Master memory at the 20-min mark: <strong>TOTAL PSS 187,876 kB / Native Heap 44,692 kB / Dalvik 47,437 kB</strong>.</li>
@@ -138,7 +139,7 @@ or dashj-toggle action was attempted.</p>
 </tr>
 <tr>
 <td>no <code>starting peergroup</code> post-cutover</td>
-<td>only occurrence in the whole log is <code>05:43:52</code> during the master run (also present in the pre-upgrade pull <code>M3/master-walletlog/files/log/wallet.log:305</code>) PASS</td>
+<td>only occurrence in the whole log is <code>05:43:52</code> during the master run (also present in the pre-upgrade pull <a class=ev href="../S6/M4/walletlog-final/files/log/wallet.log">M3/master-walletlog/files/log/wallet.log:305</a>) PASS</td>
 </tr>
 <tr>
 <td>explainer shown once</td>
@@ -182,13 +183,13 @@ or dashj-toggle action was attempted.</p>
   downloaded are not reused. Consistent with the explainer's "one-time full sync" wording.</li>
 <li>Verdict <strong>PASS</strong>.</li>
 </ul>
-<h3 id="m4-mainnet-ui-sanity-on-the-fix-prod-build">M4 - mainnet UI sanity on the fix prod build</h3>
-<p>All screens opened without a crash; see <a class=ev href="../S6/notes.md">notes.md</a> for the per-screen table and
+<h3 id="m4-mainnet-ui-sanity-on-the-fix-prod-build"><a class=ev href="../index.html#S6-M4">M4</a> - mainnet UI sanity on the fix prod build</h3>
+<p>All screens opened without a crash; see <a class=ev href="../S6/notes.html">notes.md</a> for the per-screen table and
 <code>/Users/dcg/workspace/dash-wallet-qa/evidence/S6/M4/</code> for the screenshots.
 Key checks: Receive shows <code>XoJA8qE3N2Y3jMLEtZ3vcN42qseZ8LvFf5</code> (mainnet <code>X</code> prefix) PASS;
 Send rejects the testnet address <code>yRd4FhXfVGHXpsuZXPNkMrfD9GVj46pnjt</code> with
 "Not a valid DASH Address or URL request" and refuses to continue PASS
-(<code>wallet.log</code>: <code>PaymentIntentParserException: java.lang.IllegalArgumentException: yRd4FhXfVGHXpsuZXPNkMrfD9GVj46pnjt</code>);
+(<a class=ev href="../S6/M4/walletlog-final/files/log/wallet.log">wallet.log</a>: <code>PaymentIntentParserException: java.lang.IllegalArgumentException: yRd4FhXfVGHXpsuZXPNkMrfD9GVj46pnjt</code>);
 Tools contains <code>Network monitor</code> and the <code>dashj sync (diagnostic)</code> toggle, <strong>OFF and not touched</strong> PASS;
 Network monitor reports <code>Synced / Connected to the Dash network</code>, headers 2,541,297, filters 2,541,297,
 masternode list 2,541,295, ChainLock 2,541,295 PASS; About reports Dash Kotlin SDK <code>0.1.0-v42int19-SNAPSHOT</code>
@@ -206,14 +207,14 @@ and Platform <code>4.0.1-SNAPSHOT</code> PASS.</p>
 </thead>
 <tbody>
 <tr>
-<td>M1 fresh wallet (fix)</td>
+<td><a class=ev href="../index.html#S6-M1">M1</a> fresh wallet (fix)</td>
 <td>454,639 kB</td>
 <td>322,864 kB</td>
 <td>32,010 kB</td>
 <td>00:24:37</td>
 </tr>
 <tr>
-<td>M2 full restore (fix)</td>
+<td><a class=ev href="../index.html#S6-M2">M2</a> full restore (fix)</td>
 <td><strong>1,018,245 kB</strong></td>
 <td><strong>866,932 kB</strong></td>
 <td>26,888 kB</td>
@@ -243,7 +244,7 @@ and Platform <code>4.0.1-SNAPSHOT</code> PASS.</p>
 </tbody>
 </table>
 <p>No LMK kill, no <code>OutOfMemoryError</code>, no <code>FATAL EXCEPTION</code> in either logcat segment
-(<a class=ev href="../S6/logcat-part1.txt">logcat-part1.txt</a>, <a class=ev href="../S6/logcat.txt">logcat.txt</a>) or in any <code>wallet.log</code> pull.</p>
+(<a class=ev href="../S6/logcat-part1.txt">logcat-part1.txt</a>, <a class=ev href="../S6/logcat.txt">logcat.txt</a>) or in any <a class=ev href="../S6/M4/walletlog-final/files/log/wallet.log">wallet.log</a> pull.</p>
 <h2 id="defects-found">Defects found</h2>
 <table>
 <thead>
@@ -261,15 +262,15 @@ and Platform <code>4.0.1-SNAPSHOT</code> PASS.</p>
 <td>S6-D1</td>
 <td class=S2>S2</td>
 <td>Mainnet SDK replay uses ~1 GB PSS / ~850-920 MB native, ~4.7x master, and does not fall back afterwards</td>
-<td>Restore any seed on mainnet with no creation date (M2) or upgrade from 11.9.0 (M3); sample <code>dumpsys meminfo</code> every 30 s</td>
-<td><a class=ev href="../S6/mem.csv">evidence/S6/mem.csv</a> (peaks 1,018,245 kB @00:37:43 and 998,095 kB @01:10:59 vs master 211,462 kB @00:49:18); <code>wallet.log</code> <code>06:12:09 ReplayMemTelemetry ... nativeHeapSize=1168384000</code>; <a class=ev href="../S6/M3/exitinfo.txt">M3/exitinfo.txt</a> records <code>rss=1.1GB</code> at force-stop for fix vs <code>rss=319MB</code> for master</td>
+<td>Restore any seed on mainnet with no creation date (<a class=ev href="../index.html#S6-M2">M2</a>) or upgrade from 11.9.0 (<a class=ev href="../index.html#S6-M3">M3</a>); sample <code>dumpsys meminfo</code> every 30 s</td>
+<td><a class=ev href="../S6/mem.csv">evidence/S6/mem.csv</a> (peaks 1,018,245 kB @00:37:43 and 998,095 kB @01:10:59 vs master 211,462 kB @00:49:18); <a class=ev href="../S6/M4/walletlog-final/files/log/wallet.log">wallet.log</a> <code>06:12:09 ReplayMemTelemetry ... nativeHeapSize=1168384000</code>; <a class=ev href="../S6/M3/exitinfo.txt">M3/exitinfo.txt</a> records <code>rss=1.1GB</code> at force-stop for fix vs <code>rss=319MB</code> for master</td>
 <td>L1 shadow SPV filter replay (<code>service/platform/sdk</code>, <code>L1ShadowSyncService</code> / <code>ReplayMemTelemetry</code>)</td>
 </tr>
 <tr>
 <td>S6-D2</td>
 <td>S3</td>
 <td>Idle steady-state footprint stays at ~590-690 MB PSS / ~430-540 MB native after sync, never returning to the fresh-wallet ~350 MB</td>
-<td>Complete M2 or M3, leave the app idle at 100 %, sample meminfo</td>
+<td>Complete <a class=ev href="../index.html#S6-M2">M2</a> or <a class=ev href="../index.html#S6-M3">M3</a>, leave the app idle at 100 %, sample meminfo</td>
 <td><a class=ev href="../S6/mem.csv">evidence/S6/mem.csv</a> rows 01:17-01:25 (final sample: TOTAL PSS 593,259 kB, Native Heap 430,056 kB for a 0-balance, 4-tx wallet)</td>
 <td>same as S6-D1 (header/filter stores kept resident)</td>
 </tr>
@@ -285,7 +286,7 @@ and Platform <code>4.0.1-SNAPSHOT</code> PASS.</p>
 <td>S6-D4</td>
 <td>S3</td>
 <td>Tx detail for a received tx shows no counter-party address and no fee row; sent txs show addresses but still no fee row</td>
-<td>M2 &gt; tap any history row</td>
+<td><a class=ev href="../index.html#S6-M2">M2</a> &gt; tap any history row</td>
 <td><a class=ev href="../S6/M2/15-txdetail-received-2018.webp">M2/15-txdetail-received-2018.png</a>, <a class=ev href="../S6/M2/16-txdetail-scrolled.webp">M2/16-txdetail-scrolled.png</a> (Amount / Date / Tax Category / Private Note / View in Block Explorer only) vs <a class=ev href="../S6/M2/17-txdetail-sent-2018.webp">M2/17-txdetail-sent-2018.png</a> (adds "Sent from"/"Sent to", no "network fee"). S2's testnet run did show a <code>network fee</code> row on a sent tx, so the row is not unconditionally absent</td>
 <td>tx-detail data seam</td>
 </tr>
@@ -310,7 +311,7 @@ and Platform <code>4.0.1-SNAPSHOT</code> PASS.</p>
 <td>S4</td>
 <td><code>BlockchainServiceImpl - idling detected, stopping service</code> logged once a minute indefinitely after sync, with no matching restart</td>
 <td>Reach 100 % and leave the app idle</td>
-<td><code>grep 'idling detected'</code> -&gt; 6 occurrences (05:27:00, 05:28:00, 06:16:00, ...) in <a class=ev href="../S6/M3/fix-walletlog/files/log/wallet.log">M3/fix-walletlog/files/log/wallet.log</a>. Independently reported by stream S2 on testnet</td>
+<td><code>grep 'idling detected'</code> -&gt; 6 occurrences (05:27:00, 05:28:00, 06:16:00, ...) in <a class=ev href="../S6/M4/walletlog-final/files/log/wallet.log">M3/fix-walletlog/files/log/wallet.log</a>. Independently reported by stream S2 on testnet</td>
 <td><code>BlockchainServiceImpl</code> idle/stop tick</td>
 </tr>
 </tbody>
@@ -320,7 +321,7 @@ and Platform <code>4.0.1-SNAPSHOT</code> PASS.</p>
 same on testnet). I reproduced it on the <strong>master 11.9.0 prod</strong> build on the same device in the same session:
 <code>wallet.log 05:44:43 WalletActivityTracker ... foreground: 1</code> followed by <code>05:45:32 LockScreenActivity -
 LockState = ENTER_PIN</code> with no intervening background transition
-(<a class=ev href="../S6/M3/master-walletlog/files/log/wallet.log">M3/master-walletlog/files/log/wallet.log</a>). Pre-existing, not introduced by this branch.</p>
+(<a class=ev href="../S6/M4/walletlog-final/files/log/wallet.log">M3/master-walletlog/files/log/wallet.log</a>). Pre-existing, not introduced by this branch.</p>
 <h2 id="environment-problems-not-product-defects">Environment problems (not product defects)</h2>
 <ul>
 <li><code>qa-app.sh launch</code> (which uses <code>monkey</code>) does not start this build; every launch here used
@@ -329,7 +330,7 @@ LockState = ENTER_PIN</code> with no intervening background transition
 <li>The <code>adb root</code> performed by <code>wallet-log</code>/<code>grep-log</code>/<code>pull-logs</code> restarts adbd and kills a running
   <code>adb logcat</code>. The first logcat capture died at 00:25:41 for that reason; it is preserved as
   <a class=ev href="../S6/logcat-part1.txt">evidence/S6/logcat-part1.txt</a> and a second capture (<a class=ev href="../S6/logcat.txt">evidence/S6/logcat.txt</a>) covers 01:05 onwards.
-  <a class=ev href="../S6/mem.csv">mem.csv</a> is unaffected (it re-invokes adb per sample) and the app's own <code>wallet.log</code> is complete.</li>
+  <a class=ev href="../S6/mem.csv">mem.csv</a> is unaffected (it re-invokes adb per sample) and the app's own <a class=ev href="../S6/M4/walletlog-final/files/log/wallet.log">wallet.log</a> is complete.</li>
 <li>Firebase is a stub: <code>FirebaseException ... API key not valid</code> and <code>Firebase cloud messaging token: Not available</code>
   are expected. Buy &amp; Sell shows the expected "Keys are missing for these services" banner.</li>
 </ul>

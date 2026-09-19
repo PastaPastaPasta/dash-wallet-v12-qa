@@ -5,6 +5,7 @@ h1{border-bottom:3px solid #008de4}h2{border-bottom:1px solid #ccc;margin-top:40
 nav.top{background:#012060;color:#fff;padding:8px 24px;margin:-16px -24px 16px;position:sticky;top:0;z-index:5}nav.top a{color:#fff;margin-right:18px;text-decoration:none}nav.top a:hover{text-decoration:underline}
 .S1{color:#b00020;font-weight:bold}.S2{color:#c75000;font-weight:bold}.toc{background:#f8f9fb;border:1px solid #e3e6ea;padding:8px 16px;font-size:13px;columns:2}.toc ul{margin:2px 0;padding-left:16px}
 #lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:50;align-items:center;justify-content:center;flex-direction:column}#lb.on{display:flex}#lb img{max-width:96vw;max-height:88vh;border:2px solid #fff;box-shadow:0 0 30px #000}#lb .cap{color:#eee;font:13px ui-monospace,monospace;margin-top:8px}#lb .cap a{color:#8cf}#lb .x{position:absolute;top:10px;right:18px;color:#fff;font-size:30px;cursor:pointer}#lb .nv{position:absolute;top:50%;color:#fff;font-size:44px;cursor:pointer;padding:0 16px;user-select:none}#lb .pv{left:0}#lb .nx{right:0}a.img img{cursor:zoom-in}
+sup.more a{margin:0 2px;font-size:10px}
 a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:target{background:#fff3b0;outline:2px solid #f5b400}
 .note{background:#fff8e1;border-left:4px solid #f5b400;padding:8px 12px;margin:12px 0}
 </style><nav class=top><a href="../../index.html">Home</a><a href="../../QA-REPORT.html">Full report</a><a href="../../EXEC-SUMMARY.html">Executive summary</a><a href="../../STORY-MATRIX.html">User-story matrix</a><a href="../../DEFECT-LEDGER.html">Defect register</a><a href="../index.html">Evidence gallery</a><a href="../../QA-PLAN.html">Test plan</a><a href="../../streams.html">Stream reports</a></nav><h1 id="qa-report-s10-exploratory-adversarial-agent-s10-emulator-5554-dw-qa1-2026-09-19-01370335-cdt">QA report: S10 — exploratory / adversarial (agent: S10, emulator-5554 / dw-qa1, 2026-09-19 01:37–03:35 CDT)</h1>
@@ -12,7 +13,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 Wallet: inherited from S1 — seed <code>swamp dad rent tower dumb cart dust vocal often today chimney amazing</code>, PIN 1234, username <code>qa1s13939</code>, identity <code>DYjxDk3kTzf2PXAK3LfGj2cWitnyLKhx1y8u3626hbMm</code>.
 Funding: ONE faucet request at 01:39 → 1 tDASH, txid <code>e3c010b517e3c67ca0a510c6dec2cec2c0892a96d7cbb6114be2bfbb58781ced</code>.</p>
 <p>Evidence root: <code>/Users/dcg/workspace/dash-wallet-qa/evidence/S10/</code>
-(<a class=ev href="../S10/notes.md">notes.md</a>, <a class=ev href="../S10/logcat.txt">logcat.txt</a>, <a class=ev href="../S10/mem.csv">mem.csv</a>, <code>logs/</code>, <code>T1/</code>…<code>T9/</code>; videos <a class=ev href="../S10/T1/s10-t1a-shield-rotate.mp4">T1/s10-t1a-shield-rotate.mp4</a>, <code>T1/s10-t1-interrupts.mp4</code>, <a class=ev href="../S10/T1/s10-t1f-t2-send.mp4">T1/s10-t1f-t2-send.mp4</a>, <code>T2</code> covered by the same clip, <a class=ev href="../S10/T6/s10-t6-reset.mp4">T6/s10-t6-reset.mp4</a>, <a class=ev href="../S10/T8/s10-t8-deeplink.mp4">T8/s10-t8-deeplink.mp4</a>)</p>
+(<a class=ev href="../S10/notes.html">notes.md</a>, <a class=ev href="../S10/logcat.txt">logcat.txt</a>, <a class=ev href="../S10/mem.csv">mem.csv</a>, <a class=ev href="../S10/logs/files/log/wallet.log">logs/</a>, <a class=ev href="../index.html#S10-T1">T1/</a>…<a class=ev href="../index.html#S10-T9">T9/</a>; videos <a class=ev href="../S10/T1/s10-t1a-shield-rotate.mp4">T1/s10-t1a-shield-rotate.mp4</a>, <code>T1/s10-t1-interrupts.mp4</code>, <a class=ev href="../S10/T1/s10-t1f-t2-send.mp4">T1/s10-t1f-t2-send.mp4</a>, <code>T2</code> covered by the same clip, <a class=ev href="../S10/T6/s10-t6-reset.mp4">T6/s10-t6-reset.mp4</a>, <a class=ev href="../S10/T8/s10-t8-deeplink.mp4">T8/s10-t8-deeplink.mp4</a>)</p>
 <h2 id="summary-table">Summary table</h2>
 <table>
 <thead>
@@ -33,91 +34,91 @@ Funding: ONE faucet request at 01:39 → 1 tDASH, txid <code>e3c010b517e3c67ca0a
 <tr>
 <td>T1b HOME mid-shield</td>
 <td>PASS</td>
-<td><code>T1/06a..06d</code></td>
+<td><a class=ev href="../S10/T1/06a-home-pressed.webp">T1/06a..06d</a><sup class=more><a href="../S10/T1/06b-after-12s-bg.webp" title="S10/T1/06b-after-12s-bg.webp">2</a> <a href="../S10/T1/06c-relaunch.webp" title="S10/T1/06c-relaunch.webp">3</a> <a href="../S10/T1/06d-shield-reusable.webp" title="S10/T1/06d-shield-reusable.webp">4</a></sup></td>
 <td>Transfer completes in background, posts "Transfer completed", screen reusable</td>
 </tr>
 <tr>
 <td>T1c force-stop mid-shield</td>
 <td>PASS (with S10-D2)</td>
-<td><code>T1/07a..07h</code>, insight <code>5ae2c47b…</code></td>
+<td><a class=ev href="../S10/T1/07a-after-kill.webp">T1/07a..07h</a><sup class=more><a href="../S10/T1/07b-relaunch-after-kill.webp" title="S10/T1/07b-relaunch-after-kill.webp">2</a> <a href="../S10/T1/07c-home-after-kill.webp" title="S10/T1/07c-home-after-kill.webp">3</a> <a href="../S10/T1/07d-balances-after-kill.webp" title="S10/T1/07d-balances-after-kill.webp">4</a> <a href="../S10/T1/07e-shielded-shows-zero.webp" title="S10/T1/07e-shielded-shows-zero.webp">5</a> <a href="../S10/T1/07f-shielded-zero-3min.webp" title="S10/T1/07f-shielded-zero-3min.webp">6</a> <a href="../S10/T1/07g-more-shielded.webp" title="S10/T1/07g-more-shielded.webp">7</a> <a href="../S10/T1/07h-transfer-screen-reopened.webp" title="S10/T1/07h-transfer-screen-reopened.webp">8</a></sup>, insight <code>5ae2c47b…</code></td>
 <td>Asset lock already broadcast; recovered by "pending wallet-shield lock … resumed and consumed"; no loss. But the open transfer screen then shows shielded <strong>0.00</strong> for &gt;3 min</td>
 </tr>
 <tr>
 <td>T1d airplane mode mid-shield</td>
 <td>PASS</td>
-<td><code>T1/08a..08f</code>, insight <code>c5e87e95…</code></td>
+<td><a class=ev href="../S10/T1/08a-airplane-during.webp">T1/08a..08f</a><sup class=more><a href="../S10/T1/08b-airplane-20s.webp" title="S10/T1/08b-airplane-20s.webp">2</a> <a href="../S10/T1/08c-airplane-80s.webp" title="S10/T1/08c-airplane-80s.webp">3</a> <a href="../S10/T1/08d-transfer-in-progress-msg.webp" title="S10/T1/08d-transfer-in-progress-msg.webp">4</a> <a href="../S10/T1/08e-after-close.webp" title="S10/T1/08e-after-close.webp">5</a> <a href="../S10/T1/08f-after-net-restore.webp" title="S10/T1/08f-after-net-restore.webp">6</a></sup>, insight <code>c5e87e95…</code></td>
 <td>Clear "Transfer in progress … do not send it again" dialog; resumed on the NEXT app launch (5 min of in-process retries failed)</td>
 </tr>
 <tr>
 <td>T1e force-stop mid-unshield</td>
 <td>PASS</td>
-<td><code>T1/09c..09e</code></td>
+<td><a class=ev href="../S10/T1/09c-unshield-amount.webp">T1/09c..09e</a><sup class=more><a href="../S10/T1/09d-after-kill-relaunch.webp" title="S10/T1/09d-after-kill-relaunch.webp">2</a> <a href="../S10/T1/09e-balances.webp" title="S10/T1/09e-balances.webp">3</a></sup></td>
 <td>"withdrawToCore outcome unconfirmed … do NOT retry"; nothing reserved, nothing lost</td>
 </tr>
 <tr>
 <td>T1f send interrupts (PIN / confirm / post-confirm)</td>
 <td>PASS</td>
-<td><code>T1/12a..14c</code></td>
+<td><a class=ev href="../S10/T1/12a-relaunch-at-pin.webp">T1/12a..14c</a><sup class=more><a href="../S10/T1/12b-relaunch-after-kill-at-pin.webp" title="S10/T1/12b-relaunch-after-kill-at-pin.webp">2</a> <a href="../S10/T1/13a-confirm-step.webp" title="S10/T1/13a-confirm-step.webp">3</a> <a href="../S10/T1/13b-relaunch-at-confirm.webp" title="S10/T1/13b-relaunch-at-confirm.webp">4</a> <a href="../S10/T1/13c-relaunch-kill-at-confirm.webp" title="S10/T1/13c-relaunch-kill-at-confirm.webp">5</a> <a href="../S10/T1/14a-kill-after-confirm.webp" title="S10/T1/14a-kill-after-confirm.webp">6</a> <a href="../S10/T1/14b-kill-after-confirm2.webp" title="S10/T1/14b-kill-after-confirm2.webp">7</a> <a href="../S10/T1/14c-txlist-after-kill.webp" title="S10/T1/14c-txlist-after-kill.webp">8</a></sup></td>
 <td>State restored on HOME, discarded on kill, exactly one tx when killed 0.5 s after Confirm</td>
 </tr>
 <tr>
-<td>T2 double-submit (send x2, shield x1)</td>
+<td><a class=ev href="../index.html#S10-T2">T2</a> double-submit (send x2, shield x1)</td>
 <td>PASS</td>
-<td><code>T2/01..11</code>, <a class=ev href="../S10/T1/s10-t1f-t2-send.mp4">T1/s10-t1f-t2-send.mp4</a></td>
+<td><a class=ev href="../S10/T2/01-confirm-before-double.webp">T2/01..11</a><sup class=more><a href="../index.html#S10-T2" title="11 files, open gallery">+10</a></sup>, <a class=ev href="../S10/T1/s10-t1f-t2-send.mp4">T1/s10-t1f-t2-send.mp4</a></td>
 <td>Triple-tap Confirm produces exactly ONE tx every time</td>
 </tr>
 <tr>
-<td>T3 amount edge cases</td>
+<td><a class=ev href="../index.html#S10-T3">T3</a> amount edge cases</td>
 <td>PASS w/ defects</td>
-<td><code>T3/01..20</code></td>
+<td><a class=ev href="../S10/T3/01-amount-0.webp">T3/01..20</a><sup class=more><a href="../index.html#S10-T3" title="20 files, open gallery">+19</a></sup></td>
 <td>0 blocked, &gt;balance blocked, 9 dp truncated; <strong>dust 1 duff accepted (S10-D4)</strong>, exact-balance silently clamped (<a class=did href="../../DEFECT-LEDGER.html#D-032">D-032</a>), de-DE mixed separators (S10-D5)</td>
 </tr>
 <tr>
-<td>T4 address / URI edge cases</td>
+<td><a class=ev href="../index.html#S10-T4">T4</a> address / URI edge cases</td>
 <td>PASS w/ defects</td>
-<td><code>T4/01..35</code></td>
+<td><a class=ev href="../S10/T4/01-mainnet-address.webp">T4/01..35</a><sup class=more><a href="../index.html#S10-T4" title="35 files, open gallery">+34</a></sup></td>
 <td>mainnet + username rejected, whitespace trimmed, negative amount rejected; <strong>BIP21 label/message dropped (S10-D6)</strong>, unknown <code>req-</code> ignored (S10-D7), address-book label invisible outside the book (S10-D8)</td>
 </tr>
 <tr>
-<td>T5 large font + high density</td>
+<td><a class=ev href="../index.html#S10-T5">T5</a> large font + high density</td>
 <td><strong>FAIL</strong></td>
-<td><code>T5/01..10</code></td>
+<td><a class=ev href="../S10/T5/01-a11y-home.webp">T5/01..10</a><sup class=more><a href="../index.html#S10-T5" title="11 files, open gallery">+10</a></sup></td>
 <td>Tx rows truncate to "S…", tx-detail labels overlap values, shielded screen loses its whole From/To card (S10-D10, S10-D11)</td>
 </tr>
 <tr>
-<td>T5 dark mode</td>
+<td><a class=ev href="../index.html#S10-T5">T5</a> dark mode</td>
 <td>FAIL (1 screen)</td>
-<td><code>T5/20..27</code></td>
+<td><a class=ev href="../S10/T5/20-dark-home.webp">T5/20..27</a><sup class=more><a href="../S10/T5/21-dark-txdetail.webp" title="S10/T5/21-dark-txdetail.webp">2</a> <a href="../S10/T5/22-dark-payments.webp" title="S10/T5/22-dark-payments.webp">3</a> <a href="../S10/T5/23-dark-shielded.webp" title="S10/T5/23-dark-shielded.webp">4</a> <a href="../S10/T5/24-dark-send-address.webp" title="S10/T5/24-dark-send-address.webp">5</a> <a href="../S10/T5/25-dark-send-amount.webp" title="S10/T5/25-dark-send-amount.webp">6</a> <a href="../S10/T5/26-dark-more-username.webp" title="S10/T5/26-dark-more-username.webp">7</a> <a href="../S10/T5/27-dark-settings.webp" title="S10/T5/27-dark-settings.webp">8</a></sup></td>
 <td>Everything dark except the shielded Internal-transfer screen, which stays fully light (S10-D12)</td>
 </tr>
 <tr>
-<td>T6 reset("Save data") + restore</td>
+<td><a class=ev href="../index.html#S10-T6">T6</a> reset("Save data") + restore</td>
 <td><strong>FAIL</strong></td>
-<td><code>T6/01..22</code>, <a class=ev href="../S10/T6/txlist-after-restore.txt">T6/txlist-after-restore.txt</a></td>
+<td><a class=ev href="../S10/T6/01-profile-before-reset.webp">T6/01..22</a><sup class=more><a href="../index.html#S10-T6" title="21 files, open gallery">+20</a></sup>, <a class=ev href="../S10/T6/txlist-after-restore.txt">T6/txlist-after-restore.txt</a></td>
 <td>Balances / username / profile / contacts / contact-name row all come back, but a +0.95 tDASH unshield row vanishes (S10-D1) and the contact payment amount changes (S10-D3)</td>
 </tr>
 <tr>
-<td>T6 ar-EG RTL</td>
+<td><a class=ev href="../index.html#S10-T6">T6</a> ar-EG RTL</td>
 <td>FAIL</td>
-<td><code>T6/30..37</code></td>
+<td><a class=ev href="../S10/T6/30-ar-home.webp">T6/30..37</a><sup class=more><a href="../S10/T6/31-ar-txdetail.webp" title="S10/T6/31-ar-txdetail.webp">2</a> <a href="../S10/T6/32-ar-payments.webp" title="S10/T6/32-ar-payments.webp">3</a> <a href="../S10/T6/33-ar-receive.webp" title="S10/T6/33-ar-receive.webp">4</a> <a href="../S10/T6/34-ar-internal-tab.webp" title="S10/T6/34-ar-internal-tab.webp">5</a> <a href="../S10/T6/35-ar-shielded.webp" title="S10/T6/35-ar-shielded.webp">6</a> <a href="../S10/T6/36-ar-send-amount.webp" title="S10/T6/36-ar-send-amount.webp">7</a> <a href="../S10/T6/37-ar-contacts.webp" title="S10/T6/37-ar-contacts.webp">8</a></sup></td>
 <td>Money keypads are mirrored 3-2-1 (S10-D15); most of the shielded UI + several core strings untranslated; chevron overlaps its label</td>
 </tr>
 <tr>
-<td>T7 5-min screen-off sync</td>
+<td><a class=ev href="../index.html#S10-T7">T7</a> 5-min screen-off sync</td>
 <td>PASS</td>
-<td><a class=ev href="../S10/notes.md">notes.md</a> §T7, <a class=ev href="../S10/logs/files/log/wallet.log">logs/files/log/wallet.log</a></td>
+<td><a class=ev href="../S10/notes.html">notes.md</a> §<a class=ev href="../index.html#S10-T7">T7</a>, <a class=ev href="../S10/logs/files/log/wallet.log">logs/files/log/wallet.log</a></td>
 <td>Engine kept advancing 1556624→1556626, no <code>idling detected</code>, no teardown, send worked immediately after unlock (<a class=did href="../../DEFECT-LEDGER.html#D-031">D-031</a> not reproduced)</td>
 </tr>
 <tr>
-<td>T8 deep links with app killed</td>
+<td><a class=ev href="../index.html#S10-T8">T8</a> deep links with app killed</td>
 <td>PASS w/ defects</td>
-<td><code>T8/01..11</code>, <a class=ev href="../S10/T8/s10-t8-deeplink.mp4">T8/s10-t8-deeplink.mp4</a></td>
+<td><a class=ev href="../S10/T8/01-deeplink-cold.webp">T8/01..11</a><sup class=more><a href="../index.html#S10-T8" title="11 files, open gallery">+10</a></sup>, <a class=ev href="../S10/T8/s10-t8-deeplink.mp4">T8/s10-t8-deeplink.mp4</a></td>
 <td><code>dash:</code> skips the app lock screen (S10-D13, spending still PIN-gated); invite gives the right message ~11.5 min late (S10-D14)</td>
 </tr>
 <tr>
-<td>T9 process-death restoration</td>
+<td><a class=ev href="../index.html#S10-T9">T9</a> process-death restoration</td>
 <td>PASS</td>
-<td><code>T9/05</code>, <code>T9/10</code></td>
+<td><a class=ev href="../S10/T9/05-restored-clean.webp">T9/05</a>, <a class=ev href="../S10/T9/10-editprofile-after-kill.webp">T9/10</a></td>
 <td>Send screen restores address+amount, Edit Profile restores typed text; bottom sheets are dismissed; no crash</td>
 </tr>
 </tbody>
@@ -129,8 +130,8 @@ Peak memory over 1 h 58 m: <strong>TOTAL PSS 488 MB</strong>, native heap 316 MB
 6 x shield 0.01 (each costs exactly 0.00213114 = 263-duff L1 fee + 0.00212851 platform), 1 killed unshield (no-op):
 expected 1.95921746 − 5×0.00213114 = 1.94856176 ; measured 0.9499991 + 0.99856265 = <strong>1.94856175</strong> (1 duff rounding).
 Re-verified after every send and across the reset+restore (0.933981 + 1.00643414 identical before and after).</p>
-<h2 id="per-test-detail-condensed-full-timestamped-journal-in-notesmd">Per-test detail (condensed; full timestamped journal in <a class=ev href="../S10/notes.md">notes.md</a>)</h2>
-<h3 id="t1-interrupting-money-flows">T1 — interrupting money flows</h3>
+<h2 id="per-test-detail-condensed-full-timestamped-journal-in-notesmd">Per-test detail (condensed; full timestamped journal in <a class=ev href="../S10/notes.html">notes.md</a>)</h2>
+<h3 id="t1-interrupting-money-flows"><a class=ev href="../index.html#S10-T1">T1</a> — interrupting money flows</h3>
 <ol>
 <li><code>Proving…</code> is never shown; the modal reads "Sending your transfer… This could take about 30 seconds" with a Hide button. Actual duration was 5–7 s on this wallet, so the interrupt window is small.</li>
 <li>Rotation: <code>settings put system user_rotation 1</code> had no effect on any money screen — <code>dumpsys window</code> kept <code>mDisplayRotation=ROTATION_0 … port</code>. Manifest audit: 22/31 activities are <code>android:screenOrientation="portrait"</code> including <code>ShieldedBalanceActivity</code>, <code>SendCoinsActivity</code>, <code>ui.main.MainActivity</code>, <code>LockScreenActivity</code>.</li>
@@ -140,22 +141,22 @@ Re-verified after every send and across the reset+restore (0.933981 + 1.00643414
 <li>Force-stop mid-unshield: <code>07:06:26 shielded withdrawToCore outcome unconfirmed — it MAY be on chain and the spent notes stay reserved; do NOT retry (the next shielded sync reconciles)</code> then "shielded transfer ambiguous — surfacing terminal state". Balances unchanged, nothing reserved.</li>
 <li>Plain send: the PIN step comes BEFORE the confirm sheet. HOME at either step restores the exact dialog; kill at either step discards cleanly; Confirm followed by a kill 0.5 s later still broadcasts exactly once (0.94999910 → 0.94899647, one "Sent −0.001002" row).</li>
 </ol>
-<h3 id="t2-double-submit">T2 — double submit</h3>
+<h3 id="t2-double-submit"><a class=ev href="../index.html#S10-T2">T2</a> — double submit</h3>
 <p>Three <code>input tap</code> events in a single shell invocation on the Confirm control produced exactly one transaction on both send attempts (<code>ebb22b2d…</code>, and 0.93799195→0.93698969) and on the shield (<code>3bb741567cb9…</code>, −1000263 duffs). On the shield, one extra "Authenticate" dialog was queued and appeared after the first PIN, but it self-dismissed and produced no second transfer.</p>
-<h3 id="t3-amount-edge-cases-send-screen">T3 — amount edge cases (send screen)</h3>
+<h3 id="t3-amount-edge-cases-send-screen"><a class=ev href="../index.html#S10-T3">T3</a> — amount edge cases (send screen)</h3>
 <p>0 → Send disabled. 0.00000001 → <strong>accepted and broadcast</strong> (S10-D4). 5 (&gt;balance) → red "Insufficient funds", Send disabled. Typed 0.93697517 (= balance) → silently clamped to 0.93688742. 0.123456789 → truncated to 0.12345678. Second "." ignored. Fiat $1.23 → 0.020233 DASH on switching back. de-DE keypad shows "," and accepts "0,001". "Paste an amount with a currency symbol" is not expressible: the amount field is not an <code>EditText</code>.</p>
-<h3 id="t4-address-uri-edge-cases">T4 — address / URI edge cases</h3>
+<h3 id="t4-address-uri-edge-cases"><a class=ev href="../index.html#S10-T4">T4</a> — address / URI edge cases</h3>
 <p>Mainnet <code>Xm77DBJ…</code> and the Platform username <code>qa5s5ebkdus2c6kkt9m7t</code> are both rejected with the same generic "Not a valid DASH Address or URL request". Whitespace is trimmed. <code>?amount=-1</code> → "Invalid Dash URI" dialog. <code>?amount=50</code> → Send disabled but no "Insufficient funds" text (the typed path does show it). QR scan cancels cleanly with BACK. Address-book add/edit/delete work.</p>
-<h3 id="t5-accessibility-and-dark-mode">T5 — accessibility and dark mode</h3>
+<h3 id="t5-accessibility-and-dark-mode"><a class=ev href="../index.html#S10-T5">T5</a> — accessibility and dark mode</h3>
 <p><code>font_scale 2.0</code> + <code>wm density 560</code>: home shortcut card overlaps and clips the banner; every tx row's direction label truncates to "S…"/"…"; the tx-detail sheet draws labels on top of values; the shielded transfer screen loses its From/To card and swap control. Settings reflows cleanly.
 <code>cmd uimode night yes</code>: correct on home, tx detail, payments sheet, send address, send amount, More and Settings; the shielded Internal-transfer screen renders a pure light theme.</p>
-<h3 id="t6-reset-save-data-restore-ar-eg">T6 — reset ("Save data") + restore + ar-EG</h3>
+<h3 id="t6-reset-save-data-restore-ar-eg"><a class=ev href="../index.html#S10-T6">T6</a> — reset ("Save data") + restore + ar-EG</h3>
 <p>Reset at 03:14:01 (no PIN prompt, ~5 s), restore started 03:15, <code>L1Shadow phase=SYNCED</code> 03:18:10 (~3 min). <code>publish txmetadata successful: TxMetadataSaveInfo(itemsSaved=16, itemsToSave=16)</code>.
 MATCH after restore: transparent 0.933981, shielded 1.00643414, username <code>qa1s13939</code>, display name "S10 QA Profile", about me "S10 exploratory QA bio", contact "QA Stream Five" present, contact payment row still carries the contact name and avatar.
 MISMATCH after restore: one transaction lost from the history (S10-D1) and the contact payment amount changed (S10-D3). Ground truth taken from <code>dash-sdk.db</code> and <code>dash-wallet-database</code> via <code>sqlite3</code> on the device.</p>
-<h3 id="t7-screen-off-for-5-min-29-s">T7 — screen off for 5 min 29 s</h3>
+<h3 id="t7-screen-off-for-5-min-29-s"><a class=ev href="../index.html#S10-T7">T7</a> — screen off for 5 min 29 s</h3>
 <p><code>07:52:23 synced_height_persisted=Some(1556624)</code> → <code>07:55:45 phase=SYNCED 1556625</code> → <code>07:57:06 phase=SYNCED 1556626</code>. No <code>idling detected</code> in that launch. Memory flat (389 MB → 388 MB PSS). A send at 02:57:43, seconds after unlock, succeeded first try.</p>
-<h3 id="t9-process-death">T9 — process death</h3>
+<h3 id="t9-process-death"><a class=ev href="../index.html#S10-T9">T9</a> — process death</h3>
 <p><code>am kill</code> + reopen from recents: the Send screen restored both the recipient and the typed 0.0777; Edit Profile restored the typed Display Name; bottom sheets (tx detail, avatar picker) are dismissed. <code>exit-info</code> reports reason=10 subreason=24 (KILL BACKGROUND) for each probe. No crash in any case.</p>
 <h2 id="defects-found">Defects found</h2>
 <table>
@@ -175,7 +176,7 @@ MISMATCH after restore: one transaction lost from the history (S10-D1) and the c
 <td><strong>S2</strong></td>
 <td>Reset+restore loses a transaction from the history: a type-9 asset-unlock (unshield) of <strong>+0.95235766</strong> has no display row</td>
 <td>Wallet with an unshield in history → More › Security › Reset Wallet › "Save data and reset wallet" → restore from seed → wait for SYNCED → scroll history</td>
-<td><a class=ev href="../S10/T6/06-txlist-contact-row-before.webp">T6/06-txlist-contact-row-before.png</a> (row "Unshielded + 0.952358 1:13 AM") vs <a class=ev href="../S10/T6/22-txlist-bottom-after.webp">T6/22-txlist-bottom-after.png</a> (absent). <code>dash-sdk.db transactions</code>=22, <code>tx_display_cache</code>=21; the only missing txid is <code>31546c95e66cbdc787f36a3993f8480d54dddfc594bc59cd8afd3560a4e6cde2</code> (insight: type 9, block 1556579, valueOut 0.95235766). wallet.log 08:17:30 still says "Sync complete … SDK=8 records | display=21 rows — cache is complete"</td>
+<td><a class=ev href="../S10/T6/06-txlist-contact-row-before.webp">T6/06-txlist-contact-row-before.png</a> (row "Unshielded + 0.952358 1:13 AM") vs <a class=ev href="../S10/T6/22-txlist-bottom-after.webp">T6/22-txlist-bottom-after.png</a> (absent). <code>dash-sdk.db transactions</code>=22, <code>tx_display_cache</code>=21; the only missing txid is <code>31546c95e66cbdc787f36a3993f8480d54dddfc594bc59cd8afd3560a4e6cde2</code> (insight: type 9, block 1556579, valueOut 0.95235766). <a class=ev href="../S10/logs/files/log/wallet.log">wallet.log</a> 08:17:30 still says "Sync complete … SDK=8 records | display=21 rows — cache is complete"</td>
 <td><code>TxDisplayCacheService</code> completeness check (<a class=did href="../../DEFECT-LEDGER.html#D-037">D-037</a> family); asset-unlock (type 9) wrapping</td>
 </tr>
 <tr>
@@ -183,7 +184,7 @@ MISMATCH after restore: one transaction lost from the history (S10-D1) and the c
 <td>S3</td>
 <td>After a background-resumed shield, the open Internal-transfer screen falls back to "Shielded balance 0.00" + "Shielded balance is syncing — transfers will be available shortly" for minutes while More shows the correct balance</td>
 <td>Shield 0.01 → force-stop mid-send → relaunch → open Internal transfer → wait for "pending wallet-shield lock … resumed and consumed"</td>
-<td>correct 0.99069116 at 01:54:45, then <strong>0.00</strong> from 01:55:17 to 01:57:54 (<code>T1/07e</code>, <code>T1/07f</code>); More simultaneously 0.990 (<code>T1/07g</code>); reopening the screen restores 0.99069116 (<code>T1/07h</code>)</td>
+<td>correct 0.99069116 at 01:54:45, then <strong>0.00</strong> from 01:55:17 to 01:57:54 (<a class=ev href="../S10/T1/07e-shielded-shows-zero.webp">T1/07e</a>, <a class=ev href="../S10/T1/07f-shielded-zero-3min.webp">T1/07f</a>); More simultaneously 0.990 (<a class=ev href="../S10/T1/07g-more-shielded.webp">T1/07g</a>); reopening the screen restores 0.99069116 (<a class=ev href="../S10/T1/07h-transfer-screen-reopened.webp">T1/07h</a>)</td>
 <td><code>ShieldedBalanceServiceImpl</code> / transfer-screen VM resets to a pre-sync state on the completion announcement</td>
 </tr>
 <tr>
@@ -191,7 +192,7 @@ MISMATCH after restore: one transaction lost from the history (S10-D1) and the c
 <td><strong>S2</strong></td>
 <td>After reset+restore a payment to a DashPay contact reports only the network fee — a 0.001 payment renders as −0.000007</td>
 <td>Pay a contact 0.001 → reset ("Save data") → restore → look at the contact row</td>
-<td>before −0.001007 / $0.06 (<code>T6/06</code>), after −0.000007 / $0.00 (<code>T6/22</code>); <code>tx_display_cache</code> row <code>0499bd57a5d4853b32715f677893ce65783be7b651de02e59eecaf29e3a9aa69</code> valueSatoshis <strong>−737</strong> (was −100737). Insight: pays 0.001 to <code>ygeMkM3f9y2PJARzYn6HFojijvSMQTELFf</code>, the first address of the contact's DIP-15 <em>sending</em> chain (wallet.log <code>ContactDerivationFacts … sending=[ygeMkM3f9y2PJARzYn6HFojijvSMQTELFf,…]</code>)</td>
+<td>before −0.001007 / $0.06 (<a class=ev href="../S10/T6/06-txlist-contact-row-before.webp">T6/06</a>), after −0.000007 / $0.00 (<a class=ev href="../S10/T6/22-txlist-bottom-after.webp">T6/22</a>); <code>tx_display_cache</code> row <code>0499bd57a5d4853b32715f677893ce65783be7b651de02e59eecaf29e3a9aa69</code> valueSatoshis <strong>−737</strong> (was −100737). Insight: pays 0.001 to <code>ygeMkM3f9y2PJARzYn6HFojijvSMQTELFf</code>, the first address of the contact's DIP-15 <em>sending</em> chain (<a class=ev href="../S10/logs/files/log/wallet.log">wallet.log</a> <code>ContactDerivationFacts … sending=[ygeMkM3f9y2PJARzYn6HFojijvSMQTELFf,…]</code>)</td>
 <td>DIP-15 friend-chain addresses entering the wallet's own watched set, so contact payments look like change</td>
 </tr>
 <tr>
@@ -207,7 +208,7 @@ MISMATCH after restore: one transaction lost from the history (S10-D1) and the c
 <td>S4 (i18n)</td>
 <td>Three different number formats inside one locale</td>
 <td><code>qa-app.sh locale de-DE</code>, send 0,001</td>
-<td>entry "0,001" (<code>T3/16</code>), confirm sheet "0.0010 / 0.0001 / 0.0011" next to "0,06 $" (<code>T3/17</code>), tx detail "-0.00100226" and "$  0.06" (<code>T3/18</code>), home "0.935985" "$ 56.84" (<code>T3/19</code>)</td>
+<td>entry "0,001" (<a class=ev href="../S10/T3/16-de-amount-comma.webp">T3/16</a>), confirm sheet "0.0010 / 0.0001 / 0.0011" next to "0,06 $" (<a class=ev href="../S10/T3/17-de-confirm.webp">T3/17</a>), tx detail "-0.00100226" and "$  0.06" (<a class=ev href="../S10/T3/18-de-txdetail.webp">T3/18</a>), home "0.935985" "$ 56.84" (<a class=ev href="../S10/T3/19-de-home-txlist.webp">T3/19</a>)</td>
 <td>money formatting shims in <code>common/</code></td>
 </tr>
 <tr>
@@ -215,7 +216,7 @@ MISMATCH after restore: one transaction lost from the history (S10-D1) and the c
 <td>S3</td>
 <td>BIP21 <code>label</code> and <code>message</code> are silently dropped</td>
 <td><code>adb shell "am start -a VIEW -d 'dash:y…?amount=0.001&amp;label=QA%20Label%20S10&amp;message=Hello%20from%20S10'"</code></td>
-<td><code>T4/07</code> (amount screen), <code>T4/08</code> (confirm), <code>T4/09</code> + <code>T4/10</code> (tx detail, no note)</td>
+<td><a class=ev href="../S10/T4/07-bip21-label-message.webp">T4/07</a> (amount screen), <a class=ev href="../S10/T4/08-bip21-confirm.webp">T4/08</a> (confirm), <a class=ev href="../S10/T4/09-bip21-txdetail.webp">T4/09</a> + <a class=ev href="../S10/T4/10-bip21-txdetail-scrolled.webp">T4/10</a> (tx detail, no note)</td>
 <td>BIP21 parser / send intent plumbing</td>
 </tr>
 <tr>
@@ -223,7 +224,7 @@ MISMATCH after restore: one transaction lost from the history (S10-D1) and the c
 <td>S4 (spec)</td>
 <td>Unknown <code>req-</code> BIP21 parameters are silently ignored instead of invalidating the URI</td>
 <td><code>dash:y…?amount=0.001&amp;req-somethingunknown=xyz</code></td>
-<td><code>T4/14</code>; <code>&amp;req-IS=1</code> also accepted with no InstantSend affordance (<code>T4/13</code>)</td>
+<td><a class=ev href="../S10/T4/14-bip21-unknown-req.webp">T4/14</a>; <code>&amp;req-IS=1</code> also accepted with no InstantSend affordance (<a class=ev href="../S10/T4/13-bip21-reqIS.webp">T4/13</a>)</td>
 <td>BIP21 parser</td>
 </tr>
 <tr>
@@ -231,7 +232,7 @@ MISMATCH after restore: one transaction lost from the history (S10-D1) and the c
 <td>S4</td>
 <td>An address-book label is write-only — it never appears in the send flow or on tx rows</td>
 <td>Tools › Address book › ⋮ Paste from clipboard → label "S10 Faucet Return" → ADD; then open the send flow / history for that address</td>
-<td><code>T4/27</code> (stored), <code>T4/28</code> (rows still say "Sent"), <code>T4/30</code> (send shows the raw address); add/edit/delete work (<code>T4/33</code>–<code>T4/35</code>)</td>
+<td><a class=ev href="../S10/T4/27-addressbook-added.webp">T4/27</a> (stored), <a class=ev href="../S10/T4/28-txlist-with-label.webp">T4/28</a> (rows still say "Sent"), <a class=ev href="../S10/T4/30-send-with-label.webp">T4/30</a> (send shows the raw address); add/edit/delete work (<a class=ev href="../S10/T4/33-edit-label.webp">T4/33</a>–<a class=ev href="../S10/T4/35-label-deleted.webp">T4/35</a>)</td>
 <td>address-book lookup missing in <code>TxDisplayCacheService</code> and the send composer</td>
 </tr>
 <tr>
@@ -239,7 +240,7 @@ MISMATCH after restore: one transaction lost from the history (S10-D1) and the c
 <td>S3 (i18n)</td>
 <td>Tx-list row titles are frozen in the locale that was active when the row was inserted</td>
 <td>Send in de-DE, switch back to en-US, look at the history</td>
-<td><code>T4/28</code> shows "Gesendet" (2:30 AM) among "Sent" rows; the detail sheet for the same tx renders "Amount Sent" in English (<code>T4/29</code>). Under ar-EG every pre-existing row keeps its English title (<code>T6/30</code>)</td>
+<td><a class=ev href="../S10/T4/28-txlist-with-label.webp">T4/28</a> shows "Gesendet" (2:30 AM) among "Sent" rows; the detail sheet for the same tx renders "Amount Sent" in English (<a class=ev href="../S10/T4/29-gesendet-txdetail.webp">T4/29</a>). Under ar-EG every pre-existing row keeps its English title (<a class=ev href="../S10/T6/30-ar-home.webp">T6/30</a>)</td>
 <td><code>tx_display_cache.title</code> stores a localized string instead of a type code</td>
 </tr>
 <tr>
@@ -247,7 +248,7 @@ MISMATCH after restore: one transaction lost from the history (S10-D1) and the c
 <td>S3 (a11y)</td>
 <td>At <code>font_scale 2.0</code> + <code>wm density 560</code> the history is unreadable and the tx detail overlaps</td>
 <td><code>adb shell settings put system font_scale 2.0; adb shell wm density 560</code></td>
-<td><code>T5/02</code>: every row's direction label truncates to "S…"/"…". <code>T5/03</code>: "Network fee" drawn over "0.00000226", "Date" over the date, "Tax Category" over "Expense", amount clipped by the direction icon. <code>T5/01</code>: home banner title clipped, body cut mid-sentence</td>
+<td><a class=ev href="../S10/T5/02-a11y-home-scrolled.webp">T5/02</a>: every row's direction label truncates to "S…"/"…". <a class=ev href="../S10/T5/03-a11y-txdetail.webp">T5/03</a>: "Network fee" drawn over "0.00000226", "Date" over the date, "Tax Category" over "Expense", amount clipped by the direction icon. <a class=ev href="../S10/T5/01-a11y-home.webp">T5/01</a>: home banner title clipped, body cut mid-sentence</td>
 <td>fixed-width label columns in the tx row + detail sheet</td>
 </tr>
 <tr>
@@ -255,7 +256,7 @@ MISMATCH after restore: one transaction lost from the history (S10-D1) and the c
 <td>S3 (a11y)</td>
 <td>At large font the shielded Internal-transfer screen loses its entire From/To card, including the direction-swap control</td>
 <td>same settings → Payments › Internal › Shielded balance</td>
-<td><code>T5/07</code>: no balances, no swap arrows — the user cannot tell shield from unshield; "Max" truncates to "Ma", "Continue" clipped</td>
+<td><a class=ev href="../S10/T5/07-a11y-shielded.webp">T5/07</a>: no balances, no swap arrows — the user cannot tell shield from unshield; "Max" truncates to "Ma", "Continue" clipped</td>
 <td><code>ui/shielded/*</code> layout</td>
 </tr>
 <tr>
@@ -263,7 +264,7 @@ MISMATCH after restore: one transaction lost from the history (S10-D1) and the c
 <td>S3</td>
 <td>The shielded Internal-transfer screen ignores dark mode</td>
 <td><code>adb shell cmd uimode night yes</code>, open Payments › Internal › Shielded balance</td>
-<td><code>T5/23</code> (fully light) vs <code>T5/25</code> (Send amount screen, correctly dark) and <code>T5/20</code>, <code>T5/26</code>, <code>T5/27</code></td>
+<td><a class=ev href="../S10/T5/23-dark-shielded.webp">T5/23</a> (fully light) vs <a class=ev href="../S10/T5/25-dark-send-amount.webp">T5/25</a> (Send amount screen, correctly dark) and <a class=ev href="../S10/T5/20-dark-home.webp">T5/20</a>, <a class=ev href="../S10/T5/26-dark-more-username.webp">T5/26</a>, <a class=ev href="../S10/T5/27-dark-settings.webp">T5/27</a></td>
 <td><code>ui/shielded/*</code> hard-coded light colors</td>
 </tr>
 <tr>
@@ -271,7 +272,7 @@ MISMATCH after restore: one transaction lost from the history (S10-D1) and the c
 <td>S4 (security hygiene)</td>
 <td>A <code>dash:</code> deep link on a force-stopped app opens the Send composer with no app lock screen, while a normal launcher start of the same force-stopped app demands the PIN</td>
 <td><code>qa-app.sh kill</code> then <code>adb shell "am start -a VIEW -d 'dash:y…?amount=0.001'"</code></td>
-<td><code>T8/04</code> (launcher → "Enter PIN") vs <code>T8/05</code> (deep link → Send screen). Mitigated: Send, the balance eye-reveal and Max all raise "Authenticate" (<code>T8/06</code>–<code>T8/08</code>); BACK exits to the launcher, the wallet is not exposed (<code>T8/02</code>)</td>
+<td><a class=ev href="../S10/T8/04-normal-launch-pin.webp">T8/04</a> (launcher → "Enter PIN") vs <a class=ev href="../S10/T8/05-deeplink-launch-nopin.webp">T8/05</a> (deep link → Send screen). Mitigated: Send, the balance eye-reveal and Max all raise "Authenticate" (<a class=ev href="../S10/T8/06-deeplink-send-pin.webp">T8/06</a>–<a class=ev href="../S10/T8/08-max-nopin.webp">T8/08</a>); BACK exits to the launcher, the wallet is not exposed (<a class=ev href="../S10/T8/02-back-from-deeplink-send.webp">T8/02</a>)</td>
 <td><code>WalletUriHandlerActivity</code> lock-screen gating</td>
 </tr>
 <tr>
@@ -279,7 +280,7 @@ MISMATCH after restore: one transaction lost from the history (S10-D1) and the c
 <td>S3</td>
 <td>The "invite already used" error is correct but arrives ~11.5 minutes late, detached from the user's action</td>
 <td>Force-stop the app, open an already-claimed <code>dashpay://invite?…</code> link, unlock</td>
-<td>deep link fired 03:00:55, app landed silently on Home (<code>T8/10</code>) although wallet.log already had <code>InvitationLinkData(… validationState=ALREADY_HAS_IDENTITY …)</code> at 08:01:19 followed immediately by "activity InviteHandlerActivity destroyed"; the dialog "Username already found / You cannot claim this invite since you already have a Dash username" only appeared at 03:12:26 (<code>T8/11</code>)</td>
+<td>deep link fired 03:00:55, app landed silently on Home (<a class=ev href="../S10/T8/10-invite-after-pin.webp">T8/10</a>) although <a class=ev href="../S10/logs/files/log/wallet.log">wallet.log</a> already had <code>InvitationLinkData(… validationState=ALREADY_HAS_IDENTITY …)</code> at 08:01:19 followed immediately by "activity InviteHandlerActivity destroyed"; the dialog "Username already found / You cannot claim this invite since you already have a Dash username" only appeared at 03:12:26 (<a class=ev href="../S10/T8/11-invite-error-delayed.webp">T8/11</a>)</td>
 <td><code>InviteHandlerActivity</code> finishes before it can present its own result</td>
 </tr>
 <tr>
@@ -287,7 +288,7 @@ MISMATCH after restore: one transaction lost from the history (S10-D1) and the c
 <td>S3 (RTL)</td>
 <td>Under <code>ar-EG</code> both money keypads are mirrored (3-2-1 / 6-5-4 / 9-8-7), the tx-detail disclosure chevron overlaps its label, and the whole shielded UI plus several core strings stay English</td>
 <td><code>qa-app.sh locale ar-EG</code>, relaunch</td>
-<td><code>T6/35</code> (shielded keypad mirrored, screen 100 % English), <code>T6/36</code> (send keypad mirrored; fiat in Eastern-Arabic numerals "٠,٠٠ US$" next to Western "0" DASH), <code>T6/31</code> ("&gt;" drawn on top of "…إكسبلورر"; "Private Note"/"Add Note" English), <code>T6/30</code> ("Spend", "Customize shortcut bar" English), <code>T6/37</code> ("Contacts", "My Contacts", "Sort by:" English)</td>
+<td><a class=ev href="../S10/T6/35-ar-shielded.webp">T6/35</a> (shielded keypad mirrored, screen 100 % English), <a class=ev href="../S10/T6/36-ar-send-amount.webp">T6/36</a> (send keypad mirrored; fiat in Eastern-Arabic numerals "٠,٠٠ US$" next to Western "0" DASH), <a class=ev href="../S10/T6/31-ar-txdetail.webp">T6/31</a> ("&gt;" drawn on top of "…إكسبلورر"; "Private Note"/"Add Note" English), <a class=ev href="../S10/T6/30-ar-home.webp">T6/30</a> ("Spend", "Customize shortcut bar" English), <a class=ev href="../S10/T6/37-ar-contacts.webp">T6/37</a> ("Contacts", "My Contacts", "Sort by:" English)</td>
 <td>keypad needs <code>layoutDirection="ltr"</code>; missing <code>values-ar</code> strings for <code>ui/shielded/*</code></td>
 </tr>
 <tr>
@@ -295,7 +296,7 @@ MISMATCH after restore: one transaction lost from the history (S10-D1) and the c
 <td>S4</td>
 <td>The More-screen balance cards truncate instead of rounding</td>
 <td>Any balance with a non-zero 4th decimal</td>
-<td>0.93799195 → "0.937 Đ", 0.99069116 → "0.990 Đ", 0.97494818 → "0.974 Đ" (<code>T2/08</code>, <code>T1/07g</code>)</td>
+<td>0.93799195 → "0.937 Đ", 0.99069116 → "0.990 Đ", 0.97494818 → "0.974 Đ" (<a class=ev href="../S10/T2/08-balances-after.webp">T2/08</a>, <a class=ev href="../S10/T1/07g-more-shielded.webp">T1/07g</a>)</td>
 <td>More-screen balance formatter</td>
 </tr>
 <tr>
@@ -310,10 +311,10 @@ MISMATCH after restore: one transaction lost from the history (S10-D1) and the c
 </table>
 <h2 id="re-observations-of-known-ledger-items-confirmed-again-on-device">Re-observations of known ledger items (confirmed again on device)</h2>
 <ul>
-<li><strong><a class=did href="../../DEFECT-LEDGER.html#D-012">D-012</a></strong> — "Save data and reset wallet" wiped the wallet in ~5 s with <strong>no PIN prompt at any step</strong> (<code>T6/07</code>, <code>T6/08</code>, <code>T6/09</code>, <a class=ev href="../S10/T6/s10-t6-reset.mp4">T6/s10-t6-reset.mp4</a>).</li>
-<li><strong><a class=did href="../../DEFECT-LEDGER.html#D-032">D-032</a> / <a class=did href="../../DEFECT-LEDGER.html#SR-28">SR-28</a></strong> — the send confirm sheet reports "Network fee 0.0001" while the resulting tx detail for the <em>same</em> transaction reports "0.00000226" — the two screens in one flow disagree by 44x (<code>T4/08</code> vs <code>T4/09</code>). Typing an amount above balance − 0.0001 is silently clamped (typed 0.93697517 → field shows 0.93688742, <code>T3/07</code>).</li>
-<li><strong><a class=did href="../../DEFECT-LEDGER.html#D-048">D-048</a></strong> — the immediately-post-send detail sheet shows Tax Category <strong>"Income"</strong> for an outgoing send (<code>T2/02</code>); reopening the same tx later shows "Expense" (<code>T5/03</code>).</li>
-<li><strong><a class=did href="../../DEFECT-LEDGER.html#D-030">D-030</a></strong> — Address book still opens on the empty "SENDING ADDRESSES" tab and offers no manual entry, only "Paste from clipboard" / "Scan address" (<code>T4/21</code>, <code>T4/22</code>).</li>
+<li><strong><a class=did href="../../DEFECT-LEDGER.html#D-012">D-012</a></strong> — "Save data and reset wallet" wiped the wallet in ~5 s with <strong>no PIN prompt at any step</strong> (<a class=ev href="../S10/T6/07-reset-confirm.webp">T6/07</a>, <a class=ev href="../S10/T6/08-reset-second.webp">T6/08</a>, <a class=ev href="../S10/T6/09-after-save-reset.webp">T6/09</a>, <a class=ev href="../S10/T6/s10-t6-reset.mp4">T6/s10-t6-reset.mp4</a>).</li>
+<li><strong><a class=did href="../../DEFECT-LEDGER.html#D-032">D-032</a> / <a class=did href="../../DEFECT-LEDGER.html#SR-28">SR-28</a></strong> — the send confirm sheet reports "Network fee 0.0001" while the resulting tx detail for the <em>same</em> transaction reports "0.00000226" — the two screens in one flow disagree by 44x (<a class=ev href="../S10/T4/08-bip21-confirm.webp">T4/08</a> vs <a class=ev href="../S10/T4/09-bip21-txdetail.webp">T4/09</a>). Typing an amount above balance − 0.0001 is silently clamped (typed 0.93697517 → field shows 0.93688742, <a class=ev href="../S10/T3/07-exact-balance.webp">T3/07</a>).</li>
+<li><strong><a class=did href="../../DEFECT-LEDGER.html#D-048">D-048</a></strong> — the immediately-post-send detail sheet shows Tax Category <strong>"Income"</strong> for an outgoing send (<a class=ev href="../S10/T2/02-after-double-tap.webp">T2/02</a>); reopening the same tx later shows "Expense" (<a class=ev href="../S10/T5/03-a11y-txdetail.webp">T5/03</a>).</li>
+<li><strong><a class=did href="../../DEFECT-LEDGER.html#D-030">D-030</a></strong> — Address book still opens on the empty "SENDING ADDRESSES" tab and offers no manual entry, only "Paste from clipboard" / "Scan address" (<a class=ev href="../S10/T4/21-addressbook.webp">T4/21</a>, <a class=ev href="../S10/T4/22-addressbook-menu.webp">T4/22</a>).</li>
 <li><strong><a class=did href="../../DEFECT-LEDGER.html#D-041">D-041</a> mechanism</strong> — on every cold start after a send the balance stream publishes ~2x the real value for 10–20 s with <code>l1Synced=false</code>; the cause is visible in <code>WalletBalanceFacts total=192999384 confirmed=97000436 unconfirmed=95998948</code> — the spent input is still counted confirmed while its change is counted unconfirmed. Self-corrected here (06:52:35 → 06:52:54), unlike S2's persistent case.</li>
 <li><strong><a class=did href="../../DEFECT-LEDGER.html#D-004">D-004</a></strong> — <code>idling detected, stopping service</code> at 08:22:00 / 08:28:00 with no service stop in between (<a class=ev href="../S10/logs/watchlist.txt">logs/watchlist.txt</a>).</li>
 <li><strong><a class=did href="../../DEFECT-LEDGER.html#D-052">D-052</a> / <a class=did href="../../DEFECT-LEDGER.html#D-021">D-021</a></strong> — the "DashPay contact coverage DEBT …" and "permanently-dark candidate" lines are still emitted about once a minute.</li>
@@ -321,7 +322,7 @@ MISMATCH after restore: one transaction lost from the history (S10-D1) and the c
 <h2 id="contra-findings-ledger-items-that-did-not-reproduce-here">Contra-findings (ledger items that did NOT reproduce here)</h2>
 <ul>
 <li><strong><a class=did href="../../DEFECT-LEDGER.html#D-013">D-013</a> does not always hold</strong>: this reset logged <code>publish txmetadata successful: TxMetadataSaveInfo(itemsSaved=16, itemsToSave=16)</code> at 08:14:06 — the metadata <em>was</em> saved. S1's <code>itemsSaved=0</code> looks situational, not universal.</li>
-<li><strong><a class=did href="../../DEFECT-LEDGER.html#D-031">D-031</a></strong> did <strong>not</strong> reproduce: after 5 min 29 s with the screen off the L1 engine was still advancing (1556624 → 1556626), there were no <code>idling detected</code> lines in that launch at all, and a send attempted immediately after unlock succeeded first try (<code>T7/03</code>).</li>
+<li><strong><a class=did href="../../DEFECT-LEDGER.html#D-031">D-031</a></strong> did <strong>not</strong> reproduce: after 5 min 29 s with the screen off the L1 engine was still advancing (1556624 → 1556626), there were no <code>idling detected</code> lines in that launch at all, and a send attempted immediately after unlock succeeded first try (<a class=ev href="../S10/T7/03-send-after-unlock.webp">T7/03</a>).</li>
 <li><strong><a class=did href="../../DEFECT-LEDGER.html#SR-12">SR-12</a></strong> (shielded stall watchdog firing at 40 s) never fired: every shield completed in 5–7 s.</li>
 <li><strong>"Rotating a screen must not lock the wallet"</strong> is trivially satisfied because rotation cannot happen: 22 of 31 activities in <code>wallet/AndroidManifest.xml</code> are <code>android:screenOrientation="portrait"</code> (only <code>de.schildbach.wallet.MainActivity</code>, <code>AddressBookActivity</code>, <code>NetworkMonitorActivity</code>, <code>BlockInfoActivity</code>, <code>ScanActivity</code>, <code>SweepWalletActivity</code>, <code>WalletUriHandlerActivity</code>, <code>InviteHandlerActivity</code>, <code>ImportSharedImageActivity</code> are free).</li>
 </ul>
@@ -331,12 +332,12 @@ MISMATCH after restore: one transaction lost from the history (S10-D1) and the c
 <li><code>adb shell am start -d '&lt;url&gt;'</code> must be written as <code>adb shell "am start … -d '&lt;url&gt;'"</code>; quoting only on the host lets the <em>device</em> shell split the URL on <code>&amp;</code> (the invite link silently lost its last two parameters on the first attempt).</li>
 <li>The send-amount keypad reuses the same resource ids (<code>btn_1</code>…<code>btn_9</code>) as the lock-screen PIN pad, which made an automated unlock helper type the PIN into the amount field. Harness hazard, not an app bug — but worth knowing for other streams.</li>
 <li>The app's numeric keypads expose no <code>EditText</code>, so "paste an amount with a currency symbol" is not expressible through the UI; covered instead via BIP21 <code>amount=</code> values.</li>
-<li>Auto-logout was raised from the 1-minute default to 24 hours for the interrupt tests (More › Security › Advanced Security) and was reset to the default automatically by the wallet wipe in T6. Locale, font scale, density, night mode and rotation were all restored to defaults at the end.</li>
+<li>Auto-logout was raised from the 1-minute default to 24 hours for the interrupt tests (More › Security › Advanced Security) and was reset to the default automatically by the wallet wipe in <a class=ev href="../index.html#S10-T6">T6</a>. Locale, font scale, density, night mode and rotation were all restored to defaults at the end.</li>
 </ul>
 <h2 id="not-run-blocked">Not run / blocked</h2>
 <ul>
-<li>The <strong>username request</strong> screen for T9 could not be exercised: this wallet already owns <code>qa1s13939</code>, so the request flow is unreachable. Edit Profile (with a typed Display Name) was used as the closest analogue and restored correctly.</li>
-<li>The <strong>rotation</strong> leg of T1 is inapplicable (see contra-findings) rather than passed.</li>
+<li>The <strong>username request</strong> screen for <a class=ev href="../index.html#S10-T9">T9</a> could not be exercised: this wallet already owns <code>qa1s13939</code>, so the request flow is unreachable. Edit Profile (with a typed Display Name) was used as the closest analogue and restored correctly.</li>
+<li>The <strong>rotation</strong> leg of <a class=ev href="../index.html#S10-T1">T1</a> is inapplicable (see contra-findings) rather than passed.</li>
 </ul><div id=lb><span class=x>&times;</span><span class="nv pv">&#8249;</span><span class="nv nx">&#8250;</span><img><div class=cap></div></div>
 <script>(function(){var lb=document.getElementById('lb'),im=lb.querySelector('img'),cap=lb.querySelector('.cap'),L=[],i=0;
 function links(){return Array.prototype.slice.call(document.querySelectorAll('a[href$=".webp"],a[href$=".png"]'))}

@@ -5,18 +5,19 @@ h1{border-bottom:3px solid #008de4}h2{border-bottom:1px solid #ccc;margin-top:40
 nav.top{background:#012060;color:#fff;padding:8px 24px;margin:-16px -24px 16px;position:sticky;top:0;z-index:5}nav.top a{color:#fff;margin-right:18px;text-decoration:none}nav.top a:hover{text-decoration:underline}
 .S1{color:#b00020;font-weight:bold}.S2{color:#c75000;font-weight:bold}.toc{background:#f8f9fb;border:1px solid #e3e6ea;padding:8px 16px;font-size:13px;columns:2}.toc ul{margin:2px 0;padding-left:16px}
 #lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:50;align-items:center;justify-content:center;flex-direction:column}#lb.on{display:flex}#lb img{max-width:96vw;max-height:88vh;border:2px solid #fff;box-shadow:0 0 30px #000}#lb .cap{color:#eee;font:13px ui-monospace,monospace;margin-top:8px}#lb .cap a{color:#8cf}#lb .x{position:absolute;top:10px;right:18px;color:#fff;font-size:30px;cursor:pointer}#lb .nv{position:absolute;top:50%;color:#fff;font-size:44px;cursor:pointer;padding:0 16px;user-select:none}#lb .pv{left:0}#lb .nx{right:0}a.img img{cursor:zoom-in}
+sup.more a{margin:0 2px;font-size:10px}
 a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:target{background:#fff3b0;outline:2px solid #f5b400}
 .note{background:#fff8e1;border-left:4px solid #f5b400;padding:8px 12px;margin:12px 0}
-</style><nav class=top><a href="../../index.html">Home</a><a href="../../QA-REPORT.html">Full report</a><a href="../../EXEC-SUMMARY.html">Executive summary</a><a href="../../STORY-MATRIX.html">User-story matrix</a><a href="../../DEFECT-LEDGER.html">Defect register</a><a href="../index.html">Evidence gallery</a><a href="../../QA-PLAN.html">Test plan</a><a href="../../streams.html">Stream reports</a></nav><h1 id="qa-report-s2-a2-tier-b-b1b4-agent-opus-qa-stream-s2-emulator-5556-avd-dw-qa2-2026-09-19">QA report: S2 — A2 + Tier B (B1–B4)   (agent: Opus QA stream S2, emulator-5556 / AVD dw-qa2, 2026-09-19)</h1>
+</style><nav class=top><a href="../../index.html">Home</a><a href="../../QA-REPORT.html">Full report</a><a href="../../EXEC-SUMMARY.html">Executive summary</a><a href="../../STORY-MATRIX.html">User-story matrix</a><a href="../../DEFECT-LEDGER.html">Defect register</a><a href="../index.html">Evidence gallery</a><a href="../../QA-PLAN.html">Test plan</a><a href="../../streams.html">Stream reports</a></nav><h1 id="qa-report-s2-a2-tier-b-b1b4-agent-opus-qa-stream-s2-emulator-5556-avd-dw-qa2-2026-09-19">QA report: S2 — <a class=ev href="../index.html#S2-A2">A2</a> + Tier B (<a class=ev href="../index.html#S2">B1</a>–<a class=ev href="../index.html#S2-B4">B4</a>)   (agent: Opus QA stream S2, emulator-5556 / AVD dw-qa2, 2026-09-19)</h1>
 <p>Build under test: <code>fix-12.0.0-testnet3-release-signed.apk</code>, versionCode <strong>12000000</strong>, versionName 12.0.0, minSdk 29, targetSdk 35.
 Wallet: reference seed <code>job flower agree lyrics industry note boost finger buddy dog exact fat</code> — kept <strong>read-only</strong> all session
 (no send, no shield, no username; every wallet reset used "Reset wallet <strong>without saving</strong>" so nothing was written to Platform).</p>
 <blockquote>
 <p><strong>Expected-balance correction.</strong> The brief's 107.43173749 is <strong>stale</strong>. The wallet made a confirmed on-chain spend of
 0.35000227 on 2026-09-05 (block 1,547,938). On-chain truth today is <strong>107.08173522</strong> and that is the figure every
-assertion below uses. Evidence in A2.3.</p>
+assertion below uses. Evidence in <a class=ev href="../index.html#S2-A2">A2</a>.3.</p>
 </blockquote>
-<p>Times are host-local (UTC-5) unless suffixed UTC. <code>wallet.log</code> timestamps are UTC.</p>
+<p>Times are host-local (UTC-5) unless suffixed UTC. <a class=ev href="../S2/final-walletlog/files/log/wallet.log">wallet.log</a> timestamps are UTC.</p>
 <h2 id="summary-table">Summary table</h2>
 <table>
 <thead>
@@ -29,49 +30,49 @@ assertion below uses. Evidence in A2.3.</p>
 </thead>
 <tbody>
 <tr>
-<td><strong>A2</strong> Clean install + restore reference seed, does sync finish</td>
+<td><strong><a class=ev href="../index.html#S2-A2">A2</a></strong> Clean install + restore reference seed, does sync finish</td>
 <td><strong>PASS</strong></td>
-<td><a class=ev href="../S2/A2/17-SYNCED-balance.webp">A2/17-SYNCED-balance.png</a>, <a class=ev href="../S2/A2/walletlog-after-sync/files/log/wallet.log">A2/walletlog-after-sync/files/log/wallet.log</a>, <a class=ev href="../S2/A2/a2-sync-100.mp4">A2/a2-sync-100.mp4</a></td>
+<td><a class=ev href="../S2/A2/17-SYNCED-balance.webp">A2/17-SYNCED-balance.png</a>, <a class=ev href="../S2/final-walletlog/files/log/wallet.log">A2/walletlog-after-sync/files/log/wallet.log</a>, <a class=ev href="../S2/A2/a2-sync-100.mp4">A2/a2-sync-100.mp4</a></td>
 <td>Sync finished in <strong>10 min 06 s</strong>, balance exactly <strong>107.08173522</strong>, confirmed against the insight explorer to the duff; zero watchdog/stall/OOM lines</td>
 </tr>
 <tr>
-<td><strong>A2 (a)</strong> Balance assertion</td>
+<td><strong><a class=ev href="../index.html#S2-A2">A2</a> (a)</strong> Balance assertion</td>
 <td><strong>PASS</strong></td>
 <td><a class=ev href="../S2/A2/18-txdetail-sent-0.35.webp">A2/18-txdetail-sent-0.35.png</a>, explorer tx <code>bbd61b83…2953</code></td>
 <td>App 107.08173522 == explorer sum over the 810 addresses backing its UTXOs; brief constant is stale, not a defect</td>
 </tr>
 <tr>
-<td><strong>A2 (b)</strong> Home-screen balance during sync</td>
+<td><strong><a class=ev href="../index.html#S2-A2">A2</a> (b)</strong> Home-screen balance during sync</td>
 <td><strong>FAIL (D-S2-2)</strong></td>
 <td><a class=ev href="../S2/A2/11-unlocked-home.webp">A2/11-unlocked-home.png</a></td>
 <td>Mid-replay the home screen shows a partial, <em>inflated</em> balance (825.481794 at 61%) as the dominant number</td>
 </tr>
 <tr>
-<td><strong>A2 (c)</strong> Receive-address check</td>
+<td><strong><a class=ev href="../index.html#S2-A2">A2</a> (c)</strong> Receive-address check</td>
 <td><strong>FAIL (D-S2-3)</strong></td>
 <td><a class=ev href="../S2/A2/26-receive-address.webp">A2/26-receive-address.png</a></td>
 <td>Receive screen offers <code>m/44'/1'/0'/0/0</code>, an address with 107 on-chain appearances, although <code>externalHighestUsed=245</code></td>
 </tr>
 <tr>
-<td><strong>B4</strong> Background idle 30 min</td>
+<td><strong><a class=ev href="../index.html#S2-B4">B4</a></strong> Background idle 30 min</td>
 <td><strong>PASS</strong></td>
 <td><a class=ev href="../S2/B4/04-home-after-30min-idle.webp">B4/04-home-after-30min-idle.png</a>, <code>B4/batterystats-{mid,end}.txt</code></td>
 <td>Exactly <strong>one</strong> service stop/start cycle in 30 min, no wakelock/alarm growth, balance and synced state intact</td>
 </tr>
 <tr>
-<td><strong>B2</strong> Kill/restart torture</td>
+<td><strong><a class=ev href="../index.html#S2-B2">B2</a></strong> Kill/restart torture</td>
 <td><strong>PASS</strong> (blocks-lost target) / <strong>FAIL</strong> (post-kill balance, D-S2-1)</td>
 <td><a class=ev href="../S2/B2/kill3/kill3-results.txt">B2/kill3/kill3-results.txt</a>, <code>B2/kill3/k{1,2,3}.mp4</code></td>
 <td><strong>0 blocks lost on all 5 kills</strong> (target ≤ 5,000); but after any mid-replay kill the finished UI shows a ~22× inflated balance</td>
 </tr>
 <tr>
-<td><strong>B3</strong> Network flap ×3</td>
+<td><strong><a class=ev href="../index.html#S2-B3">B3</a></strong> Network flap ×3</td>
 <td><strong>PASS</strong></td>
 <td><a class=ev href="../S2/B3/torture-timeline.txt">B3/torture-timeline.txt</a>, <a class=ev href="../S2/B3/03-during-net-off-3.webp">B3/03-during-net-off-3.png</a></td>
 <td>Cursor freezes exactly during each 2-min outage and resumes within 30 s; 0 watchdog restarts; correct offline banner</td>
 </tr>
 <tr>
-<td><strong>B1</strong> Low-memory pressure</td>
+<td><strong><a class=ev href="../index.html#S2">B1</a></strong> Low-memory pressure</td>
 <td><strong>PASS</strong></td>
 <td><a class=ev href="../S2/B3/torture-timeline.txt">B3/torture-timeline.txt</a>, <a class=ev href="../S2/mem.csv">mem.csv</a></td>
 <td>5 × <code>RUNNING_CRITICAL</code> survived, cursor kept advancing, no LMK/ANR/crash, reached 100%</td>
@@ -79,13 +80,13 @@ assertion below uses. Evidence in A2.3.</p>
 <tr>
 <td><strong><a class=did href="../../DEFECT-LEDGER.html#D-037">D-037</a> confirmation</strong> (orchestrator request)</td>
 <td><strong>CONFIRMED</strong></td>
-<td><code>B3/</code>, <a class=ev href="../S2/B2/kill3/walletlog/files/log/wallet.log">B2/kill3/walletlog/files/log/wallet.log</a></td>
+<td><a class=ev href="../index.html#S2-B3">B3/</a>, <a class=ev href="../S2/final-walletlog/files/log/wallet.log">B2/kill3/walletlog/files/log/wallet.log</a></td>
 <td>App logs "display cache is missing rows"; the count it calls "SDK records" is exactly the <strong>txos union (2375)</strong>, not <code>transactions</code> (3269)</td>
 </tr>
 </tbody>
 </table>
 <h2 id="per-test-detail">Per-test detail</h2>
-<h3 id="a2-clean-install-restore-reference-seed-sync-to-100">A2 — Clean install, restore reference seed, sync to 100%</h3>
+<h3 id="a2-clean-install-restore-reference-seed-sync-to-100"><a class=ev href="../index.html#S2-A2">A2</a> — Clean install, restore reference seed, sync to 100%</h3>
 <p>Uninstall (not present) -&gt; install fix APK 00:10:05 -&gt; <code>logcat-start</code> + <code>memlog 30s</code> armed 00:10:14 -&gt; launch 00:10:17 -&gt;
 Restore wallet 00:10:37 -&gt; seed typed, <strong>Continue = T0 00:11:18</strong> -&gt; PIN 1234 set+confirmed 00:12:11 -&gt; notifications ALLOW
 -&gt; background-run ALLOW x2 -&gt; home reached 00:12:3x.</p>
@@ -101,7 +102,7 @@ textual proof captured instead in <a class=ev href="../S2/A2/02-restore-screen-u
 </code></pre>
 <p><code>starting peergroup</code> (dashj): <strong>0</strong>. <code>filter-stall</code>, <code>engine restart</code>, <code>OverlappingFileLockException</code>, <code>OutOfMemory</code>,
 app-process <code>FATAL</code>: <strong>0</strong>. <code>idling detected</code>: 0 during the replay (first at 05:25:00, four minutes after completion).</p>
-<p><strong>Progress timeline</strong> (wallet.log UTC; T0 = 05:11:18 UTC). The engine's own % is phase-weighted and not linear in
+<p><strong>Progress timeline</strong> (<a class=ev href="../S2/final-walletlog/files/log/wallet.log">wallet.log</a> UTC; T0 = 05:11:18 UTC). The engine's own % is phase-weighted and not linear in
 blocks — the wallet-block cursor is the linear measure.</p>
 <table>
 <thead>
@@ -229,7 +230,7 @@ blocks — the wallet-block cursor is the linear measure.</p>
 </tbody>
 </table>
 <p>UI progression on the home screen: "Syncing 31%" -&gt; 61% -&gt; 64% -&gt; 78% -&gt; 99%, then the indicator disappeared.
-Screenshots <code>A2/09</code>, <code>A2/11</code>, <code>A2/12</code>, <code>A2/14</code>, <code>A2/17</code>. Video of the final minutes incl. the 100% moment:
+Screenshots <a class=ev href="../S2/A2/09-home-sync-start.webp">A2/09</a>, <a class=ev href="../S2/A2/11-unlocked-home.webp">A2/11</a>, <a class=ev href="../S2/A2/12-sync-p78.webp">A2/12</a>, <a class=ev href="../S2/A2/14-sync-p91.webp">A2/14</a>, <a class=ev href="../S2/A2/17-SYNCED-balance.webp">A2/17</a>. Video of the final minutes incl. the 100% moment:
 <a class=ev href="../S2/A2/a2-sync-100.mp4">A2/a2-sync-100.mp4</a>. Per-minute sampler timeline: <a class=ev href="../S2/A2/timeline.txt">A2/timeline.txt</a>.</p>
 <p><strong>Balance assertion.</strong>
 - Displayed <strong>107.081735</strong> ($6521.62) — <a class=ev href="../S2/A2/17-SYNCED-balance.webp">A2/17-SYNCED-balance.png</a>
@@ -239,7 +240,7 @@ Screenshots <code>A2/09</code>, <code>A2/11</code>, <code>A2/12</code>, <code>A2
   those UTXOs -&gt; <strong>10708173522 duffs</strong>, 0 failed chunks. Exact match.
 - Expected per brief 107.43173749 -&gt; short by 0.35000227, fully explained below. <strong>Actual vs expected: PASS against
   on-chain truth 107.08173522.</strong></p>
-<h4 id="a23-why-the-briefs-constant-is-stale-explorer-verification">A2.3 — why the brief's constant is stale (explorer verification)</h4>
+<h4 id="a23-why-the-briefs-constant-is-stale-explorer-verification"><a class=ev href="../index.html#S2-A2">A2</a>.3 — why the brief's constant is stale (explorer verification)</h4>
 <p>Tx detail of the newest row (<a class=ev href="../S2/A2/18-txdetail-sent-0.35.webp">A2/18-txdetail-sent-0.35.png</a>, <a class=ev href="../S2/A2/19-txdetail-scrolled.webp">A2/19-txdetail-scrolled.png</a>): Amount Sent 0.35000227,
 from <code>ye5QiE9Yk6YshTYwEbW9V9UvhCFE2ACMB1</code>, to <code>yMu5gX1fKg3FC2p17DEsQhu1S4ZXhP78F5</code>, network fee 0.00000227,
 "September 5 at 7:54 AM". Explorer <code>insight-api/tx/bbd61b8301229c8079dc90a6af3f5fbae544b70aecebec1246d593aa43092953</code>:
@@ -253,21 +254,21 @@ DIP-15 receiving chain, money this wallet <em>sent</em> to a DashPay contact. Co
 confirms the arithmetic: <code>total = bip44 2,173,382,240 + coinjoin 8,534,691,282 + dashpayReceiving 100,000 = 10,708,173,522</code>,
 with <code>dashpayExternal:1,230,000</code> listed but not summed. <strong>Not a defect.</strong></p>
 <p><strong>Transaction list.</strong> <code>tx_display_cache</code> = 1,553 rows; <code>dash-sdk.db.transactions</code> = 3,269 records. 30 scroll pages
-captured (<code>A2/txlist/page-01..30.png</code>) reaching 09 March 2025; the list is longer than a UI scroll can exhaust, so the
+captured (<a class=ev href="../S2/A2/txlist/page-01.webp">A2/txlist/page-01..30.png</a><sup class=more><a href="../index.html#S2-A2" title="30 files, open gallery">+29</a></sup>) reaching 09 March 2025; the list is longer than a UI scroll can exhaust, so the
 authoritative count is the DB.</p>
 <p><strong>xpub</strong> (recorded, nothing derived by me):
 <code>tpubDDDjGxYK3jDHmnNoEBjKPiqS9DNjHeaWvogRtG7JYnZXmLZJ4PJaKSvRVdPNbf9ZrbPLLDm67sKeaqiCZJoVKg5UhCHjkzQPnfKbZtNBaPd</code></p>
 <p><strong>Memory</strong> (<a class=ev href="../S2/mem.csv">mem.csv</a>, 30 s interval): peak TOTAL PSS <strong>622 MB</strong>, peak native heap <strong>481 MB</strong>, peak Dalvik <strong>50 MB</strong>,
 all at 00:20:54 during the final FILTERS stretch. Idle after 100%: PSS 468 MB / native 313 MB / Dalvik 34 MB.
-<code>wallet.log</code> peak <code>MEM pss=606MB nativeHeap=457/547MB jvm=22/576MB</code> (05:21:00). <code>ReplayMemTelemetry</code> peak
+<a class=ev href="../S2/final-walletlog/files/log/wallet.log">wallet.log</a> peak <code>MEM pss=606MB nativeHeap=457/547MB jvm=22/576MB</code> (05:21:00). <code>ReplayMemTelemetry</code> peak
 <code>nativeHeapAllocated=395 MB, nativeHeapSize=455 MB</code>; <code>jvmUsed</code> never exceeded 37 MB of 576 MB.
-<code>dumpsys activity exit-info</code>: <strong>empty</strong> for A2 — no LMK, no ANR, no crash; app pid 5226 survived the whole test.</p>
-<p><strong>A2 step 4 (stall probes) — not needed.</strong> No stall occurred: the cursor never sat still for 10 minutes during any
+<code>dumpsys activity exit-info</code>: <strong>empty</strong> for <a class=ev href="../index.html#S2-A2">A2</a> — no LMK, no ANR, no crash; app pid 5226 survived the whole test.</p>
+<p><strong><a class=ev href="../index.html#S2-A2">A2</a> step 4 (stall probes) — not needed.</strong> No stall occurred: the cursor never sat still for 10 minutes during any
 replay, so the stall-capture branch was not exercised, and there are <strong>no</strong> <code>filter-stall watchdog</code> / "filter cursor has
 sat at" lines to report for this build on this wallet. Post-100% background/foreground and kill/relaunch probes were
-folded into B4 and B2.</p>
+folded into <a class=ev href="../index.html#S2-B4">B4</a> and <a class=ev href="../index.html#S2-B2">B2</a>.</p>
 <p><strong>Verdict: PASS.</strong></p>
-<h3 id="b4-background-idle-30-minutes">B4 — Background idle 30 minutes</h3>
+<h3 id="b4-background-idle-30-minutes"><a class=ev href="../index.html#S2-B4">B4</a> — Background idle 30 minutes</h3>
 <p>Backgrounded 00:32:07, foregrounded 01:02:42. Exactly <strong>one</strong> service stop/start cycle in 30 minutes — no loop:</p>
 <pre><code>05:32:08 BlockchainServiceImpl - .onDestroy()                                  &lt;- app backgrounded
 05:54:38 BlockchainServiceImpl - onCreate completed, processing onStartCommand &lt;- wakes ~22 min later
@@ -288,7 +289,7 @@ After foregrounding + PIN: balance <strong>107.081735</strong>, no syncing indic
 <li><strong>Background:</strong> the same line at 05:57:00 <strong>is</strong> immediately followed by <code>.onDestroy()</code> — there it means what it says.</li>
 <li>Total <code>idling detected</code> occurrences over the whole session: 7.</li>
 </ul>
-<h3 id="b2-killrestart-torture">B2 — Kill/restart torture</h3>
+<h3 id="b2-killrestart-torture"><a class=ev href="../index.html#S2-B2">B2</a> — Kill/restart torture</h3>
 <p>Two passes: restore #2 (T0 01:13:18) with 2 kills, and a dedicated restore #4 (T0 01:50:14) with 3 time-spaced kills so
 the 25/50/75 acceptance target could be measured cleanly. Driver <code>bin/s2-kill3.sh</code>; raw results
 <a class=ev href="../S2/B2/kill3/kill3-results.txt">B2/kill3/kill3-results.txt</a>, <a class=ev href="../S2/B2/kill25-kill.txt">B2/kill25-kill.txt</a>, <a class=ev href="../S2/B2/kill50-kill.txt">B2/kill50-kill.txt</a>.</p>
@@ -367,7 +368,7 @@ Sync still reached 100% both times: restore #2 <code>phase=SYNCED</code> 06:19:2
 restore #4 <code>phase=SYNCED</code> 06:59:13 UTC (8 min 59 s from T0, 3 kills).</p>
 <p><strong>Balance after the torture: FAIL — defect D-S2-1.</strong> The store was correct
 (<code>txos WHERE isSpent=0 -&gt; 10708173522 | 811</code>) but the UI showed 2319.448975 (run #2) and 2363.277644 (run #4).</p>
-<h3 id="b3-network-flap-x3-during-restore-3-no-kills">B3 — Network flap x3 (during restore #3, no kills)</h3>
+<h3 id="b3-network-flap-x3-during-restore-3-no-kills"><a class=ev href="../index.html#S2-B3">B3</a> — Network flap x3 (during restore #3, no kills)</h3>
 <p>Driver <code>bin/s2-torture.sh</code>, timeline <a class=ev href="../S2/B3/torture-timeline.txt">B3/torture-timeline.txt</a>. Each flap = <code>svc wifi disable</code> + <code>svc data disable</code>, 2 min.</p>
 <table>
 <thead>
@@ -407,7 +408,7 @@ restore #4 <code>phase=SYNCED</code> 06:59:13 UTC (8 min 59 s from T0, 3 kills).
 <code>grep -c 'filter-stall|engine restart|restarting engine'</code> = <strong>0</strong> — no watchdog restart needed.
 During outage #3 the UI showed "Unable to connect to the Dash network — Check your connection"
 (<a class=ev href="../S2/B3/03-during-net-off-3.webp">B3/03-during-net-off-3.png</a>). <strong>Verdict: PASS.</strong></p>
-<h3 id="b1-low-memory-pressure-same-replay">B1 — Low-memory pressure (same replay)</h3>
+<h3 id="b1-low-memory-pressure-same-replay"><a class=ev href="../index.html#S2">B1</a> — Low-memory pressure (same replay)</h3>
 <p>5 x <code>am send-trim-memory hashengineering.darkcoin.wallet_test RUNNING_CRITICAL</code> at T+181, 361, 540, 661, 780 s.
 The app survived every one, the cursor kept advancing across each, the process was never killed, and the replay reached
 <code>phase=SYNCED</code> at 06:46:05 UTC. <code>dumpsys activity exit-info</code> has <strong>no</strong> LMK/ANR/crash entry for the app — the only
@@ -474,28 +475,28 @@ no row).</p>
 </thead>
 <tbody>
 <tr>
-<td>#1 A2</td>
+<td>#1 <a class=ev href="../index.html#S2-A2">A2</a></td>
 <td>—</td>
 <td>—</td>
 <td><strong>1,553</strong></td>
 <td>3,269</td>
 </tr>
 <tr>
-<td>#2 B2 (2 kills)</td>
+<td>#2 <a class=ev href="../index.html#S2-B2">B2</a> (2 kills)</td>
 <td>2,943</td>
 <td>1,774 txs / 51 groups</td>
 <td><strong>1,546</strong></td>
 <td>3,269</td>
 </tr>
 <tr>
-<td>#3 B3+B1 (no kills)</td>
+<td>#3 <a class=ev href="../index.html#S2-B3">B3</a>+<a class=ev href="../index.html#S2">B1</a> (no kills)</td>
 <td>2,375</td>
 <td>1,627 txs / 51 groups</td>
 <td><strong>1,531</strong></td>
 <td>3,269</td>
 </tr>
 <tr>
-<td>#4 B2 (3 kills)</td>
+<td>#4 <a class=ev href="../index.html#S2-B2">B2</a> (3 kills)</td>
 <td>2,865</td>
 <td>1,750 txs / 51 groups</td>
 <td><strong>1,557</strong></td>
@@ -526,7 +527,7 @@ vout 0.10000000 to that address. Newest display row <code>2026-09-05 12:54:12 Se
 <td class=S1><strong>S1</strong></td>
 <td>After any mid-replay process kill, the finished home screen shows a ~22x inflated balance and claims to be synced</td>
 <td>1. Restore the reference seed. 2. <code>am force-stop</code> the app at any point during the replay, relaunch. 3. Let it reach <code>phase=SYNCED</code>. 4. Home shows 2319.448975 / 2363.277644 instead of 107.081735, with <strong>no</strong> syncing indicator. Reproduced <strong>2/2</strong> on kill runs, <strong>0/2</strong> without kills. Workaround: force-stop + relaunch (bg/fg alone does <strong>not</strong> fix it).</td>
-<td><a class=ev href="../S2/B2/11-BALANCE-after-kills.webp">B2/11-BALANCE-after-kills.png</a>, <a class=ev href="../S2/B2/kill3/20-BALANCE-after-3-kills.webp">B2/kill3/20-BALANCE-after-3-kills.png</a>, <a class=ev href="../S2/B2/kill3/21-BALANCE-after-restart.webp">B2/kill3/21-BALANCE-after-restart.png</a>, <a class=ev href="../S2/B2/b2-restart-recovery.mp4">B2/b2-restart-recovery.mp4</a>, <a class=ev href="../S2/B2/walletlog-wrong-balance/files/log/wallet.log">B2/walletlog-wrong-balance/files/log/wallet.log</a>, <a class=ev href="../S2/B2/kill3/walletlog/files/log/wallet.log">B2/kill3/walletlog/files/log/wallet.log</a></td>
+<td><a class=ev href="../S2/B2/11-BALANCE-after-kills.webp">B2/11-BALANCE-after-kills.png</a>, <a class=ev href="../S2/B2/kill3/20-BALANCE-after-3-kills.webp">B2/kill3/20-BALANCE-after-3-kills.png</a>, <a class=ev href="../S2/B2/kill3/21-BALANCE-after-restart.webp">B2/kill3/21-BALANCE-after-restart.png</a>, <a class=ev href="../S2/B2/b2-restart-recovery.mp4">B2/b2-restart-recovery.mp4</a>, <a class=ev href="../S2/final-walletlog/files/log/wallet.log">B2/walletlog-wrong-balance/files/log/wallet.log</a>, <a class=ev href="../S2/final-walletlog/files/log/wallet.log">B2/kill3/walletlog/files/log/wallet.log</a></td>
 <td><code>CutoverUiDataService</code> / <code>L1ShadowSyncService.WalletBalanceFacts</code> — <strong>only the bip44 bucket</strong> is wrong (227,792,973,136 vs correct 2,173,382,240); <code>coinjoin</code>, <code>dashpayReceiving</code>, <code>dashpayExternal</code> and <code>txCount=3269</code> all match a good run, so spent outputs are not being retired from the in-memory bip44 UTXO set when blocks are re-processed after a restart</td>
 </tr>
 <tr>
@@ -549,9 +550,9 @@ vout 0.10000000 to that address. Newest display row <code>2026-09-05 12:54:12 Se
 <td><strong>D-S2-4</strong></td>
 <td><strong>S4</strong></td>
 <td><code>idling detected, stopping service</code> logged once per minute in the foreground while the service is in fact running</td>
-<td>Reach 100 %, leave the app foregrounded, watch <code>wallet.log</code>: the line repeats every 60 s with no <code>.onDestroy()</code>/<code>stopSelf</code>/<code>service start command</code> between.</td>
-<td><a class=ev href="../S2/A2/walletlog-after-sync/files/log/wallet.log">A2/walletlog-after-sync/files/log/wallet.log</a> lines 4975/5114/5243/5388/5482/5626 (05:25:00-05:30:00)</td>
-<td><code>BlockchainServiceImpl</code> idle check — misleading log only; no functional impact (verified in B4)</td>
+<td>Reach 100 %, leave the app foregrounded, watch <a class=ev href="../S2/final-walletlog/files/log/wallet.log">wallet.log</a>: the line repeats every 60 s with no <code>.onDestroy()</code>/<code>stopSelf</code>/<code>service start command</code> between.</td>
+<td><a class=ev href="../S2/final-walletlog/files/log/wallet.log">A2/walletlog-after-sync/files/log/wallet.log</a> lines 4975/5114/5243/5388/5482/5626 (05:25:00-05:30:00)</td>
+<td><code>BlockchainServiceImpl</code> idle check — misleading log only; no functional impact (verified in <a class=ev href="../index.html#S2-B4">B4</a>)</td>
 </tr>
 <tr>
 <td><strong>D-S2-5</strong></td>
@@ -566,13 +567,13 @@ vout 0.10000000 to that address. Newest display row <code>2026-09-05 12:54:12 Se
 <h3 id="investigated-and-rejected-as-defects">Investigated and rejected as defects</h3>
 <ul>
 <li><strong>Foreground auto-lock every ~60 s.</strong> Real (controlled probe using <code>screencap</code> only, no <code>uiautomator</code>:
-  <code>A2/lockprobe/probe-1..6.png</code>; <code>LockState = ENTER_PIN</code> count 8-&gt;9, the new lock 60 s after the last touch), but it is
+  <a class=ev href="../S2/A2/lockprobe/probe-1.webp">A2/lockprobe/probe-1..6.png</a><sup class=more><a href="../S2/A2/lockprobe/probe-2.webp" title="S2/A2/lockprobe/probe-2.webp">2</a> <a href="../S2/A2/lockprobe/probe-3.webp" title="S2/A2/lockprobe/probe-3.webp">3</a> <a href="../S2/A2/lockprobe/probe-4.webp" title="S2/A2/lockprobe/probe-4.webp">4</a> <a href="../S2/A2/lockprobe/probe-5.webp" title="S2/A2/lockprobe/probe-5.webp">5</a> <a href="../S2/A2/lockprobe/probe-6.webp" title="S2/A2/lockprobe/probe-6.webp">6</a></sup>; <code>LockState = ENTER_PIN</code> count 8-&gt;9, the new lock 60 s after the last touch), but it is
   the shipped default: <code>Configuration.getAutoLogoutMinutes()</code> returns <code>prefs.getInt(PREFS_KEY_AUTO_LOGOUT_MINUTES, 1)</code>
   (<code>common/src/main/java/org/dash/wallet/common/Configuration.java:171-173</code>) driving <code>AutoLogout.shouldLogout()</code>
   (<code>wallet/src/de/schildbach/wallet/AutoLogout.java:104-107</code>), a file dated 2019. Pre-existing, not from this branch.
   Worth noting as UX friction: a user watching a 10-minute replay is returned to the PIN pad every minute.</li>
 <li><strong>0.0123 "missing" in the all-addresses explorer sweep</strong> — a <code>dashpayExternalAccount</code> (DIP-15 contact chain) output,
-  money sent <em>to</em> a contact, correctly excluded. See A2.3.</li>
+  money sent <em>to</em> a contact, correctly excluded. See <a class=ev href="../index.html#S2-A2">A2</a>.3.</li>
 <li><strong><code>last_used</code> preference never refreshes</strong> (stuck at wallet-setup time across ~58 min of active use).
   <code>Configuration.touchLastUsed()</code> has exactly one caller, <code>wallet/src/de/schildbach/wallet/ui/main/MainActivity.kt:207</code>,
   so it only fires on MainActivity creation; <code>WalletApplication.scheduleStartBlockchainService()</code> feeds
@@ -588,13 +589,13 @@ vout 0.10000000 to that address. Newest display row <code>2026-09-05 12:54:12 Se
   10547/11319/11343/11366/11851/12681. These are the <strong><code>uiautomator</code> helper process</strong> (my 60 s sampler colliding with my
   own dumps), not the app. Verified zero <code>FATAL</code> lines from any app PID (5226, 22930, 23456, 24825, 28170, 28706, 29214).</li>
 <li>Replay on this AVD is far faster than the plan's "~1 hour" estimate (~7-10 min), which made precise 25/50/75 % kill
-  targeting hard on the first pass — <code>synced_height_persisted</code> is written to <code>wallet.log</code> in bursts, so thresholds
+  targeting hard on the first pass — <code>synced_height_persisted</code> is written to <a class=ev href="../S2/final-walletlog/files/log/wallet.log">wallet.log</a> in bursts, so thresholds
   overshoot. Restore #4 used time-spaced kills instead, giving 31 % / 83 % / 99 %.</li>
 </ul>
 <h2 id="not-run-blocked">Not run / blocked</h2>
 <ul>
-<li>Nothing in the assigned scope was blocked. A2 step 4's stall-capture branch (<code>grep-log</code> + <code>mem</code> + <code>procstat</code> +
-  <code>exitinfo</code> + <code>wallet.log</code> into <code>A2/stall-&lt;time&gt;/</code>) was <strong>not triggered</strong> because no stall occurred — the cursor never
+<li>Nothing in the assigned scope was blocked. <a class=ev href="../index.html#S2-A2">A2</a> step 4's stall-capture branch (<code>grep-log</code> + <code>mem</code> + <code>procstat</code> +
+  <code>exitinfo</code> + <a class=ev href="../S2/final-walletlog/files/log/wallet.log">wallet.log</a> into <code>A2/stall-&lt;time&gt;/</code>) was <strong>not triggered</strong> because no stall occurred — the cursor never
   went 10 minutes without advancing in any of the four replays.</li>
 <li>Full UI scroll to the bottom of the ~1,500-row history was not attempted (~400 swipes); 30 pages were captured and the
   row counts come from <code>tx_display_cache</code>, which is what the list renders.</li>

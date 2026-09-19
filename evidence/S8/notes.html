@@ -1,0 +1,283 @@
+<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Stream S8 notes</title><style>body{font-family:system-ui,-apple-system,sans-serif;max-width:1400px;margin:0 auto;padding:16px 24px;line-height:1.45;background:#fff;color:#111}
+table{border-collapse:collapse;font-size:13px;margin:12px 0}th,td{border:1px solid #ddd;padding:4px 8px;vertical-align:top;text-align:left}th{background:#f3f6fa;position:sticky;top:0}
+tr:nth-child(even){background:#fafbfc}code{background:#f4f4f4;padding:1px 4px;border-radius:3px;font-size:12px}pre{background:#f4f4f4;padding:10px;overflow:auto}
+h1{border-bottom:3px solid #008de4}h2{border-bottom:1px solid #ccc;margin-top:40px}a{color:#008de4}a.ev{background:#e8f4fd;padding:0 3px;border-radius:3px;font-family:ui-monospace,monospace;font-size:12px}
+nav.top{background:#012060;color:#fff;padding:8px 24px;margin:-16px -24px 16px;position:sticky;top:0;z-index:5}nav.top a{color:#fff;margin-right:18px;text-decoration:none}nav.top a:hover{text-decoration:underline}
+.S1{color:#b00020;font-weight:bold}.S2{color:#c75000;font-weight:bold}.toc{background:#f8f9fb;border:1px solid #e3e6ea;padding:8px 16px;font-size:13px;columns:2}.toc ul{margin:2px 0;padding-left:16px}
+#lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:50;align-items:center;justify-content:center;flex-direction:column}#lb.on{display:flex}#lb img{max-width:96vw;max-height:88vh;border:2px solid #fff;box-shadow:0 0 30px #000}#lb .cap{color:#eee;font:13px ui-monospace,monospace;margin-top:8px}#lb .cap a{color:#8cf}#lb .x{position:absolute;top:10px;right:18px;color:#fff;font-size:30px;cursor:pointer}#lb .nv{position:absolute;top:50%;color:#fff;font-size:44px;cursor:pointer;padding:0 16px;user-select:none}#lb .pv{left:0}#lb .nx{right:0}a.img img{cursor:zoom-in}
+sup.more a{margin:0 2px;font-size:10px}
+a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:target{background:#fff3b0;outline:2px solid #f5b400}
+.note{background:#fff8e1;border-left:4px solid #f5b400;padding:8px 12px;margin:12px 0}
+</style><nav class=top><a href="../../index.html">Home</a><a href="../../QA-REPORT.html">Full report</a><a href="../../EXEC-SUMMARY.html">Executive summary</a><a href="../../STORY-MATRIX.html">User-story matrix</a><a href="../../DEFECT-LEDGER.html">Defect register</a><a href="../index.html">Evidence gallery</a><a href="../../QA-PLAN.html">Test plan</a><a href="../../streams.html">Stream reports</a></nav><h1>Stream S8 working notes</h1><h1 id="s8-massive-wallet-stream-emulator-5568-dw-qa8-2-gb-ram">S8 — massive-wallet stream (emulator-5568 / dw-qa8, 2 GB RAM)</h1>
+<p>Build under test: fix-12.0.0-testnet3-release-signed.apk (versionCode 12000000)
+Seed: massive wallet (12 words) from $QA_ROOT/massive-wallet-seed.txt
+2026-09-19T01:04:16 logcat-start + memlog(30s) started; evidence /Users/dcg/workspace/dash-wallet-qa/evidence/S8
+2026-09-19T01:06:25 <a class=ev href="../index.html#S8-L1">L1</a>: grow tx count at restore start = 1200
+2026-09-19T01:07:05 PIN 1234 set (restore submitted)
+poller pid 24217</p>
+<h2 id="l1-timings-device-log-clock-host-clock-5h"><a class=ev href="../index.html#S8-L1">L1</a> timings (device log clock = host clock + 5h)</h2>
+<ul>
+<li>01:06:27 RestoreWalletFromSeedViewModel "successfully restored wallet from seed"</li>
+<li>01:06:27 CutoverCoordinator cutover state DUAL_RUNNING -&gt; CUT_OVER (fresh-wallet setup)</li>
+<li>01:07:05 MAIN_UI_SHOWN (breadcrumb 12, +106528ms from process start)</li>
+<li>01:07:09 <a class=ev href="../index.html#S8-L1">L1</a> shadow SPV started; phase=CONNECTING 0.0%</li>
+<li>01:07:40 phase=HEADERS 32.3% headers 994000/1556575  &lt;- first height</li>
+<li>01:09:54 phase=SYNCED 100.0% headers/filters 1556575/1556575   =&gt; restore-&gt;100% = 3m27s</li>
+<li>01:09:56 first l1Synced=true, balance 98979130 duffs</li>
+<li>greps: filter-stall=0, "idling detected"=0, OutOfMemory=0, WalletFileSizeGuard/RISKY/verdict/soft limit=0,
+  WalletLoadBudget=0, "starting peergroup"=0, OverlappingFileLockException=0, engine restarts=0</li>
+<li>Only exception in <a class=ev href="../S8/L6/logs-final/files/log/wallet.log">wallet.log</a>: FirebaseException "API key not valid" (stub google-services.json =&gt; environment)</li>
+<li>MEM pss= lines: 499MB(01:08) 435 409 420 ; native heap peak 433MB (<a class=ev href="../S8/mem.csv">mem.csv</a> 01:09:49); peak TOTAL PSS 550405 kB (01:08:48)</li>
+<li><a class=ev href="../S8/mem.csv">mem.csv</a> 01:10:19 shows TOTAL SWAP PSS 348748 kB (heavy swap on the 2 GB AVD) but no LMK kill; exit-info empty.</li>
+</ul>
+<h2 id="l2-gap-limit"><a class=ev href="../index.html#S8">L2</a> (gap limit)</h2>
+<ul>
+<li>Explorer POST /insight-api/addrs/utxo over all 800 derived addresses (400 ext + 400 int), 16 batches of 50,
+  finished 01:12:42 -&gt; 98,754,950 duffs = 0.98754950 tDASH, 3600 utxos.</li>
+<li>App balance at 01:13 = 0.98755 (6dp display) -&gt; EXACT match. Late addresses confirmed funded:
+  ext/399 yN5T8SHRVt62bvNzNZFDc5gTnm1hK3jrr2 bal 0.00093631 (16 txs)
+  int/399 yWpsdVYG888aiEP9fGkx6YViMyTVkJ7Dv9 bal 0.00017488 (13 txs)
+  ext/398 yjJVQba2CgJm8Mb1wCwS2LFg5Y57sCnAH5 0.00025227 ; int/398 yPziqjNtTFq8HJ2zZSFZGab8MHQK2WL1fd 0.00073476
+  =&gt; no gap-limit shortfall.</li>
+</ul>
+<h2 id="l5-sizes-0113"><a class=ev href="../index.html#S8">L5</a> sizes (01:13)</h2>
+<ul>
+<li>files/wallet-protobuf-testnet = 15,322 B (legacy dashj file, effectively empty post-cutover)</li>
+<li>files/key-backup-protobuf-testnet = 15,328 B</li>
+<li>databases/dash-sdk.db = 5,332,992 B (+ wal 524,288)</li>
+<li>databases/dash-wallet-database = 466,944 B (+ wal 453,232)</li>
+<li>files/shielded_tree_testnet.sqlite = 200,704 B (+ wal 4,120,032)</li>
+<li>files/l1_shadow_spv = 489,840 kB (~478 MB): blocks 204,528 kB, block_headers 175,240 kB,
+  filter_headers 50,184 kB, filters 59,724 kB</li>
+<li>No WalletFileSizeGuard / autosave / soft-limit / verdict lines at all in <a class=ev href="../S8/L6/logs-final/files/log/wallet.log">wallet.log</a>.</li>
+</ul>
+<h2 id="defect-candidate-s8-d1-111-sdk-transactions-have-no-ui-display-row-the-1-tdash-funding-receive-is-invisible">DEFECT CANDIDATE (S8-D1): 111 SDK transactions have no UI display row; the 1 tDASH funding receive is invisible</h2>
+<ul>
+<li>01:17:36-01:20:29, all counters quiescent (grow script paused at txs=1600):
+  dash-sdk.db transactions = 1601 (= 1600 grow txs + 1 funding tx)  -&gt; SDK has every tx
+  dash-wallet-database tx_display_cache = 1490                      -&gt; UI list source is 111 short</li>
+<li>txid diff (SDK txid is stored byte-reversed): 111 in SDK and not in display, 0 the other way.
+  List: <a class=ev href="../S8/L1/missing-from-display-cache.txt">evidence/S8/L1/missing-from-display-cache.txt</a></li>
+<li>All 111 missing rows: transactionType=Standard, context=2, blockHeight 1556555..1556571
+  (the historical replay range). 110 direction=2, 1 direction=0.</li>
+<li>The single direction=0 one is 747cb55cc55b8e0b8d8bc8d422fa8fd87e608fd2deff91078e2df361e5d4122e
+  netAmount=+100000000 duffs = the wallet's ONLY incoming transaction (the 1 tDASH that funds
+  the whole wallet). Explorer: block 1556555, time 1789795129 (00:18:49).</li>
+<li><code>select ... from tx_display_cache where valueSatoshis &gt; 0</code> returns ZERO rows: the app's history
+  contains no incoming transaction at all.</li>
+<li>UI confirmation: <a class=ev href="../S8/L1/scroll/swipe-0170.webp">evidence/S8/L1/scroll/swipe-0170.png</a> — bottom of the list is Internal −0.000015
+  rows at 12:18 AM; no "+1.00" receive row anywhere.</li>
+</ul>
+<h2 id="s8-d1-root-cause-isolation-for-orchestrator">S8-D1 ROOT CAUSE (isolation for orchestrator)</h2>
+<p><a class=ev href="../S8/L6/logs-final/files/log/wallet.log">wallet.log</a> 06:09:54 (= host 01:09:54), <a class=ev href="../S8/L1/logs-isolation/files/log/wallet.log">evidence/S8/L1/logs-isolation/files/log/wallet.log:927-929</a>
+  L1ShadowSyncService - WalletHistoryFacts: oldestTx=...height=1556555 count=1021
+  L1ShadowSyncService - WalletBalanceFacts: total=98980110 ... txCount=1132
+  TxDisplayCacheService - Sync complete (cutoverCommitted=true): SDK=1010 records | dashj wallet=0 txs |
+      group cache=0 txs/0 groups | display=1021 rows — cache is complete (SDK holds 1010 records, display has 1021 rows)
+  =&gt; engine txCount 1132 - display 1021 = 111 = the EXACT permanent deficit.
+  The reconcile declares completeness because display(1021) &gt;= its own "SDK records"(1010) count, which is
+  smaller than the engine's real tx count (1132). It never backfills.
+Same shape on every relaunch, e.g. 06:32:29 "SDK=1817 records ... display=1828 rows — cache is complete"
+  while the real dash-sdk.db transactions count was ~1928 at that moment.</p>
+<p>(a) Does anything repair it?
+  5-min quiescent wait   : NO (delta 111 at 01:23:01 / 01:23:41 / 01:24:21 / 01:25:01)
+  bg 70 s -&gt; fg          : NO (01:28:03 before=111, 01:29:13 during=111, 01:29:38 after=111)
+  force-stop + relaunch  : NO (01:32:52 display=1890 sdk=2001 delta=111)
+(b) <a class=ev href="../S8/L1/planner-log.txt">evidence/S8/L1/planner-log.txt</a> + <a class=ev href="../S8/L1/txdisplaycache-lines.txt">evidence/S8/L1/txdisplaycache-lines.txt</a>.
+  "LN tx-event buffer full; dropped Detected/InstantLocked (Room snapshot will reconcile)" occurs 204x
+  (61 Detected + 143 InstantLocked, 147 distinct txids) but NONE of those txids are among the 111 missing
+  -&gt; the buffer-drop path really does reconcile; it is NOT the cause.
+  Per-batch "cutover UI display sync: N SDK records -&gt; M inserts" shows the shortfall
+  (439-&gt;439, 278-&gt;272, 272-&gt;266, 35-&gt;33, 385-&gt;11, 115-&gt;54, 171-&gt;56); summed 2254 records -&gt; 1690 inserts.
+(c) Distribution: <a class=ev href="../S8/L1/missing-by-height.txt">evidence/S8/L1/missing-by-height.txt</a>. All 111 are in the historical replay window
+  (heights 1556555-1556571); heights 1556573+ (arrived live) are 100% complete.
+  1556555:10/16 missing, 1556557:2/14, 1556560:36/141, 1556561:3/27, 1556564:29/200, 1556566:17/200,
+  1556570:1/15, 1556571:13/180, and 0 missing for 1556558,1556562,1556569,1556573..1556580.
+  Not "first N per block" - it is scattered within each block (positions 0..795 of 1601 in firstSeen order).</p>
+<h2 id="l5-extra"><a class=ev href="../index.html#S8">L5</a> extra</h2>
+<ul>
+<li>Device largeHeap = 576 MB (dalvik.vm.heapsize), normal heap 192 MB
+  =&gt; WalletFileSizeGuard soft limit = min(576MB/10, 100MB) = 57.6 MB; hard limit 2,000,000,000 B.</li>
+<li>Legacy dashj file is 15,322 B with 0 txs, so verdict = NORMAL and NOTHING is logged (by design:
+  WalletApplication.java:1195-1199 only logs when verdict != NORMAL).</li>
+<li>No "wallet autosave debounce raised to ..." line either =&gt; autosave stays at the default
+  Constants.Files.WALLET_AUTOSAVE_DELAY_MS (5 s). Observed autosave: 12.94 ms / 15,322 bytes.</li>
+<li>OBSERVATION: post-cutover the size guard and the autosave debounce both key off the (now empty) dashj
+  protobuf, so neither covers the stores that actually grow on this wallet:
+  dash-sdk.db 5.3 MB -&gt; growing, shielded_tree wal 4.1 MB, l1_shadow_spv 478 MB.</li>
+</ul>
+<h2 id="l3-live-growth-10-min-watch-011608-012525-evidences8l3live-watchlog"><a class=ev href="../index.html#S8-L3">L3</a> live growth (10 min watch, 01:16:08 - 01:25:25, <a class=ev href="../S8/L3/live-watch.log">evidence/S8/L3/live-watch.log</a>)</h2>
+<ul>
+<li>New self-transfers appear live: at 01:25:25 UI top rows 1:23 AM, UI balance 0.984223 == log
+  "SDK balance published: 98422250 duffs". Every sample where the app was unlocked matched the log
+  balance to the 6th decimal.</li>
+<li>Log shows the instant-receive path working: "L1 engine tx event: Detected(...)" -&gt;
+  "engine detected tx <txid> pre-block (context=0, net=... duffs) — syncing display row now" -&gt;
+  "cutover UI display sync: 1 SDK records → 1 inserts" -&gt; "STARTUP submitData called on thread=main".
+  InstantLocked events follow.</li>
+<li>Memory trend over the watch: TOTAL PSS 400-431 MB, flat, no growth. SWAP PSS ~205 MB throughout.</li>
+<li>0 "idling detected", 0 "filter-stall", 0 restarts, 0 OutOfMemory during the watch.</li>
+<li>CAVEAT (known <a class=did href="../../DEFECT-LEDGER.html#D-001">D-001</a>): the app auto-locked at ~01:17:13 after 60 s without touch and stayed on the
+  Enter-PIN screen until 01:22:48 (<a class=ev href="../S8/L3/watch-04.webp">evidence/S8/L3/watch-04/08/12.png</a><sup class=more><a href="../S8/L3/watch-08.webp" title="S8/L3/watch-08.webp">2</a></sup>). Sync and balance publishing
+  continued behind the lock screen (log balance kept advancing), so no data was lost.
+2026-09-19T01:35:59 ENV: logcat stream died at 01:07:33 (adb root from qa-app.sh grep-log/files restarts adbd and kills the logcat pipe). Restarted as <a class=ev href="../S8/logcat-part2.txt">logcat-part2.txt</a>. Kernel/AMS coverage for 01:07-01:36 therefore comes from 'dumpsys activity exit-info' (clean) instead.</li>
+</ul>
+<h2 id="s8-d1-full-root-cause-source-live-db-proof">S8-D1 FULL ROOT CAUSE (source + live DB proof)</h2>
+<p>Chain:
+1. The display-cache pipeline enumerates SDK records through SdkTxStoreWalker, which walks the
+   <strong><code>txos</code></strong> table, not <code>transactions</code>
+   (CutoverUiDataService.kt:1361-1387 <code>currentWalletRecordCount</code>, SdkTxStoreWalker.kt:41-53):
+     SELECT COUNT(*) FROM (
+       SELECT t.txid       FROM txos t  WHERE t.walletId=? AND t.txid IS NOT NULL       AND NOT (foreign)
+       UNION
+       SELECT t2.spendingTxid FROM txos t2 WHERE t2.walletId=? AND t2.spendingTxid IS NOT NULL AND NOT (foreign))
+2. TxDisplayCacheService.decideCacheRebuild (TxDisplayCacheService.kt:1704-1723) reconciles only when
+   <code>sdkRecordCount &gt; displayRowCount</code>, and <code>sdkRecordCount</code> is that SAME txos-union number.
+3. So any transaction with no <code>txos</code> row is invisible to BOTH the writer and the checker: it never gets a
+   display row, and the checker still reports "cache is complete". Self-consistent blindness.
+Live proof on the device (01:38, dash-sdk.db):
+  transactions            = 2190
+  txos-union (the count)  = 2079      -&gt; under-counts by 111
+  ALL 111 missing display rows are exactly the txids absent from the txos union
+  (missing − txo_union = 111, missing ∩ txo_union = 0).
+  <code>select count(*) from txos where hex(txid)=&lt;funding txid wire order&gt;</code> = 0
+  -&gt; the +1 tDASH funding tx has no TXO row at all, which is why the history has no receive row.
+  txos: 7268 total (2715 spent, 4553 unspent).
+Interpretation: the restore replay materialises TXO rows for outputs it can still see, but the
+transactions whose outputs were already spent before/while the replay window was walked leave no txos
+row, so they drop out of the UI permanently. The class of tx affected is "historical, fully-spent" —
+on a real user's wallet that is most of their old history, including old receives.</p>
+<h2 id="l4-killrelaunch-background-low-memory-force-stop"><a class=ev href="../index.html#S8-L4">L4</a> (kill/relaunch, background, low memory, force-stop)</h2>
+<p>Kill -&gt; relaunch (01:29:51 force-stop, 01:32:24 launch; the 01:29:54 monkey launch landed on the launcher,
+so the timed launch is the am-start one):
+  PROCESS EXIT REASON: USER_REQUESTED(10) FORCE_STOP, rss 310 MB at death
+  breadcrumbs: WALLET_LOAD_BEGIN +17ms size=15322 -&gt; wallet loaded 244.1 ms -&gt; MAIN_UI_SHOWN +903ms
+               SDK_L1_ENGINE_STARTED +3974ms; NO WalletLoadBudget over-budget warning
+  Sync complete check re-ran: "SDK=1817 records ... display=1828 rows — cache is complete" (still wrong)
+Background 10 min (01:33:47 -&gt; 01:44:23, <a class=ev href="../S8/L4/bg-watch.log">evidence/S8/L4/bg-watch.log</a>, 21 samples):
+  process never died (pid 12930 throughout), PSS 418-448 MB flat, SWAP PSS ~370 kB
+  the SDK kept ingesting in the background (sdk 2001 -&gt; 2383) and kept writing display rows
+  (1890 -&gt; 2272); delta pinned at 111 the whole time. 0 "idling detected", 0 filter-stall, 0 restarts.
+Low memory while foreground (01:45:49):
+  <code>am send-trim-memory ... RUNNING_CRITICAL</code> #1 succeeded; #2 and #3 were rejected by AMS with
+  "Unable to set a higher trim level than current level" (harness limit, not a product defect);
+  <code>COMPLETE</code> rejected with "Unable to set a background trim level on a foreground process".
+  App log: "BlockchainServiceImpl - onTrimMemory(15) called" then
+           "BlockchainServiceImpl - memory pressure (onTrimMemory level 15), stopping service"
+  -&gt; the service announces a stop under pressure, but the <a class=ev href="../index.html#S8-L1">L1</a> engine kept running
+     (L1Shadow phase=SYNCED again at 01:46:44 and 01:47:28) — same latched-stop shape as <a class=did href="../../DEFECT-LEDGER.html#D-004">D-004</a>/<a class=did href="../../DEFECT-LEDGER.html#SR-09">SR-09</a>.
+  PSS 434 -&gt; 423 MB after the trim. Process survived (same pid).
+Force-stop + relaunch (01:47:41 -&gt; 01:47:46):
+  MainActivity focused after 3 s; wallet loaded 302.6 ms; MAIN_UI_SHOWN +768ms;
+  SDK_L1_ENGINE_STARTED +3068ms; "Sync complete ... SDK=2279 records ... display=2290 rows — cache is complete"
+exit-info after everything: exactly two entries, both reason=10 USER_REQUESTED / subreason=21 FORCE_STOP.
+NO LMK kill at any point on the 2 GB AVD. logcat shows no lowmemorykiller/lmkd/am_kill lines.</p>
+<h2 id="l7-send-screen-forbidden-to-actually-send-never-confirmed"><a class=ev href="../index.html#S8-L7">L7</a> (Send screen, FORBIDDEN to actually send — never confirmed)</h2>
+<p>(a) DURING replay (01:08-01:10, balance published 98980110 duffs but l1Synced=false):
+    Send &gt; Send to Address &gt; <own ext-0 address> &gt; Continue
+    -&gt; header "Balance: DASH 0.00 ~ $ 0.00", amount field "0", and a blocking error
+       "Currently payments are not possible because the wallet is not fully synced with the network".
+       Tapping Max did nothing (amount stayed 0). <a class=did href="../SR/REPORT.html#SR-32">SR-32</a>'s "publishes the untrusted partial on the send
+       screen" did NOT reproduce here — the send screen showed 0.00 and refused. PASS (safe behaviour).
+       Evidence: <a class=ev href="../S8/L7/02-send-screen-during-replay.webp">L7/02,03,04,05,06</a><sup class=more><a href="../S8/L7/03-send-to-address.webp" title="S8/L7/03-send-to-address.webp">2</a> <a href="../S8/L7/04-amount-screen-during-replay.webp" title="S8/L7/04-amount-screen-during-replay.webp">3</a> <a href="../S8/L7/05-max-during-replay.webp" title="S8/L7/05-max-during-replay.webp">4</a> <a href="../S8/L7/06-max-during-replay-2.webp" title="S8/L7/06-max-during-replay-2.webp">5</a></sup>.
+    NOTE for <a class=did href="../../DEFECT-LEDGER.html#D-002">D-002</a>/<a class=did href="../../DEFECT-LEDGER.html#SR-10">SR-10</a>: the HOME header did show the moving partial during replay
+    (persistedAsLastKnown=false lastKnown=0 on a restored wallet, so there is no last-known to hold).
+(b) AFTER 100% (01:48-01:50): Max produces an amount ABOVE the balance shown on the same screen:
+       01:48:5x  balance DASH 0.9786871   Max -&gt; 0.9787372  -&gt; red "Insufficient funds"
+       01:49:35  balance DASH 0.9783779   Max -&gt; 0.9784199
+       01:49:44  balance DASH 0.9782446   Max -&gt; 0.97832
+       01:49:52  balance DASH 0.9781366   Max -&gt; 0.9782185
+    i.e. Max = (an older balance snapshot) − 0.0001 flat reserve (confirms <a class=did href="../../DEFECT-LEDGER.html#SR-28">SR-28</a>/<a class=did href="../../DEFECT-LEDGER.html#D-032">D-032</a>'s flat reserve),
+    and on a wallet whose balance is moving it is always stale-high. After the first attempt the log
+    reports "executeDryRun finished (cutover-aware: SDK send-all / drain)" and
+    "blockContinue = false, dryRunSuccessful = true", i.e. the app would let the user proceed with an
+    amount larger than the balance it is displaying. NOT sent (forbidden).
+    Evidence: <a class=ev href="../S8/L7/11-amount-synced.webp">L7/11,12,13</a><sup class=more><a href="../S8/L7/12-max-synced.webp" title="S8/L7/12-max-synced.webp">2</a> <a href="../S8/L7/13-max-synced-repeat.webp" title="S8/L7/13-max-synced-repeat.webp">3</a></sup>.</p>
+<h2 id="rescan-blockchain-orchestrator-request-does-it-repair-the-display-cache">Rescan blockchain (orchestrator request: does it repair the display cache?)</h2>
+<p>01:50:46 PRE-RESCAN display=2490 sdk=2601 delta=111 (missing set saved: <a class=ev href="../S8/L1/missing-pre-rescan.txt">L1/missing-pre-rescan.txt</a>)
+01:50:59 More &gt; Settings &gt; Rescan blockchain &gt; "Rescan" (no creation date)
+01:51:01 log: "DashSdkServiceImpl - armSpvRescan: filter watermark rewind to 0 armed on cd7eac70…"
+         "SdkWalletBinder - blockchain-reset rescan arm on cd7eac70…: armed=true"
+During the rescan the home header shows "Syncing balance" over the HELD last-known balance
+(0.979288) and the transaction list is NOT emptied — the dialog text promises
+"This will temporarily hide your wallet balance and remove transactions", so the copy does not match
+the behaviour (minor, S4). Evidence: <a class=ev href="../S8/L1/rescan-01-dialog.webp">L1/rescan-01..04</a><sup class=more><a href="../S8/L1/rescan-02-started.webp" title="S8/L1/rescan-02-started.webp">2</a> <a href="../S8/L1/rescan-03-progress.webp" title="S8/L1/rescan-03-progress.webp">3</a> <a href="../S8/L1/rescan-04-home-during.webp" title="S8/L1/rescan-04-home-during.webp">4</a></sup>.
+RESULT: Rescan blockchain PARTIALLY repairs it and then re-latches.
+  01:50:46 pre-rescan  display=2490 sdk=2601 delta=111
+  01:53:23 phase=SYNCED 100% (rescan took ~2 min 22 s)   display=2554 sdk=2601 delta=47
+  delta then stays at 47 (01:53:53 .. 01:56:54, while the wallet keeps growing).
+  Set analysis (<a class=ev href="../S8/L1/missing-post-rescan.txt">L1/missing-post-rescan.txt</a> vs <a class=ev href="../S8/L1/missing-pre-rescan.txt">L1/missing-pre-rescan.txt</a>):
+    recovered by the rescan : 64
+    still missing           : 47  (all 47 are a subset of the original 111; 0 newly missing)
+    funding tx 747cb55c…    : STILL MISSING
+    <code>select count(*) from tx_display_cache where valueSatoshis&gt;0</code> = 0  -&gt; still no receive row at all
+  Same mechanism post-rescan: transactions=2801, txos-union=2753, and all 47 missing rows are exactly
+  the txids absent from the txos union (47 absent / 0 present).
+  The completeness check re-latched at 01:53:17: "SDK=2479 records ... display=2490 rows — cache is complete".
+=&gt; Rescan is NOT a workaround for <a class=did href="../../DEFECT-LEDGER.html#D-037">D-037</a>; it recovers some rows and permanently leaves the rest.</p>
+<h2 id="l8-csv-export-network-monitor"><a class=ev href="../index.html#S8-L8">L8</a> CSV export + Network monitor</h2>
+<p>Network monitor (More &gt; Tools &gt; Network monitor), 02:00, <a class=ev href="../S8/L8/06-network-monitor-peers.webp">evidence/S8/L8/06-network-monitor-peers.png</a>:
+  "Synced / Connected to the Dash network", Block headers 1,556,595, Block filters 1,556,595,
+  Masternode list height 1,556,595, ChainLock height 1,556,595.
+  "The wallet engine does not report individual peer connections. Peer and block lists come from the
+   dashj diagnostic engine. Turn on dashj sync in Tools to view them." (expected post-cutover)
+CSV export (More &gt; Tools &gt; CSV export &gt; Export transactions), 02:00:13:
+  at that moment display=2753 rows, sdk=2801 transactions.
+  Result: share sheet for "dash-wallet-transactions-2026-09-19.csv", and the file is
+  /data/data/<pkg>/cache/report/dash-wallet-transactions-2026-09-19.csv = 201 bytes, 1 line:
+  the HEADER ONLY, zero data rows. Pulled to <a class=ev href="../S8/L8/dash-wallet-transactions-2026-09-19.csv">evidence/S8/L8/dash-wallet-transactions-2026-09-19.csv</a>.
+  log: "ExportCSVDialog - invoked chooser for exporting transaction history" (no warning, no error).
+  Cause (source): CSVExporter.exportString (CSVExporter.kt:46-72) skips every tx where
+  <code>excludeInternal &amp;&amp; isInternal(tx) &amp;&amp; opReturnBurnDuffs(tx) == 0L</code>. This wallet is 100% entirely-self
+  transfers, so every row is skipped — defensible for a TAX export. The defect is the guard:
+  ToolsViewModel.exportCsv (ToolsViewModel.kt:185-226) only tests <code>transactions.isEmpty()</code>, and
+  ExportCSVDialog.kt:109-111 states "Never hand back a header-only file silently" — but the emptiness
+  test is on the INPUT list, not on the produced row count, so a header-only file IS handed to the
+  share sheet silently. Suggested fix: test the generated content for &gt;0 data rows.
+  Note: the one transaction that WOULD be exportable (the +1 tDASH Income row) is absent because of
+  <a class=did href="../../DEFECT-LEDGER.html#D-037">D-037</a>, so even with the guard fixed this wallet exports nothing.</p>
+<h2 id="l6-second-restore-reset-restore-grow-had-risen-1200-3000-since-l1"><a class=ev href="../index.html#S8-L6">L6</a> second restore (reset + restore, grow had risen 1200 -&gt; 3000 since <a class=ev href="../index.html#S8-L1">L1</a>)</h2>
+<p>02:02:05 pre-reset: grow=2879 display=2828 sdk=2876 delta=48
+02:03:23 More &gt; Security &gt; Reset Wallet &gt; "Reset wallet"  — NO PIN prompt at any step (matches <a class=did href="../../DEFECT-LEDGER.html#D-012">D-012</a>)
+02:03:25 log: "wallet-wipe SDK cleanup for wallet cd7eac70: stopping shadow + shielded sync, removing the
+         SDK wallet (full cascade), deleting the SPV dataDir, clearing the binder latch" then
+         "wallet-wipe SDK cleanup complete"
+02:03:59 "successfully restored wallet from seed"; cutover DUAL_RUNNING -&gt; CUT_OVER
+02:04:32 <a class=ev href="../index.html#S8-L1">L1</a> shadow SPV started
+02:07:11 L1Shadow phase=SYNCED 100.0% headers/filters 1556597/1556597
+   =&gt; restore -&gt; 100% = 3 m 12 s  (<a class=ev href="../S8/L1/L1-restore-start.mp4">L1</a> was 3 m 27 s) on a wallet 2.6x bigger (3001 vs 1132 txs).
+   The whole 1.55 M-block filter chain was re-downloaded (the wipe deletes the SPV dataDir).
+Memory: peak TOTAL PSS 560,707 kB at 02:05:11 (<a class=ev href="../S8/L1/L1-restore-start.mp4">L1</a> peak 550,405 kB), native heap peak 405,216 kB
+   (<a class=ev href="../S8/L1/L1-restore-start.mp4">L1</a> 405-433 MB). App log MEM pss=571MB nativeHeap=372/422MB jvm=90/576MB at 02:07:00.
+   ReplayMemTelemetry at SYNCED: nativeHeapAllocated=496,131,664 nativeHeapSize=601,378,816
+   jvmUsed=43,938,752 jvmMax=603,979,776. No OOM, no LMK — exit-info still only the 2 force-stops.
+Greps: filter-stall 0, "idling detected" 0, OutOfMemory 0, WalletFileSizeGuard/RISKY 0,
+   "wallet load ... OVER budget" 0.
+BALANCE, exact: app 0.974441 tDASH (log "SDK balance published: 97444140 duffs"); the grow script had
+   finished ("done: 3000 txs", "periodic rescan: 5204 utxos"), so the wallet is static.
+   Explorer POST /addrs/utxo over all 800 derived addresses (<a class=ev href="../S8/L2/explorer-utxo-sum-final.txt">evidence/S8/L2/explorer-utxo-sum-final.txt</a>)
+   = 97,444,140 duffs over 5,204 utxos -&gt; difference 0 duffs, utxo count matches the grow log exactly.
+   <a class=ev href="../index.html#S8">L2</a> PASS (no gap-limit shortfall through index 399 on both chains).</p>
+<h3 id="d-037-after-the-second-restore-not-deterministic-and-much-worse">D-037 after the SECOND restore: NOT deterministic, and much worse</h3>
+<p>02:07:11 "Sync complete ... SDK=2534 records | display=2543 rows — cache is complete" while
+         WalletBalanceFacts in the same second reported txCount=3001.
+02:10:10 and 02:10:40: display=2543 sdk=3001 delta=458 (stable; wallet static)
+  <a class=ev href="../index.html#S8-L1">L1</a> (1132 txs)                     : 111 missing  ( 9.8 %)
+  after Rescan blockchain           :  47 missing
+  <a class=ev href="../index.html#S8-L6">L6</a> second restore (3001 txs)      : 458 missing  (15.3 %)
+  Missing-set overlap: only 65 of the original 111 are in the new 458; 393 are new; 15 of the 47
+  post-rescan survivors are in it. =&gt; the set is RACY/size-dependent, not deterministic.
+  Mechanism identical: all 458 are exactly the txids absent from the txos union (458 absent, 0 present).
+  The +1 tDASH funding receive is missing in BOTH restores, and
+  <code>select count(*) from tx_display_cache where valueSatoshis&gt;0</code> = 0 again.
+  Visual: <a class=ev href="../S8/L6/08-txlist-bottom-no-receive.webp">evidence/S8/L6/08-txlist-bottom-no-receive.png</a> — oldest rows are Internal −0.000015 at
+  12:18 AM, no receive row anywhere.
+  Files: <a class=ev href="../S8/L6/missing-after-second-restore.txt">evidence/S8/L6/missing-after-second-restore.txt</a> (458 txids).</p><div id=lb><span class=x>&times;</span><span class="nv pv">&#8249;</span><span class="nv nx">&#8250;</span><img><div class=cap></div></div>
+<script>(function(){var lb=document.getElementById('lb'),im=lb.querySelector('img'),cap=lb.querySelector('.cap'),L=[],i=0;
+function links(){return Array.prototype.slice.call(document.querySelectorAll('a[href$=".webp"],a[href$=".png"]'))}
+function show(n){L=links();if(n<0||n>=L.length)return;i=n;var a=L[i];im.src=a.href;cap.innerHTML=(a.textContent.trim()||a.href.split('/').slice(-3).join('/'))+' &nbsp;('+(i+1)+'/'+L.length+') &nbsp;<a href="'+a.href+'" target=_blank rel=noopener>open file</a>';lb.classList.add('on')}
+function hide(){lb.classList.remove('on');im.src=''}
+document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".webp"],a[href$=".png"]');if(a&&!a.closest('#lb')){e.preventDefault();show(links().indexOf(a))}});
+lb.querySelector('.x').onclick=hide;lb.querySelector('.pv').onclick=function(e){e.stopPropagation();show(i-1)};lb.querySelector('.nx').onclick=function(e){e.stopPropagation();show(i+1)};
+lb.addEventListener('click',function(e){if(e.target===lb||e.target===im)hide()});
+document.addEventListener('keydown',function(e){if(!lb.classList.contains('on'))return;if(e.key==='Escape')hide();if(e.key==='ArrowLeft')show(i-1);if(e.key==='ArrowRight')show(i+1)});})();</script></html>

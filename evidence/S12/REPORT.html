@@ -5,9 +5,10 @@ h1{border-bottom:3px solid #008de4}h2{border-bottom:1px solid #ccc;margin-top:40
 nav.top{background:#012060;color:#fff;padding:8px 24px;margin:-16px -24px 16px;position:sticky;top:0;z-index:5}nav.top a{color:#fff;margin-right:18px;text-decoration:none}nav.top a:hover{text-decoration:underline}
 .S1{color:#b00020;font-weight:bold}.S2{color:#c75000;font-weight:bold}.toc{background:#f8f9fb;border:1px solid #e3e6ea;padding:8px 16px;font-size:13px;columns:2}.toc ul{margin:2px 0;padding-left:16px}
 #lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:50;align-items:center;justify-content:center;flex-direction:column}#lb.on{display:flex}#lb img{max-width:96vw;max-height:88vh;border:2px solid #fff;box-shadow:0 0 30px #000}#lb .cap{color:#eee;font:13px ui-monospace,monospace;margin-top:8px}#lb .cap a{color:#8cf}#lb .x{position:absolute;top:10px;right:18px;color:#fff;font-size:30px;cursor:pointer}#lb .nv{position:absolute;top:50%;color:#fff;font-size:44px;cursor:pointer;padding:0 16px;user-select:none}#lb .pv{left:0}#lb .nx{right:0}a.img img{cursor:zoom-in}
+sup.more a{margin:0 2px;font-size:10px}
 a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:target{background:#fff3b0;outline:2px solid #f5b400}
 .note{background:#fff8e1;border-left:4px solid #f5b400;padding:8px 12px;margin:12px 0}
-</style><nav class=top><a href="../../index.html">Home</a><a href="../../QA-REPORT.html">Full report</a><a href="../../EXEC-SUMMARY.html">Executive summary</a><a href="../../STORY-MATRIX.html">User-story matrix</a><a href="../../DEFECT-LEDGER.html">Defect register</a><a href="../index.html">Evidence gallery</a><a href="../../QA-PLAN.html">Test plan</a><a href="../../streams.html">Stream reports</a></nav><h1 id="qa-report-s12-cj1-bc1-nm1-agent-s12-emulator-5558-avd-dw-qa3-2026-09-19">QA report: S12 — CJ1 / BC1 / NM1   (agent: S12, emulator-5558 / AVD dw-qa3, 2026-09-19)</h1>
+</style><nav class=top><a href="../../index.html">Home</a><a href="../../QA-REPORT.html">Full report</a><a href="../../EXEC-SUMMARY.html">Executive summary</a><a href="../../STORY-MATRIX.html">User-story matrix</a><a href="../../DEFECT-LEDGER.html">Defect register</a><a href="../index.html">Evidence gallery</a><a href="../../QA-PLAN.html">Test plan</a><a href="../../streams.html">Stream reports</a></nav><h1 id="qa-report-s12-cj1-bc1-nm1-agent-s12-emulator-5558-avd-dw-qa3-2026-09-19">QA report: S12 — <a class=ev href="../index.html#S12-CJ1">CJ1</a> / <a class=ev href="../index.html#S12-BC1">BC1</a> / <a class=ev href="../index.html#S12-NM1">NM1</a>   (agent: S12, emulator-5558 / AVD dw-qa3, 2026-09-19)</h1>
 <p>Builds: <code>apks/master-11.9.0-testnet3-release-signed.apk</code> (versionCode 11090002) and
 <code>apks/fix-12.0.0-testnet3-release-signed.apk</code> (versionCode 12000000).
 Wallet seed (throwaway): <code>gospel tip talent possible practice leave vicious come swing luggage ice sand</code>.
@@ -24,40 +25,40 @@ Faucet: 1 tDASH, txid <code>10e3b5b8dca0702ca350d5f263e5b31c84c678f63d541a5a2b0e
 </thead>
 <tbody>
 <tr>
-<td>CJ1 mixed-funds migration UI</td>
+<td><a class=ev href="../index.html#S12-CJ1">CJ1</a> mixed-funds migration UI</td>
 <td><strong>BLOCKED (by design)</strong></td>
 <td><code>wt-fix/wallet/src/de/schildbach/wallet/service/platform/sdk/CoinJoinFundsMigrationService.kt:118,425</code>; <a class=ev href="../S12/CJ1/post-upgrade/04-home-after-explainer.webp">S12/CJ1/post-upgrade/04-home-after-explainer.png</a></td>
 <td><code>MIXED_FUNDS_PROMPT_HARD_SUPPRESSED = true</code> — the sheet cannot be shown by any code path, so keep-spendable / move-to-shielded / in-progress / failure / unconfirmed are all unreachable in this APK</td>
 </tr>
 <tr>
-<td>CJ1 funds after upgrade</td>
+<td><a class=ev href="../index.html#S12-CJ1">CJ1</a> funds after upgrade</td>
 <td><strong>FAIL (S1)</strong></td>
 <td><a class=ev href="../S12/CJ1/post-upgrade/12-amount-0.001.webp">S12/CJ1/post-upgrade/12-amount-0.001.png</a>, <a class=ev href="../S12/CJ1/post-upgrade/13-send-balance-unhidden.webp">13-send-balance-unhidden.png</a>, <a class=ev href="../S12/CJ1/post-upgrade/21-shield-result.webp">21-shield-result.png</a>, <a class=ev href="../S12/CJ1/post-upgrade/insufficient-funds-log.txt">insufficient-funds-log.txt</a>, <a class=ev href="../S12/CJ1/post-upgrade/shield-failure-log.txt">shield-failure-log.txt</a>, <a class=ev href="../S12/CJ1/post-upgrade/cj1-send.mp4">cj1-send.mp4</a>, <a class=ev href="../S12/CJ1/post-upgrade/cj1-shield.mp4">cj1-shield.mp4</a></td>
 <td>The whole balance (0.99997138 tDASH) sits in the CoinJoin account after the upgrade; the header shows it but Send, Send-Max and Shield all see <strong>0</strong> — funds stranded with no in-app way out (<a class=did href="../../DEFECT-LEDGER.html#D-068">D-068</a>)</td>
 </tr>
 <tr>
-<td>CJ1 escape hatches</td>
+<td><a class=ev href="../index.html#S12-CJ1">CJ1</a> escape hatches</td>
 <td><strong>1 of 5 works</strong></td>
-<td><code>S12/CJ1/escape-hatches/*</code>, <code>S12/CJ1/restore/*</code></td>
+<td><a class=ev href="../S12/CJ1/escape-hatches/01-send-max.webp">S12/CJ1/escape-hatches/*</a><sup class=more><a href="../index.html#S12-CJ1" title="32 files, open gallery">+31</a></sup>, <a class=ev href="../S12/CJ1/restore/01-security.webp">S12/CJ1/restore/*</a><sup class=more><a href="../index.html#S12-CJ1" title="10 files, open gallery">+9</a></sup></td>
 <td>Only downgrading to master 11.9.0 + restoring the seed recovers spendability (real send proven on chain)</td>
 </tr>
 <tr>
-<td>BC1 buy credits / identity top-up</td>
+<td><a class=ev href="../index.html#S12-BC1">BC1</a> buy credits / identity top-up</td>
 <td><strong>PASS (with 4 defects)</strong></td>
-<td><code>S12/BC1/26..51*.png</code>, <a class=ev href="../S12/BC1/explorer-identity-final.json">explorer-identity-final.json</a>, <a class=ev href="../S12/BC1/bc1-credits.mp4">bc1-credits.mp4</a></td>
+<td><a class=ev href="../S12/BC1/26-buy-credits.webp">S12/BC1/26..51*.png</a><sup class=more><a href="../index.html#S12-BC1" title="29 files, open gallery">+28</a></sup>, <a class=ev href="../S12/BC1/explorer-identity-final.json">explorer-identity-final.json</a>, <a class=ev href="../S12/BC1/bc1-credits.mp4">bc1-credits.mp4</a></td>
 <td>Username + 2 x 0.001 DASH top-up both landed; explorer credit balance rose 2,562,746,440 -&gt; 2,746,680,400</td>
 </tr>
 <tr>
-<td>NM1 network monitor</td>
+<td><a class=ev href="../index.html#S12-NM1">NM1</a> network monitor</td>
 <td><strong>PASS</strong></td>
-<td><code>S12/NM1/02,03,05,06,07,08*.png</code></td>
+<td><a class=ev href="../S12/NM1/02-network-monitor-peers.webp">S12/NM1/02,03,05,06,07,08*.png</a><sup class=more><a href="../S12/NM1/03-network-monitor-scrolled.webp" title="S12/NM1/03-network-monitor-scrolled.webp">2</a> <a href="../S12/NM1/05-network-monitor-dashj-on.webp" title="S12/NM1/05-network-monitor-dashj-on.webp">3</a> <a href="../S12/NM1/06-network-monitor-dashj-on-blocks.webp" title="S12/NM1/06-network-monitor-dashj-on-blocks.webp">4</a> <a href="../S12/NM1/07-network-monitor-during-replay.webp" title="S12/NM1/07-network-monitor-during-replay.webp">5</a> <a href="../S12/NM1/08-network-monitor-replay-2.webp" title="S12/NM1/08-network-monitor-replay-2.webp">6</a></sup></td>
 <td>dashj OFF = summary + "turn on dashj sync to view peers"; dashj ON = peers/blocks lists; replay state captured at 54%</td>
 </tr>
 </tbody>
 </table>
 <hr />
 <h2 id="per-test-detail">Per-test detail</h2>
-<h3 id="cj1-coinjoin-mixed-funds-migration-on-upgrade-catalogue-15">CJ1 — CoinJoin mixed-funds migration on upgrade (catalogue #15)</h3>
+<h3 id="cj1-coinjoin-mixed-funds-migration-on-upgrade-catalogue-15"><a class=ev href="../index.html#S12-CJ1">CJ1</a> — CoinJoin mixed-funds migration on upgrade (catalogue #15)</h3>
 <p><strong>Static pre-read (before touching the device).</strong>
 <code>wt-fix/wallet/src/de/schildbach/wallet/service/platform/sdk/CoinJoinFundsMigrationService.kt:118</code>
 <code>const val MIXED_FUNDS_PROMPT_HARD_SUPPRESSED = true</code>, and line 425
@@ -118,7 +119,7 @@ org.dashfoundation.dashsdk.errors.DashSdkError$PlatformWallet$AssetLockInsuffici
   asset lock coin selection is short: available 0 duffs, required 99979074 duffs
 07:46:58 [DefaultDispatcher-worker-2] ShieldedTransferExecutor - shielded transfer not sent: pre-broadcast asset-lock coin-selection failure
 </code></pre>
-<p><strong>Escape-hatch matrix</strong> (same wallet; evidence in <code>S12/CJ1/escape-hatches/</code> and <code>S12/CJ1/restore/</code>):</p>
+<p><strong>Escape-hatch matrix</strong> (same wallet; evidence in <a class=ev href="../index.html#S12-CJ1">S12/CJ1/escape-hatches/</a> and <a class=ev href="../index.html#S12-CJ1">S12/CJ1/restore/</a>):</p>
 <table>
 <thead>
 <tr>
@@ -139,13 +140,13 @@ org.dashfoundation.dashsdk.errors.DashSdkError$PlatformWallet$AssetLockInsuffici
 <td>2</td>
 <td>Payments &gt; Internal &gt; Shielded balance &gt; <strong>Max</strong> (screen offers 0.99997138, "From Dash Wallet 0.99997138")</td>
 <td><strong>FAILS</strong> at PIN — "This transfer was not sent / Nothing left your balance"; <code>AssetLockInsufficientFunds: available 0 duffs, required 99979074</code></td>
-<td><code>escape-hatches/02,03,04*.png</code></td>
+<td><a class=ev href="../S12/CJ1/escape-hatches/02-shield-max.webp">escape-hatches/02,03,04*.png</a><sup class=more><a href="../S12/CJ1/escape-hatches/03-shield-max-confirm.webp" title="S12/CJ1/escape-hatches/03-shield-max-confirm.webp">2</a> <a href="../S12/CJ1/escape-hatches/04-shield-max-result.webp" title="S12/CJ1/escape-hatches/04-shield-max-result.webp">3</a></sup></td>
 </tr>
 <tr>
 <td>3</td>
 <td>Tools &gt; <strong>dashj sync (diagnostic)</strong> ON (-&gt; "dashj 100% - matches SDK"), retry send</td>
 <td><strong>FAILS</strong> — still "Balance: DASH 0.00", Max 0</td>
-<td><code>escape-hatches/06,06a,07,08,09*.png</code></td>
+<td><a class=ev href="../S12/CJ1/escape-hatches/06-dashj-toggle-on.webp">escape-hatches/06,06a,07,08,09*.png</a><sup class=more><a href="../S12/CJ1/escape-hatches/06a-dashj-sync-from-date-dialog.webp" title="S12/CJ1/escape-hatches/06a-dashj-sync-from-date-dialog.webp">2</a> <a href="../S12/CJ1/escape-hatches/07-dashj-on.webp" title="S12/CJ1/escape-hatches/07-dashj-on.webp">3</a> <a href="../S12/CJ1/escape-hatches/08-after-dashj-sync.webp" title="S12/CJ1/escape-hatches/08-after-dashj-sync.webp">4</a> <a href="../S12/CJ1/escape-hatches/09-send-max-with-dashj-on.webp" title="S12/CJ1/escape-hatches/09-send-max-with-dashj-on.webp">5</a></sup></td>
 </tr>
 <tr>
 <td>4</td>
@@ -157,7 +158,7 @@ org.dashfoundation.dashsdk.errors.DashSdkError$PlatformWallet$AssetLockInsuffici
 <td>5</td>
 <td><strong>Downgrade</strong>: uninstall fix, install master 11.9.0, restore seed</td>
 <td><strong>WORKS</strong> — "Balance: DASH 0.99988303", Max 0.99988303, real 0.001 self-send broadcast and confirmed: txid <code>fadea2817fce263559e1acf96d8f04ab634a3609ad2f1e0cdd92993cc9215ec9</code>, IN <code>yXRYQgkWnCrAzmcM2muLphFsBrtk3kEG86 0.100001</code> (a CoinJoin denomination) -&gt; OUT 0.001 + 0.09899873 change, fee 0.00000227</td>
-<td><code>escape-hatches/15..23*.png</code>, <a class=ev href="../S12/CJ1/escape-hatches/cj1-master-send.mp4">cj1-master-send.mp4</a></td>
+<td><a class=ev href="../S12/CJ1/escape-hatches/15-master-restored-home.webp">escape-hatches/15..23*.png</a><sup class=more><a href="../index.html#S12-CJ1" title="10 files, open gallery">+9</a></sup>, <a class=ev href="../S12/CJ1/escape-hatches/cj1-master-send.mp4">cj1-master-send.mp4</a></td>
 </tr>
 </tbody>
 </table>
@@ -167,18 +168,18 @@ fix build again. After that upgrade the log reads
 <code>WalletBalanceFacts: total=99987927 accounts={bip44:99987927, bip32:0, coinjoin:0}</code> and everything (send,
 shield, top-up) behaves normally for the rest of the session. The stranding is specific to coins sitting in the
 CoinJoin (m/9') account at the cutover, not to the wallet or the amount.
-(<code>escape-hatches/24,25,26*.png</code>, then <a class=ev href="../S12/BC1/03-home.webp">BC1/03-home.png</a>.)</p>
+(<a class=ev href="../S12/CJ1/escape-hatches/24-master-consolidate-max.webp">escape-hatches/24,25,26*.png</a><sup class=more><a href="../S12/CJ1/escape-hatches/25-consolidate-confirm.webp" title="S12/CJ1/escape-hatches/25-consolidate-confirm.webp">2</a> <a href="../S12/CJ1/escape-hatches/26-consolidate-sent.webp" title="S12/CJ1/escape-hatches/26-consolidate-sent.webp">3</a></sup>, then <a class=ev href="../S12/BC1/03-home.webp">BC1/03-home.png</a>.)</p>
 <p><strong>Memory:</strong> peak <code>TOTAL PSS 508777 KB</code> over 135 samples (<a class=ev href="../S12/mem.csv">S12/mem.csv</a>); no LMK, no OOM.
 <code>dumpsys activity exit-info</code> shows only <code>reason=10 (USER REQUESTED) subreason=21 (FORCE STOP)</code> — every process
 death was my own force-stop. No crash, no ANR. Logcat: <a class=ev href="../S12/logcat.txt">S12/logcat.txt</a> (39.9 MB).</p>
 <p><strong>Verdict:</strong> migration UI <strong>BLOCKED</strong> (suppressed by design, file:line recorded); funds behaviour <strong>FAIL (S1)</strong>.</p>
 <hr />
-<h3 id="bc1-buy-credits-identity-top-up-catalogue-12">BC1 — Buy credits / identity top-up (catalogue #12)</h3>
-<p>Run on the same wallet after CJ1's consolidation, so no second faucet request was needed
+<h3 id="bc1-buy-credits-identity-top-up-catalogue-12"><a class=ev href="../index.html#S12-BC1">BC1</a> — Buy credits / identity top-up (catalogue #12)</h3>
+<p>Run on the same wallet after <a class=ev href="../index.html#S12-CJ1">CJ1</a>'s consolidation, so no second faucet request was needed
 (balance 0.99987927 tDASH in bip44).</p>
 <p><strong>Steps.</strong>
 1. 03:53 Payments &gt; Internal &gt; Shielded balance -&gt; shield <strong>0.8</strong> -&gt; Confirm -&gt; PIN -&gt; success.
-   More shows "Dash Wallet 0.199 D / Shielded 0.797 D" (<code>BC1/04..07*.png</code>, <a class=ev href="../S12/BC1/bc1-shield.mp4">bc1-shield.mp4</a>).
+   More shows "Dash Wallet 0.199 D / Shielded 0.797 D" (<a class=ev href="../S12/BC1/04-shield-amount.webp">BC1/04..07*.png</a><sup class=more><a href="../S12/BC1/05-shield-confirm.webp" title="S12/BC1/05-shield-confirm.webp">2</a> <a href="../S12/BC1/06-shield-result.webp" title="S12/BC1/06-shield-result.webp">3</a> <a href="../S12/BC1/07-more-balances.webp" title="S12/BC1/07-more-balances.webp">4</a></sup>, <a class=ev href="../S12/BC1/bc1-shield.mp4">bc1-shield.mp4</a>).
 2. 03:55 More &gt; Join DashPay -&gt; Continue -&gt; payment option <strong>Shielded balance</strong> -&gt; voting info -&gt; username
    <code>qa12s12mixedfunds4821</code> (21 chars, non-contested) -&gt; "Username is available" -&gt; Confirm (0.03 from shielded;
    the "I accept" label is not tappable, only the checkbox square — <a class=did href="../../DEFECT-LEDGER.html#D-006">D-006</a> reproduced) -&gt; PIN.
@@ -240,7 +241,7 @@ saved to <a class=ev href="../S12/BC1/explorer-identity-final.json">BC1/explorer
 <p><strong>Verdict: PASS</strong> — the money moved, the credits landed, on-chain/Platform state matches the UI.
 Four defects below, none fund-losing.</p>
 <hr />
-<h3 id="nm1-network-monitor-on-the-upgraded-wallet">NM1 — Network monitor on the upgraded wallet</h3>
+<h3 id="nm1-network-monitor-on-the-upgraded-wallet"><a class=ev href="../index.html#S12-NM1">NM1</a> — Network monitor on the upgraded wallet</h3>
 <table>
 <thead>
 <tr>
@@ -268,7 +269,7 @@ Four defects below, none fund-losing.</p>
 <tr>
 <td>dashj <strong>ON</strong> (bonus)</td>
 <td>same summary plus a live <strong>Peers</strong> list (<code>68.67.122.58 / .2 / .32</code>, <code>/Dash Core:23.1.8.../ protocol: 70240</code>, RTT 64-68 ms) and a <strong>Blocks</strong> list</td>
-<td><a class=ev href="../S12/NM1/05-network-monitor-dashj-on.webp">NM1/05-network-monitor-dashj-on.png</a>, <code>06-...-blocks.png</code>, <a class=ev href="../S12/NM1/04-tools-dashj-on-100pct.webp">04-tools-dashj-on-100pct.png</a></td>
+<td><a class=ev href="../S12/NM1/05-network-monitor-dashj-on.webp">NM1/05-network-monitor-dashj-on.png</a>, <a class=ev href="../S12/NM1/06-network-monitor-dashj-on-blocks.webp">06-...-blocks.png</a>, <a class=ev href="../S12/NM1/04-tools-dashj-on-100pct.webp">04-tools-dashj-on-100pct.png</a></td>
 </tr>
 </tbody>
 </table>
@@ -292,7 +293,7 @@ Four defects below, none fund-losing.</p>
 <td class=S1><strong>S1</strong></td>
 <td>Ex-CoinJoin funds are counted but completely unspendable after the 11.9.0 -&gt; 12.0.0 upgrade, and the one UI that could rescue them is hard-suppressed</td>
 <td>1. master 11.9.0, fund 1 tDASH; 2. Settings &gt; CoinJoin &gt; Intermediate &gt; Start Mixing until a CreateDenomination tx exists; 3. <code>install -r</code> fix 12.0.0, unlock; 4. Send 0.001 to own address</td>
-<td><code>S12/CJ1/post-upgrade/12,13,14*.png</code>, <a class=ev href="../S12/CJ1/post-upgrade/21-shield-result.webp">21-shield-result.png</a>, <a class=ev href="../S12/CJ1/post-upgrade/insufficient-funds-log.txt">insufficient-funds-log.txt</a>, <a class=ev href="../S12/CJ1/post-upgrade/shield-failure-log.txt">shield-failure-log.txt</a>, <a class=ev href="../S12/CJ1/post-upgrade/cj1-send.mp4">cj1-send.mp4</a>, <a class=ev href="../S12/CJ1/post-upgrade/cj1-shield.mp4">cj1-shield.mp4</a></td>
+<td><a class=ev href="../S12/CJ1/post-upgrade/12-amount-0.001.webp">S12/CJ1/post-upgrade/12,13,14*.png</a><sup class=more><a href="../S12/CJ1/post-upgrade/13-send-balance-unhidden.webp" title="S12/CJ1/post-upgrade/13-send-balance-unhidden.webp">2</a> <a href="../S12/CJ1/post-upgrade/14-send-max.webp" title="S12/CJ1/post-upgrade/14-send-max.webp">3</a></sup>, <a class=ev href="../S12/CJ1/post-upgrade/21-shield-result.webp">21-shield-result.png</a>, <a class=ev href="../S12/CJ1/post-upgrade/insufficient-funds-log.txt">insufficient-funds-log.txt</a>, <a class=ev href="../S12/CJ1/post-upgrade/shield-failure-log.txt">shield-failure-log.txt</a>, <a class=ev href="../S12/CJ1/post-upgrade/cj1-send.mp4">cj1-send.mp4</a>, <a class=ev href="../S12/CJ1/post-upgrade/cj1-shield.mp4">cj1-shield.mp4</a></td>
 <td><code>CoinJoinFundsMigrationService.kt:118/425</code> (<code>MIXED_FUNDS_PROMPT_HARD_SUPPRESSED</code>) + SDK coin selection ignoring <code>AccountType::CoinJoin</code> for spends and asset locks</td>
 </tr>
 <tr>
@@ -374,7 +375,7 @@ Four defects below, none fund-losing.</p>
 <li><strong>ENV-6 (new):</strong> testnet CoinJoin mixing does not complete. Over 21 min every session ended
   <code>POOL_STATE_ERROR "Session not complete!"</code> / <code>TIMEOUT</code> against <code>68.67.122.*</code>; <code>getMixingProgress</code> stayed
   <code>0.0 / 53</code>. Denominations ARE created, so the m/9' bucket is reachable, but fully-mixed coins are not
-  obtainable on this testnet today. CJ1 was exercised with denominated-but-0-round coins.</li>
+  obtainable on this testnet today. <a class=ev href="../index.html#S12-CJ1">CJ1</a> was exercised with denominated-but-0-round coins.</li>
 <li><strong>ENV-4</strong> re-confirmed: <code>adb root</code> inside the helper subcommands restarts adbd; <code>logcat-start</code> survived here
   only because root was already active.</li>
 <li>Faucet used exactly once (web UI, per the brief's update). No 429.</li>

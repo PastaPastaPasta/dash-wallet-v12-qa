@@ -5,9 +5,10 @@ h1{border-bottom:3px solid #008de4}h2{border-bottom:1px solid #ccc;margin-top:40
 nav.top{background:#012060;color:#fff;padding:8px 24px;margin:-16px -24px 16px;position:sticky;top:0;z-index:5}nav.top a{color:#fff;margin-right:18px;text-decoration:none}nav.top a:hover{text-decoration:underline}
 .S1{color:#b00020;font-weight:bold}.S2{color:#c75000;font-weight:bold}.toc{background:#f8f9fb;border:1px solid #e3e6ea;padding:8px 16px;font-size:13px;columns:2}.toc ul{margin:2px 0;padding-left:16px}
 #lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:50;align-items:center;justify-content:center;flex-direction:column}#lb.on{display:flex}#lb img{max-width:96vw;max-height:88vh;border:2px solid #fff;box-shadow:0 0 30px #000}#lb .cap{color:#eee;font:13px ui-monospace,monospace;margin-top:8px}#lb .cap a{color:#8cf}#lb .x{position:absolute;top:10px;right:18px;color:#fff;font-size:30px;cursor:pointer}#lb .nv{position:absolute;top:50%;color:#fff;font-size:44px;cursor:pointer;padding:0 16px;user-select:none}#lb .pv{left:0}#lb .nx{right:0}a.img img{cursor:zoom-in}
+sup.more a{margin:0 2px;font-size:10px}
 a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:target{background:#fff3b0;outline:2px solid #f5b400}
 .note{background:#fff8e1;border-left:4px solid #f5b400;padding:8px 12px;margin:12px 0}
-</style><nav class=top><a href="../../index.html">Home</a><a href="../../QA-REPORT.html">Full report</a><a href="../../EXEC-SUMMARY.html">Executive summary</a><a href="../../STORY-MATRIX.html">User-story matrix</a><a href="../../DEFECT-LEDGER.html">Defect register</a><a href="../index.html">Evidence gallery</a><a href="../../QA-PLAN.html">Test plan</a><a href="../../streams.html">Stream reports</a></nav><h1 id="qa-report-s5-dashpay-platform-d0d7-sr-02-sr-12-agent-s5-emulator-5562-avd-dw-qa5-2026-09-19">QA report: S5 — DashPay / Platform (D0–D7 + SR-02 / SR-12)   (agent: S5, emulator-5562 / AVD dw-qa5, 2026-09-19)</h1>
+</style><nav class=top><a href="../../index.html">Home</a><a href="../../QA-REPORT.html">Full report</a><a href="../../EXEC-SUMMARY.html">Executive summary</a><a href="../../STORY-MATRIX.html">User-story matrix</a><a href="../../DEFECT-LEDGER.html">Defect register</a><a href="../index.html">Evidence gallery</a><a href="../../QA-PLAN.html">Test plan</a><a href="../../streams.html">Stream reports</a></nav><h1 id="qa-report-s5-dashpay-platform-d0d7-sr-02-sr-12-agent-s5-emulator-5562-avd-dw-qa5-2026-09-19">QA report: S5 — DashPay / Platform (<a class=ev href="../index.html#S5-D0">D0</a>–<a class=ev href="../index.html#S5-D7">D7</a> + SR-02 / SR-12)   (agent: S5, emulator-5562 / AVD dw-qa5, 2026-09-19)</h1>
 <p>Build under test: <code>fix-12.0.0-testnet3-release-signed.apk</code>, versionCode <strong>12000000</strong>, versionName 12.0.0, minSdk 29 / targetSdk 35. Clean install (no upgrade path in this stream).</p>
 <p>Wallets used (throwaway testnet):
 - <strong>Wallet A</strong> — created fresh, seed <code>embody slot angle twelve they easily remember disorder end coin cloud duty</code>, funded 1 tDASH from the faucet, username <strong><code>qa5s5ebkdus2c6kkt9m7t</code></strong>, identity <code>FGk3cH3u7pF1Nyfs5E1rU4g9bdmPWgoEn41Uj61Gu6M4</code>. Reset and later restored from seed.
@@ -25,7 +26,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 </thead>
 <tbody>
 <tr>
-<td>D0 Username eligibility gating</td>
+<td><a class=ev href="../index.html#S5-D0">D0</a> Username eligibility gating</td>
 <td><strong>PASS</strong></td>
 <td><a class=ev href="../S5/D0/02-join-dashpay-no-funds.webp">D0/02-join-dashpay-no-funds.png</a>, <a class=ev href="../S5/D0/06-join-dashpay-funded.webp">D0/06-join-dashpay-funded.png</a></td>
 <td>At 0 balance the Welcome screen shows "You need to have more than 0.03 Dash…" and Continue is <code>enabled=false</code>; after 1 tDASH the disclaimer is gone and Continue is enabled.</td>
@@ -33,85 +34,85 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <tr>
 <td>D0b Home entry point after funding</td>
 <td><strong>FAIL (S4)</strong></td>
-<td><code>D0/01</code>, <a class=ev href="../S5/D0/03-home-funded.webp">D0/03-home-funded.png</a>, <a class=ev href="../S5/D0/05-more-tab-funded.webp">D0/05-more-tab-funded.png</a></td>
+<td><a class=ev href="../S5/D0/01-home-zero-balance.webp">D0/01</a>, <a class=ev href="../S5/D0/03-home-funded.webp">D0/03-home-funded.png</a>, <a class=ev href="../S5/D0/05-more-tab-funded.webp">D0/05-more-tab-funded.png</a></td>
 <td>The home-screen "Join DashPay" tile is shown at 0 balance but <strong>disappears</strong> once the wallet has a balance + a transaction; the entry survives only in More.</td>
 </tr>
 <tr>
-<td>D1 Contested username attempt</td>
+<td><a class=ev href="../index.html#S5-D1">D1</a> Contested username attempt</td>
 <td><strong>PASS</strong></td>
-<td><code>D1/20</code>…<code>D1/28</code>, <a class=ev href="../S5/D1/26-confirm-cost.webp">D1/26-confirm-cost.png</a></td>
+<td><a class=ev href="../S5/D1/20-contested-qatestvote.webp">D1/20</a>…<a class=ev href="../S5/D1/28-after-cancel.webp">D1/28</a>, <a class=ev href="../S5/D1/26-confirm-cost.webp">D1/26-confirm-cost.png</a></td>
 <td><code>qatestvote</code> classified contested, warning + "what is username voting?" explainer, confirm sheet 0.25 DASH / $15.37 behind an "I accept" gate; <strong>cancelled before paying</strong>, balance unchanged.</td>
 </tr>
 <tr>
 <td>D1b Criteria list</td>
 <td><strong>PARTIAL (S4)</strong></td>
-<td><code>D1/10</code>…<code>D1/14</code></td>
+<td><a class=ev href="../S5/D1/10-criteria-too-short-ab.webp">D1/10</a>…<a class=ev href="../S5/D1/14-criteria-leading-hyphen.webp">D1/14</a></td>
 <td>All five negative cases classify correctly, but <strong>failed rules do not sort to the top</strong> — the list is a static LinearLayout.</td>
 </tr>
 <tr>
-<td>D4 Non-contested username (shield first)</td>
+<td><a class=ev href="../index.html#S5-D4">D4</a> Non-contested username (shield first)</td>
 <td><strong>PASS</strong></td>
-<td><code>D4/05</code>…<code>D4/21</code>, <a class=ev href="../S5/D4/d4-shield.mp4">D4/d4-shield.mp4</a>, <a class=ev href="../S5/D4/d4-username.mp4">D4/d4-username.mp4</a>, <a class=ev href="../S5/D4/22-platform-explorer-testnet.json">D4/22-platform-explorer-testnet.json</a></td>
+<td><a class=ev href="../S5/D4/05-shield-screen.webp">D4/05</a>…<a class=ev href="../S5/D4/21-more-after-username.webp">D4/21</a>, <a class=ev href="../S5/D4/d4-shield.mp4">D4/d4-shield.mp4</a>, <a class=ev href="../S5/D4/d4-username.mp4">D4/d4-username.mp4</a>, <a class=ev href="../S5/D4/22-platform-explorer-testnet.json">D4/22-platform-explorer-testnet.json</a></td>
 <td>Shield-all 1 → 0.997 shielded; <code>qa5s5ebkdus2c6kkt9m7t</code> created from the shielded pool for 0.03; verified on the testnet Platform explorer (<code>status: ok</code>, <code>contested: false</code>).</td>
 </tr>
 <tr>
-<td>D5 Profile</td>
+<td><a class=ev href="../index.html#S5-D5">D5</a> Profile</td>
 <td><strong>PASS</strong></td>
-<td><code>D5/07</code>, <a class=ev href="../S5/D5/09-more-profile.webp">D5/09-more-profile.png</a>, <a class=ev href="../S5/D5/12-relaunch-more-profile.webp">D5/12-relaunch-more-profile.png</a>, <code>D5/13</code></td>
+<td><a class=ev href="../S5/D5/07-profile-with-avatar.webp">D5/07</a>, <a class=ev href="../S5/D5/09-more-profile.webp">D5/09-more-profile.png</a>, <a class=ev href="../S5/D5/12-relaunch-more-profile.webp">D5/12-relaunch-more-profile.png</a>, <a class=ev href="../S5/D5/13-edit-profile-persisted.webp">D5/13</a></td>
 <td>Display name, about-me and avatar (Public-URL / Gravatar path) saved and broadcast; visible in More; persisted across force-stop + relaunch.</td>
 </tr>
 <tr>
-<td>D3 Contact requests</td>
+<td><a class=ev href="../index.html#S5-D3">D3</a> Contact requests</td>
 <td><strong>PASS</strong></td>
-<td><code>D3/07</code>, <code>D3/08</code>, <a class=ev href="../S5/D3/10-request-sent.webp">D3/10-request-sent.png</a>, <a class=ev href="../S5/D3/17-s1-contact-detail.webp">D3/17-s1-contact-detail.png</a>, <code>D3/18</code></td>
+<td><a class=ev href="../S5/D3/07-search-nonexistent.webp">D3/07</a>, <a class=ev href="../S5/D3/08-search-prefix-qa1.webp">D3/08</a>, <a class=ev href="../S5/D3/10-request-sent.webp">D3/10-request-sent.png</a>, <a class=ev href="../S5/D3/17-s1-contact-detail.webp">D3/17-s1-contact-detail.png</a>, <a class=ev href="../S5/D3/18-accepted-incoming.webp">D3/18</a></td>
 <td>Non-existent name → "There are no users that match…"; prefix <code>qa1</code> finds S1; request sent → "Pending Requests (1)"; <strong>S1 accepted at 01:06 and paid 0.001 DASH at 01:10</strong>; incoming request from wallet B accepted.</td>
 </tr>
 <tr>
-<td>D2 Invites (sender)</td>
+<td><a class=ev href="../index.html#S5-D2">D2</a> Invites (sender)</td>
 <td><strong>PASS</strong></td>
-<td><code>D2/03</code>…<code>D2/13</code>, <a class=ev href="../S5/D2/d2-invite.mp4">D2/d2-invite.mp4</a>, <a class=ev href="../S5/invite-link.txt">invite-link.txt</a></td>
+<td><a class=ev href="../S5/D2/03-invite-screen.webp">D2/03</a>…<a class=ev href="../S5/D2/13-after-share-back.webp">D2/13</a>, <a class=ev href="../S5/D2/d2-invite.mp4">D2/d2-invite.mp4</a>, <a class=ev href="../S5/invite-link.txt">invite-link.txt</a></td>
 <td>Privacy sheet → fee gate (contested 0.25 / non-contested 0.03) → paid 0.03 from the shielded pool → link + share sheet.</td>
 </tr>
 <tr>
-<td>D2b Invites (receiver / regression)</td>
+<td><a class=ev href="../index.html#S5-D2b">D2b</a> Invites (receiver / regression)</td>
 <td><strong>PASS with defect</strong></td>
-<td><code>D2b/10</code>…<a class=ev href="../S5/D2b/29-explorer.json">D2b/29-explorer.json</a>, <a class=ev href="../S5/D2b/d2b-claim-finish.mp4">D2b/d2b-claim-finish.mp4</a></td>
+<td><a class=ev href="../S5/D2b/10-invite-t8.webp">D2b/10</a><sup class=more><a href="../S5/D2b/10-invite-t9.webp" title="S5/D2b/10-invite-t9.webp">2</a></sup>…<a class=ev href="../S5/D2b/29-explorer.json">D2b/29-explorer.json</a>, <a class=ev href="../S5/D2b/d2b-claim-finish.mp4">D2b/d2b-claim-finish.mp4</a></td>
 <td>No "Loading Invite…" screen at all — validated <code>VALID</code> in <strong>&lt; 1 s</strong>, far under the 90 s watchdog. Claim completed (<code>qa5s5invyhjvrfb3nfy5d</code>, verified on explorer). <strong>Defect: the invite is forgotten across an app restart</strong> (S3, workaround = re-open the link).</td>
 </tr>
 <tr>
-<td>D6 Username voting UI</td>
+<td><a class=ev href="../index.html#S5-D6">D6</a> Username voting UI</td>
 <td><strong>PASS (empty)</strong></td>
-<td><code>D6/01</code>…<code>D6/08</code></td>
+<td><a class=ev href="../S5/D6/01-username-voting.webp">D6/01</a>…<a class=ev href="../S5/D6/08-voting-after-wait.webp">D6/08</a></td>
 <td>Tile opens, explainer + full filter sheet work; list is "Nothing here" under every filter — <code>DapiClient - getVotePolls(...)</code> returns no polls, i.e. no active contested names on testnet. No spend.</td>
 </tr>
 <tr>
-<td>D7 DashPay in de-DE</td>
+<td><a class=ev href="../index.html#S5-D7">D7</a> DashPay in de-DE</td>
 <td><strong>PASS with defects</strong></td>
-<td><code>D7/02</code>…<code>D7/15</code>, back to en-US verified</td>
+<td><a class=ev href="../S5/D7/02-de-home.webp">D7/02</a>…<a class=ev href="../S5/D7/15-de-username-request.webp">D7/15</a>, back to en-US verified</td>
 <td>Home/contacts/add-contact/search/profile/invitations/username-request all localized. Three i18n defects (below).</td>
 </tr>
 <tr>
 <td><a class=did href="../../DEFECT-LEDGER.html#SR-12">SR-12</a> shielded stall notice</td>
 <td><strong>NOT OBSERVED</strong></td>
-<td><code>SR/22</code>, <code>SR/23</code>, <a class=ev href="../S5/logs/final/files/log/wallet.log">logs/final/files/log/wallet.log</a></td>
+<td><a class=ev href="../S5/SR/22-internal-transfer-reusable.webp">SR/22</a>, <a class=ev href="../S5/SR/23-internal-transfer-open.webp">SR/23</a>, <a class=ev href="../S5/logs/final/files/log/wallet.log">logs/final/files/log/wallet.log</a></td>
 <td>The 40 s stalled notice never fired in any shielded flow; the internal-transfer screen is re-usable afterwards. The specific "bricked after notice" claim stays <strong>unverified</strong> because the precondition never occurred.</td>
 </tr>
 <tr>
 <td><a class=did href="../../DEFECT-LEDGER.html#SR-02">SR-02</a> invite cancel → fund loss</td>
 <td><strong>NOT REPRODUCED</strong></td>
-<td><code>SR/14</code>…<code>SR/21</code>, <a class=ev href="../S5/SR/invite2-link.txt">SR/invite2-link.txt</a></td>
+<td><a class=ev href="../S5/SR/14-invite2-created.webp">SR/14</a>…<a class=ev href="../S5/SR/21-invite-detail.webp">SR/21</a>, <a class=ev href="../S5/SR/invite2-link.txt">SR/invite2-link.txt</a></td>
 <td>After BACK-cancel the invite is recorded in Invitations History and re-shareable; the regenerated one-time spending key is byte-identical (<code>osk=46859d9b…4571</code>). No silent loss.</td>
 </tr>
 </tbody>
 </table>
 <h2 id="per-test-detail-condensed">Per-test detail (condensed)</h2>
-<h3 id="d0-eligibility-gating">D0 — eligibility gating</h3>
+<h3 id="d0-eligibility-gating"><a class=ev href="../index.html#S5-D0">D0</a> — eligibility gating</h3>
 <p>Zero-balance Welcome-to-DashPay shows <code>balance_requirement_disclaimer</code> = "You need to have more than 0.03 Dash to create a username." and <code>welcome_dashpay_continue_btn enabled="false"</code>. After the faucet tDASH arrived (home <code>1</code> / <code>$61.06</code>, insight <code>balance:1</code>), the disclaimer is gone and the button is <code>enabled="true"</code>.
-Regression noticed while doing this: the home-screen <code>join_dashpay_btn</code> tile visible at 0 balance (<code>D0/01</code>, <code>D0/02</code>) is <strong>absent</strong> from the home screen once the wallet has a balance and one transaction (<code>D0/03</code>, <code>D0/04</code>) — the same entry is still in More (<code>D0/05</code>). On the fresh wallet B it appeared again at 0 balance (<code>D2b/11</code>), so the tile is tied to the empty-history state, not to eligibility.</p>
-<h3 id="d1-contested-attempt-cancelled-no-spend">D1 — contested attempt (cancelled, no spend)</h3>
-<p><code>qatestvote</code> (10 lowercase letters) → warning triangle "The Dash network will vote on this username. We will notify you of the results on Sep 19, 2026." + "+ what is username voting?" expander (full explainer screen, <code>D1/21</code>). Request Username → "Verify your identity to enhance your chances…" dialog (Verify / skip); the Verify screen offers a copy-text + paste-link proof flow (<code>D1/24</code>). Skipping reaches the confirm sheet: <strong>0.25 DASH / $15.37</strong>, <code>I accept</code> checkbox gating <code>confirm_btn</code> (<code>D1/26</code>, <code>D1/27</code>). <strong>Cancel</strong> returns to the input with the name intact; More still showed <code>1.000 Đ</code> afterwards — nothing spent.
+Regression noticed while doing this: the home-screen <code>join_dashpay_btn</code> tile visible at 0 balance (<a class=ev href="../S5/D0/01-home-zero-balance.webp">D0/01</a>, <a class=ev href="../S5/D0/02-join-dashpay-no-funds.webp">D0/02</a>) is <strong>absent</strong> from the home screen once the wallet has a balance and one transaction (<a class=ev href="../S5/D0/03-home-funded.webp">D0/03</a>, <a class=ev href="../S5/D0/04-home-funded-scrolled.webp">D0/04</a>) — the same entry is still in More (<a class=ev href="../S5/D0/05-more-tab-funded.webp">D0/05</a>). On the fresh wallet B it appeared again at 0 balance (<a class=ev href="../S5/D2b/11-home-with-invite-banner.webp">D2b/11</a>), so the tile is tied to the empty-history state, not to eligibility.</p>
+<h3 id="d1-contested-attempt-cancelled-no-spend"><a class=ev href="../index.html#S5-D1">D1</a> — contested attempt (cancelled, no spend)</h3>
+<p><code>qatestvote</code> (10 lowercase letters) → warning triangle "The Dash network will vote on this username. We will notify you of the results on Sep 19, 2026." + "+ what is username voting?" expander (full explainer screen, <a class=ev href="../S5/D1/21-contested-voting-explainer.webp">D1/21</a>). Request Username → "Verify your identity to enhance your chances…" dialog (Verify / skip); the Verify screen offers a copy-text + paste-link proof flow (<a class=ev href="../S5/D1/24-verify-identity-screen.webp">D1/24</a>). Skipping reaches the confirm sheet: <strong>0.25 DASH / $15.37</strong>, <code>I accept</code> checkbox gating <code>confirm_btn</code> (<a class=ev href="../S5/D1/26-confirm-cost.webp">D1/26</a>, <a class=ev href="../S5/D1/27-confirm-accepted.webp">D1/27</a>). <strong>Cancel</strong> returns to the input with the name intact; More still showed <code>1.000 Đ</code> afterwards — nothing spent.
 Note on the date: "Sep 19, 2026" is today, but that is <strong>correct on testnet</strong> — <code>UsernameRequest.VOTING_PERIOD_MILLIS</code> is 90 minutes off mainnet (<code>wallet/src/de/schildbach/wallet/database/entity/UsernameRequest.kt:43</code>) and the medium date format hides the time. Not a defect.</p>
-<p>Criteria matrix (all screenshots in <code>D1/</code>):</p>
+<p>Criteria matrix (all screenshots in <a class=ev href="../index.html#S5-D1">D1/</a>):</p>
 <table>
 <thead>
 <tr>
@@ -160,25 +161,25 @@ Note on the date: "Sep 19, 2026" is today, but that is <strong>correct on testne
 </tr>
 </tbody>
 </table>
-<h3 id="d4-shield-then-non-contested-username">D4 — shield then non-contested username</h3>
-<p>Shield entry point is <strong>not</strong> the More "Shielded" card (that card is <code>clickable=false</code>); it is Join DashPay → Continue → "Shield your funds first". Max-shield: <code>1</code> → <code>0.997</code> shielded (fee ~0.003), ~15 s. wallet.log shows the max path self-healing: <code>05:31:17 DashSDKException: asset lock coin selection is short: available 100000000 duffs, required 100000229 duffs</code> immediately followed by <code>ShieldedTransferExecutor - max shield auto-adjusting for L1 asset-lock fee: … retrying once with 0.99999</code> — invisible to the user, no error shown.
+<h3 id="d4-shield-then-non-contested-username"><a class=ev href="../index.html#S5-D4">D4</a> — shield then non-contested username</h3>
+<p>Shield entry point is <strong>not</strong> the More "Shielded" card (that card is <code>clickable=false</code>); it is Join DashPay → Continue → "Shield your funds first". Max-shield: <code>1</code> → <code>0.997</code> shielded (fee ~0.003), ~15 s. <a class=ev href="../S5/logs/final/files/log/wallet.log">wallet.log</a> shows the max path self-healing: <code>05:31:17 DashSDKException: asset lock coin selection is short: available 100000000 duffs, required 100000229 duffs</code> immediately followed by <code>ShieldedTransferExecutor - max shield auto-adjusting for L1 asset-lock fee: … retrying once with 0.99999</code> — invisible to the user, no error shown.
 With a shielded balance present the flow gains a payment-option chooser (Shielded balance / Dash balance). Confirm sheet: <strong>0.03 DASH / $1.84 "from shielded balance"</strong>. After PIN, "Hello qa5s5ebkdus2c6kkt9m7t, Your account is ready" within ~15 s; shielded 0.997 → 0.967.
 <code>05:34:14 SdkShieldedUsernameCreation - shielded-funded identity created at index 0 (FGk3cH3u…) — 0.03 denomination, contested=false</code>.
 Explorer (<strong>testnet host</strong>): <code>{"identifier":"FGk3cH3u7pF1Nyfs5E1rU4g9bdmPWgoEn41Uj61Gu6M4","alias":"qa5s5ebkdus2c6kkt9m7t.dash","status":{"status":"ok","contested":false}}</code>.
-<code>S5 qa5s5ebkdus2c6kkt9m7t</code> appended to <a class=ev href="../shared/usernames.txt">$QA_EVIDENCE/shared/usernames.txt</a>.</p>
-<h3 id="d5-profile">D5 — profile</h3>
-<p>Display name "QA Stream Five", about-me 46/140, avatar set through <strong>Public URL</strong> (gravatar URL) → crop screen → Select. Save produced <code>05:39:37 PlatformDocumentBroadcastService - broadcast profile</code> then <code>profile broadcast via Kotlin SDK; reconciling from platform</code>. More shows avatar + display name + username. Survives <code>am force-stop</code> + relaunch, and after the later seed restore the profile came back intact (<code>SR/08</code>).</p>
-<h3 id="d3-contact-requests">D3 — contact requests</h3>
-<p>Search for <code>zzznotarealuser999</code> → "There are no users that match "zzznotarealuser999"" (<code>D3/07</code>). Prefix <code>qa1</code> → <code>qa1s13939</code> (<code>D3/08</code>). Profile sheet → "Send request" → "Request sent" + activity row "Contact request sent"; contacts tab shows <strong>"Pending Requests (1)"</strong> (<code>D3/12</code>). <a class=ev href="../shared/contact-request-sent.txt">$QA_EVIDENCE/shared/contact-request-sent.txt</a> written at 05:44:13Z and updated on acceptance.
+<code>S5 qa5s5ebkdus2c6kkt9m7t</code> appended to <code>$QA_EVIDENCE/shared/usernames.txt</code>.</p>
+<h3 id="d5-profile"><a class=ev href="../index.html#S5-D5">D5</a> — profile</h3>
+<p>Display name "QA Stream Five", about-me 46/140, avatar set through <strong>Public URL</strong> (gravatar URL) → crop screen → Select. Save produced <code>05:39:37 PlatformDocumentBroadcastService - broadcast profile</code> then <code>profile broadcast via Kotlin SDK; reconciling from platform</code>. More shows avatar + display name + username. Survives <code>am force-stop</code> + relaunch, and after the later seed restore the profile came back intact (<a class=ev href="../S5/SR/08-more-synced.webp">SR/08</a>).</p>
+<h3 id="d3-contact-requests"><a class=ev href="../index.html#S5-D3">D3</a> — contact requests</h3>
+<p>Search for <code>zzznotarealuser999</code> → "There are no users that match "zzznotarealuser999"" (<a class=ev href="../S5/D3/07-search-nonexistent.webp">D3/07</a>). Prefix <code>qa1</code> → <code>qa1s13939</code> (<a class=ev href="../S5/D3/08-search-prefix-qa1.webp">D3/08</a>). Profile sheet → "Send request" → "Request sent" + activity row "Contact request sent"; contacts tab shows <strong>"Pending Requests (1)"</strong> (<a class=ev href="../S5/D3/12-contacts-tab-pending.webp">D3/12</a>). <code>$QA_EVIDENCE/shared/contact-request-sent.txt</code> written at 05:44:13Z and updated on acceptance.
 Coverage recomputed correctly right after the request: <code>05:44:50 SdkWalletBinder - DashPay contact coverage OK on 65384bdf…: scan at 1556565 is at or below the earliest received contact height 1556565 (1 contact request(s))</code>.
-S1 accepted while wallet A was being restored: contact activity now reads "Contact request sent 12:43 AM" → "qa1s13939 has accepted your contact request 1:06 AM" → "Received 0.001 DASH 1:10 AM" (<code>D3/17</code>). The incoming request auto-sent by the invited wallet B was accepted from the contacts tab (<code>D3/18</code>); both contacts now under "My Contacts".</p>
-<h3 id="d2-d2b-invites">D2 / D2b — invites</h3>
+S1 accepted while wallet A was being restored: contact activity now reads "Contact request sent 12:43 AM" → "qa1s13939 has accepted your contact request 1:06 AM" → "Received 0.001 DASH 1:10 AM" (<a class=ev href="../S5/D3/17-s1-contact-detail.webp">D3/17</a>). The incoming request auto-sent by the invited wallet B was accepted from the contacts tab (<a class=ev href="../S5/D3/18-accepted-incoming.webp">D3/18</a>); both contacts now under "My Contacts".</p>
+<h3 id="d2-d2b-invites"><a class=ev href="../index.html#S5-D2">D2</a> / <a class=ev href="../index.html#S5-D2b">D2b</a> — invites</h3>
 <p>Sender: privacy sheet → fee gate (Contested 0.25 / Non-contested 0.03) → confirm 0.03 / $1.83 → PIN → "Invitation Created Successfully" with Preview / Tag / Copy link / Send Invitation. Share sheet carries the AppsFlyer https link. Links saved to <a class=ev href="../S5/invite-link.txt">invite-link.txt</a> and <a class=ev href="../S5/invite-link-https.txt">invite-link-https.txt</a>.
 Receiver (fresh wallet B, 0 balance): <code>06:05:35 InviteHandlerActivity - the invite will be forwarded…</code> → <code>TopUpRepositoryImpl - validateInvitation: shielded invite — deferring funds check to claim</code> → <code>isValid=true, validationState=VALID</code> <strong>in the same second</strong>. <strong>No "Loading Invite…" screen appeared at all</strong>, so the 90 s watchdog was never approached. The invite surfaces as the home "Join DashPay" card with Create enabled at 0 balance; the username screen switches to invite mode ("You can only create a non-contested username using this invitation", criteria 20–23 chars / numbers 2–9). Claim completed in ~20 s after PIN; explorer confirms <code>qa5s5invyhjvrfb3nfy5d.dash</code> → <code>3vEUteE9Cmstx8ey249hPbxhK16PuoDDYmf7XV3DZpMQ</code>.
 Inviter identity is <strong>not</strong> shown on a dedicated "you have been invited by…" accept screen in this build — only the generic Join DashPay card. The inviter display-name is carried in the link and rendered in the sender-side Preview sheet.</p>
-<h3 id="d6-voting-ui">D6 — voting UI</h3>
+<h3 id="d6-voting-ui"><a class=ev href="../index.html#S5-D6">D6</a> — voting UI</h3>
 <p>More &gt; Username Voting → default-filter explainer → list. Filter sheet has Group by (None / Voting ends soonest / latest), Sort by (Request date x2, Votes x2), Type (All / I have approved / I have not approved / Has blocked votes), plus "Only duplicates" and "Only requests with links" checkboxes and Reset. With every combination the list is "Nothing here"; <code>DapiClient - getVotePolls(...)</code> returns nothing, i.e. no active contested names on testnet in the window. No vote cast, nothing spent.</p>
-<h3 id="d7-de-de">D7 — de-DE</h3>
+<h3 id="d7-de-de"><a class=ev href="../index.html#S5-D7">D7</a> — de-DE</h3>
 <p>Captured: home, contacts list, add-contact, search results, edit profile, invitations history, and the <strong>username request screen</strong> ("Benutzernamen erstellen", localized criteria). Restored to <code>en-US</code> afterwards and re-verified.</p>
 <h2 id="defects-found">Defects found</h2>
 <table>
@@ -205,7 +206,7 @@ Inviter identity is <strong>not</strong> shown on a dedicated "you have been inv
 <td>S5-2</td>
 <td><strong>S2</strong></td>
 <td>App self-reports unrepaired DashPay contact-coverage debt after a seed restore</td>
-<td>Restore a wallet that has established DashPay contacts → wallet.log emits, once a minute and indefinitely: <code>DashPay contact coverage DEBT on 65384bdf…: the filter scan is at 1556585 but the earliest received contact request sits at core height 1556575 (10 blocks below, 3 contact request(s)). Payments to those chains were scanned past. This is reported, not repaired — see §17 of the upgrade memory and sync plan</code></td>
+<td>Restore a wallet that has established DashPay contacts → <a class=ev href="../S5/logs/final/files/log/wallet.log">wallet.log</a> emits, once a minute and indefinitely: <code>DashPay contact coverage DEBT on 65384bdf…: the filter scan is at 1556585 but the earliest received contact request sits at core height 1556575 (10 blocks below, 3 contact request(s)). Payments to those chains were scanned past. This is reported, not repaired — see §17 of the upgrade memory and sync plan</code></td>
 <td><a class=ev href="../S5/logs/grep-watchlist-final.txt">logs/grep-watchlist-final.txt</a> (30 occurrences, 06:22:59 → 06:31:18), <a class=ev href="../S5/logs/final/files/log/wallet.log">logs/final/files/log/wallet.log</a></td>
 <td><code>SdkWalletBinder</code> contact-coverage / filter-scan watermark vs DIP-15 chain birth height. No payment was actually lost in this run (the 0.001 DASH from <code>qa1s13939</code> is visible), but the code states it does not repair the window.</td>
 </tr>
@@ -222,7 +223,7 @@ Inviter identity is <strong>not</strong> shown on a dedicated "you have been inv
 <td><strong>S4</strong></td>
 <td>Failed username criteria do not sort to the top</td>
 <td>Type <code>qa_test</code> on the create-username screen: the failing "Letters, numbers and hyphens only" rule stays in second position; same for every other failing case</td>
-<td><a class=ev href="../S5/D1/11-criteria-invalid-chars-underscore.webp">D1/11-criteria-invalid-chars-underscore.png</a>, <code>D1/12</code>, <code>D1/14</code></td>
+<td><a class=ev href="../S5/D1/11-criteria-invalid-chars-underscore.webp">D1/11-criteria-invalid-chars-underscore.png</a>, <a class=ev href="../S5/D1/12-criteria-too-long.webp">D1/12</a>, <a class=ev href="../S5/D1/14-criteria-leading-hyphen.webp">D1/14</a></td>
 <td><code>wallet/res/layout/fragment_request_username.xml:111</code> <code>requirements_stack</code> is a static LinearLayout; no reorder logic in <code>RequestUsernameFragment</code></td>
 </tr>
 <tr>
@@ -247,7 +248,7 @@ Inviter identity is <strong>not</strong> shown on a dedicated "you have been inv
 <td>i18n typo (pre-existing): "DashPay beitreiten"</td>
 <td>de-DE, home Join DashPay card / shortcut</td>
 <td><a class=ev href="../S5/D7/12-de-invite-card.webp">D7/12-de-invite-card.png</a></td>
-<td><code>wallet/res/values-de/strings-dashpay.xml:158</code> (<code>upgrade_to_evolution_title</code>) and <code>values-de/strings-extra.xml:31</code> (<code>shortcut_action_join_dashpay</code>) — should be "beitreten". Also <code>D7/15</code>: "Der Nutzername muss <strong>eine</strong> dieser Kriterien entsprechen" → "einem".</td>
+<td><code>wallet/res/values-de/strings-dashpay.xml:158</code> (<code>upgrade_to_evolution_title</code>) and <code>values-de/strings-extra.xml:31</code> (<code>shortcut_action_join_dashpay</code>) — should be "beitreten". Also <a class=ev href="../S5/D7/15-de-username-request.webp">D7/15</a>: "Der Nutzername muss <strong>eine</strong> dieser Kriterien entsprechen" → "einem".</td>
 </tr>
 <tr>
 <td>S5-8</td>
@@ -276,7 +277,7 @@ Inviter identity is <strong>not</strong> shown on a dedicated "you have been inv
 </tbody>
 </table>
 <h2 id="memory-stability">Memory / stability</h2>
-<p>From <a class=ev href="../S5/mem.csv">mem.csv</a> (81 samples, 60 s interval, whole session): <strong>peak TOTAL PSS 614,031 KB</strong>, peak native heap 453,388 KB, peak Dalvik heap 42,062 KB; last sample PSS 456,397 KB / native 292,612 KB. No LMK or OOM (<a class=ev href="../S5/logs/oom-exitinfo.txt">logs/oom-exitinfo.txt</a>, 0 matches; <code>PROCESS EXIT REASON: none recorded</code> on each relaunch). Zero <code>FATAL</code>, <code>OutOfMemoryError</code>, <code>OverlappingFileLockException</code> in either wallet.log pull. Exceptions seen: 6 x <code>FirebaseException</code> (stub <code>google-services.json</code>, expected), 1 x handled <code>DashSDKException</code> (the self-healed max-shield), 2 x <code>CancellationException</code>, 2 x <code>ChildCancelledException</code>.
+<p>From <a class=ev href="../S5/mem.csv">mem.csv</a> (81 samples, 60 s interval, whole session): <strong>peak TOTAL PSS 614,031 KB</strong>, peak native heap 453,388 KB, peak Dalvik heap 42,062 KB; last sample PSS 456,397 KB / native 292,612 KB. No LMK or OOM (<a class=ev href="../S5/logs/oom-exitinfo.txt">logs/oom-exitinfo.txt</a>, 0 matches; <code>PROCESS EXIT REASON: none recorded</code> on each relaunch). Zero <code>FATAL</code>, <code>OutOfMemoryError</code>, <code>OverlappingFileLockException</code> in either <a class=ev href="../S5/logs/final/files/log/wallet.log">wallet.log</a> pull. Exceptions seen: 6 x <code>FirebaseException</code> (stub <code>google-services.json</code>, expected), 1 x handled <code>DashSDKException</code> (the self-healed max-shield), 2 x <code>CancellationException</code>, 2 x <code>ChildCancelledException</code>.
 DIP-15: <code>KeyChainGroup - Activating a new HD chain: FriendKeyChain{P2PKH, accountPath=[9H, 1H, 15H, …], lookaheadSize=100, lookaheadThreshold=33}</code> — <strong>lookahead is 100, not 20</strong>, so the upstream "20 addresses" cap is not reproduced on this build. <code>FriendKeyChainLookahead</code> restored 1 chain / 131 keys from <code>wallet-protobuf-testnet.friendlookahead</code> in 7 ms.
 <code>SdkBindRetryService - SDK bind established — clearing the pending state (no blocker recorded in this process)</code> on every launch; no bind blockers.</p>
 <h2 id="environment-problems-not-product-defects">Environment problems (not product defects)</h2>
@@ -285,13 +286,13 @@ DIP-15: <code>KeyChainGroup - Activating a new HD chain: FriendKeyChain{P2PKH, a
 <li><code>QA-PLAN.md</code> points Platform verification at <code>https://platform-explorer.pshenmic.dev</code>, which is <strong>mainnet</strong> (core height ~2.54 M). Testnet DPNS lookups need <code>https://testnet.platform-explorer.pshenmic.dev</code> (core height ~1.556 M).</li>
 <li><code>qa-app.sh &lt;serial&gt; deeplink '&lt;url&gt;'</code> does not quote the URL for the remote shell, so any <code>&amp;</code> splits the command and only a truncated intent is delivered. Use <code>adb -s &lt;serial&gt; shell "am start -a android.intent.action.VIEW -d '&lt;url&gt;'"</code>.</li>
 <li><code>qa-app.sh &lt;serial&gt; text 'two words'</code> loses everything after the first space for the same reason; use <code>input text 'a%sb'</code>.</li>
-<li><code>adb shell service call clipboard</code> is not usable to read the clipboard on this image; invite links were recovered from <code>wallet.log</code> (<code>TopUpRepositoryImpl - AppsFlyer af_dp : …</code>).</li>
+<li><code>adb shell service call clipboard</code> is not usable to read the clipboard on this image; invite links were recovered from <a class=ev href="../S5/logs/final/files/log/wallet.log">wallet.log</a> (<code>TopUpRepositoryImpl - AppsFlyer af_dp : …</code>).</li>
 </ul>
 <h2 id="not-run-blocked">Not run / blocked</h2>
 <ul>
 <li><strong><a class=did href="../../DEFECT-LEDGER.html#SR-12">SR-12</a> post-notice behaviour</strong>: the 40 s shielded "stalled" notice never fired (all shielded operations finished in 15-25 s), so whether the transfer screen is bricked <em>after</em> the notice is <strong>unverified</strong>. Everything observable was healthy: the internal-transfer screen re-opens and is usable after three separate shielded spends.</li>
-<li><strong>D1 contested completion</strong>: deliberately cancelled before paying, per the task (no 0.25 locked for voting).</li>
-<li><strong>D6 vote screen / end times</strong>: no contested names exist on testnet right now (<code>getVotePolls</code> empty), so the per-name vote screen and end-time rendering could not be exercised.</li>
+<li><strong><a class=ev href="../index.html#S5-D1">D1</a> contested completion</strong>: deliberately cancelled before paying, per the task (no 0.25 locked for voting).</li>
+<li><strong><a class=ev href="../index.html#S5-D6">D6</a> vote screen / end times</strong>: no contested names exist on testnet right now (<code>getVotePolls</code> empty), so the per-name vote screen and end-time rendering could not be exercised.</li>
 <li><strong>Avatar "Select from Gallery" / "Take a Photo"</strong>: not exercised (emulator gallery is empty, no camera); the Public-URL path was used instead.</li>
 </ul><div id=lb><span class=x>&times;</span><span class="nv pv">&#8249;</span><span class="nv nx">&#8250;</span><img><div class=cap></div></div>
 <script>(function(){var lb=document.getElementById('lb'),im=lb.querySelector('img'),cap=lb.querySelector('.cap'),L=[],i=0;

@@ -5,6 +5,7 @@ h1{border-bottom:3px solid #008de4}h2{border-bottom:1px solid #ccc;margin-top:40
 nav.top{background:#012060;color:#fff;padding:8px 24px;margin:-16px -24px 16px;position:sticky;top:0;z-index:5}nav.top a{color:#fff;margin-right:18px;text-decoration:none}nav.top a:hover{text-decoration:underline}
 .S1{color:#b00020;font-weight:bold}.S2{color:#c75000;font-weight:bold}.toc{background:#f8f9fb;border:1px solid #e3e6ea;padding:8px 16px;font-size:13px;columns:2}.toc ul{margin:2px 0;padding-left:16px}
 #lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:50;align-items:center;justify-content:center;flex-direction:column}#lb.on{display:flex}#lb img{max-width:96vw;max-height:88vh;border:2px solid #fff;box-shadow:0 0 30px #000}#lb .cap{color:#eee;font:13px ui-monospace,monospace;margin-top:8px}#lb .cap a{color:#8cf}#lb .x{position:absolute;top:10px;right:18px;color:#fff;font-size:30px;cursor:pointer}#lb .nv{position:absolute;top:50%;color:#fff;font-size:44px;cursor:pointer;padding:0 16px;user-select:none}#lb .pv{left:0}#lb .nx{right:0}a.img img{cursor:zoom-in}
+sup.more a{margin:0 2px;font-size:10px}
 a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:target{background:#fff3b0;outline:2px solid #f5b400}
 .note{background:#fff8e1;border-left:4px solid #f5b400;padding:8px 12px;margin:12px 0}
 </style><nav class=top><a href="index.html">Home</a><a href="QA-REPORT.html">Full report</a><a href="EXEC-SUMMARY.html">Executive summary</a><a href="STORY-MATRIX.html">User-story matrix</a><a href="DEFECT-LEDGER.html">Defect register</a><a href="evidence/index.html">Evidence gallery</a><a href="QA-PLAN.html">Test plan</a><a href="streams.html">Stream reports</a></nav><h1>Defect register</h1><div class=note>Public QA archive. All wallets are testnet or empty-mainnet throwaways created for this QA run, so seed phrases, addresses and full logcat/wallet logs are published verbatim. Screenshots are served as WebP; original PNGs and videos are unmodified emulator captures.</div><h1 id="defect-ledger-running-merged-into-qa-reportmd-at-the-end">Defect ledger (running; merged into QA-REPORT.md at the end)</h1>
@@ -26,7 +27,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td class=S2>S2, S6, S3</td>
 <td>App auto-locks to Enter-PIN after 60 s without touch even in the foreground</td>
 <td>RESOLVED as expected behaviour of the default <code>auto_logout_minutes = 1</code> (Configuration.java:171-173, AutoLogout.java:104-107); S2 controlled probe (screencap only) reproduced it; S3 confirms master 11.9.0 also locks on the idle timer. Not a regression. Worth a UX review: a user watching a sync is locked out every minute</td>
-<td class=S2>S2/A2/10-lockscreen-check.png; S6/M1/13-autolock-after-onboarding.png; wallet.log LockScreenActivity ENTER_PIN with no preceding foreground:0</td>
+<td><a class=ev href="evidence/S2/A2/10-lockscreen-check.webp">S2/A2/10-lockscreen-check.png</a>; <a class=ev href="evidence/S6/M1/13-autolock-after-onboarding.webp">S6/M1/13-autolock-after-onboarding.png</a>; <a class=ev href="evidence/S6/M4/walletlog-final/files/log/wallet.log">wallet.log</a> LockScreenActivity ENTER_PIN with no preceding foreground:0</td>
 </tr>
 <tr>
 <td id="D-002"><a href="#D-002">D-002</a></td>
@@ -34,7 +35,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td class=S2>S2</td>
 <td>Home header shows a partial and inflated balance during replay (825.48 tDASH at 61%, final 107.43) under a greyed "Syncing balance" label</td>
 <td>candidate</td>
-<td class=S2>S2/A2/13-sync-progress.png</td>
+<td><a class=ev href="evidence/S2/A2/13-sync-progress.webp">S2/A2/13-sync-progress.png</a></td>
 </tr>
 <tr>
 <td id="D-003"><a href="#D-003">D-003</a></td>
@@ -42,15 +43,15 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td class=S2>S2, S1, S7 (restored-on-fix)</td>
 <td>Receive tab presents an already-used address: S2 restored wallet shows index-0 address (107 tx appearances); S1 wallet created on the fix build keeps offering the same address after 3 receives (the "Specify amount" path DOES hand out a fresh one). S7: wallet created on master then upgraded DID rotate, but after reset + restore-from-seed on the fix build BOTH Receive and "Specify amount" hand out already-used addresses (3, 2, 2, 2 appearances). So it is the SDK-created/restored keychain path (<a class=did href="DEFECT-LEDGER.html#SR-03">SR-03</a>)</td>
 <td>confirmed on three wallets; static root cause <a class=did href="DEFECT-LEDGER.html#SR-03">SR-03</a></td>
-<td class=S2>S2 notes; insight yWcaVhiPFfxx7ugWgLDRcQGf1XJGWXkcxd</td>
+<td><a class=ev href="evidence/S2/notes.html">S2 notes</a>; insight yWcaVhiPFfxx7ugWgLDRcQGf1XJGWXkcxd</td>
 </tr>
 <tr>
 <td id="D-004"><a href="#D-004">D-004</a></td>
 <td>S4</td>
 <td class=S2>S2, S6</td>
 <td>After SYNCED, <code>idling detected, stopping service</code> logged once per minute while foreground, but the service never actually stops (no onDestroy / start command between lines); misleading log, not a stop/start loop</td>
-<td>characterised by S2 B4</td>
-<td class=S2>S2 notes 05:25:00+; S6 notes 05:27:00+</td>
+<td>characterised by S2 <a class=ev href="evidence/index.html#S2-B4">B4</a></td>
+<td><a class=ev href="evidence/S2/notes.html">S2 notes</a> 05:25:00+; <a class=ev href="evidence/S6/notes.html">S6 notes</a> 05:27:00+</td>
 </tr>
 <tr>
 <td id="D-005"><a href="#D-005">D-005</a></td>
@@ -58,7 +59,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td class=S1>S1</td>
 <td>"Welcome to DashPay" says "You have 0.00000737 Dash… usernames cost up to 0.25" — reports only the transparent balance, ignores the 0.998 shielded balance that actually funds the username</td>
 <td>candidate</td>
-<td class=S1>S1/A1/04-username/02-welcome-balance-note.png</td>
+<td><a class=ev href="evidence/S1/A1/04-username/02-welcome-balance-note.webp">S1/A1/04-username/02-welcome-balance-note.png</a></td>
 </tr>
 <tr>
 <td id="D-006"><a href="#D-006">D-006</a></td>
@@ -66,15 +67,15 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td class=S1>S1</td>
 <td>Username T&amp;C "I accept" label text is not tappable, only the checkbox square</td>
 <td>candidate</td>
-<td class=S1>S1/A1/04-username/09,10</td>
+<td><a class=ev href="evidence/S1/A1/04-username/09-accept-checked.webp">S1/A1/04-username/09,10</a><sup class=more><a href="evidence/S1/A1/04-username/10-accept-checked2.webp" title="S1/A1/04-username/10-accept-checked2.webp">2</a></sup></td>
 </tr>
 <tr>
 <td id="D-007"><a href="#D-007">D-007</a></td>
 <td>S3</td>
 <td class=S1>S1</td>
 <td>Username fee (0.03 from the shielded pool) produces NO transaction-history row; shielded balance silently drops by 0.03</td>
-<td>candidate; verify after restore (A1 step 7)</td>
-<td class=S1>S1/A1/05-before-reset/04-txlist-scrolled.png</td>
+<td>candidate; verify after restore (<a class=ev href="evidence/index.html#S1-A1">A1</a> step 7)</td>
+<td><a class=ev href="evidence/S1/A1/05-before-reset/04-txlist-scrolled.webp">S1/A1/05-before-reset/04-txlist-scrolled.png</a></td>
 </tr>
 <tr>
 <td id="D-008"><a href="#D-008">D-008</a></td>
@@ -82,7 +83,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>S6</td>
 <td>Home header never rendered a sync progress pane on the fresh mainnet wallet (sync took 42 s; may be too fast)</td>
 <td>candidate, low</td>
-<td>S6/M1/12-home.png</td>
+<td><a class=ev href="evidence/S6/M1/12-home.webp">S6/M1/12-home.png</a></td>
 </tr>
 <tr>
 <td id="D-009"><a href="#D-009">D-009</a></td>
@@ -90,7 +91,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>S6</td>
 <td>123 s gap between wallet creation and L1 engine start on mainnet with transient "engine wallet-event tap is not running" warning</td>
 <td>candidate, low</td>
-<td>S6 notes 05:22:07→05:24:10</td>
+<td><a class=ev href="evidence/S6/notes.html">S6 notes</a> 05:22:07→05:24:10</td>
 </tr>
 <tr>
 <td id="D-010"><a href="#D-010">D-010</a></td>
@@ -98,7 +99,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td class=S2>S2</td>
 <td>FLAG_SECURE on Recover Wallet screen makes screenshots black (expected security behaviour, but note that the seed <em>display</em> screen state is unverified visually)</td>
 <td>note</td>
-<td class=S2>S2/A2/02-restore-tapped.png</td>
+<td><a class=ev href="evidence/S2/A2/02-restore-tapped.webp">S2/A2/02-restore-tapped.png</a></td>
 </tr>
 <tr>
 <td id="D-011"><a href="#D-011">D-011</a></td>
@@ -106,7 +107,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>S4, S3 baseline</td>
 <td>Lock-screen bypass: locked app → "Forgot PIN?" → "Enter recovery phrase" → BACK, BACK → lands on UNLOCKED home with balance/receive/More accessible, no PIN entered</td>
 <td><strong>CONFIRMED REGRESSION</strong> (S3 master baseline: BACK always returns to the PIN screen on 11.9.0); root cause: fix branch still overrides deprecated <code>onBackPressed()</code>; master (73499a6d6, Android 16 support) replaced it with <code>onBackPressedDispatcher.addCallback { handleBackNavigation() }</code>; the ForgotPin flow returns via the dispatcher so the deprecated override is bypassed</td>
-<td>S4/E2/20-bypass-01..06.png, S4/E2/e2-forgotpin-bypass.mp4</td>
+<td><a class=ev href="evidence/S4/E2/20-bypass-01-locked.webp">S4/E2/20-bypass-01..06.png</a><sup class=more><a href="evidence/S4/E2/20-bypass-02-forgot-sheet.webp" title="S4/E2/20-bypass-02-forgot-sheet.webp">2</a> <a href="evidence/S4/E2/20-bypass-03-recover-screen.webp" title="S4/E2/20-bypass-03-recover-screen.webp">3</a> <a href="evidence/S4/E2/20-bypass-04-after-back.webp" title="S4/E2/20-bypass-04-after-back.webp">4</a> <a href="evidence/S4/E2/20-bypass-05-more-accessible.webp" title="S4/E2/20-bypass-05-more-accessible.webp">5</a> <a href="evidence/S4/E2/20-bypass-06-receive-accessible.webp" title="S4/E2/20-bypass-06-receive-accessible.webp">6</a></sup>, <a class=ev href="evidence/S4/E2/e2-forgotpin-bypass.mp4">S4/E2/e2-forgotpin-bypass.mp4</a></td>
 </tr>
 <tr>
 <td id="D-012"><a href="#D-012">D-012</a></td>
@@ -114,7 +115,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td class=S1>S1, S4, S3 baseline</td>
 <td>Reset wallet path (More › Security › Reset wallet → confirm → "Save data and reset wallet") wipes the wallet with NO PIN prompt at any step</td>
 <td>S3 baseline: master 11.9.0 also wipes with no PIN → pre-existing, not a regression; still worth fixing</td>
-<td class=S1>S1/A1/06-reset-restore/03..05.png, S1/A1/06-reset-restore/s1-reset-1.mp4</td>
+<td><a class=ev href="evidence/S1/A1/06-reset-restore/03-reset-dialog.webp">S1/A1/06-reset-restore/03..05.png</a><sup class=more><a href="evidence/S1/A1/06-reset-restore/04-metadata-dialog.webp" title="S1/A1/06-reset-restore/04-metadata-dialog.webp">2</a> <a href="evidence/S1/A1/06-reset-restore/05-after-save-data.webp" title="S1/A1/06-reset-restore/05-after-save-data.webp">3</a></sup>, <a class=ev href="evidence/S1/A1/06-reset-restore/s1-reset-1.mp4">S1/A1/06-reset-restore/s1-reset-1.mp4</a></td>
 </tr>
 <tr>
 <td id="D-013"><a href="#D-013">D-013</a></td>
@@ -122,7 +123,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td class=S1>S1 (S10 contra)</td>
 <td>"Save data and reset wallet" reported <code>itemsSaved=0 itemsToSave=0</code> for S1's wallet with 2 txs and a username; S10's reset on a wallet with memos logged <code>itemsSaved=16 itemsToSave=16</code>, so it saves when there is metadata to save — S1's case is likely "nothing to save"</td>
 <td>downgraded to observation</td>
-<td class=S1>S1 wallet.log 05:32:40</td>
+<td class=S1>S1 <a class=ev href="evidence/S4/walletlog-final/files/log/wallet.log">wallet.log</a> 05:32:40</td>
 </tr>
 <tr>
 <td id="D-014"><a href="#D-014">D-014</a></td>
@@ -130,7 +131,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td class=S2>S2</td>
 <td>Reference-seed balance is 107.08173522, not 107.43173749: a 0.35000227 send on 2026-09-05 (txid bbd61b83…2953, block 1547938) explains the difference exactly; the app is on-chain correct, the brief's constant is stale</td>
 <td>resolved (not a defect)</td>
-<td class=S2>S2/A2/17-SYNCED-balance.png, S2/A2/18-txdetail-sent-0.35.png</td>
+<td><a class=ev href="evidence/S2/A2/17-SYNCED-balance.webp">S2/A2/17-SYNCED-balance.png</a>, <a class=ev href="evidence/S2/A2/18-txdetail-sent-0.35.webp">S2/A2/18-txdetail-sent-0.35.png</a></td>
 </tr>
 <tr>
 <td id="D-015"><a href="#D-015">D-015</a></td>
@@ -138,7 +139,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>S4</td>
 <td>Onboarding "Restore from file" is DEBUG-only (OnboardingActivity.kt:302) so release builds cannot restore from a backup file during onboarding</td>
 <td>note; confirm intended</td>
-<td>S4/notes.md</td>
+<td><a class=ev href="evidence/S4/notes.html">S4/notes.md</a></td>
 </tr>
 <tr>
 <td id="D-016"><a href="#D-016">D-016</a></td>
@@ -154,7 +155,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td class=S1>S1</td>
 <td>Restore-from-seed error dialog is identical and unhelpful for a malformed word, 11 words and a bad checksum: "Wallet could not be restored:\n\nError\n\nBad recovery phrase?" (literal "Error" placeholder, no reason)</td>
 <td>candidate</td>
-<td class=S1>S1/A1/08-negative/10..12-*.txt</td>
+<td><a class=ev href="evidence/S1/A1/08-negative/10-neg1-malformed-word.txt">S1/A1/08-negative/10..12-*.txt</a><sup class=more><a href="evidence/S1/A1/08-negative/11-neg2-eleven-words.txt" title="S1/A1/08-negative/11-neg2-eleven-words.txt">2</a> <a href="evidence/S1/A1/08-negative/12-neg3-bad-checksum.txt" title="S1/A1/08-negative/12-neg3-bad-checksum.txt">3</a></sup></td>
 </tr>
 <tr>
 <td id="D-018"><a href="#D-018">D-018</a></td>
@@ -162,7 +163,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td class=S1>S1</td>
 <td>Tx row time changes after restore: before reset the shield tx row shows first-seen/broadcast time (12:21 AM), after restore it shows block time (12:30 AM); amounts/order identical</td>
 <td>candidate (display-source inconsistency)</td>
-<td class=S1>S1/A1/05-before-reset/04-txlist-scrolled.png vs S1/A1/07-after-restore/03-home.png</td>
+<td><a class=ev href="evidence/S1/A1/05-before-reset/04-txlist-scrolled.webp">S1/A1/05-before-reset/04-txlist-scrolled.png</a> vs <a class=ev href="evidence/S1/A1/07-after-restore/03-home.webp">S1/A1/07-after-restore/03-home.png</a></td>
 </tr>
 <tr>
 <td id="D-019"><a href="#D-019">D-019</a></td>
@@ -170,7 +171,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>S4</td>
 <td>About screen shows "12.0.0 (0)": build number is VERSION_CODE % 100 = 12000000 % 100 = 0 (AboutFragment.kt:80-81)</td>
 <td>candidate</td>
-<td>S4/E3 about screenshot</td>
+<td><a class=ev href="evidence/index.html#S4-E3">S4/E3</a> about screenshot</td>
 </tr>
 <tr>
 <td id="D-020"><a href="#D-020">D-020</a></td>
@@ -178,23 +179,23 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td class=S2>S2</td>
 <td>Reference wallet tx list: many rows render as "Sent D 0" with no fiat, or fiat "Not available" (self-transfer / CoinJoin denomination sends not grouped or labelled)</td>
 <td>candidate (cosmetic)</td>
-<td class=S2>S2/A2/txlist/page-30.png</td>
+<td><a class=ev href="evidence/S2/A2/txlist/page-30.webp">S2/A2/txlist/page-30.png</a></td>
 </tr>
 <tr>
 <td id="D-021"><a href="#D-021">D-021</a></td>
 <td>S4</td>
 <td>S5</td>
-<td>wallet.log spams an alarming "DashPay receival-account coverage … permanently-dark candidate" line every ~60 s even when dark=0</td>
+<td><a class=ev href="evidence/S4/walletlog-final/files/log/wallet.log">wallet.log</a> spams an alarming "DashPay receival-account coverage … permanently-dark candidate" line every ~60 s even when dark=0</td>
 <td>candidate (log noise)</td>
-<td>S5/logs/grep-watchlist-1.txt</td>
+<td><a class=ev href="evidence/S5/logs/grep-watchlist-1.txt">S5/logs/grep-watchlist-1.txt</a></td>
 </tr>
 <tr>
 <td id="D-022"><a href="#D-022">D-022</a></td>
 <td>S3?</td>
 <td class=S1>S1</td>
 <td>"txmetadata for <faucet tx> DROPPED - no wallet tx and no fallback row; any platform metadata for this transaction will not be displayed" when opening tx detail of a freshly received tx</td>
-<td>candidate; S1 to re-check in C5 (memo persistence)</td>
-<td class=S1>S1 wallet.log 05:18:23</td>
+<td>candidate; S1 to re-check in <a class=ev href="evidence/index.html#S1-C5">C5</a> (memo persistence)</td>
+<td class=S1>S1 <a class=ev href="evidence/S3/A3b/final/files/log/wallet.log">wallet.log</a> 05:18:23</td>
 </tr>
 <tr>
 <td id="D-023"><a href="#D-023">D-023</a></td>
@@ -202,7 +203,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>S4</td>
 <td>Hide-balance on home hides the header amount but transaction-list amounts remain visible</td>
 <td>candidate (design?)</td>
-<td>S4/E3/20</td>
+<td><a class=ev href="evidence/S4/E3/20-balance-hidden.webp">S4/E3/20</a></td>
 </tr>
 <tr>
 <td id="SR-01"><a href="#SR-01">SR-01</a></td>
@@ -210,7 +211,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>SR</td>
 <td>Filter-stall watchdog (616ac58ff) cancels its own coroutine inside stop(); engine stopped and never restarted → stall becomes permanent</td>
 <td>static; device repro requires forcing the threshold (ctor param) — not reproducible on emulator without a code change</td>
-<td>evidence/SR/REPORT.md</td>
+<td><a class=ev href="evidence/SR/REPORT.html">evidence/SR/REPORT.md</a></td>
 </tr>
 <tr>
 <td id="SR-02"><a href="#SR-02">SR-02</a></td>
@@ -218,7 +219,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>SR</td>
 <td>Shielded-invite one-time spending key discarded if flow cancelled after note funded → silent fund loss</td>
 <td>static; S5 asked to probe (cancel mid-invite)</td>
-<td>evidence/SR/REPORT.md</td>
+<td><a class=ev href="evidence/SR/REPORT.html">evidence/SR/REPORT.md</a></td>
 </tr>
 <tr>
 <td id="SR-03"><a href="#SR-03">SR-03/04</a></td>
@@ -226,15 +227,15 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>SR</td>
 <td>Receive screen and freshReceiveAddress() pinned to external key #0 forever (root cause of <a class=did href="DEFECT-LEDGER.html#D-003">D-003</a>); Topper/Coinbase/sweep also hit</td>
 <td>static root cause; S7 asked to confirm rotation after use</td>
-<td>evidence/SR/REPORT.md</td>
+<td><a class=ev href="evidence/SR/REPORT.html">evidence/SR/REPORT.md</a></td>
 </tr>
 <tr>
 <td id="SR-05"><a href="#SR-05">SR-05</a></td>
 <td class=S1><strong>S1 — CONFIRMED ON DEVICE (S4)</strong></td>
 <td>SR, S4</td>
 <td>Stale <code>wallet-wipe.pending</code> marker destroys a healthy, funded wallet on the next cold launch: an EMPTY 0-byte marker (app uid) → app goes straight to onboarding, <code>removing wallet from memory during wipe</code>, <code>wallet-protobuf-testnet</code> and <code>key-backup-protobuf-testnet</code> deleted; no confirmation, no PIN, no warning. Realistic trigger: <code>WalletWipeState.complete()</code> logs "the next launch will re-run the wipe" if the marker delete fails</td>
-<td>confirmed; S4/SR05/01-03, S4/SR05/sr05.mp4</td>
-<td>evidence/SR/REPORT.md</td>
+<td>confirmed; <a class=ev href="evidence/S4/SR05/01-before-marker.webp">S4/SR05/01-03</a><sup class=more><a href="evidence/S4/SR05/02-after-marker-launch.webp" title="S4/SR05/02-after-marker-launch.webp">2</a> <a href="evidence/S4/SR05/03-after-40s.webp" title="S4/SR05/03-after-40s.webp">3</a></sup>, <a class=ev href="evidence/S4/SR05/sr05.mp4">S4/SR05/sr05.mp4</a></td>
+<td><a class=ev href="evidence/SR/REPORT.html">evidence/SR/REPORT.md</a></td>
 </tr>
 <tr>
 <td id="SR-06"><a href="#SR-06">SR-06</a></td>
@@ -242,7 +243,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>SR</td>
 <td>Background-sync alarm repeats with INTERVAL_DAY so 15-min backoff never delivered → no dependable background sync</td>
 <td>static (docs §32 acknowledges)</td>
-<td>evidence/SR/REPORT.md</td>
+<td><a class=ev href="evidence/SR/REPORT.html">evidence/SR/REPORT.md</a></td>
 </tr>
 <tr>
 <td id="SR-07"><a href="#SR-07">SR-07</a></td>
@@ -250,7 +251,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>SR</td>
 <td>fallbackToDestructiveMigration() global → all tables dropped on any downgrade from schema 22</td>
 <td>static</td>
-<td>evidence/SR/REPORT.md</td>
+<td><a class=ev href="evidence/SR/REPORT.html">evidence/SR/REPORT.md</a></td>
 </tr>
 <tr>
 <td id="SR-08"><a href="#SR-08">SR-08</a></td>
@@ -258,7 +259,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>SR</td>
 <td>prodRelease seeds all USE_KOTLIN_SDK_* flags on first launch after upgrade</td>
 <td>static</td>
-<td>evidence/SR/REPORT.md</td>
+<td><a class=ev href="evidence/SR/REPORT.html">evidence/SR/REPORT.md</a></td>
 </tr>
 <tr>
 <td id="SR-23"><a href="#SR-23">SR-23</a></td>
@@ -266,7 +267,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>SR + orchestrator</td>
 <td>targetSdk/compileSdk regressed 36 → 35 in every module (master has 36); Play requires 36 from 2026-08-31</td>
 <td>CONFIRMED by orchestrator: wallet/build.gradle:287 targetSdkVersion 35 vs master:252 = 36</td>
-<td>evidence/SR/REPORT.md</td>
+<td><a class=ev href="evidence/SR/REPORT.html">evidence/SR/REPORT.md</a></td>
 </tr>
 <tr>
 <td id="SR-09"><a href="#SR-09">SR-09</a></td>
@@ -274,7 +275,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>SR</td>
 <td>Root cause of <a class=did href="DEFECT-LEDGER.html#D-004">D-004</a>: stopSelf() from TIME_TICK cannot destroy a bound service but latches the stop; service dies on first onPause and <a class=did href="DEFECT-LEDGER.html#SR-06">SR-06</a> never brings it back</td>
 <td>static; S2 characterisation matches</td>
-<td>evidence/SR/REPORT.md</td>
+<td><a class=ev href="evidence/SR/REPORT.html">evidence/SR/REPORT.md</a></td>
 </tr>
 <tr>
 <td id="SR-10"><a href="#SR-10">SR-10</a></td>
@@ -282,7 +283,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>SR</td>
 <td>Root cause of <a class=did href="DEFECT-LEDGER.html#D-002">D-002</a>: "hold last known balance" inert on created/restored wallets (lastKnown null)</td>
 <td>static; matches S2 log line</td>
-<td>evidence/SR/REPORT.md</td>
+<td><a class=ev href="evidence/SR/REPORT.html">evidence/SR/REPORT.md</a></td>
 </tr>
 <tr>
 <td id="SR-11"><a href="#SR-11">SR-11</a></td>
@@ -290,7 +291,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>SR</td>
 <td>Root cause of <a class=did href="DEFECT-LEDGER.html#D-007">D-007</a>: Type-20 create-from-pool writes no history row; observeShieldedActivity() has no consumers</td>
 <td>static</td>
-<td>evidence/SR/REPORT.md</td>
+<td><a class=ev href="evidence/SR/REPORT.html">evidence/SR/REPORT.md</a></td>
 </tr>
 <tr>
 <td id="SR-12"><a href="#SR-12">SR-12</a></td>
@@ -298,14 +299,14 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>SR</td>
 <td>Shielded stall watchdog fires at 40 s on healthy ~30 s proofs and permanently bricks the transfer screen once fired</td>
 <td>static; S5/S1 asked to watch for it</td>
-<td>evidence/SR/REPORT.md</td>
+<td><a class=ev href="evidence/SR/REPORT.html">evidence/SR/REPORT.md</a></td>
 </tr>
 <tr>
 <td id="SR-22"><a href="#SR-22">SR-22</a></td>
 <td class=S1><strong>S1 — CONFIRMED ON DEVICE (S4)</strong></td>
 <td>SR, S4</td>
 <td>Restore-from-seed creation-date picker defaults to TODAY; confirming the default silently sets birth height 1401408 (<code>BirthHeightResolver … margin 4032 blocks</code>, <code>armSpvRescan: filter watermark rewind to 1401408</code>) and the reference wallet restores with <strong>21.734822 of 107.08 tDASH</strong> while the header and Network monitor say "Synced"; nothing tells the user history before that date was never scanned</td>
-<td>confirmed; S4/SR22/01-07</td>
+<td>confirmed; <a class=ev href="evidence/S4/SR22/01-datepicker-default.webp">S4/SR22/01-07</a><sup class=more><a href="evidence/index.html#S4-SR22" title="13 files, open gallery">+12</a></sup></td>
 <td></td>
 </tr>
 <tr>
@@ -314,7 +315,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>SR</td>
 <td>See SR report: shielded send VM-scope loss, no watchdog on username/invite proving, 155k-block re-scan on watchdog restart, send-all drain guard inert, seam lock registry no release, Coinbase estimateNetworkFee on dashj, memo/exchange-rate dropped on SDK sends, wipe marks complete on failure, reset spinner can hang, restore date picker defaults to today, autosave 60 s no flush, RISKY threshold ~26 MB, preserved wallet copies never reclaimed, CoinJoin privacyMode dropped without migration</td>
 <td>static</td>
-<td>evidence/SR/REPORT.md</td>
+<td><a class=ev href="evidence/SR/REPORT.html">evidence/SR/REPORT.md</a></td>
 </tr>
 <tr>
 <td id="SR-28"><a href="#SR-28">SR-28</a></td>
@@ -322,23 +323,23 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>SR</td>
 <td>Send confirm dialog shows flat 0.0001 DASH fee (~44× real) and gates affordability on it</td>
 <td>static; S7 asked to confirm on device</td>
-<td>evidence/SR/REPORT.md</td>
+<td><a class=ev href="evidence/SR/REPORT.html">evidence/SR/REPORT.md</a></td>
 </tr>
 <tr>
 <td id="SR-29"><a href="#SR-29">SR-29</a></td>
 <td>S3</td>
 <td>SR</td>
 <td>Send-all reserve 1.5 duffs/B vs drain at 2 duffs/B → every send-max fails first attempt, relies on string-matched retry</td>
-<td>static; S1 C2 / S7 asked to grep log for the retry</td>
-<td>evidence/SR/REPORT.md</td>
+<td>static; S1 <a class=ev href="evidence/index.html#S1-C2">C2</a> / S7 asked to grep log for the retry</td>
+<td><a class=ev href="evidence/SR/REPORT.html">evidence/SR/REPORT.md</a></td>
 </tr>
 <tr>
 <td id="SR-30"><a href="#SR-30">SR-30/31</a></td>
 <td>S3</td>
 <td>SR</td>
 <td>Shielded "Max" send-to-address can never succeed; fiat-mode Max loses max handling</td>
-<td>static; S1 C4 asked to try</td>
-<td>evidence/SR/REPORT.md</td>
+<td>static; S1 <a class=ev href="evidence/index.html#S1-C4">C4</a> asked to try</td>
+<td><a class=ev href="evidence/SR/REPORT.html">evidence/SR/REPORT.md</a></td>
 </tr>
 <tr>
 <td id="SR-33"><a href="#SR-33">SR-33/34</a></td>
@@ -346,7 +347,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>SR</td>
 <td>Root cause of <a class=did href="DEFECT-LEDGER.html#D-001">D-001</a>: default auto_logout_minutes = 1, timer reset only by touch; PRE-EXISTING in 11.9.0. New: 0-minute mode now live via WalletActivityTracker.onStoppedLast</td>
 <td>static; S3 baseline check requested; recommend downgrading <a class=did href="DEFECT-LEDGER.html#D-001">D-001</a></td>
-<td>evidence/SR/REPORT.md</td>
+<td><a class=ev href="evidence/SR/REPORT.html">evidence/SR/REPORT.md</a></td>
 </tr>
 <tr>
 <td><a class=did href="evidence/SR/REPORT.html#SR-35">SR-35</a>..<a class=did href="evidence/SR/REPORT.html#SR-43">SR-43</a></td>
@@ -354,7 +355,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>SR</td>
 <td>See SR report (watchdog EXHAUSTED latch, wipe proceeds without marker, CrowdNode ISE, oversize recovery, armeabi-v7a dropped, exported receiver on API 29–32, 20 s load budget, contact handlers on own sends, compileSdk inside defaultConfig)</td>
 <td>static</td>
-<td>evidence/SR/REPORT.md</td>
+<td><a class=ev href="evidence/SR/REPORT.html">evidence/SR/REPORT.md</a></td>
 </tr>
 <tr>
 <td id="D-024"><a href="#D-024">D-024</a></td>
@@ -362,15 +363,15 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>S3, S7</td>
 <td>Cutover state never reaches SETTLED: persisted <code>cutover_state=CUT_OVER</code> after a full 100% replay + kill + relaunch; <code>CutoverAction.SETTLE</code> is never dispatched anywhere in wallet/src (only OBSERVE_READINESS and COMMIT_CUTOVER); the "SETTLED" word in the SPV phase line is a different flag</td>
 <td>confirmed by two streams + source</td>
-<td>S3/A3/06-restart/dashpay-datastore-strings.txt; S7 notes</td>
+<td><a class=ev href="evidence/S3/A3/06-restart/dashpay-datastore-strings.txt">S3/A3/06-restart/dashpay-datastore-strings.txt</a>; <a class=ev href="evidence/S7/notes.html">S7 notes</a></td>
 </tr>
 <tr>
 <td id="D-025"><a href="#D-025">D-025</a></td>
 <td class=S2>S2 (memory)</td>
 <td>S6</td>
 <td>Mainnet restore of the BIP39 test-vector seed (4 tx appearances, 0 balance) peaks at 995 MB TOTAL PSS / 847 MB native heap (ReplayMemTelemetry nativeHeapSize 1.18 GB) and settles at ~690 MB PSS / 540 MB native without returning to the ~350 MB fresh-wallet level; master dashj syncing the same seed uses ~200 MB PSS / 43 MB native</td>
-<td>confirmed on device (mem.csv)</td>
-<td>S6/mem.csv, S6/M2/*</td>
+<td>confirmed on device (<a class=ev href="evidence/S2/mem.csv">mem.csv</a>)</td>
+<td><a class=ev href="evidence/S6/mem.csv">S6/mem.csv</a>, <a class=ev href="evidence/S6/M2/01-more.webp">S6/M2/*</a><sup class=more><a href="evidence/index.html#S6-M2" title="24 files, open gallery">+23</a></sup></td>
 </tr>
 <tr>
 <td id="D-026"><a href="#D-026">D-026</a></td>
@@ -378,7 +379,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>S6</td>
 <td>Mainnet tx detail: received tx shows no counter-party address and no fee row; sent tx shows addresses but no fee row (S2 saw a fee row on testnet)</td>
 <td>confirmed (S6 REPORT S6-D4)</td>
-<td>S6/M2/15,16-txdetail*.png</td>
+<td><a class=ev href="evidence/S6/M2/15-txdetail-received-2018.webp">S6/M2/15,16-txdetail*.png</a><sup class=more><a href="evidence/S6/M2/16-txdetail-scrolled.webp" title="S6/M2/16-txdetail-scrolled.webp">2</a></sup></td>
 </tr>
 <tr>
 <td id="D-027"><a href="#D-027">D-027</a></td>
@@ -386,7 +387,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td class=S1>S1</td>
 <td>Shield-from-wallet: the platform-side cost (0.00212852) of the shield is disclosed nowhere in the UI; only the L1 fee is shown</td>
 <td>candidate</td>
-<td class=S1>S1/A1/03-shield/14-shield-tx-detail.png</td>
+<td><a class=ev href="evidence/S1/A1/03-shield/14-shield-tx-detail.webp">S1/A1/03-shield/14-shield-tx-detail.png</a></td>
 </tr>
 <tr>
 <td id="D-028"><a href="#D-028">D-028</a></td>
@@ -394,15 +395,15 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td class=S1>S1</td>
 <td>Max shield first attempt is rejected pre-broadcast ("no lock tracked"), then auto-retried with a reduced amount; user-invisible but logs a full stack trace each time (matches <a class=did href="DEFECT-LEDGER.html#SR-29">SR-29</a> pattern)</td>
 <td>confirmed in log</td>
-<td class=S1>S1 wallet.log 05:21:58</td>
+<td class=S1>S1 <a class=ev href="evidence/S4/walletlog-final/files/log/wallet.log">wallet.log</a> 05:21:58</td>
 </tr>
 <tr>
 <td id="D-029"><a href="#D-029">D-029</a></td>
 <td>dup of <a class=did href="DEFECT-LEDGER.html#D-031">D-031</a></td>
 <td class=S1>S1</td>
-<td>Send on a synced wallet threw <code>SendEngineNotSyncedException</code>; S1's C1 send became impossible ~4 min after the app went idle ('not fully synced'), only an app restart recovered</td>
+<td>Send on a synced wallet threw <code>SendEngineNotSyncedException</code>; S1's <a class=ev href="evidence/index.html#S1-C1">C1</a> send became impossible ~4 min after the app went idle ('not fully synced'), only an app restart recovered</td>
 <td>merged into <a class=did href="DEFECT-LEDGER.html#D-031">D-031</a></td>
-<td class=S1>S1 notes line 164</td>
+<td><a class=ev href="evidence/S1/notes.html">S1 notes</a> line 164</td>
 </tr>
 <tr>
 <td id="D-030"><a href="#D-030">D-030</a></td>
@@ -410,15 +411,15 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>S4</td>
 <td>Address book opens on the "Sending addresses" tab (empty) instead of receiving; Import private key offers only QR scan (no text entry)</td>
 <td>candidate (UX)</td>
-<td>S4/E7/02, S4/E7/08-11</td>
+<td><a class=ev href="evidence/S4/E7/02-address-book.webp">S4/E7/02</a>, <a class=ev href="evidence/S4/E7/08-scan-private-key.webp">S4/E7/08-11</a><sup class=more><a href="evidence/S4/E7/09-scan-camera-denied.webp" title="S4/E7/09-scan-camera-denied.webp">2</a> <a href="evidence/S4/E7/10-scan-escaped.webp" title="S4/E7/10-scan-escaped.webp">3</a> <a href="evidence/S4/E7/11-scan-escaped-2.webp" title="S4/E7/11-scan-escaped-2.webp">4</a></sup></td>
 </tr>
 <tr>
 <td id="D-031"><a href="#D-031">D-031</a></td>
 <td class=S1><strong>S1</strong></td>
-<td>S7, S1 (C1 FAIL); S9 non-repro clarifies trigger</td>
+<td>S7, S1 (<a class=ev href="evidence/index.html#S1-C1">C1</a> FAIL); S9 non-repro clarifies trigger</td>
 <td><strong>Sends fail after the idle teardown while the app stays in the foreground.</strong> The once-a-minute idle check tears down the L1 engine (<code>serviceJob cancelled after 4 minutes</code> → <code>L1ShadowLifecycle STOPPED</code>), and nothing restarts it until MainActivity goes through pause/resume. A send attempted in that state fails with "Currently payments are not possible because the wallet is not fully synced" (<code>SendEngineNotSyncedException: L1 funding gate closed: SDK L1 engine not running</code>, SendCoinsTaskRunner.kt:172/451) and in-place retries never recover (S7: 3 attempts; S1: only an app restart recovered). S9 could not reproduce because every teardown it triggered was followed by an activity resume (<code>RESUMING after 0–19 s down</code>), which restarts the engine; i.e. the exposure is "teardown fired while the user is sitting on the home screen and then taps Send". Recovery: background + foreground (S7, 3 m 17 s down) or force-stop. Root cause family <a class=did href="DEFECT-LEDGER.html#SR-09">SR-09</a> (latched stopSelf)</td>
 <td>confirmed on two wallets, trigger characterised</td>
-<td class=S1>S1/C1/08-after-confirm.png, S1/C1/09-send-blocked-log.txt (06:01:00 → 06:01:26), S7/TX1/SR29-05..09, S7 wallet.log 06:07:00–06:10:17, S9 notes cycles 1–4</td>
+<td><a class=ev href="evidence/S1/C1/08-after-confirm.webp">S1/C1/08-after-confirm.png</a>, <a class=ev href="evidence/S1/C1/09-send-blocked-log.txt">S1/C1/09-send-blocked-log.txt</a> (06:01:00 → 06:01:26), <a class=ev href="evidence/S7/TX1/SR29-05-problem-sending.webp">S7/TX1/SR29-05..09</a><sup class=more><a href="evidence/S7/TX1/SR29-06-after-dismiss.webp" title="S7/TX1/SR29-06-after-dismiss.webp">2</a> <a href="evidence/S7/TX1/SR29-07-retry-result.webp" title="S7/TX1/SR29-07-retry-result.webp">3</a> <a href="evidence/S7/TX1/SR29-08-normal-send-in-enginedown.webp" title="S7/TX1/SR29-08-normal-send-in-enginedown.webp">4</a> <a href="evidence/S7/TX1/SR29-09-after-bg-fg.webp" title="S7/TX1/SR29-09-after-bg-fg.webp">5</a></sup>, S7 <a class=ev href="evidence/S7/E8/pre-upgrade/files/log/wallet.log">wallet.log</a> 06:07:00–06:10:17, <a class=ev href="evidence/S9/notes.html">S9 notes</a> cycles 1–4</td>
 </tr>
 <tr>
 <td id="D-032"><a href="#D-032">D-032</a></td>
@@ -426,7 +427,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>S7</td>
 <td>Send amount field silently clamps to balance − 0.0001 (flat reserve) with no message; <a class=did href="DEFECT-LEDGER.html#SR-28">SR-28</a>'s flat 0.0001 fee display confirmed</td>
 <td>confirmed</td>
-<td>S7/TX1/SR28-02,03</td>
+<td><a class=ev href="evidence/S7/TX1/SR28-02-amount-entered.webp">S7/TX1/SR28-02,03</a><sup class=more><a href="evidence/S7/TX1/SR28-03-clamped-to-balance-minus-0.0001.webp" title="S7/TX1/SR28-03-clamped-to-balance-minus-0.0001.webp">2</a></sup></td>
 </tr>
 <tr>
 <td id="D-033"><a href="#D-033">D-033</a></td>
@@ -434,7 +435,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>S7, S1</td>
 <td>Send-all/max first attempt always fails at the SDK (<code>CoreInsufficientFunds available 99999547 required 99999740</code>) then retries "engine-authoritatively"; confirms <a class=did href="DEFECT-LEDGER.html#SR-29">SR-29</a> (also seen on shield-max, <a class=did href="DEFECT-LEDGER.html#D-028">D-028</a>)</td>
 <td>confirmed</td>
-<td>S7 wallet.log 06:11:28</td>
+<td>S7 <a class=ev href="evidence/S3/A3b/final/files/log/wallet.log">wallet.log</a> 06:11:28</td>
 </tr>
 <tr>
 <td id="D-034"><a href="#D-034">D-034</a></td>
@@ -442,7 +443,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>S5</td>
 <td>de-DE: contacts header "Pending Requests (1)" stays English (string <code>contacts_pending_sent_requests_count</code> only in values/strings-dashpay.xml); "DashPay beitreiten" typo (should be "beitreten", values-de strings-dashpay.xml:158 + strings-extra.xml:31); "eine dieser Kriterien" should be "einem"</td>
 <td>confirmed</td>
-<td>S5/D7/*</td>
+<td><a class=ev href="evidence/S5/D7/01-de-lock.webp">S5/D7/*</a><sup class=more><a href="evidence/index.html#S5-D7" title="14 files, open gallery">+13</a></sup></td>
 </tr>
 <tr>
 <td id="D-035"><a href="#D-035">D-035</a></td>
@@ -450,7 +451,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>S6</td>
 <td>Mainnet upgrade path (master → fix, test-vector seed): replay peaks at 975 MB PSS / 918 MB native on a wallet with 4 tx appearances; no LMK on a 3 GB emulator but this is ~5× dashj's footprint and would exceed a 512 MB-heap phone's budget</td>
 <td>confirmed on device</td>
-<td>S6/mem.csv, S6/M3/*</td>
+<td><a class=ev href="evidence/S6/mem.csv">S6/mem.csv</a>, <a class=ev href="evidence/S6/M3/01-master-first-launch.webp">S6/M3/*</a><sup class=more><a href="evidence/index.html#S6-M3" title="30 files, open gallery">+29</a></sup></td>
 </tr>
 <tr>
 <td id="D-036"><a href="#D-036">D-036</a></td>
@@ -458,15 +459,15 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>S6</td>
 <td>Sent-row amount semantics changed vs master: master lists the 2018 mainnet send as −0.0099 (payment only); fix build lists −0.01 (payment + 0.0001 fee = total debit). Either is defensible but it is a visible behaviour change on upgrade and inconsistent with S1's shield row (shows the L1 fee separately)</td>
 <td>confirmed</td>
-<td>S6/M3/07-master-after-20min.png vs S6/M2/14-SYNCED-home.png</td>
+<td><a class=ev href="evidence/S6/M3/07-master-after-20min.webp">S6/M3/07-master-after-20min.png</a> vs <a class=ev href="evidence/S6/M2/14-SYNCED-home.webp">S6/M2/14-SYNCED-home.png</a></td>
 </tr>
 <tr>
 <td id="D-037"><a href="#D-037">D-037</a></td>
 <td class=S1><strong>S1</strong></td>
 <td>S8</td>
 <td><strong>Historical fully-spent transactions have no history row.</strong> Massive wallet (2,190 SDK txs): 111 have NO display row, including the wallet's ONLY incoming tx (the 1 tDASH funding receive); <code>valueSatoshis &gt; 0</code> returns zero rows. ROOT CAUSE (S8, source + live DB): the display-cache pipeline enumerates SDK records via <code>SdkTxStoreWalker</code> which walks the <code>txos</code> table (union of txid/spendingTxid, <code>SdkTxStoreWalker.kt:41-53</code>, <code>CutoverUiDataService.kt:1361-1387 currentWalletRecordCount</code>), and <code>TxDisplayCacheService.decideCacheRebuild</code> (<code>TxDisplayCacheService.kt:1704-1723</code>) only reconciles when that same txos-union count exceeds the display rows. Any tx with no <code>txos</code> row is invisible to both writer and checker: <code>transactions</code> = 2190, txos-union = 2079, the 111 missing display rows are exactly the txids absent from the union; the funding tx has zero txos rows. The replay materialises TXO rows only for outputs it can still see, so transactions whose outputs were already spent before the replay walked that window (i.e. most of a real user's old history, incl. old receives) drop out permanently. Nothing repairs it: 5-min wait, bg/fg, force-stop+relaunch all leave delta = 111. Balance stays correct; history does not. Fix direction: count/enumerate from <code>transactions</code> (via <code>transaction_account_involvements</code>) instead of <code>txos</code>. <strong>CONFIRMED on the reference wallet by S2</strong>: <code>transactions</code> = 3269 stable, but the display pipeline sees only 2375 (restore #3) / 2943 (restore #2) SDK records and renders 1531 / 1546 / 1553 rows across three restores of the same seed (non-deterministic; restore #4 = 1557 rows, 404 txs never reach the pipeline); 894 txs never reach the pipeline on restore #3. Oldest row (2019-07-31 first receive) is intact, so rows are dropped scattered through the history, not truncated</td>
-<td>ROOT-CAUSED, confirmed on two wallets. RACY and size-dependent (S8 L6): second restore of the same (now 3,001-tx) wallet lost 458 rows (15.3%) vs 111 (9.8%) at 1,132 txs; only 65 of the original 111 recur, 393 are new; the funding receive is missing in both restores. Balance stays exact to the duff (97,444,140 duffs = explorer UTXO sum over 5,204 utxos). <strong>CONFIRMED on the reference wallet by S11 with explorer cross-check</strong>: of 166 pure-incoming txs on the first 20 receive addresses, 0 are missing from <code>transactions</code>, 41 are missing from the txos-union, 2 have no display row (30d25cfa…5a16 +0.2 and 301d24c9…ce12 +0.33848582, block 1123983, 2024-10-19) → 0.53848582 tDASH of receives invisible in the history; the wallet's first 2019 receive IS present. Rescan blockchain is NOT a workaround: it recovered 64 of 111 rows and re-latched on the remaining 47 (all txos-absent), funding receive still missing (S8/L1/rescan-test.txt, missing-post-rescan.txt)</td>
-<td>S8/L1/missing-from-display-cache.txt, S8/L1/missing-by-height.txt, S8/L1/planner-log.txt, S8/L1/txdisplaycache-lines.txt, S8/L1/logs-isolation/files/log/wallet.log:927-929</td>
+<td>ROOT-CAUSED, confirmed on two wallets. RACY and size-dependent (S8 <a class=ev href="evidence/index.html#S8-L6">L6</a>): second restore of the same (now 3,001-tx) wallet lost 458 rows (15.3%) vs 111 (9.8%) at 1,132 txs; only 65 of the original 111 recur, 393 are new; the funding receive is missing in both restores. Balance stays exact to the duff (97,444,140 duffs = explorer UTXO sum over 5,204 utxos). <strong>CONFIRMED on the reference wallet by S11 with explorer cross-check</strong>: of 166 pure-incoming txs on the first 20 receive addresses, 0 are missing from <code>transactions</code>, 41 are missing from the txos-union, 2 have no display row (30d25cfa…5a16 +0.2 and 301d24c9…ce12 +0.33848582, block 1123983, 2024-10-19) → 0.53848582 tDASH of receives invisible in the history; the wallet's first 2019 receive IS present. Rescan blockchain is NOT a workaround: it recovered 64 of 111 rows and re-latched on the remaining 47 (all txos-absent), funding receive still missing (<a class=ev href="evidence/S8/L1/rescan-test.txt">S8/L1/rescan-test.txt</a>, <a class=ev href="evidence/S8/L1/missing-post-rescan.txt">missing-post-rescan.txt</a>)</td>
+<td><a class=ev href="evidence/S8/L1/missing-from-display-cache.txt">S8/L1/missing-from-display-cache.txt</a>, <a class=ev href="evidence/S8/L1/missing-by-height.txt">S8/L1/missing-by-height.txt</a>, <a class=ev href="evidence/S8/L1/planner-log.txt">S8/L1/planner-log.txt</a>, <a class=ev href="evidence/S8/L1/txdisplaycache-lines.txt">S8/L1/txdisplaycache-lines.txt</a>, <a class=ev href="evidence/S8/L1/logs-isolation/files/log/wallet.log">S8/L1/logs-isolation/files/log/wallet.log:927-929</a></td>
 </tr>
 <tr>
 <td id="D-038"><a href="#D-038">D-038</a></td>
@@ -474,7 +475,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>S5</td>
 <td>Invite claim: after force-stop + relaunch the pending invite is forgotten (Join DashPay "Create" becomes disabled); re-opening the link too soon shows "Invitation Error / DashPay is currently processing an invite"; re-opening again later recovers</td>
 <td>confirmed</td>
-<td>S5/D2b/20, S5/D2b/22</td>
+<td><a class=ev href="evidence/S5/D2b/20-after-create2.webp">S5/D2b/20</a>, <a class=ev href="evidence/S5/D2b/22-invitation-error-dialog.webp">S5/D2b/22</a></td>
 </tr>
 <tr>
 <td id="D-039"><a href="#D-039">D-039</a></td>
@@ -482,7 +483,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>S5</td>
 <td>Invite receiving side has no dedicated "You have been invited by …" screen; only the generic Join DashPay card (inviter name only visible in the link / sender-side preview)</td>
 <td>candidate (UX/design?)</td>
-<td>S5/D2b/*</td>
+<td><a class=ev href="evidence/S5/D2b/01-walletB-backup.webp">S5/D2b/*</a><sup class=more><a href="evidence/index.html#S5-D2b" title="29 files, open gallery">+28</a></sup></td>
 </tr>
 <tr>
 <td id="D-040"><a href="#D-040">D-040</a></td>
@@ -490,15 +491,15 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>S7</td>
 <td>Security screen has no "Backup wallet" (file backup) entry on this build; file backup/restore is unavailable to release users (pairs with <a class=did href="DEFECT-LEDGER.html#D-015">D-015</a>)</td>
 <td>confirmed</td>
-<td>S7/R1/01-security.png</td>
+<td><a class=ev href="evidence/S7/R1/01-security.webp">S7/R1/01-security.png</a></td>
 </tr>
 <tr>
 <td id="D-041"><a href="#D-041">D-041</a></td>
 <td class=S1><strong>S1</strong></td>
 <td class=S2>S2</td>
-<td>After kill/relaunch torture during replay (B2), home shows a grossly inflated balance <strong>2319.448975 tDASH</strong> with NO "Syncing balance" label and NO progress indicator, i.e. the app claims to be synced while wrong by 21×. Ground truth in dash-sdk.db txos = 107.08173522. The <code>SDK balance published</code> stream (all <code>l1Synced=false</code>) stopped converging 4 s before <code>phase=SYNCED</code>; the last stale value stays on screen; still wrong 9 min later; RECOVERY: force-stop + relaunch fixes it (S2 video B2/b2-restart-recovery.mp4); S2 DB diff: every balance bucket identical except bip44 = 223,410,106,258 (bad) vs 2,173,382,240 (correct), ~102×; txCount identical (3269) so no tx missing, only the bip44 UTXO-set aggregation is wrong → spent outputs not retired from the in-memory set when blocks are re-processed after a restart. bg/fg does NOT fix it; force-stop + relaunch does. Reproduced 2/2 on kill runs (2319.45 and 2363.28), 0/2 on no-kill runs; on run #4 the last published line even carries <code>l1Synced=true</code>. <strong>CONFIRMED on a second device by S11 (P2)</strong>: one force-stop at 92.7% → header settles at 2336.304271 (21.8×) with no syncing indicator, last publish 2 s before <code>phase=SYNCED</code>, on-disk unspent-txos sum exact at 107.08173522. <strong>The bad value is PERSISTED as <code>lastKnown=233630427063</code></strong>, so it will also be the held balance on the next replay</td>
+<td>After kill/relaunch torture during replay (<a class=ev href="evidence/index.html#S2-B2">B2</a>), home shows a grossly inflated balance <strong>2319.448975 tDASH</strong> with NO "Syncing balance" label and NO progress indicator, i.e. the app claims to be synced while wrong by 21×. Ground truth in dash-sdk.db txos = 107.08173522. The <code>SDK balance published</code> stream (all <code>l1Synced=false</code>) stopped converging 4 s before <code>phase=SYNCED</code>; the last stale value stays on screen; still wrong 9 min later; RECOVERY: force-stop + relaunch fixes it (S2 video <a class=ev href="evidence/S2/B2/b2-restart-recovery.mp4">B2/b2-restart-recovery.mp4</a>); S2 DB diff: every balance bucket identical except bip44 = 223,410,106,258 (bad) vs 2,173,382,240 (correct), ~102×; txCount identical (3269) so no tx missing, only the bip44 UTXO-set aggregation is wrong → spent outputs not retired from the in-memory set when blocks are re-processed after a restart. bg/fg does NOT fix it; force-stop + relaunch does. Reproduced 2/2 on kill runs (2319.45 and 2363.28), 0/2 on no-kill runs; on run #4 the last published line even carries <code>l1Synced=true</code>. <strong>CONFIRMED on a second device by S11 (<a class=ev href="evidence/index.html#S11-P2">P2</a>)</strong>: one force-stop at 92.7% → header settles at 2336.304271 (21.8×) with no syncing indicator, last publish 2 s before <code>phase=SYNCED</code>, on-disk unspent-txos sum exact at 107.08173522. <strong>The bad value is PERSISTED as <code>lastKnown=233630427063</code></strong>, so it will also be the held balance on the next replay</td>
 <td>confirmed on device; tx history itself correct</td>
-<td class=S2>S2/B2/11-BALANCE-after-kills.png, S2 wallet.log 06:19:20-06:19:25</td>
+<td><a class=ev href="evidence/S2/B2/11-BALANCE-after-kills.webp">S2/B2/11-BALANCE-after-kills.png</a>, S2 <a class=ev href="evidence/S2/final-walletlog/files/log/wallet.log">wallet.log</a> 06:19:20-06:19:25</td>
 </tr>
 <tr>
 <td id="D-042"><a href="#D-042">D-042</a></td>
@@ -506,7 +507,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td class=S1>S1</td>
 <td>Shielded "Max" (both directions) fills the whole balance with no fee reserve; the first attempt is always rejected pre-broadcast and silently retried with a smaller amount, so the user confirms one amount and receives ~0.00275 less (withdraw) / the shield leaves 737–1225 duffs of dust stranded instead of draining to zero. <a class=did href="DEFECT-LEDGER.html#SR-30">SR-30</a> confirmed (with auto-retry rescue); the transparent send-all path did NOT show the retry (<a class=did href="DEFECT-LEDGER.html#SR-29">SR-29</a> not reproduced there by S1, but S7 did)</td>
 <td>confirmed</td>
-<td class=S1>S1/SR30/*, S1/C2/07-11, S1 wallet.log 06:10:44, 06:25:17</td>
+<td><a class=ev href="evidence/S1/SR30/01-max-shielded-to-wallet.webp">S1/SR30/*</a><sup class=more><a href="evidence/S1/SR30/02-confirm.webp" title="S1/SR30/02-confirm.webp">2</a> <a href="evidence/S1/SR30/03-after-pin.webp" title="S1/SR30/03-after-pin.webp">3</a> <a href="evidence/S1/SR30/04-after-wait.webp" title="S1/SR30/04-after-wait.webp">4</a> <a href="evidence/S1/SR30/s1-sr30-max.mp4" title="S1/SR30/s1-sr30-max.mp4">5</a></sup>, <a class=ev href="evidence/S1/C2/07-drain-max.webp">S1/C2/07-11</a><sup class=more><a href="evidence/S1/C2/08-after-drain.webp" title="S1/C2/08-after-drain.webp">2</a> <a href="evidence/S1/C2/09-home-drained.webp" title="S1/C2/09-home-drained.webp">3</a> <a href="evidence/S1/C2/10-exact-after-drain.webp" title="S1/C2/10-exact-after-drain.webp">4</a> <a href="evidence/S1/C2/11-drain-log.txt" title="S1/C2/11-drain-log.txt">5</a></sup>, S1 <a class=ev href="evidence/S1/final-logs/files/log/wallet.log">wallet.log</a> 06:10:44, 06:25:17</td>
 </tr>
 <tr>
 <td id="D-043"><a href="#D-043">D-043</a></td>
@@ -514,7 +515,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>S7</td>
 <td>Tx detail duplicates every input and output address row (1 input shown twice, 2 outputs shown 4 times)</td>
 <td>confirmed</td>
-<td>S7/TX1/13-duplicate-address-rows.png</td>
+<td><a class=ev href="evidence/S7/TX1/13-duplicate-address-rows.webp">S7/TX1/13-duplicate-address-rows.png</a></td>
 </tr>
 <tr>
 <td id="D-044"><a href="#D-044">D-044</a></td>
@@ -522,7 +523,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>S7</td>
 <td>Tx list row time vs detail time differ for the same tx (12:30 AM vs 12:29 AM); list timestamps shift by minutes after a rescan (pairs with <a class=did href="DEFECT-LEDGER.html#D-018">D-018</a>)</td>
 <td>confirmed</td>
-<td>S7/TX1/06 vs 07</td>
+<td><a class=ev href="evidence/S7/TX1/06-pull-to-refresh.webp">S7/TX1/06</a> vs 07</td>
 </tr>
 <tr>
 <td id="D-045"><a href="#D-045">D-045</a></td>
@@ -530,7 +531,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>S7</td>
 <td>After Rescan blockchain, an already-notified receive (faucet, 05:29) is re-notified as a new "Received DASH 1.00" (stale/duplicate notification)</td>
 <td>confirmed</td>
-<td>S7/N1/*, wallet.log 06:04:46</td>
+<td><a class=ev href="evidence/S7/N1/01-receive-addr5.webp">S7/N1/*</a><sup class=more><a href="evidence/S7/N1/02-specify-amount.webp" title="S7/N1/02-specify-amount.webp">2</a> <a href="evidence/S7/N1/03-specify-amount-qr.webp" title="S7/N1/03-specify-amount-qr.webp">3</a> <a href="evidence/S7/N1/04-state.webp" title="S7/N1/04-state.webp">4</a> <a href="evidence/S7/N1/05-receive-tab.webp" title="S7/N1/05-receive-tab.webp">5</a> <a href="evidence/S7/N1/06-notification-shade.webp" title="S7/N1/06-notification-shade.webp">6</a> <a href="evidence/S7/N1/07-notification-expanded.webp" title="S7/N1/07-notification-expanded.webp">7</a></sup>, <a class=ev href="evidence/S7/E8/pre-upgrade/files/log/wallet.log">wallet.log</a> 06:04:46</td>
 </tr>
 <tr>
 <td id="D-046"><a href="#D-046">D-046</a></td>
@@ -538,7 +539,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>S7</td>
 <td>Tx detail has no copy-txid or share affordance in this build (source: no ClipboardManager / ACTION_SEND in TransactionDetailsDialogFragment); pull-to-refresh on the tx list shows no indicator</td>
 <td>confirmed</td>
-<td>S7/TX1/06-09</td>
+<td><a class=ev href="evidence/S7/TX1/06-pull-to-refresh.webp">S7/TX1/06-09</a><sup class=more><a href="evidence/S7/TX1/07-txdetail-received.webp" title="S7/TX1/07-txdetail-received.webp">2</a> <a href="evidence/S7/TX1/08-explorer.webp" title="S7/TX1/08-explorer.webp">3</a> <a href="evidence/S7/TX1/09-explorer-opened.webp" title="S7/TX1/09-explorer-opened.webp">4</a></sup></td>
 </tr>
 <tr>
 <td id="D-047"><a href="#D-047">D-047</a></td>
@@ -546,7 +547,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td class=S1>S1</td>
 <td>Unshield tx detail presents an internal unshield as an external receive ("Amount Received", "Received at", Tax Category "Income") while the list row correctly says "Unshielded"</td>
 <td>confirmed</td>
-<td class=S1>S1/C4/07-unshield-tx-detail.png</td>
+<td><a class=ev href="evidence/S1/C4/07-unshield-tx-detail.webp">S1/C4/07-unshield-tx-detail.png</a></td>
 </tr>
 <tr>
 <td id="D-048"><a href="#D-048">D-048</a></td>
@@ -554,7 +555,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td class=S1>S1</td>
 <td>Outgoing address-send defaults Tax Category to "Income" although the app's own explainer says outgoing defaults to "Expense"; post-send detail sheet shows neither fee nor recipient</td>
 <td>confirmed</td>
-<td class=S1>S1/C1/13-after-retry2.png, S1/C1/15-tax-explainer.png</td>
+<td><a class=ev href="evidence/S1/C1/13-after-retry2.webp">S1/C1/13-after-retry2.png</a>, <a class=ev href="evidence/S1/C1/15-tax-explainer.webp">S1/C1/15-tax-explainer.png</a></td>
 </tr>
 <tr>
 <td id="D-049"><a href="#D-049">D-049</a></td>
@@ -562,7 +563,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td class=S1>S1</td>
 <td>CSV export omits internal transactions, exports an own-pool unshield as "Income", and leaves every Fee column empty</td>
 <td>confirmed</td>
-<td class=S1>S1/C7/06-export.csv</td>
+<td><a class=ev href="evidence/S1/C7/06-export.csv">S1/C7/06-export.csv</a></td>
 </tr>
 <tr>
 <td id="D-050"><a href="#D-050">D-050</a></td>
@@ -570,7 +571,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td class=S1>S1</td>
 <td>Shielded transfer confirm sheet shows no fee line; shielding 1.0 consumed 0.00213115 of which only the 0.00000263 L1 fee is visible anywhere (extends <a class=did href="DEFECT-LEDGER.html#D-027">D-027</a>)</td>
 <td>confirmed</td>
-<td class=S1>S1/A1/03-shield/08-confirm.png, 15-shielded-screen-after.png</td>
+<td><a class=ev href="evidence/S1/A1/03-shield/08-confirm.webp">S1/A1/03-shield/08-confirm.png</a>, <a class=ev href="evidence/S1/A1/03-shield/15-shielded-screen-after.webp">15-shielded-screen-after.png</a></td>
 </tr>
 <tr>
 <td id="D-051"><a href="#D-051">D-051</a></td>
@@ -578,7 +579,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td class=S1>S1</td>
 <td>More screen "Shielded" card is inert; the shielded balance entry point is Payments › Internal › Shielded balance</td>
 <td>candidate (UX)</td>
-<td class=S1>S1/A1/03-shield/*</td>
+<td><a class=ev href="evidence/S1/A1/03-shield/01-more-tab.webp">S1/A1/03-shield/*</a><sup class=more><a href="evidence/index.html#S1-A1" title="16 files, open gallery">+15</a></sup></td>
 </tr>
 <tr>
 <td id="D-052"><a href="#D-052">D-052</a></td>
@@ -586,7 +587,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>S5</td>
 <td>After a seed restore of a wallet with DashPay contacts the app logs, once a minute, unrepaired "DashPay contact coverage DEBT … the filter scan is at 1556585 but the earliest received contact request sits at core height 1556575 … Payments to those chains were scanned past. This is reported, not repaired" (30×). No payment was lost in this run, but a contact payment received in that window would be invisible</td>
 <td>confirmed in log</td>
-<td>S5/logs/grep-watchlist-final.txt</td>
+<td><a class=ev href="evidence/S5/logs/grep-watchlist-final.txt">S5/logs/grep-watchlist-final.txt</a></td>
 </tr>
 <tr>
 <td id="D-053"><a href="#D-053">D-053</a></td>
@@ -594,7 +595,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>S5</td>
 <td>Home "Join DashPay" tile disappears once the wallet has a balance and a tx; the entry point survives only in More</td>
 <td>confirmed</td>
-<td>S5/D0/01 vs D0/03, D0/05</td>
+<td><a class=ev href="evidence/S5/D0/01-home-zero-balance.webp">S5/D0/01</a> vs <a class=ev href="evidence/S5/D0/03-home-funded.webp">D0/03</a>, <a class=ev href="evidence/S5/D0/05-more-tab-funded.webp">D0/05</a></td>
 </tr>
 <tr>
 <td id="D-054"><a href="#D-054">D-054</a></td>
@@ -602,7 +603,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>S5</td>
 <td>Failed username criteria do not sort to the top (static LinearLayout, <code>fragment_request_username.xml:111</code>) despite the commit "failed username validations sort to the top"</td>
 <td>confirmed</td>
-<td>S5/D1/11,12,14</td>
+<td><a class=ev href="evidence/S5/D1/11-criteria-invalid-chars-underscore.webp">S5/D1/11,12,14</a><sup class=more><a href="evidence/S5/D1/12-criteria-too-long.webp" title="S5/D1/12-criteria-too-long.webp">2</a> <a href="evidence/S5/D1/14-criteria-leading-hyphen.webp" title="S5/D1/14-criteria-leading-hyphen.webp">3</a></sup></td>
 </tr>
 <tr>
 <td id="D-055"><a href="#D-055">D-055</a></td>
@@ -610,15 +611,15 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>S5</td>
 <td>Copy: "paste the link bellow" (identity verification screen); invite privacy sheet shows identical Private/Standard fee columns (0.03/0.03, 0.25/0.25); Select-Security-Level screen reuses <code>non_contested_name_title/_description</code> ids for the 24-word option</td>
 <td>confirmed</td>
-<td>S5/D1/24, S5/D2/03, S5/setup/02</td>
+<td><a class=ev href="evidence/S5/D1/24-verify-identity-screen.webp">S5/D1/24</a>, <a class=ev href="evidence/S5/D2/03-invite-screen.webp">S5/D2/03</a>, <a class=ev href="evidence/S5/setup/02-after-create-new.webp">S5/setup/02</a></td>
 </tr>
 <tr>
 <td id="D-056"><a href="#D-056">D-056</a></td>
 <td class=S1><strong>S1</strong></td>
 <td>S3</td>
-<td>Locked-device upgrade (A3b): the app starts while the device is locked, the SDK bind is correctly deferred (DEVICE_LOCKED), the bind succeeds 3 s after unlock, the pending notification clears, the explainer shows — but the L1 engine is NEVER started in that process: <code>startIfEnabled()</code> ran once before the bind ("not started: app wallet not bound to the SDK yet") and nothing re-kicks it after <code>onBindEstablished</code>. Result: <code>L1 shadow SPV started</code> count 0, replay wedged at 0% for &gt; 4 min, home header stuck on "Syncing…" with the stale last-known balance, and the foreground service is pinned alive forever by the replay guard ("idle counters, but a replay is in progress (0%) — keeping the service alive"). Only production call sites of <code>startIfEnabled()</code> are PlatformSyncService.kickSdkEngines (BlockchainServiceImpl.resume on a FGS start), the filter-stall watchdog (needs a running engine) and post-wallet-re-creation. RECOVERY PROBES: bg/fg → NO; airplane off/on → NO; kill + relaunch → YES (engine started 12 s later). Wedge lasted 16 min 10 s until the forced restart; the UI shows "Syncing…" at 0% with a stale balance and gives no hint</td>
+<td>Locked-device upgrade (<a class=ev href="evidence/index.html#S3-A3b">A3b</a>): the app starts while the device is locked, the SDK bind is correctly deferred (DEVICE_LOCKED), the bind succeeds 3 s after unlock, the pending notification clears, the explainer shows — but the L1 engine is NEVER started in that process: <code>startIfEnabled()</code> ran once before the bind ("not started: app wallet not bound to the SDK yet") and nothing re-kicks it after <code>onBindEstablished</code>. Result: <code>L1 shadow SPV started</code> count 0, replay wedged at 0% for &gt; 4 min, home header stuck on "Syncing…" with the stale last-known balance, and the foreground service is pinned alive forever by the replay guard ("idle counters, but a replay is in progress (0%) — keeping the service alive"). Only production call sites of <code>startIfEnabled()</code> are PlatformSyncService.kickSdkEngines (BlockchainServiceImpl.resume on a FGS start), the filter-stall watchdog (needs a running engine) and post-wallet-re-creation. RECOVERY PROBES: bg/fg → NO; airplane off/on → NO; kill + relaunch → YES (engine started 12 s later). Wedge lasted 16 min 10 s until the forced restart; the UI shows "Syncing…" at 0% with a stale balance and gives no hint</td>
 <td>confirmed on device + source</td>
-<td>S3/A3b/15-home.png, S3/A3b/grep-engine-never-started.txt, S3/A3b/grep-unlock-bind.txt, S3/A3b/a3b-unlock.mp4</td>
+<td><a class=ev href="evidence/S3/A3b/15-home.webp">S3/A3b/15-home.png</a>, <a class=ev href="evidence/S3/A3b/grep-engine-never-started.txt">S3/A3b/grep-engine-never-started.txt</a>, <a class=ev href="evidence/S3/A3b/grep-unlock-bind.txt">S3/A3b/grep-unlock-bind.txt</a>, <a class=ev href="evidence/S3/A3b/a3b-unlock.mp4">S3/A3b/a3b-unlock.mp4</a></td>
 </tr>
 <tr>
 <td id="D-057"><a href="#D-057">D-057</a></td>
@@ -626,7 +627,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>S7, S9</td>
 <td>Send-result sheet shows the CHANGE address as "Sent to" (real recipient never displayed) and, for a self-send, the fee as the amount (−0.00000226 instead of 0.001); verified against insight</td>
 <td>confirmed on two wallets</td>
-<td>S7/BK1/15-SR03-send-result.png, S7/BK1/17</td>
+<td><a class=ev href="evidence/S7/BK1/15-SR03-send-result.webp">S7/BK1/15-SR03-send-result.png</a>, <a class=ev href="evidence/S7/BK1/17-state.webp">S7/BK1/17</a></td>
 </tr>
 <tr>
 <td id="D-058"><a href="#D-058">D-058</a></td>
@@ -634,7 +635,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>S7</td>
 <td>History filter › Sent renders a blank area with no empty-state text (master printed "There are no transactions to display")</td>
 <td>confirmed</td>
-<td>S7/TX1/03 vs S7/E8/13</td>
+<td><a class=ev href="evidence/S7/TX1/03-filter-sent.webp">S7/TX1/03</a> vs <a class=ev href="evidence/S7/E8/13-master-home.webp">S7/E8/13</a></td>
 </tr>
 <tr>
 <td id="D-059"><a href="#D-059">D-059</a></td>
@@ -642,7 +643,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>S3</td>
 <td>Inactivity/pending-bind notification on the lock screen quotes a stale partial balance (6.93 vs 107.08)</td>
 <td>confirmed</td>
-<td>S3/A3b/08-shade-on-lockscreen.png</td>
+<td><a class=ev href="evidence/S3/A3b/08-shade-on-lockscreen.webp">S3/A3b/08-shade-on-lockscreen.png</a></td>
 </tr>
 <tr>
 <td id="D-060"><a href="#D-060">D-060</a></td>
@@ -650,7 +651,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>S8</td>
 <td>Rescan confirmation dialog says "This will temporarily hide your wallet balance and remove transactions" but neither happens (header holds last-known balance under "Syncing balance", list never emptied) — copy/behaviour mismatch</td>
 <td>confirmed</td>
-<td>S8/L1/rescan-01..04.png</td>
+<td><a class=ev href="evidence/S8/L1/rescan-01-dialog.webp">S8/L1/rescan-01..04.png</a><sup class=more><a href="evidence/S8/L1/rescan-02-started.webp" title="S8/L1/rescan-02-started.webp">2</a> <a href="evidence/S8/L1/rescan-03-progress.webp" title="S8/L1/rescan-03-progress.webp">3</a> <a href="evidence/S8/L1/rescan-04-home-during.webp" title="S8/L1/rescan-04-home-during.webp">4</a></sup></td>
 </tr>
 <tr>
 <td id="D-061"><a href="#D-061">D-061</a></td>
@@ -658,7 +659,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>S10</td>
 <td>During a shield/send, balance buckets transiently show the spent input as confirmed while its change is unconfirmed (same mechanism as <a class=did href="DEFECT-LEDGER.html#D-041">D-041</a>, self-corrected here)</td>
 <td>candidate; awaiting S10 report</td>
-<td>S10 notes</td>
+<td><a class=ev href="evidence/S10/notes.html">S10 notes</a></td>
 </tr>
 <tr>
 <td id="D-062"><a href="#D-062">D-062</a></td>
@@ -666,7 +667,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>S8</td>
 <td>CSV export hands a header-only file to the share sheet silently: <code>ToolsViewModel.exportCsv</code> (ToolsViewModel.kt:185-226) tests <code>transactions.isEmpty()</code> on the input list, not the produced row count, although ExportCSVDialog.kt:109-111 says "Never hand back a header-only file silently" (all self-transfers are skipped as non-taxable)</td>
 <td>confirmed + source</td>
-<td>S8/L8/*</td>
+<td><a class=ev href="evidence/S8/L8/01-more.webp">S8/L8/*</a><sup class=more><a href="evidence/index.html#S8-L8" title="11 files, open gallery">+10</a></sup></td>
 </tr>
 <tr>
 <td id="D-063"><a href="#D-063">D-063</a></td>
@@ -682,7 +683,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>S8</td>
 <td>After 100%, Send "Max" fills an amount LARGER than the balance shown on the same screen (balance moving while tapping), and the dry run reports success for it (extends <a class=did href="DEFECT-LEDGER.html#D-032">D-032</a>/<a class=did href="DEFECT-LEDGER.html#SR-28">SR-28</a>)</td>
 <td>confirmed</td>
-<td>S8/L7/12-max-synced.png, 13-max-synced-repeat.png, wallet.log 06:49:38–46</td>
+<td><a class=ev href="evidence/S8/L7/12-max-synced.webp">S8/L7/12-max-synced.png</a>, <a class=ev href="evidence/S8/L7/13-max-synced-repeat.webp">13-max-synced-repeat.png</a>, <a class=ev href="evidence/S8/L6/logs-final/files/log/wallet.log">wallet.log</a> 06:49:38–46</td>
 </tr>
 <tr>
 <td id="D-065"><a href="#D-065">D-065</a></td>
@@ -690,7 +691,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>S8</td>
 <td>Wallet-file-size guard and autosave debounce key off the now-empty legacy dashj protobuf (15 KB, 0 txs), so neither covers the stores that actually grow: <code>dash-sdk.db</code> and the ~479 MB <code>l1_shadow_spv</code> directory</td>
 <td>confirmed</td>
-<td>S8/L5/01-03</td>
+<td><a class=ev href="evidence/S8/L5/01-files.txt">S8/L5/01-03</a><sup class=more><a href="evidence/S8/L5/02-sizeguard-grep.txt" title="S8/L5/02-sizeguard-grep.txt">2</a> <a href="evidence/S8/L5/03-files-final.txt" title="S8/L5/03-files-final.txt">3</a></sup></td>
 </tr>
 <tr>
 <td id="D-066"><a href="#D-066">D-066</a></td>
@@ -698,7 +699,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>S10</td>
 <td>Shield interrupted by airplane mode: the asset-lock tx is broadcast and mined but the shielded side stays pending; in-process retries all fail for ~5 min after the network returns (<code>resume failed (attempt 1); the lock stays tracked</code>), and the pending shield only completes after a force-stop + relaunch (<code>resumed and consumed</code> 07:06:37). Funds are safe and the user-facing dialog is good ("Your Dash was reserved on the network … will finish automatically the next time the app syncs — do not send it again"), but "next time the app syncs" in practice means "next process start"</td>
 <td>confirmed</td>
-<td>S10 notes T1d, tx c5e87e95… (block 1556596)</td>
+<td><a class=ev href="evidence/S10/notes.html">S10 notes</a> T1d, tx c5e87e95… (block 1556596)</td>
 </tr>
 <tr>
 <td id="D-067"><a href="#D-067">D-067</a></td>
@@ -706,7 +707,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>S10</td>
 <td>de-DE: the payments sheet tab "Internal" and the whole "Internal transfer" (shielded) screen title stay English next to "Empfangen"/"Senden"</td>
 <td>confirmed</td>
-<td>S10/T3/20</td>
+<td><a class=ev href="evidence/S10/T3/20-de-internal-transfer.webp">S10/T3/20</a></td>
 </tr>
 <tr>
 <td id="D-068"><a href="#D-068">D-068</a></td>
@@ -714,7 +715,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>S12</td>
 <td><strong>Ex-CoinJoin funds are unspendable after the upgrade.</strong> Wallet created on master 11.9.0 with CoinJoin enabled (4 mixing txs: CreateDenomination + MakeCollateralInputs), upgraded in place: the header shows 0.999971 and the log confirms <code>WalletBalanceFacts total=99997138 accounts={bip44:0, coinjoin:99997138}</code>, but Send shows "Insufficient funds", "Balance: DASH 0.00", Max fills 0, dry run throws <code>InsufficientMoneyException: missing 0.0011 DASH</code> (SendCoinsFragment 07:38:57). The send engine counts only bip44; the coinjoin bucket is display-only. With the mixed-funds migration prompt hard-suppressed (<a class=did href="DEFECT-LEDGER.html#D-063">D-063</a>) there is NO in-app way to move the coins; the Settings CoinJoin row is gone. Any user who ever mixed will upgrade into a wallet whose balance they cannot spend. ESCAPE HATCHES PROBED (S12): Send Max/send-all → 0; Shield Max → 0; dashj diagnostic toggle ON then send → still 0; reset + restore on the fix build → same <code>accounts={bip44:0, coinjoin:99997138}</code>, still unspendable; downgrade to master 11.9.0 WORKS (funds spendable there; S12 then moved the coins to a bip44 address on master, upgraded again and the same wallet came up as <code>accounts={bip44:99987927, coinjoin:0}</code> and behaved normally) → the stranding is specific to coins sitting in the CoinJoin m/9' account at the moment of cutover</td>
 <td>confirmed on device; only escape is a downgrade</td>
-<td>S12/CJ1/* (screens + wallet.log 07:38:57)</td>
+<td><a class=ev href="evidence/index.html#S12-CJ1">S12/CJ1/*</a><sup class=more><a href="evidence/index.html#S12-CJ1" title="S12/CJ1/post-upgrade">2</a> <a href="evidence/index.html#S12-CJ1" title="S12/CJ1/pre-upgrade">3</a> <a href="evidence/index.html#S12-CJ1" title="S12/CJ1/restore">4</a></sup> (screens + <a class=ev href="evidence/S12/CJ1/pre-upgrade/logs/files/log/wallet.log">wallet.log</a> 07:38:57)</td>
 </tr>
 <tr>
 <td id="D-069"><a href="#D-069">D-069</a></td>
@@ -722,7 +723,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>S12</td>
 <td>After the upgrade, <code>files/datastore/coinjoin.preferences_pb</code> still holds <code>coinjoin_mode=INTERMEDIATE</code>, <code>first_time_info_shown</code>, <code>last_mixing_progress</code> (orphaned, never read or cleared); no <code>mixed_funds_migration_done/_in_flight</code> key ever written (<a class=did href="evidence/SR/REPORT.html#SR-27">SR-27</a> confirmed as orphaned state, not data loss)</td>
 <td>confirmed</td>
-<td>S12 notes</td>
+<td><a class=ev href="evidence/S12/notes.html">S12 notes</a></td>
 </tr>
 <tr>
 <td id="D-070"><a href="#D-070">D-070</a></td>
@@ -730,7 +731,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>S9</td>
 <td>Offline state never surfaced (<code>NetworkMonitorViewModel.kt:73-81</code> has no disconnected branch; <code>sync_status_unable_to_connect</code> has zero code references): with wifi+data OFF (cold launch, 5 min) and with airplane mode ON while synced (4 min), the Network monitor keeps saying "Synced / Connected to the Dash network" with frozen heights; <code>sync_status_unable_to_connect</code> is never shown. Also a cold launch offline briefly shows a ~2× wrong balance (1.996984 vs 0.999991) for &gt; 30 s before settling under "Syncing balance"</td>
 <td>confirmed</td>
-<td>S9/X2, S9/X3</td>
+<td><a class=ev href="evidence/index.html#S9-X2">S9/X2</a>, <a class=ev href="evidence/index.html#S9-X3">S9/X3</a></td>
 </tr>
 <tr>
 <td id="D-071"><a href="#D-071">D-071</a></td>
@@ -738,7 +739,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>S10</td>
 <td>Accessibility (font scale 2.0 + density 560): send screen "Continue" button clipped (functional loss on a money screen); tx rows lose the Sent/Received/Shielded distinction and the amount is clipped by the direction icon; More card wraps "Shielde/d" and truncates the shielded balance to "1.00…" (unreadable)</td>
 <td>confirmed</td>
-<td>S10/T5/01..10</td>
+<td><a class=ev href="evidence/S10/T5/01-a11y-home.webp">S10/T5/01..10</a><sup class=more><a href="evidence/index.html#S10-T5" title="11 files, open gallery">+10</a></sup></td>
 </tr>
 <tr>
 <td id="D-072"><a href="#D-072">D-072</a></td>
@@ -746,7 +747,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>S10</td>
 <td>Dark mode: one screen renders light text on a light background while every other screen is dark (S10-D12); tx-list "Shielded" icon keeps its light-blue circle on the dark list</td>
 <td>confirmed</td>
-<td>S10/T5/23 vs 25, S10/T5/20</td>
+<td><a class=ev href="evidence/S10/T5/23-dark-shielded.webp">S10/T5/23</a> vs 25, <a class=ev href="evidence/S10/T5/20-dark-home.webp">S10/T5/20</a></td>
 </tr>
 <tr>
 <td id="D-073"><a href="#D-073">D-073</a></td>
@@ -754,7 +755,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>S10</td>
 <td>Address-book labels show only inside the address book, not in the send flow (raw address) nor resolved on tx rows/detail</td>
 <td>confirmed</td>
-<td>S10/T4/25..35</td>
+<td><a class=ev href="evidence/S10/T4/25-paste-from-clipboard.webp">S10/T4/25..35</a><sup class=more><a href="evidence/index.html#S10-T4" title="11 files, open gallery">+10</a></sup></td>
 </tr>
 <tr>
 <td id="D-074"><a href="#D-074">D-074</a></td>
@@ -762,7 +763,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>S11</td>
 <td>Transaction-detail sheet opened WHILE the post-upgrade replay is running never populates and mis-binds labels to values: title "Sent successfully" with a green success check for a 2021 historical tx, empty amount / "Sent from" / "Sent to", <code>Network fee</code> renders the value "Sent to D" and <code>Date</code> renders "Sent to", Tax Category stuck on "Loading...". Persisted unchanged for 9 min (02:52-&gt;02:58). After phase=SYNCED the same gesture renders a correct sheet</td>
 <td>confirmed on device</td>
-<td>S11/P4/11-replay-4.png .. 11-replay-12.png vs S11/P4/14-txdetail-post-sync.png</td>
+<td><a class=ev href="evidence/S11/P4/11-replay-4.webp">S11/P4/11-replay-4.png</a> .. <a class=ev href="evidence/S11/P4/11-replay-12.webp">11-replay-12.png</a> vs <a class=ev href="evidence/S11/P4/14-txdetail-post-sync.webp">S11/P4/14-txdetail-post-sync.png</a></td>
 </tr>
 <tr>
 <td id="D-075"><a href="#D-075">D-075</a></td>
@@ -770,7 +771,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>S9</td>
 <td>Shield screen stuck on "Shielded balance is syncing — transfers will be available shortly" for &gt; 8 min on a freshly funded wallet; only kill + relaunch cleared it</td>
 <td>confirmed</td>
-<td>S9/X7/*</td>
+<td><a class=ev href="evidence/S9/X7/01-home.webp">S9/X7/*</a><sup class=more><a href="evidence/index.html#S9-X7" title="53 files, open gallery">+52</a></sup></td>
 </tr>
 <tr>
 <td id="D-076"><a href="#D-076">D-076</a></td>
@@ -778,7 +779,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>S9</td>
 <td>Safe-mode startup: the ACRA "Previous crash detected" sheet appears FIRST and the <code>safe_mode_startup_message</code> + Try Again/Report/Close only after Cancel; Try Again works (SAFE_MODE_RETRY_OK). Also: an unreadable wallet file (chmod 000) is silently recovered from <code>key-backup-protobuf-testnet</code> but every subsequent autosave then throws EACCES silently</td>
 <td>confirmed</td>
-<td>S9/X5/*</td>
+<td><a class=ev href="evidence/S9/X5/01-launch1-chmod000.webp">S9/X5/*</a><sup class=more><a href="evidence/index.html#S9-X5" title="12 files, open gallery">+11</a></sup></td>
 </tr>
 <tr>
 <td id="D-077"><a href="#D-077">D-077</a></td>
@@ -786,7 +787,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>S10</td>
 <td><code>dash:</code> deep link on a force-stopped app opens the pre-filled Send screen with NO lock screen, whereas a plain launch shows "Enter PIN"; spending/balance reveal/Max remain PIN-gated (no data leak) — inconsistent lock policy</td>
 <td>confirmed</td>
-<td>S10/T8/04 vs 05</td>
+<td><a class=ev href="evidence/S10/T8/04-normal-launch-pin.webp">S10/T8/04</a> vs 05</td>
 </tr>
 <tr>
 <td id="D-078"><a href="#D-078">D-078</a></td>
@@ -794,7 +795,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>S10</td>
 <td>Already-claimed invite deep link: the "Username already found / cannot claim" error dialog appears 11 min 31 s after the link was opened, while the user is on an unrelated screen (correct message, detached from the action)</td>
 <td>confirmed</td>
-<td>S10/T8/11-invite-error-delayed.png</td>
+<td><a class=ev href="evidence/S10/T8/11-invite-error-delayed.webp">S10/T8/11-invite-error-delayed.png</a></td>
 </tr>
 <tr>
 <td id="D-079"><a href="#D-079">D-079</a></td>
@@ -802,7 +803,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>S9</td>
 <td>Cold launch shows ~2× the real balance for &gt; 30 s on a wallet whose only txs are self-sends (<code>WalletBalanceFacts total=199698418 confirmed=99999322 unconfirmed=99699096</code>, 1.996984 vs 0.999991) — the spent input and its change are both counted (same family as <a class=did href="DEFECT-LEDGER.html#D-002">D-002</a>/<a class=did href="DEFECT-LEDGER.html#D-041">D-041</a>/<a class=did href="DEFECT-LEDGER.html#D-061">D-061</a>)</td>
 <td>confirmed</td>
-<td>S9/X3/02,03</td>
+<td><a class=ev href="evidence/S9/X3/02-home-no-net.webp">S9/X3/02,03</a><sup class=more><a href="evidence/S9/X3/03-home-no-net-30s.webp" title="S9/X3/03-home-no-net-30s.webp">2</a></sup></td>
 </tr>
 <tr>
 <td id="D-080"><a href="#D-080">D-080</a></td>
@@ -810,7 +811,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>S9</td>
 <td>Contact request while offline: "Send request" is completely inert (no spinner/toast/dialog); <code>send_contact_request_error_*</code> strings never surfaced</td>
 <td>confirmed</td>
-<td>S9/X7/44,45</td>
+<td><a class=ev href="evidence/S9/X7/44-request-airplane.webp">S9/X7/44,45</a><sup class=more><a href="evidence/S9/X7/45-request-airplane-2.webp" title="S9/X7/45-request-airplane-2.webp">2</a></sup></td>
 </tr>
 <tr>
 <td id="D-081"><a href="#D-081">D-081</a></td>
@@ -818,7 +819,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>S9</td>
 <td>CSV export hard-wires <code>Fee</code>/<code>Fee Currency</code> empty and omits internal-transfer fees (<code>CSVExporter.kt:60</code>, <code>TaxBitExporter.kt:42-43</code>) — pairs with <a class=did href="DEFECT-LEDGER.html#D-049">D-049</a>/<a class=did href="DEFECT-LEDGER.html#D-062">D-062</a></td>
 <td>confirmed + source</td>
-<td>S9/X4/*.csv</td>
+<td><a class=ev href="evidence/S9/X4/dash-wallet-transactions-2026-09-19.csv">S9/X4/*.csv</a></td>
 </tr>
 <tr>
 <td id="D-082"><a href="#D-082">D-082</a></td>
@@ -826,7 +827,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>S10</td>
 <td>Reset + restore loses a history row on a SMALL wallet too: type-9 asset-unlock (+0.95235766 unshield) has no display row after restore (<code>transactions</code>=22 vs <code>tx_display_cache</code>=21, txid 31546c95…cde2) while the log says "cache is complete" — <a class=did href="DEFECT-LEDGER.html#D-037">D-037</a> family on a 22-tx wallet</td>
 <td>confirmed</td>
-<td>S10/T6/06 vs S10/T6/22</td>
+<td><a class=ev href="evidence/S10/T6/06-txlist-contact-row-before.webp">S10/T6/06</a> vs <a class=ev href="evidence/S10/T6/22-txlist-bottom-after.webp">S10/T6/22</a></td>
 </tr>
 <tr>
 <td id="D-083"><a href="#D-083">D-083</a></td>
@@ -834,7 +835,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>S10</td>
 <td>After reset + restore a 0.001 payment to a DashPay contact re-renders as −0.000007 (fee only): the cache row's valueSatoshis went −100737 → −737 because the contact's DIP-15 sending-chain head is now watched as an own address</td>
 <td>confirmed</td>
-<td>S10/T6/06 vs S10/T6/22</td>
+<td><a class=ev href="evidence/S10/T6/06-txlist-contact-row-before.webp">S10/T6/06</a> vs <a class=ev href="evidence/S10/T6/22-txlist-bottom-after.webp">S10/T6/22</a></td>
 </tr>
 <tr>
 <td id="D-084"><a href="#D-084">D-084</a></td>
@@ -842,7 +843,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>S10</td>
 <td>Tx-list row titles are frozen in the locale at insert time ("Gesendet" among "Sent" after switching back to en-US; all rows stay English under ar-EG); the detail sheet localises correctly</td>
 <td>confirmed</td>
-<td>S10/T4/28 vs 29</td>
+<td><a class=ev href="evidence/S10/T4/28-txlist-with-label.webp">S10/T4/28</a> vs 29</td>
 </tr>
 <tr>
 <td id="D-085"><a href="#D-085">D-085</a></td>
@@ -850,7 +851,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>S10</td>
 <td>ar-EG RTL: both money keypads are mirrored (3-2-1 / 6-5-4 / 9-8-7); tx-detail chevron overlaps its label; shielded UI and several core strings untranslated; Eastern/Western numerals mixed</td>
 <td>confirmed</td>
-<td>S10/T6/30..37</td>
+<td><a class=ev href="evidence/S10/T6/30-ar-home.webp">S10/T6/30..37</a><sup class=more><a href="evidence/S10/T6/31-ar-txdetail.webp" title="S10/T6/31-ar-txdetail.webp">2</a> <a href="evidence/S10/T6/32-ar-payments.webp" title="S10/T6/32-ar-payments.webp">3</a> <a href="evidence/S10/T6/33-ar-receive.webp" title="S10/T6/33-ar-receive.webp">4</a> <a href="evidence/S10/T6/34-ar-internal-tab.webp" title="S10/T6/34-ar-internal-tab.webp">5</a> <a href="evidence/S10/T6/35-ar-shielded.webp" title="S10/T6/35-ar-shielded.webp">6</a> <a href="evidence/S10/T6/36-ar-send-amount.webp" title="S10/T6/36-ar-send-amount.webp">7</a> <a href="evidence/S10/T6/37-ar-contacts.webp" title="S10/T6/37-ar-contacts.webp">8</a></sup></td>
 </tr>
 <tr>
 <td id="D-086"><a href="#D-086">D-086</a></td>
@@ -858,7 +859,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>S10</td>
 <td>BIP21 <code>label</code> and <code>message</code> silently dropped (amount screen, confirm sheet, tx detail/memo); unknown <code>req-</code> params silently ignored instead of invalidating the URI (BIP21 violation)</td>
 <td>confirmed</td>
-<td>S10/T4/07..14</td>
+<td><a class=ev href="evidence/S10/T4/07-bip21-label-message.webp">S10/T4/07..14</a><sup class=more><a href="evidence/S10/T4/08-bip21-confirm.webp" title="S10/T4/08-bip21-confirm.webp">2</a> <a href="evidence/S10/T4/09-bip21-txdetail.webp" title="S10/T4/09-bip21-txdetail.webp">3</a> <a href="evidence/S10/T4/10-bip21-txdetail-scrolled.webp" title="S10/T4/10-bip21-txdetail-scrolled.webp">4</a> <a href="evidence/S10/T4/11-bip21-over-balance.webp" title="S10/T4/11-bip21-over-balance.webp">5</a> <a href="evidence/S10/T4/12-bip21-IS.webp" title="S10/T4/12-bip21-IS.webp">6</a> <a href="evidence/S10/T4/13-bip21-reqIS.webp" title="S10/T4/13-bip21-reqIS.webp">7</a> <a href="evidence/S10/T4/14-bip21-unknown-req.webp" title="S10/T4/14-bip21-unknown-req.webp">8</a></sup></td>
 </tr>
 <tr>
 <td id="D-087"><a href="#D-087">D-087</a></td>
@@ -866,7 +867,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>S10</td>
 <td>After a background-resumed shield the open Internal-transfer screen falls back to "Shielded balance 0.00 / syncing" for &gt; 3 min while More shows the right balance; reopening fixes it (pairs with <a class=did href="DEFECT-LEDGER.html#D-075">D-075</a>)</td>
 <td>confirmed</td>
-<td>S10/T1/07e..07h</td>
+<td><a class=ev href="evidence/S10/T1/07e-shielded-shows-zero.webp">S10/T1/07e..07h</a><sup class=more><a href="evidence/S10/T1/07f-shielded-zero-3min.webp" title="S10/T1/07f-shielded-zero-3min.webp">2</a> <a href="evidence/S10/T1/07g-more-shielded.webp" title="S10/T1/07g-more-shielded.webp">3</a> <a href="evidence/S10/T1/07h-transfer-screen-reopened.webp" title="S10/T1/07h-transfer-screen-reopened.webp">4</a></sup></td>
 </tr>
 <tr>
 <td id="D-088"><a href="#D-088">D-088</a></td>
@@ -874,7 +875,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>S10</td>
 <td>No dust guard: a 1-duff send is accepted, broadcast and mined (tx e6b8a5cc…) for a 226-duff fee</td>
 <td>confirmed</td>
-<td>S10/T3/02,05</td>
+<td><a class=ev href="evidence/S10/T3/02-dust.webp">S10/T3/02,05</a><sup class=more><a href="evidence/S10/T3/05-dust-result.webp" title="S10/T3/05-dust-result.webp">2</a></sup></td>
 </tr>
 <tr>
 <td id="D-089"><a href="#D-089">D-089</a></td>
@@ -882,7 +883,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>S10</td>
 <td>de-DE number formatting inconsistent across one flow: entry "0,001", confirm sheet "0.0010 / 0.0001 / 0.0011" beside "0,06 $", detail/home in US format; More-screen balance cards truncate instead of rounding (0.93799195 → "0.937 Đ")</td>
 <td>confirmed</td>
-<td>S10/T3/16..19, S10/T2/08</td>
+<td><a class=ev href="evidence/S10/T3/16-de-amount-comma.webp">S10/T3/16..19</a><sup class=more><a href="evidence/S10/T3/17-de-confirm.webp" title="S10/T3/17-de-confirm.webp">2</a> <a href="evidence/S10/T3/18-de-txdetail.webp" title="S10/T3/18-de-txdetail.webp">3</a> <a href="evidence/S10/T3/19-de-home-txlist.webp" title="S10/T3/19-de-home-txlist.webp">4</a></sup>, <a class=ev href="evidence/S10/T2/08-balances-after.webp">S10/T2/08</a></td>
 </tr>
 <tr>
 <td id="D-090"><a href="#D-090">D-090</a></td>
@@ -890,7 +891,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>S10</td>
 <td>Flat 0.00212851 platform cost per shield disclosed nowhere: shielding 0.01 credits only 0.00787149 (21% lost) — quantified <a class=did href="DEFECT-LEDGER.html#D-027">D-027</a>/<a class=did href="DEFECT-LEDGER.html#D-050">D-050</a></td>
 <td>confirmed</td>
-<td>S10/T1/01c</td>
+<td><a class=ev href="evidence/S10/T1/01c-confirm.webp">S10/T1/01c</a></td>
 </tr>
 <tr>
 <td id="D-091"><a href="#D-091">D-091</a></td>
@@ -898,7 +899,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>S4</td>
 <td>The entire new Shielded UI is untranslated in every locale (64 <code>shielded_*</code> strings only in <code>values/strings-dashpay.xml</code>); overall in-app coverage: zh/es/ja/ru/de/fil 11–16 % English, ar-EG 35 %, he-IL 89 % (<code>values-he</code> 211 + <code>values-iw</code> 192 legacy stubs); ar-EG mixes scripts and digit systems</td>
 <td>confirmed</td>
-<td>S4/E10/<locale>/*</td>
+<td><a class=ev href="evidence/index.html#S4-E10">S4/E10/</a><locale>/*</td>
 </tr>
 <tr>
 <td id="D-092"><a href="#D-092">D-092</a></td>
@@ -906,7 +907,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>S4</td>
 <td>Lock-screen title renders near-black on the dark photo (unreadable, all locales); "1 keys" no plural on Masternode keys; ZenLedger "Export → Allow" is a silent no-op; font-scale 2.0 clips More subtitles and the home shortcut card overlaps the banner</td>
 <td>confirmed</td>
-<td>S4/E10/en-US/00, S4/E7/13, S4/E7/18-20, S4/E10/fontscale-2.0/01,05</td>
+<td><a class=ev href="evidence/S4/E10/en-US/00-lockscreen.txt">S4/E10/en-US/00</a><sup class=more><a href="evidence/S4/E10/en-US/00-lockscreen.webp" title="S4/E10/en-US/00-lockscreen.webp">2</a></sup>, <a class=ev href="evidence/S4/E7/13-masternode-keys-screen.webp">S4/E7/13</a>, <a class=ev href="evidence/S4/E7/18-zenledger.webp">S4/E7/18-20</a><sup class=more><a href="evidence/S4/E7/19-zenledger-export.webp" title="S4/E7/19-zenledger-export.webp">2</a> <a href="evidence/S4/E7/20-zenledger-after-allow.webp" title="S4/E7/20-zenledger-after-allow.webp">3</a></sup>, <a class=ev href="evidence/S4/E10/fontscale-2.0/01-home.txt">S4/E10/fontscale-2.0/01,05</a><sup class=more><a href="evidence/S4/E10/fontscale-2.0/01-home.webp" title="S4/E10/fontscale-2.0/01-home.webp">2</a> <a href="evidence/S4/E10/fontscale-2.0/05-more.txt" title="S4/E10/fontscale-2.0/05-more.txt">3</a> <a href="evidence/S4/E10/fontscale-2.0/05-more.webp" title="S4/E10/fontscale-2.0/05-more.webp">4</a></sup></td>
 </tr>
 <tr>
 <td id="D-093"><a href="#D-093">D-093</a></td>
@@ -914,7 +915,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>S12</td>
 <td>Send says "Balance: DASH 0.00" while the shield screen simultaneously offers "From Dash Wallet 0.99997138" for the same (ex-CoinJoin) funds, then fails at PIN ("This transfer was not sent / Nothing left your balance", AssetLockInsufficientFunds) — the user is invited into a transfer that cannot work (extends <a class=did href="DEFECT-LEDGER.html#D-068">D-068</a>)</td>
 <td>confirmed</td>
-<td>S12/CJ1/escape-hatches/02-shield-max*, 03-05</td>
+<td><a class=ev href="evidence/S12/CJ1/escape-hatches/02-shield-max.webp">S12/CJ1/escape-hatches/02-shield-max*</a>, 03-05</td>
 </tr>
 <tr>
 <td id="D-094"><a href="#D-094">D-094</a></td>
@@ -922,7 +923,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>S12</td>
 <td>Network monitor headline "Downloading filter headers 54%" while the Block filters row reads 150,999 / 1,556,626 (~10%) — headline and counter disagree by ~44 points</td>
 <td>confirmed</td>
-<td>S12/NM1/07-network-monitor-during-replay.png</td>
+<td><a class=ev href="evidence/S12/NM1/07-network-monitor-during-replay.webp">S12/NM1/07-network-monitor-during-replay.png</a></td>
 </tr>
 <tr>
 <td id="D-095"><a href="#D-095">D-095</a></td>
@@ -930,7 +931,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>S12</td>
 <td>The 60 s auto-lock fires on the Buy-Credits confirm sheet and silently cancels the top-up — no error, no "cancelled" message, user dropped back on the amount screen</td>
 <td>confirmed</td>
-<td>S12/BC1/31-buy-progress-1.png, 33-after-unlock*</td>
+<td><a class=ev href="evidence/S12/BC1/31-buy-progress-1.webp">S12/BC1/31-buy-progress-1.png</a>, 33-after-unlock*</td>
 </tr>
 <tr>
 <td id="D-096"><a href="#D-096">D-096</a></td>
@@ -938,7 +939,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>S12</td>
 <td>A credit top-up that hits <code>Dapi client error: no available addresses to use</code> broadcasts the asset lock anyway and tells the user "Your top-up may have gone through. Please don't try again" — funds locked on L1 with no in-UI progress until a background worker recovers it 91 s later</td>
 <td>confirmed</td>
-<td>S12/BC1/* + wallet.log</td>
+<td><a class=ev href="evidence/S12/BC1/01-fix-launch.webp">S12/BC1/*</a><sup class=more><a href="evidence/index.html#S12-BC1" title="61 files, open gallery">+60</a></sup> + <a class=ev href="evidence/S12/CJ1/pre-upgrade/logs/files/log/wallet.log">wallet.log</a></td>
 </tr>
 <tr>
 <td id="D-097"><a href="#D-097">D-097</a></td>
@@ -946,7 +947,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 <td>S12</td>
 <td>Tools › Credits row never shows a credit balance (title + info icon + "Buy" only) even with 2.7 G credits; "Current Identity Balance" on Buy Credits is stale after a successful top-up until relaunch; below-minimum amount silently clamps to 0.001</td>
 <td>confirmed</td>
-<td>S12/BC1/23, 36 vs 42, 29</td>
+<td><a class=ev href="evidence/S12/BC1/23-tools-credits.webp">S12/BC1/23</a>, 36 vs 42, 29</td>
 </tr>
 </tbody>
 </table>
@@ -959,7 +960,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 - S6 M1: fresh mainnet wallet sync to 100% in 42 s from engine start; peak PSS 444 MB; exit-info empty; zero <code>starting peergroup</code>.
 - S1 A1: create → faucet → shield (fee ~0.003) → non-contested username <code>qa1s13939</code> registered; shielded 0.96786148 afterward.
 - S5 D4: shield done (0.997 shielded, fee ~0.003), username <code>qa5s5ebkdus2c6</code> chosen.
-- S4 E9: unit tests on fix worktree (<code>:wallet:test_testNet3DebugUnitTest :common:testReleaseUnitTest</code>): 2077 tests, 0 failures, 0 errors, 1 skipped; BUILD SUCCESSFUL in 5m40s (evidence/S4/unit-tests.log).
+- S4 E9: unit tests on fix worktree (<code>:wallet:test_testNet3DebugUnitTest :common:testReleaseUnitTest</code>): 2077 tests, 0 failures, 0 errors, 1 skipped; BUILD SUCCESSFUL in 5m40s (<a class=ev href="evidence/S4/unit-tests.log">evidence/S4/unit-tests.log</a>).
 - S1 A1: reset → restore assertions all MATCH (transparent 0.00000737, shielded 0.96786148, username qa1s13939, 2 tx rows); restore sync ~5 min; negative seed inputs never crash.
 - S7 E8: small wallet created on master 11.9.0 → upgraded in place to 12.0.0: cutover committed, SDK SYNCED in 29 s, balance and tx list identical, memo and EUR currency persisted, PIN works.
 - S5: contested/non-contested classification correct, criteria validation correct, username qa5s5ebkdus2c6kkt9m7t registered (identity FGk3cH…), contact request to qa1s13939 sent, coverage recomputed correctly.
@@ -982,7 +983,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 - S3 A3b: bind deferred while locked → bind 3 s after unlock (PASS, &lt; 5 s target), pending notification shown and cleared, explainer once. (Engine never starts afterwards = <a class=did href="DEFECT-LEDGER.html#D-056">D-056</a>.)
 - S8 L4: replay continued behind the lock screen; no data lost on kill/relaunch on the 2 GB device.
 - Harness fixes applied 01:40: <code>qa-app.sh deeplink</code> now single-quotes the URL; <code>text</code> escapes spaces; QA-PLAN explorer URL corrected to the testnet host.
-| ENV-4 | env | S6, S8 | <code>adb root</code> (used by grep-log/files/pull-logs helpers) restarts adbd and kills any running <code>adb logcat</code> pipe; streams lost logcat coverage windows and restarted captures | note for report; ring-buffer snapshots + wallet.log cover the gaps |
+| ENV-4 | env | S6, S8 | <code>adb root</code> (used by grep-log/files/pull-logs helpers) restarts adbd and kills any running <code>adb logcat</code> pipe; streams lost logcat coverage windows and restarted captures | note for report; ring-buffer snapshots + <a class=ev href="evidence/S4/walletlog-final/files/log/wallet.log">wallet.log</a> cover the gaps |
 | ENV-5 | env | S5 | <code>qa-app.sh deeplink</code> and <code>text</code> did not quote for the remote shell (<code>&amp;</code> split URLs, spaces truncated) | fixed 01:40 |
 - S7 REPORT complete: E8 PASS (size-guard verdict NORMAL for a 274,663 B wallet; sync 29 s; memo/currency/PIN preserved), B5 PASS (parity MATCH), R1 rescan PASS (watermark rewind to 1401408; balance/txs/memo unchanged), BK1 file backup ABSENT in release (BuildConfig.DEBUG gate at OnboardingActivity.kt:301; substitute reset+restore PASS incl. wrong-seed error), TX1 directions correct, N1 self-send correctly not notified. Mapped: S7 D-10→<a class=did href="DEFECT-LEDGER.html#D-031">D-031</a>, D-01→<a class=did href="DEFECT-LEDGER.html#SR-28">SR-28</a>/<a class=did href="DEFECT-LEDGER.html#D-032">D-032</a>, D-01b→<a class=did href="DEFECT-LEDGER.html#D-032">D-032</a>, D-02→<a class=did href="DEFECT-LEDGER.html#D-003">D-003</a>, D-03→<a class=did href="DEFECT-LEDGER.html#D-057">D-057</a>/<a class=did href="DEFECT-LEDGER.html#D-048">D-048</a>, D-04→<a class=did href="DEFECT-LEDGER.html#D-045">D-045</a>, D-05→<a class=did href="DEFECT-LEDGER.html#D-044">D-044</a>, D-06→<a class=did href="DEFECT-LEDGER.html#D-024">D-024</a>, D-07→<a class=did href="DEFECT-LEDGER.html#D-043">D-043</a>, D-08→<a class=did href="DEFECT-LEDGER.html#D-058">D-058</a>, D-09→<a class=did href="DEFECT-LEDGER.html#D-033">D-033</a>. Peak PSS 631 MB during the BK1 restore replay; post-cutover idle 305 MB vs master 187 MB.
 - S3 REPORT complete: A3 upgrade all cutover assertions PASS (replay 4 m 27 s; PSS peak 620 MB / native 463 MB vs master 190–224 / 37–41 MB); A3b locked-device classification, lock-screen notification, bind-in-3 s PASS; engine never starts = <a class=did href="DEFECT-LEDGER.html#D-056">D-056</a> (S1); SETTLED unreachable = <a class=did href="DEFECT-LEDGER.html#D-024">D-024</a>; baseline 1: Forgot-PIN bypass is a REGRESSION (<a class=did href="DEFECT-LEDGER.html#D-011">D-011</a>); baseline 2: master also resets without PIN (<a class=did href="DEFECT-LEDGER.html#D-012">D-012</a> pre-existing). Caveat: A3 upgraded from a fully-synced master (dashj hit the tip at 26 min); A3b was the true mid-sync case (85%).
@@ -991,7 +992,7 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 - S9 X1: forced the idle teardown via Network monitor (MainActivity paused): <code>idling detected</code> → <code>onDestroy</code> on leaving the monitor → <code>RESUMING after 0s down</code>; a send right after SUCCEEDED (the engine restarts on resume). So <a class=did href="DEFECT-LEDGER.html#D-031">D-031</a> needs the teardown to happen while the user is NOT about to trigger a resume; S1/S7 evidence stands (send attempted while the engine was down, 3m17s).
 - Massive-wallet growth finished: 3,000 self-transfer txs across 800 addresses.
 - S8 REPORT complete: L1 sync/memory PASS on 2 GB (3 m 27 s; no LMK), history FAIL (<a class=did href="DEFECT-LEDGER.html#D-037">D-037</a>); L2 gap limit PASS to the duff; L3 live growth PASS (instant-receive path, PSS flat 400–431 MB); L4 kill/bg/lowmem/force-stop PASS (relaunch to home in 3 s, wallet load 244–303 ms); L6 second restore 3 m 12 s on 3,001 txs (<a class=did href="DEFECT-LEDGER.html#D-037">D-037</a> worse: 458 missing); L7 <a class=did href="evidence/SR/REPORT.html#SR-32">SR-32</a> (send screen shows partial during replay) does NOT reproduce (send screen shows 0.00 and blocks during replay). Mapped: S8-D1→<a class=did href="DEFECT-LEDGER.html#D-037">D-037</a>, S8-D2→<a class=did href="DEFECT-LEDGER.html#D-062">D-062</a>, S8-D3→<a class=did href="DEFECT-LEDGER.html#D-064">D-064</a>, S8-D4→<a class=did href="DEFECT-LEDGER.html#D-065">D-065</a>, S8-D5→<a class=did href="DEFECT-LEDGER.html#D-060">D-060</a>.
-| ENV-6 | env | S4 | <code>qa-app.sh locale</code> (setprop persist.sys.locale + zygote restart) does NOT change the effective locale on API-35 AVDs (<code>settings system system_locales</code> stays en-US); S4's first 7-locale pass is INVALID and kept under S4/E10/INVALID-setprop/; helper replaced 02:12 with per-app <code>cmd locale set-app-locales</code>, S4 re-running the sweep | fixed |
+| ENV-6 | env | S4 | <code>qa-app.sh locale</code> (setprop persist.sys.locale + zygote restart) does NOT change the effective locale on API-35 AVDs (<code>settings system system_locales</code> stays en-US); S4's first 7-locale pass is INVALID and kept under <a class=ev href="evidence/index.html#S4-E10">S4/E10/INVALID-setprop/</a>; helper replaced 02:12 with per-app <code>cmd locale set-app-locales</code>, S4 re-running the sweep | fixed |
 - S10: after 6 shields + 1 killed unshield + 2 sends the ledger balances to the duff (1 duff rounding) — no funds lost under interruption (rotate/HOME/kill/airplane); the pending/resume path also rescued a force-stop-interrupted shield (5ae2c47b…).
 - S12 CJ1: CoinJoin mixing on master produced 4 mixing txs in the 15-min window; upgrade cutover clean; the "Mixing Transactions" group row survives and re-classifies sanely; no migration sheet (hard-suppressed, <a class=did href="DEFECT-LEDGER.html#D-063">D-063</a>).
 - S11 P3: replay under RUNNING_CRITICAL every 60 s on a 1.5 GB AVD survived (pid unchanged, exit-info empty), balance exact; PSS ~570–610 MB same as unconstrained, so a real 1.5 GB phone remains an LMK risk (emulator trims are advisory).
@@ -999,17 +1000,17 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 - S9 X3: reconnect after airplane OFF is fast (phase MASTERNODES in 2 s, SYNCED in 6 s).
 - S11 P4: master dashj on the 1.5 GB AVD: peak PSS 263 MB / native 50 MB / Dalvik 101 MB (native ~10× smaller than the SDK replay).</p>
 <p>S11 confirmations (emulator-5566 / dw-qa7, reference seed):
-- <a class=did href="DEFECT-LEDGER.html#D-041">D-041</a> CONFIRMED on a 2nd device with a SINGLE mid-replay force-stop (wallet cursor 1220999/1556601 = 78.4%): on reaching phase=SYNCED the header shows 2336.304271 tDASH with no "Syncing balance" label (21.82x wrong); last <code>SDK balance published: 233630427063 duffs</code> 2 s before SYNCED, all l1Synced=false. Live DB SUM(txos unspent) = 10708173522 = correct. bg/fg does NOT fix; force-stop+relaunch does. NEW: the recovery line reads <code>lastKnown=233630427063</code>, i.e. the inflated value WAS persisted as last-known. Evidence S11/P2/09-BALANCE-after-kill-INFLATED.png, S11/P2/sdk-balance-published.txt, S11/P2/db-inflated/, S11/P2/p2-recovery.mp4. Relaunch resumed at wallet 1415999, i.e. no blocks lost.
-- <a class=did href="DEFECT-LEDGER.html#D-037">D-037</a> CONFIRMED on the reference seed but with a much smaller blast radius than S8's wallet: transactions 3269, txos-union 2396 (873 txs have no txos row), tx_display_cache 1519, valueSatoshis&gt;0 397. Of 399 SDK receives exactly 2 have no display row - 30d25cfa..5a16 (+0.2) and 301d24c9..ce12 (+0.33848582), both block 1123983 2024-10-19, both absent from the txos-union = 0.53848582 tDASH of receives invisible. UI proof: the "19 October, 2024" section shows 5 "Received +0.2" rows where the explorer has 7 incoming txs that minute (S11/P1/history/52-19-oct-2024-rows.png). IMPORTANT: the wallet's FIRST receive (bc386052..b0a6, 0.1 tDASH, 2019-07-31, address index 0) IS present and correctly dated (S11/P1/history/99-bottom-of-history.png) - the "earliest receives vanish" symptom does NOT generalise.
-- S11 positives: P1 clean restore 3 GB -&gt; 100% in 4 m 31 s from engine start, balance 107.08173522 exact, peak 596 MB PSS / 457 MB native, exit-info empty. P3 under 5 x RUNNING_CRITICAL + 600 MB ballast: process survived (no LMK), 4 m 36 s, balance exact, peak 568 MB PSS. P4 upgrade master-&gt;fix on the constrained device: CUT_OVER 1 s after launch, exactly one explainer, zero post-upgrade <code>starting peergroup</code>, balance HELD at last-known 794.227628 during the replay, 9 m 38 s to 100%, final balance exact, no LMK at peak 647 MB PSS / 495 MB native (master/dashj on the same device peaked at 263 MB PSS / 50 MB native).
+- <a class=did href="DEFECT-LEDGER.html#D-041">D-041</a> CONFIRMED on a 2nd device with a SINGLE mid-replay force-stop (wallet cursor 1220999/1556601 = 78.4%): on reaching phase=SYNCED the header shows 2336.304271 tDASH with no "Syncing balance" label (21.82x wrong); last <code>SDK balance published: 233630427063 duffs</code> 2 s before SYNCED, all l1Synced=false. Live DB SUM(txos unspent) = 10708173522 = correct. bg/fg does NOT fix; force-stop+relaunch does. NEW: the recovery line reads <code>lastKnown=233630427063</code>, i.e. the inflated value WAS persisted as last-known. Evidence <a class=ev href="evidence/S11/P2/09-BALANCE-after-kill-INFLATED.webp">S11/P2/09-BALANCE-after-kill-INFLATED.png</a>, <a class=ev href="evidence/S11/P2/sdk-balance-published.txt">S11/P2/sdk-balance-published.txt</a>, <a class=ev href="evidence/index.html#S11-P2">S11/P2/db-inflated/</a>, <a class=ev href="evidence/S11/P2/p2-recovery.mp4">S11/P2/p2-recovery.mp4</a>. Relaunch resumed at wallet 1415999, i.e. no blocks lost.
+- <a class=did href="DEFECT-LEDGER.html#D-037">D-037</a> CONFIRMED on the reference seed but with a much smaller blast radius than S8's wallet: transactions 3269, txos-union 2396 (873 txs have no txos row), tx_display_cache 1519, valueSatoshis&gt;0 397. Of 399 SDK receives exactly 2 have no display row - 30d25cfa..5a16 (+0.2) and 301d24c9..ce12 (+0.33848582), both block 1123983 2024-10-19, both absent from the txos-union = 0.53848582 tDASH of receives invisible. UI proof: the "19 October, 2024" section shows 5 "Received +0.2" rows where the explorer has 7 incoming txs that minute (<a class=ev href="evidence/S11/P1/history/52-19-oct-2024-rows.webp">S11/P1/history/52-19-oct-2024-rows.png</a>). IMPORTANT: the wallet's FIRST receive (bc386052..b0a6, 0.1 tDASH, 2019-07-31, address index 0) IS present and correctly dated (<a class=ev href="evidence/S11/P1/history/99-bottom-of-history.webp">S11/P1/history/99-bottom-of-history.png</a>) - the "earliest receives vanish" symptom does NOT generalise.
+- S11 positives: <a class=ev href="evidence/index.html#S11-P1">P1</a> clean restore 3 GB -&gt; 100% in 4 m 31 s from engine start, balance 107.08173522 exact, peak 596 MB PSS / 457 MB native, exit-info empty. <a class=ev href="evidence/index.html#S11-P3">P3</a> under 5 x RUNNING_CRITICAL + 600 MB ballast: process survived (no LMK), 4 m 36 s, balance exact, peak 568 MB PSS. <a class=ev href="evidence/index.html#S11-P4">P4</a> upgrade master-&gt;fix on the constrained device: CUT_OVER 1 s after launch, exactly one explainer, zero post-upgrade <code>starting peergroup</code>, balance HELD at last-known 794.227628 during the replay, 9 m 38 s to 100%, final balance exact, no LMK at peak 647 MB PSS / 495 MB native (master/dashj on the same device peaked at 263 MB PSS / 50 MB native).
 - ENV-6 (S11): emulator 37.1 clamps AVD dw-qa7 to 2560 MB - both <code>hw.ramSize=1536</code> and <code>emulator -memory 1536</code> log "Increasing RAM size to 2560MB", so a true 1.5 GB guest is not reachable; S11 used 2560 MB + a 600 MB tmpfs ballast in /dev + RUNNING_CRITICAL trims. config.ini restored to 3072.
 | ENV-7 | env | S11 | Emulator 37.1 clamps <code>hw.ramSize</code>/<code>-memory</code> below 2560 MB back up to 2560 MB ("Increasing RAM size to 2560MB"), so a true 1.5 GB device could not be emulated; P3/P4 used 2560 MB + 600 MB tmpfs ballast + RUNNING_CRITICAL trims | note for report |
-- S11 REPORT complete: P1 restore 5 m 42 s, balance exact, peak PSS 596 MB; P2 <a class=did href="DEFECT-LEDGER.html#D-041">D-041</a> confirmed (2nd device); P3 survives trims (footprint does not shrink under RUNNING_CRITICAL); P4 constrained upgrade PASS (cutover 1 s after launch, balance held at last-known during replay, 9 m 38 s, 647 MB peak, no LMK). Mapped: S11-D1→<a class=did href="DEFECT-LEDGER.html#D-074">D-074</a>.
+- S11 REPORT complete: <a class=ev href="evidence/index.html#S11-P1">P1</a> restore 5 m 42 s, balance exact, peak PSS 596 MB; <a class=ev href="evidence/index.html#S11-P2">P2</a> <a class=did href="DEFECT-LEDGER.html#D-041">D-041</a> confirmed (2nd device); <a class=ev href="evidence/index.html#S11-P3">P3</a> survives trims (footprint does not shrink under RUNNING_CRITICAL); <a class=ev href="evidence/index.html#S11-P4">P4</a> constrained upgrade PASS (cutover 1 s after launch, balance held at last-known during replay, 9 m 38 s, 647 MB peak, no LMK). Mapped: S11-D1→<a class=did href="DEFECT-LEDGER.html#D-074">D-074</a>.
 - S9 X5: corrupted (truncated) and unreadable wallet files are recovered from the key backup in &lt; 2 s with correct balance; forced safe mode → Try Again recovers. X3: reconnect after airplane in 6 s. X7: username qa9s9zkrmvtpqwxnb3d7 created from shielded.
 - S10 T7: L1 engine kept running with the screen off for 5.5 min, no idle teardown, memory flat (389 MB PSS), send after unlock OK. T9: process-death restoration of Send (address + amount) and Edit Profile (typed text) PASS; tx-detail sheet not restored (acceptable). T6: DashPay profile, contacts and the contact-named tx row all survive reset + restore.
 - S9 REPORT complete: X1 <a class=did href="DEFECT-LEDGER.html#D-031">D-031</a> not reproduced (5/5 sends OK; every teardown followed by a resume; <code>IDLE_TRANSACTION_TIMEOUT_MIN = 9</code> suppresses the detector for 9 min after any tx event); X4 CSV share sheet + empty-wallet message correct; X5 wallet-file corruption/unreadable both auto-recover from the key backup; X8 all 6 notification channels present; X6 6-hour notice code-verified only. Mapped: S9-D1→<a class=did href="DEFECT-LEDGER.html#D-070">D-070</a> (raised to S2), S9-D2→<a class=did href="DEFECT-LEDGER.html#D-079">D-079</a>, S9-D3→<a class=did href="DEFECT-LEDGER.html#D-080">D-080</a>, S9-D4→<a class=did href="DEFECT-LEDGER.html#D-076">D-076</a>, S9-D5→<a class=did href="DEFECT-LEDGER.html#D-075">D-075</a>, S9-D6→<a class=did href="DEFECT-LEDGER.html#D-005">D-005</a>, S9-D7→<a class=did href="DEFECT-LEDGER.html#D-057">D-057</a>, S9-D8→<a class=did href="DEFECT-LEDGER.html#D-081">D-081</a>.
 - S10 REPORT complete: T1 interruption matrix (HOME / force-stop / airplane mid-shield, force-stop mid-unshield, kill at PIN/confirm) → no funds lost, exactly one tx when killed 0.5 s after Confirm; T2 triple-tap Confirm → exactly ONE tx every time; T7 screen-off 5 min engine keeps advancing; T9 process-death restoration PASS; money accounting balances to the duff. Rotation interrupts inapplicable (22/31 activities are portrait-locked). Mapped: S10-D1→<a class=did href="DEFECT-LEDGER.html#D-082">D-082</a>, D2→<a class=did href="DEFECT-LEDGER.html#D-087">D-087</a>, D3→<a class=did href="DEFECT-LEDGER.html#D-083">D-083</a>, D4→<a class=did href="DEFECT-LEDGER.html#D-088">D-088</a>, D5/D16→<a class=did href="DEFECT-LEDGER.html#D-089">D-089</a>, D6/D7→<a class=did href="DEFECT-LEDGER.html#D-086">D-086</a>, D8→<a class=did href="DEFECT-LEDGER.html#D-073">D-073</a>, D9→<a class=did href="DEFECT-LEDGER.html#D-084">D-084</a>, D10/D11→<a class=did href="DEFECT-LEDGER.html#D-071">D-071</a>, D12→<a class=did href="DEFECT-LEDGER.html#D-072">D-072</a>, D13→<a class=did href="DEFECT-LEDGER.html#D-077">D-077</a>, D14→<a class=did href="DEFECT-LEDGER.html#D-078">D-078</a>, D15→<a class=did href="DEFECT-LEDGER.html#D-085">D-085</a>, D17→<a class=did href="DEFECT-LEDGER.html#D-090">D-090</a>.
-- S4 REPORT complete (saved by orchestrator; harness blocked the agent's write): 45 stories, zero crashes in 3.5 h, peak PSS 344 MB; E11 edge cases all PASS (offline first launch + wallet creation, mainnet address / username rejected in Send, 500-char memo, double-tap, kill during PIN, rotate everywhere); E6 Contact Support shares 3 files incl. wallet.log with the SDK native log bridged; <a class=did href="DEFECT-LEDGER.html#SR-33">SR-34</a> PASS. Mapped: S4-D01→<a class=did href="DEFECT-LEDGER.html#SR-22">SR-22</a> (S1 confirmed), D02→<a class=did href="DEFECT-LEDGER.html#SR-05">SR-05</a> (S1 confirmed), D03→<a class=did href="DEFECT-LEDGER.html#D-011">D-011</a>, D04→<a class=did href="DEFECT-LEDGER.html#D-012">D-012</a>, D05→<a class=did href="DEFECT-LEDGER.html#D-017">D-017</a>, D06→<a class=did href="DEFECT-LEDGER.html#D-085">D-085</a>, D07→<a class=did href="DEFECT-LEDGER.html#D-071">D-071</a>/<a class=did href="DEFECT-LEDGER.html#D-092">D-092</a>, D08/D10/D11→<a class=did href="DEFECT-LEDGER.html#D-091">D-091</a>, D09→<a class=did href="DEFECT-LEDGER.html#D-019">D-019</a>, D12/D13/D14→<a class=did href="DEFECT-LEDGER.html#D-092">D-092</a>, D15→<a class=did href="DEFECT-LEDGER.html#D-030">D-030</a>.
+- S4 REPORT complete (saved by orchestrator; harness blocked the agent's write): 45 stories, zero crashes in 3.5 h, peak PSS 344 MB; E11 edge cases all PASS (offline first launch + wallet creation, mainnet address / username rejected in Send, 500-char memo, double-tap, kill during PIN, rotate everywhere); E6 Contact Support shares 3 files incl. <a class=ev href="evidence/S11/P4/logs/files/log/wallet.log">wallet.log</a> with the SDK native log bridged; <a class=did href="DEFECT-LEDGER.html#SR-33">SR-34</a> PASS. Mapped: S4-D01→<a class=did href="DEFECT-LEDGER.html#SR-22">SR-22</a> (S1 confirmed), D02→<a class=did href="DEFECT-LEDGER.html#SR-05">SR-05</a> (S1 confirmed), D03→<a class=did href="DEFECT-LEDGER.html#D-011">D-011</a>, D04→<a class=did href="DEFECT-LEDGER.html#D-012">D-012</a>, D05→<a class=did href="DEFECT-LEDGER.html#D-017">D-017</a>, D06→<a class=did href="DEFECT-LEDGER.html#D-085">D-085</a>, D07→<a class=did href="DEFECT-LEDGER.html#D-071">D-071</a>/<a class=did href="DEFECT-LEDGER.html#D-092">D-092</a>, D08/D10/D11→<a class=did href="DEFECT-LEDGER.html#D-091">D-091</a>, D09→<a class=did href="DEFECT-LEDGER.html#D-019">D-019</a>, D12/D13/D14→<a class=did href="DEFECT-LEDGER.html#D-092">D-092</a>, D15→<a class=did href="DEFECT-LEDGER.html#D-030">D-030</a>.
 - S12 REPORT complete (last stream): CJ1 mixed-funds migration UI BLOCKED by design (hard-suppressed, <a class=did href="DEFECT-LEDGER.html#D-063">D-063</a>), ex-CoinJoin funds unspendable = <a class=did href="DEFECT-LEDGER.html#D-068">D-068</a> (S1) with a full escape-hatch matrix (Max/send-all, shield Max, dashj toggle, reset+restore all FAIL; downgrade to 11.9.0 works); BC1 buy credits PASS with 4 defects (username + 2 × 0.001 top-ups landed, explorer credit balance 2,562,746,440 → 2,746,680,400); NM1 network monitor PASS. S12's own IDs D-068a→<a class=did href="DEFECT-LEDGER.html#D-093">D-093</a>, D-068b→<a class=did href="DEFECT-LEDGER.html#D-069">D-069</a>, <a class=did href="DEFECT-LEDGER.html#D-069">D-069</a>→<a class=did href="DEFECT-LEDGER.html#D-094">D-094</a>, <a class=did href="DEFECT-LEDGER.html#D-070">D-070</a>→<a class=did href="DEFECT-LEDGER.html#D-095">D-095</a>, <a class=did href="DEFECT-LEDGER.html#D-071">D-071</a>→<a class=did href="DEFECT-LEDGER.html#D-096">D-096</a>, <a class=did href="DEFECT-LEDGER.html#D-072">D-072</a>/073/074→<a class=did href="DEFECT-LEDGER.html#D-097">D-097</a>.
 | ENV-8 | env | S12 | Testnet CoinJoin never completes a round (all sessions <code>POOL_STATE_ERROR "Session not complete!"</code>/TIMEOUT against 68.67.122.*, progress 0.0 over 21 min); denominations are created so the m/9' account is reachable, fully-mixed coins are not | note for report |</p><div id=lb><span class=x>&times;</span><span class="nv pv">&#8249;</span><span class="nv nx">&#8250;</span><img><div class=cap></div></div>
 <script>(function(){var lb=document.getElementById('lb'),im=lb.querySelector('img'),cap=lb.querySelector('.cap'),L=[],i=0;

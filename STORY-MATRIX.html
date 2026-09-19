@@ -5,6 +5,7 @@ h1{border-bottom:3px solid #008de4}h2{border-bottom:1px solid #ccc;margin-top:40
 nav.top{background:#012060;color:#fff;padding:8px 24px;margin:-16px -24px 16px;position:sticky;top:0;z-index:5}nav.top a{color:#fff;margin-right:18px;text-decoration:none}nav.top a:hover{text-decoration:underline}
 .S1{color:#b00020;font-weight:bold}.S2{color:#c75000;font-weight:bold}.toc{background:#f8f9fb;border:1px solid #e3e6ea;padding:8px 16px;font-size:13px;columns:2}.toc ul{margin:2px 0;padding-left:16px}
 #lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:50;align-items:center;justify-content:center;flex-direction:column}#lb.on{display:flex}#lb img{max-width:96vw;max-height:88vh;border:2px solid #fff;box-shadow:0 0 30px #000}#lb .cap{color:#eee;font:13px ui-monospace,monospace;margin-top:8px}#lb .cap a{color:#8cf}#lb .x{position:absolute;top:10px;right:18px;color:#fff;font-size:30px;cursor:pointer}#lb .nv{position:absolute;top:50%;color:#fff;font-size:44px;cursor:pointer;padding:0 16px;user-select:none}#lb .pv{left:0}#lb .nx{right:0}a.img img{cursor:zoom-in}
+sup.more a{margin:0 2px;font-size:10px}
 a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:target{background:#fff3b0;outline:2px solid #f5b400}
 .note{background:#fff8e1;border-left:4px solid #f5b400;padding:8px 12px;margin:12px 0}
 </style><nav class=top><a href="index.html">Home</a><a href="QA-REPORT.html">Full report</a><a href="EXEC-SUMMARY.html">Executive summary</a><a href="STORY-MATRIX.html">User-story matrix</a><a href="DEFECT-LEDGER.html">Defect register</a><a href="evidence/index.html">Evidence gallery</a><a href="QA-PLAN.html">Test plan</a><a href="streams.html">Stream reports</a></nav><h1>User-story matrix</h1><div class=note>Public QA archive. All wallets are testnet or empty-mainnet throwaways created for this QA run, so seed phrases, addresses and full logcat/wallet logs are published verbatim. Screenshots are served as WebP; original PNGs and videos are unmodified emulator captures.</div><h2 id="user-story-matrix-every-story-tested-with-verdict-and-proof">User-story matrix (every story tested, with verdict and proof)</h2>
@@ -22,31 +23,31 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 </thead>
 <tbody>
 <tr>
-<td>A1</td>
+<td><a class=ev href="evidence/index.html#S1-A1">A1</a></td>
 <td>Install, create wallet, save phrase, fund 1 tDASH, shield all, create non-contested username, screenshot, reset, restore from phrase, balances and txs identical</td>
 <td><strong>PASS+</strong></td>
-<td class=S1>S1/A1/01-onboarding…08-negative, videos <code>S1/A1/*/s1-*.mp4</code>; parity table in S1/REPORT.md</td>
+<td><a class=ev href="evidence/index.html#S1-A1">S1/A1/01-onboarding</a>…08-negative, videos <a class=ev href="evidence/S1/A1/03-shield/s1-shield-1.mp4">S1/A1/*/s1-*.mp4</a><sup class=more><a href="evidence/S1/A1/04-username/s1-username-1.mp4" title="S1/A1/04-username/s1-username-1.mp4">2</a> <a href="evidence/S1/A1/06-reset-restore/s1-reset-1.mp4" title="S1/A1/06-reset-restore/s1-reset-1.mp4">3</a> <a href="evidence/S1/A1/06-reset-restore/s1-restore-1.mp4" title="S1/A1/06-reset-restore/s1-restore-1.mp4">4</a> <a href="evidence/S1/A1/07-after-restore/s1-restore-2.mp4" title="S1/A1/07-after-restore/s1-restore-2.mp4">5</a></sup>; parity table in <a class=ev href="evidence/S1/REPORT.html">S1/REPORT.md</a></td>
 <td><a class=did href="DEFECT-LEDGER.html#D-012">D-012</a> reset has no PIN, <a class=did href="DEFECT-LEDGER.html#D-027">D-027</a>/<a class=did href="DEFECT-LEDGER.html#D-050">D-050</a> shield cost undisclosed, <a class=did href="DEFECT-LEDGER.html#D-042">D-042</a> Max retry, <a class=did href="DEFECT-LEDGER.html#D-007">D-007</a> no username-fee row, <a class=did href="DEFECT-LEDGER.html#D-018">D-018</a> time shift</td>
 </tr>
 <tr>
-<td>A2</td>
+<td><a class=ev href="evidence/index.html#S2-A2">A2</a></td>
 <td>Clean install, restore reference seed, sync finishes, balance correct</td>
 <td><strong>PASS</strong> (balance 107.08173522 to the duff; brief's 107.43 is stale, see <a class=did href="DEFECT-LEDGER.html#D-014">D-014</a>)</td>
-<td class=S2>S2/A2/17-SYNCED-balance.png, S2/A2/a2-sync-100.mp4, S2/A2/walletlog-after-sync</td>
+<td><a class=ev href="evidence/S2/A2/17-SYNCED-balance.webp">S2/A2/17-SYNCED-balance.png</a>, <a class=ev href="evidence/S2/A2/a2-sync-100.mp4">S2/A2/a2-sync-100.mp4</a>, <a class=ev href="evidence/S2/A2/walletlog-after-sync/files/log/wallet.log">S2/A2/walletlog-after-sync</a></td>
 <td><a class=did href="DEFECT-LEDGER.html#D-002">D-002</a> inflated partial balance during replay, <a class=did href="DEFECT-LEDGER.html#D-003">D-003</a> reused receive address</td>
 </tr>
 <tr>
-<td>A3</td>
+<td><a class=ev href="evidence/index.html#S3-A3">A3</a></td>
 <td>Upgrade master 11.9.0 → 12.0.0 mid-sync, sync finishes, balance correct, no stall, no memory kill</td>
 <td><strong>PASS+</strong> (cutover clean; balance held; 4 m 27 s; no LMK)</td>
-<td>S3/A3/03-upgrade-launch/a3-upgrade-launch-1.mp4, S3/A3/05-post-sync, S3/mem.csv</td>
+<td><a class=ev href="evidence/S3/A3/03-upgrade-launch/a3-upgrade-launch-1.mp4">S3/A3/03-upgrade-launch/a3-upgrade-launch-1.mp4</a>, <a class=ev href="evidence/index.html#S3-A3">S3/A3/05-post-sync</a>, <a class=ev href="evidence/S3/mem.csv">S3/mem.csv</a></td>
 <td><a class=did href="DEFECT-LEDGER.html#D-024">D-024</a> never SETTLED, <a class=did href="DEFECT-LEDGER.html#D-025">D-025</a>/<a class=did href="DEFECT-LEDGER.html#D-035">D-035</a> memory 3×/11× dashj</td>
 </tr>
 <tr>
-<td>A3b</td>
+<td><a class=ev href="evidence/index.html#S3-A3b">A3b</a></td>
 <td>Same upgrade with the device LOCKED, bind after unlock</td>
 <td><strong>FAIL</strong> (bind in 3 s PASS; engine never starts, 16 min wedge)</td>
-<td>S3/A3b/a3b-locked-upgrade.mp4, a3b-unlock.mp4, grep-engine-never-started.txt</td>
+<td><a class=ev href="evidence/S3/A3b/a3b-locked-upgrade.mp4">S3/A3b/a3b-locked-upgrade.mp4</a>, <a class=ev href="evidence/S3/A3b/a3b-unlock.mp4">a3b-unlock.mp4</a>, <a class=ev href="evidence/S3/A3b/grep-engine-never-started.txt">grep-engine-never-started.txt</a></td>
 <td><strong><a class=did href="DEFECT-LEDGER.html#D-056">D-056</a> (S1)</strong></td>
 </tr>
 </tbody>
@@ -64,73 +65,73 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 </thead>
 <tbody>
 <tr>
-<td>B1</td>
+<td><a class=ev href="evidence/index.html#S2">B1</a></td>
 <td>Replay survives low-memory pressure (RUNNING_CRITICAL)</td>
 <td><strong>PASS</strong> (3 GB and 2.5 GB + ballast)</td>
-<td class=S2>S2/B3/torture-timeline.txt, S11/P3/pressure-log.txt, S11/P3/p3-replay.mp4</td>
+<td><a class=ev href="evidence/S2/B3/torture-timeline.txt">S2/B3/torture-timeline.txt</a>, <a class=ev href="evidence/S11/P3/pressure-log.txt">S11/P3/pressure-log.txt</a>, <a class=ev href="evidence/S11/P3/p3-replay.mp4">S11/P3/p3-replay.mp4</a></td>
 <td>footprint does not shrink under trim (<a class=did href="DEFECT-LEDGER.html#D-025">D-025</a>)</td>
 </tr>
 <tr>
-<td>B2</td>
+<td><a class=ev href="evidence/index.html#S2-B2">B2</a></td>
 <td>Kill during replay: ≤ 5,000 blocks lost, sync completes</td>
 <td><strong>PASS</strong> for blocks (0 lost on 5 kills) / <strong>FAIL</strong> for balance</td>
-<td class=S2>S2/B2/kill3/kill3-results.txt, k1..k3.mp4, S2/B2/11-BALANCE-after-kills.png, S11/P2/09-BALANCE-after-kill-INFLATED.png</td>
+<td><a class=ev href="evidence/S2/B2/kill3/kill3-results.txt">S2/B2/kill3/kill3-results.txt</a>, <a class=ev href="evidence/S2/B2/kill3/k1.mp4">k1..k3.mp4</a><sup class=more><a href="evidence/S2/B2/kill3/k2.mp4" title="S2/B2/kill3/k2.mp4">2</a> <a href="evidence/S2/B2/kill3/k3.mp4" title="S2/B2/kill3/k3.mp4">3</a></sup>, <a class=ev href="evidence/S2/B2/11-BALANCE-after-kills.webp">S2/B2/11-BALANCE-after-kills.png</a>, <a class=ev href="evidence/S11/P2/09-BALANCE-after-kill-INFLATED.webp">S11/P2/09-BALANCE-after-kill-INFLATED.png</a></td>
 <td><strong><a class=did href="DEFECT-LEDGER.html#D-041">D-041</a> (S1)</strong> 21× inflated balance claims synced</td>
 </tr>
 <tr>
-<td>B3</td>
+<td><a class=ev href="evidence/index.html#S2-B3">B3</a></td>
 <td>Network flap ×3 during replay</td>
 <td><strong>PASS</strong></td>
-<td class=S2>S2/B3/03-during-net-off-3.png, torture-timeline.txt</td>
+<td><a class=ev href="evidence/S2/B3/03-during-net-off-3.webp">S2/B3/03-during-net-off-3.png</a>, <a class=ev href="evidence/S2/B3/torture-timeline.txt">torture-timeline.txt</a></td>
 <td>—</td>
 </tr>
 <tr>
-<td>B4</td>
+<td><a class=ev href="evidence/index.html#S2-B4">B4</a></td>
 <td>30-min background idle after sync</td>
 <td><strong>PASS</strong> (one stop/start, zero wakelock growth)</td>
-<td class=S2>S2/B4/04-home-after-30min-idle.png, batterystats-*.txt</td>
+<td><a class=ev href="evidence/S2/B4/04-home-after-30min-idle.webp">S2/B4/04-home-after-30min-idle.png</a>, <a class=ev href="evidence/S2/B4/batterystats-end.txt">batterystats-*.txt</a><sup class=more><a href="evidence/S2/B4/batterystats-mid.txt" title="S2/B4/batterystats-mid.txt">2</a></sup></td>
 <td><a class=did href="DEFECT-LEDGER.html#D-004">D-004</a> misleading idle log</td>
 </tr>
 <tr>
-<td>B5</td>
+<td><a class=ev href="evidence/index.html#S7-B5">B5</a></td>
 <td>Tools › dashj diagnostic toggle is the only way to start dashj</td>
 <td><strong>PASS</strong> (parity MATCH sdk=dashj)</td>
-<td>S7/B5/s7-b5-dashj-toggle.mp4, B5/09,11,14</td>
+<td><a class=ev href="evidence/S7/B5/s7-b5-dashj-toggle.mp4">S7/B5/s7-b5-dashj-toggle.mp4</a>, <a class=ev href="evidence/S7/B5/09-netmon-dashj-on.webp">B5/09,11,14</a><sup class=more><a href="evidence/S7/B5/11-netmon-blocks.webp" title="S7/B5/11-netmon-blocks.webp">2</a> <a href="evidence/S7/B5/14-netmon-after-off.webp" title="S7/B5/14-netmon-after-off.webp">3</a></sup></td>
 <td>—</td>
 </tr>
 <tr>
 <td>B6</td>
 <td>Sends keep working after the idle teardown</td>
 <td><strong>FAIL</strong></td>
-<td class=S1>S1/C1/08,09-send-blocked-log.txt, S7/TX1/SR29-05..09; S9/X1 (non-repro when a resume follows)</td>
+<td><a class=ev href="evidence/S1/C1/08-after-confirm.webp">S1/C1/08,09-send-blocked-log.txt</a><sup class=more><a href="evidence/S1/C1/09-send-blocked-log.txt" title="S1/C1/09-send-blocked-log.txt">2</a></sup>, <a class=ev href="evidence/S7/TX1/SR29-05-problem-sending.webp">S7/TX1/SR29-05..09</a><sup class=more><a href="evidence/S7/TX1/SR29-06-after-dismiss.webp" title="S7/TX1/SR29-06-after-dismiss.webp">2</a> <a href="evidence/S7/TX1/SR29-07-retry-result.webp" title="S7/TX1/SR29-07-retry-result.webp">3</a> <a href="evidence/S7/TX1/SR29-08-normal-send-in-enginedown.webp" title="S7/TX1/SR29-08-normal-send-in-enginedown.webp">4</a> <a href="evidence/S7/TX1/SR29-09-after-bg-fg.webp" title="S7/TX1/SR29-09-after-bg-fg.webp">5</a></sup>; <a class=ev href="evidence/index.html#S9-X1">S9/X1</a> (non-repro when a resume follows)</td>
 <td><strong><a class=did href="DEFECT-LEDGER.html#D-031">D-031</a> (S1)</strong></td>
 </tr>
 <tr>
 <td>B7</td>
 <td>Mainnet fresh wallet, test-vector seed, mainnet upgrade</td>
 <td><strong>PASS+</strong></td>
-<td>S6/M1..M4, M3/upgrade-launch.mp4</td>
+<td><a class=ev href="evidence/index.html#S6-M1">S6/M1..M4</a><sup class=more><a href="evidence/index.html#S6-M2" title="S6/M2">2</a> <a href="evidence/index.html#S6-M3" title="S6/M3">3</a> <a href="evidence/index.html#S6-M4" title="S6/M4">4</a></sup>, <a class=ev href="evidence/S6/M3/upgrade-launch.mp4">M3/upgrade-launch.mp4</a></td>
 <td><a class=did href="DEFECT-LEDGER.html#D-025">D-025</a>/<a class=did href="DEFECT-LEDGER.html#D-035">D-035</a> 1 GB PSS, <a class=did href="DEFECT-LEDGER.html#D-026">D-026</a>, <a class=did href="DEFECT-LEDGER.html#D-036">D-036</a></td>
 </tr>
 <tr>
 <td>B8</td>
 <td>Massive wallet (3,000 txs, 800 addresses) restore on a 2 GB device, gap limit, live growth, kill/bg</td>
 <td><strong>PASS</strong> sync/memory/gap-limit, <strong>FAIL</strong> history</td>
-<td>S8/L1..L8, L4-*.mp4, L6-restore-100.mp4, L2/explorer-utxo-sum-final.txt</td>
+<td><a class=ev href="evidence/index.html#S8-L1">S8/L1..L8</a><sup class=more><a href="evidence/index.html#S8" title="S8/L2">2</a> <a href="evidence/index.html#S8-L3" title="S8/L3">3</a> <a href="evidence/index.html#S8-L4" title="S8/L4">4</a> <a href="evidence/index.html#S8" title="S8/L5">5</a> <a href="evidence/index.html#S8-L6" title="S8/L6">6</a> <a href="evidence/index.html#S8-L7" title="S8/L7">7</a> <a href="evidence/index.html#S8-L8" title="S8/L8">8</a></sup>, <a class=ev href="evidence/S8/L4/L4-forcestop-relaunch.mp4">L4-*.mp4</a><sup class=more><a href="evidence/S8/L4/L4-kill-relaunch.mp4" title="S8/L4/L4-kill-relaunch.mp4">2</a></sup>, <a class=ev href="evidence/S8/L6/L6-restore-100.mp4">L6-restore-100.mp4</a>, <a class=ev href="evidence/S8/L2/explorer-utxo-sum-final.txt">L2/explorer-utxo-sum-final.txt</a></td>
 <td><strong><a class=did href="DEFECT-LEDGER.html#D-037">D-037</a> (S1)</strong> history rows missing</td>
 </tr>
 <tr>
 <td>B9</td>
 <td>Locked-screen / screen-off background sync</td>
 <td><strong>PASS</strong></td>
-<td>S10/T7 (wallet.log), S8/L4</td>
+<td><a class=ev href="evidence/index.html#S10-T7">S10/T7</a> (<a class=ev href="evidence/S10/logs/files/log/wallet.log">wallet.log</a>), <a class=ev href="evidence/index.html#S8-L4">S8/L4</a></td>
 <td>—</td>
 </tr>
 <tr>
 <td>B10</td>
 <td>Offline / reconnect state surfaced</td>
 <td><strong>FAIL</strong></td>
-<td>S9/X2, S9/X3</td>
+<td><a class=ev href="evidence/index.html#S9-X2">S9/X2</a>, <a class=ev href="evidence/index.html#S9-X3">S9/X3</a></td>
 <td><a class=did href="DEFECT-LEDGER.html#D-070">D-070</a> (S2), <a class=did href="DEFECT-LEDGER.html#D-079">D-079</a></td>
 </tr>
 </tbody>
@@ -148,73 +149,73 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 </thead>
 <tbody>
 <tr>
-<td>C1</td>
+<td><a class=ev href="evidence/index.html#S1-C1">C1</a></td>
 <td>Send to address; fee, confirm, result, tx row direction</td>
 <td><strong>PASS+</strong></td>
-<td class=S1>S1/C1, S7/TX1, S9/X1 videos</td>
+<td><a class=ev href="evidence/index.html#S1-C1">S1/C1</a>, <a class=ev href="evidence/index.html#S7-TX1">S7/TX1</a>, <a class=ev href="evidence/index.html#S9-X1">S9/X1</a> videos</td>
 <td><a class=did href="DEFECT-LEDGER.html#D-032">D-032</a>/<a class=did href="DEFECT-LEDGER.html#SR-28">SR-28</a> flat 0.0001 fee, <a class=did href="DEFECT-LEDGER.html#D-057">D-057</a> change shown as "Sent to", <a class=did href="DEFECT-LEDGER.html#D-048">D-048</a> tax category</td>
 </tr>
 <tr>
-<td>C2</td>
+<td><a class=ev href="evidence/index.html#S1-C2">C2</a></td>
 <td>Send-all / Max drains</td>
 <td><strong>PASS+</strong></td>
-<td class=S1>S1/C2/s1-c2-sendall.mp4, s1-c2-drain.mp4, S7/TX1/SR29-*</td>
+<td><a class=ev href="evidence/S1/C2/s1-c2-sendall.mp4">S1/C2/s1-c2-sendall.mp4</a>, <a class=ev href="evidence/S1/C2/s1-c2-drain.mp4">s1-c2-drain.mp4</a>, <a class=ev href="evidence/S7/TX1/SR29-01-max.webp">S7/TX1/SR29-*</a><sup class=more><a href="evidence/index.html#S7-TX1" title="13 files, open gallery">+12</a></sup></td>
 <td><a class=did href="DEFECT-LEDGER.html#D-033">D-033</a> first attempt fails + retry, <a class=did href="DEFECT-LEDGER.html#D-042">D-042</a> dust stranded, <a class=did href="DEFECT-LEDGER.html#D-064">D-064</a> Max &gt; balance</td>
 </tr>
 <tr>
-<td>C3</td>
+<td><a class=ev href="evidence/index.html#S1-C3">C3</a></td>
 <td>Receive: address rotates, QR, specify amount</td>
 <td><strong>FAIL</strong> (SDK-created/restored keychains)</td>
-<td class=S1>S1/C3, S2/A2/26, S7/BK1/12,13,18</td>
+<td><a class=ev href="evidence/index.html#S1-C3">S1/C3</a>, <a class=ev href="evidence/S2/A2/26-receive-address.webp">S2/A2/26</a>, <a class=ev href="evidence/S7/BK1/12-SR03-restored-receive-before.webp">S7/BK1/12,13,18</a><sup class=more><a href="evidence/S7/BK1/13-SR03-specify-amount-restored.webp" title="S7/BK1/13-SR03-specify-amount-restored.webp">2</a> <a href="evidence/S7/BK1/18-SR03-receive-after-receive.webp" title="S7/BK1/18-SR03-receive-after-receive.webp">3</a></sup></td>
 <td><a class=did href="DEFECT-LEDGER.html#D-003">D-003</a> (S2 privacy)</td>
 </tr>
 <tr>
-<td>C4</td>
+<td><a class=ev href="evidence/index.html#S1-C4">C4</a></td>
 <td>Unshield</td>
 <td><strong>PASS+</strong></td>
-<td class=S1>S1/C4/s1-c4-unshield.mp4</td>
+<td><a class=ev href="evidence/S1/C4/s1-c4-unshield.mp4">S1/C4/s1-c4-unshield.mp4</a></td>
 <td><a class=did href="DEFECT-LEDGER.html#D-047">D-047</a> detail says "Received"/Income</td>
 </tr>
 <tr>
-<td>C5</td>
+<td><a class=ev href="evidence/index.html#S1-C5">C5</a></td>
 <td>Memo + tax category persist</td>
 <td><strong>PASS</strong></td>
-<td class=S1>S1/C5/05-after-relaunch-detail.png</td>
+<td><a class=ev href="evidence/S1/C5/05-after-relaunch-detail.webp">S1/C5/05-after-relaunch-detail.png</a></td>
 <td>—</td>
 </tr>
 <tr>
-<td>C6</td>
+<td><a class=ev href="evidence/index.html#S1-C6">C6</a></td>
 <td>Payment URI / BIP21</td>
 <td><strong>PASS+</strong></td>
-<td class=S1>S1/C6, S4/E11, S10/T4</td>
+<td><a class=ev href="evidence/index.html#S1-C6">S1/C6</a>, <a class=ev href="evidence/index.html#S4-E11">S4/E11</a>, <a class=ev href="evidence/index.html#S10-T4">S10/T4</a></td>
 <td><a class=did href="DEFECT-LEDGER.html#D-086">D-086</a> label/message dropped, <a class=did href="DEFECT-LEDGER.html#D-077">D-077</a> lock-screen skipped</td>
 </tr>
 <tr>
-<td>C7</td>
+<td><a class=ev href="evidence/index.html#S1-C7">C7</a></td>
 <td>Address book, xpub, import key, CSV export</td>
 <td><strong>PASS+</strong> / import BLOCKED (QR only)</td>
-<td class=S1>S1/C7, S4/E7, S8/L8, S9/X4</td>
+<td><a class=ev href="evidence/index.html#S1-C7">S1/C7</a>, <a class=ev href="evidence/index.html#S4-E7">S4/E7</a>, <a class=ev href="evidence/index.html#S8-L8">S8/L8</a>, <a class=ev href="evidence/index.html#S9-X4">S9/X4</a></td>
 <td><a class=did href="DEFECT-LEDGER.html#D-049">D-049</a>/<a class=did href="DEFECT-LEDGER.html#D-062">D-062</a>/<a class=did href="DEFECT-LEDGER.html#D-081">D-081</a> CSV, <a class=did href="DEFECT-LEDGER.html#D-030">D-030</a>, <a class=did href="DEFECT-LEDGER.html#D-073">D-073</a> labels</td>
 </tr>
 <tr>
 <td>C8</td>
 <td>Interrupt every money flow (HOME/kill/airplane mid-shield/unshield/send), double-submit</td>
 <td><strong>PASS</strong> (no funds lost, exactly one tx)</td>
-<td>S10/T1, T2, s10-t1f-t2-send.mp4</td>
+<td><a class=ev href="evidence/index.html#S10-T1">S10/T1</a>, <a class=ev href="evidence/index.html#S10-T2">T2</a>, <a class=ev href="evidence/S10/T1/s10-t1f-t2-send.mp4">s10-t1f-t2-send.mp4</a></td>
 <td><a class=did href="DEFECT-LEDGER.html#D-066">D-066</a> shield resumes only after relaunch, <a class=did href="DEFECT-LEDGER.html#D-087">D-087</a></td>
 </tr>
 <tr>
 <td>C9</td>
 <td>Amount and address edge cases (dust, &gt; balance, exact, comma decimal, mainnet addr, username)</td>
 <td><strong>PASS+</strong></td>
-<td>S10/T3, T4, S4/E11</td>
+<td><a class=ev href="evidence/index.html#S10-T3">S10/T3</a>, <a class=ev href="evidence/index.html#S10-T4">T4</a>, <a class=ev href="evidence/index.html#S4-E11">S4/E11</a></td>
 <td><a class=did href="DEFECT-LEDGER.html#D-088">D-088</a> no dust guard, <a class=did href="DEFECT-LEDGER.html#D-089">D-089</a> locale formats</td>
 </tr>
 <tr>
 <td>C10</td>
 <td>Ex-CoinJoin funds spendable after upgrade</td>
 <td><strong>FAIL</strong></td>
-<td>S12/CJ1, escape-hatches/*</td>
+<td><a class=ev href="evidence/index.html#S12-CJ1">S12/CJ1</a>, escape-hatches/*</td>
 <td><strong><a class=did href="DEFECT-LEDGER.html#D-068">D-068</a> (S1)</strong> funds stranded; <a class=did href="DEFECT-LEDGER.html#D-063">D-063</a> migration prompt suppressed</td>
 </tr>
 </tbody>
@@ -232,66 +233,66 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 </thead>
 <tbody>
 <tr>
-<td>D0</td>
+<td><a class=ev href="evidence/index.html#S5-D0">D0</a></td>
 <td>Username eligibility gating by balance</td>
 <td><strong>PASS+</strong></td>
-<td>S5/D0</td>
+<td><a class=ev href="evidence/index.html#S5-D0">S5/D0</a></td>
 <td><a class=did href="DEFECT-LEDGER.html#D-053">D-053</a> home tile vanishes, <a class=did href="DEFECT-LEDGER.html#D-005">D-005</a> transparent-only warning</td>
 </tr>
 <tr>
-<td>D1</td>
+<td><a class=ev href="evidence/index.html#S5-D1">D1</a></td>
 <td>Contested username classification, fee, voting explainer, criteria list</td>
 <td><strong>PASS+</strong></td>
-<td>S5/D1</td>
+<td><a class=ev href="evidence/index.html#S5-D1">S5/D1</a></td>
 <td><a class=did href="DEFECT-LEDGER.html#D-054">D-054</a> criteria sort</td>
 </tr>
 <tr>
-<td>D2</td>
+<td><a class=ev href="evidence/index.html#S5-D2">D2</a></td>
 <td>Invite creation (shielded) and claim on a second wallet, no "Loading invite" hang</td>
 <td><strong>PASS+</strong> (&lt; 1 s validation)</td>
-<td>S5/D2/d2-invite.mp4, D2b/d2b-claim-finish.mp4</td>
+<td><a class=ev href="evidence/S5/D2/d2-invite.mp4">S5/D2/d2-invite.mp4</a>, <a class=ev href="evidence/S5/D2b/d2b-claim-finish.mp4">D2b/d2b-claim-finish.mp4</a></td>
 <td><a class=did href="DEFECT-LEDGER.html#D-038">D-038</a> invite forgotten on restart, <a class=did href="DEFECT-LEDGER.html#D-039">D-039</a>, <a class=did href="DEFECT-LEDGER.html#D-078">D-078</a> late error</td>
 </tr>
 <tr>
-<td>D3</td>
+<td><a class=ev href="evidence/index.html#S5-D3">D3</a></td>
 <td>Contact request send/accept, pay by username, contact-named tx row</td>
 <td><strong>PASS</strong> (cross-wallet S5↔S1)</td>
-<td>S5/D3, S1/D3/s1-d3-contact.mp4</td>
+<td><a class=ev href="evidence/index.html#S5-D3">S5/D3</a>, <a class=ev href="evidence/S1/D3/s1-d3-contact.mp4">S1/D3/s1-d3-contact.mp4</a></td>
 <td><a class=did href="DEFECT-LEDGER.html#D-080">D-080</a> offline request inert, <a class=did href="DEFECT-LEDGER.html#D-052">D-052</a> coverage debt after restore</td>
 </tr>
 <tr>
-<td>D4</td>
+<td><a class=ev href="evidence/index.html#S5-D4">D4</a></td>
 <td>Non-contested username from the shielded pool, explorer-verified</td>
 <td><strong>PASS</strong> (3 wallets)</td>
-<td class=S1>S1/A1/04-username/s1-username-1.mp4, S5/D4/d4-username.mp4, S9/X7</td>
+<td><a class=ev href="evidence/S1/A1/04-username/s1-username-1.mp4">S1/A1/04-username/s1-username-1.mp4</a>, <a class=ev href="evidence/S5/D4/d4-username.mp4">S5/D4/d4-username.mp4</a>, <a class=ev href="evidence/index.html#S9-X7">S9/X7</a></td>
 <td><a class=did href="DEFECT-LEDGER.html#D-007">D-007</a> no history row, <a class=did href="DEFECT-LEDGER.html#D-006">D-006</a></td>
 </tr>
 <tr>
-<td>D5</td>
+<td><a class=ev href="evidence/index.html#S5-D5">D5</a></td>
 <td>Profile edit (name, about, avatar) persists and survives restore</td>
 <td><strong>PASS</strong></td>
-<td>S5/D5, S10/T6</td>
+<td><a class=ev href="evidence/index.html#S5-D5">S5/D5</a>, <a class=ev href="evidence/index.html#S10-T6">S10/T6</a></td>
 <td>—</td>
 </tr>
 <tr>
-<td>D6</td>
+<td><a class=ev href="evidence/index.html#S5-D6">D6</a></td>
 <td>Username voting UI</td>
 <td><strong>PASS</strong> (empty on testnet)</td>
-<td>S5/D6</td>
+<td><a class=ev href="evidence/index.html#S5-D6">S5/D6</a></td>
 <td>—</td>
 </tr>
 <tr>
-<td>D7</td>
+<td><a class=ev href="evidence/index.html#S5-D7">D7</a></td>
 <td>DashPay screens in de-DE / ar-EG</td>
 <td><strong>PASS+</strong></td>
-<td>S5/D7, S10/T6/30-37</td>
+<td><a class=ev href="evidence/index.html#S5-D7">S5/D7</a>, <a class=ev href="evidence/S10/T6/30-ar-home.webp">S10/T6/30-37</a><sup class=more><a href="evidence/S10/T6/31-ar-txdetail.webp" title="S10/T6/31-ar-txdetail.webp">2</a> <a href="evidence/S10/T6/32-ar-payments.webp" title="S10/T6/32-ar-payments.webp">3</a> <a href="evidence/S10/T6/33-ar-receive.webp" title="S10/T6/33-ar-receive.webp">4</a> <a href="evidence/S10/T6/34-ar-internal-tab.webp" title="S10/T6/34-ar-internal-tab.webp">5</a> <a href="evidence/S10/T6/35-ar-shielded.webp" title="S10/T6/35-ar-shielded.webp">6</a> <a href="evidence/S10/T6/36-ar-send-amount.webp" title="S10/T6/36-ar-send-amount.webp">7</a> <a href="evidence/S10/T6/37-ar-contacts.webp" title="S10/T6/37-ar-contacts.webp">8</a></sup></td>
 <td><a class=did href="DEFECT-LEDGER.html#D-034">D-034</a>, <a class=did href="DEFECT-LEDGER.html#D-067">D-067</a>, <a class=did href="DEFECT-LEDGER.html#D-085">D-085</a></td>
 </tr>
 <tr>
 <td>D8</td>
 <td>Buy credits / identity top-up</td>
 <td><strong>PASS+</strong> (2 top-ups landed, explorer-verified)</td>
-<td>S12/BC1/bc1-credits.mp4, explorer-identity-final.json</td>
+<td><a class=ev href="evidence/S12/BC1/bc1-credits.mp4">S12/BC1/bc1-credits.mp4</a>, <a class=ev href="evidence/S12/BC1/explorer-identity-final.json">explorer-identity-final.json</a></td>
 <td><a class=did href="DEFECT-LEDGER.html#D-095">D-095</a> auto-lock cancels top-up, <a class=did href="DEFECT-LEDGER.html#D-096">D-096</a> "may have gone through", <a class=did href="DEFECT-LEDGER.html#D-097">D-097</a> stale/missing credit balance</td>
 </tr>
 </tbody>
@@ -309,136 +310,136 @@ a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:targe
 </thead>
 <tbody>
 <tr>
-<td>E1</td>
+<td><a class=ev href="evidence/index.html#S4-E1">E1</a></td>
 <td>Onboarding variants, bad seeds, back-press, offline first launch</td>
 <td><strong>PASS+</strong></td>
-<td>S4/E1, S4/E11/airplane</td>
+<td><a class=ev href="evidence/index.html#S4-E1">S4/E1</a>, <a class=ev href="evidence/index.html#S4-E11">S4/E11/airplane</a></td>
 <td><a class=did href="DEFECT-LEDGER.html#D-017">D-017</a> useless "Error", <a class=did href="DEFECT-LEDGER.html#D-015">D-015</a> file restore DEBUG-only</td>
 </tr>
 <tr>
-<td>E2</td>
+<td><a class=ev href="evidence/index.html#S4-E2">E2</a></td>
 <td>Security: PIN change, auto-lock, rotate-no-lock, Forgot PIN, reset</td>
 <td><strong>FAIL</strong> (2 security defects)</td>
-<td>S4/E2/e2-forgotpin-bypass.mp4, S3/baseline</td>
+<td><a class=ev href="evidence/S4/E2/e2-forgotpin-bypass.mp4">S4/E2/e2-forgotpin-bypass.mp4</a>, <a class=ev href="evidence/index.html#S3-baseline">S3/baseline</a></td>
 <td><strong><a class=did href="DEFECT-LEDGER.html#D-011">D-011</a> (S1 regression)</strong> lock bypass, <a class=did href="DEFECT-LEDGER.html#D-012">D-012</a> reset without PIN (pre-existing)</td>
 </tr>
 <tr>
-<td>E3</td>
+<td><a class=ev href="evidence/index.html#S4-E3">E3</a></td>
 <td>Settings: currency, rates, hide balance, notifications, About</td>
 <td><strong>PASS+</strong></td>
-<td>S4/E3</td>
+<td><a class=ev href="evidence/index.html#S4-E3">S4/E3</a></td>
 <td><a class=did href="DEFECT-LEDGER.html#D-019">D-019</a> "(0)", <a class=did href="DEFECT-LEDGER.html#D-023">D-023</a></td>
 </tr>
 <tr>
-<td>E4</td>
+<td><a class=ev href="evidence/index.html#S4-E4">E4</a></td>
 <td>Explore Dash (list mode)</td>
 <td><strong>PASS</strong></td>
-<td>S4/E4</td>
+<td><a class=ev href="evidence/index.html#S4-E4">S4/E4</a></td>
 <td>—</td>
 </tr>
 <tr>
-<td>E5</td>
+<td><a class=ev href="evidence/index.html#S4-E5">E5</a></td>
 <td>Integrations up to the credential step</td>
 <td><strong>PASS (limited)</strong></td>
-<td>S4/E5</td>
+<td><a class=ev href="evidence/index.html#S4-E5">S4/E5</a></td>
 <td>—</td>
 </tr>
 <tr>
-<td>E6</td>
+<td><a class=ev href="evidence/index.html#S4-E6">E6</a></td>
 <td>Contact Support log bundle</td>
 <td><strong>PASS</strong></td>
-<td>S4/E6</td>
+<td><a class=ev href="evidence/index.html#S4-E6">S4/E6</a></td>
 <td>—</td>
 </tr>
 <tr>
-<td>E7</td>
+<td><a class=ev href="evidence/index.html#S4-E7">E7</a></td>
 <td>Tools screens, Network monitor</td>
 <td><strong>PASS+</strong></td>
-<td>S4/E7, S9/X2</td>
+<td><a class=ev href="evidence/index.html#S4-E7">S4/E7</a>, <a class=ev href="evidence/index.html#S9-X2">S9/X2</a></td>
 <td><a class=did href="DEFECT-LEDGER.html#D-070">D-070</a> offline never shown</td>
 </tr>
 <tr>
-<td>E8</td>
+<td><a class=ev href="evidence/index.html#S7-E8">E8</a></td>
 <td>Fresh small wallet on master → upgraded</td>
 <td><strong>PASS</strong></td>
-<td>S7/E8/s7-e8-upgrade-launch.mp4</td>
+<td><a class=ev href="evidence/S7/E8/s7-e8-upgrade-launch.mp4">S7/E8/s7-e8-upgrade-launch.mp4</a></td>
 <td>—</td>
 </tr>
 <tr>
 <td>E9</td>
 <td>Unit tests</td>
 <td><strong>PASS</strong> (2077/0/0/1)</td>
-<td>S4/unit-tests.log</td>
+<td><a class=ev href="evidence/S4/unit-tests.log">S4/unit-tests.log</a></td>
 <td>—</td>
 </tr>
 <tr>
-<td>E10</td>
+<td><a class=ev href="evidence/index.html#S4-E10">E10</a></td>
 <td>8 locales × 14 screens, RTL, font scale, dark mode</td>
 <td><strong>FAIL</strong></td>
-<td>S4/E10/*, e10-ar.mp4, S10/T5</td>
+<td><a class=ev href="evidence/index.html#S4-E10">S4/E10/*</a><sup class=more><a href="evidence/index.html#S4-E10" title="15 files, open gallery">+14</a></sup>, <a class=ev href="evidence/S4/E10/e10-ar.mp4">e10-ar.mp4</a>, <a class=ev href="evidence/index.html#S10-T5">S10/T5</a></td>
 <td><a class=did href="DEFECT-LEDGER.html#D-085">D-085</a> mirrored keypads, <a class=did href="DEFECT-LEDGER.html#D-091">D-091</a> coverage, <a class=did href="DEFECT-LEDGER.html#D-071">D-071</a>/<a class=did href="DEFECT-LEDGER.html#D-072">D-072</a>/<a class=did href="DEFECT-LEDGER.html#D-092">D-092</a></td>
 </tr>
 <tr>
-<td>E11</td>
+<td><a class=ev href="evidence/index.html#S4-E11">E11</a></td>
 <td>Deep links, process death, rapid taps, kill during PIN</td>
 <td><strong>PASS+</strong></td>
-<td>S4/E11, S10/T8, T9</td>
+<td><a class=ev href="evidence/index.html#S4-E11">S4/E11</a>, <a class=ev href="evidence/index.html#S10-T8">S10/T8</a>, <a class=ev href="evidence/index.html#S10-T9">T9</a></td>
 <td><a class=did href="DEFECT-LEDGER.html#D-077">D-077</a>, <a class=did href="DEFECT-LEDGER.html#D-078">D-078</a></td>
 </tr>
 <tr>
-<td>R1</td>
+<td><a class=ev href="evidence/index.html#S7-R1">R1</a></td>
 <td>Rescan blockchain from a date</td>
 <td><strong>PASS+</strong></td>
-<td>S7/R1/s7-r1-rescan.mp4</td>
+<td><a class=ev href="evidence/S7/R1/s7-r1-rescan.mp4">S7/R1/s7-r1-rescan.mp4</a></td>
 <td><a class=did href="DEFECT-LEDGER.html#D-045">D-045</a> re-notifies old receive, <a class=did href="DEFECT-LEDGER.html#D-060">D-060</a> dialog copy</td>
 </tr>
 <tr>
-<td>BK1</td>
+<td><a class=ev href="evidence/index.html#S7-BK1">BK1</a></td>
 <td>Backup to / restore from file</td>
 <td><strong>BLOCKED</strong> (DEBUG-only)</td>
-<td>S7/R1/01-security.png</td>
+<td><a class=ev href="evidence/S7/R1/01-security.webp">S7/R1/01-security.png</a></td>
 <td id="D-040"><a href="#D-040">D-040</a></td>
 </tr>
 <tr>
-<td>X5</td>
+<td><a class=ev href="evidence/index.html#S9-X5">X5</a></td>
 <td>Corrupt / unreadable wallet file, safe mode</td>
 <td><strong>PASS+</strong></td>
-<td>S9/X5/x5-safemode.mp4</td>
+<td><a class=ev href="evidence/S9/X5/x5-safemode.mp4">S9/X5/x5-safemode.mp4</a></td>
 <td id="D-076"><a href="#D-076">D-076</a></td>
 </tr>
 <tr>
 <td id="SR-05"><a href="#SR-05">SR-05</a></td>
 <td>Stale wipe marker</td>
 <td><strong>FAIL</strong></td>
-<td>S4/SR05/sr05.mp4</td>
+<td><a class=ev href="evidence/S4/SR05/sr05.mp4">S4/SR05/sr05.mp4</a></td>
 <td><strong><a class=did href="DEFECT-LEDGER.html#SR-05">SR-05</a> (S1)</strong></td>
 </tr>
 <tr>
 <td id="SR-22"><a href="#SR-22">SR-22</a></td>
 <td>Restore date picker default</td>
 <td><strong>FAIL</strong></td>
-<td>S4/SR22/01-07</td>
+<td><a class=ev href="evidence/S4/SR22/01-datepicker-default.webp">S4/SR22/01-07</a><sup class=more><a href="evidence/index.html#S4-SR22" title="13 files, open gallery">+12</a></sup></td>
 <td><strong><a class=did href="DEFECT-LEDGER.html#SR-22">SR-22</a> (S1)</strong></td>
 </tr>
 <tr>
 <td id="SR-34"><a href="#SR-34">SR-34</a></td>
 <td>Auto-logout "Immediately" + rotate/dark/font</td>
 <td><strong>PASS</strong></td>
-<td>S4/SR34/sr34.mp4</td>
+<td><a class=ev href="evidence/S4/SR34/sr34.mp4">S4/SR34/sr34.mp4</a></td>
 <td>—</td>
 </tr>
 <tr>
 <td>X6</td>
 <td>6-hour foreground-service notice</td>
 <td><strong>N/R</strong> (code-verified only)</td>
-<td>S9/REPORT.md</td>
+<td><a class=ev href="evidence/S9/REPORT.html">S9/REPORT.md</a></td>
 <td>—</td>
 </tr>
 <tr>
 <td id="SR-01"><a href="#SR-01">SR-01</a></td>
 <td>Filter-stall watchdog restart</td>
 <td><strong>N/R</strong> on device (static S1; stall never occurred in ~40 replays)</td>
-<td>evidence/SR/REPORT.md</td>
+<td><a class=ev href="evidence/SR/REPORT.html">evidence/SR/REPORT.md</a></td>
 <td id="SR-01"><a href="#SR-01">SR-01</a></td>
 </tr>
 </tbody>

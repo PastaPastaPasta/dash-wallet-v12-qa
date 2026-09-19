@@ -5,9 +5,10 @@ h1{border-bottom:3px solid #008de4}h2{border-bottom:1px solid #ccc;margin-top:40
 nav.top{background:#012060;color:#fff;padding:8px 24px;margin:-16px -24px 16px;position:sticky;top:0;z-index:5}nav.top a{color:#fff;margin-right:18px;text-decoration:none}nav.top a:hover{text-decoration:underline}
 .S1{color:#b00020;font-weight:bold}.S2{color:#c75000;font-weight:bold}.toc{background:#f8f9fb;border:1px solid #e3e6ea;padding:8px 16px;font-size:13px;columns:2}.toc ul{margin:2px 0;padding-left:16px}
 #lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:50;align-items:center;justify-content:center;flex-direction:column}#lb.on{display:flex}#lb img{max-width:96vw;max-height:88vh;border:2px solid #fff;box-shadow:0 0 30px #000}#lb .cap{color:#eee;font:13px ui-monospace,monospace;margin-top:8px}#lb .cap a{color:#8cf}#lb .x{position:absolute;top:10px;right:18px;color:#fff;font-size:30px;cursor:pointer}#lb .nv{position:absolute;top:50%;color:#fff;font-size:44px;cursor:pointer;padding:0 16px;user-select:none}#lb .pv{left:0}#lb .nx{right:0}a.img img{cursor:zoom-in}
+sup.more a{margin:0 2px;font-size:10px}
 a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:target{background:#fff3b0;outline:2px solid #f5b400}
 .note{background:#fff8e1;border-left:4px solid #f5b400;padding:8px 12px;margin:12px 0}
-</style><nav class=top><a href="../../index.html">Home</a><a href="../../QA-REPORT.html">Full report</a><a href="../../EXEC-SUMMARY.html">Executive summary</a><a href="../../STORY-MATRIX.html">User-story matrix</a><a href="../../DEFECT-LEDGER.html">Defect register</a><a href="../index.html">Evidence gallery</a><a href="../../QA-PLAN.html">Test plan</a><a href="../../streams.html">Stream reports</a></nav><h1 id="qa-report-s4-regression-sweep-e1e7-e11-localisation-a11y-e10-static-e9-sr-05-sr-22-sr-34">QA report: S4 — regression sweep (E1–E7, E11), localisation + a11y (E10), static (E9), SR-05 / SR-22 / SR-34</h1>
+</style><nav class=top><a href="../../index.html">Home</a><a href="../../QA-REPORT.html">Full report</a><a href="../../EXEC-SUMMARY.html">Executive summary</a><a href="../../STORY-MATRIX.html">User-story matrix</a><a href="../../DEFECT-LEDGER.html">Defect register</a><a href="../index.html">Evidence gallery</a><a href="../../QA-PLAN.html">Test plan</a><a href="../../streams.html">Stream reports</a></nav><h1 id="qa-report-s4-regression-sweep-e1e7-e11-localisation-a11y-e10-static-e9-sr-05-sr-22-sr-34">QA report: S4 — regression sweep (<a class=ev href="../index.html#S4-E1">E1</a>–<a class=ev href="../index.html#S4-E7">E7</a>, <a class=ev href="../index.html#S4-E11">E11</a>), localisation + a11y (<a class=ev href="../index.html#S4-E10">E10</a>), static (E9), SR-05 / SR-22 / SR-34</h1>
 <p>Emulator <code>emulator-5560</code> (dw-qa4) · 2026-09-19 00:10–03:40 CDT · <code>fix-12.0.0-testnet3-release-signed.apk</code>, versionCode <strong>12000000</strong>, versionName <strong>12.0.0</strong>, minSdk 29 / targetSdk 35.
 Throwaway wallet: seed <code>device during battle soldier please track movie core timber suit canoe stock</code>, PIN 1234, addr <code>yYZoGmJ8PptniTCjQ3ksPju6Q63PDQPfNL</code>, funded once with 1 tDASH (txid <code>aa44ef947f3cb9cf26f01bc94d144d1c96b5f3916b9219b5185b0679fd0d8482</code>). The reference seed was restored <strong>read-only</strong> for <a class=did href="../../DEFECT-LEDGER.html#SR-22">SR-22</a> only.</p>
 <h2 id="summary-table">Summary table</h2>
@@ -22,261 +23,261 @@ Throwaway wallet: seed <code>device during battle soldier please track movie cor
 </thead>
 <tbody>
 <tr>
-<td>E1 onboarding pager (3 pages)</td>
+<td><a class=ev href="../index.html#S4-E1">E1</a> onboarding pager (3 pages)</td>
 <td>PASS</td>
-<td><code>E1/02..05-pager-*.png</code></td>
+<td><a class=ev href="../S4/E1/02-pager-page1.webp">E1/02..05-pager-*.png</a><sup class=more><a href="../S4/E1/03-pager-page2.webp" title="S4/E1/03-pager-page2.webp">2</a> <a href="../S4/E1/04-pager-page3.webp" title="S4/E1/04-pager-page3.webp">3</a> <a href="../S4/E1/05-pager-past-page3.webp" title="S4/E1/05-pager-past-page3.webp">4</a></sup></td>
 <td>All 3 pages render and swipe</td>
 </tr>
 <tr>
-<td>E1 create wallet + PIN</td>
+<td><a class=ev href="../index.html#S4-E1">E1</a> create wallet + PIN</td>
 <td>PASS</td>
-<td><code>E1/30</code>–<code>E1/43</code></td>
+<td><a class=ev href="../S4/E1/30-select-security-level.webp">E1/30</a>–<a class=ev href="../S4/E1/43-home-screen.webp">E1/43</a></td>
 <td>12/24-word choice → Set PIN → Confirm → backup intro → home</td>
 </tr>
 <tr>
-<td>E1 back-press at each step</td>
+<td><a class=ev href="../index.html#S4-E1">E1</a> back-press at each step</td>
 <td>PASS</td>
-<td><code>E1/20</code>, <code>21</code>, <code>31</code></td>
+<td><a class=ev href="../S4/E1/20-backpress-from-setpin.webp">E1/20</a>, <code>21</code>, <code>31</code></td>
 <td>No crash; no orphan wallet file</td>
 </tr>
 <tr>
-<td>E1 restore: 11 words / bad checksum / bad word</td>
+<td><a class=ev href="../index.html#S4-E1">E1</a> restore: 11 words / bad checksum / bad word</td>
 <td><strong>FAIL S3</strong></td>
-<td><code>E1/16</code>, <code>17</code>, <code>18</code></td>
+<td><a class=ev href="../S4/E1/16-seed-11words.webp">E1/16</a>, <code>17</code>, <code>18</code></td>
 <td>One identical useless "Error" dialog</td>
 </tr>
 <tr>
-<td>E1 restore: extra spaces / uppercase</td>
+<td><a class=ev href="../index.html#S4-E1">E1</a> restore: extra spaces / uppercase</td>
 <td>PASS</td>
-<td><code>E1/19</code>, <code>22</code></td>
+<td><a class=ev href="../S4/E1/19-seed-extraspaces-result.webp">E1/19</a>, <code>22</code></td>
 <td>Normalised correctly</td>
 </tr>
 <tr>
-<td>E1 "Restore from file"</td>
+<td><a class=ev href="../index.html#S4-E1">E1</a> "Restore from file"</td>
 <td>BLOCKED</td>
 <td><code>OnboardingActivity.kt:302</code></td>
 <td><code>BuildConfig.DEBUG</code>-only</td>
 </tr>
 <tr>
-<td>E1 skip-backup + backup reminder</td>
+<td><a class=ev href="../index.html#S4-E1">E1</a> skip-backup + backup reminder</td>
 <td>PASS</td>
-<td><code>E1/38</code>, <code>40</code>, <code>43</code></td>
+<td><a class=ev href="../S4/E1/38-backup-intro.webp">E1/38</a>, <code>40</code>, <code>43</code></td>
 <td>"Backup" shortcut appears on home</td>
 </tr>
 <tr>
-<td>E1 restore from seed (happy path)</td>
+<td><a class=ev href="../index.html#S4-E1">E1</a> restore from seed (happy path)</td>
 <td>PASS</td>
-<td><code>E1/50</code>–<code>52</code></td>
+<td><a class=ev href="../S4/E1/50-date-picker.webp">E1/50</a>–<code>52</code></td>
 <td>Restores and syncs</td>
 </tr>
 <tr>
-<td>E2 View recovery phrase needs PIN</td>
+<td><a class=ev href="../index.html#S4-E2">E2</a> View recovery phrase needs PIN</td>
 <td>PASS</td>
-<td><code>E2/02</code>, <code>03</code>, <code>05</code></td>
+<td><a class=ev href="../S4/E2/02-view-recovery-requires-pin.webp">E2/02</a>, <code>03</code>, <code>05</code></td>
 <td>Wrong PIN → "7 attempts remaining"</td>
 </tr>
 <tr>
-<td>E2 Change PIN + wrong old PIN</td>
+<td><a class=ev href="../index.html#S4-E2">E2</a> Change PIN + wrong old PIN</td>
 <td>PASS</td>
-<td><code>E2/30</code>–<code>37</code></td>
+<td><a class=ev href="../S4/E2/30-change-pin-old.webp">E2/30</a>–<code>37</code></td>
 <td>Old PIN rejected after change</td>
 </tr>
 <tr>
-<td>E2 auto-lock + relock on background</td>
+<td><a class=ev href="../index.html#S4-E2">E2</a> auto-lock + relock on background</td>
 <td>PASS</td>
-<td><code>E2/09</code>, <code>11</code>, <code>15</code></td>
+<td><a class=ev href="../S4/E2/09-advanced-security-screen.webp">E2/09</a>, <code>11</code>, <code>15</code></td>
 <td>"Immediately" works</td>
 </tr>
 <tr>
-<td>E2 rotate must not lock (MO-995)</td>
+<td><a class=ev href="../index.html#S4-E2">E2</a> rotate must not lock (MO-995)</td>
 <td>PASS</td>
-<td><code>E2/12</code>–<code>14</code>, <a class=ev href="../S4/E2/e2-autolock.mp4">e2-autolock.mp4</a></td>
+<td><a class=ev href="../S4/E2/12-home-before-rotate.webp">E2/12</a>–<code>14</code>, <a class=ev href="../S4/E2/e2-autolock.mp4">e2-autolock.mp4</a></td>
 <td>Never locks</td>
 </tr>
 <tr>
-<td>E2 Forgot PIN → cancel</td>
+<td><a class=ev href="../index.html#S4-E2">E2</a> Forgot PIN → cancel</td>
 <td><strong>FAIL S2</strong></td>
-<td><code>E2/20-bypass-01..06</code>, <a class=ev href="../S4/E2/e2-forgotpin-bypass.mp4">e2-forgotpin-bypass.mp4</a></td>
+<td><a class=ev href="../S4/E2/20-bypass-01-locked.webp">E2/20-bypass-01..06</a><sup class=more><a href="../S4/E2/20-bypass-02-forgot-sheet.webp" title="S4/E2/20-bypass-02-forgot-sheet.webp">2</a> <a href="../S4/E2/20-bypass-03-recover-screen.webp" title="S4/E2/20-bypass-03-recover-screen.webp">3</a> <a href="../S4/E2/20-bypass-04-after-back.webp" title="S4/E2/20-bypass-04-after-back.webp">4</a> <a href="../S4/E2/20-bypass-05-more-accessible.webp" title="S4/E2/20-bypass-05-more-accessible.webp">5</a> <a href="../S4/E2/20-bypass-06-receive-accessible.webp" title="S4/E2/20-bypass-06-receive-accessible.webp">6</a></sup>, <a class=ev href="../S4/E2/e2-forgotpin-bypass.mp4">e2-forgotpin-bypass.mp4</a></td>
 <td>Lands on the <strong>unlocked</strong> home</td>
 </tr>
 <tr>
-<td>E2 biometric with no fingerprint</td>
+<td><a class=ev href="../index.html#S4-E2">E2</a> biometric with no fingerprint</td>
 <td>PASS</td>
-<td><code>E1/33</code>–<code>37</code></td>
+<td><a class=ev href="../S4/E1/33-after-security-continue.webp">E1/33</a>–<code>37</code></td>
 <td>No prompt, no crash</td>
 </tr>
 <tr>
-<td>E2 Advanced Security</td>
+<td><a class=ev href="../index.html#S4-E2">E2</a> Advanced Security</td>
 <td>PASS</td>
-<td><code>E2/09</code>, <code>45</code></td>
+<td><a class=ev href="../S4/E2/09-advanced-security-screen.webp">E2/09</a>, <code>45</code></td>
 <td>Level / auto-logout / spending confirmation / reset</td>
 </tr>
 <tr>
-<td>E2 Reset wallet — cancel</td>
+<td><a class=ev href="../index.html#S4-E2">E2</a> Reset wallet — cancel</td>
 <td>PASS</td>
-<td><code>E2/40</code>, <code>41</code></td>
+<td><a class=ev href="../S4/E2/40-reset-wallet-dialog.webp">E2/40</a>, <code>41</code></td>
 <td>Wallet intact</td>
 </tr>
 <tr>
-<td>E2 Reset wallet — "wrong PIN"</td>
+<td><a class=ev href="../index.html#S4-E2">E2</a> Reset wallet — "wrong PIN"</td>
 <td><strong>FAIL S2</strong></td>
-<td><code>E2/42</code>, <code>43</code>, <code>44</code></td>
+<td><a class=ev href="../S4/E2/42-reset-pin-prompt.webp">E2/42</a>, <code>43</code>, <code>44</code></td>
 <td>No PIN step; one tap wipes the wallet</td>
 </tr>
 <tr>
-<td>E3 local currency ×4 (incl. SAR)</td>
+<td><a class=ev href="../index.html#S4-E3">E3</a> local currency ×4 (incl. SAR)</td>
 <td>PASS</td>
-<td><code>E3/11</code>–<code>18</code></td>
+<td><a class=ev href="../S4/E3/11-currency-picker.webp">E3/11</a>–<code>18</code></td>
 <td>Picker + search work, home fiat updates</td>
 </tr>
 <tr>
-<td>E3 exchange rate on home</td>
+<td><a class=ev href="../index.html#S4-E3">E3</a> exchange rate on home</td>
 <td>PASS</td>
-<td><code>E3/14</code>,<code>16</code>,<code>17</code>,<code>18</code></td>
+<td><a class=ev href="../S4/E3/14-home-SAR.webp">E3/14</a>,<code>16</code>,<code>17</code>,<code>18</code></td>
 <td>SAR 228.47 / ¥9608.81 / €53.31 / $61.19 per DASH</td>
 </tr>
 <tr>
-<td>E3 hide balance</td>
+<td><a class=ev href="../index.html#S4-E3">E3</a> hide balance</td>
 <td>PASS (note)</td>
-<td><code>E3/20</code>, <code>21</code></td>
+<td><a class=ev href="../S4/E3/20-balance-hidden.webp">E3/20</a>, <code>21</code></td>
 <td>Header masks; tx-list amounts stay visible</td>
 </tr>
 <tr>
-<td>E3 notifications toggle</td>
+<td><a class=ev href="../index.html#S4-E3">E3</a> notifications toggle</td>
 <td>PASS</td>
-<td><code>E3/10</code>, <code>E1/39</code></td>
+<td><a class=ev href="../S4/E3/10-settings-screen.webp">E3/10</a>, <a class=ev href="../S4/E1/39-skip-backup-dialog.webp">E1/39</a></td>
 <td>Runtime prompt + Settings row</td>
 </tr>
 <tr>
-<td>E3 Tx-metadata settings + cost dialog</td>
+<td><a class=ev href="../index.html#S4-E3">E3</a> Tx-metadata settings + cost dialog</td>
 <td>BLOCKED</td>
 <td><code>SettingsViewModel.kt:93-100</code></td>
 <td>Gated on a DashPay identity</td>
 </tr>
 <tr>
-<td>E3 About screen</td>
+<td><a class=ev href="../index.html#S4-E3">E3</a> About screen</td>
 <td>PASS (1 defect)</td>
 <td><a class=ev href="../S4/E3/30-about-screen.webp">E3/30-about-screen.png</a></td>
 <td>SDK <code>0.1.0-v42int19-SNAPSHOT</code> ✔, build number "(0)" ✘</td>
 </tr>
 <tr>
-<td>E4 Explore</td>
+<td><a class=ev href="../index.html#S4-E4">E4</a> Explore</td>
 <td>PASS</td>
-<td><code>E4/01</code>–<code>09</code></td>
+<td><a class=ev href="../S4/E4/01-explore.webp">E4/01</a>–<code>09</code></td>
 <td>List mode, no crash</td>
 </tr>
 <tr>
-<td>E5 Uphold / Coinbase / Topper / DashDEX / CrowdNode</td>
+<td><a class=ev href="../index.html#S4-E5">E5</a> Uphold / Coinbase / Topper / DashDEX / CrowdNode</td>
 <td>PASS (limited)</td>
-<td><code>E5/01</code>–<code>10</code></td>
+<td><a class=ev href="../S4/E5/01-buy-sell.webp">E5/01</a>–<code>10</code></td>
 <td>Degrade gracefully at the credential step</td>
 </tr>
 <tr>
-<td>E5 Coinbase fiat-option crash regression</td>
+<td><a class=ev href="../index.html#S4-E5">E5</a> Coinbase fiat-option crash regression</td>
 <td>BLOCKED</td>
-<td><code>E5/04</code>–<code>06</code></td>
+<td><a class=ev href="../S4/E5/04-coinbase-link.webp">E5/04</a>–<code>06</code></td>
 <td>Needs a linked account</td>
 </tr>
 <tr>
-<td>E6 Contact Support → share sheet</td>
+<td><a class=ev href="../index.html#S4-E6">E6</a> Contact Support → share sheet</td>
 <td>PASS</td>
-<td><code>E6/02</code>, <code>03</code>, <code>04</code></td>
+<td><a class=ev href="../S4/E6/02-form-filled.webp">E6/02</a><sup class=more><a href="../S4/E6/02b-form-no-ime.webp" title="S4/E6/02b-form-no-ime.webp">2</a></sup>, <code>03</code>, <code>04</code></td>
 <td>"Sharing 3 files", first is <a class=ev href="../S4/walletlog-final/files/log/wallet.log">wallet.log</a>; native SDK log is bridged</td>
 </tr>
 <tr>
-<td>E7 Address book / xpub / MN keys / Network monitor</td>
+<td><a class=ev href="../index.html#S4-E7">E7</a> Address book / xpub / MN keys / Network monitor</td>
 <td>PASS</td>
-<td><code>E7/02</code>–<code>15</code></td>
+<td><a class=ev href="../S4/E7/02-address-book.webp">E7/02</a>–<code>15</code></td>
 <td>dashj hint text present</td>
 </tr>
 <tr>
-<td>E7 Import private key (invalid WIF)</td>
+<td><a class=ev href="../index.html#S4-E7">E7</a> Import private key (invalid WIF)</td>
 <td>BLOCKED</td>
-<td><code>E7/07</code></td>
+<td><a class=ev href="../S4/E7/07-import-key.webp">E7/07</a></td>
 <td>QR-scan only</td>
 </tr>
 <tr>
-<td>E7 scanner with camera refused (#1550)</td>
+<td><a class=ev href="../index.html#S4-E7">E7</a> scanner with camera refused (#1550)</td>
 <td>PASS</td>
-<td><code>E7/08</code>–<code>11</code></td>
+<td><a class=ev href="../S4/E7/08-scan-private-key.webp">E7/08</a>–<code>11</code></td>
 <td>Escapable, no crash</td>
 </tr>
 <tr>
-<td>E7 CSV / ZenLedger export</td>
+<td><a class=ev href="../index.html#S4-E7">E7</a> CSV / ZenLedger export</td>
 <td>PASS (1 note)</td>
-<td><code>E7/17</code>, <a class=ev href="../S4/E7/17-export.csv">17-export.csv</a>, <code>18</code>–<code>20</code></td>
+<td><a class=ev href="../S4/E7/17-csv-export-result.webp">E7/17</a><sup class=more><a href="../S4/E7/17-export.csv" title="S4/E7/17-export.csv">2</a></sup>, <a class=ev href="../S4/E7/17-export.csv">17-export.csv</a>, <code>18</code>–<code>20</code></td>
 <td>CSV correct; ZenLedger Allow = silent no-op</td>
 </tr>
 <tr>
-<td>E7 Credits buy screen</td>
+<td><a class=ev href="../index.html#S4-E7">E7</a> Credits buy screen</td>
 <td>BLOCKED</td>
 <td>—</td>
 <td>Requires an identity</td>
 </tr>
 <tr>
-<td>E10 localisation, 8 locales × 14 screens</td>
+<td><a class=ev href="../index.html#S4-E10">E10</a> localisation, 8 locales × 14 screens</td>
 <td><strong>FAIL S4 ×4</strong></td>
 <td><code>E10/&lt;locale&gt;/</code></td>
 <td>Shielded UI 0 % translated; ar-EG 35 % English; he-IL 89 % English</td>
 </tr>
 <tr>
-<td>E10 RTL (ar-EG)</td>
+<td><a class=ev href="../index.html#S4-E10">E10</a> RTL (ar-EG)</td>
 <td><strong>FAIL S3</strong></td>
-<td><code>E10/ar-EG/00</code>, <code>13</code>, <a class=ev href="../S4/E10/e10-ar.mp4">e10-ar.mp4</a></td>
+<td><a class=ev href="../S4/E10/ar-EG/00-lockscreen.txt">E10/ar-EG/00</a><sup class=more><a href="../S4/E10/ar-EG/00-lockscreen.webp" title="S4/E10/ar-EG/00-lockscreen.webp">2</a></sup>, <code>13</code>, <a class=ev href="../S4/E10/e10-ar.mp4">e10-ar.mp4</a></td>
 <td>PIN pad and amount pad mirrored 3-2-1</td>
 </tr>
 <tr>
-<td>E10 font scale 1.5 / 2.0</td>
+<td><a class=ev href="../index.html#S4-E10">E10</a> font scale 1.5 / 2.0</td>
 <td><strong>FAIL S3</strong></td>
-<td><code>E10/fontscale-2.0/01</code>, <code>05</code></td>
+<td><a class=ev href="../S4/E10/fontscale-2.0/01-home.txt">E10/fontscale-2.0/01</a><sup class=more><a href="../S4/E10/fontscale-2.0/01-home.webp" title="S4/E10/fontscale-2.0/01-home.webp">2</a></sup>, <code>05</code></td>
 <td>Subtitles clipped; home shortcut card overlaps the banner</td>
 </tr>
 <tr>
-<td>E11 deep links (<code>dash:</code>, bad amount, invites)</td>
+<td><a class=ev href="../index.html#S4-E11">E11</a> deep links (<code>dash:</code>, bad amount, invites)</td>
 <td>PASS</td>
-<td><code>E11/01</code>–<code>06</code></td>
+<td><a class=ev href="../S4/E11/01-deeplink-dash-empty.webp">E11/01</a>–<code>06</code></td>
 <td>Clean errors, no "Loading Invite…" hang</td>
 </tr>
 <tr>
-<td>E11 mainnet address on testnet</td>
+<td><a class=ev href="../index.html#S4-E11">E11</a> mainnet address on testnet</td>
 <td>PASS</td>
-<td><code>E11/12</code>, <code>13</code>, <code>03</code></td>
+<td><a class=ev href="../S4/E11/12-send-mainnet-address.webp">E11/12</a>, <code>13</code>, <code>03</code></td>
 <td>Rejected via paste and via URI</td>
 </tr>
 <tr>
-<td>E11 Platform username in Send</td>
+<td><a class=ev href="../index.html#S4-E11">E11</a> Platform username in Send</td>
 <td>PASS</td>
-<td><code>E11/14</code>, <code>15</code></td>
+<td><a class=ev href="../S4/E11/14-send-platform-username.webp">E11/14</a>, <code>15</code></td>
 <td>Rejected, no crash</td>
 </tr>
 <tr>
-<td>E11 500-char memo / emoji</td>
+<td><a class=ev href="../index.html#S4-E11">E11</a> 500-char memo / emoji</td>
 <td>PASS</td>
-<td><code>E11/22</code>, <code>23</code>, <code>26</code></td>
+<td><a class=ev href="../S4/E11/22-memo-500chars.webp">E11/22</a>, <code>23</code>, <code>26</code></td>
 <td>Over-limit reddens field + disables Save</td>
 </tr>
 <tr>
-<td>E11 rapid double-tap on Send</td>
+<td><a class=ev href="../index.html#S4-E11">E11</a> rapid double-tap on Send</td>
 <td>PASS</td>
-<td><code>E11/27</code></td>
+<td><a class=ev href="../S4/E11/27-send-confirm-doubletap.webp">E11/27</a></td>
 <td>One PIN dialog</td>
 </tr>
 <tr>
-<td>E11 kill during PIN entry</td>
+<td><a class=ev href="../index.html#S4-E11">E11</a> kill during PIN entry</td>
 <td>PASS</td>
-<td><code>E11/28</code>–<code>30</code></td>
+<td><a class=ev href="../S4/E11/28-pin-partial.webp">E11/28</a>–<code>30</code></td>
 <td>Relaunch → lock screen, balance intact</td>
 </tr>
 <tr>
-<td>E11 rotate on every major screen</td>
+<td><a class=ev href="../index.html#S4-E11">E11</a> rotate on every major screen</td>
 <td>PASS</td>
-<td><code>E11/rotate/*</code></td>
+<td><a class=ev href="../S4/E11/rotate/01-home-land.webp">E11/rotate/*</a><sup class=more><a href="../index.html#S4-E11" title="12 files, open gallery">+11</a></sup></td>
 <td>All survive</td>
 </tr>
 <tr>
-<td>E11 airplane mode on first launch</td>
+<td><a class=ev href="../index.html#S4-E11">E11</a> airplane mode on first launch</td>
 <td>PASS</td>
-<td><code>E11/airplane/01</code>–<code>07</code></td>
+<td><a class=ev href="../S4/E11/airplane/01-onboarding-offline.webp">E11/airplane/01</a>–<code>07</code></td>
 <td>Fresh install + wallet creation fully offline; recovers online</td>
 </tr>
 <tr>
@@ -288,19 +289,19 @@ Throwaway wallet: seed <code>device during battle soldier please track movie cor
 <tr>
 <td><a class=did href="../../DEFECT-LEDGER.html#SR-05">SR-05</a> stale wipe marker</td>
 <td><strong>FAIL S1</strong></td>
-<td><code>SR05/01</code>–<code>03</code>, <a class=ev href="../S4/SR05/sr05.mp4">sr05.mp4</a></td>
+<td><a class=ev href="../S4/SR05/01-before-marker.webp">SR05/01</a>–<code>03</code>, <a class=ev href="../S4/SR05/sr05.mp4">sr05.mp4</a></td>
 <td>Empty <code>wallet-wipe.pending</code> silently destroys a funded wallet</td>
 </tr>
 <tr>
 <td><a class=did href="../../DEFECT-LEDGER.html#SR-22">SR-22</a> restore date-picker default</td>
 <td><strong>FAIL S1</strong></td>
-<td><code>SR22/01</code>–<code>07</code></td>
+<td><a class=ev href="../S4/SR22/01-datepicker-default.webp">SR22/01</a>–<code>07</code></td>
 <td>Loses 85.7 of 107.4 tDASH while reporting "Synced"</td>
 </tr>
 <tr>
 <td><a class=did href="../../DEFECT-LEDGER.html#SR-33">SR-34</a> auto-logout=Immediately + rotate/dark/fontscale</td>
 <td>PASS</td>
-<td><code>SR34/00</code>–<code>13</code>, <a class=ev href="../S4/SR34/sr34.mp4">sr34.mp4</a></td>
+<td><a class=ev href="../S4/SR34/00-immediately.webp">SR34/00</a>–<code>13</code>, <a class=ev href="../S4/SR34/sr34.mp4">sr34.mp4</a></td>
 <td>Nothing locked or force-finished</td>
 </tr>
 </tbody>
@@ -324,7 +325,7 @@ Throwaway wallet: seed <code>device during battle soldier please track movie cor
 <td class=S1><strong>S1</strong></td>
 <td>Restore with the creation-date picker's default (today) silently loses most of the balance while the UI says "Synced"</td>
 <td>Restore → seed with older funds → "Select Creation Date" → OK without changing → Continue → PIN → wait</td>
-<td><a class=ev href="../S4/SR22/01-datepicker-default.webp">SR22/01-datepicker-default.png</a>, <a class=ev href="../S4/SR22/02-date-accepted.webp">02-date-accepted.png</a>, <a class=ev href="../S4/SR22/06-netmon.webp">06-netmon.png</a> (Synced), <a class=ev href="../S4/SR22/07-final-balance.webp">07-final-balance.png</a> (<strong>21.734822</strong> vs <strong>107.08</strong>); wallet.log 08:23:56 <code>BirthHeightResolver - resolved birth time 1789794000 to SDK birth height 1401408</code>, <code>armSpvRescan: filter watermark rewind to 1401408 armed</code></td>
+<td><a class=ev href="../S4/SR22/01-datepicker-default.webp">SR22/01-datepicker-default.png</a>, <a class=ev href="../S4/SR22/02-date-accepted.webp">02-date-accepted.png</a>, <a class=ev href="../S4/SR22/06-netmon.webp">06-netmon.png</a> (Synced), <a class=ev href="../S4/SR22/07-final-balance.webp">07-final-balance.png</a> (<strong>21.734822</strong> vs <strong>107.08</strong>); <a class=ev href="../S4/walletlog-final/files/log/wallet.log">wallet.log</a> 08:23:56 <code>BirthHeightResolver - resolved birth time 1789794000 to SDK birth height 1401408</code>, <code>armSpvRescan: filter watermark rewind to 1401408 armed</code></td>
 <td><code>RestoreWalletFromSeedActivity.showDatePickerDialog()</code> initialises to today; nothing surfaces "history before X was never scanned"</td>
 </tr>
 <tr>
@@ -332,7 +333,7 @@ Throwaway wallet: seed <code>device during battle soldier please track movie cor
 <td class=S1><strong>S1</strong></td>
 <td>Stale <code>wallet-wipe.pending</code> marker destroys an intact wallet at launch</td>
 <td>force-stop → <code>touch …/files/wallet-wipe.pending</code> → launch</td>
-<td><code>SR05/01-03</code>, <a class=ev href="../S4/SR05/sr05.mp4">sr05.mp4</a>; wallet.log 08:18:10 <code>removing wallet from memory during wipe</code>; wallet + key-backup deleted</td>
+<td><a class=ev href="../S4/SR05/01-before-marker.webp">SR05/01-03</a><sup class=more><a href="../S4/SR05/02-after-marker-launch.webp" title="S4/SR05/02-after-marker-launch.webp">2</a> <a href="../S4/SR05/03-after-40s.webp" title="S4/SR05/03-after-40s.webp">3</a></sup>, <a class=ev href="../S4/SR05/sr05.mp4">sr05.mp4</a>; <a class=ev href="../S4/walletlog-final/files/log/wallet.log">wallet.log</a> 08:18:10 <code>removing wallet from memory during wipe</code>; wallet + key-backup deleted</td>
 <td><code>util/WalletWipeState.kt</code>: zero-byte marker, no wallet id/timestamp/step, no confirmation; <code>complete()</code> logs "the next launch will re-run the wipe" if the marker delete fails</td>
 </tr>
 <tr>
@@ -340,7 +341,7 @@ Throwaway wallet: seed <code>device during battle soldier please track movie cor
 <td><strong>S2</strong></td>
 <td>Lock-screen bypass via Forgot PIN</td>
 <td>Lock → "Forgot PIN?" → "Enter recovery phrase" → BACK ×2 → unlocked home</td>
-<td><code>E2/20-bypass-01..06</code>, <a class=ev href="../S4/E2/e2-forgotpin-bypass.mp4">e2-forgotpin-bypass.mp4</a></td>
+<td><a class=ev href="../S4/E2/20-bypass-01-locked.webp">E2/20-bypass-01..06</a><sup class=more><a href="../S4/E2/20-bypass-02-forgot-sheet.webp" title="S4/E2/20-bypass-02-forgot-sheet.webp">2</a> <a href="../S4/E2/20-bypass-03-recover-screen.webp" title="S4/E2/20-bypass-03-recover-screen.webp">3</a> <a href="../S4/E2/20-bypass-04-after-back.webp" title="S4/E2/20-bypass-04-after-back.webp">4</a> <a href="../S4/E2/20-bypass-05-more-accessible.webp" title="S4/E2/20-bypass-05-more-accessible.webp">5</a> <a href="../S4/E2/20-bypass-06-receive-accessible.webp" title="S4/E2/20-bypass-06-receive-accessible.webp">6</a></sup>, <a class=ev href="../S4/E2/e2-forgotpin-bypass.mp4">e2-forgotpin-bypass.mp4</a></td>
 <td><code>LockScreenActivity</code>/<code>ForgotPinActivity</code> result handling</td>
 </tr>
 <tr>
@@ -348,7 +349,7 @@ Throwaway wallet: seed <code>device during battle soldier please track movie cor
 <td><strong>S2</strong></td>
 <td>Reset Wallet wipes without the PIN</td>
 <td>More → Security → Reset Wallet → "Reset wallet"</td>
-<td><code>E2/40</code>, <code>42</code>, <code>44</code></td>
+<td><a class=ev href="../S4/E2/40-reset-wallet-dialog.webp">E2/40</a>, <code>42</code>, <code>44</code></td>
 <td><code>SecurityFragment.resetWallet()</code> has no <code>authManager.authenticate</code></td>
 </tr>
 <tr>
@@ -356,7 +357,7 @@ Throwaway wallet: seed <code>device during battle soldier please track movie cor
 <td>S3</td>
 <td>Every invalid recovery phrase yields the same "Error"; specific messages are dead code</td>
 <td>Restore → 11 words / bad checksum / non-BIP39 word</td>
-<td><code>E1/16</code>, <code>17</code>, <code>18</code></td>
+<td><a class=ev href="../S4/E1/16-seed-11words.webp">E1/16</a>, <code>17</code>, <code>18</code></td>
 <td><code>RestoreWalletFromSeedViewModel.isSeedValid()</code> swallows <code>MnemonicException</code></td>
 </tr>
 <tr>
@@ -364,7 +365,7 @@ Throwaway wallet: seed <code>device during battle soldier please track movie cor
 <td>S3</td>
 <td>RTL: PIN pad and amount keypad mirrored</td>
 <td>App locale <code>ar-EG</code></td>
-<td><code>E10/ar-EG/00</code>, <code>13</code>; <a class=ev href="../S4/E10/e10-ar.mp4">e10-ar.mp4</a></td>
+<td><a class=ev href="../S4/E10/ar-EG/00-lockscreen.txt">E10/ar-EG/00</a><sup class=more><a href="../S4/E10/ar-EG/00-lockscreen.webp" title="S4/E10/ar-EG/00-lockscreen.webp">2</a></sup>, <code>13</code>; <a class=ev href="../S4/E10/e10-ar.mp4">e10-ar.mp4</a></td>
 <td>Keypad layouts inherit <code>layoutDirection=locale</code></td>
 </tr>
 <tr>
@@ -372,7 +373,7 @@ Throwaway wallet: seed <code>device during battle soldier please track movie cor
 <td>S3</td>
 <td>Font scale 1.5/2.0: More subtitles clipped; home shortcut card overflows into the banner</td>
 <td><code>font_scale 2.0</code></td>
-<td><code>E10/fontscale-2.0/01</code>, <code>05</code></td>
+<td><a class=ev href="../S4/E10/fontscale-2.0/01-home.txt">E10/fontscale-2.0/01</a><sup class=more><a href="../S4/E10/fontscale-2.0/01-home.webp" title="S4/E10/fontscale-2.0/01-home.webp">2</a></sup>, <code>05</code></td>
 <td>Fixed row/pane heights</td>
 </tr>
 <tr>
@@ -380,7 +381,7 @@ Throwaway wallet: seed <code>device during battle soldier please track movie cor
 <td>S4</td>
 <td>Entire new Shielded UI untranslated in every locale (64 <code>shielded_*</code> strings only in <code>values/strings-dashpay.xml</code>)</td>
 <td>Any non-English locale → Shielded balance</td>
-<td><code>E10/*/06b-shielded.png</code></td>
+<td><a class=ev href="../S4/E10/ar-EG/06b-shielded.webp">E10/*/06b-shielded.png</a><sup class=more><a href="../index.html#S4-E10" title="10 files, open gallery">+9</a></sup></td>
 <td>translations not exported</td>
 </tr>
 <tr>
@@ -388,7 +389,7 @@ Throwaway wallet: seed <code>device during battle soldier please track movie cor
 <td>S4</td>
 <td>About build number "(0)" (<code>VERSION_CODE % 100</code>)</td>
 <td>About</td>
-<td><code>E3/30</code></td>
+<td><a class=ev href="../S4/E3/30-about-screen.webp">E3/30</a></td>
 <td><code>AboutFragment.kt:80-81</code></td>
 </tr>
 <tr>
@@ -396,7 +397,7 @@ Throwaway wallet: seed <code>device during battle soldier please track movie cor
 <td>S4</td>
 <td>Hebrew split across <code>values-he</code> (211) and <code>values-iw</code> (192), both legacy stubs — <code>he-IL</code> ~89 % English</td>
 <td><code>he-IL</code></td>
-<td><code>E10/he-IL/*</code></td>
+<td><a class=ev href="../S4/E10/he-IL/00-lockscreen.txt">E10/he-IL/*</a><sup class=more><a href="../index.html#S4-E10" title="12 files, open gallery">+11</a></sup></td>
 <td>resource dirs</td>
 </tr>
 <tr>
@@ -404,7 +405,7 @@ Throwaway wallet: seed <code>device during battle soldier please track movie cor
 <td>S4</td>
 <td>ar-EG mixes Arabic + English on onboarding; Arabic-Indic and Western digits mixed in one row</td>
 <td><code>ar-EG</code></td>
-<td><code>E10/ar-EG/20</code>, <code>01</code>, <code>13</code></td>
+<td><a class=ev href="../S4/E10/ar-EG/20-onboarding-p1.txt">E10/ar-EG/20</a><sup class=more><a href="../S4/E10/ar-EG/20-onboarding-p1.webp" title="S4/E10/ar-EG/20-onboarding-p1.webp">2</a></sup>, <code>01</code>, <code>13</code></td>
 <td><code>values-ar</code> 687/1477; mixed formatters</td>
 </tr>
 <tr>
@@ -420,7 +421,7 @@ Throwaway wallet: seed <code>device during battle soldier please track movie cor
 <td>S4</td>
 <td>"1 keys" — no plural handling</td>
 <td>Tools → Masternode keys</td>
-<td><code>E7/13</code></td>
+<td><a class=ev href="../S4/E7/13-masternode-keys-screen.webp">E7/13</a></td>
 <td>missing plurals</td>
 </tr>
 <tr>
@@ -428,7 +429,7 @@ Throwaway wallet: seed <code>device during battle soldier please track movie cor
 <td>S4</td>
 <td>ZenLedger "Export → Allow" silent no-op</td>
 <td>Tools → ZenLedger</td>
-<td><code>E7/18-20</code></td>
+<td><a class=ev href="../S4/E7/18-zenledger.webp">E7/18-20</a><sup class=more><a href="../S4/E7/19-zenledger-export.webp" title="S4/E7/19-zenledger-export.webp">2</a> <a href="../S4/E7/20-zenledger-after-allow.webp" title="S4/E7/20-zenledger-after-allow.webp">3</a></sup></td>
 <td>no error surfaced</td>
 </tr>
 <tr>
@@ -436,7 +437,7 @@ Throwaway wallet: seed <code>device during battle soldier please track movie cor
 <td>S4</td>
 <td>Address book opens on "SENDING ADDRESSES"</td>
 <td>Tools → Address book</td>
-<td><code>E7/02</code></td>
+<td><a class=ev href="../S4/E7/02-address-book.webp">E7/02</a></td>
 <td>initial pager position</td>
 </tr>
 </tbody>
@@ -446,9 +447,9 @@ Throwaway wallet: seed <code>device during battle soldier please track movie cor
 <h2 id="environment-problems">Environment problems</h2>
 <p>ENV-6 locale helper (fixed); logcat helper (fixed); <code>input text</code> spaces (fixed); custom PIN pad is not an IME target (tap digits); IME overlap (use ESC keyevent 111); faucet Cloudflare + hourly limit; Explore map tiles.</p>
 <h2 id="not-run-blocked">Not run / blocked</h2>
-<p>E3 tx-metadata settings + E7 Credits (identity-gated); E7 invalid-WIF text entry (QR only); E5 Coinbase fiat-option regression (needs linked account); E5 Uphold/Topper (rows disabled); E4 gift-card list; E1 "Restore from file" (DEBUG-only).</p>
+<p><a class=ev href="../index.html#S4-E3">E3</a> tx-metadata settings + <a class=ev href="../index.html#S4-E7">E7</a> Credits (identity-gated); <a class=ev href="../index.html#S4-E7">E7</a> invalid-WIF text entry (QR only); <a class=ev href="../index.html#S4-E5">E5</a> Coinbase fiat-option regression (needs linked account); <a class=ev href="../index.html#S4-E5">E5</a> Uphold/Topper (rows disabled); <a class=ev href="../index.html#S4-E4">E4</a> gift-card list; <a class=ev href="../index.html#S4-E1">E1</a> "Restore from file" (DEBUG-only).</p>
 <h2 id="paths">Paths</h2>
-<p><code>/Users/dcg/workspace/dash-wallet-qa/evidence/S4/</code> (481 screenshots, 7 recordings): <code>E1/ E2/ E3/ E4/ E5/ E6/ E7/ E10/ E11/ SR05/ SR22/ SR34/</code>; logs <code>logcat-*.txt</code>, <a class=ev href="../S4/exitinfo.txt">exitinfo.txt</a>, <a class=ev href="../S4/mem.csv">mem.csv</a>, <code>walletlog-final/</code>; <a class=ev href="../S4/unit-tests.log">unit-tests.log</a>; <a class=ev href="../S4/notes.md">notes.md</a>.</p><div id=lb><span class=x>&times;</span><span class="nv pv">&#8249;</span><span class="nv nx">&#8250;</span><img><div class=cap></div></div>
+<p><code>/Users/dcg/workspace/dash-wallet-qa/evidence/S4/</code> (481 screenshots, 7 recordings): <code>E1/ E2/ E3/ E4/ E5/ E6/ E7/ E10/ E11/ SR05/ SR22/ SR34/</code>; logs <a class=ev href="../S4/logcat-crashbuffer.txt">logcat-*.txt</a><sup class=more><a href="../S4/logcat-part1-0011-0019.txt" title="S4/logcat-part1-0011-0019.txt">2</a> <a href="../S4/logcat-part2.txt" title="S4/logcat-part2.txt">3</a> <a href="../S4/logcat-ringbuffer-dump.txt" title="S4/logcat-ringbuffer-dump.txt">4</a></sup>, <a class=ev href="../S4/exitinfo.txt">exitinfo.txt</a>, <a class=ev href="../S4/mem.csv">mem.csv</a>, <a class=ev href="../S4/walletlog-final/files/log/wallet.log">walletlog-final/</a>; <a class=ev href="../S4/unit-tests.log">unit-tests.log</a>; <a class=ev href="../S4/notes.html">notes.md</a>.</p><div id=lb><span class=x>&times;</span><span class="nv pv">&#8249;</span><span class="nv nx">&#8250;</span><img><div class=cap></div></div>
 <script>(function(){var lb=document.getElementById('lb'),im=lb.querySelector('img'),cap=lb.querySelector('.cap'),L=[],i=0;
 function links(){return Array.prototype.slice.call(document.querySelectorAll('a[href$=".webp"],a[href$=".png"]'))}
 function show(n){L=links();if(n<0||n>=L.length)return;i=n;var a=L[i];im.src=a.href;cap.innerHTML=(a.textContent.trim()||a.href.split('/').slice(-3).join('/'))+' &nbsp;('+(i+1)+'/'+L.length+') &nbsp;<a href="'+a.href+'" target=_blank rel=noopener>open file</a>';lb.classList.add('on')}

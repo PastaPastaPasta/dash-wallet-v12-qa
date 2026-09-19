@@ -1,0 +1,114 @@
+<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Stream S12 notes</title><style>body{font-family:system-ui,-apple-system,sans-serif;max-width:1400px;margin:0 auto;padding:16px 24px;line-height:1.45;background:#fff;color:#111}
+table{border-collapse:collapse;font-size:13px;margin:12px 0}th,td{border:1px solid #ddd;padding:4px 8px;vertical-align:top;text-align:left}th{background:#f3f6fa;position:sticky;top:0}
+tr:nth-child(even){background:#fafbfc}code{background:#f4f4f4;padding:1px 4px;border-radius:3px;font-size:12px}pre{background:#f4f4f4;padding:10px;overflow:auto}
+h1{border-bottom:3px solid #008de4}h2{border-bottom:1px solid #ccc;margin-top:40px}a{color:#008de4}a.ev{background:#e8f4fd;padding:0 3px;border-radius:3px;font-family:ui-monospace,monospace;font-size:12px}
+nav.top{background:#012060;color:#fff;padding:8px 24px;margin:-16px -24px 16px;position:sticky;top:0;z-index:5}nav.top a{color:#fff;margin-right:18px;text-decoration:none}nav.top a:hover{text-decoration:underline}
+.S1{color:#b00020;font-weight:bold}.S2{color:#c75000;font-weight:bold}.toc{background:#f8f9fb;border:1px solid #e3e6ea;padding:8px 16px;font-size:13px;columns:2}.toc ul{margin:2px 0;padding-left:16px}
+#lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:50;align-items:center;justify-content:center;flex-direction:column}#lb.on{display:flex}#lb img{max-width:96vw;max-height:88vh;border:2px solid #fff;box-shadow:0 0 30px #000}#lb .cap{color:#eee;font:13px ui-monospace,monospace;margin-top:8px}#lb .cap a{color:#8cf}#lb .x{position:absolute;top:10px;right:18px;color:#fff;font-size:30px;cursor:pointer}#lb .nv{position:absolute;top:50%;color:#fff;font-size:44px;cursor:pointer;padding:0 16px;user-select:none}#lb .pv{left:0}#lb .nx{right:0}a.img img{cursor:zoom-in}
+sup.more a{margin:0 2px;font-size:10px}
+a.did{font-family:ui-monospace,monospace;font-size:12px;font-weight:600}td:target{background:#fff3b0;outline:2px solid #f5b400}
+.note{background:#fff8e1;border-left:4px solid #f5b400;padding:8px 12px;margin:12px 0}
+</style><nav class=top><a href="../../index.html">Home</a><a href="../../QA-REPORT.html">Full report</a><a href="../../EXEC-SUMMARY.html">Executive summary</a><a href="../../STORY-MATRIX.html">User-story matrix</a><a href="../../DEFECT-LEDGER.html">Defect register</a><a href="../index.html">Evidence gallery</a><a href="../../QA-PLAN.html">Test plan</a><a href="../../streams.html">Stream reports</a></nav><h1>Stream S12 working notes</h1><h1 id="s12-notes-emulator-5558-avd-dw-qa3"><a class=ev href="../S12/notes.html">S12 notes</a> (emulator-5558, AVD dw-qa3)</h1>
+<h2 id="static-pre-read-before-touching-the-device">Static pre-read (before touching the device)</h2>
+<ul>
+<li><code>wt-fix</code> <code>wallet/src/de/schildbach/wallet/service/platform/sdk/CoinJoinFundsMigrationService.kt:118</code>
+  <code>const val MIXED_FUNDS_PROMPT_HARD_SUPPRESSED = true</code> — TEMPORARY kill switch.
+  <code>shouldPrompt()</code> returns false immediately (line 425) and <code>MixedFundsMigrationDialogFragment.showOnce</code>
+  returns early too, so NO code path can show the mixed-funds sheet in the build under test.
+  Comment (Brian, 2026-08-11) says the COMBINE drain produced a committed-but-never-propagated mainnet
+  tx 0a884b1d… (~75.6 DASH stuck on a permanent "Sending" row).
+  =&gt; <a class=ev href="../index.html#S12-CJ1">CJ1</a>'s UI expectations (keep-spendable / move-to-shielded / in-progress / failure) are UNREACHABLE
+     in this APK. Will verify empirically and then focus on: are the ex-CoinJoin coins counted + spendable?
+2026-09-19T02:02:36
+S12 <a class=ev href="../index.html#S12-CJ1">CJ1</a> wallet seed: gospel tip talent possible practice leave vicious come swing luggage ice sand</li>
+</ul>
+<h2 id="cj1-master-1190-baseline"><a class=ev href="../index.html#S12-CJ1">CJ1</a> (master 11.9.0 baseline)</h2>
+<ul>
+<li>02:02 installed master-11.9.0-testnet3-release-signed.apk (versionCode 11090002) after uninstalling prior install</li>
+<li>02:03-02:07 created wallet, PIN 1234, seed verified. Receive address yVYBPPn2zy1KKRUD88wywwXHnKEo7X83H4</li>
+<li>02:07 faucet 1 tDASH -&gt; txid 10e3b5b8dca0702ca350d5f263e5b31c84c678f63d541a5a2b0ee7c1a96cf054</li>
+<li>Orchestrator course-correction received: mixing window shortened to 15 min; focus post-upgrade on
+  balance parity / spendability / logs / settings row / prefs, since the prompt is hard-suppressed.</li>
+<li>02:11:44 CoinJoin enabled (Intermediate) on master. Mixing ran ~21 min.</li>
+<li>4 CoinJoin txs broadcast: 3c229f43… (create-denominations: 29x0.00100001, 17x0.0100001, 8x0.100001,
+    0.0004 collateral, 0.00056938 change), 0a2cacdc…, 8d969085…, b46be97f…</li>
+<li>Progress never left 0% ("0.0000 of 1.0000", getMixingProgress 0.0 / 53). All mixing sessions ended
+    POOL_STATE_ERROR "Session not complete!" / TIMEOUT against testnet MNs 68.67.122.*.</li>
+<li>So: CoinJoin ACCOUNT (m/9') populated with ~0.999 tDASH of denominations at 0 rounds; 0 fully-mixed.</li>
+<li>Master home: 0.999971 tDASH, "Mixing · 0%", history group row "Mixing Transactions / 4 transactions / -0.000029".</li>
+<li>Persisted: files/datastore/coinjoin.preferences_pb -&gt; coinjoin_mode=INTERMEDIATE, first_time_info_shown,
+    last_mixing_progress. NOTHING coinjoin/privacy-related in shared_prefs main xml.</li>
+<li>Stop-mixing confirm dialog captured ("Any funds that have been mixed will be combined with your unmixed funds")
+    then CANCELLED deliberately: upgrading with CoinJoin still ENABLED is the state the migration detector cares about
+    and avoids any chance of the app draining the m/9' bucket before the upgrade.</li>
+</ul>
+<h2 id="cj1-post-upgrade-fix-1200-versioncode-12000000"><a class=ev href="../index.html#S12-CJ1">CJ1</a> post-upgrade (fix 12.0.0, versionCode 12000000)</h2>
+<ul>
+<li>02:34:49 kill, <code>install -r</code> fix APK, relaunch (video <a class=ev href="../S12/CJ1/post-upgrade/cj1-upgrade.mp4">post-upgrade/cj1-upgrade.mp4</a>)</li>
+<li>Unlock -&gt; cutover explainer "A one-time sync is needed" -&gt; Got it. NO mixed-funds sheet (expected: hard-suppressed).</li>
+<li>Balance parity: home 0.999971 both sides; log <code>WalletBalanceFacts: total=99997138 accounts={bip44:0, bip32:0, coinjoin:99997138,...}</code>
+  =&gt; ALL of it is in the CoinJoin account, correctly detected by the SDK.</li>
+<li>History: "Mixing Transactions / 4 transactions / -0.000029" group row survives the upgrade; fix build re-classifies them
+  (CoinJoinMixingTxSet: 3c229f43 CreateDenomination, 0a2cacdc/8d969085/b46be97f MakeCollateralInputs). Renders sanely.</li>
+<li>Settings on fix: CoinJoin row GONE (Local currency / Rescan / About / Notifications / Battery only).</li>
+<li><strong>S1 FUNDS STRANDED</strong>: Send -&gt; address -&gt; amount 0.001 shows "Insufficient funds", Send disabled,
+  on-screen "Balance: DASH 0.00 ~ $ 0.00", "Max" fills 0.
+  <a class=ev href="../S12/CJ1/pre-upgrade/logs/files/log/wallet.log">wallet.log</a> 07:38:57 <code>SendCoinsFragment - dryRunException: org.bitcoinj.core.InsufficientMoneyException:
+  Insufficient money, missing 0.0011 DASH</code>. So the send engine sees ZERO spendable while the header shows 0.999971.
+  With the migration prompt hard-suppressed there is no in-app way to move the coins out.</li>
+<li><a class=did href="../SR/REPORT.html#SR-27">SR-27</a>: <code>files/datastore/coinjoin.preferences_pb</code> still contains <code>coinjoin_mode=INTERMEDIATE</code>,
+  <code>first_time_info_shown</code>, <code>last_mixing_progress</code> AFTER the upgrade - orphaned, never read, never cleared.
+  <code>dashpay.preferences_pb</code> has no <code>mixed_funds_migration_done</code>/<code>_in_flight</code> key (prompt never ran).</li>
+</ul>
+<h2 id="cj1-escape-hatches-evidence-in-cj1escape-hatches"><a class=ev href="../index.html#S12-CJ1">CJ1</a> escape hatches (evidence in <a class=ev href="../index.html#S12-CJ1">CJ1/escape-hatches</a>/)</h2>
+<ol>
+<li>Send -&gt; Max: FAILS. "Balance: DASH 0.00 ~ $ 0.00", Max fills 0. (<a class=ev href="../S12/CJ1/escape-hatches/01-send-max.webp">01-send-max.png</a>)</li>
+<li>Shield (Payments &gt; Internal &gt; Shielded balance) -&gt; Max (0.99997138 offered, "From Dash Wallet 0.99997138"):
+   FAILS at PIN -&gt; "This transfer was not sent / Nothing left your balance."
+   log 07:46:58 <code>AssetLockInsufficientFunds: asset lock coin selection is short: available 0 duffs, required 99979074 duffs</code>
+   (<a class=ev href="../S12/BC1/02-after-unlock.webp">02..04-shield-max*.png</a><sup class=more><a href="../S12/BC1/03-home.webp" title="S12/BC1/03-home.webp">2</a> <a href="../S12/BC1/04-shield-amount.webp" title="S12/BC1/04-shield-amount.webp">3</a></sup>)</li>
+<li>Tools &gt; dashj sync (diagnostic) ON ("Start sync from date"), dashj reached "dashj 100% - matches SDK",
+   then retried Send -&gt; still "Balance: DASH 0.00", Max 0. FAILS. (<a class=ev href="../S12/BC1/06-shield-result.webp">06..09*.png</a><sup class=more><a href="../S12/BC1/07-more-balances.webp" title="S12/BC1/07-more-balances.webp">2</a> <a href="../S12/BC1/08-join-dashpay.webp" title="S12/BC1/08-join-dashpay.webp">3</a> <a href="../S12/BC1/09-username-entry.webp" title="S12/BC1/09-username-entry.webp">4</a></sup>)</li>
+<li>Reset wallet + restore the SAME seed on the fix build: balance returns as 0.999971,
+   <code>accounts={bip44:0, bip32:0, coinjoin:99997138}</code> again, Send still "DASH 0.00" / Max 0. FAILS.
+   (<a class=ev href="../S12/CJ1/restore/08-home-after-restore.webp">restore/08,10*.png</a><sup class=more><a href="../S12/CJ1/restore/10-send-max-after-restore.webp" title="S12/CJ1/restore/10-send-max-after-restore.webp">2</a></sup>). Also re-confirms <a class=did href="../../DEFECT-LEDGER.html#D-003">D-003</a>/<a class=did href="../../DEFECT-LEDGER.html#SR-03">SR-03</a>: Receive hands out the already-used index-0
+   address yVYBPPn2… after a restore on the fix build.</li>
+<li>Downgrade escape: uninstall fix, install master 11.9.0, restore the same seed -&gt; in progress.</li>
+<li><strong>Downgrade escape WORKS</strong>: uninstall fix -&gt; install master 11.9.0 -&gt; restore the same seed (full SPV
+   replay ~35 min, progress 0-&gt;99). Master Send screen shows "Balance: DASH 0.99988303 ~ $60.66", Max fills
+   0.99988303, and a real 0.001 self-send SUCCEEDED:
+   txid fadea2817fce263559e1acf96d8f04ab634a3609ad2f1e0cdd92993cc9215ec9,
+   IN yXRYQgkWnCrAzmcM2muLphFsBrtk3kEG86 0.100001 (a CoinJoin denomination) -&gt; OUT 0.001 + 0.09899873 change,
+   fee 0.00000227 (evidence <a class=ev href="../S12/BC1/15-accept.webp">15..23*.png</a><sup class=more><a href="../index.html#S12-BC1" title="10 files, open gallery">+9</a></sup> + <a class=ev href="../S12/CJ1/escape-hatches/cj1-master-send.mp4">cj1-master-send.mp4</a>).
+   =&gt; The ONLY working escape from <a class=did href="../../DEFECT-LEDGER.html#D-068">D-068</a> is downgrading to 11.9.0. Nothing in the 12.0.0 UI can reach the coins.</li>
+</ol>
+<h2 id="d-068-root-cause-confirmation-bonus">D-068 root-cause confirmation (bonus)</h2>
+<p>Back on master (still restored), sent MAX (0.99987927) from the CoinJoin denominations to the wallet's own
+BIP44 address yby8Md13kUKFZ6GMPUm5JWRBpnBNaS5CXQ (<a class=ev href="../S12/CJ1/escape-hatches/24-master-consolidate-max.webp">escape-hatches/24..26*.png</a><sup class=more><a href="../S12/CJ1/escape-hatches/25-consolidate-confirm.webp" title="S12/CJ1/escape-hatches/25-consolidate-confirm.webp">2</a> <a href="../S12/CJ1/escape-hatches/26-consolidate-sent.webp" title="S12/CJ1/escape-hatches/26-consolidate-sent.webp">3</a></sup>), let it confirm, then upgraded
+in place to the fix build again. After the upgrade:
+  <code>WalletBalanceFacts: total=99987927 accounts={bip44:99987927, bip32:0, coinjoin:0}</code> and the funds behave normally.
+=&gt; the stranding is specific to coins sitting in the CoinJoin (m/9') account at the cutover; the same wallet
+   with the same coins in bip44 upgrades cleanly.</p>
+<h2 id="bc1-fix-build-same-wallet-0999879-tdash-in-bip44"><a class=ev href="../index.html#S12-BC1">BC1</a> (fix build, same wallet, 0.999879 tDASH in bip44)</h2>
+<h2 id="bc1-result-0416"><a class=ev href="../index.html#S12-BC1">BC1</a> result (04:16)</h2>
+<ul>
+<li>shield 0.8 OK -&gt; Dash Wallet 0.199 / Shielded 0.797</li>
+<li>username qa12s12mixedfunds4821 (21 chars, non-contested) registered in &lt;10 s; identity
+  GDpXqZCFyoo3hhBwfmkNdJSBcCDpkpEpsvodLzw8o1fi; alias qa12s12mixedfunds4821.dash status ok contested false</li>
+<li>top-up #1: auto-lock cancelled it (<a class=did href="../../DEFECT-LEDGER.html#D-070">D-070</a>); retry -&gt; ambiguous "may have gone through"
+  (Dapi client error: no available addresses to use) -&gt; drain worker recovered 91 s later (<a class=did href="../../DEFECT-LEDGER.html#D-071">D-071</a>)</li>
+<li>top-up #2: clean, "top-up of 100000 duffs credited; new balance 2746680400"</li>
+<li>explorer: 2562746440 -&gt; 2654713420 -&gt; 2746680400 credits; topups 3.0e9 -&gt; 3.2e9; txs 2 -&gt; 4</li>
+<li>history row "Topup Fee -0.001003", detail "Platform Credits", fee 0.00000263</li>
+<li>Tools &gt; Credits row shows no balance at all (<a class=did href="../../DEFECT-LEDGER.html#D-072">D-072</a>); Buy Credits identity balance stale until relaunch (<a class=did href="../../DEFECT-LEDGER.html#D-073">D-073</a>)</li>
+</ul>
+<h2 id="nm1-041x-pass-see-reportmd"><a class=ev href="../index.html#S12-NM1">NM1</a> (04:1x) - PASS, see <a class=ev href="../S12/REPORT.html">REPORT.md</a></h2>
+<h2 id="captures-stopped-0417-peak-pss-508777-kb-no-crashanroom-exit-info-all-force-stop-by-me">Captures stopped 04:17. Peak PSS 508777 KB. No crash/ANR/OOM (exit-info: all FORCE STOP by me).</h2><div id=lb><span class=x>&times;</span><span class="nv pv">&#8249;</span><span class="nv nx">&#8250;</span><img><div class=cap></div></div>
+<script>(function(){var lb=document.getElementById('lb'),im=lb.querySelector('img'),cap=lb.querySelector('.cap'),L=[],i=0;
+function links(){return Array.prototype.slice.call(document.querySelectorAll('a[href$=".webp"],a[href$=".png"]'))}
+function show(n){L=links();if(n<0||n>=L.length)return;i=n;var a=L[i];im.src=a.href;cap.innerHTML=(a.textContent.trim()||a.href.split('/').slice(-3).join('/'))+' &nbsp;('+(i+1)+'/'+L.length+') &nbsp;<a href="'+a.href+'" target=_blank rel=noopener>open file</a>';lb.classList.add('on')}
+function hide(){lb.classList.remove('on');im.src=''}
+document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".webp"],a[href$=".png"]');if(a&&!a.closest('#lb')){e.preventDefault();show(links().indexOf(a))}});
+lb.querySelector('.x').onclick=hide;lb.querySelector('.pv').onclick=function(e){e.stopPropagation();show(i-1)};lb.querySelector('.nx').onclick=function(e){e.stopPropagation();show(i+1)};
+lb.addEventListener('click',function(e){if(e.target===lb||e.target===im)hide()});
+document.addEventListener('keydown',function(e){if(!lb.classList.contains('on'))return;if(e.key==='Escape')hide();if(e.key==='ArrowLeft')show(i-1);if(e.key==='ArrowRight')show(i+1)});})();</script></html>
